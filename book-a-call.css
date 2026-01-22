@@ -1,0 +1,448 @@
+/* =========================
+   BOOK A CALL — PAGE CSS
+   (Hero dark + Form pro)
+   ========================= */
+
+:root{
+  --ink:#0b1220;
+  --muted:#64748b;
+  --soft:#f8fafc;
+  --line:#e2e8f0;
+
+  --darkA:#0b1220;
+  --darkB:#070b14;
+
+  --primary:#4f46e5;
+  --primary2:#7c3aed;
+
+  --radius:18px;
+}
+
+/* Evitar heranças maradas do styles.css */
+.book-hero, .book-contact{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* =========================
+   HERO (dark) — sem espaço gigante
+   ========================= */
+.book-hero{
+  background: linear-gradient(180deg, #121a22 0%, #0b1220 100%);
+  color: #fff;
+  padding: 64px 0 56px;       /* ✅ não exagerado */
+  position: relative;
+  overflow: hidden;
+}
+
+.book-hero::before{
+  content:"";
+  position:absolute;
+  inset:-220px auto auto -220px;
+  width:520px;
+  height:520px;
+  background: radial-gradient(circle at 60% 60%, rgba(79,70,229,.35), transparent 60%);
+  filter: blur(10px);
+  pointer-events:none;
+}
+
+.book-hero::after{
+  content:"";
+  position:absolute;
+  inset:auto -260px -260px auto;
+  width:620px;
+  height:620px;
+  background: radial-gradient(circle at 40% 40%, rgba(124,58,237,.32), transparent 60%);
+  filter: blur(12px);
+  pointer-events:none;
+}
+
+.book-hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 44px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  opacity: .95;
+}
+
+.hero-brand img{ height: 26px; width:auto; display:block; }
+.hero-brand span{ font-weight: 800; letter-spacing:.2px; }
+
+.hero-title{
+  font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.02;
+  font-size: clamp(42px, 5vw, 74px);
+  margin: 18px 0 18px;
+}
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 2px solid rgba(236,72,153,.75);
+  color:#fff;
+  font-weight: 800;
+  text-decoration:none;
+  letter-spacing:.4px;
+  transition: .2s ease;
+  background: rgba(255,255,255,.02);
+}
+
+.hero-cta:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(236,72,153,.16);
+  border-color: rgba(236,72,153,.95);
+}
+
+.hero-trust{
+  margin-top: 18px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  opacity:.95;
+}
+
+.hero-stars{
+  letter-spacing: 2px;
+  color: rgba(255,255,255,.8);
+  font-size: 16px;
+}
+
+.hero-trust-row{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-trust-pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.9);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.book-hero-right{
+  display:flex;
+  flex-direction:column;
+  gap: 16px;
+}
+
+.hero-art{
+  width:100%;
+  opacity: .9;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  padding: 18px;
+}
+
+.hero-art svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.hero-hq{
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  padding: 18px;
+}
+
+.hq-title{
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hq-body{
+  font-size: 14px;
+  color: rgba(255,255,255,.86);
+}
+
+.hq-body p{ margin: 10px 0; }
+.k{ color: rgba(255,255,255,.65); font-weight: 700; margin-right: 6px; }
+.hq-link{ color: rgba(236,72,153,.95); text-decoration: none; }
+.hq-link:hover{ text-decoration: underline; }
+
+/* =========================
+   CONTACT (white) — pro layout
+   ========================= */
+.book-contact{
+  background: #ffffff;
+  padding: 72px 0;
+}
+
+.book-contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.contact-title{
+  font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.05;
+  font-size: clamp(34px, 4vw, 56px);
+  margin: 0 0 18px;
+  color: #0b1220;
+}
+
+.contact-bullets{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  display: grid;
+  gap: 12px;
+  color: #0b1220;
+}
+
+.contact-bullets li{
+  position: relative;
+  padding-left: 34px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.contact-bullets li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:0;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.contact-video{
+  border-radius: 18px;
+  height: 270px;
+  background: radial-gradient(circle at 30% 30%, rgba(79,70,229,.18), transparent 55%),
+              linear-gradient(135deg, #0b1220 0%, #111c32 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(2,6,23,.10);
+}
+
+.video-play{
+  position:absolute;
+  inset: 0;
+  margin: auto;
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(236,72,153,.95);
+  box-shadow: 0 14px 40px rgba(236,72,153,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: .2s ease;
+}
+
+.video-play:hover{ transform: scale(1.04); }
+
+.video-play .triangle{
+  width: 0; height: 0;
+  border-left: 18px solid #fff;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+
+/* =========================
+   FORM — o fix do “desformatado”
+   ========================= */
+.form-card{
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 18px 60px rgba(2,6,23,.08);
+}
+
+/* Cabeçalho do form */
+.form-head{
+  margin-bottom: 16px;
+}
+
+.form-title{
+  margin: 0 0 6px;
+  font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: #0b1220;
+  font-size: 18px;
+}
+
+.form-sub{
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ✅ Overrides fortes para o form não ficar inline */
+.book-form{
+  display:flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+.book-form .field{
+  display:flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+.book-form .field span{
+  font-weight: 700;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.book-form input,
+.book-form select,
+.book-form textarea{
+  display:block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+
+  border: 1px solid #e2e8f0 !important;
+  background: #f8fafc !important;
+  color: #0b1220 !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+.book-form textarea{
+  resize: vertical;
+  min-height: 140px;
+}
+
+.book-form input:focus,
+.book-form select:focus,
+.book-form textarea:focus{
+  border-color: rgba(79,70,229,.55) !important;
+  box-shadow: 0 0 0 4px rgba(79,70,229,.12) !important;
+  background: #ffffff !important;
+}
+
+/* Select com setinha */
+.book-form select{
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #64748b 50%),
+    linear-gradient(135deg, #64748b 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) calc(1em + 3px),
+    calc(100% - 13px) calc(1em + 3px),
+    100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  padding-right: 44px !important;
+}
+
+/* Checkbox */
+.book-form .check{
+  display:flex !important;
+  align-items:center !important;
+  gap: 10px !important;
+  margin-top: 2px !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+.book-form .check input{
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: #ec4899 !important;
+}
+
+/* Botão submit */
+.submit-btn{
+  width: 100%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 14px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: .3px;
+  color: #fff;
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 55%, #7c3aed 120%);
+  box-shadow: 0 18px 45px rgba(236,72,153,.20);
+  transition: .2s ease;
+}
+
+.submit-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 22px 60px rgba(236,72,153,.26);
+}
+
+.form-foot{
+  margin: 8px 0 0;
+  color: #94a3b8;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 980px){
+  .book-hero-grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .book-contact-grid{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .contact-video{ height: 240px; }
+}
+
+@media (max-width: 520px){
+  .book-hero{ padding: 52px 0 44px; }
+  .form-card{ padding: 18px; }
+}

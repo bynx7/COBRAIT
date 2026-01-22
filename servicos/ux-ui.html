@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX / UI - COBRAIT</title>
+
+  <!-- Fonts (igual ao site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Mantém os teus CSS globais -->
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../servicos.css" />
+
+  <style>
+    :root{
+      --ink:#0f172a;
+      --muted:#64748b;
+      --muted2:#94a3b8;
+      --line:#e2e8f0;
+      --bg:#f6f8fc;
+      --card:#ffffff;
+
+      --brand1:#4f46e5;
+      --brand2:#7c3aed;
+
+      --shadow: 0 14px 40px rgba(2,6,23,.08);
+      --shadow2: 0 10px 26px rgba(2,6,23,.06);
+      --radius: 18px;
+
+      --accent:#06b6d4;   /* azul/turquesa para UX */
+      --accent2:#60a5fa;  /* azul claro */
+      --pink:#ec1b67;     /* bolinhas timeline (como no teu mvp) */
+    }
+
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1100px 520px at 15% 0%, rgba(6,182,212,.10), transparent 60%),
+        radial-gradient(900px 480px at 85% 12%, rgba(96,165,250,.10), transparent 60%),
+        linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+
+    .container{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================================
+       HEADER (igual ao index)
+    ========================================================= */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .brand img { height: 40px; width:auto; display:block; }
+
+    .nav-toggle { display: none; }
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .nav-toggle-btn span {
+      width: 25px;
+      height: 2px;
+      background: var(--brand1);
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+      align-items: center;
+    }
+    .site-nav a {
+      font-family: Inter, sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .site-nav a:hover { color: var(--brand1); }
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, var(--brand1) 0%, var(--brand2) 100%);
+      transition: width 0.3s ease;
+    }
+    .site-nav a:hover::after { width: 100%; }
+
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.10);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 16px;
+    }
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+    .dropdown-item:last-child { margin-bottom: 0; }
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+    .dropdown-item svg {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .dropdown-item-content h4 {
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+    .dropdown-item-content p {
+      font-family: Inter, sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .dropdown-arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    /* Language selector (igual ao index) */
+    .language-selector{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .lang-btn{
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color:#64748b;
+      padding:4px 8px;
+      border-radius:4px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+      transition: all .2s ease;
+    }
+    .lang-btn:hover{ color: var(--brand1); background:#f8fafc; }
+    .lang-btn.active{ color: var(--brand1); background:#f1f5f9; }
+    .language-divider{ color:#cbd5e1; font-weight:300; }
+
+    /* Botão primary */
+    .btn.btn--primary{
+      background: linear-gradient(135deg, var(--brand1) 0%, var(--brand2) 100%);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-weight: 700;
+      text-decoration: none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border: 2px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease;
+      white-space: nowrap;
+    }
+    .btn.btn--primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25);
+    }
+
+    @media (max-width: 1024px){
+      .header-inner{ gap: 20px; }
+      .site-nav ul{ gap: 20px; }
+      .header-right{ gap: 16px; }
+    }
+
+    @media (max-width: 768px){
+      .nav-toggle-btn{ display:flex; }
+
+      .site-nav{
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      .site-nav ul{
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .dropdown-content{
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
+      }
+      .dropdown-item{
+        padding: 10px 0 10px 16px;
+        margin-bottom: 0;
+      }
+
+      .header-right{
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        gap: 12px;
+        align-items: stretch;
+      }
+      .language-selector{ justify-content:center; width:100%; }
+      .header-cta{ width:100%; }
+      .header-cta .btn{ width:100%; justify-content:center; }
+
+      .nav-toggle:checked ~ .site-nav{
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1){
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2){ opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3){
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+
+    /* =========================================================
+       HERO (clean como o exemplo)
+    ========================================================= */
+    .service-hero{
+      padding: 74px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-surface{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      opacity: .9;
+      background:
+        radial-gradient(1200px 520px at 70% 20%, rgba(6,182,212,.10), transparent 60%),
+        radial-gradient(1000px 520px at 85% 70%, rgba(96,165,250,.10), transparent 60%);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items:center;
+      position: relative;
+    }
+
+    .hero-title{
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-size: clamp(44px, 5vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      margin: 0 0 14px;
+      color:#0b1220;
+    }
+
+    .hero-sub{
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 54ch;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items:center;
+    }
+
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      color: var(--brand1);
+      border: 1px solid rgba(79,70,229,.22);
+      background: rgba(79,70,229,.06);
+      text-decoration:none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn-ghost:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow2);
+      background: rgba(79,70,229,.09);
+    }
+
+    /* bloco visual à direita (sem precisar de imagem) */
+    .hero-visual{
+      position: relative;
+      min-height: 360px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .visual-card{
+      width: 100%;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid rgba(226,232,240,.95);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      overflow:hidden;
+      position: relative;
+    }
+
+    .visual-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(620px 260px at 20% 12%, rgba(6,182,212,.18), transparent 60%),
+        radial-gradient(520px 240px at 85% 30%, rgba(96,165,250,.18), transparent 60%);
+      pointer-events:none;
+      opacity: .9;
+    }
+
+    .wire{
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,.02), rgba(15,23,42,.04));
+      border: 1px solid rgba(226,232,240,.9);
+      padding: 18px;
+    }
+
+    .wire-top{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      margin-bottom: 14px;
+    }
+    .dot{ width:10px; height:10px; border-radius:999px; background: rgba(15,23,42,.14); }
+    .dot:nth-child(1){ background: rgba(236,27,103,.55); }
+    .dot:nth-child(2){ background: rgba(6,182,212,.55); }
+    .dot:nth-child(3){ background: rgba(96,165,250,.55); }
+
+    .wire-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .wire-box{
+      border-radius: 14px;
+      border: 1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.75);
+      padding: 14px;
+      min-height: 92px;
+    }
+    .wire-line{
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.08);
+      margin: 8px 0;
+    }
+    .wire-line.sm{ width: 65%; }
+    .wire-line.md{ width: 85%; }
+    .wire-line.lg{ width: 95%; }
+
+    .hero-badges{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 800;
+      color: #0b1220;
+      background: rgba(15,23,42,.06);
+      border: 1px solid rgba(15,23,42,.08);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-visual{ min-height: unset; }
+    }
+
+    /* =========================================================
+       Sections
+    ========================================================= */
+    .section{ padding: 74px 0; }
+
+    .section--alt{
+      background: linear-gradient(180deg, rgba(241,245,249,.55) 0%, rgba(241,245,249,.78) 100%);
+      border-top: 1px solid rgba(226,232,240,.9);
+    }
+
+    .section-title{
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      font-size: clamp(34px, 3.2vw, 50px);
+      text-align: center;
+      margin: 0 0 44px;
+      color: #0b1220;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(226,232,240,.95);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+    }
+
+    /* “What is” */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items:stretch;
+    }
+    .what-card{ padding: 34px; }
+    .what-title{
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-weight: 900;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+      color: #0b1220;
+    }
+    .what-desc{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16.5px;
+    }
+
+    /* Benefits */
+    .benefits-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .benefit{
+      padding: 28px;
+      min-height: 210px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+      text-align:left;
+    }
+    .iconbox{
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border: 1px solid rgba(226,232,240,.9);
+      background: rgba(6,182,212,.08);
+      color: #0b1220;
+    }
+    .benefit h3{
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      color: #0b1220;
+      font-weight: 900;
+    }
+    .benefit p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15.7px;
+    }
+
+    /* How it works (timeline alternada) */
+    .timeline{
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 6px 0;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      transform: translateX(-1px);
+      background: linear-gradient(180deg, rgba(96,165,250,.0), rgba(96,165,250,.55), rgba(96,165,250,.0));
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 22px;
+      align-items:center;
+      margin: 22px 0;
+    }
+
+    .step .spacer{ height: 1px; }
+
+    .node{
+      position: relative;
+      height: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .dotnode{
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 8px rgba(6,182,212,.15);
+      border: 2px solid rgba(255,255,255,.9);
+      position: relative;
+      z-index: 2;
+    }
+
+    .node::before{
+      content:"";
+      position:absolute;
+      width: 46px;
+      height: 2px;
+      background: rgba(148,163,184,.55);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .step-card{
+      padding: 26px 28px;
+      position: relative;
+    }
+
+    .step-kicker{
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    .step-title{
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+      color: #0b1220;
+    }
+
+    .step-desc{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15.8px;
+    }
+
+    /* CTA final */
+    .final-cta{
+      margin-top: 52px;
+      padding: 54px 26px;
+      text-align:center;
+      border-radius: 26px;
+      background:
+        radial-gradient(900px 300px at 20% 0%, rgba(6,182,212,.18), transparent 60%),
+        radial-gradient(900px 300px at 80% 10%, rgba(96,165,250,.16), transparent 60%),
+        linear-gradient(135deg, rgba(6,182,212,.10), rgba(96,165,250,.10));
+      border: 1px solid rgba(186,230,253,.9);
+      box-shadow: var(--shadow2);
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .final-cta h2{
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 2.6vw, 40px);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+      color: #0b1220;
+    }
+    .final-cta p{
+      margin: 0 auto 18px;
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    @media (max-width: 900px){
+      .two-col{ grid-template-columns: 1fr; }
+      .benefits-grid{ grid-template-columns: 1fr; }
+
+      .timeline::before{ left: 20px; transform:none; }
+      .step{
+        grid-template-columns: 42px 1fr;
+        gap: 14px;
+      }
+      .step .spacer{ display:none; }
+      .node{ justify-content:flex-start; }
+      .node::before{ display:none; }
+      .dotnode{ margin-left: 11px; }
+    }
+
+    /* =========================================================
+       FOOTER PRO (igual ao index / book-a-call) — paths corrigidos
+    ========================================================= */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 28px;
+    }
+
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+    .footer-logo { height: 32px; width: auto; display: block; object-fit: contain; }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .footer-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .btn--footer { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
+
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover { color: #ffffff; transform: translateX(3px); }
+
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+
+    .footer-meta a { color: rgba(203, 213, 225, 0.9); text-decoration: none; transition: color .2s ease; }
+    .footer-meta a:hover { color: #fff; }
+
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .footer-mini-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-mini-links a { color: rgba(148, 163, 184, 0.95); text-decoration: none; transition: color .2s ease; }
+    .footer-mini-links a:hover { color: #fff; }
+
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-mini-links { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Cobrait">
+        <img src="../images/logo.png" alt="Cobrait Software Factory logo" />
+      </a>
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="../index.html#work">Work</a></li>
+
+          <li class="dropdown">
+            <a href="../index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
+            </a>
+
+            <div class="dropdown-content">
+              <a href="product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Product Scope</h4>
+                  <p>15-day process to align the product with your business goals.</p>
+                </div>
+              </a>
+
+              <a href="mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>MVP Builder</h4>
+                  <p>Go to market quickly with a high-quality Minimum Viable Product.</p>
+                </div>
+              </a>
+
+              <a href="ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>UX / UI</h4>
+                  <p>Design an easy-to-use engaging and functional product.</p>
+                </div>
+              </a>
+
+              <a href="ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5.001 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>AI Development & Enablement</h4>
+                  <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+                </div>
+              </a>
+
+              <a href="custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Custom Software Development</h4>
+                  <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+                </div>
+              </a>
+
+              <a href="dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Dedicated Teams</h4>
+                  <p>Build your product with a dedicated team of developers.</p>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="../index.html#careers">Careers</a></li>
+          <li><a href="../index.html#tech">Tech</a></li>
+          <li><a href="../index.html#resources">Resources</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="language-selector" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="language-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="language-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+
+        <div class="header-cta">
+          <a class="btn btn--primary" href="../book-a-call.html">BOOK A CALL</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="service-hero">
+      <div class="hero-surface" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-title">UX/UI</h1>
+
+          <p class="hero-sub"
+             data-pt="Desenhamos produtos envolventes, fáceis de usar, atraentes e funcionais — com foco em conversão, clareza e consistência."
+             data-en="We design engaging, easy-to-use, attractive and functional products — focused on conversion, clarity and consistency."
+             data-es="Diseñamos productos atractivos, fáciles de usar, funcionales y coherentes — enfocados en conversión, claridad y consistencia.">
+            Desenhamos produtos envolventes, fáceis de usar, atraentes e funcionais — com foco em conversão, clareza e consistência.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="../book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Schedule a call"
+               data-es="Agendar una llamada">Agendar uma chamada</a>
+
+            <a class="btn-ghost" href="#how-it-works"
+               data-pt="Ver como funciona"
+               data-en="See how it works"
+               data-es="Ver cómo funciona">Ver como funciona</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-card">
+            <div class="wire">
+              <div class="wire-top">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              </div>
+
+              <div class="wire-grid">
+                <div class="wire-box">
+                  <div class="wire-line lg"></div>
+                  <div class="wire-line md"></div>
+                  <div class="wire-line sm"></div>
+                </div>
+                <div class="wire-box">
+                  <div class="wire-line md"></div>
+                  <div class="wire-line sm"></div>
+                  <div class="wire-line lg"></div>
+                </div>
+                <div class="wire-box">
+                  <div class="wire-line sm"></div>
+                  <div class="wire-line md"></div>
+                  <div class="wire-line lg"></div>
+                </div>
+                <div class="wire-box">
+                  <div class="wire-line lg"></div>
+                  <div class="wire-line sm"></div>
+                  <div class="wire-line md"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-badges">
+              <span class="badge" data-pt="Pesquisa & Insights" data-en="Research & Insights" data-es="Investigación & Insights">Pesquisa & Insights</span>
+              <span class="badge" data-pt="Wireframes" data-en="Wireframes" data-es="Wireframes">Wireframes</span>
+              <span class="badge" data-pt="UI System" data-en="UI System" data-es="Sistema UI">UI System</span>
+              <span class="badge" data-pt="Design QA" data-en="Design QA" data-es="QA de Diseño">Design QA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS -->
+    <section class="section">
+      <div class="container">
+        <div class="two-col">
+          <div class="card what-card">
+            <h2 class="what-title"
+                data-pt="O que é UX/UI?"
+                data-en="What is UX/UI?"
+                data-es="¿Qué es UX/UI?">O que é UX/UI?</h2>
+
+            <p class="what-desc"
+               data-pt="UX (experiência) define fluxos, estrutura e clareza. UI (interface) transforma isso num visual consistente e premium. Juntos, criam um produto intuitivo e agradável — e evitam fricção em pontos críticos como onboarding, checkout e formulários."
+               data-en="UX shapes flows, structure and clarity. UI turns it into a consistent premium interface. Together they create an intuitive, enjoyable product — reducing friction in key moments like onboarding, checkout and forms."
+               data-es="UX define flujos, estructura y claridad. UI lo convierte en una interfaz coherente y premium. Juntos crean un producto intuitivo y agradable — reduciendo fricción en momentos clave como onboarding, checkout y formularios.">
+              UX (experiência) define fluxos, estrutura e clareza. UI (interface) transforma isso num visual consistente e premium. Juntos, criam um produto intuitivo e agradável — e evitam fricção em pontos críticos como onboarding, checkout e formulários.
+            </p>
+          </div>
+
+          <div class="card what-card">
+            <h2 class="what-title"
+                data-pt="Quando faz sentido?"
+                data-en="When does it make sense?"
+                data-es="¿Cuándo tiene sentido?">Quando faz sentido?</h2>
+
+            <p class="what-desc"
+               data-pt="Quando precisas de aumentar conversão, melhorar retenção, reduzir suporte e criar consistência visual. Ideal para: MVPs, produtos em crescimento, refactors de interface e quando queres profissionalizar o produto antes de escalar."
+               data-en="When you want higher conversion, better retention, less support and stronger visual consistency. Great for: MVPs, scaling products, UI refactors and preparing a product before growth."
+               data-es="Cuando quieres más conversión, mejor retención, menos soporte y mayor consistencia visual. Ideal para: MVPs, productos en crecimiento, refactors de interfaz y preparar el producto antes de escalar.">
+              Quando precisas de aumentar conversão, melhorar retenção, reduzir suporte e criar consistência visual. Ideal para: MVPs, produtos em crescimento, refactors de interface e quando queres profissionalizar o produto antes de escalar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY BENEFITS -->
+    <section class="section section--alt">
+      <div class="container">
+        <h2 class="section-title"
+            data-pt="Principais benefícios"
+            data-en="Key Benefits"
+            data-es="Beneficios clave">Principais benefícios</h2>
+
+        <div class="benefits-grid">
+          <article class="card benefit">
+            <div class="iconbox" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 data-pt="Aquisição & Retenção"
+                data-en="Acquisition & Retention"
+                data-es="Adquisición & Retención">Aquisição & Retenção</h3>
+            <p data-pt="Uma experiência clara e uma interface premium aumentam confiança, reduzem abandono e ajudam o utilizador a chegar mais rápido ao “Aha moment”."
+               data-en="A clear experience and a premium UI increase trust, reduce drop-off and help users reach the “Aha moment” faster."
+               data-es="Una experiencia clara y una UI premium aumentan la confianza, reducen el abandono y llevan al usuario al “Aha moment” más rápido.">
+              Uma experiência clara e uma interface premium aumentam confiança, reduzem abandono e ajudam o utilizador a chegar mais rápido ao “Aha moment”.
+            </p>
+          </article>
+
+          <article class="card benefit">
+            <div class="iconbox" aria-hidden="true" style="background: rgba(236,27,103,.08);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1v22"/>
+                <path d="M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <h3 data-pt="Redução de custos"
+                data-en="Reduce costs"
+                data-es="Reducir costos">Redução de custos</h3>
+            <p data-pt="Menos confusão = menos suporte. Um design consistente reduz retrabalho, acelera desenvolvimento e facilita onboarding da equipa."
+               data-en="Less confusion means less support. Consistent design reduces rework, speeds up development and simplifies team onboarding."
+               data-es="Menos confusión = menos soporte. Un diseño consistente reduce retrabajo, acelera el desarrollo y facilita el onboarding del equipo.">
+              Menos confusão = menos suporte. Um design consistente reduz retrabalho, acelera desenvolvimento e facilita onboarding da equipa.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <h2 class="section-title"
+            data-pt="Como funciona"
+            data-en="How it works"
+            data-es="Cómo funciona">Como funciona</h2>
+
+        <div class="timeline">
+          <!-- STEP 1 (esquerda) -->
+          <div class="step">
+            <div class="card step-card">
+              <p class="step-kicker"
+                 data-pt="PASSO UM"
+                 data-en="STEP ONE"
+                 data-es="PASO UNO">PASSO UM</p>
+
+              <h3 class="step-title"
+                  data-pt="Design Brief"
+                  data-en="Design Brief"
+                  data-es="Brief de Diseño">Design Brief</h3>
+
+              <p class="step-desc"
+                 data-pt="Começamos por entender objetivos, utilizadores, concorrência e métricas. Definimos fluxos principais, prioridades e requisitos — para garantir foco no que move o produto."
+                 data-en="We start by understanding goals, users, competitors and metrics. We define core flows, priorities and requirements — keeping focus on what moves the product."
+                 data-es="Empezamos entendiendo objetivos, usuarios, competencia y métricas. Definimos flujos clave, prioridades y requisitos — manteniendo foco en lo que impulsa el producto.">
+                Começamos por entender objetivos, utilizadores, concorrência e métricas. Definimos fluxos principais, prioridades e requisitos — para garantir foco no que move o produto.
+              </p>
+            </div>
+
+            <div class="node"><div class="dotnode"></div></div>
+            <div class="spacer"></div>
+          </div>
+
+          <!-- STEP 2 (direita) -->
+          <div class="step">
+            <div class="spacer"></div>
+            <div class="node"><div class="dotnode" style="background: var(--accent2); box-shadow: 0 0 0 8px rgba(96,165,250,.16);"></div></div>
+
+            <div class="card step-card">
+              <p class="step-kicker"
+                 data-pt="PASSO DOIS"
+                 data-en="STEP TWO"
+                 data-es="PASO DOS">PASSO DOIS</p>
+
+              <h3 class="step-title"
+                  data-pt="Wireframes & Fluxos"
+                  data-en="Wireframes & Flows"
+                  data-es="Wireframes & Flujos">Wireframes & Fluxos</h3>
+
+              <p class="step-desc"
+                 data-pt="Criamos a estrutura e os fluxos (user journeys) para validares lógica e navegação. Isto reduz alterações tardias e aumenta velocidade no UI."
+                 data-en="We build structure and user journeys so you can validate logic and navigation. This reduces late changes and speeds up UI."
+                 data-es="Creamos estructura y recorridos para validar lógica y navegación. Esto reduce cambios tardíos y acelera el UI.">
+                Criamos a estrutura e os fluxos (user journeys) para validares lógica e navegação. Isto reduz alterações tardias e aumenta velocidade no UI.
+              </p>
+            </div>
+          </div>
+
+          <!-- STEP 3 (esquerda) -->
+          <div class="step">
+            <div class="card step-card">
+              <p class="step-kicker"
+                 data-pt="PASSO TRÊS"
+                 data-en="STEP THREE"
+                 data-es="PASO TRES">PASSO TRÊS</p>
+
+              <h3 class="step-title"
+                  data-pt="UI & Design System"
+                  data-en="UI & Design System"
+                  data-es="UI & Sistema de Diseño">UI & Design System</h3>
+
+              <p class="step-desc"
+                 data-pt="Criamos o visual final (UI) e um design system consistente (componentes, estados, tokens). Resultado: produto mais premium e desenvolvimento mais rápido."
+                 data-en="We craft the final UI and a consistent design system (components, states, tokens). Result: a more premium product and faster development."
+                 data-es="Creamos la UI final y un sistema de diseño consistente (componentes, estados, tokens). Resultado: producto más premium y desarrollo más rápido.">
+                Criamos o visual final (UI) e um design system consistente (componentes, estados, tokens). Resultado: produto mais premium e desenvolvimento mais rápido.
+              </p>
+            </div>
+
+            <div class="node"><div class="dotnode" style="background: var(--pink); box-shadow: 0 0 0 8px rgba(236,27,103,.14);"></div></div>
+            <div class="spacer"></div>
+          </div>
+
+          <!-- STEP 4 (direita) -->
+          <div class="step">
+            <div class="spacer"></div>
+            <div class="node"><div class="dotnode" style="background: #10b981; box-shadow: 0 0 0 8px rgba(16,185,129,.14);"></div></div>
+
+            <div class="card step-card">
+              <p class="step-kicker"
+                 data-pt="PASSO QUATRO"
+                 data-en="STEP FOUR"
+                 data-es="PASO CUATRO">PASSO QUATRO</p>
+
+              <h3 class="step-title"
+                  data-pt="Handover & Design QA"
+                  data-en="Handover & Design QA"
+                  data-es="Handover & QA de Diseño">Handover & Design QA</h3>
+
+              <p class="step-desc"
+                 data-pt="Entregamos specs prontas para dev (Figma, medidas, interações) e fazemos QA para garantir que o que vai para produção mantém qualidade e consistência."
+                 data-en="We deliver dev-ready specs (Figma, measurements, interactions) and run QA to ensure production matches the intended quality and consistency."
+                 data-es="Entregamos especificaciones listas para dev (Figma, medidas, interacciones) y hacemos QA para asegurar calidad y consistencia en producción.">
+                Entregamos specs prontas para dev (Figma, medidas, interações) e fazemos QA para garantir que o que vai para produção mantém qualidade e consistência.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="final-cta">
+          <h2 data-pt="Queres elevar o UX/UI do teu produto?"
+              data-en="Ready to level up your UX/UI?"
+              data-es="¿Listo para mejorar tu UX/UI?">Queres elevar o UX/UI do teu produto?</h2>
+
+          <p data-pt="Vamos desenhar uma experiência mais clara, bonita e eficiente — com um sistema pronto para escalar e acelerar desenvolvimento."
+             data-en="Let’s design a clearer, more beautiful and efficient experience — with a system ready to scale and speed up development."
+             data-es="Diseñemos una experiencia más clara, atractiva y eficiente — con un sistema listo para escalar y acelerar el desarrollo.">
+            Vamos desenhar uma experiência mais clara, bonita e eficiente — com um sistema pronto para escalar e acelerar desenvolvimento.
+          </p>
+
+          <a class="btn btn--primary" href="../book-a-call.html"
+             data-pt="Agendar uma chamada"
+             data-en="Schedule a call"
+             data-es="Agendar una llamada">Agendar uma chamada</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER PRO (igual ao index/book-a-call) -->
+    <footer class="footer-pro" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
+
+            <p class="footer-tagline"
+               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+               data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+               data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+              Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+            </p>
+
+            <div class="footer-cta-row">
+              <a class="btn btn--primary btn--footer" href="../book-a-call.html"
+                 data-pt="Agendar uma chamada"
+                 data-en="Book a call"
+                 data-es="Reservar una llamada">
+                Agendar uma chamada
+              </a>
+              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
+                 data-pt="Ver serviços"
+                 data-en="See services"
+                 data-es="Ver servicios">
+                Ver serviços
+              </a>
+            </div>
+
+            <div class="footer-badges" aria-label="Highlights">
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+            <ul class="footer-links">
+              <li><a href="product-scope.html">Product Scope</a></li>
+              <li><a href="mvp-builder.html">MVP Builder</a></li>
+              <li><a href="ux-ui.html">UX / UI</a></li>
+              <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+              <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+            <ul class="footer-links">
+              <li><a href="../index.html#about" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+              <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+              <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+              <li><a href="../index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col footer-col--contact">
+            <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+            <div class="footer-meta">
+              <div>
+                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+              </div>
+              <div>
+                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+              </div>
+              <div>
+                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+                <a href="../book-a-call.html"
+                   data-pt="Marca uma call."
+                   data-en="Book a call."
+                   data-es="Reserva una llamada.">Marca uma call.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Cobrait — Software Factory</div>
+          <div class="footer-mini-links">
+            <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+            <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+            <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Idiomas: PT/EN/ES (igual filosofia do index) -->
+  <script>
+    (function () {
+      const DEFAULT_LANG = "pt";
+
+      function setActiveLangButton(lang) {
+        document.querySelectorAll(".lang-btn[data-lang]").forEach(btn => {
+          btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+        });
+      }
+
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll("[data-pt], [data-en], [data-es]");
+        elements.forEach(el => {
+          const txt = el.getAttribute(`data-${lang}`);
+          if (!txt) return;
+
+          if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+            el.value = txt;
+          } else if (el.hasAttribute("data-html")) {
+            el.innerHTML = txt;
+          } else {
+            el.textContent = txt;
+          }
+        });
+      }
+
+      function applyLanguage(lang) {
+        document.documentElement.lang = (lang === "pt") ? "pt-PT" : lang;
+        updateTextContent(lang);
+        setActiveLangButton(lang);
+        localStorage.setItem("preferredLanguage", lang);
+      }
+
+      const saved = localStorage.getItem("preferredLanguage") || DEFAULT_LANG;
+      applyLanguage(saved);
+
+      document.querySelectorAll(".lang-btn[data-lang]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          applyLanguage(btn.getAttribute("data-lang"));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
