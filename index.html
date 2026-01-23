@@ -13,47 +13,47 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-
   <!-- Estilos profissionais para os cards e header -->
   <style>
-    /* Estilos do Header */
+    /* =========================
+       HEADER OTIMIZADO E COMPACTO
+       ========================= */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 16px 0;
+      padding: 4px 0; /* AINDA MAIS PEQUENO */
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px; /* Reduzido */
+      min-height: 60px; /* Altura controlada */
     }
 
     .brand img {
-      height: 40px;
+      height: 75px; /* Logo grande mas header compacto */
       width: auto;
     }
 
-    .nav-toggle {
-      display: none;
-    }
+    .nav-toggle { display: none; }
 
     .nav-toggle-btn {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 10px;
+      padding: 8px;
     }
 
     .nav-toggle-btn span {
-      width: 25px;
+      width: 22px;
       height: 2px;
       background: #4f46e5;
-      margin: 4px 0;
+      margin: 3px 0;
       transition: 0.3s;
     }
 
@@ -62,26 +62,24 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 32px;
+      gap: 24px; /* Menor espaçamento */
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 14px; /* Texto ligeiramente menor */
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 8px 0;
+      padding: 6px 0; /* Padding reduzido */
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
-    .site-nav a:hover {
-      color: #4f46e5;
-    }
+    .site-nav a:hover { color: #4f46e5; }
 
     .site-nav a::after {
       content: '';
@@ -94,14 +92,9 @@
       transition: width 0.3s ease;
     }
 
-    .site-nav a:hover::after {
-      width: 100%;
-    }
+    .site-nav a:hover::after { width: 100%; }
 
-    /* Estilos do dropdown de serviços */
-    .dropdown {
-      position: relative;
-    }
+    .dropdown { position: relative; }
 
     .dropdown-content {
       position: absolute;
@@ -117,7 +110,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 16px;
+      margin-top: 12px; /* Menor margem */
     }
 
     .dropdown:hover .dropdown-content {
@@ -129,17 +122,15 @@
     .dropdown-item {
       display: flex;
       align-items: flex-start;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
       text-decoration: none;
       color: #334155;
       transition: all 0.2s ease;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .dropdown-item:last-child {
-      margin-bottom: 0;
-    }
+    .dropdown-item:last-child { margin-bottom: 0; }
 
     .dropdown-item:hover {
       background: #f8fafc;
@@ -147,9 +138,9 @@
     }
 
     .dropdown-item svg {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
       margin-top: 2px;
       flex-shrink: 0;
     }
@@ -157,7 +148,7 @@
     .dropdown-item-content h4 {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
       color: #1e293b;
       margin: 0 0 4px 0;
     }
@@ -165,35 +156,32 @@
     .dropdown-item-content p {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
       line-height: 1.4;
       margin: 0;
     }
 
     .dropdown-arrow {
-      font-size: 12px;
+      font-size: 10px;
       transition: transform 0.3s ease;
     }
 
-    .dropdown:hover .dropdown-arrow {
-      transform: rotate(180deg);
-    }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* Estilos do seletor de idioma PROFISSIONAL */
     .language-selector {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .lang-btn {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
       text-decoration: none;
-      padding: 4px 8px;
+      padding: 3px 6px;
       border-radius: 4px;
       transition: all 0.2s ease;
       text-transform: uppercase;
@@ -222,21 +210,20 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 16px; /* Menor gap */
     }
 
     .header-cta .btn {
-      padding: 10px 24px;
-      font-size: 14px;
+      padding: 8px 18px; /* Botão do header mais pequeno */
+      font-size: 13px;
       font-weight: 600;
       white-space: nowrap;
     }
 
-    /* Estilos responsivos */
     @media (max-width: 1024px) {
-      .header-inner { gap: 20px; }
-      .site-nav ul { gap: 20px; }
-      .header-right { gap: 16px; }
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
     }
 
     @media (max-width: 768px) {
@@ -244,11 +231,11 @@
 
       .site-nav {
         position: fixed;
-        top: 72px;
+        top: 60px; /* Ajustado para header menor */
         left: 0;
         width: 100%;
         background: white;
-        padding: 20px;
+        padding: 16px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
@@ -256,7 +243,7 @@
         transition: all 0.3s ease;
       }
 
-      .site-nav ul { flex-direction: column; gap: 16px; }
+      .site-nav ul { flex-direction: column; gap: 12px; }
 
       .dropdown-content {
         position: static;
@@ -265,20 +252,20 @@
         transform: none;
         box-shadow: none;
         padding: 0;
-        margin: 8px 0 0 20px;
+        margin: 6px 0 0 16px;
         border-left: 2px solid #e2e8f0;
       }
 
       .dropdown-item {
-        padding: 10px 0 10px 16px;
+        padding: 8px 0 8px 12px;
         margin-bottom: 0;
       }
 
       .header-right {
         flex-direction: column;
         width: 100%;
-        margin-top: 20px;
-        gap: 12px;
+        margin-top: 16px;
+        gap: 10px;
       }
 
       .language-selector { justify-content: center; width: 100%; }
@@ -302,9 +289,20 @@
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
       }
+      
+      /* Logo menor em mobile */
+      .brand img {
+        height: 50px;
+      }
     }
 
-    /* Estilos da seção What We Do */
+    /* GARANTIR dropdown acima de tudo */
+    .site-header { z-index: 99999; }
+    .dropdown-content { z-index: 999999; }
+
+    /* =========================
+       WHAT WE DO (MANTIDO IGUAL)
+       ========================= */
     .what-we-do {
       padding: 100px 0;
       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -463,10 +461,6 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-
-    /* GARANTIR que o dropdown fica acima de tudo e recebe cliques */
-    .site-header { z-index: 99999; }
-    .dropdown-content { z-index: 999999; }
 
     /* overlays do hero não podem capturar cliques */
     .hero-bg, .hero-overlay { pointer-events: none; }
@@ -669,42 +663,30 @@
     .footer-mini-links a:hover { color: #fff; }
 
     @media (max-width: 1024px) {
-      .footer-top {
-        grid-template-columns: 1.6fr 1fr 1fr;
-      }
-      .footer-col--contact {
-        grid-column: 1 / -1;
-      }
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
     }
 
     @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
     }
 
-/* FOOTER LOGO – FIX DEFINITIVO */
-.footer-brand{
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
+    /* FOOTER LOGO – FIX DEFINITIVO */
+    .footer-brand{
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
 
-.footer-logo{
-  height: 32px;     /* ajusta: 28–40px */
-  width: auto;
-  max-width: none;
-  display: block;
-  object-fit: contain;
-}
-
-
+    .footer-logo{
+      height: 32px;
+      width: auto;
+      max-width: none;
+      display: block;
+      object-fit: contain;
+    }
   </style>
 </head>
 
@@ -724,10 +706,10 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="#work">Work</a></li>
+          <li><a href="#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="#what-we-do">
-              Serviços
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
             <div class="dropdown-content">
@@ -761,7 +743,7 @@
                 </div>
               </a>
 
-              <a href="#ai-development" class="dropdown-item">
+              <a href="servicos/ai-development.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
@@ -771,7 +753,7 @@
                 </div>
               </a>
 
-              <a href="#custom-software" class="dropdown-item">
+              <a href="servicos/custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
@@ -792,11 +774,11 @@
               </a>
             </div>
           </li>
-          <li><a href="#about">Pricing</a></li>
-          <li><a href="about-us.html">About Us</a></li>
-          <li><a href="#about">Careers</a></li>
-          <li><a href="tech.html">Tech</a></li>
-          <li><a href="#about">Resources</a></li>
+          <li><a href="#about" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="#about" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="#about" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
@@ -1137,10 +1119,10 @@
           <div class="footer-col">
             <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
             <ul class="footer-links">
-              <li><a href="#about" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+              <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
               <li><a href="#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
               <li><a href="#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-              <li><a href="#about" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+              <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
             </ul>
           </div>
 
@@ -1210,7 +1192,7 @@
         });
       });
 
-      // Sistema de troca de idiomas - SIMPLIFICADO E CORRIGIDO
+      // Sistema de troca de idiomas
       const langButtons = document.querySelectorAll('.lang-btn');
 
       // INICIALIZAR: Garantir que conteúdo em PT está visível ao carregar

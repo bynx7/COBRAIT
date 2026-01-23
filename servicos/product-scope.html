@@ -15,258 +15,311 @@
 
   <style>
     /* =========================================================
-       HEADER (EXATAMENTE COMO NO BOOK-A-CALL / INDEX)
-       Nota: paths ajustados por esta página estar em /servicos/
+       HEADER EXATAMENTE IGUAL AO INDEX (MANTIDO COMPLETO)
     ========================================================= */
-    .site-header{
-      background: #fff !important;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
-      border-bottom: 0 !important;
-      backdrop-filter: none !important;
-      padding: 16px 0 !important;
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
+      padding: 4px 0; /* AINDA MAIS PEQUENO */
     }
 
-    .header-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 40px;
-      padding: 0 !important;
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px; /* Reduzido */
+      min-height: 60px; /* Altura controlada */
+      padding: 0 20px;
     }
 
-    .brand img{ height: 40px !important; width:auto; display:block; }
-
-    .nav-toggle{ display:none; }
-    .nav-toggle-btn{
-      display:none;
-      flex-direction:column;
-      cursor:pointer;
-      padding:10px;
-    }
-    .nav-toggle-btn span{
-      width:25px;
-      height:2px;
-      background:#4f46e5;
-      margin:4px 0;
-      transition:0.3s;
+    .brand img {
+      height: 75px; /* Logo grande mas header compacto */
+      width: auto;
     }
 
-    .site-nav ul{
-      display:flex;
-      list-style:none;
-      margin:0;
-      padding:0;
-      gap:32px;
-      align-items:center;
+    .nav-toggle { display: none; }
+
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 8px;
     }
 
-    .site-nav a{
-      font-family:'Inter', sans-serif;
-      font-weight:500;
-      font-size:15px;
-      color:#64748b !important;
-      text-decoration:none;
+    .nav-toggle-btn span {
+      width: 22px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 24px; /* Menor espaçamento */
+    }
+
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px; /* Texto ligeiramente menor */
+      color: #64748b;
+      text-decoration: none;
       transition: color 0.3s ease;
-      position:relative;
-      padding:8px 0;
-      display:flex;
-      align-items:center;
-      gap:4px;
+      position: relative;
+      padding: 6px 0; /* Padding reduzido */
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .site-nav a:hover{ color:#4f46e5 !important; }
+    .site-nav a:hover { color: #4f46e5; }
 
-    .site-nav a::after{
-      content:'';
-      position:absolute;
-      bottom:0;
-      left:0;
-      width:0;
-      height:2px;
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       transition: width 0.3s ease;
     }
 
-    .site-nav a:hover::after{ width:100%; }
+    .site-nav a:hover::after { width: 100%; }
 
-    .dropdown{ position:relative; }
+    .dropdown { position: relative; }
 
-    .dropdown-content{
-      position:absolute;
-      top:100%;
-      left:0;
-      min-width:320px;
-      background:#fff;
-      box-shadow:0 10px 40px rgba(0,0,0,0.10);
-      border-radius:12px;
-      padding:16px;
-      opacity:0;
-      visibility:hidden;
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
       transform: translateY(10px);
       transition: all 0.3s ease;
-      z-index:1000;
-      margin-top:16px;
+      z-index: 1000;
+      margin-top: 12px; /* Menor margem */
     }
 
-    .dropdown:hover .dropdown-content{
-      opacity:1;
-      visibility:visible;
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
       transform: translateY(0);
     }
 
-    .dropdown-item{
-      display:flex;
-      align-items:flex-start;
-      padding:12px;
-      border-radius:10px;
-      text-decoration:none;
-      color:#334155;
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
       transition: all 0.2s ease;
-      margin-bottom:8px;
-      gap:12px;
+      margin-bottom: 6px;
     }
 
-    .dropdown-item:last-child{ margin-bottom:0; }
+    .dropdown-item:last-child { margin-bottom: 0; }
 
-    .dropdown-item:hover{
-      background:#f8fafc;
+    .dropdown-item:hover {
+      background: #f8fafc;
       transform: translateX(4px);
     }
 
-    .dropdown-item svg{
-      width:20px;
-      height:20px;
-      margin-top:2px;
-      flex-shrink:0;
+    .dropdown-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
 
-    .dropdown-item-content h4{
-      font-family:'Inter', sans-serif;
-      font-weight:600;
-      font-size:14px;
-      color:#1e293b;
-      margin:0 0 4px 0;
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
     }
 
-    .dropdown-item-content p{
-      font-family:'Inter', sans-serif;
-      font-weight:400;
-      font-size:13px;
-      color:#64748b;
-      line-height:1.4;
-      margin:0;
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
     }
 
-    .dropdown-arrow{
-      font-size:12px;
+    .dropdown-arrow {
+      font-size: 10px;
       transition: transform 0.3s ease;
     }
 
-    .dropdown:hover .dropdown-arrow{
-      transform: rotate(180deg);
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .header-right{
-      display:flex;
-      align-items:center;
-      gap:24px;
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: #64748b;
+      text-decoration: none;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    /* Nesta página: NÃO mostrar seletor de idioma (só no index) */
-    .header-right .language-selector{ display:none; }
+    .lang-btn:hover {
+      color: #4f46e5;
+      background: #f8fafc;
+    }
 
-    /* BOTÃO DO HEADER (tem de ficar igual ao index: roxo sólido) */
-    .header-cta .btn{
-      padding: 10px 24px !important;
-      font-size: 14px !important;
-      font-weight: 600 !important;
+    .lang-btn.active {
+      color: #4f46e5;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .language-divider {
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* Menor gap */
+    }
+
+    /* BOTÃO DO HEADER EXATAMENTE IGUAL AO INDEX */
+    .header-cta .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px !important; /* Botão do header mais pequeno */
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px !important;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
       white-space: nowrap;
-      border-radius: 8px !important;
-      letter-spacing: 0 !important;
-      box-shadow: none !important;
     }
 
-    .header-cta .btn.btn--primary{
+    .header-cta .btn--primary {
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-      color: #fff !important;
-      border: 2px solid transparent !important;
+      color: white !important;
+      border: none !important;
     }
 
-    @media (max-width: 1024px){
-      .header-inner{ gap:20px; }
-      .site-nav ul{ gap:20px; }
-      .header-right{ gap:16px; }
+    .header-cta .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3) !important;
     }
 
-    @media (max-width: 768px){
-      .nav-toggle-btn{ display:flex; }
+    @media (max-width: 1024px) {
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
+    }
 
-      .site-nav{
+    @media (max-width: 768px) {
+      .nav-toggle-btn { display: flex; }
+
+      .site-nav {
         position: fixed;
-        top:72px;
-        left:0;
-        width:100%;
-        background:#fff;
-        padding:20px;
-        box-shadow:0 5px 20px rgba(0,0,0,0.10);
+        top: 60px; /* Ajustado para header menor */
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
-        opacity:0;
-        visibility:hidden;
+        opacity: 0;
+        visibility: hidden;
         transition: all 0.3s ease;
       }
 
-      .site-nav ul{
-        flex-direction:column;
-        gap:16px;
-        align-items:flex-start;
-      }
+      .site-nav ul { flex-direction: column; gap: 12px; }
 
-      .dropdown-content{
+      .dropdown-content {
         position: static;
-        opacity:1;
-        visibility:visible;
-        transform:none;
-        box-shadow:none;
-        padding:0;
-        margin:8px 0 0 20px;
-        border-left:2px solid #e2e8f0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 6px 0 0 16px;
+        border-left: 2px solid #e2e8f0;
       }
 
-      .dropdown-item{
-        padding:10px 0 10px 16px;
-        margin-bottom:0;
+      .dropdown-item {
+        padding: 8px 0 8px 12px;
+        margin-bottom: 0;
       }
 
-      .header-right{
-        flex-direction:column;
-        width:100%;
-        margin-top:20px;
-        gap:12px;
-        align-items:stretch;
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 16px;
+        gap: 10px;
       }
 
-      .header-cta{ width:100%; }
-      .header-cta .btn{ width:100%; justify-content:center; }
+      .language-selector { justify-content: center; width: 100%; }
+      .header-cta { width: 100%; }
 
-      .nav-toggle:checked ~ .site-nav{
+      .header-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .site-nav {
         transform: translateY(0);
-        opacity:1;
-        visibility:visible;
+        opacity: 1;
+        visibility: visible;
       }
 
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1){
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
       }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2){
-        opacity:0;
-      }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3){
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
       }
+      
+      /* Logo menor em mobile */
+      .brand img {
+        height: 50px;
+      }
     }
+
+    /* GARANTIR dropdown acima de tudo */
+    .site-header { z-index: 99999; }
+    .dropdown-content { z-index: 999999; }
 
     /* =========================================================
        PÁGINA DE SERVIÇO — versão mais moderna e profissional
@@ -493,13 +546,7 @@
       margin-bottom: 1.2rem;
     }
 
-    /* Nesta página: esconder o seletor de idiomas do conteúdo (só no index) */
-    .language-selector { display: none; }
-
-    /* Mantemos EN/ES no HTML, mas mostramos só PT */
-    main [lang="en"], main [lang="es"] { display: none !important; }
-
-    /* Ajuste de container caso o teu styles.css não tenha */
+    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -737,7 +784,7 @@
 </head>
 
 <body>
-  <!-- HEADER IGUAL AO BOOK-A-CALL (com paths corrigidos para /servicos/) -->
+  <!-- HEADER EXATAMENTE IGUAL AO INDEX -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../index.html" aria-label="Cobrait">
@@ -753,14 +800,12 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="../index.html#work">Work</a></li>
-
+          <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="../index.html#what-we-do">
-              Serviços
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
-
             <div class="dropdown-content">
               <a href="product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -823,12 +868,11 @@
               </a>
             </div>
           </li>
-
-          <li><a href="../index.html#pricing">Pricing</a></li>
-          <li><a href="../index.html#about">About Us</a></li>
-          <li><a href="../index.html#careers">Careers</a></li>
-          <li><a href="../index.html#tech">Tech</a></li>
-          <li><a href="../index.html#resources">Resources</a></li>
+          <li><a href="../index.html#pricing" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="../index.html#about"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="../index.html#careers" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="../index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="../index.html#resources" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
@@ -851,105 +895,71 @@
   <!-- Hero Section -->
   <section class="service-hero">
     <div class="container">
-      <h1 id="service-title">Product Scope</h1>
-      <p class="subtitle" id="service-subtitle">The Structured Process Behind Successful Product Development</p>
+      <h1>Product Scope</h1>
+      <p class="subtitle">O Processo Estruturado Por Trás do Desenvolvimento de Produtos Bem-Sucedidos</p>
       <a href="../book-a-call.html" class="btn btn-primary">Agendar Chamada</a>
     </div>
   </section>
 
-  <!-- Seletor de Idioma (mantido no código, mas escondido nesta página via CSS) -->
-  <div class="language-selector">
-    <button class="lang-btn active" data-lang="pt" onclick="changeLanguage('pt')">🇵🇹 Português</button>
-    <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">🇬🇧 English</button>
-    <button class="lang-btn" data-lang="es" onclick="changeLanguage('es')">🇪🇸 Español</button>
-  </div>
-
   <!-- Conteúdo Principal -->
   <main class="service-content">
-    <!-- Português -->
-    <section lang="pt" class="service-section">
+    <section class="service-section">
       <h2>O que é um Product Scope?</h2>
       <p>O Product Scope é um processo estruturado e intensivo de 15-20 dias, concebido para preparar o seu projeto para o sucesso. Começa com uma sessão de foco imersiva onde irá sentar-se com especialistas em produto e ex-fundadores de startups para explorar a sua visão de produto do ponto de vista de negócio. Em seguida, criamos a lista adequada de user stories para o seu Minimum Viable Product, garantindo que tem todas as funcionalidades essenciais necessárias para entrar no mercado e testar as suas principais hipóteses.</p>
     </section>
 
-    <!-- Inglês -->
-    <section lang="en" class="service-section">
-      <h2>What is a Product Scope?</h2>
-      <p>The Product Scope is an intensive, 15-20 day, structured process designed to set your project up for success. It starts with an immersive focus session where you'll sit down with product experts and ex-startup founders to dive into your product vision from a business standpoint. Then we'll create the right list of user stories for your Minimum Viable Product, ensuring you have all the vital features you need to go to market and test your main assumptions.</p>
-    </section>
-
-    <!-- Espanhol -->
-    <section lang="es" class="service-section">
-      <h2>¿Qué es un Product Scope?</h2>
-      <p>El Product Scope es un processo estruturado e intensivo de 15-20 dias, desenhado para preparar o teu projeto para o sucesso. Começa com uma sessão imersiva onde te sentas com especialistas e ex-fundadores para mergulhar na tua visão do produto. Depois criamos a lista certa de user stories para o teu MVP, garantindo as funcionalidades vitais para ir ao mercado e testar as tuas principais hipóteses.</p>
-    </section>
-
     <!-- Benefícios Chave -->
     <section class="service-section">
-      <h2 id="benefits-title">Benefícios Chave</h2>
-      <p id="benefits-subtitle">Descubra como o nosso processo estruturado traz valor ao seu projeto</p>
+      <h2>Benefícios Chave</h2>
+      <p>Descubra como o nosso processo estruturado traz valor ao seu projeto</p>
 
       <div class="benefits-grid">
         <div class="benefit-card">
-          <h3 id="benefit1-title">Foco Imersivo</h3>
-          <p lang="pt">Passamos dois dias juntos numa sessão intensiva para alcançar um estado de foco absoluto e mergulhar no cerne da proposta de valor do produto.</p>
-          <p lang="en">We spend two days together in an intensive session so that we can reach a state of absolute focus and dig down to the core of the product's value proposition.</p>
-          <p lang="es">Pasamos dos días juntos en una sesión intensiva para alcanzar un estado de enfoque absoluto y profundizar en el núcleo de la propuesta de valor del producto.</p>
+          <h3>Foco Imersivo</h3>
+          <p>Passamos dois dias juntos numa sessão intensiva para alcançar um estado de foco absoluto e mergulhar no cerne da proposta de valor do produto.</p>
         </div>
 
         <div class="benefit-card">
-          <h3 id="benefit2-title">Risco Reduzido</h3>
-          <p lang="pt">Não queremos ajudá-lo a construir um produto completo só para descobrir que o mercado não o quer. Queremos que tenha sucesso. Por isso focamo-nos nas funcionalidades vitais necessárias para testar as suas principais hipóteses.</p>
-          <p lang="en">We don't want to help you build a full-featured product only to discover the market doesn't want it. We want you to succeed. That's why we focus on the vital features needed to test your product's main assumptions.</p>
-          <p lang="es">No queremos ayudarte a construir un producto completo solo para descubrir que el mercado no lo quiere. Queremos que tengas éxito. Por eso nos enfocamos en las características vitales necesarias para probar tus principales supuestos.</p>
+          <h3>Risco Reduzido</h3>
+          <p>Não queremos ajudá-lo a construir um produto completo só para descobrir que o mercado não o quer. Queremos que tenha sucesso. Por isso focamo-nos nas funcionalidades vitais necessárias para testar as suas principais hipóteses.</p>
         </div>
 
         <div class="benefit-card">
-          <h3 id="benefit3-title">Custo Reduzido</h3>
-          <p lang="pt">Ao reduzir a lista de funcionalidades ao núcleo essencial necessário para provar as suas hipóteses, não só reduz o risco como também o custo. Gastará menos no desenvolvimento e na fase de iteração inicial.</p>
-          <p lang="en">By cutting down the feature list to the essential core that is needed to prove your product's assumptions, you're not only reducing the risk but also reducing the cost. You will spend less on product development and at the initial iteration phase.</p>
-          <p lang="es">Al reducir la lista de características al núcleo esencial necesario para probar tus supuestos, no solo reduces el riesgo sino también el costo. Gastarás menos en desarrollo de producto y en la fase de iteración inicial.</p>
+          <h3>Custo Reduzido</h3>
+          <p>Ao reduzir a lista de funcionalidades ao núcleo essencial necessário para provar as suas hipóteses, não só reduz o risco como também o custo. Gastará menos no desenvolvimento e na fase de iteração inicial.</p>
         </div>
 
         <div class="benefit-card">
-          <h3 id="benefit4-title">Testar as Águas</h3>
-          <p lang="pt">Escolher a agência certa é uma decisão empresarial chave. Com um Product Scope, usa uma pequena parte do tempo e custo do projeto para testar a nossa relação de trabalho. Conhece-nos antes de se comprometer com o projeto completo.</p>
-          <p lang="en">Picking the right agency is a key business decision. With a Product Scope, you use a small part of the project's time and cost to test our business relationship. You get to know us before committing to the full project.</p>
-          <p lang="es">Elegir la agencia correcta es una decisión empresarial clave. Con un Product Scope, usas una pequeña parte del tiempo y costo del proyecto para probar nuestra relación de trabajo. Nos conoces antes de comprometerte con el proyecto completo.</p>
+          <h3>Testar as Águas</h3>
+          <p>Escolher a agência certa é uma decisão empresarial chave. Com um Product Scope, usa uma pequena parte do tempo e custo do projeto para testar a nossa relação de trabalho. Conhece-nos antes de se comprometer com o projeto completo.</p>
         </div>
       </div>
     </section>
 
     <section class="service-section">
-      <h2 id="process-title">Processo e Duração</h2>
+      <h2>Processo e Duração</h2>
 
       <div class="timeline">
         <div class="timeline-item">
-          <h3 id="phase1-title">Sprint de Descoberta</h3>
-          <p lang="pt"><strong>Dias 1-2:</strong> Workshops intensivos e análise de mercado</p>
-          <p lang="en"><strong>Days 1-2:</strong> Intensive workshops and market analysis</p>
-          <p lang="es"><strong>Días 1-2:</strong> Talleres intensivos y análisis de mercado</p>
+          <h3>Sprint de Descoberta</h3>
+          <p><strong>Dias 1-2:</strong> Workshops intensivos e análise de mercado</p>
         </div>
 
         <div class="timeline-item">
-          <h3 id="phase2-title">Definição de Scope</h3>
-          <p lang="pt"><strong>Dias 3-10:</strong> Mapeamento de user stories e funcionalidades prioritárias</p>
-          <p lang="en"><strong>Days 3-10:</strong> User stories mapping and priority features definition</p>
-          <p lang="es"><strong>Días 3-10:</strong> Mapeo de user stories y definición de características prioritarias</p>
+          <h3>Definição de Scope</h3>
+          <p><strong>Dias 3-10:</strong> Mapeamento de user stories e funcionalidades prioritárias</p>
         </div>
 
         <div class="timeline-item">
-          <h3 id="phase3-title">Roadmap e Estimativas</h3>
-          <p lang="pt"><strong>Dias 11-15:</strong> Cronograma detalhado, orçamento e plano de entrega</p>
-          <p lang="en"><strong>Days 11-15:</strong> Detailed timeline, budget, and delivery plan</p>
-          <p lang="es"><strong>Días 11-15:</strong> Cronograma detallado, presupuesto y plan de entrega</p>
+          <h3>Roadmap e Estimativas</h3>
+          <p><strong>Dias 11-15:</strong> Cronograma detalhado, orçamento e plano de entrega</p>
         </div>
       </div>
     </section>
 
     <div class="cta-section">
-      <h2 id="cta-title">Pronto para Começar o Seu Product Scope?</h2>
-      <p id="cta-subtitle">Vamos transformar a sua ideia num plano de ação claro e executável</p>
+      <h2>Pronto para Começar o Seu Product Scope?</h2>
+      <p>Vamos transformar a sua ideia num plano de ação claro e executável</p>
       <a href="../book-a-call.html" class="btn btn-primary btn-large">Agendar Sessão de Descoberta</a>
       <p style="margin-top: 16px; font-size: 0.95rem; color: #475569;">
         ou <a href="../Serviços.html" style="color: #4f46e5; font-weight: 700; text-decoration: none;">ver outros serviços →</a>
@@ -964,73 +974,61 @@
         <div class="footer-brand">
           <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
 
-          <p class="footer-tagline"
-             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
-             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
-             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+          <p class="footer-tagline">
             Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
           </p>
 
           <div class="footer-cta-row">
-            <a class="btn btn--primary btn--footer" href="../book-a-call.html"
-               data-pt="Agendar uma chamada"
-               data-en="Book a call"
-               data-es="Reservar una llamada">
+            <a class="btn btn--primary btn--footer" href="../book-a-call.html">
               Book a call
             </a>
-            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
-               data-pt="Ver serviços"
-               data-en="See services"
-               data-es="Ver servicios">
+            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do">
               See services
             </a>
           </div>
 
           <div class="footer-badges" aria-label="Highlights">
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Fast delivery</span></span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Quality</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span>Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span>Fast delivery</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span>Quality</span></span>
           </div>
         </div>
 
         <div class="footer-col">
-          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Services</h4>
+          <h4>Services</h4>
           <ul class="footer-links">
             <li><a href="product-scope.html">Product Scope</a></li>
             <li><a href="mvp-builder.html">MVP Builder</a></li>
             <li><a href="ux-ui.html">UX / UI</a></li>
-            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Custom Software</a></li>
-            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Dedicated Teams</a></li>
+            <li><a href="custom-software.html">Custom Software</a></li>
+            <li><a href="dedicated-teams.html">Dedicated Teams</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Company</h4>
+          <h4>Company</h4>
           <ul class="footer-links">
-            <li><a href="../index.html#about" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">About us</a></li>
-            <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Case studies</a></li>
-            <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
-            <li><a href="../index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+            <li><a href="../index.html#about">About us</a></li>
+            <li><a href="../index.html#work">Case studies</a></li>
+            <li><a href="../index.html#careers">Careers</a></li>
+            <li><a href="../index.html#tech">Tech</a></li>
           </ul>
         </div>
 
         <div class="footer-col footer-col--contact">
-          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contact</h4>
+          <h4>Contact</h4>
           <div class="footer-meta">
             <div>
-              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <span>Email:</span>
               <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
             </div>
             <div>
-              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Response:</span>
-              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">usually within 24–48h</span>
+              <span>Response:</span>
+              <span>usually within 24–48h</span>
             </div>
             <div>
-              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Want it fast?</span>
-              <a href="../book-a-call.html"
-                 data-pt="Marca uma call."
-                 data-en="Book a call."
-                 data-es="Reserva una llamada.">Book a call.</a>
+              <span>Want it fast?</span>
+              <a href="../book-a-call.html">Book a call.</a>
             </div>
           </div>
         </div>
@@ -1041,9 +1039,9 @@
           © <span id="year"></span> Cobrait — Software Factory
         </div>
         <div class="footer-mini-links">
-          <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacy</a>
-          <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Terms</a>
-          <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Services</a>
+          <a href="../index.html#about">Privacy</a>
+          <a href="../index.html#about">Terms</a>
+          <a href="../index.html#what-we-do">Services</a>
         </div>
       </div>
     </div>
@@ -1051,18 +1049,53 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 
-  <script>
-    function changeLanguage(lang) {
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
+    // Sistema de troca de idiomas do header (igual ao index)
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
 
-      document.querySelectorAll('main [lang]').forEach(element => {
-        element.style.display = (element.getAttribute('lang') === lang) ? 'block' : 'none';
+      // Inicializar em português
+      updateHeaderLanguage('pt');
+
+      langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+
+          // Remove active class de todos os botões
+          langButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Adiciona active class ao botão selecionado
+          this.classList.add('active');
+
+          // Atualiza o header
+          updateHeaderLanguage(lang);
+
+          // Salvar preferência
+          localStorage.setItem('preferredLanguage', lang);
+        });
       });
-    }
+
+      // Carregar linguagem salva
+      const savedLanguage = localStorage.getItem('preferredLanguage');
+      if (savedLanguage && savedLanguage !== 'pt') {
+        const button = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
+        if (button) {
+          setTimeout(() => button.click(), 100);
+        }
+      }
+
+      function updateHeaderLanguage(lang) {
+        // Atualizar textos do header
+        const headerElements = document.querySelectorAll('.site-nav [data-pt], .site-nav [data-en], .site-nav [data-es]');
+        
+        headerElements.forEach(element => {
+          const text = element.getAttribute(`data-${lang}`);
+          if (text) {
+            element.textContent = text;
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>

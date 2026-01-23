@@ -12,29 +12,33 @@
   <meta name="description" content="Desenvolvimento de Software à Medida — Cobrait. UX/UI, tecnologia certa e desenvolvimento robusto." />
 
   <!-- Carrega os 2 para evitar problemas de path (um vai falhar e não faz mal) -->
-  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="../styles.css">
 
-  <!-- ======= CSS DO TEU INDEX (HEADER + FOOTER + BOTÕES + CONTAINER) ======= -->
   <style>
-    /* Estilos do Header */
+    /* =========================================================
+       HEADER EXATAMENTE IGUAL AO INDEX (MANTIDO COMPLETO)
+    ========================================================= */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 16px 0;
+      padding: 4px 0; /* AINDA MAIS PEQUENO */
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px; /* Reduzido */
+      min-height: 60px; /* Altura controlada */
     }
 
-    .brand img { height: 40px; width: auto; }
+    .brand img {
+      height: 75px; /* Logo grande mas header compacto */
+      width: auto;
+    }
 
     .nav-toggle { display: none; }
 
@@ -42,14 +46,14 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 10px;
+      padding: 8px;
     }
 
     .nav-toggle-btn span {
-      width: 25px;
+      width: 22px;
       height: 2px;
       background: #4f46e5;
-      margin: 4px 0;
+      margin: 3px 0;
       transition: 0.3s;
     }
 
@@ -58,18 +62,18 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 32px;
+      gap: 24px; /* Menor espaçamento */
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 14px; /* Texto ligeiramente menor */
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 8px 0;
+      padding: 6px 0; /* Padding reduzido */
       display: flex;
       align-items: center;
       gap: 4px;
@@ -90,7 +94,6 @@
 
     .site-nav a:hover::after { width: 100%; }
 
-    /* Dropdown */
     .dropdown { position: relative; }
 
     .dropdown-content {
@@ -107,7 +110,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 16px;
+      margin-top: 12px; /* Menor margem */
     }
 
     .dropdown:hover .dropdown-content {
@@ -119,12 +122,12 @@
     .dropdown-item {
       display: flex;
       align-items: flex-start;
-      padding: 12px;
+      padding: 10px;
       border-radius: 8px;
       text-decoration: none;
       color: #334155;
       transition: all 0.2s ease;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .dropdown-item:last-child { margin-bottom: 0; }
@@ -135,9 +138,9 @@
     }
 
     .dropdown-item svg {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
       margin-top: 2px;
       flex-shrink: 0;
     }
@@ -145,7 +148,7 @@
     .dropdown-item-content h4 {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
       color: #1e293b;
       margin: 0 0 4px 0;
     }
@@ -153,25 +156,32 @@
     .dropdown-item-content p {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
       line-height: 1.4;
       margin: 0;
     }
 
-    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
+    .dropdown-arrow {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+    }
+
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* Idiomas */
-    .language-selector { display: flex; align-items: center; gap: 8px; }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     .lang-btn {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12px;
       color: #64748b;
       text-decoration: none;
-      padding: 4px 8px;
+      padding: 3px 6px;
       border-radius: 4px;
       transition: all 0.2s ease;
       text-transform: uppercase;
@@ -181,62 +191,60 @@
       cursor: pointer;
     }
 
-    .lang-btn:hover { color: #4f46e5; background: #f8fafc; }
-    .lang-btn.active { color: #4f46e5; background: #f1f5f9; font-weight: 700; }
-    .language-divider { color: #cbd5e1; font-weight: 300; }
+    .lang-btn:hover {
+      color: #4f46e5;
+      background: #f8fafc;
+    }
 
-    .header-right { display: flex; align-items: center; gap: 24px; }
+    .lang-btn.active {
+      color: #4f46e5;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
 
-    /* Botões */
-    .btn {
+    .language-divider {
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* Menor gap */
+    }
+
+    /* BOTÃO DO HEADER EXATAMENTE IGUAL AO INDEX */
+    .header-cta .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 32px;
+      padding: 8px 18px !important; /* Botão do header mais pequeno */
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 13px !important;
       text-decoration: none;
       transition: all 0.3s ease;
       border: 2px solid transparent;
       cursor: pointer;
+      white-space: nowrap;
     }
 
-    .btn--primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      color: white;
+    .header-cta .btn--primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+      color: white !important;
+      border: none !important;
     }
 
-    .btn--primary:hover {
+    .header-cta .btn--primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3) !important;
     }
 
-    .btn--outline {
-      background: transparent;
-      color: #4f46e5;
-      border-color: #4f46e5;
-    }
-
-    .btn--outline:hover {
-      background: #4f46e5;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
-    }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-    /* GARANTIR dropdown acima */
-    .site-header { z-index: 99999; }
-    .dropdown-content { z-index: 999999; }
-
-    /* Responsivo do header */
     @media (max-width: 1024px) {
-      .header-inner { gap: 20px; }
-      .site-nav ul { gap: 20px; }
-      .header-right { gap: 16px; }
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
     }
 
     @media (max-width: 768px) {
@@ -244,11 +252,11 @@
 
       .site-nav {
         position: fixed;
-        top: 72px;
+        top: 60px; /* Ajustado para header menor */
         left: 0;
         width: 100%;
         background: white;
-        padding: 20px;
+        padding: 16px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
@@ -256,7 +264,7 @@
         transition: all 0.3s ease;
       }
 
-      .site-nav ul { flex-direction: column; gap: 16px; }
+      .site-nav ul { flex-direction: column; gap: 12px; }
 
       .dropdown-content {
         position: static;
@@ -265,22 +273,29 @@
         transform: none;
         box-shadow: none;
         padding: 0;
-        margin: 8px 0 0 20px;
+        margin: 6px 0 0 16px;
         border-left: 2px solid #e2e8f0;
       }
 
-      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
+      .dropdown-item {
+        padding: 8px 0 8px 12px;
+        margin-bottom: 0;
+      }
 
       .header-right {
         flex-direction: column;
         width: 100%;
-        margin-top: 20px;
-        gap: 12px;
+        margin-top: 16px;
+        gap: 10px;
       }
 
       .language-selector { justify-content: center; width: 100%; }
       .header-cta { width: 100%; }
-      .header-cta .btn { width: 100%; justify-content: center; }
+
+      .header-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
 
       .nav-toggle:checked ~ .site-nav {
         transform: translateY(0);
@@ -295,180 +310,21 @@
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
       }
+      
+      /* Logo menor em mobile */
+      .brand img {
+        height: 50px;
+      }
     }
 
-    /* ===== FOOTER PRO (o mesmo do teu index) ===== */
-    .footer-pro {
-      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      color: #cbd5e1;
-      position: relative;
-      overflow: hidden;
-      padding: 72px 0 28px;
-    }
+    /* GARANTIR dropdown acima de tudo */
+    .site-header { z-index: 99999; }
+    .dropdown-content { z-index: 999999; }
 
-    .footer-pro::before {
-      content: "";
-      position: absolute;
-      inset: -200px -200px auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
+    /* Container geral */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    .footer-pro::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -240px -240px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 28px;
-      position: relative;
-      z-index: 1;
-      padding-bottom: 28px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
-
-    .footer-logo{
-      height: 32px;
-      width: auto;
-      max-width: none;
-      display: block;
-      object-fit: contain;
-    }
-
-    .footer-tagline {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(226, 232, 240, 0.85);
-      max-width: 420px;
-      margin: 0;
-    }
-
-    .footer-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-
-    .btn--footer { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
-
-    .btn--footer.btn--outline {
-      border-color: rgba(226, 232, 240, 0.35);
-      color: rgba(226, 232, 240, 0.92);
-    }
-
-    .btn--footer.btn--outline:hover {
-      background: rgba(226, 232, 240, 0.12);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: none;
-      border-color: rgba(226, 232, 240, 0.5);
-    }
-
-    .footer-col h4 {
-      margin: 0 0 14px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(226, 232, 240, 0.9);
-    }
-
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      transition: all .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-links a:hover { color: #ffffff; transform: translateX(3px); }
-
-    .footer-meta {
-      display: grid;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.9);
-    }
-
-    .footer-meta a { color: rgba(203, 213, 225, 0.9); text-decoration: none; transition: color .2s ease; }
-    .footer-meta a:hover { color: #fff; }
-
-    .footer-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .footer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: rgba(15, 23, 42, 0.35);
-      color: rgba(226, 232, 240, 0.9);
-      font-size: 12px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .footer-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      padding-top: 18px;
-      position: relative;
-      z-index: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: rgba(148, 163, 184, 0.9);
-    }
-
-    .footer-mini-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
-    .footer-mini-links a { color: rgba(148, 163, 184, 0.95); text-decoration: none; transition: color .2s ease; }
-    .footer-mini-links a:hover { color: #fff; }
-
-    @media (max-width: 1024px) {
-      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
-      .footer-col--contact { grid-column: 1 / -1; }
-    }
-    @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 22px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-mini-links { justify-content: flex-start; }
-    }
-  </style>
-
-  <!-- ======= CSS ESPECÍFICO DA PÁGINA (INSPIRADO NAS IMAGENS) ======= -->
-  <style>
+    /* ======= CSS ESPECÍFICO DA PÁGINA (INSPIRADO NAS IMAGENS) ======= */
     /* HERO (clean, como nas screenshots) */
     .csd-hero{
       padding: 84px 0 48px;
@@ -711,6 +567,45 @@
 
     .csd-cta p{ margin:0; color: rgba(226,232,240,.78); font-family:'Inter',sans-serif; line-height: 1.7; }
 
+    /* Botões comuns (para usar com as classes do index) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+
+    .btn--outline:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+    }
+
     @media (max-width: 1024px){
       .csd-hero-grid{ grid-template-columns: 1fr; }
       .csd-grid{ grid-template-columns: 1fr 1fr; }
@@ -720,32 +615,201 @@
       .csd-grid{ grid-template-columns: 1fr; }
       .csd-cols{ grid-template-columns: 1fr; }
     }
+
+    /* ===== FOOTER PRO (o mesmo do teu index) ===== */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 28px;
+    }
+
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-logo{
+      height: 32px;
+      width: auto;
+      max-width: none;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .footer-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+
+    .btn--footer { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
+
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover { color: #ffffff; transform: translateX(3px); }
+
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+
+    .footer-meta a { color: rgba(203, 213, 225, 0.9); text-decoration: none; transition: color .2s ease; }
+    .footer-meta a:hover { color: #fff; }
+
+    .footer-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .footer-mini-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-mini-links a { color: rgba(148, 163, 184, 0.95); text-decoration: none; transition: color .2s ease; }
+    .footer-mini-links a:hover { color: #fff; }
+
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-mini-links { justify-content: flex-start; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- HEADER IGUAL AO TEU INDEX -->
+  <!-- HEADER EXATAMENTE IGUAL AO INDEX -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../index.html" aria-label="Cobrait">
-        <img src="../images/logo.png" alt="Cobrait Software Factory logo"
-             onerror="this.onerror=null;this.src='images/logo.png';">
+        <img src="../images/logo.png" alt="Cobrait Software Factory logo">
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
       <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </label>
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="../index.html#work">Work</a></li>
-
+          <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="../index.html#what-we-do">
-              Serviços <span class="dropdown-arrow">▼</span>
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
-
             <div class="dropdown-content">
               <a href="product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -808,12 +872,11 @@
               </a>
             </div>
           </li>
-
-          <li><a href="../index.html#about">Pricing</a></li>
-          <li><a href="../index.html#about">About Us</a></li>
-          <li><a href="../index.html#about">Careers</a></li>
-          <li><a href="../index.html#about">Tech</a></li>
-          <li><a href="../index.html#about">Resources</a></li>
+          <li><a href="../index.html#pricing" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="../index.html#about"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="../index.html#careers" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="../index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="../index.html#resources" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
@@ -838,37 +901,27 @@
     <section class="csd-hero">
       <div class="container csd-hero-grid">
         <div>
-          <h1 data-pt="Desenvolvimento de<br>Software à Medida"
-              data-en="Custom Software<br>Development"
-              data-es="Desarrollo de Software<br>a Medida">Desenvolvimento de<br>Software à Medida</h1>
+          <h1>Desenvolvimento de<br>Software à Medida</h1>
 
-          <p data-pt="Seja qual for o desafio, escolhemos a tecnologia certa e criamos a experiência ideal para os teus utilizadores."
-             data-en="Whatever you’re solving, we choose the right tech and build the right user experience for your users."
-             data-es="Sea cual sea tu reto, elegimos la tecnología correcta y construimos la mejor experiencia para tus usuarios.">
+          <p>
             Seja qual for o desafio, escolhemos a tecnologia certa e criamos a experiência ideal para os teus utilizadores.
           </p>
 
           <div class="csd-hero-actions">
-            <a class="btn btn--primary" href="../book-a-call.html"
-               data-pt="Agendar uma chamada"
-               data-en="Schedule a call"
-               data-es="Agendar una llamada">Agendar uma chamada</a>
+            <a class="btn btn--primary" href="../book-a-call.html">
+              Agendar uma chamada
+            </a>
 
-            <a class="btn btn--outline" href="../index.html#what-we-do"
-               data-pt="Ver serviços"
-               data-en="View services"
-               data-es="Ver servicios">Ver serviços</a>
+            <a class="btn btn--outline" href="../index.html#what-we-do">
+              Ver serviços
+            </a>
           </div>
         </div>
 
         <aside class="csd-side">
-          <h3 data-pt="O que é software à medida?"
-              data-en="What is custom software?"
-              data-es="¿Qué es software a medida?">O que é software à medida?</h3>
+          <h3>O que é software à medida?</h3>
 
-          <p data-pt="É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade."
-             data-en="It’s a solution designed, built and launched for your product’s specific needs — focused on business, UX and scalability."
-             data-es="Es una solución diseñada, construida y lanzada para las necesidades específicas de tu producto — enfocada en negocio, UX y escalabilidad.">
+          <p>
             É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade.
           </p>
         </aside>
@@ -878,71 +931,56 @@
     <!-- KEY BENEFITS (dark cards) -->
     <section class="csd-benefits">
       <div class="container">
-        <h2 data-pt="Principais Benefícios" data-en="Key Benefits" data-es="Beneficios Clave">Principais Benefícios</h2>
-        <p class="sub"
-           data-pt="Mais controlo, mais flexibilidade e mais diferenciação — sem limitações de soluções genéricas."
-           data-en="More control, more flexibility and stronger differentiation — without off-the-shelf limits."
-           data-es="Más control, más flexibilidad y mayor diferenciación — sin límites de soluciones genéricas.">
+        <h2>Principais Benefícios</h2>
+        <p class="sub">
           Mais controlo, mais flexibilidade e mais diferenciação — sem limitações de soluções genéricas.
         </p>
 
         <div class="csd-grid">
           <article class="csd-card">
             <div class="csd-icon">★</div>
-            <h3 data-pt="Propriedade total" data-en="Full Ownership" data-es="Propiedad Total">Propriedade total</h3>
-            <p data-pt="Ficas com 100% do software e do código — sem royalties e sem lock-in."
-               data-en="You own 100% of the software and code — no royalties and no lock-in."
-               data-es="Eres dueño del 100% del software y del código — sin royalties y sin lock-in.">
+            <h3>Propriedade total</h3>
+            <p>
               Ficas com 100% do software e do código — sem royalties e sem lock-in.
             </p>
           </article>
 
           <article class="csd-card">
             <div class="csd-icon">↔</div>
-            <h3 data-pt="Flexibilidade" data-en="Flexibility" data-es="Flexibilidad">Flexibilidade</h3>
-            <p data-pt="Evolui o produto rapidamente conforme o mercado e a tua equipa mudam."
-               data-en="Evolve the product quickly as your market and team change."
-               data-es="Evoluciona el producto rápidamente según cambian el mercado y tu equipo.">
+            <h3>Flexibilidade</h3>
+            <p>
               Evolui o produto rapidamente conforme o mercado e a tua equipa mudam.
             </p>
           </article>
 
           <article class="csd-card">
             <div class="csd-icon">⚑</div>
-            <h3 data-pt="Vantagem competitiva" data-en="Competitive Advantage" data-es="Ventaja Competitiva">Vantagem competitiva</h3>
-            <p data-pt="Funcionalidades e UX únicas para te diferenciares da concorrência."
-               data-en="Unique features and UX to differentiate from competitors."
-               data-es="Funciones y UX únicas para diferenciarte de la competencia.">
+            <h3>Vantagem competitiva</h3>
+            <p>
               Funcionalidades e UX únicas para te diferenciares da concorrência.
             </p>
           </article>
 
           <article class="csd-card">
             <div class="csd-icon">⬈</div>
-            <h3 data-pt="Escalabilidade" data-en="Scalability" data-es="Escalabilidad">Escalabilidade</h3>
-            <p data-pt="Arquitetura preparada para crescer com performance, segurança e observabilidade."
-               data-en="Architecture built to scale with performance, security and observability."
-               data-es="Arquitectura lista para escalar con rendimiento, seguridad y observabilidad.">
+            <h3>Escalabilidade</h3>
+            <p>
               Arquitetura preparada para crescer com performance, segurança e observabilidade.
             </p>
           </article>
 
           <article class="csd-card">
             <div class="csd-icon">€</div>
-            <h3 data-pt="Custos a longo prazo" data-en="Lower Long-Term Costs" data-es="Costes a Largo Plazo">Custos a longo prazo</h3>
-            <p data-pt="Menos subscrições e workarounds — melhor ROI com o tempo."
-               data-en="Fewer subscriptions and workarounds — better ROI over time."
-               data-es="Menos suscripciones y workarounds — mejor ROI con el tiempo.">
+            <h3>Custos a longo prazo</h3>
+            <p>
               Menos subscrições e workarounds — melhor ROI com o tempo.
             </p>
           </article>
 
           <article class="csd-card">
             <div class="csd-icon">☺</div>
-            <h3 data-pt="Experiência do utilizador" data-en="User Experience" data-es="Experiencia de Usuario">Experiência do utilizador</h3>
-            <p data-pt="UX/UI com foco em conversão, retenção e clareza em cada fluxo."
-               data-en="UX/UI focused on conversion, retention and clarity across flows."
-               data-es="UX/UI enfocado en conversión, retención y claridad en cada flujo.">
+            <h3>Experiência do utilizador</h3>
+            <p>
               UX/UI com foco em conversão, retenção e clareza em cada fluxo.
             </p>
           </article>
@@ -953,11 +991,8 @@
     <!-- HOW IT WORKS -->
     <section class="csd-process">
       <div class="container">
-        <h2 data-pt="Como funciona" data-en="How it works" data-es="Cómo funciona">Como funciona</h2>
-        <p class="sub"
-           data-pt="Um processo claro e estruturado — do scope à entrega e evolução contínua."
-           data-en="A clear and structured process — from scope to delivery and continuous improvement."
-           data-es="Un proceso claro y estructurado — del alcance a la entrega y mejora continua.">
+        <h2>Como funciona</h2>
+        <p class="sub">
           Um processo claro e estruturado — do scope à entrega e evolução contínua.
         </p>
 
@@ -967,25 +1002,23 @@
               <h3>Product Scope</h3>
               <div class="csd-step-num">01</div>
             </div>
-            <p data-pt="Sessões intensivas para alinhar visão, objetivos, requisitos e prioridades do produto."
-               data-en="Intensive sessions to align vision, goals, requirements and priorities."
-               data-es="Sesiones intensivas para alinear visión, objetivos, requisitos y prioridades.">
+            <p>
               Sessões intensivas para alinhar visão, objetivos, requisitos e prioridades do produto.
             </p>
             <div class="csd-cols">
               <div>
-                <b data-pt="Entregáveis" data-en="Deliverables" data-es="Entregables">Entregáveis</b>
+                <b>Entregáveis</b>
                 <ul class="csd-list">
-                  <li data-pt="User Stories" data-en="User Stories" data-es="User Stories">User Stories</li>
-                  <li data-pt="Sitemap" data-en="Sitemap" data-es="Sitemap">Sitemap</li>
-                  <li data-pt="Stakeholder Analysis" data-en="Stakeholder Analysis" data-es="Stakeholder Analysis">Stakeholder Analysis</li>
+                  <li>User Stories</li>
+                  <li>Sitemap</li>
+                  <li>Stakeholder Analysis</li>
                 </ul>
               </div>
               <div>
-                <b data-pt="Também inclui" data-en="Also includes" data-es="También incluye">Também inclui</b>
+                <b>Também inclui</b>
                 <ul class="csd-list">
-                  <li data-pt="Tech Spike" data-en="Tech Spike" data-es="Tech Spike">Tech Spike</li>
-                  <li data-pt="Processos-chave (BPMN)" data-en="Key BPMN" data-es="BPMN clave">Processos-chave (BPMN)</li>
+                  <li>Tech Spike</li>
+                  <li>Processos-chave (BPMN)</li>
                 </ul>
               </div>
             </div>
@@ -996,24 +1029,22 @@
               <h3>Development</h3>
               <div class="csd-step-num">02</div>
             </div>
-            <p data-pt="Implementação por módulos com entregas progressivas, testes e updates regulares."
-               data-en="Modular implementation with progressive deliveries, testing and regular updates."
-               data-es="Implementación modular con entregas progresivas, pruebas y actualizaciones regulares.">
+            <p>
               Implementação por módulos com entregas progressivas, testes e updates regulares.
             </p>
             <div class="csd-cols">
               <div>
-                <b data-pt="Entrega" data-en="Delivery" data-es="Entrega">Entrega</b>
+                <b>Entrega</b>
                 <ul class="csd-list">
-                  <li data-pt="Módulos incrementais" data-en="Incremental modules" data-es="Módulos incrementales">Módulos incrementais</li>
-                  <li data-pt="Documentação" data-en="Documentation" data-es="Documentación">Documentação</li>
+                  <li>Módulos incrementais</li>
+                  <li>Documentação</li>
                 </ul>
               </div>
               <div>
-                <b data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</b>
+                <b>Qualidade</b>
                 <ul class="csd-list">
-                  <li data-pt="QA + UAT" data-en="QA + UAT" data-es="QA + UAT">QA + UAT</li>
-                  <li data-pt="Launch readiness" data-en="Launch readiness" data-es="Preparación de lanzamiento">Launch readiness</li>
+                  <li>QA + UAT</li>
+                  <li>Launch readiness</li>
                 </ul>
               </div>
             </div>
@@ -1022,98 +1053,80 @@
 
         <div class="csd-cta">
           <div>
-            <h3 data-pt="Vamos falar sobre o teu projeto"
-                data-en="Let’s talk about your project"
-                data-es="Hablemos de tu proyecto">Vamos falar sobre o teu projeto</h3>
-            <p data-pt="Conta-nos o que queres construir e recebemos-te com um plano claro e realista."
-               data-en="Tell us what you want to build and we’ll come back with a clear, realistic plan."
-               data-es="Cuéntanos qué quieres construir y te devolvemos un plan claro y realista.">
+            <h3>Vamos falar sobre o teu projeto</h3>
+            <p>
               Conta-nos o que queres construir e recebemos-te com um plano claro e realista.
             </p>
           </div>
-          <a class="btn btn--primary" href="../book-a-call.html"
-             data-pt="Agendar chamada"
-             data-en="Book a call"
-             data-es="Agendar llamada">Agendar chamada</a>
+          <a class="btn btn--primary" href="../book-a-call.html">
+            Agendar chamada
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER IGUAL AO INDEX -->
+    <!-- FOOTER PRO (igual ao index) -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo"
-                 onerror="this.onerror=null;this.src='images/logo.png';">
+            <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
 
-            <p class="footer-tagline"
-               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
-               data-en="We build digital products focused on speed, quality and growth — from scope to launch."
-               data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            <p class="footer-tagline">
               Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
             </p>
 
             <div class="footer-cta-row">
-              <a class="btn btn--primary btn--footer" href="../book-a-call.html"
-                 data-pt="Agendar uma chamada"
-                 data-en="Book a call"
-                 data-es="Reservar una llamada">
-                Agendar uma chamada
+              <a class="btn btn--primary btn--footer" href="../book-a-call.html">
+                Book a call
               </a>
-              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
-                 data-pt="Ver serviços"
-                 data-en="See services"
-                 data-es="Ver servicios">
-                Ver serviços
+              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do">
+                See services
               </a>
             </div>
 
             <div class="footer-badges" aria-label="Highlights">
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Lean + Agile</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Fast delivery</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Quality</span></span>
             </div>
           </div>
 
           <div class="footer-col">
-            <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+            <h4>Services</h4>
             <ul class="footer-links">
               <li><a href="product-scope.html">Product Scope</a></li>
               <li><a href="mvp-builder.html">MVP Builder</a></li>
               <li><a href="ux-ui.html">UX / UI</a></li>
-              <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
-              <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+              <li><a href="custom-software.html">Custom Software</a></li>
+              <li><a href="dedicated-teams.html">Dedicated Teams</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
-            <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+            <h4>Company</h4>
             <ul class="footer-links">
-              <li><a href="../index.html#about" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-              <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
-              <li><a href="../index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-              <li><a href="../index.html#about" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+              <li><a href="../index.html#about">About us</a></li>
+              <li><a href="../index.html#work">Case studies</a></li>
+              <li><a href="../index.html#careers">Careers</a></li>
+              <li><a href="../index.html#tech">Tech</a></li>
             </ul>
           </div>
 
           <div class="footer-col footer-col--contact">
-            <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+            <h4>Contact</h4>
             <div class="footer-meta">
               <div>
-                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+                <span>Email:</span>
                 <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
               </div>
               <div>
-                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
-                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+                <span>Response:</span>
+                <span>usually within 24–48h</span>
               </div>
               <div>
-                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                <a href="../book-a-call.html"
-                   data-pt="Marca uma call."
-                   data-en="Book a call."
-                   data-es="Reserva una llamada.">Marca uma call.</a>
+                <span>Want it fast?</span>
+                <a href="../book-a-call.html">Book a call.</a>
               </div>
             </div>
           </div>
@@ -1122,9 +1135,9 @@
         <div class="footer-bottom">
           <div>© <span id="year"></span> Cobrait — Software Factory</div>
           <div class="footer-mini-links">
-            <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-            <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-            <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+            <a href="../index.html#about">Privacy</a>
+            <a href="../index.html#about">Terms</a>
+            <a href="../index.html#what-we-do">Services</a>
           </div>
         </div>
       </div>
@@ -1134,35 +1147,51 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sistema de idiomas igual ao index (usa data-pt / data-en / data-es)
+    // Sistema de troca de idiomas do header (igual ao index)
     document.addEventListener('DOMContentLoaded', function() {
       const langButtons = document.querySelectorAll('.lang-btn');
 
-      function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
-        elements.forEach(element => {
-          const text = element.getAttribute(`data-${lang}`);
-          if (text) element.innerHTML = text; // permite <br> nos títulos
-        });
-      }
-
-      function changeLanguage(lang) {
-        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
-        langButtons.forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-        updateTextContent(lang);
-        localStorage.setItem('preferredLanguage', lang);
-      }
+      // Inicializar em português
+      updateHeaderLanguage('pt');
 
       langButtons.forEach(button => {
         button.addEventListener('click', function() {
-          changeLanguage(this.getAttribute('data-lang'));
+          const lang = this.getAttribute('data-lang');
+
+          // Remove active class de todos os botões
+          langButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Adiciona active class ao botão selecionado
+          this.classList.add('active');
+
+          // Atualiza o header
+          updateHeaderLanguage(lang);
+
+          // Salvar preferência
+          localStorage.setItem('preferredLanguage', lang);
         });
       });
 
-      const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
-      changeLanguage(savedLanguage);
+      // Carregar linguagem salva
+      const savedLanguage = localStorage.getItem('preferredLanguage');
+      if (savedLanguage && savedLanguage !== 'pt') {
+        const button = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
+        if (button) {
+          setTimeout(() => button.click(), 100);
+        }
+      }
+
+      function updateHeaderLanguage(lang) {
+        // Atualizar textos do header
+        const headerElements = document.querySelectorAll('.site-nav [data-pt], .site-nav [data-en], .site-nav [data-es]');
+        
+        headerElements.forEach(element => {
+          const text = element.getAttribute(`data-${lang}`);
+          if (text) {
+            element.textContent = text;
+          }
+        });
+      }
     });
   </script>
 </body>

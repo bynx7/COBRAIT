@@ -17,13 +17,13 @@
        HEADER (COPIADO DO INDEX)
        ========================= */
     .site-header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 16px 0;
-    }
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 4px 0; /* ← Reduzi pela metade */
+}
 
     .header-inner {
       display: flex;
@@ -33,7 +33,7 @@
     }
 
     .brand img {
-      height: 40px;
+      height: 75px;
       width: auto;
     }
 
@@ -584,94 +584,126 @@
       gap: 12px;
     }
 
-    .mock-row {
-      height: 12px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #eef2ff 0%, #f1f5f9 55%, #eef2ff 100%);
-      border: 1px solid #e2e8f0;
-    }
-
-    .mock-row.w60 { width: 60%; }
-    .mock-row.w75 { width: 75%; }
-    .mock-row.w45 { width: 45%; }
-    .mock-row.w85 { width: 85%; }
-
-    .team {
-      padding: 76px 0;
-      background: #ffffff;
-    }
-
-    .team-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
-    }
-
-    .team-head p {
+    /* =========================
+       CONTEÚDO REAL (NOVO)
+       ========================= */
+    .deliver-list{
+      list-style: none;
       margin: 0;
-      color: #475569;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.7;
-      max-width: 70ch;
-    }
-
-    .team-grid {
+      padding: 0;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 18px;
+      gap: 10px;
     }
 
-    .person {
+    .deliver-list li{
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
       border: 1px solid #e2e8f0;
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.06);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      border-radius: 12px;
+      background: rgba(248,250,252,0.75);
+      color: #334155;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
     }
 
-    .person:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 46px rgba(2,6,23,0.10);
-      border-color: rgba(79,70,229,0.25);
-    }
-
-    .avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+    .deliver-ic{
+      width: 22px;
+      height: 22px;
+      border-radius: 10px;
       display: grid;
       place-items: center;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      color: #0f172a;
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,0.9), transparent 60%),
-        linear-gradient(135deg, rgba(79,70,229,0.18) 0%, rgba(124,58,237,0.18) 100%);
-      border: 1px solid rgba(79,70,229,0.22);
-      box-shadow: 0 16px 40px rgba(2,6,23,0.10);
-      margin-bottom: 12px;
+      flex-shrink: 0;
+      color: #4f46e5;
+      border: 1px solid rgba(79,70,229,0.20);
+      background: linear-gradient(135deg, rgba(79,70,229,0.12) 0%, rgba(124,58,237,0.12) 100%);
+      margin-top: 1px;
+      font-weight: 900;
     }
 
-    .person h4 {
-      margin: 0 0 6px;
+    .deliver-kpi{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .kpi{
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .kpi strong{
+      display: block;
       font-family: 'Inter', sans-serif;
       font-weight: 800;
       color: #0f172a;
-      font-size: 15px;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .kpi span{
+      display: block;
+      font-family: 'Inter', sans-serif;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .how-steps{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .how-steps li{
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .how-steps .step-top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .step-badge{
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      color: #4f46e5;
+      background: rgba(79,70,229,0.10);
+      border: 1px solid rgba(79,70,229,0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .how-steps h5{
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      color: #0f172a;
+      font-size: 14px;
       letter-spacing: .2px;
     }
 
-    .person p {
+    .how-steps p{
       margin: 0;
-      color: #64748b;
       font-family: 'Inter', sans-serif;
+      color: #64748b;
       font-size: 13px;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .cta-band {
@@ -734,12 +766,11 @@
       .about-hero-grid { grid-template-columns: 1fr; gap: 22px; }
       .about-title { font-size: 2.35rem; }
       .split { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
       .stat-grid { grid-template-columns: 1fr; }
+      .deliver-kpi{ grid-template-columns: 1fr; }
     }
 
     @media (max-width: 520px) {
-      .team-grid { grid-template-columns: 1fr; }
       .about-title { font-size: 2.05rem; }
     }
 
@@ -1098,10 +1129,10 @@
           </h1>
 
           <p class="about-sub"
-             data-pt="A Cobrait constrói software à medida com foco em clareza, qualidade e escalabilidade. Somos uma equipa pequena — rápida, próxima e orientada a resultados."
-             data-en="Cobrait builds custom software with a focus on clarity, quality and scalability. We’re a small team — fast, close to you, and outcome-driven."
-             data-es="Cobrait desarrolla software a medida con enfoque en claridad, calidad y escalabilidad. Somos un equipo pequeño — rápido, cercano y orientado a resultados.">
-            A Cobrait constrói software à medida com foco em clareza, qualidade e escalabilidade. Somos uma equipa pequena — rápida, próxima e orientada a resultados.
+             data-pt="A Cobrait constrói software à medida com foco em clareza, qualidade e escalabilidade. Trabalhamos com método, comunicação clara e entregas contínuas — do discovery ao lançamento."
+             data-en="Cobrait builds custom software with a focus on clarity, quality and scalability. We work with strong process, clear communication and continuous delivery — from discovery to launch."
+             data-es="Cobrait desarrolla software a medida con enfoque en claridad, calidad y escalabilidad. Trabajamos con método, comunicación clara y entregas continuas — del discovery al lanzamiento.">
+            A Cobrait constrói software à medida com foco em clareza, qualidade e escalabilidade. Trabalhamos com método, comunicação clara e entregas contínuas — do discovery ao lançamento.
           </p>
 
           <div class="about-hero-actions">
@@ -1110,10 +1141,10 @@
                data-en="Book a call"
                data-es="Reservar una llamada">Agendar uma chamada</a>
 
-            <a class="btn btn--outline" href="#team"
-               data-pt="Conhecer a equipa"
-               data-en="Meet the team"
-               data-es="Conocer al equipo">Conhecer a equipa</a>
+            <a class="btn btn--outline" href="index.html#what-we-do"
+               data-pt="Ver serviços"
+               data-en="See services"
+               data-es="Ver servicios">Ver serviços</a>
           </div>
         </div>
 
@@ -1128,8 +1159,8 @@
 
             <div class="stat-grid">
               <div class="stat">
-                <strong data-pt="5–6" data-en="5–6" data-es="5–6">5–6</strong>
-                <span data-pt="core team" data-en="core team" data-es="equipo principal">core team</span>
+                <strong data-pt="End-to-end" data-en="End-to-end" data-es="End-to-end">End-to-end</strong>
+                <span data-pt="produto + engenharia" data-en="product + engineering" data-es="producto + ingeniería">produto + engenharia</span>
               </div>
               <div class="stat">
                 <strong data-pt="24–48h" data-en="24–48h" data-es="24–48h">24–48h</strong>
@@ -1146,19 +1177,48 @@
                 <strong data-pt="Como trabalhamos" data-en="How we work" data-es="Cómo trabajamos">Como trabalhamos</strong>
                 <span class="pill">Discovery → Build → Iterate</span>
               </div>
-              <div class="media-body">
-                <div class="media-body deliverables">
-  <ul class="deliver-list">
-    <li>Produto digital pronto para produção</li>
-    <li>Arquitetura limpa e escalável</li>
-    <li>Código manutenível e documentado</li>
-    <li>Interfaces modernas e intuitivas</li>
-    <li>Roadmap técnico e plano de evolução</li>
-  </ul>
-</div>
 
+              <div class="media-body">
+                <ul class="how-steps">
+                  <li>
+                    <div class="step-top">
+                      <h5 data-pt="Discovery (clareza primeiro)" data-en="Discovery (clarity first)" data-es="Discovery (claridad primero)">Discovery (clareza primeiro)</h5>
+                      <span class="step-badge">1</span>
+                    </div>
+                    <p data-pt="Alinhamos objetivos, utilizadores e prioridades. Saís com scope validado, riscos mapeados e um plano claro."
+                       data-en="We align goals, users and priorities. You leave with validated scope, mapped risks and a clear plan."
+                       data-es="Alineamos objetivos, usuarios y prioridades. Sales con alcance validado, riesgos mapeados y un plan claro.">
+                      Alinhamos objetivos, utilizadores e prioridades. Saís com scope validado, riscos mapeados e um plano claro.
+                    </p>
+                  </li>
+
+                  <li>
+                    <div class="step-top">
+                      <h5 data-pt="Build (entrega contínua)" data-en="Build (continuous delivery)" data-es="Build (entrega continua)">Build (entrega contínua)</h5>
+                      <span class="step-badge">2</span>
+                    </div>
+                    <p data-pt="Sprints curtos, comunicação direta e checkpoints regulares. Tu vês progresso real — sem surpresas no fim."
+                       data-en="Short sprints, direct communication and regular checkpoints. You see real progress — no end-of-project surprises."
+                       data-es="Sprints cortos, comunicación directa y checkpoints regulares. Ves progreso real — sin sorpresas al final.">
+                      Sprints curtos, comunicação direta e checkpoints regulares. Tu vês progresso real — sem surpresas no fim.
+                    </p>
+                  </li>
+
+                  <li>
+                    <div class="step-top">
+                      <h5 data-pt="Iterate (melhorar com dados)" data-en="Iterate (improve with data)" data-es="Iterate (mejorar con datos)">Iterate (melhorar com dados)</h5>
+                      <span class="step-badge">3</span>
+                    </div>
+                    <p data-pt="Depois do MVP, evoluímos com feedback e métricas: performance, UX, novas features e estabilidade."
+                       data-en="After the MVP, we evolve with feedback and metrics: performance, UX, new features and stability."
+                       data-es="Después del MVP, evolucionamos con feedback y métricas: rendimiento, UX, nuevas features y estabilidad.">
+                      Depois do MVP, evoluímos com feedback e métricas: performance, UX, novas features e estabilidade.
+                    </p>
+                  </li>
+                </ul>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1194,13 +1254,38 @@
             <strong data-pt="O que entregamos" data-en="What we deliver" data-es="Qué entregamos">O que entregamos</strong>
             <span class="pill" data-pt="Produto real" data-en="Real product" data-es="Producto real">Produto real</span>
           </div>
+
           <div class="media-body">
-            <div class="mock-row w85"></div>
-            <div class="mock-row w60"></div>
-            <div class="mock-row w75"></div>
-            <div class="mock-row w45"></div>
-            <div class="mock-row w75"></div>
+            <ul class="deliver-list">
+              <li><span class="deliver-ic">✓</span><span data-pt="Produto digital pronto para produção (deploy + ambiente)" data-en="Production-ready product (deploy + environment)" data-es="Producto listo para producción (deploy + entorno)">Produto digital pronto para produção (deploy + ambiente)</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Arquitetura limpa e escalável (boas práticas + padrões)" data-en="Clean, scalable architecture (best practices + patterns)" data-es="Arquitectura limpia y escalable (buenas prácticas + patrones)">Arquitetura limpa e escalável (boas práticas + padrões)</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Código manutenível com testes onde faz sentido" data-en="Maintainable code with tests where it matters" data-es="Código mantenible con tests donde importa">Código manutenível com testes onde faz sentido</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="UX/UI moderno: interfaces rápidas e intuitivas" data-en="Modern UX/UI: fast and intuitive interfaces" data-es="UX/UI moderno: interfaces rápidas e intuitivas">UX/UI moderno: interfaces rápidas e intuitivas</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Documentação essencial + handover claro" data-en="Essential documentation + clear handover" data-es="Documentación esencial + handover claro">Documentação essencial + handover claro</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Roadmap técnico e plano de evolução pós-MVP" data-en="Technical roadmap and post-MVP evolution plan" data-es="Roadmap técnico y plan de evolución post-MVP">Roadmap técnico e plano de evolução pós-MVP</span></li>
+            </ul>
+
+            <div class="deliver-kpi">
+              <div class="kpi">
+                <strong data-pt="Transparência" data-en="Transparency" data-es="Transparencia">Transparência</strong>
+                <span data-pt="Status semanal, prioridades e próximos passos sempre claros."
+                      data-en="Weekly status, priorities and next steps always clear."
+                      data-es="Estado semanal, prioridades y próximos pasos siempre claros.">
+                  Status semanal, prioridades e próximos passos sempre claros.
+                </span>
+              </div>
+
+              <div class="kpi">
+                <strong data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</strong>
+                <span data-pt="Padrões, revisão de código e foco em performance e segurança."
+                      data-en="Standards, code review and focus on performance and security."
+                      data-es="Estándares, code review y foco en rendimiento y seguridad.">
+                  Padrões, revisão de código e foco em performance e segurança.
+                </span>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1210,14 +1295,16 @@
       <div class="container split">
         <div class="media-card">
           <div class="media-top">
-            <strong data-pt="Porque uma equipa pequena?" data-en="Why a small team?" data-es="¿Por qué un equipo pequeño?">Porque uma equipa pequena?</strong>
-            <span class="pill" data-pt="Rapidez + proximidade" data-en="Speed + closeness" data-es="Velocidad + cercanía">Rapidez + proximidade</span>
+            <strong data-pt="Como garantimos velocidade + qualidade" data-en="How we ensure speed + quality" data-es="Cómo garantizamos velocidad + calidad">Como garantimos velocidade + qualidade</strong>
+            <span class="pill" data-pt="Processo sério" data-en="Serious process" data-es="Proceso serio">Processo sério</span>
           </div>
           <div class="media-body">
-            <div class="mock-row w75"></div>
-            <div class="mock-row w85"></div>
-            <div class="mock-row w60"></div>
-            <div class="mock-row w75"></div>
+            <ul class="deliver-list">
+              <li><span class="deliver-ic">✓</span><span data-pt="Escopo bem definido antes de acelerar (menos retrabalho)" data-en="Define scope before speeding up (less rework)" data-es="Definir alcance antes de acelerar (menos retrabajo)">Escopo bem definido antes de acelerar (menos retrabalho)</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Entrega incremental: releases frequentes com validação real" data-en="Incremental delivery: frequent releases with real validation" data-es="Entrega incremental: releases frecuentes con validación real">Entrega incremental: releases frequentes com validação real</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Decisões rápidas com comunicação direta (sem burocracia)" data-en="Fast decisions with direct communication (no bureaucracy)" data-es="Decisiones rápidas con comunicación directa (sin burocracia)">Decisões rápidas com comunicação direta (sem burocracia)</span></li>
+              <li><span class="deliver-ic">✓</span><span data-pt="Foco em base técnica sólida para crescer sem dores" data-en="Solid technical base to scale without pain" data-es="Base técnica sólida para escalar sin dolor">Foco em base técnica sólida para crescer sem dores</span></li>
+            </ul>
           </div>
         </div>
 
@@ -1230,10 +1317,10 @@
           </h2>
 
           <p class="p"
-             data-pt="Não prometemos “mil projetos” — prometemos um processo sério. A Cobrait é pequena de propósito: menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto."
-             data-en="We don’t promise “a thousand projects” — we promise a serious process. Cobrait is intentionally small: less noise, more ownership, faster decisions and full focus on your product."
-             data-es="No prometemos “mil proyectos” — prometemos un proceso serio. Cobrait es intencionalmente pequeño: menos ruido, más responsabilidad, decisiones rápidas y foco total en tu producto.">
-            Não prometemos “mil projetos” — prometemos um processo sério. A Cobrait é pequena de propósito: menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto.
+             data-pt="Não prometemos “mil projetos” — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto."
+             data-en="We don’t promise “a thousand projects” — we promise a serious process. Less noise, more ownership, faster decisions and full focus on your product."
+             data-es="No prometemos “mil proyectos” — prometemos un proceso serio. Menos ruido, más responsabilidad, decisiones rápidas y foco total en tu producto.">
+            Não prometemos “mil projetos” — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto.
           </p>
 
           <ul class="bullet">
@@ -1245,64 +1332,9 @@
       </div>
     </section>
 
-    <!-- TEAM -->
-    <section class="team" id="team">
+    <!-- CTA FINAL -->
+    <section class="about-section">
       <div class="container">
-        <div class="team-head">
-          <div>
-            <h2 class="h2"
-                data-pt="Conhece a equipa"
-                data-en="Meet the team"
-                data-es="Conoce al equipo">
-              Conhece a equipa
-            </h2>
-            <p data-pt="Ainda não tens fotos profissionais? Sem stress — esta versão usa iniciais (fica moderno). Quando quiseres, é só trocar por imagens reais."
-               data-en="No professional photos yet? No worries — this version uses initials (looks modern). When you’re ready, just replace with real photos."
-               data-es="¿Aún no tienes fotos profesionales? Sin problema — esta versión usa iniciales (se ve moderno). Cuando quieras, lo cambias por fotos reales.">
-              Ainda não tens fotos profissionais? Sem stress — esta versão usa iniciais (fica moderno). Quando quiseres, é só trocar por imagens reais.
-            </p>
-          </div>
-        </div>
-
-        <!-- Ajusta nomes/roles quando quiseres -->
-        <div class="team-grid">
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="Co-Founder" data-en="Co-Founder" data-es="Co-Fundador">Co-Founder</h4>
-            <p data-pt="Produto, estratégia e direção técnica." data-en="Product, strategy and technical direction." data-es="Producto, estrategia y dirección técnica.">Produto, estratégia e direção técnica.</p>
-          </article>
-
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="Engineering" data-en="Engineering" data-es="Ingeniería">Engineering</h4>
-            <p data-pt="Backend, integrações e arquitetura." data-en="Backend, integrations and architecture." data-es="Backend, integraciones y arquitectura.">Backend, integrações e arquitetura.</p>
-          </article>
-
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="Frontend" data-en="Frontend" data-es="Frontend">Frontend</h4>
-            <p data-pt="Interfaces modernas, performance e UI." data-en="Modern interfaces, performance and UI." data-es="Interfaces modernas, rendimiento y UI.">Interfaces modernas, performance e UI.</p>
-          </article>
-
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="UX/UI" data-en="UX/UI" data-es="UX/UI">UX/UI</h4>
-            <p data-pt="Design orientado ao utilizador e conversão." data-en="User-centric design and conversion." data-es="Diseño centrado en el usuario y conversión.">Design orientado ao utilizador e conversão.</p>
-          </article>
-
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="AI / Automation" data-en="AI / Automation" data-es="IA / Automatización">AI / Automation</h4>
-            <p data-pt="Automação inteligente e soluções práticas com IA." data-en="Practical AI solutions and smart automation." data-es="Soluciones prácticas de IA y automatización inteligente.">Automação inteligente e soluções práticas com IA.</p>
-          </article>
-
-          <article class="person">
-            <div class="avatar">C</div>
-            <h4 data-pt="Operations" data-en="Operations" data-es="Operaciones">Operations</h4>
-            <p data-pt="Gestão de entregas, qualidade e comunicação." data-en="Delivery management, quality and communication." data-es="Gestión de entregas, calidad y comunicación.">Gestão de entregas, qualidade e comunicação.</p>
-          </article>
-        </div>
-
         <div class="cta-band">
           <div>
             <strong data-pt="Vamos construir o teu produto?"
@@ -1323,10 +1355,11 @@
                data-en="Book a call"
                data-es="Reservar llamada">Agendar chamada</a>
 
-            <a class="btn btn--outline" href="index.html#what-we-do"
-               data-pt="Ver serviços"
-               data-en="See services"
-               data-es="Ver servicios">Ver serviços</a>
+            <a class="btn btn--outline" href="index.html
+                        <a class="btn btn--outline" href="index.html"
+               data-pt="Voltar ao início"
+               data-en="Back to home"
+               data-es="Volver al inicio">Voltar ao início</a>
           </div>
         </div>
       </div>

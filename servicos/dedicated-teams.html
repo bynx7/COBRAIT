@@ -40,133 +40,288 @@
       padding:0 20px;
     }
 
-    /* ========= Header (igual ao index) ========= */
+    /* ========= HEADER IDÊNTICO AO INDEX ========= */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
-      z-index: 99999;
-      padding: 16px 0;
+      z-index: 1000;
+      padding: 4px 0; /* AINDA MAIS PEQUENO */
     }
+
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px; /* Reduzido */
+      min-height: 60px; /* Altura controlada */
     }
-    .brand img { height: 40px; width: auto; }
 
-    .nav-toggle { display:none; }
+    .brand img {
+      height: 75px; /* Logo grande mas header compacto */
+      width: auto;
+    }
+
+    .nav-toggle { display: none; }
+
     .nav-toggle-btn {
-      display:none;
-      flex-direction:column;
-      cursor:pointer;
-      padding:10px;
-    }
-    .nav-toggle-btn span{
-      width:25px;height:2px;background:var(--brand);
-      margin:4px 0; transition:.3s;
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 8px;
     }
 
-    .site-nav ul{
-      display:flex; list-style:none; margin:0; padding:0; gap:32px;
+    .nav-toggle-btn span {
+      width: 22px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 3px 0;
+      transition: 0.3s;
     }
-    .site-nav a{
-      font-family:Inter,sans-serif;
-      font-weight:500;
-      font-size:15px;
-      color:var(--muted);
-      text-decoration:none;
-      transition:color .3s ease;
-      position:relative;
-      padding:8px 0;
-      display:flex;
-      align-items:center;
-      gap:4px;
-    }
-    .site-nav a:hover{ color:var(--brand); }
-    .site-nav a::after{
-      content:'';
-      position:absolute;
-      bottom:0; left:0;
-      width:0; height:2px;
-      background:linear-gradient(135deg,var(--brand) 0%, var(--brand2) 100%);
-      transition:width .3s ease;
-    }
-    .site-nav a:hover::after{ width:100%; }
 
-    .dropdown{ position:relative; }
-    .dropdown-content{
-      position:absolute;
-      top:100%; left:0;
-      min-width:280px;
-      background:white;
-      box-shadow:0 10px 40px rgba(0,0,0,.1);
-      border-radius:12px;
-      padding:16px;
-      opacity:0;
-      visibility:hidden;
-      transform:translateY(10px);
-      transition:all .3s ease;
-      z-index:999999;
-      margin-top:16px;
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 24px; /* Menor espaçamento */
     }
-    .dropdown:hover .dropdown-content{
-      opacity:1; visibility:visible; transform:translateY(0);
-    }
-    .dropdown-item{
-      display:flex;
-      align-items:flex-start;
-      padding:12px;
-      border-radius:8px;
-      text-decoration:none;
-      color:#334155;
-      transition:all .2s ease;
-      margin-bottom:8px;
-    }
-    .dropdown-item:last-child{ margin-bottom:0; }
-    .dropdown-item:hover{ background:#f8fafc; transform:translateX(4px); }
-    .dropdown-item svg{
-      width:20px;height:20px;margin-right:12px;margin-top:2px; flex-shrink:0;
-    }
-    .dropdown-item-content h4{
-      font-family:Inter,sans-serif;
-      font-weight:600;
-      font-size:14px;
-      color:#1e293b;
-      margin:0 0 4px 0;
-    }
-    .dropdown-item-content p{
-      font-family:Inter,sans-serif;
-      font-weight:400;
-      font-size:13px;
-      color:#64748b;
-      line-height:1.4;
-      margin:0;
-    }
-    .dropdown-arrow{ font-size:12px; transition:transform .3s ease; }
-    .dropdown:hover .dropdown-arrow{ transform:rotate(180deg); }
 
-    .header-right{ display:flex; align-items:center; gap:24px; }
-    .language-selector{ display:flex; align-items:center; gap:8px; }
-    .lang-btn{
-      font-family:Inter,sans-serif;
-      font-weight:600;
-      font-size:13px;
-      color:#64748b;
-      padding:4px 8px;
-      border-radius:4px;
-      transition:all .2s ease;
-      text-transform:uppercase;
-      letter-spacing:.5px;
-      background:none;
-      border:none;
-      cursor:pointer;
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px; /* Texto ligeiramente menor */
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 6px 0; /* Padding reduzido */
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .lang-btn:hover{ color:var(--brand); background:#f8fafc; }
-    .lang-btn.active{ color:var(--brand); background:#f1f5f9; font-weight:700; }
-    .language-divider{ color:#cbd5e1; font-weight:300; }
+
+    .site-nav a:hover { color: #4f46e5; }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover::after { width: 100%; }
+
+    .dropdown { position: relative; }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 12px; /* Menor margem */
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 6px;
+    }
+
+    .dropdown-item:last-child { margin-bottom: 0; }
+
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .dropdown-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .dropdown-arrow {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: #64748b;
+      text-decoration: none;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .lang-btn:hover {
+      color: #4f46e5;
+      background: #f8fafc;
+    }
+
+    .lang-btn.active {
+      color: #4f46e5;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+
+    .language-divider {
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px; /* Menor gap */
+    }
+
+    .header-cta .btn {
+      padding: 8px 18px; /* Botão do header mais pequeno */
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle-btn { display: flex; }
+
+      .site-nav {
+        position: fixed;
+        top: 60px; /* Ajustado para header menor */
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .site-nav ul { flex-direction: column; gap: 12px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 6px 0 0 16px;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .dropdown-item {
+        padding: 8px 0 8px 12px;
+        margin-bottom: 0;
+      }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 16px;
+        gap: 10px;
+      }
+
+      .language-selector { justify-content: center; width: 100%; }
+      .header-cta { width: 100%; }
+
+      .header-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+      
+      /* Logo menor em mobile */
+      .brand img {
+        height: 50px;
+      }
+    }
+
+    /* GARANTIR dropdown acima de tudo */
+    .site-header { z-index: 99999; }
+    .dropdown-content { z-index: 999999; }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -199,58 +354,6 @@
       color:#fff;
       transform:translateY(-2px);
       box-shadow:0 10px 25px rgba(79,70,229,.2);
-    }
-    .header-cta .btn{ padding:10px 24px; font-size:14px; }
-
-    @media (max-width:1024px){
-      .header-inner{ gap:20px; }
-      .site-nav ul{ gap:20px; }
-      .header-right{ gap:16px; }
-    }
-    @media (max-width:768px){
-      .nav-toggle-btn{ display:flex; }
-      .site-nav{
-        position:fixed;
-        top:72px; left:0;
-        width:100%;
-        background:white;
-        padding:20px;
-        box-shadow:0 5px 20px rgba(0,0,0,.1);
-        transform:translateY(-100%);
-        opacity:0; visibility:hidden;
-        transition:all .3s ease;
-      }
-      .site-nav ul{ flex-direction:column; gap:16px; }
-      .dropdown-content{
-        position:static;
-        opacity:1; visibility:visible;
-        transform:none;
-        box-shadow:none;
-        padding:0;
-        margin:8px 0 0 20px;
-        border-left:2px solid #e2e8f0;
-      }
-      .dropdown-item{ padding:10px 0 10px 16px; margin-bottom:0; }
-      .header-right{
-        flex-direction:column;
-        width:100%;
-        margin-top:20px;
-        gap:12px;
-      }
-      .language-selector{ justify-content:center; width:100%; }
-      .header-cta{ width:100%; }
-      .header-cta .btn{ width:100%; justify-content:center; }
-      .nav-toggle:checked ~ .site-nav{
-        transform:translateY(0);
-        opacity:1; visibility:visible;
-      }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1){
-        transform:rotate(45deg) translate(5px,5px);
-      }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2){ opacity:0; }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3){
-        transform:rotate(-45deg) translate(7px,-6px);
-      }
     }
 
     /* ========= Page sections ========= */
@@ -622,7 +725,7 @@
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- HEADER IDÊNTICO AO INDEX -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../index.html" aria-label="Cobrait">
@@ -631,15 +734,18 @@
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
       <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </label>
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="../index.html#what-we-do">
-              Serviços <span class="dropdown-arrow">▼</span>
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
             <div class="dropdown-content">
               <a href="product-scope.html" class="dropdown-item">
@@ -703,25 +809,25 @@
               </a>
             </div>
           </li>
-          <li><a href="../index.html#about">Pricing</a></li>
-          <li><a href="../index.html#about">About Us</a></li>
-          <li><a href="../index.html#about">Careers</a></li>
-          <li><a href="../index.html#about">Tech</a></li>
-          <li><a href="../index.html#about">Resources</a></li>
+          <li><a href="../index.html#about" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="../index.html#about" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="../index.html#about" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <div class="language-selector" aria-label="Selecionar idioma">
-          <button class="lang-btn active" data-lang="pt" type="button">PT</button>
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="pt">PT</button>
           <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="en">EN</button>
           <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="es" type="button">ES</button>
+          <button class="lang-btn" data-lang="es">ES</button>
         </div>
 
         <div class="header-cta">
-          <a class="btn btn--primary" href="../book-a-call.html" data-pt="BOOK A CALL" data-en="BOOK A CALL" data-es="BOOK A CALL">BOOK A CALL</a>
+          <a class="btn btn--primary" href="../book-a-call.html">BOOK A CALL</a>
         </div>
       </div>
     </div>
@@ -738,9 +844,9 @@
              data-es="SERVICIOS">SERVIÇOS</p>
 
           <h1 class="h1"
-              data-pt="Equipas<br>Dedicadas"
-              data-en="Dedicated<br>Teams"
-              data-es="Equipos<br>Dedicados">Equipas<br>Dedicadas</h1>
+              data-pt="Equipas Dedicadas"
+              data-en="Dedicated Teams"
+              data-es="Equipos Dedicados">Equipas Dedicadas</h1>
 
           <p class="lead"
              data-pt="Programadores Front-end e Full-stack selecionados a dedo, perfeitamente ajustados às tuas necessidades."
@@ -946,7 +1052,7 @@
 
           <p class="cta-sub"
              data-pt="Agenda uma chamada com um especialista e desenhamos o modelo certo para entregar com qualidade, previsibilidade e escala."
-             data-en="Book a call with a specialist and we’ll design the right model to deliver with quality, predictability, and scale."
+             data-en="Book a call with a specialist and we'll design the right model to deliver with quality, predictability, and scale."
              data-es="Agenda una llamada con un especialista y diseñaremos el modelo correcto para entregar con calidad, previsibilidad y escala.">
             Agenda uma chamada com um especialista e desenhamos o modelo certo para entregar com qualidade, previsibilidade e escala.
           </p>
@@ -1066,6 +1172,19 @@
       document.querySelectorAll(".lang-btn[data-lang]").forEach(btn => {
         btn.addEventListener("click", () => {
           applyLanguage(btn.getAttribute("data-lang"));
+        });
+      });
+
+      // Fechar dropdown ao clicar fora (para mobile)
+      document.addEventListener('click', function(event) {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            const content = dropdown.querySelector('.dropdown-content');
+            if (content && window.innerWidth <= 768) {
+              content.style.display = 'none';
+            }
+          }
         });
       });
     })();
