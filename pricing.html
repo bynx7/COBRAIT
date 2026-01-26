@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cobrait — Pricing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Pricing — Cobrait Software Factory.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    /* =========================
+       HEADER (COPIADO DO INDEX)
+       ========================= */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 4px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 60px;
+    }
+    .brand img {
+      height: 75px;
+      width: auto;
+    }
+    .nav-toggle { display: none; }
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle-btn span {
+      width: 22px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 24px;
+    }
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .site-nav a:hover { color: #4f46e5; }
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+    .site-nav a:hover::after { width: 100%; }
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 12px;
+    }
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 6px;
+    }
+    .dropdown-item:last-child { margin-bottom: 0; }
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+    .dropdown-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .dropdown-arrow {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+    }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: #64748b;
+      text-decoration: none;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .lang-btn:hover {
+      color: #4f46e5;
+      background: #f8fafc;
+    }
+    .lang-btn.active {
+      color: #4f46e5;
+      background: #f1f5f9;
+      font-weight: 700;
+    }
+    .language-divider {
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-cta .btn {
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @media (max-width: 1024px) {
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
+    }
+    @media (max-width: 768px) {
+      .nav-toggle-btn { display: flex; }
+      .site-nav {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      .site-nav ul { flex-direction: column; gap: 12px; }
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 6px 0 0 16px;
+        border-left: 2px solid #e2e8f0;
+      }
+      .dropdown-item {
+        padding: 8px 0 8px 12px;
+        margin-bottom: 0;
+      }
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 16px;
+        gap: 10px;
+      }
+      .language-selector { justify-content: center; width: 100%; }
+      .header-cta { width: 100%; }
+      .header-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+      .brand img { height: 50px; }
+    }
+    .site-header { z-index: 99999; }
+    .dropdown-content { z-index: 999999; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================
+       BOTÕES (do teu index)
+       ========================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+    .btn--outline {
+      background: transparent;
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+    .btn--outline:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+    }
+
+    /* =========================
+       PRICING PAGE (NOVO)
+       ========================= */
+    .pricing-page { background: #f8fafc; }
+    .pricing-hero {
+      padding: 110px 0 70px;
+      background: #fff;
+    }
+    .pricing-hero__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 1.05;
+      color: #0f172a;
+      margin: 0 0 22px;
+    }
+
+    .pricing-select {
+      width: min(760px, 100%);
+      height: 56px;
+      border: 2px solid #ec4899;
+      border-radius: 10px;
+      padding: 0 18px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: #334155;
+      background: #fff;
+      outline: none;
+    }
+    .pricing-select:focus {
+      box-shadow: 0 0 0 4px rgba(236,72,153,0.12);
+    }
+
+    .pricing-section { padding: 90px 0; }
+    .pricing-h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 44px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      color: #0f172a;
+      font-weight: 800;
+    }
+    .pricing-lead {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #475569;
+      max-width: 620px;
+      margin: 0;
+    }
+
+    /* Recent Examples layout */
+    .pricing-examples__head {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+    .pricing-examples__visual {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .pricing-examples__visual img {
+      width: min(560px, 100%);
+      height: auto;
+      border-radius: 26px;
+      box-shadow: 0 30px 70px rgba(2,6,23,0.18);
+    }
+    @media (max-width: 900px) {
+      .pricing-examples__head { grid-template-columns: 1fr; }
+      .pricing-examples__visual { justify-content: flex-start; }
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .pricing-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.06);
+      transition: all .25s ease;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 50px rgba(2,6,23,0.10);
+    }
+    .pricing-card__top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .pricing-card h3 {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #0f172a;
+      line-height: 1.25;
+    }
+    .pricing-card__meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+    .pricing-card__price {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 54px;
+      letter-spacing: -1px;
+      color: #0f172a;
+      margin: 8px 0 10px;
+    }
+    .pricing-card__desc {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #475569;
+      margin-top: auto;
+    }
+    @media (max-width: 1024px) {
+      .pricing-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .pricing-cards { grid-template-columns: 1fr; }
+      .pricing-card__price { font-size: 46px; }
+    }
+
+    /* How we get to pricing */
+    .pricing-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      max-width: 920px;
+    }
+    .accordion {
+      border-top: 1px solid #cbd5e1;
+    }
+    .acc-item {
+      border-bottom: 1px solid #cbd5e1;
+    }
+    .acc-btn {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 20px 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+    .acc-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 2px solid #ec4899;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ec4899;
+      flex-shrink: 0;
+      transition: transform .2s ease;
+    }
+    .acc-panel {
+      display: none;
+      padding: 0 0 18px;
+      max-width: 760px;
+    }
+    .acc-panel p {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    .acc-item.open .acc-panel { display: block; }
+    .acc-item.open .acc-icon { transform: rotate(180deg); }
+
+    /* Seed sections */
+    .seed-section {
+      background: #f1f5f9;
+      border-radius: 26px;
+      padding: 70px 0;
+    }
+    .seed-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .seed-illus {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .seed-illus img {
+      width: min(520px, 100%);
+      height: auto;
+      border-radius: 22px;
+    }
+    @media (max-width: 900px) {
+      .seed-grid { grid-template-columns: 1fr; }
+      .seed-illus { justify-content: flex-start; }
+    }
+
+    /* Process cards */
+    .process-wrap {
+      text-align: center;
+    }
+    .process-wrap .pricing-lead {
+      margin: 0 auto;
+    }
+    .process-cards {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .process-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.06);
+      text-align: left;
+    }
+    .process-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-weight: 900;
+      font-family: 'Poppins', sans-serif;
+      color: #0f172a;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    .process-card h3 {
+      margin: 0 0 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      color: #0f172a;
+      font-size: 22px;
+    }
+    .process-card p {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    @media (max-width: 1024px) {
+      .process-cards { grid-template-columns: 1fr; }
+    }
+
+    /* Services cards (3) */
+    .services-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 40px;
+    }
+    .service-simple {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid #e2e8f0;
+      padding: 26px;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.06);
+    }
+    .service-simple h3 {
+      margin: 0 0 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #0f172a;
+    }
+    .service-simple p {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+    @media (max-width: 1024px) {
+      .services-3 { grid-template-columns: 1fr; }
+    }
+
+    /* CTA final */
+    .pricing-cta {
+      background: #fff;
+      padding: 90px 0;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .cta-visual {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .cta-visual img {
+      width: min(520px, 100%);
+      height: auto;
+      border-radius: 22px;
+    }
+    .cta-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 1.1;
+      color: #0f172a;
+      margin: 0 0 16px;
+    }
+    .cta-desc {
+      margin: 0 0 18px;
+      font-family: 'Inter', sans-serif;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+      max-width: 540px;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 900px) {
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+
+    /* acessibilidade */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* =========================
+       FOOTER (COPIADO DO INDEX)
+       ========================= */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 28px;
+    }
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .footer-logo {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+    }
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 0;
+    }
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-meta a:hover { color: #fff; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-mini-links a:hover { color: #fff; }
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-mini-links { justify-content: flex-start; }
+    }
+    .footer-brand{
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .footer-logo{
+      height: 32px;
+      width: auto;
+      max-width: none;
+      display: block;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================
+       HEADER (IGUAL AO INDEX)
+       ========================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Cobrait">
+        <img src="images/logo.png" alt="Cobrait Software Factory logo">
+      </a>
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
+
+          <li class="dropdown">
+            <a href="index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-content">
+              <a href="servicos/product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Product Scope</h4>
+                  <p>15-day process to align the product with your business goals.</p>
+                </div>
+              </a>
+
+              <a href="servicos/mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>MVP Builder</h4>
+                  <p>Go to market quickly with a high-quality Minimum Viable Product.</p>
+                </div>
+              </a>
+
+              <a href="servicos/ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>UX / UI</h4>
+                  <p>Design an easy-to-use engaging and functional product.</p>
+                </div>
+              </a>
+
+              <a href="servicos/ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>AI Development & Enablement</h4>
+                  <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+                </div>
+              </a>
+
+              <a href="servicos/custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Custom Software Development</h4>
+                  <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+                </div>
+              </a>
+
+              <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4>Dedicated Teams</h4>
+                  <p>Build your product with a dedicated team of developers.</p>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <!-- ✅ link corrigido para pricing.html -->
+          <li><a href="pricing.html" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="index.html#about" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="index.html#about" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="pt">PT</button>
+          <span class="language-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="language-divider">|</span>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+
+        <div class="header-cta">
+          <a class="btn btn--primary" href="book-a-call.html">BOOK A CALL</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       PRICING CONTENT
+       ========================= -->
+  <main class="pricing-page">
+    <!-- HERO -->
+    <section class="pricing-hero">
+      <div class="container">
+        <h1 class="pricing-hero__title">Pick your type of project.</h1>
+        <select id="projectType" class="pricing-select" aria-label="Pick your type of project here">
+          <option value="" selected>Pick your type of project here</option>
+          <option>Fintech Application</option>
+          <option>Data Mining Tool</option>
+          <option>Open Banking App</option>
+          <option>Marketplace</option>
+          <option>API</option>
+          <option>Analytics / BI Dashboard</option>
+          <option>Community / Social Network</option>
+          <option>Artificial Intelligence Application</option>
+          <option>AI on the edge</option>
+          <option>Music & Entertainment App</option>
+          <option>Regtech Software</option>
+          <option>System Integration Project</option>
+          <option>Blockchain App</option>
+          <option>Lifestyle App</option>
+          <option>Health & Fitness App</option>
+          <option>Travel App</option>
+          <option>Sports App</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- RECENT EXAMPLES -->
+    <section class="pricing-section">
+      <div class="container">
+        <div class="pricing-examples__head">
+          <div>
+            <h2 class="pricing-h2">Recent Examples</h2>
+            <p class="pricing-lead">
+              Here are some examples of projects we worked on over the last few months.
+              This will help you understand how pricing can vary depending on factors like size and complexity.
+            </p>
+          </div>
+
+          <div class="pricing-examples__visual" aria-hidden="true">
+            <!-- Se tiveres uma imagem tipo “laptop”, mete aqui: images/pricing-laptop.png -->
+            <img src="images/pricing-laptop.png" alt="" onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <div class="pricing-cards" id="examplesGrid">
+          <article class="pricing-card" data-type="Community / Social Network">
+            <div class="pricing-card__top">
+              <h3>Community Management Platform</h3>
+              <span class="pricing-card__meta">3 months</span>
+            </div>
+            <div class="pricing-card__price">€40k</div>
+            <p class="pricing-card__desc">An MVP for a Q&A platform for the beauty industry.</p>
+          </article>
+
+          <article class="pricing-card" data-type="Marketplace">
+            <div class="pricing-card__top">
+              <h3>Arts Marketplace</h3>
+              <span class="pricing-card__meta">2 months</span>
+            </div>
+            <div class="pricing-card__price">€18k</div>
+            <p class="pricing-card__desc">Marketplace built to serve the specific needs of an Art’s niche.</p>
+          </article>
+
+          <article class="pricing-card" data-type="API">
+            <div class="pricing-card__top">
+              <h3>API Middleware Connector</h3>
+              <span class="pricing-card__meta">5 months</span>
+            </div>
+            <div class="pricing-card__price">€90k</div>
+            <p class="pricing-card__desc">
+              Software to seamlessly integrate several different third parties in a drag and drop interface.
+            </p>
+          </article>
+
+          <article class="pricing-card" data-type="Artificial Intelligence Application">
+            <div class="pricing-card__top">
+              <h3>Proptech Cloud</h3>
+              <span class="pricing-card__meta">5 months</span>
+            </div>
+            <div class="pricing-card__price">€350k</div>
+            <p class="pricing-card__desc">
+              AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets.
+            </p>
+          </article>
+
+          <article class="pricing-card" data-type="Regtech Software">
+            <div class="pricing-card__top">
+              <h3>Legaltech</h3>
+              <span class="pricing-card__meta">2 months</span>
+            </div>
+            <div class="pricing-card__price">€100k</div>
+            <p class="pricing-card__desc">
+              An MVP for a complex AI tool that analyses public rules and advises teams on client profiles.
+            </p>
+          </article>
+
+          <article class="pricing-card" data-type="Community / Social Network">
+            <div class="pricing-card__top">
+              <h3>Social Network Mobile App</h3>
+              <span class="pricing-card__meta">5 months</span>
+            </div>
+            <div class="pricing-card__price">€50k</div>
+            <p class="pricing-card__desc">
+              A gamified fandom-centric community where humans can engage in a closer and richer way.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE GET TO PRICING -->
+    <section class="pricing-section" style="background:#fff;">
+      <div class="container">
+        <h2 class="pricing-h2">How We Get to Our Pricing</h2>
+        <p class="pricing-lead" style="max-width:820px;">
+          Our pricing is reflected by our lean, user-centric approach to product innovation and software development.
+          This, combined with top industry talent, means our small focused teams deliver projects on time and on budget.
+        </p>
+
+        <div class="pricing-split" style="margin-top:28px;">
+          <div class="accordion" id="pricingAccordion">
+            <div class="acc-item open">
+              <button class="acc-btn" type="button">
+                Learn more about our Seed Program
+                <span class="acc-icon">↓</span>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  Our Seed Program accelerates delivery by using a modular foundation. With core modules ready,
+                  we focus on your unique features, integrations and UI — reducing time to MVP while keeping quality high.
+                </p>
+              </div>
+            </div>
+
+            <div class="acc-item">
+              <button class="acc-btn" type="button">
+                Learn more about our Structured Process
+                <span class="acc-icon">↓</span>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  We work in short iterations, clear milestones and transparent communication. You get visibility on scope,
+                  progress and risk, while we protect delivery through strong engineering standards.
+                </p>
+              </div>
+            </div>
+
+            <div class="acc-item">
+              <button class="acc-btn" type="button">
+                Learn more about team composition
+                <span class="acc-icon">↓</span>
+              </button>
+              <div class="acc-panel">
+                <p>
+                  Teams are sized to match your project. Typically: Product + Design + Engineering.
+                  We scale up or down as needed, keeping momentum without wasting budget.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEED PROJECT EXPLAINED -->
+    <section class="pricing-section seed-section">
+      <div class="container">
+        <div class="seed-grid">
+          <div>
+            <h2 class="pricing-h2">Seed Project Explained</h2>
+            <p class="pricing-lead" style="max-width:720px;">
+              Our Seed program is a purpose-agnostic app with a highly modular microservices architecture composed by a group
+              of components that, when combined, can be the foundation of a project. With the seed in place, the project starts
+              with ~50% of the code already done, while we can focus on developing the CORE: custom functionalities and interfaces.
+            </p>
+          </div>
+
+          <div class="seed-illus" aria-hidden="true">
+            <img src="images/seed-explained.png" alt="" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEED MODULES -->
+    <section class="pricing-section seed-section" style="background:#fff;">
+      <div class="container">
+        <div class="seed-grid">
+          <div>
+            <h2 class="pricing-h2">Seed Modules</h2>
+            <p class="pricing-lead" style="max-width:720px;">
+              Most projects have a common ground — functionalities/modules that are always necessary: email services,
+              signup with email/social networks, password recovery, email validation flows, etc. That is exactly what the seed covers
+              and is reflected in our pricing.
+            </p>
+          </div>
+
+          <div class="seed-illus" aria-hidden="true">
+            <img src="images/seed-modules.png" alt="" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRUCTURED PROCESS -->
+    <section class="pricing-section">
+      <div class="container process-wrap">
+        <h2 class="pricing-h2">Our Services Have a Proven Structured Process</h2>
+        <p class="pricing-lead">
+          Building great products needs deep business insight, and a very structured process — that’s why we’re driven by process.
+        </p>
+
+        <div class="process-cards">
+          <article class="process-card">
+            <div class="process-icon">◇</div>
+            <h3>Product Scope</h3>
+            <p>A structured 15 day process to align your product vision with your business goals.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon">△</div>
+            <h3>AI Development &amp; Enablement</h3>
+            <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon">⬡</div>
+            <h3>MVP Builder</h3>
+            <p>Go to the market quickly with a high-quality Minimum Viable Product.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (3 cards) -->
+    <section class="pricing-section" style="padding-top:0;">
+      <div class="container">
+        <div class="services-3">
+          <article class="service-simple">
+            <h3>Custom Software Development</h3>
+            <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+          </article>
+
+          <article class="service-simple">
+            <h3>UX/UI Design</h3>
+            <p>Design an engaging product that is easy-to-use, attractive and functional.</p>
+          </article>
+
+          <article class="service-simple">
+            <h3>Dedicated Teams</h3>
+            <p>Build your product with a dedicated team of developers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="pricing-cta">
+      <div class="container">
+        <div class="cta-grid">
+          <div class="cta-visual" aria-hidden="true">
+            <img src="images/pricing-person.png" alt="" onerror="this.style.display='none'">
+          </div>
+
+          <div>
+            <h2 class="cta-title">Get a dedicated proposal in a couple of days</h2>
+            <p class="cta-desc">
+              Book a call with us and we'll guide you through a structured process to assess the right list of features for your product.
+              You’ll be driven through this process by product experts, not business developers or account owners.
+            </p>
+
+            <div class="cta-actions">
+              <a class="btn btn--primary" href="book-a-call.html">BOOK A CALL</a>
+              <a class="btn btn--outline" href="index.html#what-we-do">SEE SERVICES</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       FOOTER (IGUAL AO INDEX)
+       ========================= -->
+  <footer class="footer-pro" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="Cobrait logo" class="footer-logo">
+
+          <p class="footer-tagline"
+             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          </p>
+
+          <div class="footer-cta-row">
+            <a class="btn btn--primary btn--footer" href="book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Book a call"
+               data-es="Reservar una llamada">
+              Agendar uma chamada
+            </a>
+            <a class="btn btn--outline btn--footer" href="index.html#what-we-do"
+               data-pt="Ver serviços"
+               data-en="See services"
+               data-es="Ver servicios">
+              Ver serviços
+            </a>
+          </div>
+
+          <div class="footer-badges" aria-label="Highlights">
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+            <li><a href="index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+            <li><a href="index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col--contact">
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+          <div class="footer-meta">
+            <div>
+              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+            </div>
+            <div>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+            </div>
+            <div>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+              <a href="book-a-call.html"
+                 data-pt="Marca uma call."
+                 data-en="Book a call."
+                 data-es="Reserva una llamada.">Marca uma call.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© <span id="year"></span> Cobrait — Software Factory</div>
+        <div class="footer-mini-links">
+          <a href="index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ano
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Acordeão
+    document.querySelectorAll('#pricingAccordion .acc-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-item');
+        const accordion = btn.closest('.accordion');
+
+        // fecha todos
+        accordion.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+        // abre o clicado
+        item.classList.add('open');
+      });
+    });
+
+    // Filtrar exemplos pelo dropdown (opcional mas fica top)
+    const select = document.getElementById('projectType');
+    const cards = Array.from(document.querySelectorAll('#examplesGrid .pricing-card'));
+
+    select.addEventListener('change', () => {
+      const v = select.value.trim();
+      cards.forEach(card => {
+        const type = (card.getAttribute('data-type') || "").trim();
+        if (!v) {
+          card.style.display = "";
+        } else {
+          card.style.display = (type === v) ? "" : "none";
+        }
+      });
+    });
+
+    // Sistema de troca de idiomas (igual ao teu index — mantive simples para não quebrar)
+    document.addEventListener('DOMContentLoaded', function() {
+      const langButtons = document.querySelectorAll('.lang-btn');
+
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(element => {
+          const text = element.getAttribute(`data-${lang}`);
+          if (text) element.textContent = text;
+        });
+      }
+
+      langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          langButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          updateTextContent(lang);
+          localStorage.setItem('preferredLanguage', lang);
+        });
+      });
+
+      const saved = localStorage.getItem('preferredLanguage');
+      if (saved) {
+        const b = document.querySelector(`.lang-btn[data-lang="${saved}"]`);
+        if (b) b.click();
+      } else {
+        updateTextContent('pt');
+      }
+    });
+  </script>
+</body>
+</html>
