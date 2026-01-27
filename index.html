@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Estilos profissionais para os cards e header -->
   <style>
     /* =========================
        HEADER OTIMIZADO E COMPACTO
@@ -24,19 +23,19 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 4px 0; /* AINDA MAIS PEQUENO */
+      padding: 4px 0;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px; /* Reduzido */
-      min-height: 60px; /* Altura controlada */
+      gap: 30px;
+      min-height: 60px;
     }
 
     .brand img {
-      height: 75px; /* Logo grande mas header compacto */
+      height: 75px;
       width: auto;
     }
 
@@ -62,18 +61,18 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 24px; /* Menor espaçamento */
+      gap: 24px;
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 14px; /* Texto ligeiramente menor */
+      font-size: 14px;
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 6px 0; /* Padding reduzido */
+      padding: 6px 0;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -110,7 +109,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 12px; /* Menor margem */
+      margin-top: 12px;
     }
 
     .dropdown:hover .dropdown-content {
@@ -210,11 +209,11 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 16px; /* Menor gap */
+      gap: 16px;
     }
 
     .header-cta .btn {
-      padding: 8px 18px; /* Botão do header mais pequeno */
+      padding: 8px 18px;
       font-size: 13px;
       font-weight: 600;
       white-space: nowrap;
@@ -231,7 +230,7 @@
 
       .site-nav {
         position: fixed;
-        top: 60px; /* Ajustado para header menor */
+        top: 60px;
         left: 0;
         width: 100%;
         background: white;
@@ -290,13 +289,9 @@
         transform: rotate(-45deg) translate(7px, -6px);
       }
 
-      /* Logo menor em mobile */
-      .brand img {
-        height: 50px;
-      }
+      .brand img { height: 50px; }
     }
 
-    /* GARANTIR dropdown acima de tudo */
     .site-header { z-index: 99999; }
     .dropdown-content { z-index: 999999; }
 
@@ -462,7 +457,6 @@
       padding: 0 20px;
     }
 
-    /* overlays do hero não podem capturar cliques */
     .hero-bg, .hero-overlay { pointer-events: none; }
 
     /* =========================
@@ -673,7 +667,6 @@
       .footer-mini-links { justify-content: flex-start; }
     }
 
-    /* FOOTER LOGO – FIX DEFINITIVO */
     .footer-brand{
       display: inline-flex;
       align-items: center;
@@ -710,14 +703,20 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
+          <!-- ✅ CORRIGIDO: PT agora é PT -->
+          <li>
+            <a href="#work"
+               data-pt="Portfólio"
+               data-en="Work"
+               data-es="Work">Work</a>
+          </li>
+
           <li class="dropdown">
             <a href="#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
 
-            <!-- ✅ DROPDOWN COM TEXTOS TRADUZÍVEIS -->
             <div class="dropdown-content">
               <a href="servicos/product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -799,7 +798,7 @@
 
               <a href="servicos/dedicated-teams.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <div class="dropdown-item-content">
                   <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
@@ -815,11 +814,43 @@
             </div>
           </li>
 
-          <li><a href="pricing.html" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
-          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
-          <li><a href="#about" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
-          <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-          <li><a href="#about" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
+          <!-- ✅ CORRIGIDO -->
+          <li>
+            <a href="pricing.html"
+               data-pt="Preços"
+               data-en="Pricing"
+               data-es="Precios">Pricing</a>
+          </li>
+
+          <li>
+            <a href="about-us.html">
+              <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
+            </a>
+          </li>
+
+          <!-- ✅ CORRIGIDO -->
+          <li>
+            <a href="#about"
+               data-pt="Carreiras"
+               data-en="Careers"
+               data-es="Carreras">Careers</a>
+          </li>
+
+          <!-- ✅ CORRIGIDO -->
+          <li>
+            <a href="tech.html"
+               data-pt="Tecnologia"
+               data-en="Tech"
+               data-es="Tech">Tech</a>
+          </li>
+
+          <!-- ✅ CORRIGIDO -->
+          <li>
+            <a href="#about"
+               data-pt="Recursos"
+               data-en="Resources"
+               data-es="Recursos">Resources</a>
+          </li>
         </ul>
       </nav>
 
@@ -833,9 +864,8 @@
         </div>
 
         <div class="header-cta">
-          <!-- ✅ BOTÃO DO HEADER TRADUZÍVEL -->
           <a class="btn btn--primary" href="book-a-call.html"
-             data-pt="AGENDAR UMA CALL"
+             data-pt="AGENDAR UMA CHAMADA"
              data-en="BOOK A CALL"
              data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
         </div>
@@ -962,7 +992,7 @@
                  data-es="Aplicamos frameworks lean a tu visión para crear una solución de software personalizada e innovadora.">
                 Aplicamos frameworks lean à tua visão para criar uma solução de software personalizada e inovadora.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
                     data-en="Learn more →"
                     data-es="Saber más →">Saiba mais →</span>
@@ -985,7 +1015,7 @@
                  data-es="Aplicamos estratégicamente Machine Learning e IA Generativa para garantizar que tu negocio esté preparado para el futuro.">
                 Aplicamos Machine Learning e IA Generativa estrategicamente para garantir que o teu negócio está preparado para o futuro.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
                     data-en="Learn more →"
                     data-es="Saber más →">Saiba mais →</span>
@@ -1008,14 +1038,14 @@
                  data-es="Creamos un producto atractivo que es fácil de usar, atractivo y funcional.">
                 Criamos um produto envolvente que é fácil de usar, atraente e funcional.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
                     data-en="Learn more →"
                     data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
-          <!-- MVP BUILDER  COM LINK -->
+          <!-- MVP BUILDER -->
           <a href="servicos/mvp-builder.html" class="service-card-link">
             <article class="service-card">
               <div class="service-card__icon service-card__icon--pink">
@@ -1031,7 +1061,7 @@
                  data-es="Entra al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
                 Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
                     data-en="Learn more →"
                     data-es="Saber más →">Saiba mais →</span>
@@ -1054,7 +1084,7 @@
                  data-es="Construye tu producto con un equipo dedicado de desarrolladores.">
                 Constrói o teu produto com uma equipa dedicada de programadores.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
                     data-en="Learn more →"
                     data-es="Saber más →">Saiba mais →</span>
@@ -1073,7 +1103,7 @@
       </div>
     </section>
 
-    <!-- NOVA SEÇÃO: REDES SOCIAIS (APÓS SERVIÇOS) -->
+    <!-- SOCIAL -->
     <section class="social-media" id="social-media">
       <div class="container social-inner">
         <div class="social-copy">
@@ -1110,19 +1140,9 @@
       </div>
     </section>
 
-    <!-- WORK -->
-    <section id="work" class="section section--alt">
-      <div class="container">
-        <h2 data-pt="Casos de Sucesso" data-en="Success Cases" data-es="Casos de Éxito">Casos de Sucesso</h2>
-        <p data-pt="Exemplos de trabalhos e métricas de impacto."
-           data-en="Examples of work and impact metrics."
-           data-es="Ejemplos de trabajos y métricas de impacto.">
-          Exemplos de trabalhos e métricas de impacto.
-        </p>
-      </div>
-    </section>
+  
 
-    <!-- FOOTER (PRO) -->
+    <!-- FOOTER -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
@@ -1215,7 +1235,7 @@
     </footer>
   </main>
 
-  <!-- ✅ SCRIPT FINAL (IDIOMAS + HEADER FIX) -->
+  <!-- ✅ SCRIPT FINAL (IDIOMAS + HEADER FIX REAL) -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1230,7 +1250,17 @@
         });
       });
 
-      // Fechar dropdown ao clicar fora (para mobile)
+      // ====== Normalização de idioma (evita pt-PT quebrar) ======
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        return 'pt';
+      }
+
+      // Fechar dropdown ao clicar fora (mobile) - sem "quebrar" display
       document.addEventListener('click', function(event) {
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
@@ -1243,16 +1273,15 @@
         });
       });
 
-      // ========= IDIOMAS =========
       const langButtons = document.querySelectorAll('.lang-btn');
-      const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
 
       setActiveButton(savedLanguage);
       applyLanguage(savedLanguage);
 
       langButtons.forEach(button => {
         button.addEventListener('click', function() {
-          const lang = this.getAttribute('data-lang');
+          const lang = normalizeLang(this.getAttribute('data-lang'));
           setActiveButton(lang);
           applyLanguage(lang);
           localStorage.setItem('preferredLanguage', lang);
@@ -1266,6 +1295,7 @@
       }
 
       function applyLanguage(lang) {
+        lang = normalizeLang(lang);
         document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
         updateTextContent(lang);
         updateAriaLabels(lang);
@@ -1287,7 +1317,6 @@
         });
       }
 
-      // ✅ Para aria-label (ex: botão de menu mobile)
       function updateAriaLabels(lang) {
         const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
         ariaEls.forEach(el => {
@@ -1299,3 +1328,6 @@
   </script>
 </body>
 </html>
+```
+
+Se quiseres, eu também **traduzo o texto do dropdown “Product Scope / MVP Builder…”** para PT/ES (os títulos já estão, falta só alguns nomes que ainda estão em inglês).
