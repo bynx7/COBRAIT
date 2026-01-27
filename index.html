@@ -289,7 +289,7 @@
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
       }
-      
+
       /* Logo menor em mobile */
       .brand img {
         height: 50px;
@@ -698,7 +698,11 @@
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+      <label class="nav-toggle-btn" for="nav-toggle"
+             aria-label="Abrir menu"
+             data-pt="Abrir menu"
+             data-en="Open menu"
+             data-es="Abrir menú">
         <span></span>
         <span></span>
         <span></span>
@@ -712,14 +716,20 @@
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
+
+            <!-- ✅ DROPDOWN COM TEXTOS TRADUZÍVEIS -->
             <div class="dropdown-content">
               <a href="servicos/product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Product Scope</h4>
-                  <p>15-day process to align the product with your business goals.</p>
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
                 </div>
               </a>
 
@@ -728,8 +738,12 @@
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>MVP Builder</h4>
-                  <p>Go to market quickly with a high-quality Minimum Viable Product.</p>
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
                 </div>
               </a>
 
@@ -738,8 +752,12 @@
                   <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>UX / UI</h4>
-                  <p>Design an easy-to-use engaging and functional product.</p>
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
                 </div>
               </a>
 
@@ -748,8 +766,16 @@
                   <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>AI Development & Enablement</h4>
-                  <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
                 </div>
               </a>
 
@@ -758,8 +784,16 @@
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Custom Software Development</h4>
-                  <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">
+                    Custom Software Development
+                  </h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
                 </div>
               </a>
 
@@ -768,12 +802,19 @@
                   <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Dedicated Teams</h4>
-                  <p>Build your product with a dedicated team of developers.</p>
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
+                    Dedicated Teams
+                  </h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
                 </div>
               </a>
             </div>
           </li>
+
           <li><a href="pricing.html" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
           <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
           <li><a href="#about" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
@@ -792,7 +833,11 @@
         </div>
 
         <div class="header-cta">
-          <a class="btn btn--primary" href="book-a-call.html">BOOK A CALL</a>
+          <!-- ✅ BOTÃO DO HEADER TRADUZÍVEL -->
+          <a class="btn btn--primary" href="book-a-call.html"
+             data-pt="AGENDAR UMA CALL"
+             data-en="BOOK A CALL"
+             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
         </div>
       </div>
     </div>
@@ -894,7 +939,10 @@
                  data-es="Un proceso estructurado de 15 días para alinear tu visión del producto con los objetivos del negocio.">
                 Um processo estruturado de 15 dias para alinhar a tua visão do produto com os objetivos do negócio.
               </p>
-              <span class="service-card-cta">Saiba mais →</span>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
@@ -914,9 +962,10 @@
                  data-es="Aplicamos frameworks lean a tu visión para crear una solución de software personalizada e innovadora.">
                 Aplicamos frameworks lean à tua visão para criar uma solução de software personalizada e inovadora.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;">
-                Saiba mais →
-              </span>
+              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
@@ -936,9 +985,10 @@
                  data-es="Aplicamos estratégicamente Machine Learning e IA Generativa para garantizar que tu negocio esté preparado para el futuro.">
                 Aplicamos Machine Learning e IA Generativa estrategicamente para garantir que o teu negócio está preparado para o futuro.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;">
-                Saiba mais →
-              </span>
+              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
@@ -958,9 +1008,10 @@
                  data-es="Creamos un producto atractivo que es fácil de usar, atractivo y funcional.">
                 Criamos um produto envolvente que é fácil de usar, atraente e funcional.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;">
-                Saiba mais →
-              </span>
+              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
@@ -980,9 +1031,10 @@
                  data-es="Entra al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
                 Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;">
-                Saiba mais →
-              </span>
+              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
 
@@ -1002,9 +1054,10 @@
                  data-es="Construye tu producto con un equipo dedicado de desarrolladores.">
                 Constrói o teu produto com uma equipa dedicada de programadores.
               </p>
-              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;">
-                Saiba mais →
-              </span>
+              <span class="service-card-cta" style="display: inline-block; margin-top: 15px; color: #4f46e5; font-weight: 600; font-size: 0.9rem;"
+                    data-pt="Saiba mais →"
+                    data-en="Learn more →"
+                    data-es="Saber más →">Saiba mais →</span>
             </article>
           </a>
         </div>
@@ -1162,18 +1215,16 @@
     </footer>
   </main>
 
+  <!-- ✅ SCRIPT FINAL (IDIOMAS + HEADER FIX) -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Adiciona efeito de hover mais suave aos cards
     document.addEventListener('DOMContentLoaded', function() {
       const serviceCards = document.querySelectorAll('.service-card');
-
       serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
           this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         });
-
         card.addEventListener('mouseleave', function() {
           this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         });
@@ -1186,105 +1237,63 @@
           if (!dropdown.contains(event.target)) {
             const content = dropdown.querySelector('.dropdown-content');
             if (content && window.innerWidth <= 768) {
-              content.style.display = 'none';
+              content.style.display = '';
             }
           }
         });
       });
 
-      // Sistema de troca de idiomas
+      // ========= IDIOMAS =========
       const langButtons = document.querySelectorAll('.lang-btn');
+      const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
 
-      // INICIALIZAR: Garantir que conteúdo em PT está visível ao carregar
-      initializePortuguese();
+      setActiveButton(savedLanguage);
+      applyLanguage(savedLanguage);
 
       langButtons.forEach(button => {
         button.addEventListener('click', function() {
           const lang = this.getAttribute('data-lang');
-
-          // Remove active class de todos os botões
-          langButtons.forEach(btn => btn.classList.remove('active'));
-
-          // Adiciona active class ao botão selecionado
-          this.classList.add('active');
-
-          // Troca o idioma do site
-          changeLanguage(lang);
+          setActiveButton(lang);
+          applyLanguage(lang);
+          localStorage.setItem('preferredLanguage', lang);
         });
       });
 
-      function initializePortuguese() {
-        // MOSTRAR conteúdo em português inicialmente
-        document.querySelectorAll('[lang="pt"]').forEach(el => {
-          el.style.display = 'block';
-          el.style.visibility = 'visible';
-          el.style.opacity = '1';
-        });
-
-        // ESCONDER outros idiomas inicialmente
-        document.querySelectorAll('[lang="en"], [lang="es"]').forEach(el => {
-          el.style.display = 'none';
-        });
-
-        // Atualizar textos com data-attributes para português
-        updateTextContent('pt');
+      function setActiveButton(lang) {
+        langButtons.forEach(btn => btn.classList.remove('active'));
+        const active = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+        if (active) active.classList.add('active');
       }
 
-      function changeLanguage(lang) {
-        // Atualiza o atributo lang do HTML
+      function applyLanguage(lang) {
         document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
-
-        // ESCONDER todos os elementos com [lang] (menos o <html>)
-        document.querySelectorAll('[lang]:not(html)').forEach(el => {
-          el.style.display = 'none';
-        });
-
-        // MOSTRAR apenas elementos do idioma selecionado
-        const langToShow = (lang === 'pt') ? 'pt-PT' : lang;
-
-        document.querySelectorAll(`[lang="${langToShow}"]`).forEach(el => {
-          el.style.display = 'block';
-          el.style.visibility = 'visible';
-          el.style.opacity = '1';
-        });
-
-        // Atualizar textos dinâmicos
         updateTextContent(lang);
-
-        // Salvar preferência
-        localStorage.setItem('preferredLanguage', lang);
+        updateAriaLabels(lang);
       }
 
       function updateTextContent(lang) {
-        // Atualizar elementos que usam data-attributes
         const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(el => {
+          const text = el.getAttribute(`data-${lang}`);
+          if (text === null) return;
 
-        elements.forEach(element => {
-          const text = element.getAttribute(`data-${lang}`);
-          if (text) {
-            // Para inputs/textarea
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-              element.value = text;
-            }
-            // Para conteúdo HTML
-            else if (element.hasAttribute('data-html')) {
-              element.innerHTML = text;
-            }
-            // Para texto normal (incluindo hero-title-line1/2)
-            else {
-              element.textContent = text;
-            }
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = text;
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
           }
         });
       }
 
-      // Carregar linguagem salva
-      const savedLanguage = localStorage.getItem('preferredLanguage');
-      if (savedLanguage && savedLanguage !== 'pt') {
-        const button = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
-        if (button) {
-          setTimeout(() => button.click(), 100); // Pequeno delay para garantir
-        }
+      // ✅ Para aria-label (ex: botão de menu mobile)
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        ariaEls.forEach(el => {
+          const val = el.getAttribute(`data-${lang}`);
+          if (val) el.setAttribute('aria-label', val);
+        });
       }
     });
   </script>
