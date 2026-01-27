@@ -168,42 +168,109 @@
 
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    .language-selector {
+    /* DROPDOWN DE LÍNGUAS NO HEADER */
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-dropdown-btn {
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .lang-btn {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      color: #64748b;
-      text-decoration: none;
-      padding: 3px 6px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .lang-btn:hover {
-      color: #4f46e5;
+      padding: 6px 12px;
       background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .lang-btn.active {
-      color: #4f46e5;
+    .language-dropdown-btn:hover {
       background: #f1f5f9;
-      font-weight: 700;
+      border-color: #cbd5e1;
     }
 
-    .language-divider {
-      color: #cbd5e1;
-      font-weight: 300;
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
     }
 
     .header-right {
@@ -267,7 +334,25 @@
         gap: 10px;
       }
 
-      .language-selector { justify-content: center; width: 100%; }
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
       .header-cta { width: 100%; }
 
       .header-cta .btn {
@@ -293,7 +378,7 @@
     }
 
     .site-header { z-index: 99999; }
-    .dropdown-content { z-index: 999999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
     /* =========================
        WHAT WE DO (MANTIDO IGUAL)
@@ -855,12 +940,28 @@
       </nav>
 
       <div class="header-right">
-        <div class="language-selector">
-          <button class="lang-btn active" data-lang="pt">PT</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="es">ES</button>
+        <!-- NOVO: DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt">
+              <span class="lang-flag">🇵🇹</span>
+              <span class="lang-name">Português</span>
+            </button>
+            <button class="language-option" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="language-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+            </button>
+          </div>
         </div>
 
         <div class="header-cta">
@@ -1257,15 +1358,16 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
-        return 'pt';
+        // Fallback para inglês para outras línguas
+        return 'en';
       }
 
-      // Fechar dropdown ao clicar fora (mobile) - sem "quebrar" display
+      // Fechar dropdown ao clicar fora (mobile)
       document.addEventListener('click', function(event) {
-        const dropdowns = document.querySelectorAll('.dropdown');
+        const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
         dropdowns.forEach(dropdown => {
           if (!dropdown.contains(event.target)) {
-            const content = dropdown.querySelector('.dropdown-content');
+            const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
             if (content && window.innerWidth <= 768) {
               content.style.display = '';
             }
@@ -1273,25 +1375,61 @@
         });
       });
 
-      const langButtons = document.querySelectorAll('.lang-btn');
-      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      // ====== SISTEMA DE LÍNGUAS COM DROPDOWN ======
+      const languageOptions = document.querySelectorAll('.language-option');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      
+      // Mapeamento de bandeiras para cada língua
+      const flagMap = {
+        'pt': '🇵🇹',
+        'en': '🇬🇧',
+        'es': '🇪🇸'
+      };
+      
+      // Mapeamento de códigos curtos
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES'
+      };
 
-      setActiveButton(savedLanguage);
+      // Carregar língua salva ou usar português por padrão
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
 
-      langButtons.forEach(button => {
-        button.addEventListener('click', function() {
+      // Event listeners para as opções de língua
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
           const lang = normalizeLang(this.getAttribute('data-lang'));
-          setActiveButton(lang);
+          setActiveLanguage(lang);
           applyLanguage(lang);
           localStorage.setItem('preferredLanguage', lang);
         });
       });
 
-      function setActiveButton(lang) {
-        langButtons.forEach(btn => btn.classList.remove('active'));
-        const active = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-        if (active) active.classList.add('active');
+      function setActiveLanguage(lang) {
+        // Atualizar o botão do dropdown
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '🇬🇧'; // Fallback para bandeira UK
+        }
+        
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN'; // Fallback para EN
+        }
+        
+        // Atualizar as opções ativas
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
+        });
       }
 
       function applyLanguage(lang) {
@@ -1304,7 +1442,13 @@
       function updateTextContent(lang) {
         const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
         elements.forEach(el => {
-          const text = el.getAttribute(`data-${lang}`);
+          let text = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+          
           if (text === null) return;
 
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
@@ -1320,7 +1464,13 @@
       function updateAriaLabels(lang) {
         const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
         ariaEls.forEach(el => {
-          const val = el.getAttribute(`data-${lang}`);
+          let val = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          
           if (val) el.setAttribute('aria-label', val);
         });
       }
@@ -1328,6 +1478,3 @@
   </script>
 </body>
 </html>
-```
-
-Se quiseres, eu também **traduzo o texto do dropdown “Product Scope / MVP Builder…”** para PT/ES (os títulos já estão, falta só alguns nomes que ainda estão em inglês).
