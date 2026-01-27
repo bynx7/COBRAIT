@@ -371,6 +371,7 @@
       .pricing-examples__visual { justify-content: flex-start; }
     }
 
+    /* Pricing cards - ESTILO IGUAL À PRIMEIRA SCREENSHOT */
     .pricing-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -383,7 +384,6 @@
       padding: 28px;
       box-shadow: 0 12px 28px rgba(2,6,23,0.06);
       transition: all .25s ease;
-      min-height: 260px;
       display: flex;
       flex-direction: column;
     }
@@ -396,7 +396,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .pricing-card h3 {
       margin: 0;
@@ -406,20 +406,101 @@
       color: #0f172a;
       line-height: 1.25;
     }
-    .pricing-card__meta {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: #94a3b8;
-      white-space: nowrap;
+    
+    /* ESTILO DOS DETALHES: COMPLEXITY, SIZE, SPEED */
+    .pricing-details {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-    .pricing-card__price {
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .detail-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .detail-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #0f172a;
+    }
+    .detail-value.low { color: #10b981; }
+    .detail-value.mid { color: #f59e0b; }
+    .detail-value.high { color: #ef4444; }
+    
+    /* FAIXA DE PREÇO - FROM TO */
+    .price-range {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .price-range-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .price-amounts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .price-from, .price-to {
+      flex: 1;
+    }
+    .price-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .price-value {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 54px;
-      letter-spacing: -1px;
+      font-size: 28px;
       color: #0f172a;
-      margin: 8px 0 10px;
+      line-height: 1;
     }
+    .price-divider {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    
+    /* Nota abaixo da faixa de preço */
+    .price-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 12px;
+      font-style: italic;
+    }
+    
+    /* Descrição do projeto */
     .pricing-card__desc {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -427,13 +508,17 @@
       line-height: 1.7;
       color: #475569;
       margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
     }
+    
     @media (max-width: 1024px) {
       .pricing-cards { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 680px) {
       .pricing-cards { grid-template-columns: 1fr; }
-      .pricing-card__price { font-size: 46px; }
+      .price-amounts { flex-direction: column; gap: 8px; }
+      .price-divider { display: none; }
     }
 
     /* How we get to pricing */
@@ -1047,12 +1132,46 @@
         </div>
 
         <div class="pricing-cards" id="examplesGrid">
+          <!-- EXEMPLO 1: Community Management Platform -->
           <article class="pricing-card" data-type="Community / Social Network">
             <div class="pricing-card__top">
               <h3 data-pt="Plataforma de Gestão de Comunidade" data-en="Community Management Platform" data-es="Plataforma de Gestión de Comunidad">Community Management Platform</h3>
-              <span class="pricing-card__meta" data-pt="3 meses" data-en="3 months" data-es="3 meses">3 months</span>
             </div>
-            <div class="pricing-card__price">€40k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value mid">Mid</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Medium</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">2-5 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$11k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$30k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Um MVP para uma plataforma de Q&A para a indústria da beleza."
                data-en="An MVP for a Q&A platform for the beauty industry."
                data-es="Un MVP para una plataforma de Q&A para la industria de la belleza.">
@@ -1060,12 +1179,46 @@
             </p>
           </article>
 
+          <!-- EXEMPLO 2: Arts Marketplace -->
           <article class="pricing-card" data-type="Marketplace">
             <div class="pricing-card__top">
               <h3 data-pt="Marketplace de Artes" data-en="Arts Marketplace" data-es="Marketplace de Arte">Arts Marketplace</h3>
-              <span class="pricing-card__meta" data-pt="2 meses" data-en="2 months" data-es="2 meses">2 months</span>
             </div>
-            <div class="pricing-card__price">€18k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value low">Low</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Small</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">> 6 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$8k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$20k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Marketplace construído para servir as necessidades específicas de um nicho de Arte."
                data-en="Marketplace built to serve the specific needs of an Art's niche."
                data-es="Marketplace construido para servir las necesidades específicas de un nicho de Arte.">
@@ -1073,12 +1226,46 @@
             </p>
           </article>
 
+          <!-- EXEMPLO 3: API Middleware Connector -->
           <article class="pricing-card" data-type="API">
             <div class="pricing-card__top">
               <h3 data-pt="Conector Middleware API" data-en="API Middleware Connector" data-es="Conector Middleware API">API Middleware Connector</h3>
-              <span class="pricing-card__meta" data-pt="5 meses" data-en="5 months" data-es="5 meses">5 months</span>
             </div>
-            <div class="pricing-card__price">€90k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value high">High</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Big</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">&lt; 2 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$50k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$120k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Software para integrar perfeitamente várias partes terceiras numa interface drag and drop."
                data-en="Software to seamlessly integrate several different third parties in a drag and drop interface."
                data-es="Software para integrar perfectamente varias partes terceras en una interfaz drag and drop.">
@@ -1086,12 +1273,46 @@
             </p>
           </article>
 
+          <!-- EXEMPLO 4: Proptech Cloud -->
           <article class="pricing-card" data-type="Artificial Intelligence Application">
             <div class="pricing-card__top">
               <h3 data-pt="Proptech Cloud" data-en="Proptech Cloud" data-es="Proptech Cloud">Proptech Cloud</h3>
-              <span class="pricing-card__meta" data-pt="5 meses" data-en="5 months" data-es="5 meses">5 months</span>
             </div>
-            <div class="pricing-card__price">€350k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value high">High</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Big</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">&lt; 2 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$200k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$500k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Ferramenta de IA que analisa pontos de dados relacionados com uma área geográfica e calcula o valor de imóveis."
                data-en="AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets."
                data-es="Herramienta de IA que analiza puntos de datos relacionados con un área geográfica y calcula el valor de activos inmobiliarios.">
@@ -1099,12 +1320,46 @@
             </p>
           </article>
 
+          <!-- EXEMPLO 5: Legaltech -->
           <article class="pricing-card" data-type="Regtech Software">
             <div class="pricing-card__top">
               <h3 data-pt="Legaltech" data-en="Legaltech" data-es="Legaltech">Legaltech</h3>
-              <span class="pricing-card__meta" data-pt="2 meses" data-en="2 months" data-es="2 meses">2 months</span>
             </div>
-            <div class="pricing-card__price">€100k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value high">High</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Medium</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">2-5 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$60k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$150k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Um MVP para uma ferramenta complexa de IA que analisa regras públicas e aconselha equipas sobre perfis de clientes."
                data-en="An MVP for a complex AI tool that analyses public rules and advises teams on client profiles."
                data-es="Un MVP para una herramienta compleja de IA que analiza reglas públicas y asesora a equipos sobre perfiles de clientes.">
@@ -1112,12 +1367,46 @@
             </p>
           </article>
 
+          <!-- EXEMPLO 6: Social Network Mobile App -->
           <article class="pricing-card" data-type="Community / Social Network">
             <div class="pricing-card__top">
               <h3 data-pt="App Móvel de Rede Social" data-en="Social Network Mobile App" data-es="App Móvil de Red Social">Social Network Mobile App</h3>
-              <span class="pricing-card__meta" data-pt="5 meses" data-en="5 months" data-es="5 meses">5 months</span>
             </div>
-            <div class="pricing-card__price">€50k</div>
+            
+            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
+            <div class="pricing-details">
+              <div class="detail-row">
+                <span class="detail-label">COMPLEXITY</span>
+                <span class="detail-value mid">Mid</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">PROJECT SIZE</span>
+                <span class="detail-value">Big</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">SPEED</span>
+                <span class="detail-value">&lt; 2 Months</span>
+              </div>
+            </div>
+            
+            <!-- FAIXA DE PREÇO -->
+            <div class="price-range">
+              <div class="price-range-label">Project Range</div>
+              <div class="price-amounts">
+                <div class="price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="price-value">$30k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="price-to">
+                  <div class="price-title">TO</div>
+                  <div class="price-value">$80k</div>
+                </div>
+              </div>
+              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+            
+            <!-- DESCRIÇÃO -->
             <p class="pricing-card__desc" data-pt="Uma comunidade gamificada centrada em fãs onde humanos podem interagir de forma mais próxima e rica."
                data-en="A gamified fandom-centric community where humans can engage in a closer and richer way."
                data-es="Una comunidad gamificada centrada en fans donde los humanos pueden interactuar de forma más cercana y rica.">
