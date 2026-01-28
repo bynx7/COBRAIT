@@ -1,54 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Builder - COBRAIT</title>
+  <title>MVP Builder - Cobrait — Software Factory</title>
 
-  <!-- Fonts (igual ao site) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../servicos.css" />
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
   <style>
-    /* =========================================================
-       Ajustes base
-    ========================================================= */
-    :root{
-      --ink:#0f172a;
-      --muted:#64748b;
-      --muted2:#94a3b8;
-      --line:#e2e8f0;
-      --bg:#f6f8fc;
-      --card:#ffffff;
-
-      --brand1:#4f46e5;
-      --brand2:#7c3aed;
-      --shadow: 0 14px 40px rgba(2,6,23,.08);
-      --shadow2: 0 10px 26px rgba(2,6,23,.06);
-      --radius: 18px;
-    }
-
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 500px at 20% 0%, rgba(79,70,229,.10), transparent 60%),
-                  radial-gradient(900px 450px at 80% 15%, rgba(124,58,237,.10), transparent 60%),
-                  linear-gradient(180deg, #fff 0%, var(--bg) 100%);
-      color: var(--ink);
-    }
-
-    .container{
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* =========================================================
-       HEADER EXATAMENTE IGUAL AO INDEX (MANTIDO COMPLETO)
-    ========================================================= */
+    /* =========================
+       HEADER OTIMIZADO E COMPACTO (EXATAMENTE IGUAL AO INDEX.HTML)
+       ========================= */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -199,13 +167,12 @@
     }
 
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
-    
-    /* =========================
-       DROPDOWN DE LÍNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
-       ========================= */
+
+    /* DROPDOWN DE LÍNGUAS NO HEADER */
     .language-dropdown {
       position: relative;
     }
+
     .language-dropdown-btn {
       display: flex;
       align-items: center;
@@ -221,20 +188,24 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+
     .language-dropdown-btn:hover {
       background: #f1f5f9;
       border-color: #cbd5e1;
     }
+
     .language-dropdown-btn .lang-flag {
       width: 16px;
       height: 12px;
       border-radius: 2px;
       overflow: hidden;
     }
+
     .language-dropdown-btn .lang-code {
       font-weight: 600;
       color: #4f46e5;
     }
+
     .language-dropdown-content {
       position: absolute;
       top: 100%;
@@ -251,11 +222,13 @@
       z-index: 1000;
       margin-top: 8px;
     }
+
     .language-dropdown:hover .language-dropdown-content {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
+
     .language-option {
       display: flex;
       align-items: center;
@@ -273,17 +246,21 @@
       font-family: 'Inter', sans-serif;
       font-size: 14px;
     }
+
     .language-option:hover {
       background: #f8fafc;
       transform: translateX(4px);
     }
+
     .language-option.active {
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       color: white;
     }
+
     .language-option.active:hover {
       background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
     }
+
     .language-option .lang-flag {
       width: 20px;
       height: 15px;
@@ -291,42 +268,22 @@
       overflow: hidden;
       flex-shrink: 0;
     }
+
     .language-option .lang-name {
       flex: 1;
     }
-    
+
     .header-right {
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    /* BOTÃO DO HEADER EXATAMENTE IGUAL AO INDEX */
     .header-cta .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 18px !important;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
+      padding: 8px 18px;
+      font-size: 13px;
       font-weight: 600;
-      font-size: 13px !important;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
       white-space: nowrap;
-    }
-
-    .header-cta .btn--primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-      color: white !important;
-      border: none !important;
-    }
-
-    .header-cta .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3) !important;
     }
 
     @media (max-width: 1024px) {
@@ -380,10 +337,12 @@
       .language-dropdown {
         width: 100%;
       }
+
       .language-dropdown-btn {
         width: 100%;
         justify-content: center;
       }
+
       .language-dropdown-content {
         position: static;
         opacity: 1;
@@ -393,7 +352,9 @@
         margin-top: 8px;
         width: 100%;
       }
+
       .header-cta { width: 100%; }
+
       .header-cta .btn {
         width: 100%;
         justify-content: center;
@@ -412,36 +373,63 @@
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
       }
-      
-      /* Logo menor em mobile */
-      .brand img {
-        height: 50px;
-      }
+
+      .brand img { height: 50px; }
     }
 
-    /* GARANTIR dropdown acima de tudo */
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
     /* =========================================================
+       CONTEÚDO ESPECÍFICO DO MVP BUILDER (MANTIDO)
+    ========================================================= */
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --muted2: #94a3b8;
+      --line: #e2e8f0;
+      --bg: #f6f8fc;
+      --card: #ffffff;
+      --brand1: #4f46e5;
+      --brand2: #7c3aed;
+      --shadow: 0 14px 40px rgba(2, 6, 23, .08);
+      --shadow2: 0 10px 26px rgba(2, 6, 23, .06);
+      --radius: 18px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 500px at 20% 0%, rgba(79, 70, 229, .10), transparent 60%),
+                  radial-gradient(900px 450px at 80% 15%, rgba(124, 58, 237, .10), transparent 60%),
+                  linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================================================
        HERO (layout premium como o site inspiração)
     ========================================================= */
-    .service-hero{
+    .service-hero {
       padding: 70px 0 30px;
       background: transparent;
     }
 
-    .hero-grid{
-      display:grid;
+    .hero-grid {
+      display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       gap: 50px;
-      align-items:center;
+      align-items: center;
     }
 
-    .hero-kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-weight: 700;
       font-size: 12px;
       letter-spacing: .14em;
@@ -449,17 +437,17 @@
       color: var(--muted);
       margin-bottom: 14px;
     }
-    .hero-kicker::before{
-      content:"";
+    .hero-kicker::before {
+      content: "";
       width: 10px;
       height: 10px;
       border-radius: 999px;
       background: linear-gradient(135deg, var(--brand1), var(--brand2));
-      box-shadow: 0 0 0 6px rgba(79,70,229,.12);
+      box-shadow: 0 0 0 6px rgba(79, 70, 229, .12);
     }
 
-    .hero-title{
-      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+    .hero-title {
+      font-family: 'Poppins', 'Inter', system-ui, Arial, sans-serif;
       font-size: clamp(40px, 4.2vw, 60px);
       line-height: 1.05;
       letter-spacing: -0.03em;
@@ -467,7 +455,7 @@
       color: #0b1220;
     }
 
-    .hero-sub{
+    .hero-sub {
       font-size: 18px;
       line-height: 1.65;
       color: var(--muted);
@@ -475,118 +463,157 @@
       margin: 0 0 24px;
     }
 
-    .hero-actions{
-      display:flex;
+    .hero-actions {
+      display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      align-items:center;
+      align-items: center;
     }
 
-    .btn-ghost{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    /* BOTÕES EXATAMENTE IGUAIS AO INDEX.HTML */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+
+    .btn--outline:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 12px 18px;
       border-radius: 10px;
       font-weight: 700;
       color: var(--brand1);
-      border: 1px solid rgba(79,70,229,.22);
-      background: rgba(79,70,229,.06);
-      text-decoration:none;
+      border: 1px solid rgba(79, 70, 229, .22);
+      background: rgba(79, 70, 229, .06);
+      text-decoration: none;
       transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn-ghost:hover{
+    .btn-ghost:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow2);
-      background: rgba(79,70,229,.09);
+      background: rgba(79, 70, 229, .09);
     }
 
-    .hero-visual{
+    .hero-visual {
       position: relative;
       min-height: 420px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .hero-card{
-      width:100%;
+    .hero-card {
+      width: 100%;
       border-radius: 28px;
       background: var(--card);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       padding: 22px;
       position: relative;
-      overflow:hidden;
+      overflow: hidden;
     }
 
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
       background:
-        radial-gradient(600px 260px at 20% 10%, rgba(79,70,229,.20), transparent 60%),
-        radial-gradient(520px 240px at 85% 30%, rgba(124,58,237,.18), transparent 60%);
-      pointer-events:none;
+        radial-gradient(600px 260px at 20% 10%, rgba(79, 70, 229, .20), transparent 60%),
+        radial-gradient(520px 240px at 85% 30%, rgba(124, 58, 237, .18), transparent 60%);
+      pointer-events: none;
       opacity: .85;
     }
 
-    .hero-card-inner{
+    .hero-card-inner {
       position: relative;
       z-index: 1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 12px;
       padding: 14px;
     }
 
-    .hero-image{
+    .hero-image {
       width: 100%;
       max-width: 420px;
       height: auto;
-      display:block;
+      display: block;
       border-radius: 18px;
       background: #fff;
     }
 
-    .hero-badges{
-      display:flex;
+    .hero-badges {
+      display: flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 14px;
       position: relative;
       z-index: 1;
     }
-    .badge{
+    .badge {
       font-size: 12px;
       font-weight: 700;
       color: #0b1220;
-      background: rgba(15,23,42,.06);
-      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(15, 23, 42, .06);
+      border: 1px solid rgba(15, 23, 42, .08);
       padding: 8px 10px;
       border-radius: 999px;
     }
 
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .hero-visual{ min-height: unset; }
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: unset; }
     }
 
     /* =========================================================
        Secções
     ========================================================= */
-    .section{
+    .section {
       padding: 70px 0;
     }
 
-    .section--alt{
-      background: linear-gradient(180deg, rgba(241,245,249,.55) 0%, rgba(241,245,249,.78) 100%);
-      border-top: 1px solid rgba(226,232,240,.9);
+    .section--alt {
+      background: linear-gradient(180deg, rgba(241, 245, 249, .55) 0%, rgba(241, 245, 249, .78) 100%);
+      border-top: 1px solid rgba(226, 232, 240, .9);
     }
 
-    .section-title{
-      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+    .section-title {
+      font-family: 'Poppins', 'Inter', system-ui, Arial, sans-serif;
       font-weight: 800;
       letter-spacing: -0.02em;
       font-size: clamp(34px, 3.2vw, 46px);
@@ -595,26 +622,26 @@
       color: #0b1220;
     }
 
-    .two-col{
-      display:grid;
+    .two-col {
+      display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 34px;
-      align-items:center;
+      align-items: center;
     }
 
-    .card{
+    .card {
       background: var(--card);
-      border: 1px solid rgba(226,232,240,.95);
+      border: 1px solid rgba(226, 232, 240, .95);
       border-radius: var(--radius);
       box-shadow: var(--shadow2);
     }
 
-    .what-card{
+    .what-card {
       padding: 34px;
     }
 
-    .what-title{
-      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+    .what-title {
+      font-family: 'Poppins', 'Inter', system-ui, Arial, sans-serif;
       font-weight: 800;
       font-size: 34px;
       letter-spacing: -0.02em;
@@ -622,7 +649,7 @@
       color: #0b1220;
     }
 
-    .what-desc{
+    .what-desc {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
@@ -630,39 +657,39 @@
     }
 
     /* Key benefits grid */
-    .benefits-grid{
-      display:grid;
+    .benefits-grid {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 26px;
     }
 
-    .benefit{
+    .benefit {
       padding: 26px;
       min-height: 210px;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       gap: 14px;
     }
 
-    .iconbox{
+    .iconbox {
       width: 56px;
       height: 56px;
       border-radius: 14px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border: 1px solid rgba(226,232,240,.9);
-      background: rgba(79,70,229,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(226, 232, 240, .9);
+      background: rgba(79, 70, 229, .06);
     }
 
-    .benefit h3{
+    .benefit h3 {
       margin: 0;
       font-size: 22px;
       letter-spacing: -0.01em;
       color: #0b1220;
     }
 
-    .benefit p{
+    .benefit p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
@@ -670,31 +697,31 @@
     }
 
     /* How it works timeline */
-    .timeline-wrap{
+    .timeline-wrap {
       position: relative;
       padding-left: 44px;
-      display:flex;
-      flex-direction:column;
+      display: flex;
+      flex-direction: column;
       gap: 22px;
     }
 
-    .timeline-wrap::before{
-      content:"";
-      position:absolute;
+    .timeline-wrap::before {
+      content: "";
+      position: absolute;
       left: 18px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: rgba(148,163,184,.55);
+      background: rgba(148, 163, 184, .55);
     }
 
-    .step{
+    .step {
       position: relative;
     }
 
-    .step::before{
-      content:"➜";
-      position:absolute;
+    .step::before {
+      content: "➜";
+      position: absolute;
       left: -44px;
       top: 22px;
       width: 34px;
@@ -702,19 +729,19 @@
       border-radius: 999px;
       background: #ec1b67;
       color: #fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 900;
-      box-shadow: 0 10px 20px rgba(236,27,103,.18);
+      box-shadow: 0 10px 20px rgba(236, 27, 103, .18);
     }
 
-    .step-card{
+    .step-card {
       padding: 26px 28px;
     }
 
-    .step-title{
-      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+    .step-title {
+      font-family: 'Poppins', 'Inter', system-ui, Arial, sans-serif;
       font-weight: 800;
       font-size: 28px;
       margin: 0 0 10px;
@@ -722,7 +749,7 @@
       color: #0b1220;
     }
 
-    .step-desc{
+    .step-desc {
       margin: 0 0 18px;
       color: var(--muted);
       line-height: 1.75;
@@ -730,16 +757,16 @@
       max-width: 95ch;
     }
 
-    .deliverables{
-      display:grid;
+    .deliverables {
+      display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px 30px;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid rgba(226,232,240,.9);
+      border-top: 1px solid rgba(226, 232, 240, .9);
     }
 
-    .deliverables h4{
+    .deliverables h4 {
       grid-column: 1 / -1;
       margin: 10px 0 8px;
       font-size: 14px;
@@ -749,13 +776,13 @@
       font-weight: 800;
     }
 
-    .deliverables ul{
+    .deliverables ul {
       margin: 0;
       padding-left: 18px;
       color: #0b1220;
     }
 
-    .deliverables li{
+    .deliverables li {
       margin: 8px 0;
       color: var(--muted);
       line-height: 1.6;
@@ -763,19 +790,19 @@
     }
 
     /* CTA */
-    .final-cta{
+    .final-cta {
       padding: 54px 26px;
-      text-align:center;
+      text-align: center;
       border-radius: 26px;
-      background: radial-gradient(900px 300px at 20% 0%, rgba(79,70,229,.18), transparent 60%),
-                  radial-gradient(900px 300px at 80% 10%, rgba(124,58,237,.16), transparent 60%),
-                  linear-gradient(135deg, rgba(79,70,229,.10), rgba(124,58,237,.10));
-      border: 1px solid rgba(199,210,254,.9);
+      background: radial-gradient(900px 300px at 20% 0%, rgba(79, 70, 229, .18), transparent 60%),
+                  radial-gradient(900px 300px at 80% 10%, rgba(124, 58, 237, .16), transparent 60%),
+                  linear-gradient(135deg, rgba(79, 70, 229, .10), rgba(124, 58, 237, .10));
+      border: 1px solid rgba(199, 210, 254, .9);
       box-shadow: var(--shadow2);
     }
 
-    .final-cta h2{
-      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+    .final-cta h2 {
+      font-family: 'Poppins', 'Inter', system-ui, Arial, sans-serif;
       font-weight: 800;
       font-size: clamp(28px, 2.6vw, 38px);
       margin: 0 0 10px;
@@ -783,7 +810,7 @@
       color: #0b1220;
     }
 
-    .final-cta p{
+    .final-cta p {
       margin: 0 auto 18px;
       max-width: 70ch;
       color: var(--muted);
@@ -792,25 +819,24 @@
     }
 
     /* Responsive tweaks */
-    @media (max-width: 900px){
-      .two-col{ grid-template-columns: 1fr; }
-      .benefits-grid{ grid-template-columns: 1fr; }
-      .deliverables{ grid-template-columns: 1fr; }
-      .timeline-wrap{ padding-left: 40px; }
-      .timeline-wrap::before{ left: 16px; }
-      .step::before{ left: -40px; }
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .deliverables { grid-template-columns: 1fr; }
+      .timeline-wrap { padding-left: 40px; }
+      .timeline-wrap::before { left: 16px; }
+      .step::before { left: -40px; }
     }
 
-    /* =========================================================
-       FOOTER PRO (IGUAL AO BOOK-A-CALL / INDEX) — com paths ../
-       (inclui botão "Agendar uma chamada" com a mesma cor)
-    ========================================================= */
+    /* =========================
+       FOOTER NOVO (PRO) - SEM LOGO (EXATAMENTE IGUAL AO INDEX.HTML)
+       ========================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
       position: relative;
       overflow: hidden;
-      padding: 72px 0 28px;
+      padding: 60px 0 24px;
     }
 
     .footer-pro::before {
@@ -838,15 +864,37 @@
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
       position: relative;
       z-index: 1;
-      padding-bottom: 28px;
+      padding-bottom: 20px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
-    .footer-logo { height: 32px; width: auto; display: block; object-fit: contain; }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    /* LOGO REMOVIDA - Apenas texto da marca */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
 
     .footer-tagline {
       font-family: 'Inter', sans-serif;
@@ -854,16 +902,25 @@
       line-height: 1.7;
       color: rgba(226, 232, 240, 0.85);
       max-width: 420px;
-      margin: 0;
+      margin: 8px 0 0 0;
     }
 
-    .footer-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-    .btn--footer { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
 
     .btn--footer.btn--outline {
       border-color: rgba(226, 232, 240, 0.35);
       color: rgba(226, 232, 240, 0.92);
-      background: transparent;
     }
 
     .btn--footer.btn--outline:hover {
@@ -903,7 +960,10 @@
       gap: 8px;
     }
 
-    .footer-links a:hover { color: #ffffff; transform: translateX(3px); }
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
 
     .footer-meta {
       display: grid;
@@ -913,10 +973,20 @@
       color: rgba(203, 213, 225, 0.9);
     }
 
-    .footer-meta a { color: rgba(203, 213, 225, 0.9); text-decoration: none; transition: color .2s ease; }
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
     .footer-meta a:hover { color: #fff; }
 
-    .footer-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
 
     .footer-badge {
       display: inline-flex;
@@ -945,7 +1015,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      padding-top: 18px;
+      padding-top: 16px;
       position: relative;
       z-index: 1;
       font-family: 'Inter', sans-serif;
@@ -953,8 +1023,19 @@
       color: rgba(148, 163, 184, 0.9);
     }
 
-    .footer-mini-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
-    .footer-mini-links a { color: rgba(148, 163, 184, 0.95); text-decoration: none; transition: color .2s ease; }
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
     .footer-mini-links a:hover { color: #fff; }
 
     @media (max-width: 1024px) {
@@ -963,15 +1044,21 @@
     }
 
     @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-top { grid-template-columns: 1fr; gap: 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER EXATAMENTE IGUAL AO INDEX -->
+  <!-- HEADER EXATAMENTE IGUAL AO INDEX.HTML -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../index.html" aria-label="Cobrait">
@@ -991,13 +1078,19 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="../index.html#work" data-pt="Portfólio" data-en="Work" data-es="Work">Work</a></li>
-          
+          <li>
+            <a href="../index.html#work"
+               data-pt="Portfólio"
+               data-en="Work"
+               data-es="Work">Work</a>
+          </li>
+
           <li class="dropdown">
             <a href="../index.html#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
+
             <div class="dropdown-content">
               <a href="product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1094,19 +1187,45 @@
               </a>
             </div>
           </li>
-          
-          <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
-          <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
-          <li><a href="../index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
-          <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
-          <li><a href="../index.html#about" data-pt="Recursos" data-en="Resources" data-es="Recursos">Resources</a></li>
+
+          <li>
+            <a href="../pricing.html"
+               data-pt="Preços"
+               data-en="Pricing"
+               data-es="Precios">Pricing</a>
+          </li>
+
+          <li>
+            <a href="../about-us.html">
+              <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="../index.html#about"
+               data-pt="Carreiras"
+               data-en="Careers"
+               data-es="Carreras">Careers</a>
+          </li>
+
+          <li>
+            <a href="../tech.html"
+               data-pt="Tecnologia"
+               data-en="Tech"
+               data-es="Tech">Tech</a>
+          </li>
+
+          <li>
+            <a href="../index.html#about"
+               data-pt="Recursos"
+               data-en="Resources"
+               data-es="Recursos">Resources</a>
+          </li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <!-- =========================
-             DROPDOWN DE LÍNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
-             ========================= -->
+        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
@@ -1465,105 +1584,117 @@
 
       </div>
     </section>
+  </main>
 
-    <!-- FOOTER PRO -->
-    <footer class="footer-pro" role="contentinfo">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
+  <!-- FOOTER EXATAMENTE IGUAL AO INDEX.HTML -->
+  <footer class="footer-pro" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <!-- LOGO REMOVIDA - substituída por texto -->
+          <h3 class="footer-brand-title">Cobrait</h3>
+          <p class="footer-brand-subtitle">Software Factory</p>
 
-            <p class="footer-tagline"
-               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
-               data-en="We build digital products focused on speed, quality and growth — from scope to launch."
-               data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
-              Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-            </p>
+          <p class="footer-tagline"
+             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          </p>
 
-            <div class="footer-cta-row">
-              <a class="btn btn--primary btn--footer" href="../book-a-call.html"
-                 data-pt="Agendar uma chamada"
-                 data-en="Book a call"
-                 data-es="Reservar una llamada">
-                Book a call
-              </a>
-              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
-                 data-pt="Ver serviços"
-                 data-en="See services"
-                 data-es="Ver servicios">
-                See services
-              </a>
-            </div>
-
-            <div class="footer-badges" aria-label="Highlights">
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Fast delivery</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Quality</span></span>
-            </div>
+          <div class="footer-cta-row">
+            <a class="btn btn--primary btn--footer" href="../book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Book a call"
+               data-es="Reservar una llamada">
+              Agendar uma chamada
+            </a>
+            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
+               data-pt="Ver serviços"
+               data-en="See services"
+               data-es="Ver servicios">
+              Ver serviços
+            </a>
           </div>
 
-          <div class="footer-col">
-            <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Services</h4>
-            <ul class="footer-links">
-              <li><a href="product-scope.html">Product Scope</a></li>
-              <li><a href="mvp-builder.html">MVP Builder</a></li>
-              <li><a href="ux-ui.html">UX / UI</a></li>
-              <li><a href="custom-software.html">Custom Software</a></li>
-              <li><a href="dedicated-teams.html">Dedicated Teams</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Company</h4>
-            <ul class="footer-links">
-              <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">About us</a></li>
-              <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Case studies</a></li>
-              <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
-              <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col footer-col--contact">
-            <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contact</h4>
-            <div class="footer-meta">
-              <div>
-                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
-                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-              </div>
-              <div>
-                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Response:</span>
-                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">usually within 24–48h</span>
-              </div>
-              <div>
-                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Want it fast?</span>
-                <a href="../book-a-call.html"
-                   data-pt="Marca uma call."
-                   data-en="Book a call."
-                   data-es="Reserva una llamada.">Book a call.</a>
-              </div>
-            </div>
+          <div class="footer-badges" aria-label="Highlights">
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <div>© <span id="year"></span> Cobrait — Software Factory</div>
-          <div class="footer-mini-links">
-            <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacy</a>
-            <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Terms</a>
-            <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Services</a>
+        <div class="footer-col">
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="product-scope.html">Product Scope</a></li>
+            <li><a href="mvp-builder.html">MVP Builder</a></li>
+            <li><a href="ux-ui.html">UX / UI</a></li>
+            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+            <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+            <li><a href="../index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+            <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col--contact">
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+          <div class="footer-meta">
+            <div>
+              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+            </div>
+            <div>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+            </div>
+            <div>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+              <a href="../book-a-call.html"
+                 data-pt="Marca uma call."
+                 data-en="Book a call."
+                 data-es="Reserva una llamada.">Marca uma call.</a>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-  </main>
 
-  <!-- =========================
-       SCRIPT FINAL (IDÊNTICO AO INDEX.HTML)
-       ========================= -->
+      <div class="footer-bottom">
+        <div>
+          © <span id="year"></span> Cobrait — Software Factory
+        </div>
+        <div class="footer-mini-links">
+          <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ SCRIPT FINAL (IDÊNTICO AO INDEX.HTML) -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+      });
+
       // ====== Normalização de idioma (evita pt-PT quebrar) ======
       function normalizeLang(l) {
         if (!l) return 'pt';
