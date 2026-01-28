@@ -55,19 +55,19 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 4px 0; /* AINDA MAIS PEQUENO */
+      padding: 4px 0;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px; /* Reduzido */
-      min-height: 60px; /* Altura controlada */
+      gap: 30px;
+      min-height: 60px;
     }
 
     .brand img {
-      height: 75px; /* Logo grande mas header compacto */
+      height: 75px;
       width: auto;
     }
 
@@ -93,18 +93,18 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 24px; /* Menor espaçamento */
+      gap: 24px;
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 14px; /* Texto ligeiramente menor */
+      font-size: 14px;
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 6px 0; /* Padding reduzido */
+      padding: 6px 0;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -141,7 +141,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 12px; /* Menor margem */
+      margin-top: 12px;
     }
 
     .dropdown:hover .dropdown-content {
@@ -199,49 +199,106 @@
     }
 
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
-
-    .language-selector {
+    
+    /* =========================
+       DROPDOWN DE LÍNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
+       ========================= */
+    .language-dropdown {
+      position: relative;
+    }
+    .language-dropdown-btn {
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .lang-btn {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 12px;
-      color: #64748b;
-      text-decoration: none;
-      padding: 3px 6px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .lang-btn:hover {
-      color: #4f46e5;
+      padding: 6px 12px;
       background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-
-    .lang-btn.active {
-      color: #4f46e5;
+    .language-dropdown-btn:hover {
       background: #f1f5f9;
-      font-weight: 700;
+      border-color: #cbd5e1;
     }
-
-    .language-divider {
-      color: #cbd5e1;
-      font-weight: 300;
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
     }
-
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .language-option .lang-name {
+      flex: 1;
+    }
+    
     .header-right {
       display: flex;
       align-items: center;
-      gap: 16px; /* Menor gap */
+      gap: 16px;
     }
 
     /* BOTÃO DO HEADER EXATAMENTE IGUAL AO INDEX */
@@ -249,7 +306,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 18px !important; /* Botão do header mais pequeno */
+      padding: 8px 18px !important;
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
       font-weight: 600;
@@ -283,7 +340,7 @@
 
       .site-nav {
         position: fixed;
-        top: 60px; /* Ajustado para header menor */
+        top: 60px;
         left: 0;
         width: 100%;
         background: white;
@@ -320,9 +377,23 @@
         gap: 10px;
       }
 
-      .language-selector { justify-content: center; width: 100%; }
+      .language-dropdown {
+        width: 100%;
+      }
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
       .header-cta { width: 100%; }
-
       .header-cta .btn {
         width: 100%;
         justify-content: center;
@@ -350,7 +421,7 @@
 
     /* GARANTIR dropdown acima de tudo */
     .site-header { z-index: 99999; }
-    .dropdown-content { z-index: 999999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
     /* =========================================================
        HERO (layout premium como o site inspiração)
@@ -908,7 +979,11 @@
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+      <label class="nav-toggle-btn" for="nav-toggle"
+             aria-label="Abrir menu"
+             data-pt="Abrir menu"
+             data-en="Open menu"
+             data-es="Abrir menú">
         <span></span>
         <span></span>
         <span></span>
@@ -916,7 +991,8 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
+          <li><a href="../index.html#work" data-pt="Portfólio" data-en="Work" data-es="Work">Work</a></li>
+          
           <li class="dropdown">
             <a href="../index.html#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
@@ -928,8 +1004,12 @@
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Product Scope</h4>
-                  <p>15-day process to align the product with your business goals.</p>
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
                 </div>
               </a>
 
@@ -938,8 +1018,12 @@
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>MVP Builder</h4>
-                  <p>Go to market quickly with a high-quality Minimum Viable Product.</p>
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
                 </div>
               </a>
 
@@ -948,8 +1032,12 @@
                   <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>UX / UI</h4>
-                  <p>Design an easy-to-use engaging and functional product.</p>
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
                 </div>
               </a>
 
@@ -958,8 +1046,16 @@
                   <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>AI Development & Enablement</h4>
-                  <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
                 </div>
               </a>
 
@@ -968,8 +1064,16 @@
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Custom Software Development</h4>
-                  <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">
+                    Custom Software Development
+                  </h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
                 </div>
               </a>
 
@@ -978,31 +1082,59 @@
                   <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Dedicated Teams</h4>
-                  <p>Build your product with a dedicated team of developers.</p>
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
+                    Dedicated Teams
+                  </h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
                 </div>
               </a>
             </div>
           </li>
-          <li><a href="../index.html#pricing" data-pt="Pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
-          <li><a href="../index.html#about"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
-          <li><a href="../index.html#careers" data-pt="Careers" data-en="Careers" data-es="Carreras">Careers</a></li>
-          <li><a href="../index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-          <li><a href="../index.html#resources" data-pt="Resources" data-en="Resources" data-es="Recursos">Resources</a></li>
+          
+          <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="../index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="../index.html#about" data-pt="Recursos" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <div class="language-selector">
-          <button class="lang-btn active" data-lang="pt">PT</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="es">ES</button>
+        <!-- =========================
+             DROPDOWN DE LÍNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
+             ========================= -->
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt">
+              <span class="lang-flag">🇵🇹</span>
+              <span class="lang-name">Português</span>
+            </button>
+            <button class="language-option" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="language-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+            </button>
+          </div>
         </div>
 
         <div class="header-cta">
-          <a class="btn btn--primary" href="../book-a-call.html">BOOK A CALL</a>
+          <a class="btn btn--primary" href="../book-a-call.html"
+             data-pt="AGENDAR UMA CHAMADA"
+             data-en="BOOK A CALL"
+             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
         </div>
       </div>
     </div>
@@ -1013,20 +1145,29 @@
     <section class="service-hero">
       <div class="container hero-grid">
         <div>
-          <div class="hero-kicker">Serviço</div>
+          <div class="hero-kicker" data-pt="Serviço" data-en="Service" data-es="Servicio">Serviço</div>
 
-          <h1 class="hero-title">MVP Builder</h1>
+          <h1 class="hero-title" data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h1>
 
-          <p class="hero-sub">
+          <p class="hero-sub" 
+             data-pt="Entra no mercado rapidamente com um MVP (Minimum Viable Product) de alta qualidade, desenhado para testar as tuas principais hipóteses e acelerar tração."
+             data-en="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
+             data-es="Entra al mercado rápidamente con un MVP (Producto Mínimo Viable) de alta calidad, diseñado para probar tus hipótesis clave y acelerar la tracción.">
             Entra no mercado rapidamente com um <strong>MVP (Minimum Viable Product)</strong> de alta qualidade,
             desenhado para testar as tuas principais hipóteses e acelerar tração.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn--primary" href="../book-a-call.html">
+            <a class="btn btn--primary" href="../book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Schedule a call"
+               data-es="Agendar una llamada">
               Agendar uma chamada
             </a>
-            <a class="btn-ghost" href="#how-it-works">
+            <a class="btn-ghost" href="#how-it-works"
+               data-pt="Ver como funciona"
+               data-en="See how it works"
+               data-es="Ver cómo funciona">
               Ver como funciona
             </a>
           </div>
@@ -1038,10 +1179,10 @@
               <img class="hero-image" src="../images/mvp-hero.png" alt="">
             </div>
             <div class="hero-badges">
-              <span class="badge">Go-to-market rápido</span>
-              <span class="badge">Design + Dev</span>
-              <span class="badge">Qualidade de produto</span>
-              <span class="badge">Iteração contínua</span>
+              <span class="badge" data-pt="Go-to-market rápido" data-en="Fast go-to-market" data-es="Go-to-market rápido">Go-to-market rápido</span>
+              <span class="badge" data-pt="Design + Dev" data-en="Design + Dev" data-es="Diseño + Dev">Design + Dev</span>
+              <span class="badge" data-pt="Qualidade de produto" data-en="Product quality" data-es="Calidad de producto">Qualidade de produto</span>
+              <span class="badge" data-pt="Iteração contínua" data-en="Continuous iteration" data-es="Iteración continua">Iteração contínua</span>
             </div>
           </div>
         </div>
@@ -1053,10 +1194,13 @@
       <div class="container">
         <div class="two-col">
           <div class="card what-card">
-            <h2 class="what-title">
+            <h2 class="what-title" data-pt="O que é o MVP Builder?" data-en="What is MVP Builder?" data-es="¿Qué es MVP Builder?">
               O que é o MVP Builder?
             </h2>
-            <p class="what-desc">
+            <p class="what-desc"
+               data-pt="Usamos um processo estruturado para construir o teu MVP de forma rápida e controlada. Começamos por simplificar o teu produto às funcionalidades vitais (as que realmente validam o negócio), passamos pelo UX/UI com foco em clareza e conversão, e depois desenvolvemos do zero com boas práticas. O objetivo é lançares cedo, aprenderes rápido e melhorares com feedback real."
+               data-en="We use a structured process to build your MVP quickly and controlled. We start by simplifying your product to the vital features (those that truly validate the business), go through UX/UI focused on clarity and conversion, and then develop from scratch with best practices. The goal is for you to launch early, learn fast, and improve with real feedback."
+               data-es="Utilizamos un proceso estructurado para construir tu MVP de forma rápida y controlada. Comenzamos simplificando tu producto a las funcionalidades vitales (las que realmente validan el negocio), pasamos por UX/UI enfocado en claridad y conversión, y luego desarrollamos desde cero con buenas prácticas. El objetivo es que lances temprano, aprendas rápido y mejores con feedback real.">
               Usamos um processo estruturado para construir o teu MVP de forma rápida e controlada.
               Começamos por simplificar o teu produto às funcionalidades vitais (as que realmente validam o negócio),
               passamos pelo UX/UI com foco em clareza e conversão, e depois desenvolvemos do zero com boas práticas.
@@ -1065,12 +1209,15 @@
           </div>
 
           <div class="card what-card">
-            <h2 class="what-title">
+            <h2 class="what-title" data-pt="Quando faz sentido?" data-en="When does it make sense?" data-es="¿Cuándo tiene sentido?">
               Quando faz sentido?
             </h2>
-            <p class="what-desc">
+            <p class="what-desc"
+               data-pt="Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versão para captação de clientes/investimento, ou quando precisas de substituir 'protótipos' por produto real. Um MVP bem feito dá velocidade sem sacrificar base técnica."
+               data-en="When you have an idea and need to validate the market, when you want a first version for customer/investor acquisition, or when you need to replace 'prototypes' with real product. A well-done MVP gives speed without sacrificing technical foundation."
+               data-es="Cuando tienes una idea y necesitas validar el mercado, cuando quieres una primera versión para captación de clientes/inversión, o cuando necesitas reemplazar 'prototipos' por producto real. Un MVP bien hecho da velocidad sin sacrificar base técnica.">
               Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versão para captação
-              de clientes/investimento, ou quando precisas de substituir “protótipos” por produto real.
+              de clientes/investimento, ou quando precisas de substituir "protótipos" por produto real.
               Um MVP bem feito dá velocidade sem sacrificar base técnica.
             </p>
           </div>
@@ -1081,7 +1228,7 @@
     <!-- KEY BENEFITS -->
     <section class="section section--alt">
       <div class="container">
-        <h2 class="section-title">Benefícios</h2>
+        <h2 class="section-title" data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</h2>
 
         <div class="benefits-grid">
           <article class="card benefit">
@@ -1091,8 +1238,10 @@
                 <path d="M9 12l2 2 4-4"/>
               </svg>
             </div>
-            <h3>Menos risco</h3>
-            <p>
+            <h3 data-pt="Menos risco" data-en="Less risk" data-es="Menos riesgo">Menos risco</h3>
+            <p data-pt="Evitas construir um produto enorme antes de saber se o mercado quer. Testamos as hipóteses com o mínimo necessário — e só depois escalamos."
+               data-en="You avoid building a huge product before knowing if the market wants it. We test hypotheses with the minimum necessary — and only then scale."
+               data-es="Evitas construir un producto enorme antes de saber si el mercado lo quiere. Probamos las hipótesis con lo mínimo necesario — y solo después escalamos.">
               Evitas construir um produto enorme antes de saber se o mercado quer.
               Testamos as hipóteses com o mínimo necessário — e só depois escalamos.
             </p>
@@ -1105,8 +1254,10 @@
                 <path d="M17 5H9.5a3.5 3.5 0 000 7H14a3.5 3.5 0 010 7H6"/>
               </svg>
             </div>
-            <h3>Menor custo</h3>
-            <p>
+            <h3 data-pt="Menor custo" data-en="Lower cost" data-es="Menor costo">Menor custo</h3>
+            <p data-pt="Menos funcionalidades = menos desenvolvimento e menos manutenção. O orçamento vai para o que realmente cria valor e valida o produto."
+               data-en="Fewer features = less development and less maintenance. The budget goes to what truly creates value and validates the product."
+               data-es="Menos funcionalidades = menos desarrollo y menos mantenimiento. El presupuesto va a lo que realmente crea valor y valida el producto.">
               Menos funcionalidades = menos desenvolvimento e menos manutenção.
               O orçamento vai para o que realmente cria valor e valida o produto.
             </p>
@@ -1119,8 +1270,10 @@
                 <path d="M12 7v6l4 2"/>
               </svg>
             </div>
-            <h3>Mais rapidez</h3>
-            <p>
+            <h3 data-pt="Mais rapidez" data-en="More speed" data-es="Más velocidad">Mais rapidez</h3>
+            <p data-pt="Lançar cedo dá-te vantagem: feedback real, tração e iteração. O MVP é a forma mais rápida de aprender com o mercado."
+               data-en="Launching early gives you an advantage: real feedback, traction and iteration. MVP is the fastest way to learn from the market."
+               data-es="Lanzar temprano te da ventaja: feedback real, tracción e iteración. El MVP es la forma más rápida de aprender del mercado.">
               Lançar cedo dá-te vantagem: feedback real, tração e iteração.
               O MVP é a forma mais rápida de aprender com o mercado.
             </p>
@@ -1133,8 +1286,10 @@
                 <path d="M14 7h7v7"/>
               </svg>
             </div>
-            <h3>Foco no negócio</h3>
-            <p>
+            <h3 data-pt="Foco no negócio" data-en="Focus on business" data-es="Enfoque en el negocio">Foco no negócio</h3>
+            <p data-pt="Uma equipa experiente acelera decisões e execução. Tu ficas focado(a) no negócio — nós tratamos de produto, design e engenharia."
+               data-en="An experienced team speeds up decisions and execution. You stay focused on business — we handle product, design and engineering."
+               data-es="Un equipo experimentado acelera decisiones y ejecución. Tú te enfocas en el negocio — nosotros nos encargamos de producto, diseño e ingeniería.">
               Uma equipa experiente acelera decisões e execução.
               Tu ficas focado(a) no negócio — nós tratamos de produto, design e engenharia.
             </p>
@@ -1146,30 +1301,33 @@
     <!-- HOW IT WORKS -->
     <section class="section" id="how-it-works">
       <div class="container">
-        <h2 class="section-title">Como funciona</h2>
+        <h2 class="section-title" data-pt="Como funciona" data-en="How it works" data-es="Cómo funciona">Como funciona</h2>
 
         <div class="timeline-wrap">
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title">Product Scope</h3>
-              <p class="step-desc">
-                Alinhamos a visão do produto, objetivos e prioridades. Definimos o “core” do MVP e
+              <h3 class="step-title" data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h3>
+              <p class="step-desc"
+                 data-pt="Alinhamos a visão do produto, objetivos e prioridades. Definimos o 'core' do MVP e criamos um plano de entrega claro para reduzir risco e acelerar o lançamento."
+                 data-en="We align product vision, goals and priorities. We define the MVP 'core' and create a clear delivery plan to reduce risk and accelerate launch."
+                 data-es="Alineamos la visión del producto, objetivos y prioridades. Definimos el 'core' del MVP y creamos un plan de entrega claro para reducir riesgo y acelerar el lanzamiento.">
+                Alinhamos a visão do produto, objetivos e prioridades. Definimos o "core" do MVP e
                 criamos um plano de entrega claro para reduzir risco e acelerar o lançamento.
               </p>
 
               <div class="deliverables">
-                <h4>Entregáveis da fase:</h4>
+                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li>User Stories</li>
-                  <li>Sitemap</li>
-                  <li>UX Personas</li>
+                  <li data-pt="User Stories" data-en="User Stories" data-es="User Stories">User Stories</li>
+                  <li data-pt="Sitemap" data-en="Sitemap" data-es="Sitemap">Sitemap</li>
+                  <li data-pt="UX Personas" data-en="UX Personas" data-es="UX Personas">UX Personas</li>
                 </ul>
 
                 <ul>
-                  <li>Key BPMN</li>
-                  <li>Tech Spike</li>
-                  <li>Stakeholder Analysis</li>
+                  <li data-pt="Key BPMN" data-en="Key BPMN" data-es="Key BPMN">Key BPMN</li>
+                  <li data-pt="Tech Spike" data-en="Tech Spike" data-es="Tech Spike">Tech Spike</li>
+                  <li data-pt="Stakeholder Analysis" data-en="Stakeholder Analysis" data-es="Stakeholder Analysis">Stakeholder Analysis</li>
                 </ul>
               </div>
             </div>
@@ -1177,23 +1335,26 @@
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title">Key Screens</h3>
-              <p class="step-desc">
+              <h3 class="step-title" data-pt="Key Screens" data-en="Key Screens" data-es="Key Screens">Key Screens</h3>
+              <p class="step-desc"
+                 data-pt="Criamos as principais screens para validares direção visual e fluxos. Isto permite aprovar UX/UI antes de expandir o design para o produto completo."
+                 data-en="We create the key screens for you to validate visual direction and flows. This allows UX/UI approval before expanding design to the complete product."
+                 data-es="Creamos las pantallas clave para que valides dirección visual y flujos. Esto permite aprobar UX/UI antes de expandir el diseño al producto completo.">
                 Criamos as principais screens para validares direção visual e fluxos.
                 Isto permite aprovar UX/UI antes de expandir o design para o produto completo.
               </p>
 
               <div class="deliverables">
-                <h4>Entregáveis da fase:</h4>
+                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li>UI Concept</li>
-                  <li>User Flow</li>
+                  <li data-pt="UI Concept" data-en="UI Concept" data-es="UI Concept">UI Concept</li>
+                  <li data-pt="User Flow" data-en="User Flow" data-es="User Flow">User Flow</li>
                 </ul>
 
                 <ul>
-                  <li>Design System</li>
-                  <li>Component Library</li>
+                  <li data-pt="Design System" data-en="Design System" data-es="Design System">Design System</li>
+                  <li data-pt="Component Library" data-en="Component Library" data-es="Component Library">Component Library</li>
                 </ul>
               </div>
             </div>
@@ -1201,23 +1362,26 @@
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title">All Screens</h3>
-              <p class="step-desc">
+              <h3 class="step-title" data-pt="All Screens" data-en="All Screens" data-es="All Screens">All Screens</h3>
+              <p class="step-desc"
+                 data-pt="Depois de aprovares as Key Screens, expandimos o design para todas as screens necessárias para o MVP ficar completo e pronto para desenvolvimento."
+                 data-en="After you approve the Key Screens, we expand the design to all screens needed for the MVP to be complete and ready for development."
+                 data-es="Después de que apruebes las Key Screens, expandimos el diseño a todas las pantallas necesarias para que el MVP esté completo y listo para desarrollo.">
                 Depois de aprovares as Key Screens, expandimos o design para todas as screens necessárias
                 para o MVP ficar completo e pronto para desenvolvimento.
               </p>
 
               <div class="deliverables">
-                <h4>Entregáveis da fase:</h4>
+                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li>Full Product UX/UI</li>
-                  <li>Responsive states</li>
+                  <li data-pt="Full Product UX/UI" data-en="Full Product UX/UI" data-es="Full Product UX/UI">Full Product UX/UI</li>
+                  <li data-pt="Responsive states" data-en="Responsive states" data-es="Responsive states">Responsive states</li>
                 </ul>
 
                 <ul>
-                  <li>Design QA checklist</li>
-                  <li>Handover specs</li>
+                  <li data-pt="Design QA checklist" data-en="Design QA checklist" data-es="Design QA checklist">Design QA checklist</li>
+                  <li data-pt="Handover specs" data-en="Handover specs" data-es="Handover specs">Handover specs</li>
                 </ul>
               </div>
             </div>
@@ -1225,23 +1389,26 @@
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title">Desenvolvimento</h3>
-              <p class="step-desc">
+              <h3 class="step-title" data-pt="Desenvolvimento" data-en="Development" data-es="Desarrollo">Desenvolvimento</h3>
+              <p class="step-desc"
+                 data-pt="Implementamos o MVP com boas práticas e entregas progressivas. Vais testando módulos enquanto desenvolvemos — com updates regulares e transparência."
+                 data-en="We implement the MVP with best practices and progressive deliveries. You test modules as we develop — with regular updates and transparency."
+                 data-es="Implementamos el MVP con buenas prácticas y entregas progresivas. Vas probando módulos mientras desarrollamos — con actualizaciones regulares y transparencia.">
                 Implementamos o MVP com boas práticas e entregas progressivas.
                 Vais testando módulos enquanto desenvolvemos — com updates regulares e transparência.
               </p>
 
               <div class="deliverables">
-                <h4>Entregáveis da fase:</h4>
+                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li>Progressive module delivery</li>
-                  <li>Ongoing testing & feedback</li>
+                  <li data-pt="Progressive module delivery" data-en="Progressive module delivery" data-es="Progressive module delivery">Progressive module delivery</li>
+                  <li data-pt="Ongoing testing & feedback" data-en="Ongoing testing & feedback" data-es="Ongoing testing & feedback">Ongoing testing & feedback</li>
                 </ul>
 
                 <ul>
-                  <li>Codebase documentation</li>
-                  <li>Regular progress updates</li>
+                  <li data-pt="Codebase documentation" data-en="Codebase documentation" data-es="Codebase documentation">Codebase documentation</li>
+                  <li data-pt="Regular progress updates" data-en="Regular progress updates" data-es="Regular progress updates">Regular progress updates</li>
                 </ul>
               </div>
             </div>
@@ -1249,23 +1416,26 @@
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title">Testes e lançamento</h3>
-              <p class="step-desc">
+              <h3 class="step-title" data-pt="Testes e lançamento" data-en="Testing & launch" data-es="Pruebas y lanzamiento">Testes e lançamento</h3>
+              <p class="step-desc"
+                 data-pt="Entramos numa fase de testes para corrigir bugs críticos e garantir qualidade. Preparamos o lançamento com validação final e 'launch readiness'."
+                 data-en="We enter a testing phase to fix critical bugs and ensure quality. We prepare launch with final validation and 'launch readiness'."
+                 data-es="Entramos en una fase de pruebas para corregir bugs críticos y garantizar calidad. Preparamos el lanzamiento con validación final y 'launch readiness'.">
                 Entramos numa fase de testes para corrigir bugs críticos e garantir qualidade.
-                Preparamos o lançamento com validação final e “launch readiness”.
+                Preparamos o lançamento com validação final e "launch readiness".
               </p>
 
               <div class="deliverables">
-                <h4>Entregáveis da fase:</h4>
+                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li>Bug reports & fixes</li>
-                  <li>Final QA</li>
+                  <li data-pt="Bug reports & fixes" data-en="Bug reports & fixes" data-es="Bug reports & fixes">Bug reports & fixes</li>
+                  <li data-pt="Final QA" data-en="Final QA" data-es="Final QA">Final QA</li>
                 </ul>
 
                 <ul>
-                  <li>User acceptance testing (UAT)</li>
-                  <li>Launch readiness sign-off</li>
+                  <li data-pt="User acceptance testing (UAT)" data-en="User acceptance testing (UAT)" data-es="User acceptance testing (UAT)">User acceptance testing (UAT)</li>
+                  <li data-pt="Launch readiness sign-off" data-en="Launch readiness sign-off" data-es="Launch readiness sign-off">Launch readiness sign-off</li>
                 </ul>
               </div>
             </div>
@@ -1275,14 +1445,19 @@
         <!-- CTA final dentro da mesma secção -->
         <div style="margin-top: 46px;">
           <div class="final-cta">
-            <h2>
+            <h2 data-pt="Pronto para construir o teu MVP?" data-en="Ready to build your MVP?" data-es="¿Listo para construir tu MVP?">
               Pronto para construir o teu MVP?
             </h2>
-            <p>
+            <p data-pt="Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução — sem sacrificar qualidade nem base técnica."
+               data-en="Let's transform your idea into a real product, focusing on essentials and execution speed — without sacrificing quality or technical foundation."
+               data-es="Transformemos tu idea en un producto real, enfocándonos en lo esencial y velocidad de ejecución — sin sacrificar calidad ni base técnica.">
               Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução —
               sem sacrificar qualidade nem base técnica.
             </p>
-            <a class="btn btn--primary" href="../book-a-call.html">
+            <a class="btn btn--primary" href="../book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Schedule a call"
+               data-es="Agendar una llamada">
               Agendar uma chamada
             </a>
           </div>
@@ -1291,35 +1466,44 @@
       </div>
     </section>
 
-    <!-- FOOTER PRO (substitui o footer simples) -->
+    <!-- FOOTER PRO -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
             <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
 
-            <p class="footer-tagline">
+            <p class="footer-tagline"
+               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+               data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+               data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
               Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
             </p>
 
             <div class="footer-cta-row">
-              <a class="btn btn--primary btn--footer" href="../book-a-call.html">
+              <a class="btn btn--primary btn--footer" href="../book-a-call.html"
+                 data-pt="Agendar uma chamada"
+                 data-en="Book a call"
+                 data-es="Reservar una llamada">
                 Book a call
               </a>
-              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do">
+              <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
+                 data-pt="Ver serviços"
+                 data-en="See services"
+                 data-es="Ver servicios">
                 See services
               </a>
             </div>
 
             <div class="footer-badges" aria-label="Highlights">
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Lean + Agile</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Fast delivery</span></span>
-              <span class="footer-badge"><span class="footer-badge-dot"></span><span>Quality</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Fast delivery</span></span>
+              <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Quality</span></span>
             </div>
           </div>
 
           <div class="footer-col">
-            <h4>Services</h4>
+            <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Services</h4>
             <ul class="footer-links">
               <li><a href="product-scope.html">Product Scope</a></li>
               <li><a href="mvp-builder.html">MVP Builder</a></li>
@@ -1330,29 +1514,32 @@
           </div>
 
           <div class="footer-col">
-            <h4>Company</h4>
+            <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Company</h4>
             <ul class="footer-links">
-              <li><a href="../index.html#about">About us</a></li>
-              <li><a href="../index.html#work">Case studies</a></li>
-              <li><a href="../index.html#careers">Careers</a></li>
-              <li><a href="../index.html#tech">Tech</a></li>
+              <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">About us</a></li>
+              <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Case studies</a></li>
+              <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+              <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
             </ul>
           </div>
 
           <div class="footer-col footer-col--contact">
-            <h4>Contact</h4>
+            <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contact</h4>
             <div class="footer-meta">
               <div>
-                <span>Email:</span>
+                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
                 <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
               </div>
               <div>
-                <span>Response:</span>
-                <span>usually within 24–48h</span>
+                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Response:</span>
+                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">usually within 24–48h</span>
               </div>
               <div>
-                <span>Want it fast?</span>
-                <a href="../book-a-call.html">Book a call.</a>
+                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Want it fast?</span>
+                <a href="../book-a-call.html"
+                   data-pt="Marca uma call."
+                   data-en="Book a call."
+                   data-es="Reserva una llamada.">Book a call.</a>
               </div>
             </div>
           </div>
@@ -1361,61 +1548,143 @@
         <div class="footer-bottom">
           <div>© <span id="year"></span> Cobrait — Software Factory</div>
           <div class="footer-mini-links">
-            <a href="../index.html#about">Privacy</a>
-            <a href="../index.html#about">Terms</a>
-            <a href="../index.html#what-we-do">Services</a>
+            <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacy</a>
+            <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Terms</a>
+            <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Services</a>
           </div>
         </div>
       </div>
     </footer>
   </main>
 
+  <!-- =========================
+       SCRIPT FINAL (IDÊNTICO AO INDEX.HTML)
+       ========================= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sistema de troca de idiomas do header (igual ao index)
     document.addEventListener('DOMContentLoaded', function() {
-      const langButtons = document.querySelectorAll('.lang-btn');
+      // ====== Normalização de idioma (evita pt-PT quebrar) ======
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        // Fallback para inglês para outras línguas
+        return 'en';
+      }
 
-      // Inicializar em português
-      updateHeaderLanguage('pt');
+      // Fechar dropdown ao clicar fora (mobile)
+      document.addEventListener('click', function(event) {
+        const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
+            if (content && window.innerWidth <= 768) {
+              content.style.display = '';
+            }
+          }
+        });
+      });
 
-      langButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const lang = this.getAttribute('data-lang');
+      // ====== SISTEMA DE LÍNGUAS COM DROPDOWN ======
+      const languageOptions = document.querySelectorAll('.language-option');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      
+      // Mapeamento de bandeiras para cada língua
+      const flagMap = {
+        'pt': '🇵🇹',
+        'en': '🇬🇧',
+        'es': '🇪🇸'
+      };
+      
+      // Mapeamento de códigos curtos
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES'
+      };
 
-          // Remove active class de todos os botões
-          langButtons.forEach(btn => btn.classList.remove('active'));
+      // Carregar língua salva ou usar português por padrão
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      setActiveLanguage(savedLanguage);
+      applyLanguage(savedLanguage);
 
-          // Adiciona active class ao botão selecionado
-          this.classList.add('active');
-
-          // Atualiza o header
-          updateHeaderLanguage(lang);
-
-          // Salvar preferência
+      // Event listeners para as opções de língua
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const lang = normalizeLang(this.getAttribute('data-lang'));
+          setActiveLanguage(lang);
+          applyLanguage(lang);
           localStorage.setItem('preferredLanguage', lang);
         });
       });
 
-      // Carregar linguagem salva
-      const savedLanguage = localStorage.getItem('preferredLanguage');
-      if (savedLanguage && savedLanguage !== 'pt') {
-        const button = document.querySelector(`.lang-btn[data-lang="${savedLanguage}"]`);
-        if (button) {
-          setTimeout(() => button.click(), 100);
+      function setActiveLanguage(lang) {
+        // Atualizar o botão do dropdown
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '🇬🇧'; // Fallback para bandeira UK
         }
+        
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN'; // Fallback para EN
+        }
+        
+        // Atualizar as opções ativas
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
+        });
       }
 
-      function updateHeaderLanguage(lang) {
-        // Atualizar textos do header
-        const headerElements = document.querySelectorAll('.site-nav [data-pt], .site-nav [data-en], .site-nav [data-es]');
-        
-        headerElements.forEach(element => {
-          const text = element.getAttribute(`data-${lang}`);
-          if (text) {
-            element.textContent = text;
+      function applyLanguage(lang) {
+        lang = normalizeLang(lang);
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
+        updateTextContent(lang);
+        updateAriaLabels(lang);
+      }
+
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
           }
+          
+          if (text === null) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = text;
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
+
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        ariaEls.forEach(el => {
+          let val = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          
+          if (val) el.setAttribute('aria-label', val);
         });
       }
     });

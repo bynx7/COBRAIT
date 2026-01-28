@@ -18,32 +18,30 @@
 
   <!-- ✅ OVERRIDES DE CORES (igual ao INDEX) — sem alterar a tua estrutura -->
   <style>
+    /* FIX: botão "BOOK A CALL" no header igual ao index */
+    .header-cta .btn.btn--primary{
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+      color: #fff !important;
+      border: 2px solid transparent !important;
+    }
 
-/* FIX: botão "BOOK A CALL" no header igual ao index */
-.header-cta .btn.btn--primary{
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-  color: #fff !important;
-  border: 2px solid transparent !important;
-}
+    .header-cta .btn.btn--primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.30) !important;
+    }
 
-.header-cta .btn.btn--primary:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.30) !important;
-}
+    /* FIX DEFINITIVO — Book a call do FOOTER */
+    .footer-pro .btn--primary{
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: 0 10px 25px rgba(79,70,229,.35) !important;
+    }
 
-/* FIX DEFINITIVO — Book a call do FOOTER */
-.footer-pro .btn--primary{
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-  color: #ffffff !important;
-  border: none !important;
-  box-shadow: 0 10px 25px rgba(79,70,229,.35) !important;
-}
-
-.footer-pro .btn--primary:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 40px rgba(79,70,229,.45) !important;
-}
-
+    .footer-pro .btn--primary:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(79,70,229,.45) !important;
+    }
 
     /* Paleta do index (indigo + purple) */
     :root{
@@ -243,28 +241,110 @@
     .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* Language selector */
-    .language-selector { display: flex; align-items: center; gap: 8px; }
-
-    .lang-btn {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      color: #64748b;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      background: none;
-      border: none;
-      cursor: pointer;
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
+    .language-dropdown {
+      position: relative;
     }
 
-    .lang-btn:hover { color: #4f46e5; background: #f8fafc; }
-    .lang-btn.active { color: #4f46e5; background: #f1f5f9; font-weight: 700; }
-    .language-divider { color: #cbd5e1; font-weight: 300; }
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
+    }
 
     .header-right { display: flex; align-items: center; gap: 24px; }
     .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
@@ -315,7 +395,25 @@
         gap: 12px;
       }
 
-      .language-selector { justify-content: center; width: 100%; }
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
       .header-cta { width: 100%; }
       .header-cta .btn { width: 100%; justify-content: center; }
 
@@ -332,7 +430,7 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .site-header { z-index: 99999; }
-    .dropdown-content { z-index: 999999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
     /* FOOTER PRO (igual ao index) */
     .footer-pro {
@@ -514,10 +612,11 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="index.html#what-we-do">
-              Serviços <span class="dropdown-arrow">▼</span>
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
 
             <div class="dropdown-content">
@@ -526,8 +625,12 @@
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Product Scope</h4>
-                  <p>15-day process to align the product with your business goals.</p>
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
                 </div>
               </a>
 
@@ -536,8 +639,12 @@
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>MVP Builder</h4>
-                  <p>Go to market quickly with a high-quality Minimum Viable Product.</p>
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
                 </div>
               </a>
 
@@ -546,8 +653,12 @@
                   <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>UX / UI</h4>
-                  <p>Design an easy-to-use engaging and functional product.</p>
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
                 </div>
               </a>
 
@@ -556,8 +667,16 @@
                   <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>AI Development & Enablement</h4>
-                  <p>We leverage ML and Generative AI strategically to ensure your business is future-ready.</p>
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
                 </div>
               </a>
 
@@ -566,8 +685,16 @@
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Custom Software Development</h4>
-                  <p>Lean frameworks applied to your vision to create an innovative custom software solution.</p>
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">
+                    Custom Software Development
+                  </h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
                 </div>
               </a>
 
@@ -576,33 +703,57 @@
                   <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4>Dedicated Teams</h4>
-                  <p>Build your product with a dedicated team of developers.</p>
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
+                    Dedicated Teams
+                  </h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
                 </div>
               </a>
             </div>
           </li>
 
-          <li><a href="index.html#pricing">Pricing</a></li>
-          <li><a href="index.html#about">About Us</a></li>
-          <li><a href="index.html#careers">Careers</a></li>
-          <li><a href="index.html#tech">Tech</a></li>
-          <li><a href="index.html#resources">Resources</a></li>
+          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
+          <li><a href="index.html#resources" data-pt="Recursos" data-en="Resources" data-es="Recursos">Resources</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <div class="language-selector">
-          <button class="lang-btn active" data-lang="pt" type="button">PT</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
-          <span class="language-divider">|</span>
-          <button class="lang-btn" data-lang="es" type="button">ES</button>
+        <!-- NOVO: DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES (IGUAL AO INDEX) -->
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt">
+              <span class="lang-flag">🇵🇹</span>
+              <span class="lang-name">Português</span>
+            </button>
+            <button class="language-option" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="language-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+            </button>
+          </div>
         </div>
 
         <div class="header-cta">
           <a class="btn btn--primary" href="#contact"
-             data-pt="BOOK A CALL" data-en="BOOK A CALL" data-es="RESERVAR LLAMADA">
+             data-pt="AGENDAR UMA CHAMADA"
+             data-en="BOOK A CALL"
+             data-es="RESERVAR UNA LLAMADA">
             BOOK A CALL
           </a>
         </div>
@@ -747,16 +898,20 @@
                 <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto">Orçamento</span>
                 <select name="budget" required>
                   <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…">Selecionar…</option>
-                  <option>€1k–€5k</option>
-                  <option>€5k–€15k</option>
-                  <option>€15k–€50k</option>
-                  <option>€50k+</option>
+                  <option data-pt="€1k–€5k" data-en="€1k–€5k" data-es="€1k–€5k">€1k–€5k</option>
+                  <option data-pt="€5k–€15k" data-en="€5k–€15k" data-es="€5k–€15k">€5k–€15k</option>
+                  <option data-pt="€15k–€50k" data-en="€15k–€50k" data-es="€15k–€50k">€15k–€50k</option>
+                  <option data-pt="€50k+" data-en="€50k+" data-es="€50k+">€50k+</option>
                 </select>
               </label>
 
               <label class="field">
                 <span data-pt="Descrição" data-en="Description" data-es="Descripción">Descrição</span>
-                <textarea name="description" rows="6" placeholder="Conta-nos em 2–3 linhas o que precisas" required></textarea>
+                <textarea name="description" rows="6" 
+                          data-pt="Conta-nos em 2–3 linhas o que precisas"
+                          data-en="Tell us in 2–3 lines what you need"
+                          data-es="Cuéntanos en 2–3 líneas lo que necesitas"
+                          placeholder="Conta-nos em 2–3 linhas o que precisas" required></textarea>
               </label>
 
               <label class="field">
@@ -765,7 +920,11 @@
                       data-es="¿Cómo nos conociste?">
                   Como soubeste de nós?
                 </span>
-                <input type="text" name="referral" placeholder="Google, indicação, LinkedIn…">
+                <input type="text" name="referral" 
+                       data-pt="Google, indicação, LinkedIn…"
+                       data-en="Google, referral, LinkedIn…"
+                       data-es="Google, referencia, LinkedIn…"
+                       placeholder="Google, indicação, LinkedIn…">
               </label>
 
               <label class="check">
@@ -891,45 +1050,124 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- Script de línguas (simples e robusto para esta página) -->
+  <!-- Script de línguas IGUAL AO INDEX -->
   <script>
-  (function () {
-    const DEFAULT_LANG = localStorage.getItem("preferredLanguage") || "pt";
+    document.addEventListener('DOMContentLoaded', function() {
+      const languageOptions = document.querySelectorAll('.language-option');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      
+      // Mapeamento de bandeiras para cada língua
+      const flagMap = {
+        'pt': '🇵🇹',
+        'en': '🇬🇧',
+        'es': '🇪🇸'
+      };
+      
+      // Mapeamento de códigos curtos
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES'
+      };
 
-    function setActiveLangButton(lang) {
-      document.querySelectorAll(".lang-btn[data-lang]").forEach(btn => {
-        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      // Normalização de idioma
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        return 'en';
+      }
+
+      // Carregar língua salva ou usar português por padrão
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      setActiveLanguage(savedLanguage);
+      applyLanguage(savedLanguage);
+
+      // Event listeners para as opções de língua
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const lang = normalizeLang(this.getAttribute('data-lang'));
+          setActiveLanguage(lang);
+          applyLanguage(lang);
+          localStorage.setItem('preferredLanguage', lang);
+        });
       });
-    }
 
-    function updateTextContent(lang) {
-      document.querySelectorAll("[data-pt],[data-en],[data-es]").forEach(el => {
-        const txt = el.getAttribute(`data-${lang}`);
-        if (!txt) return;
-
-        if (el.tagName === "OPTION") {
-          el.textContent = txt;
-          return;
+      function setActiveLanguage(lang) {
+        // Atualizar o botão do dropdown
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '🇬🇧';
         }
+        
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN';
+        }
+        
+        // Atualizar as opções ativas
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
+        });
+      }
 
-        if (el.hasAttribute("data-html")) el.innerHTML = txt;
-        else el.textContent = txt;
-      });
-    }
+      function applyLanguage(lang) {
+        lang = normalizeLang(lang);
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
+        updateTextContent(lang);
+        updateAriaLabels(lang);
+      }
 
-    function applyLanguage(lang) {
-      document.documentElement.lang = (lang === "pt") ? "pt-PT" : lang;
-      updateTextContent(lang);
-      setActiveLangButton(lang);
-      localStorage.setItem("preferredLanguage", lang);
-    }
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+          
+          if (text === null) return;
 
-    applyLanguage(DEFAULT_LANG);
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+            if (el.tagName === 'OPTION') {
+              el.textContent = text;
+            } else if (el.hasAttribute('placeholder')) {
+              el.placeholder = text;
+            } else {
+              el.value = text;
+            }
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
 
-    document.querySelectorAll(".lang-btn[data-lang]").forEach(btn => {
-      btn.addEventListener("click", () => applyLanguage(btn.getAttribute("data-lang")));
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        ariaEls.forEach(el => {
+          let val = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          
+          if (val) el.setAttribute('aria-label', val);
+        });
+      }
     });
-  })();
   </script>
 </body>
 </html>
