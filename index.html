@@ -545,14 +545,14 @@
     .hero-bg, .hero-overlay { pointer-events: none; }
 
     /* =========================
-       FOOTER NOVO (PRO) COM LOGO MAIOR
+       FOOTER NOVO (PRO) - SEM LOGO
        ========================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
       position: relative;
       overflow: hidden;
-      padding: 60px 0 24px; /* Reduzido de 72px para 60px */
+      padding: 60px 0 24px;
     }
 
     .footer-pro::before {
@@ -580,26 +580,36 @@
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 24px; /* Reduzido de 28px para 24px */
+      gap: 24px;
       position: relative;
       z-index: 1;
-      padding-bottom: 20px; /* Reduzido de 28px para 20px */
+      padding-bottom: 20px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .footer-brand {
       display: flex;
       flex-direction: column;
-      gap: 12px; /* Reduzido de 14px para 12px */
+      gap: 12px;
       align-items: flex-start;
     }
 
-    /* LOGO BEM MAIOR NO FOOTER - AUMENTADA DE 32px PARA 70px */
-    .footer-logo {
-      height: 70px; /* AUMENTADA SUBSTANCIALMENTE (de 32px para 70px) */
-      width: auto;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
-      object-fit: contain;
+    /* LOGO REMOVIDA - Apenas texto da marca */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
     }
 
     .footer-tagline {
@@ -608,14 +618,14 @@
       line-height: 1.7;
       color: rgba(226, 232, 240, 0.85);
       max-width: 420px;
-      margin: 0;
+      margin: 8px 0 0 0;
     }
 
     .footer-cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 8px; /* Reduzido de 10px para 8px */
+      margin-top: 16px;
     }
 
     .btn--footer {
@@ -691,7 +701,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 8px; /* Reduzido de 10px para 8px */
+      margin-top: 16px;
     }
 
     .footer-badge {
@@ -721,7 +731,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      padding-top: 16px; /* Reduzido de 18px para 16px */
+      padding-top: 16px;
       position: relative;
       z-index: 1;
       font-family: 'Inter', sans-serif;
@@ -753,11 +763,11 @@
       .footer-top { grid-template-columns: 1fr; gap: 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
-      .footer-logo {
-        height: 55px; /* Um pouco menor em mobile mas ainda grande */
-      }
       .footer-pro {
-        padding: 50px 0 20px; /* Reduzido para mobile */
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
       }
     }
   </style>
@@ -1241,7 +1251,9 @@
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="images/logo.png" alt="Cobrait logo" class="footer-logo">
+            <!-- LOGO REMOVIDA - substituída por texto -->
+            <h3 class="footer-brand-title">Cobrait</h3>
+            <p class="footer-brand-subtitle">Software Factory</p>
 
             <p class="footer-tagline"
                data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
