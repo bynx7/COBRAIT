@@ -432,13 +432,13 @@
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
-    /* FOOTER PRO (igual ao index) */
+    /* FOOTER PRO (IGUAL AO INDEX - SEM LOGO, APENAS TEXTO) */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
       position: relative;
       overflow: hidden;
-      padding: 72px 0 28px;
+      padding: 60px 0 24px;
     }
 
     .footer-pro::before {
@@ -466,15 +466,37 @@
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
       position: relative;
       z-index: 1;
-      padding-bottom: 28px;
+      padding-bottom: 20px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
 
-    .footer-brand { display: flex; flex-direction: column; gap: 14px; }
-    .footer-logo { height: 32px; width: auto; display: block; object-fit: contain; }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
 
     .footer-tagline {
       font-family: 'Inter', sans-serif;
@@ -482,11 +504,21 @@
       line-height: 1.7;
       color: rgba(226, 232, 240, 0.85);
       max-width: 420px;
-      margin: 0;
+      margin: 8px 0 0 0;
     }
 
-    .footer-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-    .btn--footer { padding: 10px 18px; font-size: 14px; border-radius: 10px; }
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
 
     .btn--footer.btn--outline {
       border-color: rgba(226, 232, 240, 0.35);
@@ -530,7 +562,10 @@
       gap: 8px;
     }
 
-    .footer-links a:hover { color: #ffffff; transform: translateX(3px); }
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
 
     .footer-meta {
       display: grid;
@@ -540,10 +575,20 @@
       color: rgba(203, 213, 225, 0.9);
     }
 
-    .footer-meta a { color: rgba(203, 213, 225, 0.9); text-decoration: none; transition: color .2s ease; }
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
     .footer-meta a:hover { color: #fff; }
 
-    .footer-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
 
     .footer-badge {
       display: inline-flex;
@@ -572,7 +617,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      padding-top: 18px;
+      padding-top: 16px;
       position: relative;
       z-index: 1;
       font-family: 'Inter', sans-serif;
@@ -580,8 +625,19 @@
       color: rgba(148, 163, 184, 0.9);
     }
 
-    .footer-mini-links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
-    .footer-mini-links a { color: rgba(148, 163, 184, 0.95); text-decoration: none; transition: color .2s ease; }
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
     .footer-mini-links a:hover { color: #fff; }
 
     @media (max-width: 1024px) {
@@ -590,9 +646,15 @@
     }
 
     @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 22px; }
+      .footer-top { grid-template-columns: 1fr; gap: 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -955,12 +1017,14 @@
       </div>
     </section>
 
-    <!-- FOOTER PRO IGUAL AO INDEX -->
+    <!-- FOOTER PRO IGUAL AO INDEX (SEM LOGO, APENAS TEXTO) -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="images/logo.png" alt="Cobrait logo" class="footer-logo">
+            <!-- LOGO REMOVIDA - substituída por texto COBRAIT (IGUAL AO INDEX) -->
+            <h3 class="footer-brand-title">Cobrait</h3>
+            <p class="footer-brand-subtitle">Software Factory</p>
 
             <p class="footer-tagline"
                data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
