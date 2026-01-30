@@ -428,7 +428,7 @@
       padding: 0 20px;
     }
 
-    /* FOOTER PRO (mantido igual) */
+    /* FOOTER PRO (modificado para substituir logo por texto) */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
@@ -471,12 +471,22 @@
 
     .footer-brand { display: flex; flex-direction: column; gap: 14px; }
 
-    .footer-logo{
-      height: 32px;
-      width: auto;
-      max-width: none;
-      display: block;
-      object-fit: contain;
+    /* Substituir a logo por texto "cobrait" */
+    .footer-brand-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      color: white;
+      letter-spacing: -0.5px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-text span {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .footer-tagline {
@@ -595,6 +605,7 @@
       .footer-top { grid-template-columns: 1fr; gap: 22px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
+      .footer-brand-text { font-size: 24px; }
     }
   </style>
 
@@ -1472,12 +1483,13 @@
       </div>
     </section>
 
-    <!-- FOOTER PRO -->
+    <!-- FOOTER PRO (MODIFICADO - substituindo logo por texto) -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <img src="images/logo.png" alt="Cobrait logo" class="footer-logo">
+            <!-- Substituindo a logo por texto "cobrait" -->
+            <div class="footer-brand-text">cobrait</div>
 
             <p class="footer-tagline"
                data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
