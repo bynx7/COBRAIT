@@ -1070,6 +1070,132 @@
         font-size: 22px;
       }
     }
+
+    /* =========================
+       BUDGET DISPLAY SECTION (NOVO)
+       ========================= */
+    .budget-display {
+      margin-top: 50px;
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 12px 28px rgba(2,6,23,0.06);
+      display: none;
+    }
+    
+    .budget-display.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .budget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    
+    .budget-title h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      color: #0f172a;
+      margin: 0 0 8px 0;
+    }
+    
+    .budget-subtitle {
+      font-family: 'Inter', sans-serif;
+      color: #64748b;
+      font-size: 16px;
+      margin: 0;
+    }
+    
+    .budget-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #94a3b8;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    .budget-close:hover {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+    
+    .budget-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    
+    .budget-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .budget-price-range {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    
+    .budget-price-amounts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .budget-price-from, .budget-price-to {
+      flex: 1;
+    }
+    
+    .budget-price-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      color: #0f172a;
+      line-height: 1;
+    }
+    
+    .budget-price-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    
+    @media (max-width: 768px) {
+      .budget-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .budget-price-amounts {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .budget-display {
+        padding: 25px;
+      }
+    }
   </style>
 </head>
 
@@ -1117,7 +1243,7 @@
                   <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
                   <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
                      data-en="15-day process to align the product with your business goals."
-                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                     data-es="Proceso de 15 días para alinear el producto com os objetivos de tu negócio.">
                     15-day process to align the product with your business goals.
                   </p>
                 </div>
@@ -1290,24 +1416,77 @@
         </h1>
         <select id="projectType" class="pricing-select" aria-label="Pick your type of project here">
           <option value="" selected data-pt="Escolha o tipo de projeto aqui" data-en="Pick your type of project here" data-es="Elige el tipo de proyecto aquí">Pick your type of project here</option>
-          <option data-pt="Aplicação Fintech" data-en="Fintech Application" data-es="Aplicación Fintech">Fintech Application</option>
-          <option data-pt="Ferramenta de Data Mining" data-en="Data Mining Tool" data-es="Herramienta de Data Mining">Data Mining Tool</option>
-          <option data-pt="App de Open Banking" data-en="Open Banking App" data-es="App de Open Banking">Open Banking App</option>
-          <option data-pt="Marketplace" data-en="Marketplace" data-es="Marketplace">Marketplace</option>
-          <option data-pt="API" data-en="API" data-es="API">API</option>
-          <option data-pt="Dashboard de Analytics / BI" data-en="Analytics / BI Dashboard" data-es="Dashboard de Analytics / BI">Analytics / BI Dashboard</option>
-          <option data-pt="Comunidade / Rede Social" data-en="Community / Social Network" data-es="Comunidad / Red Social">Community / Social Network</option>
-          <option data-pt="Aplicação de Inteligência Artificial" data-en="Artificial Intelligence Application" data-es="Aplicación de Inteligencia Artificial">Artificial Intelligence Application</option>
-          <option data-pt="AI no edge" data-en="AI on the edge" data-es="AI en el edge">AI on the edge</option>
-          <option data-pt="App de Música e Entretenimento" data-en="Music & Entertainment App" data-es="App de Música y Entretenimiento">Music & Entertainment App</option>
-          <option data-pt="Software Regtech" data-en="Regtech Software" data-es="Software Regtech">Regtech Software</option>
-          <option data-pt="Projeto de Integração de Sistemas" data-en="System Integration Project" data-es="Proyecto de Integración de Sistemas">System Integration Project</option>
-          <option data-pt="App Blockchain" data-en="Blockchain App" data-es="App Blockchain">Blockchain App</option>
-          <option data-pt="App Lifestyle" data-en="Lifestyle App" data-es="App de Estilo de Vida">Lifestyle App</option>
-          <option data-pt="App de Saúde e Fitness" data-en="Health & Fitness App" data-es="App de Salud y Fitness">Health & Fitness App</option>
-          <option data-pt="App de Viagens" data-en="Travel App" data-es="App de Viajes">Travel App</option>
-          <option data-pt="App Desportiva" data-en="Sports App" data-es="App Deportiva">Sports App</option>
+          <!-- APENAS AS OPÇÕES QUE PEDISTE -->
+          <option value="sports-app" data-pt="App Desportiva" data-en="Sports App" data-es="App Deportiva">Sports App</option>
+          <option value="travel-app" data-pt="App de Viagens" data-en="Travel App" data-es="App de Viajes">Travel App</option>
+          <option value="health-fitness-app" data-pt="App de Saúde e Fitness" data-en="Health & Fitness App" data-es="App de Salud y Fitness">Health & Fitness App</option>
+          <option value="lifestyle-app" data-pt="App Lifestyle" data-en="Lifestyle App" data-es="App de Estilo de Vida">Lifestyle App</option>
+          <option value="system-integration" data-pt="Projeto de Integração de Sistemas" data-en="System Integration Project" data-es="Proyecto de Integración de Sistemas">System Integration Project</option>
+          <option value="music-entertainment-app" data-pt="App de Música e Entretenimento" data-en="Music & Entertainment App" data-es="App de Música y Entretenimiento">Music & Entertainment App</option>
+          <option value="ai-application" data-pt="Aplicação de Inteligência Artificial" data-en="Artificial Intelligence Application" data-es="Aplicación de Inteligencia Artificial">Artificial Intelligence Application</option>
+          <option value="api" data-pt="API" data-en="API" data-es="API">API</option>
+          <option value="marketplace" data-pt="Marketplace" data-en="Marketplace" data-es="Marketplace">Marketplace</option>
+          <option value="fintech-app" data-pt="Aplicação Fintech" data-en="Fintech Application" data-es="Aplicación Fintech">Fintech Application</option>
         </select>
+      </div>
+    </section>
+
+    <!-- BUDGET DISPLAY SECTION (NOVO) -->
+    <section class="pricing-section">
+      <div class="container">
+        <div id="budgetDisplay" class="budget-display">
+          <div class="budget-header">
+            <div class="budget-title">
+              <h2 id="budgetProjectTitle">Health & Fitness App</h2>
+              <p class="budget-subtitle" data-pt="Orçamento estimado para o seu projeto" data-en="Estimated budget for your project" data-es="Presupuesto estimado para su proyecto">Estimated budget for your project</p>
+            </div>
+            <button class="budget-close" id="closeBudget" aria-label="Close">
+              ×
+            </button>
+          </div>
+          
+          <div class="budget-content">
+            <div class="budget-details">
+              <div class="pricing-details">
+                <div class="detail-row">
+                  <span class="detail-label">COMPLEXITY</span>
+                  <span class="detail-value" id="budgetComplexity">Mid</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">PROJECT SIZE</span>
+                  <span class="detail-value" id="budgetSize">Medium</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">SPEED</span>
+                  <span class="detail-value" id="budgetSpeed">2-5 Months</span>
+                </div>
+              </div>
+              
+              <div>
+                <h3 style="font-family: 'Inter', sans-serif; font-weight: 600; color: #1e293b; margin-bottom: 16px;" data-pt="Detalhes do Projeto" data-en="Project Details" data-es="Detalles del Proyecto">Project Details</h3>
+                <p id="budgetDescription" style="font-family: 'Inter', sans-serif; color: #475569; line-height: 1.7; margin: 0;">
+                  A comprehensive health and fitness application with workout tracking, nutrition planning, progress monitoring, and social features.
+                </p>
+              </div>
+            </div>
+            
+            <div class="budget-price-range">
+              <div class="price-range-label">PROJECT RANGE</div>
+              <div class="budget-price-amounts">
+                <div class="budget-price-from">
+                  <div class="price-title">FROM</div>
+                  <div class="budget-price-value" id="budgetFrom">$24k</div>
+                </div>
+                <div class="price-divider">—</div>
+                <div class="budget-price-to">
+                  <div class="price-title">TO</div>
+                  <div class="budget-price-value" id="budgetTo">$88k</div>
+                </div>
+              </div>
+              <div class="budget-price-note">This estimate considers Product, UX/UI and Software Development.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2008,7 +2187,7 @@
   </footer>
 
   <!-- =========================
-       SCRIPT FINAL (IDÊNTICO AO INDEX.HTML)
+       SCRIPT FINAL (IDÊNTICO AO INDEX.HTML + NOVA FUNCIONALIDADE)
        ========================= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -2153,8 +2332,152 @@
         });
       });
 
-      // Filtrar exemplos pelo dropdown (opcional mas fica top)
+      // ====== NOVA FUNCIONALIDADE: BUDGET DISPLAY ======
       const select = document.getElementById('projectType');
+      const budgetDisplay = document.getElementById('budgetDisplay');
+      const closeBudgetBtn = document.getElementById('closeBudget');
+      const budgetProjectTitle = document.getElementById('budgetProjectTitle');
+      const budgetComplexity = document.getElementById('budgetComplexity');
+      const budgetSize = document.getElementById('budgetSize');
+      const budgetSpeed = document.getElementById('budgetSpeed');
+      const budgetDescription = document.getElementById('budgetDescription');
+      const budgetFrom = document.getElementById('budgetFrom');
+      const budgetTo = document.getElementById('budgetTo');
+
+      // Dados de exemplo para cada tipo de projeto (podes ajustar estes valores)
+      const projectData = {
+        'sports-app': {
+          title: 'Sports App',
+          complexity: 'Mid',
+          size: 'Medium',
+          speed: '2-5 Months',
+          description: 'A comprehensive sports application with live scores, team management, player statistics, and social features for sports enthusiasts.',
+          from: '$18k',
+          to: '$65k'
+        },
+        'travel-app': {
+          title: 'Travel App',
+          complexity: 'High',
+          size: 'Big',
+          speed: '< 2 Months',
+          description: 'A full-featured travel application with booking system, itinerary planning, local guides, and real-time notifications.',
+          from: '$35k',
+          to: '$120k'
+        },
+        'health-fitness-app': {
+          title: 'Health & Fitness App',
+          complexity: 'Mid',
+          size: 'Medium',
+          speed: '2-5 Months',
+          description: 'A comprehensive health and fitness application with workout tracking, nutrition planning, progress monitoring, and social features.',
+          from: '$24k',
+          to: '$88k'
+        },
+        'lifestyle-app': {
+          title: 'Lifestyle App',
+          complexity: 'Low',
+          size: 'Small',
+          speed: '> 6 Months',
+          description: 'A lifestyle application for daily habits, mindfulness, productivity, and personal development tracking.',
+          from: '$12k',
+          to: '$45k'
+        },
+        'system-integration': {
+          title: 'System Integration Project',
+          complexity: 'High',
+          size: 'Big',
+          speed: '< 2 Months',
+          description: 'Integration of multiple systems and APIs to create a seamless workflow across different platforms and services.',
+          from: '$50k',
+          to: '$200k'
+        },
+        'music-entertainment-app': {
+          title: 'Music & Entertainment App',
+          complexity: 'Mid',
+          size: 'Medium',
+          speed: '2-5 Months',
+          description: 'A music streaming and entertainment platform with personalized recommendations, playlists, and social sharing features.',
+          from: '$28k',
+          to: '$95k'
+        },
+        'ai-application': {
+          title: 'Artificial Intelligence Application',
+          complexity: 'High',
+          size: 'Big',
+          speed: '< 2 Months',
+          description: 'AI-powered application with machine learning models, natural language processing, and predictive analytics capabilities.',
+          from: '$60k',
+          to: '$250k'
+        },
+        'api': {
+          title: 'API Development',
+          complexity: 'Mid',
+          size: 'Medium',
+          speed: '2-5 Months',
+          description: 'Robust API development with comprehensive documentation, authentication, rate limiting, and third-party integrations.',
+          from: '$15k',
+          to: '$70k'
+        },
+        'marketplace': {
+          title: 'Marketplace Platform',
+          complexity: 'High',
+          size: 'Big',
+          speed: '< 2 Months',
+          description: 'A multi-vendor marketplace platform with payment processing, inventory management, reviews, and seller tools.',
+          from: '$40k',
+          to: '$150k'
+        },
+        'fintech-app': {
+          title: 'Fintech Application',
+          complexity: 'High',
+          size: 'Big',
+          speed: '< 2 Months',
+          description: 'Secure financial technology application with banking integrations, payment processing, investment tracking, and compliance features.',
+          from: '$75k',
+          to: '$300k'
+        }
+      };
+
+      // Event listener para o select
+      select.addEventListener('change', function() {
+        const selectedValue = this.value;
+        
+        if (selectedValue && projectData[selectedValue]) {
+          const data = projectData[selectedValue];
+          
+          // Atualizar o título
+          budgetProjectTitle.textContent = data.title;
+          
+          // Atualizar os detalhes
+          budgetComplexity.textContent = data.complexity;
+          budgetComplexity.className = 'detail-value';
+          if (data.complexity === 'Low') budgetComplexity.classList.add('low');
+          if (data.complexity === 'Mid') budgetComplexity.classList.add('mid');
+          if (data.complexity === 'High') budgetComplexity.classList.add('high');
+          
+          budgetSize.textContent = data.size;
+          budgetSpeed.textContent = data.speed;
+          budgetDescription.textContent = data.description;
+          budgetFrom.textContent = data.from;
+          budgetTo.textContent = data.to;
+          
+          // Mostrar a seção de budget
+          budgetDisplay.classList.add('active');
+          
+          // Rolar suavemente para a seção de budget
+          budgetDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // Se não houver seleção, esconder a seção de budget
+          budgetDisplay.classList.remove('active');
+        }
+      });
+
+      // Event listener para o botão de fechar
+      closeBudgetBtn.addEventListener('click', function() {
+        budgetDisplay.classList.remove('active');
+      });
+
+      // Filtrar exemplos pelo dropdown (mantido da versão anterior)
       const cards = Array.from(document.querySelectorAll('#examplesGrid .pricing-card'));
 
       // Atualizar opções do select ao mudar idioma
@@ -2166,20 +2489,20 @@
             option.textContent = text;
           }
         });
+        
+        // Atualizar também o título do budget se estiver visível
+        if (budgetDisplay.classList.contains('active')) {
+          const selectedValue = select.value;
+          if (selectedValue && projectData[selectedValue]) {
+            const option = select.querySelector(`option[value="${selectedValue}"]`);
+            if (option) {
+              const translatedTitle = option.getAttribute(`data-${lang}`) || option.textContent;
+              budgetProjectTitle.textContent = translatedTitle;
+            }
+          }
+        }
       }
 
-      select.addEventListener('change', () => {
-        const v = select.value.trim();
-        cards.forEach(card => {
-          const type = (card.getAttribute('data-type') || "").trim();
-          if (!v) {
-            card.style.display = "";
-          } else {
-            card.style.display = (type === v) ? "" : "none";
-          }
-        });
-      });
-      
       // Inicializar select com a língua atual
       updateSelectLanguage(savedLanguage);
     });
