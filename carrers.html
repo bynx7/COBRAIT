@@ -529,6 +529,80 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
+    /* ========================= SECÇÃO COBRAIT (igual à segunda screenshot) ========================= */
+    .cobrait-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .cobrait-section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 48px;
+      margin: 0 0 24px 0;
+      color: white;
+    }
+    
+    .cobrait-section h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 40px 0;
+    }
+    
+    .cobrait-section .btn--primary {
+      margin: 20px 0 40px;
+      padding: 16px 40px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    
+    .cobrait-section .hq-info {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 40px;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cobrait-section .hq-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+    }
+    
+    .cobrait-section .hq-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: center;
+    }
+    
+    .cobrait-section .hq-details strong {
+      color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .cobrait-section .hq-link {
+      color: rgba(199, 210, 254, 0.95);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    .cobrait-section .hq-link:hover {
+      color: white;
+    }
+
     /* ========================= FOOTER (IGUAL AO INDEX) ========================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
@@ -751,6 +825,16 @@
       }
       .footer-brand-title {
         font-size: 22px;
+      }
+      .cobrait-section h2 {
+        font-size: 36px;
+      }
+      .cobrait-section h3 {
+        font-size: 20px;
+      }
+      .cobrait-section .btn--primary {
+        padding: 14px 32px;
+        font-size: 16px;
       }
     }
   </style>
@@ -1097,6 +1181,45 @@
            data-pt="Enviar candidatura espontânea" data-en="Send spontaneous application" data-es="Enviar solicitud espontánea">
           Enviar candidatura espontânea
         </a>
+      </div>
+    </section>
+
+    <!-- ========================= SECÇÃO COBRAIT (igual à segunda screenshot) ========================= -->
+    <section class="cobrait-section">
+      <div class="container">
+        <h2>Cobrait</h2>
+        <h3 data-pt="Vamos falar sobre o teu projeto" 
+            data-en="Let's talk about your project" 
+            data-es="Hablemos sobre tu proyecto">
+          Vamos falar sobre o teu projeto
+        </h3>
+        
+        <a href="book-a-call.html" class="btn btn--primary"
+           data-pt="AGENDAR UMA CHAMADA"
+           data-en="SCHEDULE A CALL"
+           data-es="AGENDAR UNA LLAMADA">
+          AGENDAR UMA CHAMADA
+        </a>
+        
+        <div class="hq-info">
+          <div class="hq-title" data-pt="PORTO HQ" data-en="PORTO HQ" data-es="SEDE EN OPORTO">
+            PORTO HQ
+          </div>
+          <div class="hq-details">
+            <div data-html
+                 data-pt="<strong>Morada:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto"
+                 data-en="<strong>Address:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto"
+                 data-es="<strong>Dirección:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto">
+              <strong>Morada:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto
+            </div>
+            <div data-html
+                 data-pt="<strong>Email:</strong> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>"
+                 data-en="<strong>Email:</span> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>"
+                 data-es="<strong>Email:</strong> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>">
+              <strong>Email:</strong> <a class="hq-link" href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
