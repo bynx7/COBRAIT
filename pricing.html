@@ -845,6 +845,191 @@
     }
 
     /* =========================
+       NOVA SEÇÃO: TALK ABOUT YOUR PROJECT (DO SCREENSHOT)
+       ========================= */
+    .talk-about-project {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      padding: 70px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .talk-about-project::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .talk-about-project::after {
+      content: "";
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .talk-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .talk-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin: 0 0 20px;
+      color: white;
+    }
+
+    .talk-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 40px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .talk-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background: white;
+      color: #4f46e5;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 40px;
+    }
+
+    .talk-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      background: #f8fafc;
+    }
+
+    .talk-reviews {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      font-size: 24px;
+      color: #ffd700;
+    }
+
+    .review-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .review-platform {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .review-platform::before {
+      content: "•";
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .talk-contact {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      margin: 50px auto 0;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .contact-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: white;
+      margin: 0 0 20px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-item strong {
+      color: white;
+      font-weight: 600;
+      min-width: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .talk-about-project {
+        padding: 50px 0;
+      }
+      
+      .talk-button {
+        padding: 14px 32px;
+        font-size: 15px;
+      }
+      
+      .talk-contact {
+        padding: 30px;
+        margin: 40px 20px 0;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    /* =========================
        FOOTER NOVO (PRO) - SEM LOGO (COPIADO DO INDEX)
        ========================= */
     .footer-pro {
@@ -2085,6 +2270,55 @@
             <div class="cta-actions">
               <a class="btn btn--primary" href="book-a-call.html" data-pt="AGENDAR CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR LLAMADA">BOOK A CALL</a>
               <a class="btn btn--outline" href="index.html#what-we-do" data-pt="VER SERVIÇOS" data-en="SEE SERVICES" data-es="VER SERVICIOS">SEE SERVICES</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         NOVA SEÇÃO: TALK ABOUT YOUR PROJECT (DO SCREENSHOT)
+         ========================= -->
+    <section class="talk-about-project">
+      <div class="container">
+        <div class="talk-content">
+          <h1 class="talk-title" data-pt="Vamos falar sobre o teu projeto" data-en="Let's talk about your project" data-es="Hablemos de tu proyecto">
+            Vamos falar sobre o teu projeto
+          </h1>
+          
+          <p class="talk-subtitle" data-pt="Temos uma equipa de especialistas pronta para ajudar a transformar a tua ideia em realidade." data-en="We have a team of experts ready to help turn your idea into reality." data-es="Tenemos un equipo de expertos listo para ayudar a transformar tu idea en realidad.">
+            Temos uma equipa de especialistas pronta para ajudar a transformar a tua ideia em realidade.
+          </p>
+          
+          <a href="book-a-call.html" class="talk-button" data-pt="AGENDAR UMA CHAMADA" data-en="SCHEDULE A CALL" data-es="PROGRAMAR UNA LLAMADA">
+            AGENDAR UMA CHAMADA
+          </a>
+          
+          <div class="talk-reviews">
+            <div class="stars">
+              ★★★★★
+            </div>
+            <div class="review-text" data-pt="Avaliado no Clutch" data-en="Reviewed on Clutch" data-es="Revisado en Clutch">
+              Avaliado no Clutch
+            </div>
+            <div class="review-platform" data-pt="Empresa Top" data-en="Top Company" data-es="Empresa Top">
+              Empresa Top
+            </div>
+          </div>
+          
+          <div class="talk-contact">
+            <h3 class="contact-title" data-pt="PORTO HQ" data-en="PORTO HQ" data-es="PORTO HQ">
+              PORTO HQ
+            </h3>
+            <div class="contact-info">
+              <div class="contact-item">
+                <strong data-pt="Morada:" data-en="Address:" data-es="Dirección:">Morada:</strong>
+                <span>R. Eng Ferreira Dias 161, 4100-247 Porto</span>
+              </div>
+              <div class="contact-item">
+                <strong data-pt="Email:" data-en="Email:" data-es="Email:">Email:</strong>
+                <span>cobrait@geral.pt</span>
+              </div>
             </div>
           </div>
         </div>
