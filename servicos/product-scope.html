@@ -646,16 +646,15 @@
     }
 
     /* =========================================================
-       FOOTER PRO (IGUAL AO INDEX / BOOK-A-CALL) — com paths ../
+       FOOTER PRO (EXATAMENTE IGUAL AO INDEX) - SEM LOGO, APENAS TEXTO
     ========================================================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
       position: relative;
       overflow: hidden;
-      padding: 72px 0 28px;
+      padding: 60px 0 24px;
     }
-
     .footer-pro::before {
       content: "";
       position: absolute;
@@ -666,7 +665,6 @@
       filter: blur(10px);
       pointer-events: none;
     }
-
     .footer-pro::after {
       content: "";
       position: absolute;
@@ -677,59 +675,60 @@
       filter: blur(12px);
       pointer-events: none;
     }
-
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 28px;
+      gap: 24px;
       position: relative;
       z-index: 1;
-      padding-bottom: 28px;
+      padding-bottom: 20px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
-
     .footer-brand {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
+      align-items: flex-start;
     }
-
-    .footer-logo {
-      height: 32px;
-      width: auto;
-      max-width: none;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
     }
-
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
     .footer-tagline {
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       line-height: 1.7;
       color: rgba(226, 232, 240, 0.85);
       max-width: 420px;
-      margin: 0;
+      margin: 8px 0 0 0;
     }
-
     .footer-cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 10px;
+      margin-top: 16px;
     }
-
     .btn--footer {
       padding: 10px 18px;
       font-size: 14px;
       border-radius: 10px;
     }
-
     .btn--footer.btn--outline {
       border-color: rgba(226, 232, 240, 0.35);
       color: rgba(226, 232, 240, 0.92);
     }
-
     .btn--footer.btn--outline:hover {
       background: rgba(226, 232, 240, 0.12);
       color: #ffffff;
@@ -737,7 +736,6 @@
       box-shadow: none;
       border-color: rgba(226, 232, 240, 0.5);
     }
-
     .footer-col h4 {
       margin: 0 0 14px;
       font-family: 'Poppins', sans-serif;
@@ -747,7 +745,6 @@
       text-transform: uppercase;
       color: rgba(226, 232, 240, 0.9);
     }
-
     .footer-links {
       list-style: none;
       margin: 0;
@@ -755,7 +752,6 @@
       display: grid;
       gap: 10px;
     }
-
     .footer-links a {
       color: rgba(203, 213, 225, 0.9);
       text-decoration: none;
@@ -766,12 +762,10 @@
       align-items: center;
       gap: 8px;
     }
-
     .footer-links a:hover {
       color: #ffffff;
       transform: translateX(3px);
     }
-
     .footer-meta {
       display: grid;
       gap: 10px;
@@ -779,22 +773,20 @@
       font-size: 14px;
       color: rgba(203, 213, 225, 0.9);
     }
-
     .footer-meta a {
       color: rgba(203, 213, 225, 0.9);
       text-decoration: none;
       transition: color .2s ease;
     }
-
-    .footer-meta a:hover { color: #fff; }
-
+    .footer-meta a:hover {
+      color: #fff;
+    }
     .footer-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 16px;
     }
-
     .footer-badge {
       display: inline-flex;
       align-items: center;
@@ -808,7 +800,6 @@
       line-height: 1;
       white-space: nowrap;
     }
-
     .footer-badge-dot {
       width: 8px;
       height: 8px;
@@ -816,35 +807,32 @@
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
     }
-
     .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 14px;
-      padding-top: 18px;
+      padding-top: 16px;
       position: relative;
       z-index: 1;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
       color: rgba(148, 163, 184, 0.9);
     }
-
     .footer-mini-links {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
     .footer-mini-links a {
       color: rgba(148, 163, 184, 0.95);
       text-decoration: none;
       transition: color .2s ease;
     }
-
-    .footer-mini-links a:hover { color: #fff; }
-
+    .footer-mini-links a:hover {
+      color: #fff;
+    }
     @media (max-width: 1024px) {
       .footer-top {
         grid-template-columns: 1.6fr 1fr 1fr;
@@ -853,17 +841,24 @@
         grid-column: 1 / -1;
       }
     }
-
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: 1fr;
-        gap: 22px;
+        gap: 20px;
       }
       .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
       }
-      .footer-mini-links { justify-content: flex-start; }
+      .footer-mini-links {
+        justify-content: flex-start;
+      }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -1176,12 +1171,14 @@
     </div>
   </main>
 
-  <!-- FOOTER PRO IGUAL AO DA IMAGEM (paths corrigidos para /servicos/) -->
+  <!-- FOOTER PRO EXATAMENTE IGUAL AO INDEX (SEM LOGO) -->
   <footer class="footer-pro" role="contentinfo">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="../images/logo.png" alt="Cobrait logo" class="footer-logo">
+          <!-- LOGO REMOVIDA - substituída por texto COBRAIT (IGUAL AO INDEX) -->
+          <h3 class="footer-brand-title">Cobrait</h3>
+          <p class="footer-brand-subtitle">Software Factory</p>
 
           <p class="footer-tagline"
              data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
@@ -1195,67 +1192,61 @@
                data-pt="Agendar uma chamada"
                data-en="Book a call"
                data-es="Reservar una llamada">
-              Book a call
+              Agendar uma chamada
             </a>
             <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
                data-pt="Ver serviços"
                data-en="See services"
                data-es="Ver servicios">
-              See services
+              Ver serviços
             </a>
           </div>
 
           <div class="footer-badges" aria-label="Highlights">
-            <span class="footer-badge"><span class="footer-badge-dot"></span>
-              <span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span>
-            </span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span>
-              <span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span>
-            </span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span>
-              <span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span>
-            </span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
           </div>
         </div>
 
         <div class="footer-col">
-          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Services</h4>
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
           <ul class="footer-links">
             <li><a href="product-scope.html">Product Scope</a></li>
             <li><a href="mvp-builder.html">MVP Builder</a></li>
             <li><a href="ux-ui.html">UX / UI</a></li>
-            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Custom Software</a></li>
-            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Dedicated Teams</a></li>
+            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Company</h4>
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
           <ul class="footer-links">
-            <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">About us</a></li>
-            <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Case studies</a></li>
-            <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+            <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+            <li><a href="../index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+            <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
             <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
           </ul>
         </div>
 
         <div class="footer-col footer-col--contact">
-          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contact</h4>
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
           <div class="footer-meta">
             <div>
               <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
               <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
             </div>
             <div>
-              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Response:</span>
-              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">usually within 24–48h</span>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
             </div>
             <div>
-              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Want it fast?</span>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
               <a href="../book-a-call.html"
                  data-pt="Marca uma call."
                  data-en="Book a call."
-                 data-es="Reserva una llamada.">Book a call.</a>
+                 data-es="Reserva una llamada.">Marca uma call.</a>
             </div>
           </div>
         </div>
@@ -1266,9 +1257,9 @@
           © <span id="year"></span> Cobrait — Software Factory
         </div>
         <div class="footer-mini-links">
-          <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacy</a>
-          <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Terms</a>
-          <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Services</a>
+          <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="../index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
         </div>
       </div>
     </div>
