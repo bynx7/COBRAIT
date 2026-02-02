@@ -703,7 +703,16 @@
       display: flex;
       flex-direction: column;
       gap: 22px;
-    }
+    }.timeline-progress {
+  position: absolute;
+  left: 20px; /* adjust to match step markers */
+  width: 4px;
+  background: linear-gradient(180deg, #4f46e5, #7c3aed);
+  top: 0;
+  height: 0; /* updated by JS */
+  border-radius: 2px;
+}
+
 
     .timeline-wrap::before {
       content: "";
@@ -714,6 +723,7 @@
       width: 2px;
       background: rgba(148, 163, 184, .55);
     }
+
 
     .step {
       position: relative;
@@ -1054,6 +1064,9 @@
         font-size: 22px;
       }
     }
+
+
+
   </style>
 </head>
 
@@ -1423,6 +1436,7 @@
         <h2 class="section-title" data-pt="Como funciona" data-en="How it works" data-es="Cómo funciona">Como funciona</h2>
 
         <div class="timeline-wrap">
+          <div class="timeline-progress"></div>
           <div class="step">
             <div class="card step-card">
               <h3 class="step-title" data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h3>
@@ -1819,6 +1833,29 @@
         });
       }
     });
+
+// ===== Linha animada da timeline (MVP Builder) =====
+window.addEventListener('scroll', () => {
+  const timeline = document.querySelector('.timeline-wrap');
+  if (!timeline) return;
+
+  const progressLine = timeline.querySelector('.timeline-progress');
+  const rect = timeline.getBoundingClientRect();
+
+  const windowHeight = window.innerHeight;
+  const timelineHeight = rect.height;
+
+  let progress =
+    (windowHeight - rect.top) / (windowHeight + timelineHeight);
+
+  progress = Math.max(0, Math.min(1, progress));
+
+  progressLine.style.height = `${progress * 100}%`;
+});
+
   </script>
+
+
+
 </body>
 </html>
