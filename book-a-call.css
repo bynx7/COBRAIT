@@ -430,7 +430,7 @@
 /* =========================
    Responsive
    ========================= */
-@media (max-width: 980px){
+@media (max-width: 1024px){
   .book-hero-grid{
     grid-template-columns: 1fr;
     gap: 28px;
@@ -439,6 +439,12 @@
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  @media (min-width: 1025px){
+  .book-contact-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
   .contact-video{ height: 240px; }
 }
 
