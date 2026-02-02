@@ -903,6 +903,95 @@
       .tech-cards{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .tech-card{ padding: 14px 14px; }
     }
+
+    /* ====== FERRAMENTAS ====== */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .tool-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(226,232,240,0.85);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(79,70,229,0.08), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.10);
+      border-color: rgba(199,210,254,1);
+    }
+    
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+    
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2);
+      flex-shrink: 0;
+    }
+    
+    .tool-icon img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+    
+    .tool-content h3 {
+      color: #0f172a;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.01em;
+    }
+    
+    .tool-content p {
+      color: #475569;
+      line-height: 1.7;
+      margin: 0;
+      font-size: 1.05rem;
+    }
+    
+    @media (max-width: 768px) {
+      .tool-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: center;
+      }
+      
+      .tool-icon {
+        margin: 0 auto;
+      }
+    }
+
   </style>
 </head>
 
@@ -1490,7 +1579,91 @@
     </section>
 
 
+    <!-- Nova seção: Tools We Use -->
+    <section class="service-section">
+      <h2 data-pt="Ferramentas que Utilizamos" 
+          data-en="Tools We Use"
+          data-es="Herramientas que Utilizamos">
+        Ferramentas que Utilizamos
+      </h2>
+      <p data-pt="Utilizamos as melhores ferramentas do mercado para garantir comunicação eficiente, colaboração transparente e entrega de alta qualidade. Estas são as ferramentas que nos ajudam a manter a organização e a excelência em cada projeto."
+         data-en="We use the best tools in the market to ensure efficient communication, transparent collaboration, and high-quality delivery. These are the tools that help us maintain organization and excellence in every project."
+         data-es="Utilizamos las mejores herramientas del mercado para garantizar una comunicación eficiente, colaboración transparente y entrega de alta calidad. Estas son las herramientas que nos ayudan a mantener la organización y la excelencia en cada proyecto.">
+        Utilizamos as melhores ferramentas do mercado para garantir comunicação eficiente, colaboração transparente e entrega de alta qualidade. Estas são as ferramentas que nos ajudam a manter a organização e a excelência em cada projeto.
+      </p>
 
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/slack.svg" alt="Slack icon">
+          </div>
+          <div class="tool-content">
+            <h3 data-pt="Slack" data-en="Slack" data-es="Slack">Slack</h3>
+            <p data-pt="Slack é a nossa escolha para gerir comunicações de projeto. Criamos um canal privado dedicado com membros da equipa e você (o cliente) para discutir tudo relacionado com o seu projeto. Isto garante que a informação do seu projeto é segura e a comunicação é eficiente e transparente em todos os momentos."
+               data-en="Slack is our choice to manage project communications. We create a dedicated private channel with both team members and you (the client) to discuss everything related to your project. This ensures your project's information is secure and communication is efficient and transparent at all times."
+               data-es="Slack es nuestra elección para gestionar las comunicaciones del proyecto. Creamos un canal privado dedicado con miembros del equipo y usted (el cliente) para discutir todo lo relacionado con su proyecto. Esto garantiza que la información de su proyecto sea segura y la comunicación sea eficiente y transparente en todo momento.">
+              Slack é a nossa escolha para gerir comunicações de projeto. Criamos um canal privado dedicado com membros da equipa e você (o cliente) para discutir tudo relacionado com o seu projeto.
+            </p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/trello.svg" alt="Trello icon">
+          </div>
+          <div class="tool-content">
+            <h3 data-pt="Trello" data-en="Trello" data-es="Trello">Trello</h3>
+            <p data-pt="Trello é uma ferramenta de colaboração que organiza projetos em quadros. Diz-lhe em que se está a trabalhar, quem está a trabalhar em quê e onde está algo num processo. Usamos o Trello para nos mantermos organizados e manter o progresso claro, mas também para reunir tudo o que precisa de saber sobre o projeto num só lugar."
+               data-en="Trello is a collaboration tool that organizes projects into boards. It tells you what's being worked on, who's working on what, and where something is in a process. We use Trello to stay organized and keep progress clear but also to gather everything you will need to know about the project in a single place."
+               data-es="Trello es una herramienta de colaboración que organiza proyectos en tableros. Le dice en qué se está trabajando, quién está trabajando en qué y dónde está algo en un proceso. Usamos Trello para mantenernos organizados y mantener el progreso claro, pero también para reunir todo lo que necesitará saber sobre el proyecto en un solo lugar.">
+              Trello é uma ferramenta de colaboração que organiza projetos em quadros. Diz-lhe em que se está a trabalhar, quem está a trabalhar em quê e onde está algo num processo.
+            </p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/miro.svg" alt="Miro icon">
+          </div>
+          <div class="tool-content">
+            <h3 data-pt="Miro" data-en="Miro" data-es="Miro">Miro</h3>
+            <p data-pt="Miro é uma ferramenta de design de diagramas colaborativa. Miro é a ferramenta perfeita para traduzir ideias em conceitos e explicá-los a toda a equipa de forma rápida e fiável. Graças às funcionalidades colaborativas, todos entram na discussão."
+               data-en="Miro is a collaborative diagram design tool. Miro is the perfect tool to translate ideas into concepts and explain them to the whole team quickly and reliably. Thanks to collaborative features, everyone enters the discussion."
+               data-es="Miro es una herramienta de diseño de diagramas colaborativa. Miro es la herramienta perfecta para traducir ideas en conceptos y explicarlos a todo el equipo de manera rápida y confiable. Gracias a las funciones colaborativas, todos participan en la discusión.">
+              Miro é uma ferramenta de design de diagramas colaborativa. Miro é a ferramenta perfeita para traduzir ideias em conceitos e explicá-los a toda a equipa de forma rápida e fiável.
+            </p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/googledrive.svg" alt="Google Drive icon">
+          </div>
+          <div class="tool-content">
+            <h3 data-pt="Google Drive" data-en="Google Drive" data-es="Google Drive">Google Drive</h3>
+            <p data-pt="Google Drive é a suite ideal para quem procura trabalhar online e armazenar ficheiros de forma segura na nuvem. O tratamento de texto e as folhas de cálculo são obrigatórios, por isso usamos o Google Drive para aproveitar a suite completa para partilhar documentação e colaborar com vários membros da equipa no mesmo documento em tempo real."
+               data-en="Google Drive is the go-to suite for those looking to work online and store files securely in the cloud. Text treatment and spreadsheets are mandatory so we use Google Drive to take advantage of the full suite to share documentation and collaborate with multiple team members on the same document in real-time."
+               data-es="Google Drive es la suite ideal para aquellos que buscan trabajar en línea y almacenar archivos de forma segura en la nube. El tratamiento de texto y las hojas de cálculo son obligatorios, por lo que usamos Google Drive para aprovechar la suite completa para compartir documentación y colaborar con varios miembros del equipo en el mismo documento en tiempo real.">
+              Google Drive é a suite ideal para quem procura trabalhar online e armazenar ficheiros de forma segura na nuvem.
+            </p>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/jira.svg" alt="Jira icon">
+          </div>
+          <div class="tool-content">
+            <h3 data-pt="Jira Software" data-en="Jira Software" data-es="Jira Software">Jira Software</h3>
+            <p data-pt="O Jira foi originalmente concebido como rastreador de bugs e problemas. Hoje evoluiu para uma ferramenta de gestão de trabalho para todos os tipos de casos de uso. O Jira é o nosso centro para entrega de trabalho. Usamo-lo para organizar e gerir as nossas tarefas de design e implementação para continuar a progredir de forma eficiente em direção a cada lançamento."
+               data-en="Jira was originally designed as bug and issue tracker. Today has evolved into a work management tool for all kinds of use cases. Jira is our central hub for work delivery. We use it to organize and manage our design and implementation tasks to keep progressing efficiently toward each release."
+               data-es="Jira fue originalmente diseñado como rastreador de errores y problemas. Hoy ha evolucionado a una herramienta de gestión de trabajo para todo tipo de casos de uso. Jira es nuestro centro central para la entrega de trabajo. Lo usamos para organizar y gestionar nuestras tareas de diseño e implementación para seguir progresando eficientemente hacia cada lanzamiento.">
+              O Jira foi originalmente concebido como rastreador de bugs e problemas. Hoje evoluiu para uma ferramenta de gestão de trabalho para todos os tipos de casos de uso.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- FOOTER PRO (MODIFICADO - substituindo logo por texto) -->
     <footer class="footer-pro" role="contentinfo">

@@ -1,76 +1,178 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-PT">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cobrait — Carreiras</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cobrait — Carreiras | Trabalhe conosco</title>
+  <meta name="description" content="Junte-se à equipa da Cobrait. Carreiras em desenvolvimento de software, design e tecnologia. Ambiente dinâmico, projetos desafiadores e crescimento profissional.">
+  <meta name="keywords" content="carreiras, vagas, tecnologia, desenvolvimento software, Porto, remoto">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Cobrait — Carreiras">
+  <meta property="og:description" content="Junte-se à equipa da Cobrait. Carreiras em desenvolvimento de software.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <meta name="description" content="Junte-se à equipa da Cobrait. Carreiras em desenvolvimento de software.">
   
-  <!-- Identidade geral -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+  
   <style>
-    /* ========================= HEADER (IGUAL AO INDEX) ========================= */
+    /* ====== RESET E BASE ====== */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      --primary-gradient-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-light: #64748b;
+      --text-on-dark: #f8fafc;
+      --bg-white: #ffffff;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --border-light: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --transition-fast: 150ms ease;
+      --transition-normal: 300ms ease;
+      --transition-slow: 500ms ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-white);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-fast);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 32px;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all var(--transition-normal);
+      border: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      gap: 8px;
+    }
+    
+    .btn--primary {
+      background: var(--primary-gradient);
+      color: white;
+    }
+    
+    .btn--primary:hover {
+      background: var(--primary-gradient-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn--outline {
+      background: transparent;
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+    
+    .btn--outline:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* ====== HEADER MODERNO ====== */
     .site-header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 4px 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 0;
+      transition: all var(--transition-normal);
     }
+    
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      min-height: 60px;
+      gap: 32px;
     }
+    
     .brand img {
-      height: 75px;
+      height: 48px;
       width: auto;
+      transition: transform var(--transition-normal);
     }
-    .nav-toggle { display: none; }
-    .nav-toggle-btn {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 8px;
+    
+    .brand:hover img {
+      transform: scale(1.05);
     }
-    .nav-toggle-btn span {
-      width: 22px;
-      height: 2px;
-      background: #4f46e5;
-      margin: 3px 0;
-      transition: 0.3s;
-    }
+    
+    /* Navegação */
     .site-nav ul {
       display: flex;
       list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 24px;
+      gap: 32px;
+      align-items: center;
     }
+    
     .site-nav a {
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 14px;
-      color: #64748b;
-      text-decoration: none;
-      transition: color 0.3s ease;
+      font-size: 15px;
+      color: var(--text-secondary);
       position: relative;
-      padding: 6px 0;
+      padding: 8px 0;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
-    .site-nav a:hover { color: #4f46e5; }
+    
+    .site-nav a:hover {
+      color: #4f46e5;
+    }
+    
     .site-nav a::after {
       content: '';
       position: absolute;
@@ -78,317 +180,58 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      transition: width 0.3s ease;
+      background: var(--primary-gradient);
+      transition: width var(--transition-normal);
     }
-    .site-nav a:hover::after { width: 100%; }
-    .dropdown { position: relative; }
+    
+    .site-nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    
     .dropdown-content {
       position: absolute;
       top: 100%;
       left: 0;
       min-width: 280px;
-      background: white;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      background: var(--bg-white);
+      border-radius: var(--radius-md);
       padding: 16px;
+      box-shadow: var(--shadow-xl);
       opacity: 0;
       visibility: hidden;
       transform: translateY(10px);
-      transition: all 0.3s ease;
+      transition: all var(--transition-normal);
       z-index: 1000;
-      margin-top: 12px;
+      margin-top: 8px;
+      border: 1px solid var(--border-light);
     }
+    
     .dropdown:hover .dropdown-content {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
     }
-    .dropdown-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #334155;
-      transition: all 0.2s ease;
-      margin-bottom: 6px;
-    }
-    .dropdown-item:last-child { margin-bottom: 0; }
-    .dropdown-item:hover {
-      background: #f8fafc;
-      transform: translateX(4px);
-    }
-    .dropdown-item svg {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-    .dropdown-item-content h4 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 13px;
-      color: #1e293b;
-      margin: 0 0 4px 0;
-    }
-    .dropdown-item-content p {
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      color: #64748b;
-      line-height: 1.4;
-      margin: 0;
-    }
-    .dropdown-arrow {
-      font-size: 10px;
-      transition: transform 0.3s ease;
-    }
-    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
     
-    /* DROPDOWN DE LÍNGUAS */
-    .language-dropdown {
-      position: relative;
-    }
-    .language-dropdown-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      color: #64748b;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .language-dropdown-btn:hover {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-    }
-    .language-dropdown-btn .lang-flag {
-      width: 16px;
-      height: 12px;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .language-dropdown-btn .lang-code {
-      font-weight: 600;
-      color: #4f46e5;
-    }
-    .language-dropdown-content {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      min-width: 200px;
-      background: white;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      padding: 12px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      margin-top: 8px;
-    }
-    .language-dropdown:hover .language-dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .language-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #334155;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      background: none;
-      width: 100%;
-      text-align: left;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-    }
-    .language-option:hover {
-      background: #f8fafc;
-      transform: translateX(4px);
-    }
-    .language-option.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      color: white;
-    }
-    .language-option.active:hover {
-      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
-    }
-    .language-option .lang-flag {
-      width: 20px;
-      height: 15px;
-      border-radius: 2px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .language-option .lang-name {
-      flex: 1;
-    }
-    
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .header-cta .btn {
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    @media (max-width: 1024px) {
-      .header-inner { gap: 16px; }
-      .site-nav ul { gap: 16px; }
-      .header-right { gap: 12px; }
-    }
-    @media (max-width: 768px) {
-      .nav-toggle-btn { display: flex; }
-      .site-nav {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 16px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      }
-      .site-nav ul { flex-direction: column; gap: 12px; }
-      .dropdown-content {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 6px 0 0 16px;
-        border-left: 2px solid #e2e8f0;
-      }
-      .dropdown-item {
-        padding: 8px 0 8px 12px;
-        margin-bottom: 0;
-      }
-      .header-right {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 16px;
-        gap: 10px;
-      }
-      .language-dropdown {
-        width: 100%;
-      }
-      .language-dropdown-btn {
-        width: 100%;
-        justify-content: center;
-      }
-      .language-dropdown-content {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        margin-top: 8px;
-        width: 100%;
-      }
-      .header-cta { width: 100%; }
-      .header-cta .btn {
-        width: 100%;
-        justify-content: center;
-      }
-      .nav-toggle:checked ~ .site-nav {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-      .brand img { height: 50px; }
-    }
-    .site-header { z-index: 99999; }
-    .dropdown-content, .language-dropdown-content { z-index: 999999; }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* ========================= BOTÕES (IGUAL AO INDEX) ========================= */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
-    .btn--primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      color: white;
-    }
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-    }
-    .btn--outline {
-      background: transparent;
-      color: #4f46e5;
-      border-color: #4f46e5;
-    }
-    .btn--outline:hover {
-      background: #4f46e5;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
-    }
-
-    /* ========================= CONTEÚDO CARREIRAS MODERNIZADO ========================= */
-    /* HERO SECTION - Moderno e Atraente */
+    /* ====== HERO MODERNO ====== */
     .careers-hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
       padding: 140px 0 100px;
-      text-align: center;
       position: relative;
       overflow: hidden;
     }
     
     .careers-hero::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.15), transparent 60%),
-        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1), transparent 60%);
-      z-index: 1;
+        radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1), transparent 50%);
     }
     
     .careers-hero__content {
@@ -396,28 +239,27 @@
       z-index: 2;
       max-width: 800px;
       margin: 0 auto;
+      text-align: center;
     }
     
     .careers-hero__title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: clamp(48px, 5vw, 64px);
-      line-height: 1.1;
+      font-size: clamp(3rem, 5vw, 4rem);
       color: white;
-      margin: 0 0 24px;
-      background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 100%);
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #ffffff, #c7d2fe);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     
     .careers-hero__subtitle {
-      font-family: 'Inter', sans-serif;
       font-size: 20px;
       line-height: 1.6;
       color: #cbd5e1;
+      margin-bottom: 40px;
       max-width: 600px;
-      margin: 0 auto 40px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .hero-stats {
@@ -437,7 +279,7 @@
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
       font-size: 48px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -446,15 +288,14 @@
     }
     
     .stat-label {
-      font-family: 'Inter', sans-serif;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     
-    /* BENEFITS SECTION - Design Moderno */
+    /* ====== SEÇÃO DE BENEFÍCIOS ====== */
     .careers-section {
       padding: 100px 0;
     }
@@ -465,8 +306,7 @@
     }
     
     .section-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: 18px;
+      font-size: 14px;
       color: #4f46e5;
       font-weight: 600;
       text-transform: uppercase;
@@ -476,18 +316,15 @@
     }
     
     .careers-section__title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: clamp(36px, 4vw, 48px);
-      color: #0f172a;
+      font-size: clamp(2.25rem, 4vw, 3rem);
+      color: var(--text-primary);
       margin-bottom: 20px;
     }
     
     .section-description {
-      font-family: 'Inter', sans-serif;
       font-size: 18px;
       line-height: 1.6;
-      color: #475569;
+      color: var(--text-secondary);
       max-width: 700px;
       margin: 0 auto;
     }
@@ -500,33 +337,32 @@
     }
     
     .benefit-card {
-      background: white;
-      border-radius: 20px;
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
       padding: 40px 32px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-      border: 1px solid #f1f5f9;
+      border: 1px solid var(--border-light);
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all var(--transition-normal);
       position: relative;
       overflow: hidden;
     }
     
     .benefit-card::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.4s ease;
+      transition: transform var(--transition-normal);
     }
     
     .benefit-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(79, 70, 229, 0.15);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
       border-color: #c7d2fe;
     }
     
@@ -535,50 +371,45 @@
     }
     
     .benefit-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 28px;
-      font-size: 32px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      margin: 0 auto 24px;
+      font-size: 24px;
+      background: var(--primary-gradient);
       color: white;
-      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+      box-shadow: var(--shadow-lg);
     }
     
     .benefit-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
       font-size: 1.5rem;
-      color: #1e293b;
       margin-bottom: 16px;
+      color: var(--text-primary);
     }
     
     .benefit-desc {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      color: #64748b;
-      margin: 0;
+      color: var(--text-light);
+      line-height: 1.6;
     }
     
-    /* JOBS SECTION - Design Moderno */
+    /* ====== SEÇÃO DE VAGAS ====== */
     .jobs-section {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      background: linear-gradient(135deg, var(--bg-light) 0%, #f1f5f9 100%);
       padding: 100px 0;
       position: relative;
     }
     
     .jobs-section::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
     }
     
     .jobs-filter {
@@ -592,23 +423,22 @@
     .filter-btn {
       padding: 10px 24px;
       border-radius: 50px;
-      background: white;
-      border: 2px solid #e2e8f0;
-      font-family: 'Inter', sans-serif;
+      background: var(--bg-white);
+      border: 2px solid var(--border-light);
       font-weight: 600;
       font-size: 14px;
-      color: #64748b;
+      color: var(--text-light);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all var(--transition-normal);
     }
     
     .filter-btn:hover,
     .filter-btn.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       color: white;
       border-color: transparent;
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+      box-shadow: var(--shadow-md);
     }
     
     .jobs-list {
@@ -617,36 +447,36 @@
     }
     
     .job-item {
-      background: white;
-      border-radius: 16px;
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
       padding: 32px;
       margin-bottom: 20px;
-      border: 1px solid #e2e8f0;
-      transition: all 0.4s ease;
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-normal);
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 24px;
+      gap: 32px;
       align-items: center;
       position: relative;
       overflow: hidden;
     }
     
     .job-item::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
       width: 4px;
-      background: linear-gradient(to bottom, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       transform: scaleY(0);
       transform-origin: top;
-      transition: transform 0.4s ease;
+      transition: transform var(--transition-normal);
     }
     
     .job-item:hover {
       border-color: #c7d2fe;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-xl);
       transform: translateY(-4px);
     }
     
@@ -655,71 +485,63 @@
     }
     
     .job-info h3 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
       font-size: 1.5rem;
-      color: #1e293b;
-      margin: 0 0 12px 0;
+      margin-bottom: 12px;
+      color: var(--text-primary);
     }
     
     .job-meta {
       display: flex;
-      gap: 24px;
-      font-family: 'Inter', sans-serif;
+      gap: 20px;
       font-size: 15px;
-      color: #64748b;
+      color: var(--text-light);
       flex-wrap: wrap;
+      margin-bottom: 16px;
     }
     
     .job-meta span {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      background: #f8fafc;
-      border-radius: 6px;
+      gap: 6px;
     }
     
     .job-tags {
       display: flex;
       gap: 8px;
-      margin-top: 16px;
       flex-wrap: wrap;
     }
     
     .job-tag {
-      padding: 4px 12px;
-      background: #f1f5f9;
+      padding: 6px 12px;
+      background: var(--bg-light);
       border-radius: 50px;
-      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 500;
-      color: #475569;
+      color: var(--text-secondary);
     }
     
     .job-tag.tech {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      background: #dbeafe;
       color: #1d4ed8;
     }
     
     .job-tag.remote {
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      background: #dcfce7;
       color: #15803d;
     }
     
-    /* PROCESS SECTION - Moderno */
+    /* ====== PROCESSO DE RECRUTAMENTO ====== */
     .process-section {
       padding: 100px 0;
-      background: white;
     }
     
     .process-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-      counter-reset: step-counter;
+      gap: 40px;
       max-width: 1000px;
       margin: 60px auto 0;
+      counter-reset: step-counter;
     }
     
     .process-step {
@@ -733,50 +555,34 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       color: white;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 24px;
+      font-size: 20px;
       margin: 0 auto 24px;
       position: relative;
       z-index: 2;
-      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+      box-shadow: var(--shadow-lg);
     }
     
     .process-step:not(:last-child)::after {
-      content: "";
+      content: '';
       position: absolute;
-      top: 30px;
-      right: -50%;
-      width: 100%;
+      top: 28px;
+      right: -20px;
+      width: calc(100% - 56px);
       height: 2px;
       background: linear-gradient(to right, #4f46e5 0%, #7c3aed 100%);
       opacity: 0.2;
     }
     
-    .process-step h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #1e293b;
-      margin: 0 0 12px 0;
-    }
-    
-    .process-step p {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #64748b;
-      margin: 0;
-    }
-    
-    /* CTA FINAL - Modernizado */
+    /* ====== CTA FINAL ====== */
     .cta-section {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: var(--primary-gradient);
       color: white;
       padding: 100px 0;
       text-align: center;
@@ -785,7 +591,7 @@
     }
     
     .cta-section::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0;
       background: 
@@ -801,16 +607,12 @@
     }
     
     .cta-section__title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: clamp(36px, 4vw, 48px);
+      font-size: clamp(2.25rem, 4vw, 3rem);
       margin-bottom: 24px;
       color: white;
-      line-height: 1.2;
     }
     
     .cta-section__desc {
-      font-family: 'Inter', sans-serif;
       font-size: 1.25rem;
       line-height: 1.6;
       max-width: 600px;
@@ -825,1105 +627,564 @@
       flex-wrap: wrap;
     }
     
-    .cta-actions .btn--primary {
-      background: white;
-      color: #4f46e5;
-      font-weight: 700;
-    }
-    
-    .cta-actions .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
-    }
-    
-    .cta-actions .btn--outline {
-      background: transparent;
-      color: white;
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .cta-actions .btn--outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: white;
-    }
-
-    /* ========================= SECÇÃO COBRAIT (igual à segunda screenshot) ========================= */
+    /* ====== SEÇÃO COBRAIT ====== */
     .cobrait-section {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
       color: white;
       padding: 80px 0;
       text-align: center;
     }
     
     .cobrait-section h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 48px;
-      margin: 0 0 24px 0;
+      font-size: 3rem;
+      margin-bottom: 16px;
       color: white;
     }
     
     .cobrait-section h3 {
-      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
       font-weight: 600;
-      font-size: 24px;
       color: rgba(255, 255, 255, 0.9);
-      margin: 0 0 40px 0;
+      margin-bottom: 32px;
     }
     
-    .cobrait-section .btn--primary {
-      margin: 20px 0 40px;
-      padding: 16px 40px;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    
-    .cobrait-section .hq-info {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 40px;
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .cobrait-section .hq-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 16px;
-    }
-    
-    .cobrait-section .hq-details {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.85);
-      text-align: center;
-    }
-    
-    .cobrait-section .hq-details strong {
-      color: rgba(255, 255, 255, 0.95);
-    }
-    
-    .cobrait-section .hq-link {
-      color: rgba(199, 210, 254, 0.95);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    .cobrait-section .hq-link:hover {
-      color: white;
-    }
-
-    /* ========================= FOOTER (IGUAL AO INDEX) ========================= */
+    /* ====== FOOTER MODERNO ====== */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
+      padding: 80px 0 32px;
       position: relative;
       overflow: hidden;
-      padding: 60px 0 24px;
     }
-
-    .footer-pro::before {
-      content: "";
-      position: absolute;
-      inset: -200px -200px auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
-
-    .footer-pro::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -240px -240px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
+    
     .footer-top {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 24px;
-      position: relative;
-      z-index: 1;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
     }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
+    
     .footer-brand-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       font-size: 24px;
       color: rgba(226, 232, 240, 0.95);
-      margin: 0;
-      line-height: 1;
+      margin-bottom: 8px;
     }
-
+    
     .footer-brand-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
       font-size: 14px;
       color: rgba(203, 213, 225, 0.8);
-      margin: 4px 0 0 0;
+      margin-bottom: 16px;
     }
-
+    
     .footer-tagline {
-      font-family: 'Inter', sans-serif;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.6;
       color: rgba(226, 232, 240, 0.85);
       max-width: 420px;
-      margin: 8px 0 0 0;
+      margin-bottom: 24px;
     }
-
-    .footer-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .btn--footer {
-      padding: 10px 18px;
-      font-size: 14px;
-      border-radius: 10px;
-    }
-
-    .btn--footer.btn--outline {
-      border-color: rgba(226, 232, 240, 0.35);
-      color: rgba(226, 232, 240, 0.92);
-    }
-
-    .btn--footer.btn--outline:hover {
-      background: rgba(226, 232, 240, 0.12);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: none;
-      border-color: rgba(226, 232, 240, 0.5);
-    }
-
+    
     .footer-col h4 {
-      margin: 0 0 14px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
       font-size: 14px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      font-weight: 600;
       color: rgba(226, 232, 240, 0.9);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-
+    
     .footer-links {
       list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-
+    
     .footer-links a {
       color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
       font-size: 14px;
-      transition: all .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      transition: all var(--transition-fast);
     }
-
+    
     .footer-links a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
+      color: white;
+      transform: translateX(4px);
     }
-
-    .footer-meta {
-      display: grid;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.9);
-    }
-
-    .footer-meta a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .footer-meta a:hover { color: #fff; }
-
-    .footer-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .footer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: rgba(15, 23, 42, 0.35);
-      color: rgba(226, 232, 240, 0.9);
-      font-size: 12px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .footer-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-    }
-
+    
     .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      padding-top: 16px;
-      position: relative;
-      z-index: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-size: 14px;
       color: rgba(148, 163, 184, 0.9);
     }
-
-    .footer-mini-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .footer-mini-links a {
-      color: rgba(148, 163, 184, 0.95);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .footer-mini-links a:hover { color: #fff; }
-
-    /* ========================= RESPONSIVIDADE ========================= */
+    
+    /* ====== RESPONSIVIDADE ====== */
     @media (max-width: 1024px) {
-      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
-      .footer-col--contact { grid-column: 1 / -1; }
-      .hero-stats { gap: 32px; }
-      .stat-number { font-size: 40px; }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .hero-stats {
+        gap: 32px;
+      }
+      
+      .stat-number {
+        font-size: 40px;
+      }
     }
-
+    
     @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 20px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-mini-links { justify-content: flex-start; }
-      .footer-pro {
-        padding: 50px 0 20px;
+      .header-inner {
+        flex-direction: column;
+        gap: 16px;
       }
-      .footer-brand-title {
-        font-size: 22px;
+      
+      .site-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
       }
-      .cobrait-section h2 {
-        font-size: 36px;
-      }
-      .cobrait-section h3 {
-        font-size: 20px;
-      }
-      .cobrait-section .btn--primary {
-        padding: 14px 32px;
-        font-size: 16px;
-      }
+      
       .careers-hero {
         padding: 100px 0 80px;
       }
+      
       .careers-hero__title {
-        font-size: clamp(36px, 5vw, 48px);
+        font-size: clamp(2.5rem, 5vw, 3rem);
       }
-      .hero-stats {
-        gap: 24px;
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
       }
-      .stat-number {
-        font-size: 36px;
-      }
+      
       .job-item {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 24px;
       }
+      
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .process-step:not(:last-child)::after {
+        display: none;
+      }
+      
       .cta-actions {
         flex-direction: column;
         align-items: center;
       }
-      .cta-actions .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-      .process-steps {
+      
+      .footer-top {
         grid-template-columns: 1fr;
+        gap: 40px;
       }
-      .process-step:not(:last-child)::after {
-        display: none;
-      }
-      .process-step::before {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
       }
     }
-
+    
     @media (max-width: 480px) {
-      .benefits-grid {
-        grid-template-columns: 1fr;
+      .hero-stats {
+        gap: 24px;
       }
+      
+      .stat-number {
+        font-size: 32px;
+      }
+      
       .jobs-filter {
         flex-direction: column;
         align-items: center;
       }
+      
       .filter-btn {
         width: 100%;
         max-width: 200px;
       }
+      
       .job-meta {
         justify-content: center;
       }
+      
+      .cobrait-section h2 {
+        font-size: 2.5rem;
+      }
+      
+      .cobrait-section h3 {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* ====== ANIMAÇÕES ====== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
     }
   </style>
 </head>
 
 <body>
-  <!-- ========================= HEADER (IGUAL AO INDEX) ========================= -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Cobrait">
         <img src="images/logo.png" alt="Cobrait Software Factory logo">
       </a>
-
-      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-      <label class="nav-toggle-btn" for="nav-toggle"
-             aria-label="Abrir menu"
-             data-pt="Abrir menu"
-             data-en="Open menu"
-             data-es="Abrir menú">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
+      
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li>
-            <a href="index.html#work"
-               data-pt="Portfólio"
-               data-en="Work"
-               data-es="Work">Work</a>
-          </li>
-
-          <li class="dropdown">
-            <a href="index.html#what-we-do">
-              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
-              <span class="dropdown-arrow">▼</span>
-            </a>
-            <div class="dropdown-content">
-              <a href="servicos/product-scope.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
-                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
-                     data-en="15-day process to align the product with your business goals."
-                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negócio.">
-                    15-day process to align the product with your business goals.
-                  </p>
-                </div>
-              </a>
-
-              <a href="servicos/mvp-builder.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
-                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
-                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
-                    Go to market quickly with a high-quality Minimum Viable Product.
-                  </p>
-                </div>
-              </a>
-
-              <a href="servicos/ux-ui.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
-                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
-                     data-en="Design an easy-to-use engaging and functional product."
-                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
-                    Design an easy-to-use engaging and functional product.
-                  </p>
-                </div>
-              </a>
-
-              <a href="servicos/ai-development.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
-                      data-en="AI Development & Enablement"
-                      data-es="Desarrollo y Capacitación con IA">
-                    AI Development & Enablement
-                  </h4>
-                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
-                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
-                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
-                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
-                  </p>
-                </div>
-              </a>
-
-              <a href="servicos/custom-software.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="Desenvolvimento de Software à Medida"
-                      data-en="Custom Software Development"
-                      data-es="Desarrollo de Software a Medida">
-                    Custom Software Development
-                  </h4>
-                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
-                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
-                    Lean frameworks applied to your vision to create an innovative custom software solution.
-                  </p>
-                </div>
-              </a>
-
-              <a href="servicos/dedicated-teams.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
-                    Dedicated Teams
-                  </h4>
-                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
-                     data-en="Build your product with a dedicated team of developers."
-                     data-es="Construye tu producto con un equipo dedicado de developers.">
-                    Build your product with a dedicated team of developers.
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-
-          <li>
-            <a href="pricing.html"
-               data-pt="Preços"
-               data-en="Pricing"
-               data-es="Precios">Pricing</a>
-          </li>
-
-          <li>
-            <a href="about-us.html">
-              <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="carrers.html"
-               data-pt="Carreiras"
-               data-en="Careers"
-               data-es="Carreras">Careers</a>
-          </li>
-
-          <li>
-            <a href="tech.html"
-               data-pt="Tecnologia"
-               data-en="Tech"
-               data-es="Tech">Tech</a>
-          </li>
-
-          <li>
-            <a href="index.html#about"
-               data-pt="Recursos"
-               data-en="Resources"
-               data-es="Recursos">Resources</a>
-          </li>
+          <li><a href="index.html#work">Work</a></li>
+          <li><a href="index.html#what-we-do">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="carrers.html" class="active">Careers</a></li>
+          <li><a href="tech.html">Tech</a></li>
+          <li><a href="index.html#about">Resources</a></li>
         </ul>
       </nav>
-
-      <div class="header-right">
-        <!-- ========================= DROPDOWN DE LÍNGUAS ========================= -->
-        <div class="language-dropdown">
-          <button class="language-dropdown-btn" aria-label="Select language">
-            <span class="lang-flag" id="currentFlag">🇵🇹</span>
-            <span class="lang-code" id="currentLang">PT</span>
-            <span class="dropdown-arrow">▼</span>
-          </button>
-          
-          <div class="language-dropdown-content">
-            <button class="language-option active" data-lang="pt">
-              <span class="lang-flag">🇵🇹</span>
-              <span class="lang-name">Português</span>
-            </button>
-            <button class="language-option" data-lang="en">
-              <span class="lang-flag">🇬🇧</span>
-              <span class="lang-name">English</span>
-            </button>
-            <button class="language-option" data-lang="es">
-              <span class="lang-flag">🇪🇸</span>
-              <span class="lang-name">Español</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="header-cta">
-          <a class="btn btn--primary" href="book-a-call.html"
-             data-pt="AGENDAR UMA CHAMADA"
-             data-en="BOOK A CALL"
-             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
-        </div>
-      </div>
+      
+      <a class="btn btn--primary" href="book-a-call.html">
+        Book a Call
+      </a>
     </div>
   </header>
 
-  <!-- ========================= CONTEÚDO CARREIRAS MODERNIZADO ========================= -->
-  <main>
-    <!-- HERO SECTION MODERNIZADO -->
-    <section class="careers-hero">
-      <div class="container careers-hero__content">
-        <h1 class="careers-hero__title" data-pt="Junte-se à equipa Cobrait" data-en="Join the Cobrait Team" data-es="Únete al equipo Cobrait">
-          Junte-se à equipa Cobrait
-        </h1>
-        <p class="careers-hero__subtitle" 
-           data-pt="Procuramos talentos apaixonados por tecnologia, inovação e criação de produtos excepcionais. Trabalhe em projetos desafiadores com as tecnologias mais modernas."
-           data-en="We're looking for talents passionate about technology, innovation and creating exceptional products. Work on challenging projects with the most modern technologies."
-           data-es="Buscamos talentos apasionados por la tecnología, innovación y creación de productos excepcionales. Trabaja en proyectos desafiantes con las tecnologías más modernas.">
-          Procuramos talentos apaixonados por tecnologia, inovação e criação de produtos excepcionais. Trabalhe em projetos desafiadores com as tecnologias mais modernas.
+  <!-- HERO SECTION -->
+  <section class="careers-hero">
+    <div class="container careers-hero__content">
+      <h1 class="careers-hero__title animate-in">
+        Build the Future with Us
+      </h1>
+      <p class="careers-hero__subtitle animate-in">
+        Join a team of innovators shaping the future of software development. Work on cutting-edge projects with modern technologies and agile methodologies.
+      </p>
+      <a class="btn btn--primary animate-in" href="#jobs" style="margin-top: 20px;">
+        View Open Positions
+      </a>
+      
+      <div class="hero-stats">
+        <div class="stat-item animate-in">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-item animate-in" style="animation-delay: 100ms">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-item animate-in" style="animation-delay: 200ms">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Remote/Hybrid</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section class="careers-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">WHY CHOOSE COBRAIT</span>
+        <h2 class="careers-section__title">Grow With Us</h2>
+        <p class="section-description">
+          We believe in creating an environment where talented individuals can thrive, innovate, and make a real impact.
         </p>
-        <a class="btn btn--primary" href="#vagas" data-pt="Ver vagas disponíveis" data-en="View open positions" data-es="Ver vacantes disponibles">
-          Ver vagas disponíveis
-        </a>
-        
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">50+</span>
-            <span class="stat-label" data-pt="Projetos Concluídos" data-en="Projects Completed" data-es="Proyectos Completados">Projetos Concluídos</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">15+</span>
-            <span class="stat-label" data-pt="Clientes Satisfeitos" data-en="Happy Clients" data-es="Clientes Satisfechos">Clientes Satisfeitos</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">100%</span>
-            <span class="stat-label" data-pt="Remoto/Híbrido" data-en="Remote/Hybrid" data-es="Remoto/Híbrido">Remoto/Híbrido</span>
-          </div>
-        </div>
       </div>
-    </section>
-
-    <!-- BENEFÍCIOS MODERNIZADOS -->
-    <section class="careers-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle" data-pt="PORQUÊ TRABALHAR NA COBRAIT" data-en="WHY WORK AT COBRAIT" data-es="POR QUÉ TRABAJAR EN COBRAIT">PORQUÊ TRABALHAR NA COBRAIT</span>
-          <h2 class="careers-section__title" data-pt="O que oferecemos" data-en="What we offer" data-es="Lo que ofrecemos">
-            O que oferecemos
-          </h2>
-          <p class="section-description" data-pt="Na Cobrait, valorizamos o talento e a paixão pela inovação. Oferecemos um ambiente dinâmico onde podes crescer profissionalmente enquanto trabalhas em projetos interessantes."
-             data-en="At Cobrait, we value talent and passion for innovation. We offer a dynamic environment where you can grow professionally while working on exciting projects."
-             data-es="En Cobrait, valoramos el talento y la pasión por la innovación. Ofrecemos un entorno dinámico donde puedes crecer profesionalmente mientras trabajas en proyectos interesantes.">
-            Na Cobrait, valorizamos o talento e a paixão pela inovação. Oferecemos um ambiente dinâmico onde podes crescer profissionalmente enquanto trabalhas em projetos interessantes.
+      
+      <div class="benefits-grid">
+        <div class="benefit-card animate-in">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="benefit-title">Accelerated Growth</h3>
+          <p class="benefit-desc">
+            Work on challenging projects with mentorship from industry experts. Continuous learning opportunities and clear career progression.
           </p>
         </div>
         
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 class="benefit-title" data-pt="Crescimento Rápido" data-en="Fast Growth" data-es="Crecimiento Rápido">Crescimento Rápido</h3>
-            <p class="benefit-desc" data-pt="Oportunidades para trabalhar em projetos desafiadores e expandir as tuas habilidades com mentorias personalizadas."
-               data-en="Opportunities to work on challenging projects and expand your skills with personalized mentoring."
-               data-es="Oportunidades para trabajar en proyectos desafiantes y expandir tus habilidades con mentorías personalizadas.">
-              Oportunidades para trabalhar em projetos desafiadores e expandir as tuas habilidades com mentorias personalizadas.
-            </p>
+        <div class="benefit-card animate-in" style="animation-delay: 100ms">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
           </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-            <h3 class="benefit-title" data-pt="Flexibilidade Total" data-en="Full Flexibility" data-es="Flexibilidad Total">Flexibilidade Total</h3>
-            <p class="benefit-desc" data-pt="Horário flexível, opção de trabalho 100% remoto e ambiente que valoriza o equilíbrio entre vida pessoal e profissional."
-               data-en="Flexible schedule, 100% remote work option and an environment that values work-life balance."
-               data-es="Horario flexible, opción de trabajo 100% remoto y entorno que valora el equilibrio entre vida personal y profesional.">
-              Horário flexível, opção de trabalho 100% remoto e ambiente que valoriza o equilíbrio entre vida pessoal e profissional.
-            </p>
-          </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="benefit-title" data-pt="Tecnologia de Ponta" data-en="Cutting-edge Tech" data-es="Tecnología de Vanguardia">Tecnologia de Ponta</h3>
-            <p class="benefit-desc" data-pt="Trabalha com as tecnologias mais recentes (React, Node.js, Python, IA/ML) e metodologias ágeis em projetos reais."
-               data-en="Work with the latest technologies (React, Node.js, Python, AI/ML) and agile methodologies on real projects."
-               data-es="Trabaja con las tecnologías más recientes (React, Node.js, Python, IA/ML) y metodologías ágiles en proyectos reales.">
-              Trabalha com as tecnologias mais recentes (React, Node.js, Python, IA/ML) e metodologias ágeis em projetos reais.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESSO DE RECRUTAMENTO -->
-    <section class="process-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle" data-pt="COMO FUNCIONA" data-en="HOW IT WORKS" data-es="CÓMO FUNCIONA">COMO FUNCIONA</span>
-          <h2 class="careers-section__title" data-pt="Processo de Recrutamento" data-en="Recruitment Process" data-es="Proceso de Reclutamiento">
-            Processo de Recrutamento
-          </h2>
-          <p class="section-description" data-pt="O nosso processo é simples, transparente e desenhado para conhecermos melhor as tuas capacidades."
-             data-en="Our process is simple, transparent and designed to better understand your capabilities."
-             data-es="Nuestro proceso es simple, transparente y diseñado para conocer mejor tus capacidades.">
-            O nosso processo é simples, transparente e desenhado para conhecermos melhor as tuas capacidades.
+          <h3 class="benefit-title">Flexible Work</h3>
+          <p class="benefit-desc">
+            Remote-first culture with flexible hours. Work from anywhere while maintaining a healthy work-life balance.
           </p>
         </div>
         
-        <div class="process-steps">
-          <div class="process-step">
-            <h4 data-pt="Candidatura" data-en="Application" data-es="Solicitud">Candidatura</h4>
-            <p data-pt="Envia o teu CV e portfólio. Analisamos em 48h."
-               data-en="Send your CV and portfolio. We review within 48h."
-               data-es="Envía tu CV y portafolio. Revisamos en 48h.">
-              Envia o teu CV e portfólio. Analisamos em 48h.
-            </p>
+        <div class="benefit-card animate-in" style="animation-delay: 200ms">
+          <div class="benefit-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
           </div>
-          
-          <div class="process-step">
-            <h4 data-pt="Entrevista Inicial" data-en="Initial Interview" data-es="Entrevista Inicial">Entrevista Inicial</h4>
-            <p data-pt="Conversa com a nossa equipa de RH para alinhar expectativas."
-               data-en="Chat with our HR team to align expectations."
-               data-es="Conversación con nuestro equipo de RRHH para alinear expectativas.">
-              Conversa com a nossa equipa de RH para alinhar expectativas.
-            </p>
-          </div>
-          
-          <div class="process-step">
-            <h4 data-pt="Teste Técnico" data-en="Technical Test" data-es="Prueba Técnica">Teste Técnico</h4>
-            <p data-pt="Desafio prático relacionado com a posição (máx. 3h)."
-               data-en="Practical challenge related to the position (max. 3h)."
-               data-es="Desafío práctico relacionado con el puesto (máx. 3h).">
-              Desafio prático relacionado com a posição (máx. 3h).
-            </p>
-          </div>
-          
-          <div class="process-step">
-            <h4 data-pt="Oferta" data-en="Offer" data-es="Oferta">Oferta</h4>
-            <p data-pt="Proposta formal e integração na equipa."
-               data-en="Formal offer and team integration."
-               data-es="Oferta formal e integración en el equipo.">
-              Proposta formal e integração na equipa.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VAGAS MODERNIZADAS -->
-    <section class="jobs-section" id="vagas">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle" data-pt="VAGAS DISPONÍVEIS" data-en="OPEN POSITIONS" data-es="VACANTES DISPONIBLES">VAGAS DISPONÍVEIS</span>
-          <h2 class="careers-section__title" style="color: #0f172a;" data-pt="Junte-se à nossa equipa" data-en="Join our team" data-es="Únete a nuestro equipo">
-            Junte-se à nossa equipa
-          </h2>
-          <p class="section-description" data-pt="Estamos a crescer e procuramos talento excepcional para se juntar à nossa jornada."
-             data-en="We're growing and looking for exceptional talent to join our journey."
-             data-es="Estamos creciendo y buscamos talento excepcional para unirse a nuestro viaje.">
-            Estamos a crescer e procuramos talento excepcional para se juntar à nossa jornada.
+          <h3 class="benefit-title">Modern Stack</h3>
+          <p class="benefit-desc">
+            Work with the latest technologies including React, Node.js, Python, AI/ML, and cloud-native architectures.
           </p>
         </div>
-        
-        <div class="jobs-filter">
-          <button class="filter-btn active" data-filter="all" data-pt="Todas" data-en="All" data-es="Todas">Todas</button>
-          <button class="filter-btn" data-filter="tech" data-pt="Tecnologia" data-en="Tech" data-es="Tecnología">Tecnologia</button>
-          <button class="filter-btn" data-filter="design" data-pt="Design" data-en="Design" data-es="Diseño">Design</button>
-          <button class="filter-btn" data-filter="remote" data-pt="Remoto" data-en="Remote" data-es="Remoto">Remoto</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECRUITMENT PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">OUR PROCESS</span>
+        <h2 class="careers-section__title">Simple & Transparent</h2>
+        <p class="section-description">
+          We've designed our hiring process to be straightforward while ensuring we find the right fit for both parties.
+        </p>
+      </div>
+      
+      <div class="process-steps">
+        <div class="process-step animate-in">
+          <h4>Apply Online</h4>
+          <p>Submit your application and portfolio. We review all submissions within 48 hours.</p>
         </div>
         
-        <div class="jobs-list">
-          <div class="job-item" data-category="tech remote">
-            <div class="job-info">
-              <h3 data-pt="Desenvolvedor Full-Stack Senior" data-en="Senior Full-Stack Developer" data-es="Desarrollador Full-Stack Senior">Desenvolvedor Full-Stack Senior</h3>
-              <div class="job-meta">
-                <span>📍 <span data-pt="Remoto" data-en="Remote" data-es="Remoto">Remoto</span></span>
-                <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">Tempo integral</span></span>
-                <span>💼 <span data-pt="Sénior" data-en="Senior" data-es="Senior">Sénior</span></span>
-              </div>
-              <div class="job-tags">
-                <span class="job-tag tech">React</span>
-                <span class="job-tag tech">Node.js</span>
-                <span class="job-tag remote">100% Remoto</span>
-              </div>
-            </div>
-            <a class="btn btn--primary" href="mailto:cobrait@geral.pt?subject=Candidatura Full-Stack Senior" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
-              Candidatar
-            </a>
-          </div>
-          
-          <div class="job-item" data-category="design">
-            <div class="job-info">
-              <h3 data-pt="Designer UX/UI" data-en="UX/UI Designer" data-es="Diseñador UX/UI">Designer UX/UI</h3>
-              <div class="job-meta">
-                <span>📍 <span data-pt="Híbrido (Porto)" data-en="Hybrid (Porto)" data-es="Híbrido (Oporto)">Híbrido (Porto)</span></span>
-                <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">Tempo integral</span></span>
-                <span>💼 <span data-pt="Mid-Level" data-en="Mid-Level" data-es="Mid-Level">Mid-Level</span></span>
-              </div>
-              <div class="job-tags">
-                <span class="job-tag">Figma</span>
-                <span class="job-tag">Prototipagem</span>
-                <span class="job-tag">Design System</span>
-              </div>
-            </div>
-            <a class="btn btn--primary" href="mailto:cobrait@geral.pt?subject=Candidatura UX/UI Designer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
-              Candidatar
-            </a>
-          </div>
-          
-          <div class="job-item" data-category="tech remote">
-            <div class="job-info">
-              <h3 data-pt="Engenheiro de IA/ML" data-en="AI/ML Engineer" data-es="Ingeniero de IA/ML">Engenheiro de IA/ML</h3>
-              <div class="job-meta">
-                <span>📍 <span data-pt="Remoto" data-en="Remote" data-es="Remoto">Remoto</span></span>
-                <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">Tempo integral</span></span>
-                <span>💼 <span data-pt="Sénior" data-en="Senior" data-es="Senior">Sénior</span></span>
-              </div>
-              <div class="job-tags">
-                <span class="job-tag tech">Python</span>
-                <span class="job-tag tech">TensorFlow</span>
-                <span class="job-tag tech">LLMs</span>
-                <span class="job-tag remote">100% Remoto</span>
-              </div>
-            </div>
-            <a class="btn btn--primary" href="mailto:cobrait@geral.pt?subject=Candidatura AI/ML Engineer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
-              Candidatar
-            </a>
-          </div>
-          
-          <div class="job-item" data-category="tech">
-            <div class="job-info">
-              <h3 data-pt="Desenvolvedor Frontend" data-en="Frontend Developer" data-es="Desarrollador Frontend">Desenvolvedor Frontend</h3>
-              <div class="job-meta">
-                <span>📍 <span data-pt="Híbrido (Porto)" data-en="Hybrid (Porto)" data-es="Híbrido (Oporto)">Híbrido (Porto)</span></span>
-                <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">Tempo integral</span></span>
-                <span>💼 <span data-pt="Júnior" data-en="Junior" data-es="Junior">Júnior</span></span>
-              </div>
-              <div class="job-tags">
-                <span class="job-tag tech">React</span>
-                <span class="job-tag tech">TypeScript</span>
-                <span class="job-tag">Next.js</span>
-              </div>
-            </div>
-            <a class="btn btn--primary" href="mailto:cobrait@geral.pt?subject=Candidatura Frontend Developer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
-              Candidatar
-            </a>
-          </div>
+        <div class="process-step animate-in" style="animation-delay: 100ms">
+          <h4>Initial Interview</h4>
+          <p>A casual conversation to discuss your experience, goals, and our opportunities.</p>
+        </div>
+        
+        <div class="process-step animate-in" style="animation-delay: 200ms">
+          <h4>Technical Assessment</h4>
+          <p>A practical challenge relevant to the role (max 3 hours to complete).</p>
+        </div>
+        
+        <div class="process-step animate-in" style="animation-delay: 300ms">
+          <h4>Offer & Onboarding</h4>
+          <p>Receive a formal offer and join our team with a comprehensive onboarding process.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA FINAL MODERNIZADO -->
-    <section class="cta-section">
-      <div class="container cta-content">
-        <h2 class="cta-section__title" data-pt="Não vês a vaga perfeita?" data-en="Don't see the perfect role?" data-es="¿No ves el puesto perfecto?">
-          Não vês a vaga perfeita?
+  <!-- JOBS SECTION -->
+  <section class="jobs-section" id="jobs">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">OPEN POSITIONS</span>
+        <h2 class="careers-section__title" style="color: var(--text-primary);">
+          Join Our Team
         </h2>
-        <p class="cta-section__desc" 
-           data-pt="Estamos sempre à procura de talento excepcional. Se tens paixão por tecnologia e queres fazer parte de algo especial, envia-nos o teu CV mesmo sem uma vaga aberta."
-           data-en="We're always looking for exceptional talent. If you're passionate about technology and want to be part of something special, send us your CV even without an open position."
-           data-es="Siempre buscamos talento excepcional. Si te apasiona la tecnología y quieres ser parte de algo especial, envíanos tu CV incluso sin una vacante abierta.">
-          Estamos sempre à procura de talento excepcional. Se tens paixão por tecnologia e queres fazer parte de algo especial, envia-nos o teu CV mesmo sem uma vaga aberta.
+        <p class="section-description">
+          We're constantly looking for exceptional talent to help us build amazing products.
         </p>
-        <div class="cta-actions">
-          <a class="btn btn--primary" href="mailto:cobrait@geral.pt?subject=Candidatura Espontânea" 
-             data-pt="Enviar candidatura espontânea" data-en="Send spontaneous application" data-es="Enviar solicitud espontánea">
-            Enviar candidatura espontânea
+      </div>
+      
+      <div class="jobs-filter">
+        <button class="filter-btn active" data-filter="all">All Positions</button>
+        <button class="filter-btn" data-filter="tech">Tech</button>
+        <button class="filter-btn" data-filter="design">Design</button>
+        <button class="filter-btn" data-filter="remote">Remote</button>
+      </div>
+      
+      <div class="jobs-list">
+        <div class="job-item animate-in" data-category="tech remote">
+          <div class="job-info">
+            <h3>Senior Full-Stack Developer</h3>
+            <div class="job-meta">
+              <span>📍 Remote</span>
+              <span>⏱️ Full-time</span>
+              <span>💼 Senior</span>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag tech">React</span>
+              <span class="job-tag tech">Node.js</span>
+              <span class="job-tag remote">100% Remote</span>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Senior%20Full-Stack%20Developer%20Application">
+            Apply Now
           </a>
-          <a class="btn btn--outline" href="book-a-call.html" 
-             data-pt="Falar com Recursos Humanos" data-en="Talk to HR" data-es="Hablar con Recursos Humanos">
-            Falar com Recursos Humanos
+        </div>
+        
+        <div class="job-item animate-in" data-category="design" style="animation-delay: 100ms">
+          <div class="job-info">
+            <h3>UX/UI Designer</h3>
+            <div class="job-meta">
+              <span>📍 Hybrid (Porto)</span>
+              <span>⏱️ Full-time</span>
+              <span>💼 Mid-Level</span>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">Figma</span>
+              <span class="job-tag">Prototyping</span>
+              <span class="job-tag">Design System</span>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=UX%2FUI%20Designer%20Application">
+            Apply Now
+          </a>
+        </div>
+        
+        <div class="job-item animate-in" data-category="tech remote" style="animation-delay: 200ms">
+          <div class="job-info">
+            <h3>AI/ML Engineer</h3>
+            <div class="job-meta">
+              <span>📍 Remote</span>
+              <span>⏱️ Full-time</span>
+              <span>💼 Senior</span>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag tech">Python</span>
+              <span class="job-tag tech">TensorFlow</span>
+              <span class="job-tag tech">LLMs</span>
+              <span class="job-tag remote">100% Remote</span>
+            </div>
+          </div>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=AI%2FML%20Engineer%20Application">
+            Apply Now
           </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ========================= SECÇÃO COBRAIT (igual à segunda screenshot) ========================= -->
-    <section class="cobrait-section">
-      <div class="container">
-        <h2>Cobrait</h2>
-        <h3 data-pt="Vamos falar sobre o teu projeto" 
-            data-en="Let's talk about your project" 
-            data-es="Hablemos sobre tu proyecto">
-          Vamos falar sobre o teu projeto
-        </h3>
-        
-        <a href="book-a-call.html" class="btn btn--primary"
-           data-pt="AGENDAR UMA CHAMADA"
-           data-en="SCHEDULE A CALL"
-           data-es="AGENDAR UNA LLAMADA">
-          AGENDAR UMA CHAMADA
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="container cta-content">
+      <h2 class="cta-section__title animate-in">
+        Don't See the Perfect Role?
+      </h2>
+      <p class="cta-section__desc animate-in" style="animation-delay: 100ms">
+        We're always interested in meeting talented people. If you're passionate about technology and believe you could contribute to our team, we'd love to hear from you.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn--primary animate-in" style="animation-delay: 200ms" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application">
+          Submit Spontaneous Application
         </a>
-        
-        <div class="hq-info">
-          <div class="hq-title" data-pt="PORTO HQ" data-en="PORTO HQ" data-es="SEDE EN OPORTO">
-            PORTO HQ
-          </div>
-          <div class="hq-details">
-            <div data-html
-                 data-pt="<strong>Morada:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto"
-                 data-en="<strong>Address:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto"
-                 data-es="<strong>Dirección:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto">
-              <strong>Morada:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto
-            </div>
-            <div data-html
-                 data-pt="<strong>Email:</strong> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>"
-                 data-en="<strong>Email:</span> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>"
-                 data-es="<strong>Email:</strong> <a class='hq-link' href='mailto:cobrait@geral.pt'>cobrait@geral.pt</a>">
-              <strong>Email:</strong> <a class="hq-link" href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-            </div>
-          </div>
+        <a class="btn btn--outline animate-in" style="animation-delay: 300ms" href="book-a-call.html">
+          Talk to Our Team
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="cobrait-section">
+    <div class="container">
+      <h2 class="animate-in">Ready to Build Together?</h2>
+      <h3 class="animate-in" style="animation-delay: 100ms">
+        Let's discuss how you can contribute to our mission
+      </h3>
+      
+      <a href="book-a-call.html" class="btn btn--primary animate-in" style="animation-delay: 200ms; margin: 20px 0 40px;">
+        Schedule a Call
+      </a>
+      
+      <div class="hq-info">
+        <div class="hq-title">PORTO HQ</div>
+        <div class="hq-details">
+          <div><strong>Address:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto</div>
+          <div><strong>Email:</strong> <a class="hq-link" href="mailto:careers@cobrait.com">careers@cobrait.com</a></div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ========================= FOOTER (IGUAL AO INDEX) ========================= -->
-  <footer class="footer-pro" role="contentinfo">
+  <!-- FOOTER -->
+  <footer class="footer-pro">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <!-- LOGO REMOVIDA - substituída por texto COBRAIT (IGUAL AO INDEX) -->
           <h3 class="footer-brand-title">Cobrait</h3>
           <p class="footer-brand-subtitle">Software Factory</p>
-
-          <p class="footer-tagline"
-             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
-             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
-             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
-            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          <p class="footer-tagline">
+            We build digital products focused on speed, quality and growth — from scope to launch.
           </p>
-
-          <div class="footer-cta-row">
-            <a class="btn btn--primary btn--footer" href="book-a-call.html"
-               data-pt="Agendar uma chamada"
-               data-en="Book a call"
-               data-es="Reservar una llamada">
-              Agendar uma chamada
+          <div style="margin-top: 24px;">
+            <a class="btn btn--primary btn--footer" href="book-a-call.html" style="margin-right: 12px;">
+              Book a Call
             </a>
-            <a class="btn btn--outline btn--footer" href="index.html#what-we-do"
-               data-pt="Ver serviços"
-               data-en="See services"
-               data-es="Ver servicios">
-              Ver serviços
+            <a class="btn btn--outline btn--footer" href="index.html#what-we-do">
+              Our Services
             </a>
-          </div>
-
-          <div class="footer-badges" aria-label="Highlights">
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
-            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
           </div>
         </div>
-
+        
         <div class="footer-col">
-          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <h4>Services</h4>
           <ul class="footer-links">
             <li><a href="servicos/product-scope.html">Product Scope</a></li>
             <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
-            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+            <li><a href="servicos/ux-ui.html">UX / UI Design</a></li>
+            <li><a href="servicos/custom-software.html">Custom Software</a></li>
           </ul>
         </div>
-
+        
         <div class="footer-col">
-          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <h4>Company</h4>
           <ul class="footer-links">
-            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-            <li><a href="index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
-            <li><a href="carrers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="index.html#work">Case Studies</a></li>
+            <li><a href="carrers.html">Careers</a></li>
+            <li><a href="tech.html">Technology</a></li>
           </ul>
         </div>
-
-        <div class="footer-col footer-col--contact">
-          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
-          <div class="footer-meta">
+        
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(203, 213, 225, 0.9);">
             <div>
-              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
-              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+              <strong>Email:</strong><br>
+              <a href="mailto:info@cobrait.com" style="color: rgba(199, 210, 254, 0.95);">info@cobrait.com</a>
             </div>
             <div>
-              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
-              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
-            </div>
-            <div>
-              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-              <a href="book-a-call.html"
-                 data-pt="Marca uma call."
-                 data-en="Book a call."
-                 data-es="Reserva una llamada.">Marca uma call.</a>
+              <strong>Response Time:</strong><br>
+              Usually within 24–48h
             </div>
           </div>
         </div>
       </div>
-
+      
       <div class="footer-bottom">
         <div>© <span id="year"></span> Cobrait — Software Factory</div>
-        <div class="footer-mini-links">
-          <a href="index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-          <a href="index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-          <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Privacy</a>
+          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Terms</a>
+          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Cookies</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ========================= SCRIPT ========================= -->
   <script>
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
-
+    
+    // Job filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
-      // ====== Normalização de idioma ======
-      function normalizeLang(l) {
-        if (!l) return 'pt';
-        l = String(l).toLowerCase();
-        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
-        if (l.startsWith('en')) return 'en';
-        if (l.startsWith('es')) return 'es';
-        return 'en';
-      }
-
-      // ====== SISTEMA DE LÍNGUAS ======
-      const languageOptions = document.querySelectorAll('.language-option');
-      const currentFlag = document.getElementById('currentFlag');
-      const currentLang = document.getElementById('currentLang');
-      
-      const flagMap = {
-        'pt': '🇵🇹',
-        'en': '🇬🇧',
-        'es': '🇪🇸'
-      };
-      
-      const codeMap = {
-        'pt': 'PT',
-        'en': 'EN',
-        'es': 'ES'
-      };
-
-      // Carregar língua salva
-      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
-      setActiveLanguage(savedLanguage);
-      applyLanguage(savedLanguage);
-
-      // Event listeners para as opções de língua
-      languageOptions.forEach(option => {
-        option.addEventListener('click', function() {
-          const lang = normalizeLang(this.getAttribute('data-lang'));
-          setActiveLanguage(lang);
-          applyLanguage(lang);
-          localStorage.setItem('preferredLanguage', lang);
-        });
-      });
-
-      function setActiveLanguage(lang) {
-        if (flagMap[lang]) {
-          currentFlag.textContent = flagMap[lang];
-        } else {
-          currentFlag.textContent = '🇬🇧';
-        }
-        
-        if (codeMap[lang]) {
-          currentLang.textContent = codeMap[lang];
-        } else {
-          currentLang.textContent = 'EN';
-        }
-        
-        languageOptions.forEach(option => {
-          option.classList.remove('active');
-          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
-            option.classList.add('active');
-          }
-        });
-      }
-
-      function applyLanguage(lang) {
-        lang = normalizeLang(lang);
-        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
-        updateTextContent(lang);
-      }
-
-      function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
-        elements.forEach(el => {
-          let text = el.getAttribute(`data-${lang}`);
-          
-          if (text === null && lang !== 'en') {
-            text = el.getAttribute('data-en');
-          }
-          
-          if (text === null) return;
-
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.value = text;
-          } else if (el.hasAttribute('data-html')) {
-            el.innerHTML = text;
-          } else {
-            el.textContent = text;
-          }
-        });
-      }
-
-      // ====== FILTRO DE VAGAS ======
       const filterButtons = document.querySelectorAll('.filter-btn');
       const jobItems = document.querySelectorAll('.job-item');
-
+      
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
           // Remove active class from all buttons
@@ -1936,27 +1197,19 @@
           jobItems.forEach(item => {
             if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
               item.style.display = 'grid';
-              setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-              }, 10);
             } else {
-              item.style.opacity = '0';
-              item.style.transform = 'translateY(20px)';
-              setTimeout(() => {
-                item.style.display = 'none';
-              }, 300);
+              item.style.display = 'none';
             }
           });
         });
       });
-
-      // ====== ANIMAÇÕES DE ENTRADA ======
+      
+      // Animation on scroll
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
       };
-
+      
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1964,9 +1217,9 @@
           }
         });
       }, observerOptions);
-
-      // Observar elementos para animação
-      document.querySelectorAll('.benefit-card, .job-item, .process-step').forEach(el => {
+      
+      // Observe elements
+      document.querySelectorAll('.animate-in').forEach(el => {
         observer.observe(el);
       });
     });
