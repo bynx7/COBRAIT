@@ -1,1198 +1,1293 @@
 <!doctype html>
 <html lang="pt-PT">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Carreiras — Cobrait Software Factory</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <meta name="description" content="Junte-se à Cobrait. Desafios sem fim, aprendizagem contínua e uma cultura que valoriza a felicidade no trabalho.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <style>
-        /* ========================= STYLES EXCLUSIVOS PARA PÁGINA DE CARREIRAS ========================= */
-        :root {
-            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            --color-primary: #4f46e5;
-            --color-primary-dark: #4338ca;
-            --color-text-dark: #1e293b;
-            --color-text-light: #64748b;
-            --color-bg-light: #f8fafc;
-            --color-white: #ffffff;
-        }
-        
-        /* Hero Section - Careers */
-        .careers-hero {
-            background: var(--gradient-dark);
-            color: var(--color-white);
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .careers-hero::before {
-            content: "";
-            position: absolute;
-            inset: -200px -200px auto auto;
-            width: 420px;
-            height: 420px;
-            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-            filter: blur(10px);
-            pointer-events: none;
-        }
-        
-        .careers-hero::after {
-            content: "";
-            position: absolute;
-            inset: auto auto -240px -240px;
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-            filter: blur(12px);
-            pointer-events: none;
-        }
-        
-        .careers-hero__inner {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .careers-hero__kicker {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 24px;
-        }
-        
-        .careers-hero__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .careers-hero__subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: rgba(226, 232, 240, 0.9);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .careers-hero__cta {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Life at Cobrait Section */
-        .life-at-cobrait {
-            padding: 100px 0;
-            background: var(--color-bg-light);
-        }
-        
-        .life-at-cobrait__intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-        
-        .section-kicker {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-        
-        .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2.5rem;
-            line-height: 1.2;
-            color: var(--color-text-dark);
-            margin-bottom: 24px;
-        }
-        
-        .section-description {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: var(--color-text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .life-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .life-card {
-            background: var(--color-white);
-            border-radius: 16px;
-            padding: 40px 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #e2e8f0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-        
-        .life-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-            border-color: #c7d2fe;
-        }
-        
-        .life-card__icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 32px;
-            background: var(--gradient-primary);
-            color: white;
-        }
-        
-        .life-card__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.375rem;
-            color: var(--color-text-dark);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-        
-        .life-card__desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--color-text-light);
-            margin-bottom: 24px;
-            flex: 1;
-        }
-        
-        /* Values Section */
-        .values-section {
-            padding: 100px 0;
-            background: var(--color-white);
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .value-card {
-            background: var(--color-bg-light);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-        
-        .value-card:hover {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            transform: translateY(-4px);
-        }
-        
-        .value-card__number {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 3rem;
-            color: var(--color-primary);
-            line-height: 1;
-            margin-bottom: 16px;
-            opacity: 0.8;
-        }
-        
-        .value-card__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: var(--color-text-dark);
-            margin-bottom: 12px;
-        }
-        
-        .value-card__desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--color-text-light);
-        }
-        
-        /* Benefits Section */
-        .benefits-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-        
-        .benefits-table {
-            background: var(--color-white);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            overflow: hidden;
-        }
-        
-        .benefits-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding-bottom: 24px;
-            border-bottom: 2px solid #e2e8f0;
-            margin-bottom: 32px;
-        }
-        
-        .benefit-category {
-            text-align: center;
-        }
-        
-        .benefit-category__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--color-text-dark);
-            margin-bottom: 8px;
-        }
-        
-        .benefit-category__subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-        
-        .benefits-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-        }
-        
-        .benefit-item__icon {
-            color: var(--color-primary);
-            font-size: 1.2rem;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-        
-        .benefit-item__text {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--color-text-dark);
-            line-height: 1.5;
-        }
-        
-        /* Career Path Section */
-        .career-path {
-            padding: 100px 0;
-            background: var(--color-white);
-        }
-        
-        .career-path__diagram {
-            background: var(--color-bg-light);
-            border-radius: 16px;
-            padding: 40px;
-            margin-top: 40px;
-            position: relative;
-        }
-        
-        .career-levels {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .career-level {
-            background: var(--color-white);
-            border-radius: 12px;
-            padding: 20px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .career-level:hover {
-            border-color: var(--color-primary);
-            transform: translateX(8px);
-        }
-        
-        .career-level__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.125rem;
-            color: var(--color-text-dark);
-            margin-bottom: 8px;
-        }
-        
-        .career-level__desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: var(--color-text-light);
-            line-height: 1.6;
-        }
-        
-        /* Our Work Preview */
-        .work-preview {
-            padding: 100px 0;
-            background: var(--gradient-dark);
-            color: var(--color-white);
-        }
-        
-        .work-preview__inner {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .work-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-        
-        .work-feature {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 32px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .work-feature:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-8px);
-        }
-        
-        .work-feature__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--color-white);
-            margin-bottom: 16px;
-        }
-        
-        .work-feature__desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: rgba(226, 232, 240, 0.9);
-            line-height: 1.6;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: 100px 0;
-            background: var(--color-bg-light);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background: var(--color-white);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            border-color: var(--color-primary);
-            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.1);
-        }
-        
-        .faq-question {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.125rem;
-            color: var(--color-text-dark);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-        
-        .faq-answer {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--color-text-light);
-            line-height: 1.6;
-            margin-top: 16px;
-            display: none;
-        }
-        
-        .faq-toggle {
-            color: var(--color-primary);
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
-        }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        
-        /* CTA Section */
-        .careers-cta {
-            padding: 80px 0;
-            background: var(--gradient-primary);
-            color: var(--color-white);
-            text-align: center;
-        }
-        
-        .careers-cta__title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 2.5rem;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-        
-        .careers-cta__subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .careers-hero__title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .careers-hero {
-                padding: 80px 20px 60px;
-            }
-            
-            .careers-hero__title {
-                font-size: 2.2rem;
-            }
-            
-            .careers-hero__subtitle {
-                font-size: 1.125rem;
-            }
-            
-            .life-at-cobrait,
-            .values-section,
-            .benefits-section,
-            .career-path,
-            .work-preview,
-            .faq-section {
-                padding: 60px 20px;
-            }
-            
-            .benefits-header,
-            .benefits-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .life-grid,
-            .values-grid,
-            .work-features {
-                grid-template-columns: 1fr;
-            }
-            
-            .benefits-table {
-                padding: 24px;
-            }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cobrait — Carreiras</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Junte-se à equipa da Cobrait. Carreiras em desenvolvimento de software.">
+  
+  <!-- Identidade geral -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    /* ========================= HEADER (IGUAL AO INDEX) ========================= */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 4px 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 60px;
+    }
+    .brand img {
+      height: 75px;
+      width: auto;
+    }
+    .nav-toggle { display: none; }
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle-btn span {
+      width: 22px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 24px;
+    }
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .site-nav a:hover { color: #4f46e5; }
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+    .site-nav a:hover::after { width: 100%; }
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 12px;
+    }
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 6px;
+    }
+    .dropdown-item:last-child { margin-bottom: 0; }
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+    .dropdown-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+    .dropdown-arrow {
+      font-size: 10px;
+      transition: transform 0.3s ease;
+    }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+    
+    /* DROPDOWN DE LÍNGUAS */
+    .language-dropdown {
+      position: relative;
+    }
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .language-option .lang-name {
+      flex: 1;
+    }
+    
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-cta .btn {
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @media (max-width: 1024px) {
+      .header-inner { gap: 16px; }
+      .site-nav ul { gap: 16px; }
+      .header-right { gap: 12px; }
+    }
+    @media (max-width: 768px) {
+      .nav-toggle-btn { display: flex; }
+      .site-nav {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 16px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      .site-nav ul { flex-direction: column; gap: 12px; }
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 6px 0 0 16px;
+        border-left: 2px solid #e2e8f0;
+      }
+      .dropdown-item {
+        padding: 8px 0 8px 12px;
+        margin-bottom: 0;
+      }
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 16px;
+        gap: 10px;
+      }
+      .language-dropdown {
+        width: 100%;
+      }
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+      .header-cta { width: 100%; }
+      .header-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+      .brand img { height: 50px; }
+    }
+    .site-header { z-index: 99999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========================= BOTÕES (IGUAL AO INDEX) ========================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+    .btn--outline {
+      background: transparent;
+      color: #4f46e5;
+      border-color: #4f46e5;
+    }
+    .btn--outline:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+    }
+
+    /* ========================= CONTEÚDO CARREIRAS ========================= */
+    .careers-hero {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    
+    .careers-hero__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      color: #0f172a;
+      margin: 0 0 24px;
+    }
+    
+    .careers-hero__subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #475569;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    
+    .careers-section {
+      padding: 100px 0;
+    }
+    
+    .careers-section__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #1e293b;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #c7d2fe;
+    }
+    
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #1d4ed8;
+    }
+    
+    .benefit-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+    
+    .benefit-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #64748b;
+      margin: 0;
+    }
+    
+    .jobs-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .job-item {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .job-item:hover {
+      border-color: #c7d2fe;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    .job-info h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #1e293b;
+      margin: 0 0 8px 0;
+    }
+    
+    .job-meta {
+      display: flex;
+      gap: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #64748b;
+    }
+    
+    .job-meta span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .cta-section__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: white;
+    }
+    
+    .cta-section__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ========================= FOOTER (IGUAL AO INDEX) ========================= */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 0 24px;
+    }
+
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 8px 0 0 0;
+    }
+
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .footer-meta a:hover { color: #fff; }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .footer-mini-links a:hover { color: #fff; }
+
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-mini-links { justify-content: flex-start; }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- HEADER (copiado do index.html) -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="index.html" aria-label="Cobrait">
-                <img src="images/logo.png" alt="Cobrait Software Factory logo">
+  <!-- ========================= HEADER (IGUAL AO INDEX) ========================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Cobrait">
+        <img src="images/logo.png" alt="Cobrait Software Factory logo">
+      </a>
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle"
+             aria-label="Abrir menu"
+             data-pt="Abrir menu"
+             data-en="Open menu"
+             data-es="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li>
+            <a href="index.html#work"
+               data-pt="Portfólio"
+               data-en="Work"
+               data-es="Work">Work</a>
+          </li>
+
+          <li class="dropdown">
+            <a href="index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
             </a>
-            <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-            <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu" data-pt="Abrir menu" data-en="Open menu" data-es="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <nav class="site-nav" aria-label="Main navigation">
-                <ul>
-                    <li>
-                        <a href="#work" data-pt="Portfólio" data-en="Work" data-es="Work">Work</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#what-we-do">
-                            <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="servicos/product-scope.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
-                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio." data-en="15-day process to align the product with your business goals." data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
-                                        15-day process to align the product with your business goals.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="servicos/mvp-builder.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
-                                    <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade." data-en="Go to market quickly with a high-quality Minimum Viable Product." data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
-                                        Go to market quickly with a high-quality Minimum Viable Product.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="servicos/ux-ui.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
-                                    <p data-pt="Design de um produto fácil de usar, envolvente e funcional." data-en="Design an easy-to-use engaging and functional product." data-es="Diseña un producto fácil de usar, atractivo y funcional.">
-                                        Design an easy-to-use engaging and functional product.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="servicos/ai-development.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Desenvolvimento e Capacitação com IA" data-en="AI Development & Enablement" data-es="Desarrollo y Capacitación con IA">
-                                        AI Development & Enablement
-                                    </h4>
-                                    <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro." data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready." data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
-                                        We leverage ML and Generative AI strategically to ensure your business is future-ready.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="servicos/custom-software.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Desenvolvimento de Software à Medida" data-en="Custom Software Development" data-es="Desarrollo de Software a Medida">
-                                        Custom Software Development
-                                    </h4>
-                                    <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida." data-en="Lean frameworks applied to your vision to create an innovative custom software solution." data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
-                                        Lean frameworks applied to your vision to create an innovative custom software solution.
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="servicos/dedicated-teams.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
-                                        Dedicated Teams
-                                    </h4>
-                                    <p data-pt="Constrói o teu produto com uma equipa dedicada de developers." data-en="Build your product with a dedicated team of developers." data-es="Construye tu producto con un equipo dedicado de developers.">
-                                        Build your product with a dedicated team of developers.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="about-us.html">
-                            <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a>
-                    </li>
-                    <li>
-                        <a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a>
-                    </li>
-                    <li>
-                        <a href="#about" data-pt="Recursos" data-en="Resources" data-es="Recursos">Recursos</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <div class="language-dropdown">
-                    <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">🇵🇹</span>
-                        <span class="lang-code" id="currentLang">PT</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="language-dropdown-content">
-                        <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">🇵🇹</span>
-                            <span class="lang-name">Português</span>
-                        </button>
-                        <button class="language-option" data-lang="en">
-                            <span class="lang-flag">🇬🇧</span>
-                            <span class="lang-name">English</span>
-                        </button>
-                        <button class="language-option" data-lang="es">
-                            <span class="lang-flag">🇪🇸</span>
-                            <span class="lang-name">Español</span>
-                        </button>
-                    </div>
+            <div class="dropdown-content">
+              <a href="servicos/product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negócio.">
+                    15-day process to align the product with your business goals.
+                  </p>
                 </div>
-                <div class="header-cta">
-                    <a class="btn btn--primary" href="book-a-call.html" data-pt="AGENDAR UMA CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
+              </a>
+
+              <a href="servicos/mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
                 </div>
+              </a>
+
+              <a href="servicos/ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">
+                    Custom Software Development
+                  </h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
+                    Dedicated Teams
+                  </h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
+                </div>
+              </a>
             </div>
+          </li>
+
+          <li>
+            <a href="pricing.html"
+               data-pt="Preços"
+               data-en="Pricing"
+               data-es="Precios">Pricing</a>
+          </li>
+
+          <li>
+            <a href="about-us.html">
+              <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="carrers.html"
+               data-pt="Carreiras"
+               data-en="Careers"
+               data-es="Carreras">Careers</a>
+          </li>
+
+          <li>
+            <a href="tech.html"
+               data-pt="Tecnologia"
+               data-en="Tech"
+               data-es="Tech">Tech</a>
+          </li>
+
+          <li>
+            <a href="index.html#about"
+               data-pt="Recursos"
+               data-en="Resources"
+               data-es="Recursos">Resources</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <!-- ========================= DROPDOWN DE LÍNGUAS ========================= -->
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt">
+              <span class="lang-flag">🇵🇹</span>
+              <span class="lang-name">Português</span>
+            </button>
+            <button class="language-option" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="language-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+            </button>
+          </div>
         </div>
-    </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="careers-hero" role="banner">
-            <div class="container careers-hero__inner fade-in">
-                <p class="careers-hero__kicker" data-pt="CARREIRAS • COBRAIT" data-en="CAREERS • COBRAIT" data-es="CARRERAS • COBRAIT">CARREIRAS • COBRAIT</p>
-                <h1 class="careers-hero__title" data-pt="A Vida na Cobrait" data-en="Life at Cobrait" data-es="La Vida en Cobrait">A Vida na Cobrait</h1>
-                <p class="careers-hero__subtitle" data-pt="Espere desafios e recompensas sem fim. Oportunidades de trabalhar com pessoas de todo o mundo. Uma equipa de aprendizes para a vida, alimentada pela colaboração. Uma cultura que fomenta a inovação e valoriza um local de trabalho feliz." data-en="Expect endless challenges and rewards. Opportunities to work with people from all over the world. A team of life-long learners, fueled by collaboration. A culture that fosters innovation and values a happy workplace." data-es="Espera desafíos y recompensas sin fin. Oportunidades de trabajar con personas de todo el mundo. Un equipo de aprendices de por vida, impulsados por la colaboración. Una cultura que fomenta la innovación y valora un lugar de trabajo feliz.">
-                    Espere desafios e recompensas sem fim. Oportunidades de trabalhar com pessoas de todo o mundo. Uma equipa de aprendizes para a vida, alimentada pela colaboração. Uma cultura que fomenta a inovação e valoriza um local de trabalho feliz.
-                </p>
-                <div class="careers-hero__cta">
-                    <a class="btn btn--primary" href="#open-positions" data-pt="VER VAGAS ABERTAS" data-en="VIEW OPEN POSITIONS" data-es="VER PUESTOS ABIERTOS">VER VAGAS ABERTAS</a>
-                    <a class="btn btn--outline" href="#values" data-pt="CONHECER VALORES" data-en="LEARN ABOUT VALUES" data-es="CONOCER VALORES">CONHECER VALORES</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT IT MEANS TO WORK WITH US -->
-        <section class="life-at-cobrait" id="work-with-us">
-            <div class="container">
-                <div class="life-at-cobrait__intro fade-in">
-                    <h2 class="section-title" data-pt="O Que Significa Trabalhar Connosco" data-en="What it Means to Work With Us" data-es="Qué Significa Trabajar Con Nosotros">O Que Significa Trabalhar Connosco</h2>
-                </div>
-                <div class="life-grid">
-                    <div class="life-card fade-in" style="animation-delay: 0.1s;">
-                        <div class="life-card__icon">🚀</div>
-                        <h3 class="life-card__title" data-pt="Moldar o Futuro" data-en="Shape the Future" data-es="Molde el Futuro">Moldar o Futuro</h3>
-                        <p class="life-card__desc" data-pt="Trabalhamos com líderes empresariais e empreendedores para disruptar e impulsionar as suas indústrias. Desde ideias de startups até desenvolvimento de produtos e software de nível empresarial, trabalhamos em equipa para transformar as ideias dos nossos clientes em realidade." data-en="We work with business leaders and entrepreneurs to disrupt and push their industries forward. From startup ideas to enterprise-level product & software development, we work together as a team to transform our clients' ideas into reality." data-es="Trabajamos con líderes empresariales y emprendedores para disrumpir e impulsar sus industrias. Desde ideas de startups hasta desarrollo de productos y software de nivel empresarial, trabajamos en equipo para transformar las ideas de nuestros clientes en realidad.">
-                            Trabalhamos com líderes empresariais e empreendedores para disruptar e impulsionar as suas indústrias. Desde ideias de startups até desenvolvimento de produtos e software de nível empresarial, trabalhamos em equipa para transformar as ideias dos nossos clientes em realidade.
-                        </p>
-                    </div>
-                    <div class="life-card fade-in" style="animation-delay: 0.2s;">
-                        <div class="life-card__icon">📚</div>
-                        <h3 class="life-card__title" data-pt="Aprendizagem Contínua & Ambiente de Topo" data-en="Life-long Learning & Top Talent Environment" data-es="Aprendizaje Continuo y Ambiente de Primer Nivel">Aprendizagem Contínua & Ambiente de Topo</h3>
-                        <p class="life-card__desc" data-pt="Acreditamos que a aprendizagem é uma jornada sem fim. Connosco, aprenderás continuamente num ambiente de profissionais altamente qualificados, com décadas de experiência combinada. Não só trabalhamos com líderes da indústria, como a nossa presença no espaço open-source coloca-nos entre eles." data-en="We believe learning is a never-ending journey. With us, you'll continuously learn in an environment of highly skilled, top talent professionals with decades of combined experience. Not only do we work with industry leaders but our presence in the open-source space puts us among them." data-es="Creemos que el aprendizaje es un viaje sin fin. Con nosotros, aprenderás continuamente en un ambiente de profesionales altamente calificados, con décadas de experiencia combinada. No solo trabajamos con líderes de la industria, sino que nuestra presencia en el espacio open-source nos coloca entre ellos.">
-                            Acreditamos que a aprendizagem é uma jornada sem fim. Connosco, aprenderás continuamente num ambiente de profissionais altamente qualificados, com décadas de experiência combinada. Não só trabalhamos com líderes da indústria, como a nossa presença no espaço open-source coloca-nos entre eles.
-                        </p>
-                    </div>
-                    <div class="life-card fade-in" style="animation-delay: 0.3s;">
-                        <div class="life-card__icon">❤️</div>
-                        <h3 class="life-card__title" data-pt="Uma Cultura Única" data-en="A Unique Culture" data-es="Una Cultura Única">Uma Cultura Única</h3>
-                        <p class="life-card__desc" data-pt="Todos falam de equilíbrio trabalho-vida; nós fazemo-lo – por duas razões. Primeiro, acreditamos num ambiente de pessoas felizes. Segundo, mesmo que sejas altamente produtivo, a única forma de manter a produtividade a longo prazo é reservando tempo para as coisas que te fazem feliz." data-en="Everyone talks about work-life balance; we do it – for two reasons. Firstly, we believe in an environment of happy people. Secondly, even if you're highly productive, the only way to maintain productivity long-term is by taking time for the things that make you happy." data-es="Todos hablan de equilibrio trabajo-vida; nosotros lo hacemos – por dos razones. Primero, creemos en un ambiente de personas felices. Segundo, incluso si eres altamente productivo, la única forma de mantener la productividad a largo plazo es reservando tiempo para las cosas que te hacen feliz.">
-                            Todos falam de equilíbrio trabalho-vida; nós fazemo-lo – por duas razões. Primeiro, acreditamos num ambiente de pessoas felizes. Segundo, mesmo que sejas altamente produtivo, a única forma de manter a produtividade a longo prazo é reservando tempo para as coisas que te fazem feliz.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VALUES SECTION -->
-        <section class="values-section" id="values">
-            <div class="container">
-                <div class="life-at-cobrait__intro fade-in">
-                    <p class="section-kicker" data-pt="OS NOSSOS PILARES" data-en="OUR PILLARS" data-es="NUESTROS PILARES">OS NOSSOS PILARES</p>
-                    <h2 class="section-title" data-pt="Valores" data-en="Values" data-es="Valores">Valores</h2>
-                </div>
-                <div class="values-grid">
-                    <div class="value-card fade-in" style="animation-delay: 0.1s;">
-                        <div class="value-card__number">01</div>
-                        <h3 class="value-card__title" data-pt="Equipas Perfeitas" data-en="Perfect Teams" data-es="Equipos Perfectos">Equipas Perfeitas</h3>
-                        <p class="value-card__desc" data-pt="Na Cobrait, construímos equipas perfeitas — não indivíduos perfeitos. Acreditamos que o verdadeiro equilíbrio está na diversidade de origens, competências e energias únicas que cada pessoa traz. Todos contribuem à sua maneira, e é através destas experiências e perspetivas variadas que alcançamos clareza e harmonia." data-en="At Cobrait, we build perfect teams—not perfect individuals. We believe true balance is found in the diversity of backgrounds, skills, and unique energies each person brings. Everyone contributes in their own way, and it's through these varied experiences and perspectives that we achieve clarity and harmony." data-es="En Cobrait, construimos equipos perfectos—no individuos perfectos. Creemos que el verdadero equilibrio se encuentra en la diversidad de orígenes, habilidades y energías únicas que cada persona aporta. Todos contribuyen a su manera, y es a través de estas experiencias y perspectivas variadas que logramos claridad y armonía.">
-                            Na Cobrait, construímos equipas perfeitas — não indivíduos perfeitos. Acreditamos que o verdadeiro equilíbrio está na diversidade de origens, competências e energias únicas que cada pessoa traz. Todos contribuem à sua maneira, e é através destas experiências e perspetivas variadas que alcançamos clareza e harmonia.
-                        </p>
-                    </div>
-                    <div class="value-card fade-in" style="animation-delay: 0.2s;">
-                        <div class="value-card__number">02</div>
-                        <h3 class="value-card__title" data-pt="Exploradores Apaixonados" data-en="Passionate Explorers" data-es="Exploradores Apasionados">Exploradores Apaixonados</h3>
-                        <p class="value-card__desc" data-pt="Acreditamos que os Cobraiters devem ser exploradores apaixonados, sempre a ultrapassar os limites do seu trabalho e crescimento pessoal. A nossa missão é abraçar o desconhecido, enfrentar desafios nunca antes enfrentados e, em última análise, deixar o mundo melhor do que o encontramos." data-en="We believe Cobraiters should be passionate explorers, always pushing the boundaries of their work and personal growth. Our mission is to embrace the unknown, take on challenges never faced before, and, ultimately, leave the world better than we found it." data-es="Creemos que los Cobraiters deben ser exploradores apasionados, siempre superando los límites de su trabajo y crecimiento personal. Nuestra misión es abrazar lo desconocido, enfrentar desafíos nunca antes enfrentados y, en última instancia, dejar el mundo mejor de lo que lo encontramos.">
-                            Acreditamos que os Cobraiters devem ser exploradores apaixonados, sempre a ultrapassar os limites do seu trabalho e crescimento pessoal. A nossa missão é abraçar o desconhecido, enfrentar desafios nunca antes enfrentados e, em última análise, deixar o mundo melhor do que o encontramos.
-                        </p>
-                    </div>
-                    <div class="value-card fade-in" style="animation-delay: 0.3s;">
-                        <div class="value-card__number">03</div>
-                        <h3 class="value-card__title" data-pt="Pensadores Colaborativos" data-en="Collaborative Thinkers" data-es="Pensadores Colaborativos">Pensadores Colaborativos</h3>
-                        <p class="value-card__desc" data-pt="Esperamos que os Cobraiters sejam Pensadores Colaborativos. Na Cobrait, és encorajado a pensar livremente, falar abertamente e — mais importante — ouvir ativamente e abraçar o ser desafiado. Estas são as bases de um debate coletivo significativo e produtivo." data-en="We expect Cobraiters to be Collaborative Thinkers. At Cobrait, you're encouraged to think freely, speak openly, and—most importantly—listen actively and embrace being challenged. These are the foundations of meaningful, productive collective debate." data-es="Esperamos que los Cobraiters sean Pensadores Colaborativos. En Cobrait, se te anima a pensar libremente, hablar abiertamente y — lo más importante — escuchar activamente y abrazar el ser desafiado. Estos son los cimientos de un debate colectivo significativo y productivo.">
-                            Esperamos que os Cobraiters sejam Pensadores Colaborativos. Na Cobrait, és encorajado a pensar livremente, falar abertamente e — mais importante — ouvir ativamente e abraçar o ser desafiado. Estas são as bases de um debate coletivo significativo e produtivo.
-                        </p>
-                    </div>
-                    <div class="value-card fade-in" style="animation-delay: 0.4s;">
-                        <div class="value-card__number">04</div>
-                        <h3 class="value-card__title" data-pt="Felicidade 360°" data-en="360° Happiness" data-es="Felicidad 360°">Felicidade 360°</h3>
-                        <p class="value-card__desc" data-pt="Sabemos que é um cliché, mas na Cobrait, Felicidade 360° significa algo real: • Equilíbrio Trabalho-Vida: Se precisas consistentemente de trabalhar mais de 8 horas por dia, algo está errado — vamos corrigi-lo. • Vida Fora do Trabalho: A verdadeira felicidade encontra-se na vida que vives para além da tua secretária." data-en="We know it's a cliché, but at Cobrait, 360° Happiness means something real: • Work-Life Balance: If you consistently need to work more than 8 hours a day, something's wrong—let's fix it. • Life Outside Work: True happiness is found in the life you live beyond your desk." data-es="Sabemos que es un cliché, pero en Cobrait, Felicidad 360° significa algo real: • Equilibrio Trabajo-Vida: Si necesitas consistentemente trabajar más de 8 horas al día, algo está mal—vamos a arreglarlo. • Vida Fuera del Trabajo: La verdadera felicidad se encuentra en la vida que vives más allá de tu escritorio.">
-                            Sabemos que é um cliché, mas na Cobrait, Felicidade 360° significa algo real: • Equilíbrio Trabalho-Vida: Se precisas consistentemente de trabalhar mais de 8 horas por dia, algo está errado — vamos corrigi-lo. • Vida Fora do Trabalho: A verdadeira felicidade encontra-se na vida que vives para além da tua secretária.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BENEFITS SECTION -->
-        <section class="benefits-section" id="benefits">
-            <div class="container">
-                <div class="life-at-cobrait__intro fade-in">
-                    <p class="section-kicker" data-pt="O QUE OFERECEMOS" data-en="WHAT WE OFFER" data-es="LO QUE OFRECEMOS">O QUE OFERECEMOS</p>
-                    <h2 class="section-title" data-pt="Benefícios & Vantagens" data-en="Benefits & Perks" data-es="Beneficios y Ventajas">Benefícios & Vantagens</h2>
-                </div>
-                <div class="benefits-table fade-in" style="animation-delay: 0.2s;">
-                    <div class="benefits-header">
-                        <div class="benefit-category">
-                            <h3 class="benefit-category__title" data-pt="Saúde & Família" data-en="Health & Family" data-es="Salud y Familia">Saúde & Família</h3>
-                            <p class="benefit-category__subtitle" data-pt="Cuidamos de ti e dos teus" data-en="We take care of you and yours" data-es="Cuidamos de ti y de los tuyos">Cuidamos de ti e dos teus</p>
-                        </div>
-                        <div class="benefit-category">
-                            <h3 class="benefit-category__title" data-pt="Bem-estar & Entretenimento" data-en="Wellness & Entertainment" data-es="Bienestar y Entretenimiento">Bem-estar & Entretenimento</h3>
-                            <p class="benefit-category__subtitle" data-pt="Equilíbrio e diversão" data-en="Balance and fun" data-es="Equilibrio y diversión">Equilíbrio e diversão</p>
-                        </div>
-                    </div>
-                    <div class="benefits-list">
-                        <div class="benefits-column">
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">🏥</span>
-                                <p class="benefit-item__text" data-pt="Seguro de saúde abrangente para ti e familiares próximos que vivam no teu agregado." data-en="Comprehensive health insurance coverage for you and your close family members living in your household." data-es="Cobertura integral de seguro de salud para ti y familiares cercanos que vivan en tu hogar.">
-                                    Seguro de saúde abrangente para ti e familiares próximos que vivam no teu agregado.
-                                </p>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">🎁</span>
-                                <p class="benefit-item__text" data-pt="Presente especial para pais à espera de bebé." data-en="Special newborn gift for expecting parents." data-es="Regalo especial para padres que esperan bebé.">
-                                    Presente especial para pais à espera de bebé.
-                                </p>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">📚</span>
-                                <p class="benefit-item__text" data-pt="Orçamento anual de formação para o teu plano de desenvolvimento pessoal." data-en="Annual training budget for your personal development plan." data-es="Presupuesto anual de formación para tu plan de desarrollo personal.">
-                                    Orçamento anual de formação para o teu plano de desenvolvimento pessoal.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="benefits-column">
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">🧘</span>
-                                <p class="benefit-item__text" data-pt="Aulas de yoga duas vezes por semana no escritório de Lisboa com instrutor experiente." data-en="Yoga classes twice a week at the Lisbon office with an experienced instructor." data-es="Clases de yoga dos veces por semana en la oficina de Lisboa con un instructor experimentado.">
-                                    Aulas de yoga duas vezes por semana no escritório de Lisboa com instrutor experiente.
-                                </p>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">🎬</span>
-                                <p class="benefit-item__text" data-pt="Noites de Cinema mensais na Cobrait com +1 no cinema local." data-en="Monthly Cobrait Movie Nights with a +1 at your local cinema." data-es="Noches de Cine mensuales en Cobrait con un acompañante en tu cine local.">
-                                    Noites de Cinema mensais na Cobrait com +1 no cinema local.
-                                </p>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="benefit-item__icon">🏋️</span>
-                                <p class="benefit-item__text" data-pt="Descontos exclusivos em membros do Urban Sports Club." data-en="Exclusive Urban Sports Club membership discounts." data-es="Descuentos exclusivos en membresías del Urban Sports Club.">
-                                    Descontos exclusivos em membros do Urban Sports Club.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAREER PATH SECTION -->
-        <section class="career-path" id="career-path">
-            <div class="container">
-                <div class="life-at-cobrait__intro fade-in">
-                    <p class="section-kicker" data-pt="PLANO DE CARREIRA" data-en="CAREER PLAN" data-es="PLAN DE CARRERA">PLANO DE CARREIRA</p>
-                    <h2 class="section-title" data-pt="Um lugar para crescer" data-en="A place to grow" data-es="Un lugar para crecer">Um lugar para crescer</h2>
-                    <p class="section-description" data-pt="A Cobrait não é simplesmente um local de trabalho. É um lugar onde tens um futuro. E estamos totalmente investidos em ver-te alcançar todos os teus sonhos." data-en="Cobrait is not simply a place to work. This is a place where you have a future. And we're fully invested in seeing you achieve your every dream." data-es="Cobrait no es simplemente un lugar para trabajar. Este es un lugar donde tienes un futuro. Y estamos totalmente invertidos en verte lograr todos tus sueños.">
-                        A Cobrait não é simplesmente um local de trabalho. É um lugar onde tens um futuro. E estamos totalmente investidos em ver-te alcançar todos os teus sonhos.
-                    </p>
-                </div>
-                <div class="career-path__diagram fade-in">
-                    <div class="career-levels">
-                        <div class="career-level">
-                            <h3 class="career-level__title" data-pt="Opções de Percurso de Carreira" data-en="Career Path Options" data-es="Opciones de Trayectoria Profesional">Opções de Percurso de Carreira</h3>
-                            <p class="career-level__desc" data-pt="Todas as nossas carreiras começam por passar por 3 níveis comuns a todos os percursos – Junior; Intermédio; Sénior; Dependendo de como queres crescer, podes então escolher tornar-te: • Um Especialista: focando-te em tudo para te tornares um performer de elite; • Um Gestor: focando-te na gestão de projetos ou equipas, e tornando-te mais envolvido no progresso geral da empresa." data-en="All our careers start by going through 3 levels common to all paths – Junior; Intermediate; Senior; Depending on how you want to grow, you can then choose to become: • An Expert: focusing on everything you got to become an elite performer; • A Manager: focusing on managing projects or teams, and becoming more engaged with the overall progress of the company." data-es="Todas nuestras carreras comienzan pasando por 3 niveles comunes a todas las trayectorias – Junior; Intermedio; Senior; Dependiendo de cómo quieras crecer, puedes elegir convertirte en: • Un Experto: enfocándote en todo lo que tienes para convertirte en un performer de élite; • Un Gerente: enfocándote en gestionar proyectos o equipos, y volviéndote más comprometido con el progreso general de la empresa.">
-                                Todas as nossas carreiras começam por passar por 3 níveis comuns a todos os percursos – Junior; Intermédio; Sénior; Dependendo de como queres crescer, podes então escolher tornar-te: • Um Especialista: focando-te em tudo para te tornares um performer de elite; • Um Gestor: focando-te na gestão de projetos ou equipas, e tornando-te mais envolvido no progresso geral da empresa.
-                            </p>
-                        </div>
-                        <div class="career-level">
-                            <h3 class="career-level__title" data-pt="Reuniões de Plano de Carreira" data-en="Career Plan Meetings" data-es="Reuniones de Plan de Carrera">Reuniões de Plano de Carreira</h3>
-                            <p class="career-level__desc" data-pt="As nossas reuniões de plano de carreira normalmente acontecem duas vezes por ano e permitem que tu e o teu gestor façam uma avaliação profunda do teu progresso." data-en="Our career plan meetings typically happen twice a year and allow you and your manager to have a deep assessment of your progress." data-es="Nuestras reuniones de plan de carrera típicamente ocurren dos veces al año y permiten que tú y tu gerente tengan una evaluación profunda de tu progreso.">
-                                As nossas reuniões de plano de carreira normalmente acontecem duas vezes por ano e permitem que tu e o teu gestor façam uma avaliação profunda do teu progresso.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- OUR WORK PREVIEW -->
-        <section class="work-preview">
-            <div class="container">
-                <div class="work-preview__inner fade-in">
-                    <p class="section-kicker" style="color: rgba(255, 255, 255, 0.8);">O QUE VAI CONSTRUIR</p>
-                    <h2 class="section-title" style="color: white;" data-pt="Aqui está uma prévia do que vai construir" data-en="Here's a Preview Of What You'll Be Building" data-es="Aquí hay una vista previa de lo que construirás">Aqui está uma prévia do que vai construir</h2>
-                    <p class="section-description" style="color: rgba(226, 232, 240, 0.9);" data-pt="O nosso trabalho é..." data-en="Our work is..." data-es="Nuestro trabajo es...">O nosso trabalho é...</p>
-                    
-                    <div class="work-features">
-                        <div class="work-feature">
-                            <h3 class="work-feature__title" data-pt="Diversificado" data-en="Diversified" data-es="Diversificado">Diversificado</h3>
-                            <p class="work-feature__desc" data-pt="Nunca temos dois projetos iguais" data-en="We never have two projects alike" data-es="Nunca tenemos dos proyectos iguales">Nunca temos dois projetos iguais</p>
-                        </div>
-                        <div class="work-feature">
-                            <h3 class="work-feature__title" data-pt="Poderoso" data-en="Powerful" data-es="Poderoso">Poderoso</h3>
-                            <p class="work-feature__desc" data-pt="Sempre usamos as tecnologias líderes de facto da indústria" data-en="We always use the de facto, industry-leading technologies" data-es="Siempre usamos las tecnologías líderes de facto de la industria">Sempre usamos as tecnologias líderes de facto da indústria</p>
-                        </div>
-                        <div class="work-feature">
-                            <h3 class="work-feature__title" data-pt="Disruptivo" data-en="Disruptive" data-es="Disruptivo">Disruptivo</h3>
-                            <p class="work-feature__desc" data-pt="Trabalhamos com líderes disruptivos da indústria" data-en="We work with disruptive industry leaders" data-es="Trabajamos con líderes disruptivos de la industria">Trabalhamos com líderes disruptivos da indústria</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ SECTION -->
-        <section class="faq-section" id="faq">
-            <div class="container">
-                <div class="life-at-cobrait__intro fade-in">
-                    <p class="section-kicker" data-pt="PERGUNTAS FREQUENTES" data-en="FREQUENTLY ASKED QUESTIONS" data-es="PREGUNTAS FRECUENTES">PERGUNTAS FREQUENTES</p>
-                    <h2 class="section-title" data-pt="Perguntas Frequentes" data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Perguntas Frequentes</h2>
-                </div>
-                
-                <div class="faq-container">
-                    <div class="faq-item fade-in" style="animation-delay: 0.1s;">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span data-pt="Como funciona o processo de recrutamento, uma vez que me candidato?" data-en="How does the recruitment process work, once I apply?" data-es="¿Cómo funciona el proceso de reclutamiento, una vez que aplico?">Como funciona o processo de recrutamento, uma vez que me candidato?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" data-pt="Após a candidatura, a nossa equipa de RH analisa o teu perfil. Se for uma boa correspondência, serás contactado para uma entrevista inicial, seguida de avaliações técnicas e, por fim, uma conversa com a equipa de liderança." data-en="After application, our HR team reviews your profile. If it's a good match, you'll be contacted for an initial interview, followed by technical assessments, and finally a conversation with the leadership team." data-es="Después de la aplicación, nuestro equipo de RRHH revisa tu perfil. Si es una buena coincidencia, serás contactado para una entrevista inicial, seguida de evaluaciones técnicas y finalmente una conversación con el equipo de liderazgo.">
-                            Após a candidatura, a nossa equipa de RH analisa o teu perfil. Se for uma boa correspondência, serás contactado para uma entrevista inicial, seguida de avaliações técnicas e, por fim, uma conversa com a equipa de liderança.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item fade-in" style="animation-delay: 0.2s;">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span data-pt="Quem irá rever a minha candidatura?" data-en="Who will review my application?" data-es="¿Quién revisará mi aplicación?">Quem irá rever a minha candidatura?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" data-pt="A tua candidatura será analisada pela nossa equipa de Recursos Humanos e pelo gestor da área técnica relevante para a posição a que te candidataste." data-en="Your application will be reviewed by our Human Resources team and the manager of the relevant technical area for the position you applied for." data-es="Tu aplicación será revisada por nuestro equipo de Recursos Humanos y el gerente del área técnica relevante para el puesto al que aplicaste.">
-                            A tua candidatura será analisada pela nossa equipa de Recursos Humanos e pelo gestor da área técnica relevante para a posição a que te candidataste.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item fade-in" style="animation-delay: 0.3s;">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span data-pt="Quais são os componentes do salário?" data-en="What are the components of the salary?" data-es="¿Cuáles son los componentes del salario?">Quais são os componentes do salário?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" data-pt="O nosso pacote remuneratório inclui salário base, bónus de desempenho, subsídio de alimentação, seguros de saúde e benefícios flexíveis conforme descrito na seção de Benefícios." data-en="Our compensation package includes base salary, performance bonus, meal allowance, health insurance, and flexible benefits as described in the Benefits section." data-es="Nuestro paquete de compensación incluye salario base, bono de desempeño, subsidio de alimentación, seguro de salud y beneficios flexibles como se describe en la sección de Beneficios.">
-                            O nosso pacote remuneratório inclui salário base, bónus de desempenho, subsídio de alimentação, seguros de saúde e benefícios flexíveis conforme descrito na seção de Benefícios.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item fade-in" style="animation-delay: 0.4s;">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span data-pt="O inglês é o idioma principal usado no local de trabalho?" data-en="Is English the primary language used in the workplace?" data-es="¿Es el inglés el idioma principal utilizado en el lugar de trabajo?">O inglês é o idioma principal usado no local de trabalho?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" data-pt="Sim, o inglês é a nossa língua de trabalho principal para comunicação interna e com clientes internacionais. No entanto, também falamos português no dia a dia." data-en="Yes, English is our main working language for internal communication and with international clients. However, we also speak Portuguese in day-to-day interactions." data-es="Sí, el inglés es nuestro idioma de trabajo principal para la comunicación interna y con clientes internacionales. Sin embargo, también hablamos portugués en las interacciones diarias.">
-                            Sim, o inglês é a nossa língua de trabalho principal para comunicação interna e com clientes internacionais. No entanto, também falamos português no dia a dia.
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item fade-in" style="animation-delay: 0.5s;">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span data-pt="Oferecem suporte para processamento de visto ou realocação?" data-en="Do you offer support for visa processing or relocation?" data-es="¿Ofrecen apoyo para el procesamiento de visas o reubicación?">Oferecem suporte para processamento de visto ou realocação?</span>
-                            <span class="faq-toggle">+</span>
-                        </div>
-                        <div class="faq-answer" data-pt="Sim, oferecemos suporte completo para candidatos internacionais, incluindo assistência no processamento de vistos, apoio à realocação e ajuda na procura de alojamento." data-en="Yes, we offer full support for international candidates, including assistance with visa processing, relocation support, and help with finding accommodation." data-es="Sí, ofrecemos soporte completo para candidatos internacionales, incluyendo asistencia con el procesamiento de visas, apoyo para reubicación y ayuda para encontrar alojamiento.">
-                            Sim, oferecemos suporte completo para candidatos internacionais, incluindo assistência no processamento de vistos, apoio à realocação e ajuda na procura de alojamento.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FINAL CTA SECTION -->
-        <section class="careers-cta" id="open-positions">
-            <div class="container">
-                <div class="fade-in">
-                    <h2 class="careers-cta__title" data-pt="Pronto para Redesenhar o Impossível?" data-en="Ready to Redesign The Impossible?" data-es="¿Listo para Rediseñar lo Imposible?">Pronto para Redesenhar o Impossível?</h2>
-                    <p class="careers-cta__subtitle" data-pt="Se a tua mentalidade está sempre focada em ultrapassar e superar os teus limites, enfrentando um novo desafio todos os dias num ambiente onde aprendes e cresces constantemente, então este é o lugar certo para ti. Adoraríamos conhecê-lo melhor." data-en="If your mindset is always focused on breaking through and surpassing your limits, tackling a brand new challenge every day in an environment where you constantly learn & grow, then this is the right place for you. We'd love to get to know you better." data-es="Si tu mentalidad siempre está enfocada en superar y sobrepasar tus límites, enfrentando un nuevo desafío cada día en un entorno donde constantemente aprendes y creces, entonces este es el lugar correcto para ti. Nos encantaría conocerte mejor.">
-                        Se a tua mentalidade está sempre focada em ultrapassar e superar os teus limites, enfrentando um novo desafio todos os dias num ambiente onde aprendes e cresces constantemente, então este é o lugar certo para ti. Adoraríamos conhecê-lo melhor.
-                    </p>
-                    <div class="careers-hero__cta">
-                        <a class="btn btn--primary" href="mailto:carreiras@cobrait.pt?subject=Candidatura Espontânea" style="background: white; color: #4f46e5;" data-pt="ENVIAR CANDIDATURA" data-en="SEND APPLICATION" data-es="ENVIAR SOLICITUD">ENVIAR CANDIDATURA</a>
-                        <a class="btn btn--outline" href="book-a-call.html" style="border-color: white; color: white;" data-pt="AGENDAR UMA CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR UNA LLAMADA">AGENDAR UMA CHAMADA</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER (copiado do index.html) -->
-    <footer class="footer-pro" role="contentinfo">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <h3 class="footer-brand-title">Cobrait</h3>
-                    <p class="footer-brand-subtitle">Software Factory</p>
-                    <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
-                        Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-                    </p>
-                    <div class="footer-cta-row">
-                        <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
-                            Agendar uma chamada
-                        </a>
-                        <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
-                            Ver serviços
-                        </a>
-                    </div>
-                    <div class="footer-badges" aria-label="Highlights">
-                        <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-                        <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
-                        <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
-                    <ul class="footer-links">
-                        <li><a href="servicos/product-scope.html">Product Scope</a></li>
-                        <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-                        <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-                        <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
-                        <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
-                    <ul class="footer-links">
-                        <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-                        <li><a href="#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
-                        <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-                        <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col footer-col--contact">
-                    <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
-                    <div class="footer-meta">
-                        <div>
-                            <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
-                            <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-                        </div>
-                        <div>
-                            <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
-                            <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
-                        </div>
-                        <div>
-                            <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                            <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>
-                    © <span id="year"></span> Cobrait — Software Factory
-                </div>
-                <div class="footer-mini-links">
-                    <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-                    <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-                    <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
-                </div>
-            </div>
+        <div class="header-cta">
+          <a class="btn btn--primary" href="book-a-call.html"
+             data-pt="AGENDAR UMA CHAMADA"
+             data-en="BOOK A CALL"
+             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
         </div>
-    </footer>
+      </div>
+    </div>
+  </header>
 
-    <!-- ✅ SCRIPT (inclui sistema de idiomas + funcionalidade FAQ) -->
-    <script>
-        // Ano atual
-        document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- ========================= CONTEÚDO CARREIRAS ========================= -->
+  <main>
+    <!-- HERO -->
+    <section class="careers-hero">
+      <div class="container">
+        <h1 class="careers-hero__title" data-pt="Junte-se à equipa Cobrait" data-en="Join the Cobrait Team" data-es="Únete al equipo Cobrait">
+          Junte-se à equipa Cobrait
+        </h1>
+        <p class="careers-hero__subtitle" 
+           data-pt="Procuramos talentos apaixonados por tecnologia, inovação e criação de produtos excepcionais."
+           data-en="We're looking for talents passionate about technology, innovation and creating exceptional products."
+           data-es="Buscamos talentos apasionados por la tecnología, innovación y creación de productos excepcionales.">
+          Procuramos talentos apaixonados por tecnologia, inovação e criação de produtos excepcionais.
+        </p>
+        <a class="btn btn--primary" href="#vagas" data-pt="Ver vagas disponíveis" data-en="View open positions" data-es="Ver vacantes disponibles">
+          Ver vagas disponíveis
+        </a>
+      </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section class="careers-section">
+      <div class="container">
+        <h2 class="careers-section__title" data-pt="Porquê trabalhar na Cobrait" data-en="Why work at Cobrait" data-es="Por qué trabajar en Cobrait">
+          Porquê trabalhar na Cobrait
+        </h2>
         
-        // Função para alternar FAQ
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="benefit-title" data-pt="Crescimento Rápido" data-en="Fast Growth" data-es="Crecimiento Rápido">Crescimento Rápido</h3>
+            <p class="benefit-desc" data-pt="Oportunidades para trabalhar em projetos desafiadores e expandir as tuas habilidades."
+               data-en="Opportunities to work on challenging projects and expand your skills."
+               data-es="Oportunidades para trabajar en proyectos desafiantes y expandir tus habilidades.">
+              Oportunidades para trabalhar em projetos desafiadores e expandir as tuas habilidades.
+            </p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h3 class="benefit-title" data-pt="Flexibilidade" data-en="Flexibility" data-es="Flexibilidad">Flexibilidade</h3>
+            <p class="benefit-desc" data-pt="Horário flexível e opção de trabalho remoto/híbrido."
+               data-en="Flexible schedule and remote/hybrid work options."
+               data-es="Horario flexible y opciones de trabajo remoto/híbrido.">
+              Horário flexível e opção de trabalho remoto/híbrido.
+            </p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="benefit-title" data-pt="Tecnologia de Ponta" data-en="Cutting-edge Tech" data-es="Tecnología de Vanguardia">Tecnologia de Ponta</h3>
+            <p class="benefit-desc" data-pt="Trabalha com as tecnologias mais recentes e metodologias ágeis."
+               data-en="Work with the latest technologies and agile methodologies."
+               data-es="Trabaja con las tecnologías más recientes y metodologías ágiles.">
+              Trabalha com as tecnologias mais recentes e metodologias ágeis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VAGAS -->
+    <section class="careers-section" id="vagas" style="background: #f8fafc;">
+      <div class="container">
+        <h2 class="careers-section__title" data-pt="Vagas disponíveis" data-en="Open Positions" data-es="Vacantes disponibles">
+          Vagas disponíveis
+        </h2>
+        
+        <div class="jobs-list">
+          <div class="job-item">
+            <div class="job-info">
+              <h3 data-pt="Desenvolvedor Full-Stack" data-en="Full-Stack Developer" data-es="Desarrollador Full-Stack">Desenvolvedor Full-Stack</h3>
+              <div class="job-meta">
+                <span data-pt="Remoto" data-en="Remote" data-es="Remoto">📍 Remoto</span>
+                <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">⏱️ Tempo integral</span>
+              </div>
+            </div>
+            <a class="btn btn--outline" href="mailto:cobrait@geral.pt?subject=Candidatura Full-Stack Developer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
+              Candidatar
+            </a>
+          </div>
+          
+          <div class="job-item">
+            <div class="job-info">
+              <h3 data-pt="Designer UX/UI" data-en="UX/UI Designer" data-es="Diseñador UX/UI">Designer UX/UI</h3>
+              <div class="job-meta">
+                <span data-pt="Híbrido (Porto)" data-en="Hybrid (Porto)" data-es="Híbrido (Oporto)">📍 Híbrido (Porto)</span>
+                <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">⏱️ Tempo integral</span>
+              </div>
+            </div>
+            <a class="btn btn--outline" href="mailto:cobrait@geral.pt?subject=Candidatura UX/UI Designer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
+              Candidatar
+            </a>
+          </div>
+          
+          <div class="job-item">
+            <div class="job-info">
+              <h3 data-pt="Engenheiro de IA/ML" data-en="AI/ML Engineer" data-es="Ingeniero de IA/ML">Engenheiro de IA/ML</h3>
+              <div class="job-meta">
+                <span data-pt="Remoto" data-en="Remote" data-es="Remoto">📍 Remoto</span>
+                <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo">⏱️ Tempo integral</span>
+              </div>
+            </div>
+            <a class="btn btn--outline" href="mailto:cobrait@geral.pt?subject=Candidatura AI/ML Engineer" data-pt="Candidatar" data-en="Apply" data-es="Aplicar">
+              Candidatar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-section__title" data-pt="Não vês a vaga perfeita?" data-en="Don't see the perfect role?" data-es="¿No ves el puesto perfecto?">
+          Não vês a vaga perfeita?
+        </h2>
+        <p class="cta-section__desc" 
+           data-pt="Estamos sempre à procura de talento excepcional. Envia-nos o teu CV e diz-nos como podes contribuir para a equipa."
+           data-en="We're always looking for exceptional talent. Send us your CV and tell us how you can contribute to the team."
+           data-es="Siempre buscamos talento excepcional. Envíanos tu CV y cuéntanos cómo puedes contribuir al equipo.">
+          Estamos sempre à procura de talento excepcional. Envia-nos o teu CV e diz-nos como podes contribuir para a equipa.
+        </p>
+        <a class="btn btn--outline" href="mailto:cobrait@geral.pt?subject=Candidatura Espontânea" 
+           style="background: white; color: #4f46e5;"
+           data-pt="Enviar candidatura espontânea" data-en="Send spontaneous application" data-es="Enviar solicitud espontánea">
+          Enviar candidatura espontânea
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= FOOTER (IGUAL AO INDEX) ========================= -->
+  <footer class="footer-pro" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <!-- LOGO REMOVIDA - substituída por texto COBRAIT (IGUAL AO INDEX) -->
+          <h3 class="footer-brand-title">Cobrait</h3>
+          <p class="footer-brand-subtitle">Software Factory</p>
+
+          <p class="footer-tagline"
+             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          </p>
+
+          <div class="footer-cta-row">
+            <a class="btn btn--primary btn--footer" href="book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Book a call"
+               data-es="Reservar una llamada">
+              Agendar uma chamada
+            </a>
+            <a class="btn btn--outline btn--footer" href="index.html#what-we-do"
+               data-pt="Ver serviços"
+               data-en="See services"
+               data-es="Ver servicios">
+              Ver serviços
+            </a>
+          </div>
+
+          <div class="footer-badges" aria-label="Highlights">
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+            <li><a href="index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+            <li><a href="carrers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-col--contact">
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+          <div class="footer-meta">
+            <div>
+              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+            </div>
+            <div>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+            </div>
+            <div>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+              <a href="book-a-call.html"
+                 data-pt="Marca uma call."
+                 data-en="Book a call."
+                 data-es="Reserva una llamada.">Marca uma call.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© <span id="year"></span> Cobrait — Software Factory</div>
+        <div class="footer-mini-links">
+          <a href="index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================= SCRIPT ========================= -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // ====== Normalização de idioma ======
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        return 'en';
+      }
+
+      // ====== SISTEMA DE LÍNGUAS ======
+      const languageOptions = document.querySelectorAll('.language-option');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      
+      const flagMap = {
+        'pt': '🇵🇹',
+        'en': '🇬🇧',
+        'es': '🇪🇸'
+      };
+      
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES'
+      };
+
+      // Carregar língua salva
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      setActiveLanguage(savedLanguage);
+      applyLanguage(savedLanguage);
+
+      // Event listeners para as opções de língua
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const lang = normalizeLang(this.getAttribute('data-lang'));
+          setActiveLanguage(lang);
+          applyLanguage(lang);
+          localStorage.setItem('preferredLanguage', lang);
+        });
+      });
+
+      function setActiveLanguage(lang) {
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '🇬🇧';
         }
         
-        // Inicializar algumas FAQs abertas por padrão
-        document.addEventListener('DOMContentLoaded', function() {
-            // Abrir primeira FAQ por padrão
-            const firstFAQ = document.querySelector('.faq-item');
-            if (firstFAQ) {
-                firstFAQ.classList.add('active');
-            }
-            
-            // Animação de entrada para elementos
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                el.style.animationDelay = (index * 0.1) + 's';
-            });
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN';
+        }
+        
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
         });
+      }
 
-        // ====== SISTEMA DE LÍNGUAS (copiado do index) ======
-        document.addEventListener('DOMContentLoaded', function() {
-            function normalizeLang(l) {
-                if (!l) return 'pt';
-                l = String(l).toLowerCase();
-                if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
-                if (l.startsWith('en')) return 'en';
-                if (l.startsWith('es')) return 'es';
-                return 'en';
-            }
+      function applyLanguage(lang) {
+        lang = normalizeLang(lang);
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
+        updateTextContent(lang);
+      }
 
-            const languageOptions = document.querySelectorAll('.language-option');
-            const currentFlag = document.getElementById('currentFlag');
-            const currentLang = document.getElementById('currentLang');
-            
-            const flagMap = {
-                'pt': '🇵🇹',
-                'en': '🇬🇧',
-                'es': '🇪🇸'
-            };
-            
-            const codeMap = {
-                'pt': 'PT',
-                'en': 'EN',
-                'es': 'ES'
-            };
-            
-            const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
-            setActiveLanguage(savedLanguage);
-            applyLanguage(savedLanguage);
-            
-            languageOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const lang = normalizeLang(this.getAttribute('data-lang'));
-                    setActiveLanguage(lang);
-                    applyLanguage(lang);
-                    localStorage.setItem('preferredLanguage', lang);
-                });
-            });
-            
-            function setActiveLanguage(lang) {
-                if (flagMap[lang]) {
-                    currentFlag.textContent = flagMap[lang];
-                } else {
-                    currentFlag.textContent = '🇬🇧';
-                }
-                
-                if (codeMap[lang]) {
-                    currentLang.textContent = codeMap[lang];
-                } else {
-                    currentLang.textContent = 'EN';
-                }
-                
-                languageOptions.forEach(option => {
-                    option.classList.remove('active');
-                    if (normalizeLang(option.getAttribute('data-lang')) === lang) {
-                        option.classList.add('active');
-                    }
-                });
-            }
-            
-            function applyLanguage(lang) {
-                lang = normalizeLang(lang);
-                document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
-                updateTextContent(lang);
-                updateAriaLabels(lang);
-            }
-            
-            function updateTextContent(lang) {
-                const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
-                elements.forEach(el => {
-                    let text = el.getAttribute(`data-${lang}`);
-                    if (text === null && lang !== 'en') {
-                        text = el.getAttribute('data-en');
-                    }
-                    if (text === null) return;
-                    
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.value = text;
-                    } else if (el.hasAttribute('data-html')) {
-                        el.innerHTML = text;
-                    } else {
-                        el.textContent = text;
-                    }
-                });
-            }
-            
-            function updateAriaLabels(lang) {
-                const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
-                ariaEls.forEach(el => {
-                    let val = el.getAttribute(`data-${lang}`);
-                    if (val === null && lang !== 'en') {
-                        val = el.getAttribute('data-en');
-                    }
-                    if (val) el.setAttribute('aria-label', val);
-                });
-            }
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+          
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+          
+          if (text === null) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = text;
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
         });
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>
