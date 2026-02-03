@@ -97,6 +97,37 @@
 
   <!-- HEADER + FOOTER : IGUAL AO INDEX  -->
   <style>
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
     /* Estilos do Header */
     .site-header {
       background: white;
@@ -114,7 +145,11 @@
       gap: 40px;
     }
 
-    .brand img { height: 40px; width: auto; }
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
     .nav-toggle { display: none; }
 
     .nav-toggle-btn {
@@ -432,7 +467,7 @@
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
-    /* FOOTER PRO (IGUAL AO INDEX - SEM LOGO, APENAS TEXTO) */
+    /* FOOTER PRO - ATUALIZADO COM "COBRA IT" */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
@@ -480,11 +515,16 @@
       align-items: flex-start;
     }
 
-    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
+    /* LOGO ATUALIZADA PARA "COBRA IT" */
     .footer-brand-title {
       font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
       color: rgba(226, 232, 240, 0.95);
       margin: 0;
       line-height: 1;
@@ -492,8 +532,10 @@
 
     .footer-brand-subtitle {
       font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       color: rgba(203, 213, 225, 0.8);
       margin: 4px 0 0 0;
     }
@@ -653,18 +695,20 @@
         padding: 50px 0 20px;
       }
       .footer-brand-title {
-        font-size: 22px;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER IGUAL AO INDEX -->
+  <!-- HEADER ATUALIZADO COM "COBRA IT" -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Cobrait">
-        <img src="images/logo.png" alt="Cobrait Software Factory logo">
+      <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+      <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
@@ -786,7 +830,7 @@
       </nav>
 
       <div class="header-right">
-        <!-- NOVO: DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES (IGUAL AO INDEX) -->
+        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
@@ -1008,15 +1052,13 @@
       </div>
     </section>
 
-
-
-    <!-- FOOTER PRO IGUAL AO INDEX (SEM LOGO, APENAS TEXTO) -->
+    <!-- FOOTER PRO ATUALIZADO COM "COBRA IT" -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <!-- LOGO REMOVIDA - substituída por texto COBRAIT (IGUAL AO INDEX) -->
-            <h3 class="footer-brand-title">Cobrait</h3>
+            <!-- LOGO ATUALIZADA PARA "COBRA IT" -->
+            <h3 class="footer-brand-title">COBRA IT</h3>
             <p class="footer-brand-subtitle">Software Factory</p>
 
             <p class="footer-tagline"
@@ -1092,7 +1134,7 @@
         </div>
 
         <div class="footer-bottom">
-          <div>© <span id="year"></span> Cobrait — Software Factory</div>
+          <div>© <span id="year"></span> Cobra IT — Software Factory</div>
           <div class="footer-mini-links">
             <a href="index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
             <a href="index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
