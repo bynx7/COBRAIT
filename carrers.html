@@ -15,36 +15,72 @@
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
   <style>
-    /* ====== RESET E BASE ====== */
+    /* ====== VARIÁVEIS E RESET ====== */
     :root {
-      --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      --primary-gradient-hover: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+      /* Cores principais */
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      
+      /* Gradientes */
+      --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --gradient-light: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #3b82f6 100%);
+      
+      /* Sistema de cores */
       --text-primary: #0f172a;
       --text-secondary: #475569;
-      --text-light: #64748b;
-      --text-on-dark: #f8fafc;
+      --text-tertiary: #64748b;
+      --text-light: #94a3b8;
+      --text-on-dark: #f1f5f9;
+      
       --bg-white: #ffffff;
       --bg-light: #f8fafc;
       --bg-dark: #0f172a;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      
       --border-light: #e2e8f0;
       --border-medium: #cbd5e1;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --border-dark: #1e293b;
+      
+      /* Sombras */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-primary: 0 10px 30px -5px rgba(99, 102, 241, 0.3);
+      
+      /* Bordas arredondadas */
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
       --radius-xl: 20px;
-      --transition-fast: 150ms ease;
-      --transition-normal: 300ms ease;
-      --transition-slow: 500ms ease;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+      
+      /* Transições */
+      --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Espaçamentos */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
     }
     
     * {
@@ -53,176 +89,239 @@
       box-sizing: border-box;
     }
     
+    html {
+      scroll-behavior: smooth;
+    }
+    
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      line-height: 1.6;
+      line-height: 1.7;
       color: var(--text-primary);
       background: var(--bg-white);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     
-    h1, h2, h3, h4 {
-      font-family: 'Poppins', sans-serif;
+    h1, h2, h3, h4, h5 {
+      font-family: 'Space Grotesk', 'Poppins', sans-serif;
       font-weight: 700;
       line-height: 1.2;
+      letter-spacing: -0.02em;
     }
     
     a {
       text-decoration: none;
       color: inherit;
-      transition: color var(--transition-fast);
+      transition: all var(--transition-fast);
     }
     
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 var(--space-xl);
     }
     
+    /* ====== COMPONENTES ====== */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 32px;
-      border-radius: var(--radius-sm);
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-md);
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 0.95rem;
       text-decoration: none;
       transition: all var(--transition-normal);
-      border: 2px solid transparent;
+      border: none;
       cursor: pointer;
-      white-space: nowrap;
-      gap: 8px;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
     
     .btn--primary {
-      background: var(--primary-gradient);
+      background: var(--gradient-primary);
       color: white;
+      box-shadow: var(--shadow-primary);
+    }
+    
+    .btn--primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+      z-index: -1;
     }
     
     .btn--primary:hover {
-      background: var(--primary-gradient-hover);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-lg), var(--shadow-primary);
+    }
+    
+    .btn--primary:hover::before {
+      left: 100%;
     }
     
     .btn--outline {
       background: transparent;
-      color: #4f46e5;
-      border-color: #4f46e5;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      backdrop-filter: blur(10px);
     }
     
     .btn--outline:hover {
-      background: #4f46e5;
+      background: var(--primary);
       color: white;
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
     
-    /* ====== HEADER MODERNO ====== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
+    .btn--light {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-light);
-      padding: 12px 0;
+    }
+    
+    .btn--light:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    /* ====== HEADER PREMIUM ====== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      padding: 1rem 0;
       transition: all var(--transition-normal);
+    }
+    
+    .site-header.scrolled {
+      padding: 0.75rem 0;
+      box-shadow: var(--shadow-lg);
+      background: rgba(255, 255, 255, 0.98);
     }
     
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 32px;
+      gap: var(--space-xl);
     }
     
-    .brand img {
-      height: 48px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    
+    .brand-logo {
+      height: 40px;
       width: auto;
       transition: transform var(--transition-normal);
     }
     
-    .brand:hover img {
+    .brand:hover .brand-logo {
       transform: scale(1.05);
+    }
+    
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     /* Navegação */
     .site-nav ul {
       display: flex;
       list-style: none;
-      gap: 32px;
+      gap: var(--space-xl);
       align-items: center;
     }
     
     .site-nav a {
       font-weight: 500;
-      font-size: 15px;
+      font-size: 0.95rem;
       color: var(--text-secondary);
       position: relative;
-      padding: 8px 0;
+      padding: 0.5rem 0;
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-    
-    .site-nav a:hover {
-      color: #4f46e5;
+      gap: 0.375rem;
     }
     
     .site-nav a::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 50%;
       width: 0;
       height: 2px;
-      background: var(--primary-gradient);
-      transition: width var(--transition-normal);
+      background: var(--gradient-primary);
+      transition: all var(--transition-normal);
+      transform: translateX(-50%);
     }
     
-    .site-nav a:hover::after {
+    .site-nav a:hover {
+      color: var(--primary);
+    }
+    
+    .site-nav a:hover::after,
+    .site-nav a.active::after {
       width: 100%;
     }
     
-    /* Dropdown */
-    .dropdown {
-      position: relative;
+    .site-nav a.active {
+      color: var(--primary);
+      font-weight: 600;
     }
     
-    .dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 280px;
-      background: var(--bg-white);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      box-shadow: var(--shadow-xl);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all var(--transition-normal);
-      z-index: 1000;
-      margin-top: 8px;
-      border: 1px solid var(--border-light);
+    /* Menu móvel */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
     }
     
-    .dropdown:hover .dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: var(--transition-normal);
     }
     
-    /* ====== HERO MODERNO ====== */
+    /* ====== HERO SECTION ====== */
     .careers-hero {
-      background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
-      padding: 140px 0 100px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--gradient-dark);
       position: relative;
       overflow: hidden;
+      padding: 6rem 0 4rem;
+      margin-top: 72px;
     }
     
     .careers-hero::before {
@@ -230,211 +329,469 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.15), transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.1), transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+      animation: gradientShift 15s ease infinite alternate;
     }
     
-    .careers-hero__content {
+    @keyframes gradientShift {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      100% {
+        transform: scale(1.1) rotate(3deg);
+      }
+    }
+    
+    .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
       text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
     
-    .careers-hero__title {
-      font-size: clamp(3rem, 5vw, 4rem);
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-full);
+      color: var(--primary-light);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-title {
+      font-size: clamp(3.5rem, 6vw, 5rem);
       color: white;
-      margin-bottom: 24px;
-      background: linear-gradient(to right, #ffffff, #c7d2fe);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, #ffffff, #c7d2fe, #a5b4fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      line-height: 1.1;
     }
     
-    .careers-hero__subtitle {
-      font-size: 20px;
-      line-height: 1.6;
+    .hero-subtitle {
+      font-size: 1.25rem;
+      line-height: 1.7;
       color: #cbd5e1;
-      margin-bottom: 40px;
-      max-width: 600px;
+      margin-bottom: 3rem;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+    }
+    
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
     }
     
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 48px;
-      margin-top: 60px;
+      gap: 4rem;
+      margin-top: 4rem;
       flex-wrap: wrap;
     }
     
     .stat-item {
       text-align: center;
+      position: relative;
+    }
+    
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -2rem;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+    
+    .stat-item:last-child::after {
+      display: none;
     }
     
     .stat-number {
       display: block;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 800;
-      font-size: 48px;
-      background: var(--primary-gradient);
+      font-size: 3.5rem;
+      background: var(--gradient-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
     }
     
     .stat-label {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 600;
       color: #94a3b8;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
     
-    /* ====== SEÇÃO DE BENEFÍCIOS ====== */
-    .careers-section {
-      padding: 100px 0;
+    /* ====== SEÇÃO DE VALORES ====== */
+    .values-section {
+      padding: 8rem 0;
+      background: var(--bg-light);
+      position: relative;
+    }
+    
+    .values-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
     }
     
     .section-header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 4rem;
     }
     
     .section-subtitle {
-      font-size: 14px;
-      color: #4f46e5;
+      font-size: 0.875rem;
+      color: var(--primary);
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 16px;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
       display: block;
+      position: relative;
     }
     
-    .careers-section__title {
-      font-size: clamp(2.25rem, 4vw, 3rem);
+    .section-subtitle::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--gradient-primary);
+      margin: 0.5rem auto;
+    }
+    
+    .section-title {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
       color: var(--text-primary);
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
     }
     
     .section-description {
-      font-size: 18px;
-      line-height: 1.6;
+      font-size: 1.125rem;
+      line-height: 1.7;
       color: var(--text-secondary);
       max-width: 700px;
       margin: 0 auto;
     }
     
-    .benefits-grid {
+    .values-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-      margin-bottom: 80px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
     
-    .benefit-card {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      padding: 40px 32px;
-      border: 1px solid var(--border-light);
+    .value-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2rem;
       text-align: center;
+      border: 1px solid var(--border-light);
       transition: all var(--transition-normal);
       position: relative;
       overflow: hidden;
     }
     
-    .benefit-card::before {
+    .value-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--primary-gradient);
+      background: var(--gradient-primary);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform var(--transition-normal);
     }
     
-    .benefit-card:hover {
+    .value-card:hover {
       transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-      border-color: #c7d2fe;
+      box-shadow: var(--shadow-2xl);
+      border-color: transparent;
     }
     
-    .benefit-card:hover::before {
+    .value-card:hover::before {
       transform: scaleX(1);
     }
     
-    .benefit-icon {
-      width: 64px;
-      height: 64px;
+    .value-icon {
+      width: 80px;
+      height: 80px;
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 24px;
-      background: var(--primary-gradient);
+      margin: 0 auto 2rem;
+      font-size: 2rem;
+      background: var(--gradient-primary);
       color: white;
       box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
     
-    .benefit-title {
+    .value-icon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transform: translateX(-100%);
+    }
+    
+    .value-card:hover .value-icon::after {
+      animation: shine 1.5s ease;
+    }
+    
+    @keyframes shine {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+    
+    .value-title {
       font-size: 1.5rem;
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
       color: var(--text-primary);
     }
     
-    .benefit-desc {
-      color: var(--text-light);
-      line-height: 1.6;
+    .value-description {
+      color: var(--text-tertiary);
+      line-height: 1.7;
     }
     
-    /* ====== SEÇÃO DE VAGAS ====== */
-    .jobs-section {
-      background: linear-gradient(135deg, var(--bg-light) 0%, #f1f5f9 100%);
-      padding: 100px 0;
+    /* ====== SEÇÃO DE BENEFÍCIOS ====== */
+    .benefits-section {
+      padding: 8rem 0;
       position: relative;
     }
     
-    .jobs-section::before {
+    .benefits-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      background: var(--gradient-light);
+      z-index: -1;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .benefit-item {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-normal);
+      position: relative;
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-light);
+    }
+    
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .benefit-icon-wrapper {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .benefit-title {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+    }
+    
+    .benefit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+    }
+    
+    .benefit-list li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+    
+    /* ====== PROCESSO DE RECRUTAMENTO ====== */
+    .process-section {
+      padding: 8rem 0;
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .process-section::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--primary-gradient);
+      background: var(--gradient-primary);
+    }
+    
+    .process-section .section-title,
+    .process-section .section-description {
+      color: var(--text-on-dark);
+    }
+    
+    .process-section .section-description {
+      opacity: 0.9;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 4rem auto 0;
+      counter-reset: step-counter;
+      position: relative;
+    }
+    
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        var(--primary) 0%, 
+        var(--secondary) 25%, 
+        var(--accent) 50%, 
+        var(--secondary) 75%, 
+        var(--primary) 100%);
+      opacity: 0.2;
+      z-index: 1;
+    }
+    
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .process-step::before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin: 0 auto 2rem;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .process-step h4 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .process-step p {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+    
+    /* ====== SEÇÃO DE VAGAS ====== */
+    .jobs-section {
+      padding: 8rem 0;
+      background: var(--bg-light);
     }
     
     .jobs-filter {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 40px;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
     
     .filter-btn {
-      padding: 10px 24px;
-      border-radius: 50px;
-      background: var(--bg-white);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-full);
+      background: white;
       border: 2px solid var(--border-light);
       font-weight: 600;
-      font-size: 14px;
-      color: var(--text-light);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all var(--transition-normal);
     }
     
     .filter-btn:hover,
     .filter-btn.active {
-      background: var(--primary-gradient);
+      background: var(--gradient-primary);
       color: white;
       border-color: transparent;
       transform: translateY(-2px);
@@ -446,78 +803,80 @@
       margin: 0 auto;
     }
     
-    .job-item {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-bottom: 20px;
+    .job-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      margin-bottom: 1.5rem;
       border: 1px solid var(--border-light);
       transition: all var(--transition-normal);
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 32px;
+      gap: 2rem;
       align-items: center;
       position: relative;
       overflow: hidden;
     }
     
-    .job-item::before {
+    .job-card::before {
       content: '';
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
       width: 4px;
-      background: var(--primary-gradient);
+      background: var(--gradient-primary);
       transform: scaleY(0);
       transform-origin: top;
       transition: transform var(--transition-normal);
     }
     
-    .job-item:hover {
-      border-color: #c7d2fe;
-      box-shadow: var(--shadow-xl);
+    .job-card:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-2xl);
       transform: translateY(-4px);
     }
     
-    .job-item:hover::before {
+    .job-card:hover::before {
       transform: scaleY(1);
     }
     
     .job-info h3 {
       font-size: 1.5rem;
-      margin-bottom: 12px;
+      margin-bottom: 0.75rem;
       color: var(--text-primary);
     }
     
     .job-meta {
       display: flex;
-      gap: 20px;
-      font-size: 15px;
-      color: var(--text-light);
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-tertiary);
       flex-wrap: wrap;
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
     }
     
     .job-meta span {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0.5rem;
     }
     
     .job-tags {
       display: flex;
-      gap: 8px;
+      gap: 0.5rem;
       flex-wrap: wrap;
     }
     
     .job-tag {
-      padding: 6px 12px;
+      padding: 0.375rem 0.875rem;
       background: var(--bg-light);
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 500;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .job-tag.tech {
@@ -525,66 +884,21 @@
       color: #1d4ed8;
     }
     
+    .job-tag.design {
+      background: #fce7f3;
+      color: #be185d;
+    }
+    
     .job-tag.remote {
       background: #dcfce7;
       color: #15803d;
     }
     
-    /* ====== PROCESSO DE RECRUTAMENTO ====== */
-    .process-section {
-      padding: 100px 0;
-    }
-    
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      max-width: 1000px;
-      margin: 60px auto 0;
-      counter-reset: step-counter;
-    }
-    
-    .process-step {
-      text-align: center;
-      position: relative;
-    }
-    
-    .process-step::before {
-      counter-increment: step-counter;
-      content: counter(step-counter);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--primary-gradient);
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 20px;
-      margin: 0 auto 24px;
-      position: relative;
-      z-index: 2;
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .process-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 28px;
-      right: -20px;
-      width: calc(100% - 56px);
-      height: 2px;
-      background: linear-gradient(to right, #4f46e5 0%, #7c3aed 100%);
-      opacity: 0.2;
-    }
-    
-    /* ====== CTA FINAL ====== */
+    /* ====== CTA SECTION ====== */
     .cta-section {
-      background: var(--primary-gradient);
+      padding: 8rem 0;
+      background: var(--gradient-dark);
       color: white;
-      padding: 100px 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -595,8 +909,18 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1), transparent 60%),
-        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05), transparent 60%);
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+      animation: pulse 4s ease-in-out infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
     }
     
     .cta-content {
@@ -606,105 +930,157 @@
       margin: 0 auto;
     }
     
-    .cta-section__title {
-      font-size: clamp(2.25rem, 4vw, 3rem);
-      margin-bottom: 24px;
+    .cta-title {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      margin-bottom: 1.5rem;
       color: white;
     }
     
-    .cta-section__desc {
+    .cta-description {
       font-size: 1.25rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto 40px;
+      line-height: 1.7;
       color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 3rem;
     }
     
     .cta-actions {
       display: flex;
-      gap: 20px;
+      gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
     
-    /* ====== SEÇÃO COBRAIT ====== */
-    .cobrait-section {
-      background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
-      color: white;
-      padding: 80px 0;
+    /* ====== CONTACT SECTION ====== */
+    .contact-section {
+      padding: 6rem 0;
       text-align: center;
     }
     
-    .cobrait-section h2 {
-      font-size: 3rem;
-      margin-bottom: 16px;
-      color: white;
-    }
-    
-    .cobrait-section h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 32px;
-    }
-    
-    /* ====== FOOTER MODERNO ====== */
-    .footer-pro {
-      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      color: #cbd5e1;
-      padding: 80px 0 32px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .footer-top {
+    .contact-grid {
       display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
-      gap: 32px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
     }
     
-    .footer-brand-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      color: rgba(226, 232, 240, 0.95);
-      margin-bottom: 8px;
+    .contact-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 3rem 2rem;
+      border: 1px solid var(--border-light);
+      transition: all var(--transition-normal);
     }
     
-    .footer-brand-subtitle {
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.8);
-      margin-bottom: 16px;
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary-light);
+    }
+    
+    .contact-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-primary);
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .contact-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .contact-details {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .contact-details a {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    .contact-details a:hover {
+      text-decoration: underline;
+    }
+    
+    /* ====== FOOTER ====== */
+    .footer {
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      padding: 6rem 0 3rem;
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .footer-brand h3 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     .footer-tagline {
-      font-size: 14px;
-      line-height: 1.6;
-      color: rgba(226, 232, 240, 0.85);
-      max-width: 420px;
-      margin-bottom: 24px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
     
     .footer-col h4 {
-      font-size: 14px;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: rgba(226, 232, 240, 0.9);
-      margin-bottom: 20px;
+      color: white;
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
     
     .footer-links {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0.75rem;
     }
     
     .footer-links a {
-      color: rgba(203, 213, 225, 0.9);
-      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
       transition: all var(--transition-fast);
     }
     
@@ -714,93 +1090,112 @@
     }
     
     .footer-bottom {
-      padding-top: 32px;
-      border-top: 1px solid rgba(148, 163, 184, 0.18);
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 14px;
-      color: rgba(148, 163, 184, 0.9);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    @media (max-width: 768px) {
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
     
     /* ====== RESPONSIVIDADE ====== */
     @media (max-width: 1024px) {
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-      }
-      
       .hero-stats {
-        gap: 32px;
+        gap: 3rem;
       }
       
-      .stat-number {
-        font-size: 40px;
+      .stat-item::after {
+        display: none;
       }
     }
     
     @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        gap: 16px;
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .site-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-normal);
+      }
+      
+      .site-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
       }
       
       .site-nav ul {
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .site-nav a {
+        padding: 1rem;
+        width: 100%;
         justify-content: center;
-        gap: 16px;
+      }
+      
+      .header-inner {
+        gap: 1rem;
       }
       
       .careers-hero {
-        padding: 100px 0 80px;
+        padding: 4rem 0;
       }
       
-      .careers-hero__title {
-        font-size: clamp(2.5rem, 5vw, 3rem);
+      .hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
       }
       
-      .benefits-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .job-item {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 24px;
-      }
-      
-      .process-steps {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      
-      .process-step:not(:last-child)::after {
-        display: none;
-      }
-      
-      .cta-actions {
+      .hero-actions {
         flex-direction: column;
         align-items: center;
       }
       
-      .footer-top {
+      .job-card {
         grid-template-columns: 1fr;
-        gap: 40px;
+        text-align: center;
+        gap: 1.5rem;
       }
       
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
+      .process-steps::before {
+        display: none;
       }
     }
     
     @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
       .hero-stats {
-        gap: 24px;
+        flex-direction: column;
+        gap: 2rem;
       }
       
       .stat-number {
-        font-size: 32px;
+        font-size: 3rem;
       }
       
       .jobs-filter {
@@ -816,21 +1211,13 @@
       .job-meta {
         justify-content: center;
       }
-      
-      .cobrait-section h2 {
-        font-size: 2.5rem;
-      }
-      
-      .cobrait-section h3 {
-        font-size: 1.25rem;
-      }
     }
     
     /* ====== ANIMAÇÕES ====== */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -838,8 +1225,15 @@
       }
     }
     
-    .animate-in {
-      animation: fadeInUp 0.6s ease forwards;
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -849,18 +1243,24 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Cobrait">
-        <img src="images/logo.png" alt="Cobrait Software Factory logo">
+        <div class="brand-name">Cobrait</div>
       </a>
+      
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
+          <li><a href="index.html">Home</a></li>
           <li><a href="index.html#work">Work</a></li>
-          <li><a href="index.html#what-we-do">Services</a></li>
+          <li><a href="index.html#services">Services</a></li>
           <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="about-us.html">About</a></li>
           <li><a href="carrers.html" class="active">Careers</a></li>
           <li><a href="tech.html">Tech</a></li>
-          <li><a href="index.html#about">Resources</a></li>
         </ul>
       </nav>
       
@@ -872,115 +1272,190 @@
 
   <!-- HERO SECTION -->
   <section class="careers-hero">
-    <div class="container careers-hero__content">
-      <h1 class="careers-hero__title animate-in">
-        Build the Future with Us
+    <div class="container hero-content">
+      <div class="hero-badge animate-on-scroll">
+        <span>🚀</span>
+        <span>We're Hiring Talented People</span>
+      </div>
+      
+      <h1 class="hero-title animate-on-scroll" data-delay="100">
+        Shape the Future<br>of Technology
       </h1>
-      <p class="careers-hero__subtitle animate-in">
-        Join a team of innovators shaping the future of software development. Work on cutting-edge projects with modern technologies and agile methodologies.
+      
+      <p class="hero-subtitle animate-on-scroll" data-delay="200">
+        Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.
       </p>
-      <a class="btn btn--primary animate-in" href="#jobs" style="margin-top: 20px;">
-        View Open Positions
-      </a>
+      
+      <div class="hero-actions">
+        <a class="btn btn--primary animate-on-scroll" href="#jobs" data-delay="300">
+          View Open Positions
+          <span>→</span>
+        </a>
+        <a class="btn btn--light animate-on-scroll" href="#process" data-delay="350">
+          Our Hiring Process
+        </a>
+      </div>
       
       <div class="hero-stats">
-        <div class="stat-item animate-in">
+        <div class="stat-item animate-on-scroll" data-delay="400">
           <span class="stat-number">50+</span>
-          <span class="stat-label">Projects Completed</span>
+          <span class="stat-label">Successful Projects</span>
         </div>
-        <div class="stat-item animate-in" style="animation-delay: 100ms">
-          <span class="stat-number">15+</span>
-          <span class="stat-label">Happy Clients</span>
-        </div>
-        <div class="stat-item animate-in" style="animation-delay: 200ms">
+        <div class="stat-item animate-on-scroll" data-delay="450">
           <span class="stat-number">100%</span>
-          <span class="stat-label">Remote/Hybrid</span>
+          <span class="stat-label">Remote First</span>
+        </div>
+        <div class="stat-item animate-on-scroll" data-delay="500">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Industry Experts</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">OUR CULTURE</span>
+        <h2 class="section-title animate-on-scroll">Core Values That Drive Us</h2>
+        <p class="section-description animate-on-scroll" data-delay="100">
+          We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact.
+        </p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card animate-on-scroll">
+          <div class="value-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="value-title">Innovation First</h3>
+          <p class="value-description">
+            We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow.
+          </p>
+        </div>
+        
+        <div class="value-card animate-on-scroll" data-delay="100">
+          <div class="value-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+            </svg>
+          </div>
+          <h3 class="value-title">Collaborative Excellence</h3>
+          <p class="value-description">
+            Great minds working together create extraordinary results. We believe in the power of teamwork.
+          </p>
+        </div>
+        
+        <div class="value-card animate-on-scroll" data-delay="200">
+          <div class="value-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="value-title">Quality Obsessed</h3>
+          <p class="value-description">
+            We deliver exceptional quality in every line of code, every design pixel, and every client interaction.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- BENEFITS SECTION -->
-  <section class="careers-section">
+  <section class="benefits-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">WHY CHOOSE COBRAIT</span>
-        <h2 class="careers-section__title">Grow With Us</h2>
-        <p class="section-description">
-          We believe in creating an environment where talented individuals can thrive, innovate, and make a real impact.
+        <span class="section-subtitle">PERKS & BENEFITS</span>
+        <h2 class="section-title animate-on-scroll">Why You'll Love Working Here</h2>
+        <p class="section-description animate-on-scroll" data-delay="100">
+          We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture.
         </p>
       </div>
       
       <div class="benefits-grid">
-        <div class="benefit-card animate-in">
-          <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+        <div class="benefit-item animate-on-scroll">
+          <div class="benefit-header">
+            <div class="benefit-icon-wrapper">
+              <span>💼</span>
+            </div>
+            <h3 class="benefit-title">Career Growth</h3>
           </div>
-          <h3 class="benefit-title">Accelerated Growth</h3>
-          <p class="benefit-desc">
-            Work on challenging projects with mentorship from industry experts. Continuous learning opportunities and clear career progression.
-          </p>
+          <ul class="benefit-list">
+            <li>Personal development budget</li>
+            <li>Mentorship from industry leaders</li>
+            <li>Clear promotion pathways</li>
+            <li>Conference and training allowances</li>
+          </ul>
         </div>
         
-        <div class="benefit-card animate-in" style="animation-delay: 100ms">
-          <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
+        <div class="benefit-item animate-on-scroll" data-delay="100">
+          <div class="benefit-header">
+            <div class="benefit-icon-wrapper">
+              <span>🏡</span>
+            </div>
+            <h3 class="benefit-title">Flexible Work</h3>
           </div>
-          <h3 class="benefit-title">Flexible Work</h3>
-          <p class="benefit-desc">
-            Remote-first culture with flexible hours. Work from anywhere while maintaining a healthy work-life balance.
-          </p>
+          <ul class="benefit-list">
+            <li>100% remote-first culture</li>
+            <li>Flexible working hours</li>
+            <li>Home office setup allowance</li>
+            <li>Co-working space access</li>
+          </ul>
         </div>
         
-        <div class="benefit-card animate-in" style="animation-delay: 200ms">
-          <div class="benefit-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <div class="benefit-item animate-on-scroll" data-delay="200">
+          <div class="benefit-header">
+            <div class="benefit-icon-wrapper">
+              <span>⚡</span>
+            </div>
+            <h3 class="benefit-title">Modern Tech Stack</h3>
           </div>
-          <h3 class="benefit-title">Modern Stack</h3>
-          <p class="benefit-desc">
-            Work with the latest technologies including React, Node.js, Python, AI/ML, and cloud-native architectures.
-          </p>
+          <ul class="benefit-list">
+            <li>Latest frameworks and tools</li>
+            <li>Cloud-native development</li>
+            <li>AI/ML integration projects</li>
+            <li>Continuous tech upgrades</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- RECRUITMENT PROCESS -->
-  <section class="process-section">
+  <section class="process-section" id="process">
     <div class="container">
       <div class="section-header">
         <span class="section-subtitle">OUR PROCESS</span>
-        <h2 class="careers-section__title">Simple & Transparent</h2>
-        <p class="section-description">
-          We've designed our hiring process to be straightforward while ensuring we find the right fit for both parties.
+        <h2 class="section-title animate-on-scroll">Transparent & Efficient</h2>
+        <p class="section-description animate-on-scroll" data-delay="100">
+          We've streamlined our hiring to respect your time while ensuring the perfect match for both sides.
         </p>
       </div>
       
       <div class="process-steps">
-        <div class="process-step animate-in">
-          <h4>Apply Online</h4>
-          <p>Submit your application and portfolio. We review all submissions within 48 hours.</p>
+        <div class="process-step animate-on-scroll">
+          <h4>Initial Application</h4>
+          <p>Submit your details and portfolio. We review every application within 48 hours.</p>
         </div>
         
-        <div class="process-step animate-in" style="animation-delay: 100ms">
-          <h4>Initial Interview</h4>
-          <p>A casual conversation to discuss your experience, goals, and our opportunities.</p>
+        <div class="process-step animate-on-scroll" data-delay="100">
+          <h4>Culture Fit Interview</h4>
+          <p>A relaxed conversation to discuss values, aspirations, and mutual expectations.</p>
         </div>
         
-        <div class="process-step animate-in" style="animation-delay: 200ms">
+        <div class="process-step animate-on-scroll" data-delay="200">
           <h4>Technical Assessment</h4>
-          <p>A practical challenge relevant to the role (max 3 hours to complete).</p>
+          <p>A practical, relevant challenge that showcases your problem-solving skills.</p>
         </div>
         
-        <div class="process-step animate-in" style="animation-delay: 300ms">
-          <h4>Offer & Onboarding</h4>
-          <p>Receive a formal offer and join our team with a comprehensive onboarding process.</p>
+        <div class="process-step animate-on-scroll" data-delay="300">
+          <h4>Final Interview & Offer</h4>
+          <p>Meet the team, discuss details, and receive a competitive offer package.</p>
         </div>
       </div>
     </div>
@@ -990,77 +1465,76 @@
   <section class="jobs-section" id="jobs">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">OPEN POSITIONS</span>
-        <h2 class="careers-section__title" style="color: var(--text-primary);">
-          Join Our Team
-        </h2>
-        <p class="section-description">
-          We're constantly looking for exceptional talent to help us build amazing products.
+        <span class="section-subtitle">CURRENT OPENINGS</span>
+        <h2 class="section-title animate-on-scroll">Join Our Growing Team</h2>
+        <p class="section-description animate-on-scroll" data-delay="100">
+          Explore opportunities to contribute your skills and grow with us.
         </p>
       </div>
       
       <div class="jobs-filter">
         <button class="filter-btn active" data-filter="all">All Positions</button>
-        <button class="filter-btn" data-filter="tech">Tech</button>
+        <button class="filter-btn" data-filter="tech">Engineering</button>
         <button class="filter-btn" data-filter="design">Design</button>
         <button class="filter-btn" data-filter="remote">Remote</button>
       </div>
       
       <div class="jobs-list">
-        <div class="job-item animate-in" data-category="tech remote">
+        <div class="job-card animate-on-scroll" data-category="tech remote">
           <div class="job-info">
-            <h3>Senior Full-Stack Developer</h3>
+            <h3>Senior Full-Stack Engineer</h3>
             <div class="job-meta">
-              <span>📍 Remote</span>
+              <span>📍 Remote · Portugal</span>
               <span>⏱️ Full-time</span>
-              <span>💼 Senior</span>
+              <span>💼 Senior Level</span>
             </div>
             <div class="job-tags">
               <span class="job-tag tech">React</span>
               <span class="job-tag tech">Node.js</span>
+              <span class="job-tag tech">TypeScript</span>
               <span class="job-tag remote">100% Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Senior%20Full-Stack%20Developer%20Application">
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Senior%20Full-Stack%20Engineer">
             Apply Now
           </a>
         </div>
         
-        <div class="job-item animate-in" data-category="design" style="animation-delay: 100ms">
+        <div class="job-card animate-on-scroll" data-delay="100" data-category="design">
           <div class="job-info">
-            <h3>UX/UI Designer</h3>
+            <h3>Product Designer</h3>
             <div class="job-meta">
-              <span>📍 Hybrid (Porto)</span>
+              <span>📍 Hybrid · Porto</span>
               <span>⏱️ Full-time</span>
-              <span>💼 Mid-Level</span>
+              <span>💼 Mid to Senior</span>
             </div>
             <div class="job-tags">
-              <span class="job-tag">Figma</span>
-              <span class="job-tag">Prototyping</span>
-              <span class="job-tag">Design System</span>
+              <span class="job-tag design">Figma</span>
+              <span class="job-tag design">UX Research</span>
+              <span class="job-tag design">Prototyping</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=UX%2FUI%20Designer%20Application">
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Product%20Designer">
             Apply Now
           </a>
         </div>
         
-        <div class="job-item animate-in" data-category="tech remote" style="animation-delay: 200ms">
+        <div class="job-card animate-on-scroll" data-delay="200" data-category="tech remote">
           <div class="job-info">
             <h3>AI/ML Engineer</h3>
             <div class="job-meta">
-              <span>📍 Remote</span>
+              <span>📍 Remote · EU</span>
               <span>⏱️ Full-time</span>
-              <span>💼 Senior</span>
+              <span>💼 Senior Level</span>
             </div>
             <div class="job-tags">
               <span class="job-tag tech">Python</span>
               <span class="job-tag tech">TensorFlow</span>
               <span class="job-tag tech">LLMs</span>
-              <span class="job-tag remote">100% Remote</span>
+              <span class="job-tag remote">Fully Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=AI%2FML%20Engineer%20Application">
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20AI%2FML%20Engineer">
             Apply Now
           </a>
         </div>
@@ -1071,60 +1545,83 @@
   <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="container cta-content">
-      <h2 class="cta-section__title animate-in">
-        Don't See the Perfect Role?
-      </h2>
-      <p class="cta-section__desc animate-in" style="animation-delay: 100ms">
-        We're always interested in meeting talented people. If you're passionate about technology and believe you could contribute to our team, we'd love to hear from you.
+      <h2 class="cta-title animate-on-scroll">Ready to Build Something Amazing?</h2>
+      <p class="cta-description animate-on-scroll" data-delay="100">
+        If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.
       </p>
       <div class="cta-actions">
-        <a class="btn btn--primary animate-in" style="animation-delay: 200ms" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application">
+        <a class="btn btn--primary animate-on-scroll" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application" data-delay="200">
           Submit Spontaneous Application
         </a>
-        <a class="btn btn--outline animate-in" style="animation-delay: 300ms" href="book-a-call.html">
-          Talk to Our Team
+        <a class="btn btn--outline animate-on-scroll" href="book-a-call.html" data-delay="300">
+          Schedule Discovery Call
         </a>
       </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
-  <section class="cobrait-section">
+  <section class="contact-section">
     <div class="container">
-      <h2 class="animate-in">Ready to Build Together?</h2>
-      <h3 class="animate-in" style="animation-delay: 100ms">
-        Let's discuss how you can contribute to our mission
-      </h3>
+      <div class="section-header">
+        <span class="section-subtitle">GET IN TOUCH</span>
+        <h2 class="section-title animate-on-scroll">Let's Connect</h2>
+        <p class="section-description animate-on-scroll" data-delay="100">
+          Have questions about our culture, process, or opportunities? Reach out to our team.
+        </p>
+      </div>
       
-      <a href="book-a-call.html" class="btn btn--primary animate-in" style="animation-delay: 200ms; margin: 20px 0 40px;">
-        Schedule a Call
-      </a>
-      
-      <div class="hq-info">
-        <div class="hq-title">PORTO HQ</div>
-        <div class="hq-details">
-          <div><strong>Address:</strong> R. Eng Ferreira Dias 161<br>4100-247 Porto</div>
-          <div><strong>Email:</strong> <a class="hq-link" href="mailto:careers@cobrait.com">careers@cobrait.com</a></div>
+      <div class="contact-grid">
+        <div class="contact-card animate-on-scroll">
+          <div class="contact-icon">
+            <span>📧</span>
+          </div>
+          <h3 class="contact-title">Email Us</h3>
+          <div class="contact-details">
+            <p><a href="mailto:careers@cobrait.com">careers@cobrait.com</a></p>
+            <p>Response within 24-48 hours</p>
+          </div>
+        </div>
+        
+        <div class="contact-card animate-on-scroll" data-delay="100">
+          <div class="contact-icon">
+            <span>📍</span>
+          </div>
+          <h3 class="contact-title">Visit Our HQ</h3>
+          <div class="contact-details">
+            <p>R. Eng Ferreira Dias 161</p>
+            <p>4100-247 Porto, Portugal</p>
+          </div>
+        </div>
+        
+        <div class="contact-card animate-on-scroll" data-delay="200">
+          <div class="contact-icon">
+            <span>💬</span>
+          </div>
+          <h3 class="contact-title">Chat With Us</h3>
+          <div class="contact-details">
+            <p><a href="book-a-call.html">Schedule a call</a> with our hiring team</p>
+            <p>Discuss your career aspirations</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer-pro">
+  <footer class="footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-content">
         <div class="footer-brand">
-          <h3 class="footer-brand-title">Cobrait</h3>
-          <p class="footer-brand-subtitle">Software Factory</p>
+          <h3>Cobrait</h3>
           <p class="footer-tagline">
-            We build digital products focused on speed, quality and growth — from scope to launch.
+            Building exceptional digital products through innovation, collaboration, and technical excellence.
           </p>
-          <div style="margin-top: 24px;">
-            <a class="btn btn--primary btn--footer" href="book-a-call.html" style="margin-right: 12px;">
+          <div style="margin-top: 1.5rem;">
+            <a class="btn btn--primary" href="book-a-call.html" style="margin-right: 0.75rem;">
               Book a Call
             </a>
-            <a class="btn btn--outline btn--footer" href="index.html#what-we-do">
+            <a class="btn btn--outline" href="index.html#services" style="background: rgba(255, 255, 255, 0.1); color: white;">
               Our Services
             </a>
           </div>
@@ -1133,9 +1630,9 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul class="footer-links">
-            <li><a href="servicos/product-scope.html">Product Scope</a></li>
-            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-            <li><a href="servicos/ux-ui.html">UX / UI Design</a></li>
+            <li><a href="servicos/product-scope.html">Product Strategy</a></li>
+            <li><a href="servicos/mvp-builder.html">MVP Development</a></li>
+            <li><a href="servicos/ux-ui.html">UX/UI Design</a></li>
             <li><a href="servicos/custom-software.html">Custom Software</a></li>
           </ul>
         </div>
@@ -1146,44 +1643,67 @@
             <li><a href="about-us.html">About Us</a></li>
             <li><a href="index.html#work">Case Studies</a></li>
             <li><a href="carrers.html">Careers</a></li>
-            <li><a href="tech.html">Technology</a></li>
+            <li><a href="tech.html">Technology Stack</a></li>
           </ul>
         </div>
         
         <div class="footer-col">
-          <h4>Contact</h4>
-          <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(203, 213, 225, 0.9);">
-            <div>
-              <strong>Email:</strong><br>
-              <a href="mailto:info@cobrait.com" style="color: rgba(199, 210, 254, 0.95);">info@cobrait.com</a>
-            </div>
-            <div>
-              <strong>Response Time:</strong><br>
-              Usually within 24–48h
-            </div>
-          </div>
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="https://linkedin.com/company/cobrait" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/cobrait" target="_blank">GitHub</a></li>
+            <li><a href="https://twitter.com/cobrait" target="_blank">Twitter</a></li>
+            <li><a href="mailto:info@cobrait.com">Contact</a></li>
+          </ul>
         </div>
       </div>
       
       <div class="footer-bottom">
-        <div>© <span id="year"></span> Cobrait — Software Factory</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Privacy</a>
-          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Terms</a>
-          <a href="#" style="color: rgba(148, 163, 184, 0.95);">Cookies</a>
+        <div>© <span id="year"></span> Cobrait — Software Factory. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a>
+          <a href="#" style="color: rgba(255, 255, 255, 0.7);">Terms of Service</a>
+          <a href="#" style="color: rgba(255, 255, 255, 0.7);">Cookie Policy</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    // Set current year
+    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Header scroll effect
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('.site-nav');
+    
+    menuToggle.addEventListener('click', () => {
+      siteNav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('.site-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
     
     // Job filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.filter-btn');
-      const jobItems = document.querySelectorAll('.job-item');
+      const jobCards = document.querySelectorAll('.job-card');
       
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -1194,17 +1714,27 @@
           
           const filterValue = button.getAttribute('data-filter');
           
-          jobItems.forEach(item => {
-            if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
-              item.style.display = 'grid';
+          jobCards.forEach(card => {
+            const categories = card.getAttribute('data-category');
+            
+            if (filterValue === 'all' || categories.includes(filterValue)) {
+              card.style.display = 'grid';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 10);
             } else {
-              item.style.display = 'none';
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 300);
             }
           });
         });
       });
       
-      // Animation on scroll
+      // Scroll animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -1213,15 +1743,50 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            const delay = entry.target.getAttribute('data-delay') || 0;
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, parseInt(delay));
           }
         });
       }, observerOptions);
       
-      // Observe elements
-      document.querySelectorAll('.animate-in').forEach(el => {
+      // Observe all elements with animate-on-scroll class
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
       });
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = document.querySelector('.site-header').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+    
+    // Add loading animation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preload animation
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease';
+      
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
     });
   </script>
 </body>
