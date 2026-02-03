@@ -20,6 +20,379 @@
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
+  <!-- ✅ STYLE DA NAVBAR IGUAL AO BOOK-A-CALL E INDEX -->
+  <style>
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle { display: none; }
+
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .nav-toggle-btn span {
+      width: 25px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a:hover { color: #4f46e5; }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover::after { width: 100%; }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+    }
+
+    .dropdown-item:last-child { margin-bottom: 0; }
+
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .dropdown-item svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO BOOK-A-CALL) */
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle-btn { display: flex; }
+
+      .site-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .site-nav ul { flex-direction: column; gap: 16px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
+      .header-cta { width: 100%; }
+      .header-cta .btn { width: 100%; justify-content: center; }
+
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .site-header { z-index: 99999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
+  </style>
+
   <style>
     /* ====== VARIÁVEIS E RESET ====== */
     :root {
@@ -196,120 +569,9 @@
       transform: translateY(-2px);
     }
     
-    /* ====== HEADER PREMIUM ====== */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-      padding: 1rem 0;
-      transition: all var(--transition-normal);
-    }
-    
-    .site-header.scrolled {
-      padding: 0.75rem 0;
-      box-shadow: var(--shadow-lg);
-      background: rgba(255, 255, 255, 0.98);
-    }
-    
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-xl);
-    }
-    
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-    }
-    
-    .brand-logo {
-      height: 40px;
-      width: auto;
-      transition: transform var(--transition-normal);
-    }
-    
-    .brand:hover .brand-logo {
-      transform: scale(1.05);
-    }
-    
-    .brand-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    /* Navegação */
-    .site-nav ul {
-      display: flex;
-      list-style: none;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-    
-    .site-nav a {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      position: relative;
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-    }
-    
-    .site-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-primary);
-      transition: all var(--transition-normal);
-      transform: translateX(-50%);
-    }
-    
-    .site-nav a:hover {
-      color: var(--primary);
-    }
-    
-    .site-nav a:hover::after,
-    .site-nav a.active::after {
-      width: 100%;
-    }
-    
-    .site-nav a.active {
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    /* Menu móvel */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-    
-    .menu-toggle span {
-      width: 24px;
-      height: 2px;
-      background: var(--text-primary);
-      transition: var(--transition-normal);
+    /* Ajuste para a nova navbar */
+    .careers-hero {
+      margin-top: 80px !important;
     }
     
     /* ====== HERO SECTION ====== */
@@ -321,7 +583,7 @@
       position: relative;
       overflow: hidden;
       padding: 6rem 0 4rem;
-      margin-top: 72px;
+      margin-top: 80px;
     }
     
     .careers-hero::before {
@@ -1119,46 +1381,75 @@
     }
     
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-      
+      .nav-toggle-btn { display: flex; }
+
       .site-nav {
         position: fixed;
         top: 72px;
         left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        padding: 1rem;
-        border-bottom: 1px solid var(--border-light);
-        box-shadow: var(--shadow-lg);
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
         transition: all var(--transition-normal);
       }
-      
-      .site-nav.active {
+
+      .site-nav ul { flex-direction: column; gap: 16px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
+      .header-cta { width: 100%; }
+      .header-cta .btn { width: 100%; justify-content: center; }
+
+      .nav-toggle:checked ~ .site-nav {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
       }
-      
-      .site-nav ul {
-        flex-direction: column;
-        gap: 0;
-      }
-      
-      .site-nav a {
-        padding: 1rem;
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .header-inner {
-        gap: 1rem;
-      }
+
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
       
       .careers-hero {
         padding: 4rem 0;
@@ -1239,37 +1530,171 @@
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- ✅ HEADER ATUALIZADO COM "COBRA IT" (IGUAL AO BOOK-A-CALL E INDEX) -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Cobrait">
-        <div class="brand-name">Cobrait</div>
+      <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+      <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
       </a>
-      
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#work">Work</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="about-us.html">About</a></li>
-          <li><a href="carrers.html" class="active">Careers</a></li>
-          <li><a href="tech.html">Tech</a></li>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
+          <li class="dropdown">
+            <a href="index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
+            </a>
+
+            <div class="dropdown-content">
+              <a href="servicos/product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">
+                    Custom Software Development
+                  </h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
+                </div>
+              </a>
+
+              <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
+                    Dedicated Teams
+                  </h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="carrers.html" class="active"><span data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</span></a></li>
+          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
         </ul>
       </nav>
-      
-      <a class="btn btn--primary" href="book-a-call.html">
-        Book a Call
-      </a>
+
+      <div class="header-right">
+        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt">
+              <span class="lang-flag">🇵🇹</span>
+              <span class="lang-name">Português</span>
+            </button>
+            <button class="language-option" data-lang="en">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </button>
+            <button class="language-option" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="header-cta">
+          <a class="btn btn--primary" href="book-a-call.html"
+             data-pt="AGENDAR UMA CHAMADA"
+             data-en="BOOK A CALL"
+             data-es="RESERVAR UNA LLAMADA">
+            BOOK A CALL
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
+  <!-- ✅ TODO O RESTO DO CONTEÚDO MANTIDO EXATAMENTE IGUAL -->
   <!-- HERO SECTION -->
   <section class="careers-hero">
     <div class="container hero-content">
@@ -1673,7 +2098,7 @@
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Header scroll effect
+    // Header scroll effect (mantido do original)
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
@@ -1681,23 +2106,6 @@
       } else {
         header.classList.remove('scrolled');
       }
-    });
-    
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const siteNav = document.querySelector('.site-nav');
-    
-    menuToggle.addEventListener('click', () => {
-      siteNav.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    });
-    
-    // Close menu when clicking a link
-    document.querySelectorAll('.site-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        siteNav.classList.remove('active');
-        menuToggle.classList.remove('active');
-      });
     });
     
     // Job filtering functionality
@@ -1787,6 +2195,124 @@
       setTimeout(() => {
         document.body.style.opacity = '1';
       }, 100);
+    });
+
+    // ✅ SISTEMA DE LÍNGUAS (IGUAL AO BOOK-A-CALL E INDEX)
+    document.addEventListener('DOMContentLoaded', function() {
+      const languageOptions = document.querySelectorAll('.language-option');
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      
+      // Mapeamento de bandeiras para cada língua
+      const flagMap = {
+        'pt': '🇵🇹',
+        'en': '🇬🇧',
+        'es': '🇪🇸'
+      };
+      
+      // Mapeamento de códigos curtos
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES'
+      };
+
+      // Normalização de idioma
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        return 'en';
+      }
+
+      // Carregar língua salva ou usar português por padrão
+      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+      setActiveLanguage(savedLanguage);
+      applyLanguage(savedLanguage);
+
+      // Event listeners para as opções de língua
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const lang = normalizeLang(this.getAttribute('data-lang'));
+          setActiveLanguage(lang);
+          applyLanguage(lang);
+          localStorage.setItem('preferredLanguage', lang);
+        });
+      });
+
+      function setActiveLanguage(lang) {
+        // Atualizar o botão do dropdown
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '🇬🇧';
+        }
+        
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN';
+        }
+        
+        // Atualizar as opções ativas
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
+        });
+      }
+
+      function applyLanguage(lang) {
+        lang = normalizeLang(lang);
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
+        updateTextContent(lang);
+        updateAriaLabels(lang);
+      }
+
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+          
+          if (text === null) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+            if (el.tagName === 'OPTION') {
+              el.textContent = text;
+            } else if (el.hasAttribute('placeholder')) {
+              el.placeholder = text;
+            } else {
+              el.value = text;
+            }
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
+
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        ariaEls.forEach(el => {
+          let val = el.getAttribute(`data-${lang}`);
+          
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          
+          if (val) el.setAttribute('aria-label', val);
+        });
+      }
     });
   </script>
 </body>
