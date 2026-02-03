@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Builder - Cobrait — Software Factory</title>
+  <title>MVP Builder - Cobra IT — Software Factory</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,30 +13,54 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+  <!-- ✅ HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
   <style>
-    /* =========================
-       HEADER OTIMIZADO E COMPACTO (EXATAMENTE IGUAL AO INDEX.HTML)
-       ========================= */
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 4px 0;
+      padding: 16px 0;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      min-height: 60px;
-    }
-
-    .brand img {
-      height: 75px;
-      width: auto;
+      gap: 40px;
     }
 
     .nav-toggle { display: none; }
@@ -45,14 +69,14 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 8px;
+      padding: 10px;
     }
 
     .nav-toggle-btn span {
-      width: 22px;
+      width: 25px;
       height: 2px;
       background: #4f46e5;
-      margin: 3px 0;
+      margin: 4px 0;
       transition: 0.3s;
     }
 
@@ -61,18 +85,18 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 24px;
+      gap: 32px;
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 15px;
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 6px 0;
+      padding: 8px 0;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -93,6 +117,7 @@
 
     .site-nav a:hover::after { width: 100%; }
 
+    /* Dropdown */
     .dropdown { position: relative; }
 
     .dropdown-content {
@@ -109,7 +134,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 12px;
+      margin-top: 16px;
     }
 
     .dropdown:hover .dropdown-content {
@@ -121,12 +146,12 @@
     .dropdown-item {
       display: flex;
       align-items: flex-start;
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       text-decoration: none;
       color: #334155;
       transition: all 0.2s ease;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .dropdown-item:last-child { margin-bottom: 0; }
@@ -137,9 +162,9 @@
     }
 
     .dropdown-item svg {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
       margin-top: 2px;
       flex-shrink: 0;
     }
@@ -147,7 +172,7 @@
     .dropdown-item-content h4 {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
       color: #1e293b;
       margin: 0 0 4px 0;
     }
@@ -155,20 +180,16 @@
     .dropdown-item-content p {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 13px;
       color: #64748b;
       line-height: 1.4;
       margin: 0;
     }
 
-    .dropdown-arrow {
-      font-size: 10px;
-      transition: transform 0.3s ease;
-    }
-
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* DROPDOWN DE LÍNGUAS NO HEADER */
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
     .language-dropdown {
       position: relative;
     }
@@ -273,23 +294,14 @@
       flex: 1;
     }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
 
-    .header-cta .btn {
-      padding: 8px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
+    /* Responsive */
     @media (max-width: 1024px) {
-      .header-inner { gap: 16px; }
-      .site-nav ul { gap: 16px; }
-      .header-right { gap: 12px; }
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
     }
 
     @media (max-width: 768px) {
@@ -297,11 +309,11 @@
 
       .site-nav {
         position: fixed;
-        top: 60px;
+        top: 72px;
         left: 0;
         width: 100%;
         background: white;
-        padding: 16px;
+        padding: 20px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
@@ -309,7 +321,7 @@
         transition: all 0.3s ease;
       }
 
-      .site-nav ul { flex-direction: column; gap: 12px; }
+      .site-nav ul { flex-direction: column; gap: 16px; }
 
       .dropdown-content {
         position: static;
@@ -318,20 +330,17 @@
         transform: none;
         box-shadow: none;
         padding: 0;
-        margin: 6px 0 0 16px;
+        margin: 8px 0 0 20px;
         border-left: 2px solid #e2e8f0;
       }
 
-      .dropdown-item {
-        padding: 8px 0 8px 12px;
-        margin-bottom: 0;
-      }
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
 
       .header-right {
         flex-direction: column;
         width: 100%;
-        margin-top: 16px;
-        gap: 10px;
+        margin-top: 20px;
+        gap: 12px;
       }
 
       .language-dropdown {
@@ -354,11 +363,7 @@
       }
 
       .header-cta { width: 100%; }
-
-      .header-cta .btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .header-cta .btn { width: 100%; justify-content: center; }
 
       .nav-toggle:checked ~ .site-nav {
         transform: translateY(0);
@@ -366,20 +371,250 @@
         visibility: visible;
       }
 
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
-      .brand img { height: 50px; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
     }
 
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
+    /* FOOTER PRO - ATUALIZADO COM "COBRA IT" */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 0 24px;
+    }
+
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    /* LOGO ATUALIZADA PARA "COBRA IT" */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
+
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 8px 0 0 0;
+    }
+
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .footer-meta a:hover { color: #fff; }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .footer-mini-links a:hover { color: #fff; }
+
+    @media (max-width: 1024px) {
+      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
+      .footer-col--contact { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-mini-links { justify-content: flex-start; }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+
+  <!-- ✅ ESTILOS ESPECÍFICOS DO MVP BUILDER -->
+  <style>
     /* =========================================================
        CONTEÚDO ESPECÍFICO DO MVP BUILDER (MANTIDO)
     ========================================================= */
@@ -703,16 +938,17 @@
       display: flex;
       flex-direction: column;
       gap: 22px;
-    }.timeline-progress {
-  position: absolute;
-  left: 20px; /* adjust to match step markers */
-  width: 4px;
-  background: linear-gradient(180deg, #4f46e5, #7c3aed);
-  top: 0;
-  height: 0; /* updated by JS */
-  border-radius: 2px;
-}
-
+    }
+    
+    .timeline-progress {
+      position: absolute;
+      left: 20px;
+      width: 4px;
+      background: linear-gradient(180deg, #4f46e5, #7c3aed);
+      top: 0;
+      height: 0;
+      border-radius: 2px;
+    }
 
     .timeline-wrap::before {
       content: "";
@@ -723,7 +959,6 @@
       width: 2px;
       background: rgba(148, 163, 184, .55);
     }
-
 
     .step {
       position: relative;
@@ -837,267 +1072,27 @@
       .timeline-wrap::before { left: 16px; }
       .step::before { left: -40px; }
     }
-
-    /* =========================
-       FOOTER NOVO (PRO) - SEM LOGO (EXATAMENTE IGUAL AO INDEX.HTML)
-       ========================= */
-    .footer-pro {
-      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      color: #cbd5e1;
-      position: relative;
-      overflow: hidden;
-      padding: 60px 0 24px;
-    }
-
-    .footer-pro::before {
-      content: "";
-      position: absolute;
-      inset: -200px -200px auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
-
-    .footer-pro::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -240px -240px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 24px;
-      position: relative;
-      z-index: 1;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-    }
-
-    /* LOGO REMOVIDA - Apenas texto da marca */
-    .footer-brand-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      color: rgba(226, 232, 240, 0.95);
-      margin: 0;
-      line-height: 1;
-    }
-
-    .footer-brand-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.8);
-      margin: 4px 0 0 0;
-    }
-
-    .footer-tagline {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(226, 232, 240, 0.85);
-      max-width: 420px;
-      margin: 8px 0 0 0;
-    }
-
-    .footer-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .btn--footer {
-      padding: 10px 18px;
-      font-size: 14px;
-      border-radius: 10px;
-    }
-
-    .btn--footer.btn--outline {
-      border-color: rgba(226, 232, 240, 0.35);
-      color: rgba(226, 232, 240, 0.92);
-    }
-
-    .btn--footer.btn--outline:hover {
-      background: rgba(226, 232, 240, 0.12);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: none;
-      border-color: rgba(226, 232, 240, 0.5);
-    }
-
-    .footer-col h4 {
-      margin: 0 0 14px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(226, 232, 240, 0.9);
-    }
-
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .footer-links a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      transition: all .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-
-    .footer-meta {
-      display: grid;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.9);
-    }
-
-    .footer-meta a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .footer-meta a:hover { color: #fff; }
-
-    .footer-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .footer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: rgba(15, 23, 42, 0.35);
-      color: rgba(226, 232, 240, 0.9);
-      font-size: 12px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .footer-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      padding-top: 16px;
-      position: relative;
-      z-index: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: rgba(148, 163, 184, 0.9);
-    }
-
-    .footer-mini-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .footer-mini-links a {
-      color: rgba(148, 163, 184, 0.95);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .footer-mini-links a:hover { color: #fff; }
-
-    @media (max-width: 1024px) {
-      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
-      .footer-col--contact { grid-column: 1 / -1; }
-    }
-
-    @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 20px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-mini-links { justify-content: flex-start; }
-      .footer-pro {
-        padding: 50px 0 20px;
-      }
-      .footer-brand-title {
-        font-size: 22px;
-      }
-    }
-
-
-
   </style>
 </head>
 
 <body>
-  <!-- HEADER EXATAMENTE IGUAL AO INDEX.HTML -->
+  <!-- ✅ HEADER IGUAL AO BOOK-A-CALL.HTML -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html" aria-label="Cobrait">
-        <img src="../images/logo.png" alt="Cobrait Software Factory logo">
+      <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+      <a class="brand logo-text-brand" href="../index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-      <label class="nav-toggle-btn" for="nav-toggle"
-             aria-label="Abrir menu"
-             data-pt="Abrir menu"
-             data-en="Open menu"
-             data-es="Abrir menú">
-        <span></span>
-        <span></span>
-        <span></span>
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
       </label>
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li>
-            <a href="../index.html#work"
-               data-pt="Portfólio"
-               data-en="Work"
-               data-es="Work">Work</a>
-          </li>
-
+          <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
           <li class="dropdown">
             <a href="../index.html#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
@@ -1147,7 +1142,23 @@
                 </div>
               </a>
 
-             
+              <a href="ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
+                </div>
+              </a>
 
               <a href="custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1185,32 +1196,10 @@
             </div>
           </li>
 
-          <li>
-            <a href="../pricing.html"
-               data-pt="Preços"
-               data-en="Pricing"
-               data-es="Precios">Pricing</a>
-          </li>
-
-          <li>
-            <a href="../about-us.html">
-              <span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="../index.html#about"
-               data-pt="Carreiras"
-               data-en="Careers"
-               data-es="Carreras">Careers</a>
-          </li>
-
-          <li>
-            <a href="../tech.html"
-               data-pt="Tecnologia"
-               data-en="Tech"
-               data-es="Tech">Tech</a>
-          </li>
+          <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
         </ul>
       </nav>
 
@@ -1243,7 +1232,9 @@
           <a class="btn btn--primary" href="../book-a-call.html"
              data-pt="AGENDAR UMA CHAMADA"
              data-en="BOOK A CALL"
-             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
+             data-es="RESERVAR UNA LLAMADA">
+            BOOK A CALL
+          </a>
         </div>
       </div>
     </div>
@@ -1577,13 +1568,13 @@
     </section>
   </main>
 
-  <!-- FOOTER EXATAMENTE IGUAL AO INDEX.HTML -->
+  <!-- ✅ FOOTER IGUAL AO BOOK-A-CALL.HTML -->
   <footer class="footer-pro" role="contentinfo">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <!-- LOGO REMOVIDA - substituída por texto -->
-          <h3 class="footer-brand-title">Cobrait</h3>
+          <!-- LOGO ATUALIZADA PARA "COBRA IT" -->
+          <h3 class="footer-brand-title">COBRA IT</h3>
           <p class="footer-brand-subtitle">Software Factory</p>
 
           <p class="footer-tagline"
@@ -1660,7 +1651,7 @@
 
       <div class="footer-bottom">
         <div>
-          © <span id="year"></span> Cobrait — Software Factory
+          © <span id="year"></span> Cobra IT — Software Factory
         </div>
         <div class="footer-mini-links">
           <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
@@ -1671,7 +1662,7 @@
     </div>
   </footer>
 
-  <!-- ✅ SCRIPT FINAL (IDÊNTICO AO INDEX.HTML) -->
+  <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1686,14 +1677,13 @@
         });
       });
 
-      // ====== Normalização de idioma (evita pt-PT quebrar) ======
+      // Normalização de idioma
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
-        // Fallback para inglês para outras línguas
         return 'en';
       }
 
@@ -1710,7 +1700,7 @@
         });
       });
 
-      // ====== SISTEMA DE LÍNGUAS COM DROPDOWN ======
+      // SISTEMA DE LÍNGUAS COM DROPDOWN
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
@@ -1749,13 +1739,13 @@
         if (flagMap[lang]) {
           currentFlag.textContent = flagMap[lang];
         } else {
-          currentFlag.textContent = '🇬🇧'; // Fallback para bandeira UK
+          currentFlag.textContent = '🇬🇧';
         }
         
         if (codeMap[lang]) {
           currentLang.textContent = codeMap[lang];
         } else {
-          currentLang.textContent = 'EN'; // Fallback para EN
+          currentLang.textContent = 'EN';
         }
         
         // Atualizar as opções ativas
@@ -1786,8 +1776,14 @@
           
           if (text === null) return;
 
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.value = text;
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+            if (el.tagName === 'OPTION') {
+              el.textContent = text;
+            } else if (el.hasAttribute('placeholder')) {
+              el.placeholder = text;
+            } else {
+              el.value = text;
+            }
           } else if (el.hasAttribute('data-html')) {
             el.innerHTML = text;
           } else {
@@ -1809,30 +1805,26 @@
           if (val) el.setAttribute('aria-label', val);
         });
       }
+
+      // ===== Linha animada da timeline (MVP Builder) =====
+      window.addEventListener('scroll', () => {
+        const timeline = document.querySelector('.timeline-wrap');
+        if (!timeline) return;
+
+        const progressLine = timeline.querySelector('.timeline-progress');
+        const rect = timeline.getBoundingClientRect();
+
+        const windowHeight = window.innerHeight;
+        const timelineHeight = rect.height;
+
+        let progress =
+          (windowHeight - rect.top) / (windowHeight + timelineHeight);
+
+        progress = Math.max(0, Math.min(1, progress));
+
+        progressLine.style.height = `${progress * 100}%`;
+      });
     });
-
-// ===== Linha animada da timeline (MVP Builder) =====
-window.addEventListener('scroll', () => {
-  const timeline = document.querySelector('.timeline-wrap');
-  if (!timeline) return;
-
-  const progressLine = timeline.querySelector('.timeline-progress');
-  const rect = timeline.getBoundingClientRect();
-
-  const windowHeight = window.innerHeight;
-  const timelineHeight = rect.height;
-
-  let progress =
-    (windowHeight - rect.top) / (windowHeight + timelineHeight);
-
-  progress = Math.max(0, Math.min(1, progress));
-
-  progressLine.style.height = `${progress * 100}%`;
-});
-
   </script>
-
-
-
 </body>
 </html>
