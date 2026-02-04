@@ -581,15 +581,15 @@
        HOW IT WORKS (timeline) — COM LINHA QUE ENCHE NO SCROLL ✅
     ========================================================= */
     .timeline{
-      position:relative;
-      max-width:1020px;
-      margin:0 auto;
-      padding:0;
+  position:relative;
+  max-width:1020px;
+  margin:0 auto;
+  padding:1px 0;        /* ✅ impede margin-collapsing */
+  display: flow-root;   /* ✅ ainda mais seguro */
+  --timeline-x: 50%;
+  --timeline-w: 8px;
+}
 
-      /* desktop */
-      --timeline-x: 50%;
-      --timeline-w: 8px;
-    }
 
     /* Linha base (cinza/azulada) */
     .timeline::before{
@@ -623,15 +623,15 @@
     }
 
     .step{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns: 1fr 90px 1fr;
-      align-items:center;
-      gap:0;
-      .step{ margin: 120px 0; }
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: 1fr 90px 1fr;
+  align-items:center;
+  gap:0;
+  margin: 120px 0; /* ✅ isto é o que querias */
+}
 
-    }
     .step-card{
       background:#fff;
       border:1px solid #e2e8f0;
@@ -1571,7 +1571,8 @@
 
         const triggerY = vh * 0.62;
         const progress = clamp((triggerY - rect.top) / rect.height, 0, 1);
-        fill.style.height = (progress * 100) + '%';
+        fill.style.height = (progress * rect.height) + 'px';
+
 
         steps.forEach(step => {
           const r = step.getBoundingClientRect();

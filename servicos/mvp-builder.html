@@ -940,25 +940,28 @@
       gap: 22px;
     }
     
-    .timeline-progress {
-      position: absolute;
-      left: 20px;
-      width: 4px;
-      background: linear-gradient(180deg, #4f46e5, #7c3aed);
-      top: 0;
-      height: 0;
-      border-radius: 2px;
-    }
+    /* Linha cinzenta */
+.timeline-wrap::before {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(148, 163, 184, .55);
+}
 
-    .timeline-wrap::before {
-      content: "";
-      position: absolute;
-      left: 18px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(148, 163, 184, .55);
-    }
+/* Linha azul por cima da cinzenta */
+.timeline-progress {
+  position: absolute;
+  left: 18px;     /* ✅ igual à cinzenta */
+  top: 0;
+  width: 4px;     /* ✅ igual à cinzenta */
+  height: 0;
+  background: linear-gradient(180deg, #4f46e5, #7c3aed);
+  border-radius: 999px;
+}
+
 
     .step {
       position: relative;
@@ -1843,24 +1846,29 @@ footer.footer-pro .footer-brand-title {
       }
 
       // ===== Linha animada da timeline (MVP Builder) =====
-      window.addEventListener('scroll', () => {
-        const timeline = document.querySelector('.timeline-wrap');
-        if (!timeline) return;
+      // ===== Linha animada da timeline (MVP Builder) =====
+function updateTimelineProgress() {
+  const timeline = document.querySelector('.timeline-wrap');
+  if (!timeline) return;
 
-        const progressLine = timeline.querySelector('.timeline-progress');
-        const rect = timeline.getBoundingClientRect();
+  const progressLine = timeline.querySelector('.timeline-progress');
+  const rect = timeline.getBoundingClientRect();
+  const vh = window.innerHeight;
 
-        const windowHeight = window.innerHeight;
-        const timelineHeight = rect.height;
+  // ponto do ecrã onde queres começar a "encher" (ajusta se quiseres)
+  const startY = vh * 0.70;
 
-        let progress =
-          (windowHeight - rect.top) / (windowHeight + timelineHeight);
+  // px preenchidos desde o topo da timeline até ao startY
+  const filledPx = Math.min(Math.max(startY - rect.top, 0), rect.height);
 
-        progress = Math.max(0, Math.min(1, progress));
+  // usa px para bater certo com a linha cinzenta
+  progressLine.style.height = `${filledPx}px`;
+}
 
-        progressLine.style.height = `${progress * 100}%`;
-      });
-    });
+window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+window.addEventListener('resize', updateTimelineProgress);
+updateTimelineProgress();
+});
   </script>
 </body>
 </html>
