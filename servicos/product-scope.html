@@ -3,41 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Scope - COBRAIT</title>
+  <title>Product Scope - COBRA IT — Software Factory</title>
 
   <!-- Fonts (igual ao site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../servicos.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+  <!-- ✅ HEADER + FOOTER : IGUAL AO MVP BUILDER.HTML  -->
   <style>
-    /* =========================================================
-       HEADER EXATAMENTE IGUAL AO INDEX (MANTIDO COMPLETO)
-    ========================================================= */
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 4px 0; /* AINDA MAIS PEQUENO */
+      padding: 16px 0;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px; /* Reduzido */
-      min-height: 60px; /* Altura controlada */
-      padding: 0 20px;
-    }
-
-    .brand img {
-      height: 75px; /* Logo grande mas header compacto */
-      width: auto;
+      gap: 40px;
     }
 
     .nav-toggle { display: none; }
@@ -46,14 +70,14 @@
       display: none;
       flex-direction: column;
       cursor: pointer;
-      padding: 8px;
+      padding: 10px;
     }
 
     .nav-toggle-btn span {
-      width: 22px;
+      width: 25px;
       height: 2px;
       background: #4f46e5;
-      margin: 3px 0;
+      margin: 4px 0;
       transition: 0.3s;
     }
 
@@ -62,18 +86,18 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 24px; /* Menor espaçamento */
+      gap: 32px;
     }
 
     .site-nav a {
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      font-size: 14px; /* Texto ligeiramente menor */
+      font-size: 15px;
       color: #64748b;
       text-decoration: none;
       transition: color 0.3s ease;
       position: relative;
-      padding: 6px 0; /* Padding reduzido */
+      padding: 8px 0;
       display: flex;
       align-items: center;
       gap: 4px;
@@ -94,6 +118,7 @@
 
     .site-nav a:hover::after { width: 100%; }
 
+    /* Dropdown */
     .dropdown { position: relative; }
 
     .dropdown-content {
@@ -110,7 +135,7 @@
       transform: translateY(10px);
       transition: all 0.3s ease;
       z-index: 1000;
-      margin-top: 12px; /* Menor margem */
+      margin-top: 16px;
     }
 
     .dropdown:hover .dropdown-content {
@@ -122,12 +147,12 @@
     .dropdown-item {
       display: flex;
       align-items: flex-start;
-      padding: 10px;
+      padding: 12px;
       border-radius: 8px;
       text-decoration: none;
       color: #334155;
       transition: all 0.2s ease;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .dropdown-item:last-child { margin-bottom: 0; }
@@ -138,9 +163,9 @@
     }
 
     .dropdown-item svg {
-      width: 18px;
-      height: 18px;
-      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
       margin-top: 2px;
       flex-shrink: 0;
     }
@@ -148,7 +173,7 @@
     .dropdown-item-content h4 {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 14px;
       color: #1e293b;
       margin: 0 0 4px 0;
     }
@@ -156,20 +181,16 @@
     .dropdown-item-content p {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 13px;
       color: #64748b;
       line-height: 1.4;
       margin: 0;
     }
 
-    .dropdown-arrow {
-      font-size: 10px;
-      transition: transform 0.3s ease;
-    }
-
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO MVP BUILDER) */
     .language-dropdown {
       position: relative;
     }
@@ -274,44 +295,14 @@
       flex: 1;
     }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px; /* Menor gap */
-    }
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
 
-    /* BOTÃO DO HEADER EXATAMENTE IGUAL AO INDEX */
-    .header-cta .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 18px !important; /* Botão do header mais pequeno */
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 13px !important;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .header-cta .btn--primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-      color: white !important;
-      border: none !important;
-    }
-
-    .header-cta .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3) !important;
-    }
-
+    /* Responsive */
     @media (max-width: 1024px) {
-      .header-inner { gap: 16px; }
-      .site-nav ul { gap: 16px; }
-      .header-right { gap: 12px; }
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
     }
 
     @media (max-width: 768px) {
@@ -319,11 +310,11 @@
 
       .site-nav {
         position: fixed;
-        top: 60px; /* Ajustado para header menor */
+        top: 72px;
         left: 0;
         width: 100%;
         background: white;
-        padding: 16px;
+        padding: 20px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
         opacity: 0;
@@ -331,7 +322,7 @@
         transition: all 0.3s ease;
       }
 
-      .site-nav ul { flex-direction: column; gap: 12px; }
+      .site-nav ul { flex-direction: column; gap: 16px; }
 
       .dropdown-content {
         position: static;
@@ -340,20 +331,17 @@
         transform: none;
         box-shadow: none;
         padding: 0;
-        margin: 6px 0 0 16px;
+        margin: 8px 0 0 20px;
         border-left: 2px solid #e2e8f0;
       }
 
-      .dropdown-item {
-        padding: 8px 0 8px 12px;
-        margin-bottom: 0;
-      }
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
 
       .header-right {
         flex-direction: column;
         width: 100%;
-        margin-top: 16px;
-        gap: 10px;
+        margin-top: 20px;
+        gap: 12px;
       }
 
       .language-dropdown {
@@ -376,11 +364,7 @@
       }
 
       .header-cta { width: 100%; }
-
-      .header-cta .btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .header-cta .btn { width: 100%; justify-content: center; }
 
       .nav-toggle:checked ~ .site-nav {
         transform: translateY(0);
@@ -388,21 +372,12 @@
         visibility: visible;
       }
 
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-      
-      /* Logo menor em mobile */
-      .brand img {
-        height: 50px;
-      }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
     }
 
-    /* GARANTIR dropdown acima de tudo */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
@@ -644,253 +619,22 @@
       .timeline-item::before { left: 10px; }
       .timeline-item { padding-left: 24px; }
     }
-
-    /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-    .footer-pro {
-      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      color: #cbd5e1;
-      position: relative;
-      overflow: hidden;
-      padding: 60px 0 24px;
-    }
-    .footer-pro::before {
-      content: "";
-      position: absolute;
-      inset: -200px -200px auto auto;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-      filter: blur(10px);
-      pointer-events: none;
-    }
-    .footer-pro::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -240px -240px;
-      width: 520px;
-      height: 520px;
-      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      gap: 24px;
-      position: relative;
-      z-index: 1;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-    }
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    /* LOGO REMOVIDA - Apenas texto da marca */
-    .footer-brand-title {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 24px;
-      color: rgba(226, 232, 240, 0.95);
-      margin: 0;
-      line-height: 1;
-    }
-    .footer-brand-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.8);
-      margin: 4px 0 0 0;
-    }
-    .footer-tagline {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(226, 232, 240, 0.85);
-      max-width: 420px;
-      margin: 8px 0 0 0;
-    }
-    .footer-cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    .btn--footer {
-      padding: 10px 18px;
-      font-size: 14px;
-      border-radius: 10px;
-    }
-    .btn--footer.btn--outline {
-      border-color: rgba(226, 232, 240, 0.35);
-      color: rgba(226, 232, 240, 0.92);
-    }
-    .btn--footer.btn--outline:hover {
-      background: rgba(226, 232, 240, 0.12);
-      color: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: none;
-      border-color: rgba(226, 232, 240, 0.5);
-    }
-    .footer-col h4 {
-      margin: 0 0 14px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(226, 232, 240, 0.9);
-    }
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .footer-links a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      transition: all .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .footer-links a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-    .footer-meta {
-      display: grid;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: rgba(203, 213, 225, 0.9);
-    }
-    .footer-meta a {
-      color: rgba(203, 213, 225, 0.9);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-    .footer-meta a:hover {
-      color: #fff;
-    }
-    /* Estilos específicos para o link do Instagram */
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: all .2s ease;
-    }
-    .social-link:hover {
-      background: rgba(255, 255, 255, 0.05);
-    }
-    .social-icon {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-    .footer-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .footer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: rgba(15, 23, 42, 0.35);
-      color: rgba(226, 232, 240, 0.9);
-      font-size: 12px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .footer-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-    }
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      padding-top: 16px;
-      position: relative;
-      z-index: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: rgba(148, 163, 184, 0.9);
-    }
-    .footer-mini-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .footer-mini-links a {
-      color: rgba(148, 163, 184, 0.95);
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-    .footer-mini-links a:hover {
-      color: #fff;
-    }
-    @media (max-width: 1024px) {
-      .footer-top {
-        grid-template-columns: 1.6fr 1fr 1fr;
-      }
-      .footer-col--contact {
-        grid-column: 1 / -1;
-      }
-    }
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-mini-links {
-        justify-content: flex-start;
-      }
-      .footer-pro {
-        padding: 50px 0 20px;
-      }
-      .footer-brand-title {
-        font-size: 22px;
-      }
-    }
   </style>
 </head>
 
 <body>
-  <!-- HEADER EXATAMENTE IGUAL AO INDEX -->
+  <!-- ✅ HEADER IGUAL AO MVP BUILDER.HTML -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html" aria-label="Cobrait">
-        <img src="../images/logo.png" alt="Cobrait Software Factory logo">
+      <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+      <a class="brand logo-text-brand" href="../index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
       </a>
 
       <input id="nav-toggle" class="nav-toggle" type="checkbox" />
       <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </label>
 
       <nav class="site-nav" aria-label="Main navigation">
@@ -901,6 +645,7 @@
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
+
             <div class="dropdown-content">
               <a href="product-scope.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -910,7 +655,7 @@
                   <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
                   <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
                      data-en="15-day process to align the product with your business goals."
-                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                     data-es="Proceso de 15 días para alinear el producto com os objetivos de tu negócio.">
                     15-day process to align the product with your business goals.
                   </p>
                 </div>
@@ -944,7 +689,23 @@
                 </div>
               </a>
 
-              
+              <a href="ai-development.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                      data-en="AI Development & Enablement"
+                      data-es="Desarrollo y Capacitación con IA">
+                    AI Development & Enablement
+                  </h4>
+                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
+                  </p>
+                </div>
+              </a>
 
               <a href="custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -981,6 +742,7 @@
               </a>
             </div>
           </li>
+
           <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
           <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
           <li><a href="../index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
@@ -989,7 +751,7 @@
       </nav>
 
       <div class="header-right">
-        <!-- NOVO: DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES (IGUAL AO INDEX) -->
+        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
@@ -1017,7 +779,9 @@
           <a class="btn btn--primary" href="../book-a-call.html"
              data-pt="AGENDAR UMA CHAMADA"
              data-en="BOOK A CALL"
-             data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
+             data-es="RESERVAR UNA LLAMADA">
+            BOOK A CALL
+          </a>
         </div>
       </div>
     </div>
@@ -1169,31 +933,44 @@
     </div>
   </main>
 
-  <!-- FOOTER NOVO (PRO) - IGUAL AO INDEX -->
+  <!-- ✅ FOOTER IGUAL AO MVP BUILDER.HTML -->
   <footer class="footer-pro" role="contentinfo">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-          <h3 class="footer-brand-title">Cobrait</h3>
+          <!-- LOGO ATUALIZADA PARA "COBRA IT" -->
+          <h3 class="footer-brand-title">COBRA IT</h3>
           <p class="footer-brand-subtitle">Software Factory</p>
-          <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+
+          <p class="footer-tagline"
+             data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+             data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+             data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
             Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
           </p>
+
           <div class="footer-cta-row">
-            <a class="btn btn--primary btn--footer" href="../book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
+            <a class="btn btn--primary btn--footer" href="../book-a-call.html"
+               data-pt="Agendar uma chamada"
+               data-en="Book a call"
+               data-es="Reservar una llamada">
               Agendar uma chamada
             </a>
-            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
+            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do"
+               data-pt="Ver serviços"
+               data-en="See services"
+               data-es="Ver servicios">
               Ver serviços
             </a>
           </div>
+
           <div class="footer-badges" aria-label="Highlights">
             <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
             <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
             <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
           </div>
         </div>
+
         <div class="footer-col">
           <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
           <ul class="footer-links">
@@ -1204,6 +981,7 @@
             <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
           <ul class="footer-links">
@@ -1213,6 +991,7 @@
             <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
           </ul>
         </div>
+
         <div class="footer-col footer-col--contact">
           <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
           <div class="footer-meta">
@@ -1225,24 +1004,19 @@
               <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
             </div>
             <div>
-              <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-              <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
-                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                <span>@cobra_it</span>
-              </a>
-            </div>
-            <div>
               <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-              <a href="../book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
+              <a href="../book-a-call.html"
+                 data-pt="Marca uma call."
+                 data-en="Book a call."
+                 data-es="Reserva una llamada.">Marca uma call.</a>
             </div>
           </div>
         </div>
       </div>
+
       <div class="footer-bottom">
         <div>
-          © <span id="year"></span> Cobrait — Software Factory
+          © <span id="year"></span> Cobra IT — Software Factory
         </div>
         <div class="footer-mini-links">
           <a href="../index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
@@ -1253,11 +1027,45 @@
     </div>
   </footer>
 
+  <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO MVP BUILDER.HTML -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ====== SISTEMA DE LÍNGUAS COM DROPDOWN (IGUAL AO INDEX) ======
     document.addEventListener('DOMContentLoaded', function() {
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+      });
+
+      // Normalização de idioma
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        return 'en';
+      }
+
+      // Fechar dropdown ao clicar fora (mobile)
+      document.addEventListener('click', function(event) {
+        const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
+            if (content && window.innerWidth <= 768) {
+              content.style.display = '';
+            }
+          }
+        });
+      });
+
+      // SISTEMA DE LÍNGUAS COM DROPDOWN
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
@@ -1275,16 +1083,6 @@
         'en': 'EN',
         'es': 'ES'
       };
-
-      // Normalização de idioma
-      function normalizeLang(l) {
-        if (!l) return 'pt';
-        l = String(l).toLowerCase();
-        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
-        if (l.startsWith('en')) return 'en';
-        if (l.startsWith('es')) return 'es';
-        return 'en';
-      }
 
       // Carregar língua salva ou usar português por padrão
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
@@ -1343,8 +1141,14 @@
           
           if (text === null) return;
 
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.value = text;
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+            if (el.tagName === 'OPTION') {
+              el.textContent = text;
+            } else if (el.hasAttribute('placeholder')) {
+              el.placeholder = text;
+            } else {
+              el.value = text;
+            }
           } else if (el.hasAttribute('data-html')) {
             el.innerHTML = text;
           } else {
