@@ -813,6 +813,34 @@
       .footer-pro { padding: 50px 0 20px; }
       .footer-brand-title { font-size: 22px; }
     }
+
+/* ✅ FOOTER — forçar cores iguais ao INDEX (sem mexer no header) */
+footer.footer-pro .btn.btn--primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border: 2px solid transparent !important;
+}
+
+footer.footer-pro .btn.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.30);
+}
+
+footer.footer-pro .btn.btn--outline {
+  background: transparent !important;
+  color: rgba(226, 232, 240, 0.92) !important;
+  border-color: rgba(226, 232, 240, 0.35) !important;
+}
+
+footer.footer-pro .btn.btn--outline:hover {
+  background: rgba(226, 232, 240, 0.12) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: none;
+  border-color: rgba(226, 232, 240, 0.5) !important;
+}
+
+    
   </style>
 </head>
 
