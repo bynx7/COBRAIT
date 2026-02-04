@@ -41,7 +41,6 @@
     }
 
     /* ========= HEADER IDÊNTICO AO BOOK-A-CALL ========= */
-    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
     .logo-text-brand {
       display: flex;
       flex-direction: column;
@@ -72,7 +71,6 @@
       margin-top: 2px;
     }
 
-    /* Estilos do Header */
     .site-header {
       background: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -148,7 +146,6 @@
 
     .site-nav a:hover::after { width: 100%; }
 
-    /* Dropdown */
     .dropdown { position: relative; }
 
     .dropdown-content {
@@ -220,10 +217,7 @@
     .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
-    .language-dropdown {
-      position: relative;
-    }
+    .language-dropdown { position: relative; }
 
     .language-dropdown-btn {
       display: flex;
@@ -321,14 +315,11 @@
       flex-shrink: 0;
     }
 
-    .language-option .lang-name {
-      flex: 1;
-    }
+    .language-option .lang-name { flex: 1; }
 
     .header-right { display: flex; align-items: center; gap: 24px; }
     .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
 
-    /* Responsive */
     @media (max-width: 1024px) {
       .header-inner { gap: 20px; }
       .site-nav ul { gap: 20px; }
@@ -374,14 +365,8 @@
         gap: 12px;
       }
 
-      .language-dropdown {
-        width: 100%;
-      }
-
-      .language-dropdown-btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .language-dropdown { width: 100%; }
+      .language-dropdown-btn { width: 100%; justify-content: center; }
 
       .language-dropdown-content {
         position: static;
@@ -407,11 +392,10 @@
       .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
-    /* BOTÕES PADRÃO (IGUAL AO INDEX.HTML) */
+    /* BOTÕES PADRÃO */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -546,9 +530,7 @@
       font-size:14px;
     }
 
-    .section{
-      padding:84px 0;
-    }
+    .section{ padding:84px 0; }
     .section--soft{
       background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     }
@@ -595,30 +577,60 @@
       line-height:1.7;
     }
 
-    /* How it works (timeline) */
+    /* =========================================================
+       HOW IT WORKS (timeline) — COM LINHA QUE ENCHE NO SCROLL ✅
+    ========================================================= */
     .timeline{
       position:relative;
       max-width:1020px;
       margin:0 auto;
-      padding:0 0;
+      padding:0;
+
+      /* desktop */
+      --timeline-x: 50%;
+      --timeline-w: 8px;
     }
+
+    /* Linha base (cinza/azulada) */
     .timeline::before{
       content:"";
       position:absolute;
-      left:50%;
+      left: var(--timeline-x);
       top:0;
-      transform:translateX(-50%);
-      width:8px;
+      transform: translateX(-50%);
+      width: var(--timeline-w);
       height:100%;
       border-radius:999px;
-      background:linear-gradient(180deg, rgba(59,130,246,.15), rgba(79,70,229,.35));
+      background: #e5edff;
+      z-index: 0;
+      pointer-events:none;
     }
+
+    /* Linha preenchida (azul) */
+    .timeline-fill{
+      position:absolute;
+      left: var(--timeline-x);
+      top:0;
+      transform: translateX(-50%);
+      width: var(--timeline-w);
+      height:0%;
+      border-radius:999px;
+      background: linear-gradient(180deg, #3b82f6 0%, #4f46e5 45%, #7c3aed 100%);
+      box-shadow: 0 10px 35px rgba(79,70,229,.22);
+      z-index:1;
+      transition: height .12s ease-out;
+      pointer-events:none;
+    }
+
     .step{
+      position:relative;
+      z-index:2;
       display:grid;
       grid-template-columns: 1fr 90px 1fr;
       align-items:center;
       gap:0;
-      margin:28px 0;
+      .step{ margin: 120px 0; }
+
     }
     .step-card{
       background:#fff;
@@ -626,6 +638,7 @@
       border-radius:18px;
       padding:26px;
       box-shadow:0 14px 34px rgba(15,23,42,.06);
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
     .step-meta{
       font-weight:800;
@@ -648,24 +661,59 @@
       line-height:1.75;
       font-size:16px;
     }
-    .step-dot{
-      width:22px;height:22px;
-      border-radius:999px;
-      background:#0ea5e9;
-      border:6px solid rgba(14,165,233,.18);
-      margin:0 auto;
-      position:relative;
-      z-index:2;
-    }
-    .step:nth-child(odd) .step-card{ grid-column:1; }
-    .step:nth-child(odd) .step-dot{ grid-column:2; }
-    .step:nth-child(odd) .spacer{ grid-column:3; }
 
-    .step:nth-child(even) .spacer{ grid-column:1; }
-    .step:nth-child(even) .step-dot{ grid-column:2; }
-    .step:nth-child(even) .step-card{ grid-column:3; }
+    /* Dot (default) */
+.step-dot{
+  width:22px;
+  height:22px;
+  border-radius:999px;
 
-    .spacer{ height:1px; }
+  /* bolinha */
+  background:#c7d2fe;
+
+  /* anel suave */
+  border:6px solid rgba(79,70,229,.14);
+
+  margin:0 auto;
+  position:relative;
+  z-index:3;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+/* Step ativo */
+.step.is-active .step-dot{
+  background:#3b82f6;
+  border-color: rgba(59,130,246,.20);
+
+  /* halo grande (não é outra bolinha) */
+  box-shadow: 0 0 0 10px rgba(59,130,246,.14);
+
+  transform: scale(1.05);
+}
+
+.step.is-active .step-card{
+  border-color: rgba(99,102,241,.35);
+  box-shadow: 0 18px 50px rgba(15,23,42,.10);
+  transform: translateY(-1px);
+}
+
+/* alternância esquerda/direita (ignora a timeline-fill) */
+.timeline .step:nth-of-type(odd) .step-card{ grid-column:1; }
+.timeline .step:nth-of-type(odd) .step-dot{ grid-column:2; }
+.timeline .step:nth-of-type(odd) .spacer{ grid-column:3; }
+
+.timeline .step:nth-of-type(even) .spacer{ grid-column:1; }
+.timeline .step:nth-of-type(even) .step-dot{ grid-column:2; }
+.timeline .step:nth-of-type(even) .step-card{ grid-column:3; }
+
+
+.spacer{ height:1px; }
+
 
     /* CTA banner */
     .cta-band{
@@ -759,7 +807,6 @@
       align-items: flex-start;
     }
 
-    /* LOGO REMOVIDA - Apenas texto da marca (IGUAL AO INDEX) */
     .footer-brand-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
@@ -928,12 +975,8 @@
       .footer-top { grid-template-columns: 1fr; gap: 20px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-mini-links { justify-content: flex-start; }
-      .footer-pro {
-        padding: 50px 0 20px;
-      }
-      .footer-brand-title {
-        font-size: 22px;
-      }
+      .footer-pro { padding: 50px 0 20px; }
+      .footer-brand-title { font-size: 22px; }
     }
 
     @media (max-width: 980px){
@@ -941,13 +984,17 @@
       .hero-visual{ min-height:360px; }
       .h1{ font-size:46px; }
       .benefits-grid{ grid-template-columns:1fr; }
-      .timeline::before{ left:18px; transform:none; }
+
+      /* timeline mobile: cinza e azul ficam no MESMO X */
+      .timeline{ --timeline-x: 18px; }
+
       .step{ grid-template-columns: 40px 1fr; gap:14px; }
       .step-dot{ grid-column:1; margin:0; }
       .step-card{ grid-column:2 !important; }
       .spacer{ display:none; }
       .footer-top{ grid-template-columns:1fr 1fr; }
     }
+
     @media (max-width: 560px){
       .footer-top{ grid-template-columns:1fr; }
       .section-title{ font-size:34px; }
@@ -960,7 +1007,6 @@
   <!-- HEADER EXATAMENTE IGUAL AO BOOK-A-CALL -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
       <a class="brand logo-text-brand" href="../index.html" aria-label="Cobra IT">
         <div class="logo-text-main">COBRA IT</div>
         <div class="logo-text-tagline">Software Factory</div>
@@ -1023,24 +1069,6 @@
                 </div>
               </a>
 
-              <a href="ai-development.html" class="dropdown-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-                <div class="dropdown-item-content">
-                  <h4 data-pt="Desenvolvimento e Capacitação com IA"
-                      data-en="AI Development & Enablement"
-                      data-es="Desarrollo y Capacitación con IA">
-                    AI Development & Enablement
-                  </h4>
-                  <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
-                     data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
-                     data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
-                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
-                  </p>
-                </div>
-              </a>
-
               <a href="custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -1085,14 +1113,13 @@
       </nav>
 
       <div class="header-right">
-        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
             <span class="lang-code" id="currentLang">PT</span>
             <span class="dropdown-arrow">▼</span>
           </button>
-          
+
           <div class="language-dropdown-content">
             <button class="language-option active" data-lang="pt">
               <span class="lang-flag">🇵🇹</span>
@@ -1113,7 +1140,7 @@
           <a class="btn btn--primary" href="../book-a-call.html"
              data-pt="AGENDAR UMA CHAMADA"
              data-en="BOOK A CALL"
-             data-es="RESERVAR UNA LLAMADA">
+             data-es="RESERVAR UMA LLAMADA">
             BOOK A CALL
           </a>
         </div>
@@ -1254,13 +1281,13 @@
             data-en="How it works"
             data-es="Cómo funciona">Como funciona</h2>
 
-        <div class="timeline">
+        <div class="timeline" id="timelineHow">
+          <div class="timeline-fill" id="timelineFill" aria-hidden="true"></div>
+
           <div class="step">
             <div class="step-card">
               <span class="step-meta" data-pt="PASSO UM" data-en="STEP ONE" data-es="PASO UNO">PASSO UM</span>
-              <h3 data-pt="Brief da Equipa"
-                  data-en="Dedicated Team Brief"
-                  data-es="Brief del Equipo">Brief da Equipa</h3>
+              <h3 data-pt="Brief da Equipa" data-en="Dedicated Team Brief" data-es="Brief del Equipo">Brief da Equipa</h3>
               <p data-pt="Alinhamos visão, necessidades, senioridade, stack e objetivos. Definimos perfis e critérios para a shortlist."
                  data-en="We align vision, needs, seniority, stack, and goals. We define roles and selection criteria for the shortlist."
                  data-es="Alineamos visión, necesidades, senioridad, stack y objetivos. Definimos roles y criterios para la preselección.">
@@ -1276,9 +1303,7 @@
             <div class="step-dot" aria-hidden="true"></div>
             <div class="step-card">
               <span class="step-meta" data-pt="PASSO DOIS" data-en="STEP TWO" data-es="PASO DOS">PASSO DOIS</span>
-              <h3 data-pt="Triagem e Shortlist"
-                  data-en="Candidate Screening"
-                  data-es="Evaluación de Candidatos">Triagem e Shortlist</h3>
+              <h3 data-pt="Triagem e Shortlist" data-en="Candidate Screening" data-es="Evaluación de Candidatos">Triagem e Shortlist</h3>
               <p data-pt="Filtramos candidatos com base em experiência e performance. Partilhamos perfis e ajudamos a escolher os melhores fits."
                  data-en="We screen candidates by experience and performance. We share profiles and help select the best fits."
                  data-es="Filtramos candidatos por experiencia y rendimiento. Compartimos perfiles y ayudamos a elegir los mejores encajes.">
@@ -1290,9 +1315,7 @@
           <div class="step">
             <div class="step-card">
               <span class="step-meta" data-pt="PASSO TRÊS" data-en="STEP THREE" data-es="PASO TRES">PASSO TRÊS</span>
-              <h3 data-pt="Onboarding"
-                  data-en="Onboarding"
-                  data-es="Onboarding">Onboarding</h3>
+              <h3 data-pt="Onboarding" data-en="Onboarding" data-es="Onboarding">Onboarding</h3>
               <p data-pt="Integramos a equipa ao teu processo (Agile/Lean), ferramentas e padrões. Garantimos velocidade sem perder qualidade."
                  data-en="We integrate the team into your process (Agile/Lean), tools, and standards. Fast ramp-up without losing quality."
                  data-es="Integramos el equipo en tu proceso (Agile/Lean), herramientas y estándares. Rápido inicio sin perder calidad.">
@@ -1308,9 +1331,7 @@
             <div class="step-dot" aria-hidden="true"></div>
             <div class="step-card">
               <span class="step-meta" data-pt="PASSO QUATRO" data-en="STEP FOUR" data-es="PASO CUATRO">PASSO QUATRO</span>
-              <h3 data-pt="Gestão e Escala"
-                  data-en="Management & Scaling"
-                  data-es="Gestión y Escalado">Gestão e Escala</h3>
+              <h3 data-pt="Gestão e Escala" data-en="Management & Scaling" data-es="Gestión y Escalado">Gestão e Escala</h3>
               <p data-pt="Acompanhamos entregas, performance e comunicação. À medida que o produto cresce, escalamos a equipa com segurança."
                  data-en="We track delivery, performance, and communication. As your product grows, we scale the team safely."
                  data-es="Acompañamos entregas, rendimiento y comunicación. A medida que el producto crece, escalamos el equipo con seguridad.">
@@ -1348,12 +1369,11 @@
       </div>
     </section>
 
-    <!-- FOOTER PRO (EXATAMENTE IGUAL AO INDEX.HTML - SEM LOGO) -->
+    <!-- FOOTER PRO -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <!-- LOGO REMOVIDA - substituída por texto (IGUAL AO INDEX) -->
             <h3 class="footer-brand-title">Cobrait</h3>
             <p class="footer-brand-subtitle">Software Factory</p>
 
@@ -1420,10 +1440,7 @@
               </div>
               <div>
                 <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                <a href="../book-a-call.html"
-                   data-pt="Marca uma call."
-                   data-en="Book a call."
-                   data-es="Reserva una llamada.">Marca uma call.</a>
+                <a href="../book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
               </div>
             </div>
           </div>
@@ -1444,24 +1461,21 @@
   </main>
 
   <!-- =========================
-       SCRIPT FINAL (IDÊNTICO AO INDEX.HTML)
+       SCRIPT FINAL (idiomas) + TIMELINE FILL ✅
        ========================= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
-      // ====== Normalização de idioma (evita pt-PT quebrar) ======
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
-        // Fallback para inglês para outras línguas
         return 'en';
       }
 
-      // Fechar dropdown ao clicar fora (mobile)
       document.addEventListener('click', function(event) {
         const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
         dropdowns.forEach(dropdown => {
@@ -1474,31 +1488,17 @@
         });
       });
 
-      // ====== SISTEMA DE LÍNGUAS COM DROPDOWN ======
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
-      
-      // Mapeamento de bandeiras para cada língua
-      const flagMap = {
-        'pt': '🇵🇹',
-        'en': '🇬🇧',
-        'es': '🇪🇸'
-      };
-      
-      // Mapeamento de códigos curtos
-      const codeMap = {
-        'pt': 'PT',
-        'en': 'EN',
-        'es': 'ES'
-      };
 
-      // Carregar língua salva ou usar português por padrão
+      const flagMap = { 'pt': '🇵🇹', 'en': '🇬🇧', 'es': '🇪🇸' };
+      const codeMap = { 'pt': 'PT', 'en': 'EN', 'es': 'ES' };
+
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
       setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
 
-      // Event listeners para as opções de língua
       languageOptions.forEach(option => {
         option.addEventListener('click', function() {
           const lang = normalizeLang(this.getAttribute('data-lang'));
@@ -1509,20 +1509,9 @@
       });
 
       function setActiveLanguage(lang) {
-        // Atualizar o botão do dropdown
-        if (flagMap[lang]) {
-          currentFlag.textContent = flagMap[lang];
-        } else {
-          currentFlag.textContent = '🇬🇧'; // Fallback para bandeira UK
-        }
-        
-        if (codeMap[lang]) {
-          currentLang.textContent = codeMap[lang];
-        } else {
-          currentLang.textContent = 'EN'; // Fallback para EN
-        }
-        
-        // Atualizar as opções ativas
+        currentFlag.textContent = flagMap[lang] || '🇬🇧';
+        currentLang.textContent = codeMap[lang] || 'EN';
+
         languageOptions.forEach(option => {
           option.classList.remove('active');
           if (normalizeLang(option.getAttribute('data-lang')) === lang) {
@@ -1542,12 +1531,7 @@
         const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
-          
-          // Se não houver tradução para esta língua, usar inglês como fallback
-          if (text === null && lang !== 'en') {
-            text = el.getAttribute('data-en');
-          }
-          
+          if (text === null && lang !== 'en') text = el.getAttribute('data-en');
           if (text === null) return;
 
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
@@ -1564,15 +1548,40 @@
         const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
-          
-          // Se não houver tradução para esta língua, usar inglês como fallback
-          if (val === null && lang !== 'en') {
-            val = el.getAttribute('data-en');
-          }
-          
+          if (val === null && lang !== 'en') val = el.getAttribute('data-en');
           if (val) el.setAttribute('aria-label', val);
         });
       }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const timeline = document.getElementById('timelineHow');
+      const fill = document.getElementById('timelineFill');
+      const steps = timeline ? timeline.querySelectorAll('.step') : [];
+
+      if (!timeline || !fill || !steps.length) return;
+
+      const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+      function onScroll(){
+        const rect = timeline.getBoundingClientRect();
+        const vh = window.innerHeight;
+
+        const triggerY = vh * 0.62;
+        const progress = clamp((triggerY - rect.top) / rect.height, 0, 1);
+        fill.style.height = (progress * 100) + '%';
+
+        steps.forEach(step => {
+          const r = step.getBoundingClientRect();
+          step.classList.toggle('is-active', r.top < vh * 0.68);
+        });
+      }
+
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
     });
   </script>
 </body>
