@@ -947,6 +947,14 @@
     }
 
     /* How it works (timeline alternada) */
+    /* FIX timeline layering: keep the line behind the dots/cards */
+    .timeline{ position: relative; }
+    .timeline::before,
+    .timeline::after{ z-index: 0; }
+    .step{ position: relative; z-index: 1; }
+    .node{ position: relative; z-index: 2; }
+    .dotnode{ position: relative; z-index: 3; }
+
     .timeline{
       position: relative;
       max-width: 1040px;
@@ -961,9 +969,9 @@
       left: 50%;
       top: 0;
       bottom: 0;
-      width: 2px;
-      transform: translateX(-1px);
-      background: rgba(148,163,184,.22);
+      width: 6px;
+      transform: translateX(-3px);
+      background: rgba(59,130,246,.18);
       border-radius: 999px;
     }
 
@@ -973,15 +981,13 @@
       position:absolute;
       left: 50%;
       top: 0;
-      width: 2px;
-      transform: translateX(-1px);
+      width: 6px;
+      transform: translateX(-3px);
       height: var(--timeline-progress, 0%);
       background: linear-gradient(
         180deg,
-        rgba(6,182,212,.0) 0%,
-        rgba(6,182,212,.95) 35%,
-        rgba(96,165,250,.95) 70%,
-        rgba(236,27,103,.95) 100%
+        rgba(59,130,246,0) 0%,
+        rgba(59,130,246,.95) 100%
       );
       border-radius: 999px;
       pointer-events: none;
@@ -1009,8 +1015,8 @@
       width: 18px;
       height: 18px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 8px rgba(6,182,212,.15);
+      background: #3b82f6;
+      box-shadow: 0 0 0 8px rgba(59,130,246,.22);
       border: 2px solid rgba(255,255,255,.9);
       position: relative;
       z-index: 2;
@@ -1064,7 +1070,7 @@
       border-radius: 26px;
       background:
         radial-gradient(900px 300px at 20% 0%, rgba(6,182,212,.18), transparent 60%),
-        radial-gradient(900px 300px at 80% 10%, rgba(96,165,250,.16), transparent 60%),
+        radial-gradient(900px 300px at 80% 10%, rgba(59,130,246,.22), transparent 60%),
         linear-gradient(135deg, rgba(6,182,212,.10), rgba(96,165,250,.10));
       border: 1px solid rgba(186,230,253,.9);
       box-shadow: var(--shadow2);
@@ -1457,7 +1463,7 @@
           <!-- STEP 2 (direita) -->
           <div class="step">
             <div class="spacer"></div>
-            <div class="node"><div class="dotnode" style="background: var(--accent2); box-shadow: 0 0 0 8px rgba(96,165,250,.16);"></div></div>
+            <div class="node"><div class="dotnode" style="background: #3b82f6; box-shadow: 0 0 0 8px rgba(59,130,246,.22);"></div></div>
 
             <div class="card step-card">
               <p class="step-kicker" data-pt="PASSO DOIS" data-en="STEP TWO" data-es="PASO DOS">PASSO DOIS</p>
@@ -1484,14 +1490,14 @@
               </p>
             </div>
 
-            <div class="node"><div class="dotnode" style="background: var(--pink); box-shadow: 0 0 0 8px rgba(236,27,103,.14);"></div></div>
+            <div class="node"><div class="dotnode" style="background: #3b82f6; box-shadow: 0 0 0 8px rgba(59,130,246,.22);"></div></div>
             <div class="spacer"></div>
           </div>
 
           <!-- STEP 4 (direita) -->
           <div class="step">
             <div class="spacer"></div>
-            <div class="node"><div class="dotnode" style="background: #10b981; box-shadow: 0 0 0 8px rgba(16,185,129,.14);"></div></div>
+            <div class="node"><div class="dotnode" style="background: #3b82f6; box-shadow: 0 0 0 8px rgba(59,130,246,.22);"></div></div>
 
             <div class="card step-card">
               <p class="step-kicker" data-pt="PASSO QUATRO" data-en="STEP FOUR" data-es="PASO CUATRO">PASSO QUATRO</p>
@@ -1717,7 +1723,8 @@
           const progressed = (start - rect.top);
 
           const p = clamp01(progressed / total);
-          timeline.style.setProperty('--timeline-progress', (p * 100).toFixed(2) + '%');
+          const pFast = Math.min(1, p * 1.9);
+          timeline.style.setProperty('--timeline-progress', (pFast * 100).toFixed(2) + '%');
         }
 
         updateTimelineProgress();
