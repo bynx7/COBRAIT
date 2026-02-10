@@ -2294,5 +2294,330 @@
       }
     });
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const langButtons = document.querySelectorAll(".language-option");
+  const currentLang = document.getElementById("currentLang");
+  const currentFlag = document.getElementById("currentFlag");
+
+  const flags = { pt: "🇵🇹", en: "🇬🇧", es: "🇪🇸" };
+
+  // Texts for the Careers page (minimal, only to make language switch affect the page content too)
+  const texts = {
+    pt: {
+      heroBadge: "🚀 Estamos a contratar pessoas talentosas",
+      heroTitle: "Constrói o Futuro<br>da Tecnologia",
+      heroSubtitle: "Junta-te a uma equipa de inovação a construir soluções de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente dinâmico.",
+      viewPositions: "Ver vagas",
+      hiringProcess: "O nosso processo",
+      stat1Label: "Projetos de sucesso",
+      stat2Label: "Remote-first",
+      stat3Label: "Especialistas",
+      cultureSubtitle: "A NOSSA CULTURA",
+      cultureTitle: "Valores que nos movem",
+      cultureDesc: "Criamos um ambiente onde a inovação prospera, o talento cresce e o trabalho com significado gera impacto real.",
+      value1Title: "Inovação primeiro",
+      value1Desc: "Desafiamos o convencional e adotamos tecnologias de ponta para construir soluções que moldam o amanhã.",
+      value2Title: "Excelência colaborativa",
+      value2Desc: "Grandes mentes a trabalhar juntas criam resultados extraordinários. Acreditamos no poder do trabalho em equipa.",
+      value3Title: "Obcecados por qualidade",
+      value3Desc: "Entregamos qualidade excecional em cada linha de código, em cada pixel de design e em cada interação com o cliente.",
+      perksSubtitle: "VANTAGENS & BENEFÍCIOS",
+      perksTitle: "Porque vais gostar de trabalhar aqui",
+      perksDesc: "Investimos no crescimento, bem‑estar e sucesso da nossa equipa com benefícios completos e uma cultura de apoio.",
+      benefit1Title: "Crescimento de carreira",
+      benefit2Title: "Trabalho flexível",
+      benefit3Title: "Stack moderna",
+      processSubtitle: "O NOSSO PROCESSO",
+      processTitle: "Transparente e eficiente",
+      processDesc: "Simplificámos o recrutamento para respeitar o teu tempo e garantir o melhor match para ambos.",
+      step1Title: "Candidatura inicial",
+      step1Desc: "Envia os teus dados e portefólio. Revemos todas as candidaturas em 48 horas.",
+      step2Title: "Entrevista de cultura",
+      step2Desc: "Uma conversa descontraída para falarmos de valores, objetivos e expectativas.",
+      step3Title: "Avaliação técnica",
+      step3Desc: "Um desafio prático e relevante para mostrar a tua capacidade de resolver problemas.",
+      step4Title: "Entrevista final & proposta",
+      step4Desc: "Conhece a equipa, alinhamos detalhes e recebes uma proposta competitiva.",
+      openingsSubtitle: "VAGAS ATUAIS",
+      openingsTitle: "Junta-te à nossa equipa",
+      openingsDesc: "Explora oportunidades para contribuir com as tuas competências e crescer connosco.",
+      filterAll: "Todas as vagas",
+      filterEng: "Engenharia",
+      filterDesign: "Design",
+      filterRemote: "Remoto",
+      applyNow: "Candidatar-me",
+      ctaTitle: "Pronto(a) para construir algo incrível?",
+      ctaDesc: "Se não encontras a vaga perfeita mas acreditas que podes contribuir para a nossa missão, queremos falar contigo. Talento encontra sempre lugar aqui.",
+      spontaneous: "Candidatura espontânea",
+      scheduleCall: "Agendar chamada",
+      contactSubtitle: "FALA CONNOSCO",
+      contactTitle: "Vamos falar",
+      contactDesc: "Tens dúvidas sobre cultura, processo ou oportunidades? Fala com a nossa equipa.",
+      emailUs: "Envia email",
+      responseTime: "Resposta em 24–48 horas",
+      visitHQ: "Visita o nosso HQ",
+      chatWithUs: "Fala connosco",
+      chatLine: "Agenda uma chamada com a nossa equipa de recrutamento",
+      chatLine2: "Fala sobre os teus objetivos de carreira",
+    },
+    en: {
+      heroBadge: "🚀 We're Hiring Talented People",
+      heroTitle: "Shape the Future<br>of Technology",
+      heroSubtitle: "Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.",
+      viewPositions: "View Open Positions",
+      hiringProcess: "Our Hiring Process",
+      stat1Label: "Successful Projects",
+      stat2Label: "Remote First",
+      stat3Label: "Industry Experts",
+      cultureSubtitle: "OUR CULTURE",
+      cultureTitle: "Core Values That Drive Us",
+      cultureDesc: "We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact.",
+      value1Title: "Innovation First",
+      value1Desc: "We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow.",
+      value2Title: "Collaborative Excellence",
+      value2Desc: "Great minds working together create extraordinary results. We believe in the power of teamwork.",
+      value3Title: "Quality Obsessed",
+      value3Desc: "We deliver exceptional quality in every line of code, every design pixel, and every client interaction.",
+      perksSubtitle: "PERKS & BENEFITS",
+      perksTitle: "Why You'll Love Working Here",
+      perksDesc: "We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture.",
+      benefit1Title: "Career Growth",
+      benefit2Title: "Flexible Work",
+      benefit3Title: "Modern Tech Stack",
+      processSubtitle: "OUR PROCESS",
+      processTitle: "Transparent & Efficient",
+      processDesc: "We've streamlined our hiring to respect your time while ensuring the perfect match for both sides.",
+      step1Title: "Initial Application",
+      step1Desc: "Submit your details and portfolio. We review every application within 48 hours.",
+      step2Title: "Culture Fit Interview",
+      step2Desc: "A relaxed conversation to discuss values, aspirations, and mutual expectations.",
+      step3Title: "Technical Assessment",
+      step3Desc: "A practical, relevant challenge that showcases your problem-solving skills.",
+      step4Title: "Final Interview & Offer",
+      step4Desc: "Meet the team, discuss details, and receive a competitive offer package.",
+      openingsSubtitle: "CURRENT OPENINGS",
+      openingsTitle: "Join Our Growing Team",
+      openingsDesc: "Explore opportunities to contribute your skills and grow with us.",
+      filterAll: "All Positions",
+      filterEng: "Engineering",
+      filterDesign: "Design",
+      filterRemote: "Remote",
+      applyNow: "Apply Now",
+      ctaTitle: "Ready to Build Something Amazing?",
+      ctaDesc: "If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.",
+      spontaneous: "Submit Spontaneous Application",
+      scheduleCall: "Schedule Discovery Call",
+      contactSubtitle: "GET IN TOUCH",
+      contactTitle: "Let's Connect",
+      contactDesc: "Have questions about our culture, process, or opportunities? Reach out to our team.",
+      emailUs: "Email Us",
+      responseTime: "Response within 24-48 hours",
+      visitHQ: "Visit Our HQ",
+      chatWithUs: "Chat With Us",
+      chatLine: "Schedule a call with our hiring team",
+      chatLine2: "Discuss your career aspirations",
+    },
+    es: {
+      heroBadge: "🚀 Estamos contratando talento",
+      heroTitle: "Da forma al Futuro<br>de la Tecnología",
+      heroSubtitle: "Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico.",
+      viewPositions: "Ver vacantes",
+      hiringProcess: "Nuestro proceso",
+      stat1Label: "Proyectos exitosos",
+      stat2Label: "Remote-first",
+      stat3Label: "Expertos",
+      cultureSubtitle: "NUESTRA CULTURA",
+      cultureTitle: "Valores que nos impulsan",
+      cultureDesc: "Cultivamos un entorno donde la innovación florece, el talento crece y el trabajo con propósito genera impacto real.",
+      value1Title: "Innovación primero",
+      value1Desc: "Desafiamos lo establecido y adoptamos tecnologías de punta para construir soluciones que moldean el mañana.",
+      value2Title: "Excelencia colaborativa",
+      value2Desc: "Grandes mentes trabajando juntas crean resultados extraordinarios. Creemos en el poder del trabajo en equipo.",
+      value3Title: "Obsesión por la calidad",
+      value3Desc: "Entregamos calidad excepcional en cada línea de código, cada píxel de diseño y cada interacción con el cliente.",
+      perksSubtitle: "VENTAJAS Y BENEFICIOS",
+      perksTitle: "Por qué te encantará trabajar aquí",
+      perksDesc: "Invertimos en el crecimiento, bienestar y éxito del equipo con beneficios completos y una cultura de apoyo.",
+      benefit1Title: "Crecimiento profesional",
+      benefit2Title: "Trabajo flexible",
+      benefit3Title: "Stack moderno",
+      processSubtitle: "NUESTRO PROCESO",
+      processTitle: "Transparente y eficiente",
+      processDesc: "Hemos simplificado la selección para respetar tu tiempo y asegurar el mejor encaje para ambas partes.",
+      step1Title: "Solicitud inicial",
+      step1Desc: "Envía tus datos y portafolio. Revisamos cada solicitud en 48 horas.",
+      step2Title: "Entrevista cultural",
+      step2Desc: "Una conversación relajada sobre valores, aspiraciones y expectativas.",
+      step3Title: "Evaluación técnica",
+      step3Desc: "Un reto práctico y relevante que muestra tu capacidad de resolver problemas.",
+      step4Title: "Entrevista final y oferta",
+      step4Desc: "Conoce al equipo, alineamos detalles y recibes una oferta competitiva.",
+      openingsSubtitle: "VACANTES ACTUALES",
+      openingsTitle: "Únete a nuestro equipo",
+      openingsDesc: "Explora oportunidades para aportar tus habilidades y crecer con nosotros.",
+      filterAll: "Todas",
+      filterEng: "Ingeniería",
+      filterDesign: "Diseño",
+      filterRemote: "Remoto",
+      applyNow: "Postular",
+      ctaTitle: "¿Listo para construir algo increíble?",
+      ctaDesc: "Si no ves el rol perfecto pero crees que puedes contribuir a nuestra misión, queremos conocerte. El talento siempre encuentra su lugar aquí.",
+      spontaneous: "Candidatura espontánea",
+      scheduleCall: "Agendar llamada",
+      contactSubtitle: "CONTACTO",
+      contactTitle: "Hablemos",
+      contactDesc: "¿Tienes preguntas sobre cultura, proceso u oportunidades? Contacta con nuestro equipo.",
+      emailUs: "Escríbenos",
+      responseTime: "Respuesta en 24–48 horas",
+      visitHQ: "Visita nuestra sede",
+      chatWithUs: "Habla con nosotros",
+      chatLine: "Agenda una llamada con nuestro equipo de selección",
+      chatLine2: "Habla sobre tus objetivos profesionales",
+    }
+  };
+
+  function setText(el, value, useHtml = false) {
+    if (!el) return;
+    if (useHtml) el.innerHTML = value;
+    else el.textContent = value;
+  }
+
+  function applyLanguage(lang) {
+    // Header (existing behaviour)
+    langButtons.forEach(b => b.classList.remove("active"));
+    const active = document.querySelector(`.language-option[data-lang="${lang}"]`);
+    if (active) active.classList.add("active");
+
+    if (currentLang) currentLang.textContent = lang.toUpperCase();
+    if (currentFlag) currentFlag.textContent = flags[lang] || "🏳️";
+
+    // Nav items with data-pt/data-en/data-es (already present)
+    document.querySelectorAll("[data-pt]").forEach(el => {
+      const v = el.dataset[lang];
+      if (typeof v !== "undefined") el.textContent = v;
+    });
+
+    // Careers page content (no markup changes; translate by selecting existing nodes)
+    const t = texts[lang] || texts.en;
+
+    setText(document.querySelector(".hero-badge span:nth-child(2)"), t.heroBadge);
+    setText(document.querySelector(".hero-title"), t.heroTitle, true);
+    setText(document.querySelector(".hero-subtitle"), t.heroSubtitle);
+
+    const heroBtns = document.querySelectorAll(".hero-actions .btn");
+    setText(heroBtns[0], t.viewPositions);
+    if (heroBtns[0]) heroBtns[0].insertAdjacentText("beforeend", " →");
+    setText(heroBtns[1], t.hiringProcess);
+
+    const statLabels = document.querySelectorAll(".stat-label");
+    setText(statLabels[0], t.stat1Label);
+    setText(statLabels[1], t.stat2Label);
+    setText(statLabels[2], t.stat3Label);
+
+    // Values section header
+    const values = document.querySelector(".values-section");
+    if (values) {
+      setText(values.querySelector(".section-subtitle"), t.cultureSubtitle);
+      setText(values.querySelector(".section-title"), t.cultureTitle);
+      setText(values.querySelector(".section-description"), t.cultureDesc);
+      const cards = values.querySelectorAll(".value-card");
+      if (cards[0]) { setText(cards[0].querySelector(".value-title"), t.value1Title); setText(cards[0].querySelector(".value-description"), t.value1Desc); }
+      if (cards[1]) { setText(cards[1].querySelector(".value-title"), t.value2Title); setText(cards[1].querySelector(".value-description"), t.value2Desc); }
+      if (cards[2]) { setText(cards[2].querySelector(".value-title"), t.value3Title); setText(cards[2].querySelector(".value-description"), t.value3Desc); }
+    }
+
+    // Benefits section header + benefit titles
+    const benefits = document.querySelector(".benefits-section");
+    if (benefits) {
+      setText(benefits.querySelector(".section-subtitle"), t.perksSubtitle);
+      setText(benefits.querySelector(".section-title"), t.perksTitle);
+      setText(benefits.querySelector(".section-description"), t.perksDesc);
+      const items = benefits.querySelectorAll(".benefit-item .benefit-title");
+      setText(items[0], t.benefit1Title);
+      setText(items[1], t.benefit2Title);
+      setText(items[2], t.benefit3Title);
+    }
+
+    // Process section
+    const process = document.querySelector(".process-section");
+    if (process) {
+      setText(process.querySelector(".section-subtitle"), t.processSubtitle);
+      setText(process.querySelector(".section-title"), t.processTitle);
+      setText(process.querySelector(".section-description"), t.processDesc);
+      const steps = process.querySelectorAll(".process-step");
+      if (steps[0]) { setText(steps[0].querySelector("h4"), t.step1Title); setText(steps[0].querySelector("p"), t.step1Desc); }
+      if (steps[1]) { setText(steps[1].querySelector("h4"), t.step2Title); setText(steps[1].querySelector("p"), t.step2Desc); }
+      if (steps[2]) { setText(steps[2].querySelector("h4"), t.step3Title); setText(steps[2].querySelector("p"), t.step3Desc); }
+      if (steps[3]) { setText(steps[3].querySelector("h4"), t.step4Title); setText(steps[3].querySelector("p"), t.step4Desc); }
+    }
+
+    // Jobs section
+    const jobs = document.querySelector(".jobs-section");
+    if (jobs) {
+      setText(jobs.querySelector(".section-subtitle"), t.openingsSubtitle);
+      setText(jobs.querySelector(".section-title"), t.openingsTitle);
+      setText(jobs.querySelector(".section-description"), t.openingsDesc);
+
+      const filters = jobs.querySelectorAll(".jobs-filter .filter-btn");
+      setText(filters[0], t.filterAll);
+      setText(filters[1], t.filterEng);
+      setText(filters[2], t.filterDesign);
+      setText(filters[3], t.filterRemote);
+
+      // Apply buttons
+      jobs.querySelectorAll(".job-card .btn").forEach(btn => setText(btn, t.applyNow));
+    }
+
+    // CTA section
+    const cta = document.querySelector(".cta-section");
+    if (cta) {
+      setText(cta.querySelector(".cta-title"), t.ctaTitle);
+      setText(cta.querySelector(".cta-description"), t.ctaDesc);
+      const ctaBtns = cta.querySelectorAll(".cta-actions .btn");
+      setText(ctaBtns[0], t.spontaneous);
+      setText(ctaBtns[1], t.scheduleCall);
+    }
+
+    // Contact section
+    const contact = document.querySelector(".contact-section");
+    if (contact) {
+      setText(contact.querySelector(".section-subtitle"), t.contactSubtitle);
+      setText(contact.querySelector(".section-title"), t.contactTitle);
+      setText(contact.querySelector(".section-description"), t.contactDesc);
+
+      const cards = contact.querySelectorAll(".contact-card");
+      if (cards[0]) {
+        setText(cards[0].querySelector(".contact-title"), t.emailUs);
+        const ps = cards[0].querySelectorAll(".contact-details p");
+        if (ps[1]) setText(ps[1], t.responseTime);
+      }
+      if (cards[1]) setText(cards[1].querySelector(".contact-title"), t.visitHQ);
+      if (cards[2]) {
+        setText(cards[2].querySelector(".contact-title"), t.chatWithUs);
+        const ps = cards[2].querySelectorAll(".contact-details p");
+        if (ps[0]) {
+          // Keep the link, swap surrounding text
+          const a = ps[0].querySelector("a");
+          if (a) ps[0].innerHTML = `${a.outerHTML.replace(a.textContent, (lang === "pt" ? "Agenda uma chamada" : lang === "es" ? "Agenda una llamada" : "Schedule a call"))} ${lang === "pt" ? "com a nossa equipa de recrutamento" : lang === "es" ? "con nuestro equipo de selección" : "with our hiring team"}`;
+        }
+        if (ps[1]) setText(ps[1], t.chatLine2);
+      }
+    }
+  }
+
+  // Bind clicks
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+  });
+
+  // Default language based on current active button (or HTML lang)
+  const initial = (document.querySelector(".language-option.active")?.dataset.lang)
+    || (document.documentElement.lang || "en").slice(0,2).toLowerCase();
+  applyLanguage(initial);
+});
+</script>
+
 </body>
 </html>
