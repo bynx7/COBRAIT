@@ -964,27 +964,39 @@
               </p>
             </div>
 
-            <form class="book-form" action="#" method="post" autocomplete="on">
-              <label class="field">
-                <span data-pt="Nome" data-en="Name" data-es="Nombre">Nome</span>
-                <input type="text" name="name" placeholder="O teu nome" required>
-              </label>
+           <form class="book-form"
+      id="contactForm"
+      action="https://formsubmit.co/ajax/geral@cobrait.pt"
+      method="POST"
+      autocomplete="on">
 
-              <label class="field">
-                <span data-pt="Email" data-en="Email" data-es="Email">Email</span>
-                <input type="email" name="email" placeholder="o.teu@email.com" required>
-              </label>
 
-              <label class="field">
-                <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto">Orçamento</span>
-                <select name="budget" required>
-                  <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…">Selecionar…</option>
-                  <option data-pt="€1k–€5k" data-en="€1k–€5k" data-es="€1k–€5k">€1k–€5k</option>
-                  <option data-pt="€5k–€15k" data-en="€5k–€15k" data-es="€5k–€15k">€5k–€15k</option>
-                  <option data-pt="€15k–€50k" data-en="€15k–€50k" data-es="€15k–€50k">€15k–€50k</option>
-                  <option data-pt="€50k+" data-en="€50k+" data-es="€50k+">€50k+</option>
-                </select>
-              </label>
+  <!-- Configurações do FormSubmit -->
+  <input type="hidden" name="_subject" value="Novo pedido — Book a Call">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <label class="field">
+    <span data-pt="Nome" data-en="Name" data-es="Nombre">Nome</span>
+    <input type="text" name="Nome" placeholder="O teu nome" required>
+  </label>
+
+  <label class="field">
+    <span data-pt="Email" data-en="Email" data-es="Email">Email</span>
+    <input type="email" name="Email" placeholder="o.teu@email.com" required>
+  </label>
+
+  <label class="field">
+    <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto">Orçamento</span>
+    <select name="Orçamento" required>
+      <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…">Selecionar…</option>
+      <option>€1k–€5k</option>
+      <option>€5k–€15k</option>
+      <option>€15k–€50k</option>
+      <option>€50k+</option>
+    </select>
+  </label>
+
 
               <label class="field">
                 <span data-pt="Descrição" data-en="Description" data-es="Descripción">Descrição</span>
@@ -1031,6 +1043,11 @@
                 Ao enviar, aceitas ser contactado pela Cobrait sobre este pedido.
               </p>
             </form>
+            <div id="formSuccess" class="form-success" style="display:none;">
+  <h3>Pedido enviado com sucesso 🎉</h3>
+  <p>Obrigado pelo contacto. Respondemos normalmente em 24–48h.</p>
+</div>
+
           </div>
         </div>
       </div>
