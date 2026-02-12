@@ -93,6 +93,38 @@
       border-color: #c7d2fe !important;
       color: #4f46e5 !important;
     }
+
+    /* =========================
+       ✅ ADIÇÃO: Mensagem de sucesso (inline, clean)
+       ========================= */
+    .form-success{
+      margin-top: 14px;
+      border-radius: 14px;
+      border: 1px solid #c7d2fe;
+      background: #eef2ff;
+      padding: 14px 14px;
+      color: #0b1220;
+    }
+    .form-success h3{
+      margin: 0 0 6px;
+      font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+      color: #0b1220;
+    }
+    .form-success p{
+      margin: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .form-success .tiny{
+      margin-top: 8px;
+      color: #64748b;
+      font-size: 12.5px;
+    }
   </style>
 
   <!-- HEADER + FOOTER : IGUAL AO INDEX  -->
@@ -277,9 +309,7 @@
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
     /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
-    .language-dropdown {
-      position: relative;
-    }
+    .language-dropdown { position: relative; }
 
     .language-dropdown-btn {
       display: flex;
@@ -377,9 +407,7 @@
       flex-shrink: 0;
     }
 
-    .language-option .lang-name {
-      flex: 1;
-    }
+    .language-option .lang-name { flex: 1; }
 
     .header-right { display: flex; align-items: center; gap: 24px; }
     .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
@@ -430,9 +458,7 @@
         gap: 12px;
       }
 
-      .language-dropdown {
-        width: 100%;
-      }
+      .language-dropdown { width: 100%; }
 
       .language-dropdown-btn {
         width: 100%;
@@ -768,8 +794,6 @@
                 </div>
               </a>
 
-              
-
               <a href="servicos/custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -821,7 +845,7 @@
             <span class="lang-code" id="currentLang">PT</span>
             <span class="dropdown-arrow">▼</span>
           </button>
-          
+
           <div class="language-dropdown-content">
             <button class="language-option active" data-lang="pt">
               <span class="lang-flag">🇵🇹</span>
@@ -964,43 +988,41 @@
               </p>
             </div>
 
-           <form class="book-form"
-      id="contactForm"
-      action="https://formsubmit.co/ajax/geral@cobrait.pt"
-      method="POST"
-      autocomplete="on">
+            <form class="book-form"
+                  id="contactForm"
+                  action="https://formsubmit.co/ajax/geral@cobrait.pt"
+                  method="POST"
+                  autocomplete="on">
 
+              <!-- Configurações do FormSubmit -->
+              <input type="hidden" name="_subject" value="Novo pedido — Book a Call">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
 
-  <!-- Configurações do FormSubmit -->
-  <input type="hidden" name="_subject" value="Novo pedido — Book a Call">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
+              <label class="field">
+                <span data-pt="Nome" data-en="Name" data-es="Nombre">Nome</span>
+                <input type="text" name="Nome" placeholder="O teu nome" required>
+              </label>
 
-  <label class="field">
-    <span data-pt="Nome" data-en="Name" data-es="Nombre">Nome</span>
-    <input type="text" name="Nome" placeholder="O teu nome" required>
-  </label>
+              <label class="field">
+                <span data-pt="Email" data-en="Email" data-es="Email">Email</span>
+                <input type="email" name="Email" placeholder="o.teu@email.com" required>
+              </label>
 
-  <label class="field">
-    <span data-pt="Email" data-en="Email" data-es="Email">Email</span>
-    <input type="email" name="Email" placeholder="o.teu@email.com" required>
-  </label>
-
-  <label class="field">
-    <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto">Orçamento</span>
-    <select name="Orçamento" required>
-      <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…">Selecionar…</option>
-      <option>€1k–€5k</option>
-      <option>€5k–€15k</option>
-      <option>€15k–€50k</option>
-      <option>€50k+</option>
-    </select>
-  </label>
-
+              <label class="field">
+                <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto">Orçamento</span>
+                <select name="Orçamento" required>
+                  <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…">Selecionar…</option>
+                  <option>€1k–€5k</option>
+                  <option>€5k–€15k</option>
+                  <option>€15k–€50k</option>
+                  <option>€50k+</option>
+                </select>
+              </label>
 
               <label class="field">
                 <span data-pt="Descrição" data-en="Description" data-es="Descripción">Descrição</span>
-                <textarea name="description" rows="6" 
+                <textarea name="description" rows="6"
                           data-pt="Conta-nos em 2–3 linhas o que precisas"
                           data-en="Tell us in 2–3 lines what you need"
                           data-es="Cuéntanos en 2–3 líneas lo que necesitas"
@@ -1013,7 +1035,7 @@
                       data-es="¿Cómo nos conociste?">
                   Como soubeste de nós?
                 </span>
-                <input type="text" name="referral" 
+                <input type="text" name="referral"
                        data-pt="Google, indicação, LinkedIn…"
                        data-en="Google, referral, LinkedIn…"
                        data-es="Google, referencia, LinkedIn…"
@@ -1029,7 +1051,7 @@
                 </span>
               </label>
 
-              <button class="submit-btn" type="submit"
+              <button class="submit-btn" id="submitBtn" type="submit"
                       data-pt="ENVIAR"
                       data-en="SUBMIT"
                       data-es="ENVIAR">
@@ -1043,10 +1065,25 @@
                 Ao enviar, aceitas ser contactado pela Cobrait sobre este pedido.
               </p>
             </form>
+
             <div id="formSuccess" class="form-success" style="display:none;">
-  <h3>Pedido enviado com sucesso 🎉</h3>
-  <p>Obrigado pelo contacto. Respondemos normalmente em 24–48h.</p>
-</div>
+              <h3 data-pt="Pedido enviado com sucesso 🎉"
+                  data-en="Request sent successfully 🎉"
+                  data-es="Solicitud enviada con éxito 🎉">
+                Pedido enviado com sucesso 🎉
+              </h3>
+              <p data-pt="Obrigado pelo contacto. Vamos analisar e entraremos em contacto normalmente em 24–48h."
+                 data-en="Thanks for reaching out. We’ll review it and get back to you обычно within 24–48h."
+                 data-es="Gracias por contactarnos. Lo revisaremos y te responderemos normalmente en 24–48h.">
+                Obrigado pelo contacto. Vamos analisar e entraremos em contacto normalmente em 24–48h.
+              </p>
+              <p class="tiny"
+                 data-pt="Se precisares de algo urgente, envia email para geral@cobrait.pt."
+                 data-en="If it’s urgent, email us at geral@cobrait.pt."
+                 data-es="Si es urgente, escríbenos a geral@cobrait.pt.">
+                Se precisares de algo urgente, envia email para geral@cobrait.pt.
+              </p>
+            </div>
 
           </div>
         </div>
@@ -1150,20 +1187,73 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
+  <!-- ✅ ADIÇÃO: Submit AJAX (não redireciona) + mostra mensagem inline -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('contactForm');
+      const successBox = document.getElementById('formSuccess');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // estado do botão
+        const originalText = submitBtn ? submitBtn.textContent : '';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'A enviar...';
+          submitBtn.style.opacity = '0.9';
+        }
+
+        try {
+          const formData = new FormData(form);
+
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (!res.ok) throw new Error('Network response was not ok');
+
+          // esconder form e mostrar sucesso
+          form.style.display = 'none';
+          successBox.style.display = 'block';
+
+          // scroll suave para a mensagem
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        } catch (err) {
+          // fallback simples (sem estragar layout)
+          alert('Não foi possível enviar agora. Tenta novamente em instantes ou envia email para geral@cobrait.pt.');
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText || 'ENVIAR';
+            submitBtn.style.opacity = '';
+          }
+        }
+      });
+    });
+  </script>
+
   <!-- Script de línguas IGUAL AO INDEX -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
-      
+
       // Mapeamento de bandeiras para cada língua
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
         'es': '🇪🇸'
       };
-      
+
       // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
@@ -1203,13 +1293,13 @@
         } else {
           currentFlag.textContent = '🇬🇧';
         }
-        
+
         if (codeMap[lang]) {
           currentLang.textContent = codeMap[lang];
         } else {
           currentLang.textContent = 'EN';
         }
-        
+
         // Atualizar as opções ativas
         languageOptions.forEach(option => {
           option.classList.remove('active');
@@ -1230,12 +1320,12 @@
         const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
-          
+
           // Se não houver tradução para esta língua, usar inglês como fallback
           if (text === null && lang !== 'en') {
             text = el.getAttribute('data-en');
           }
-          
+
           if (text === null) return;
 
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
@@ -1258,12 +1348,12 @@
         const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
-          
+
           // Se não houver tradução para esta língua, usar inglês como fallback
           if (val === null && lang !== 'en') {
             val = el.getAttribute('data-en');
           }
-          
+
           if (val) el.setAttribute('aria-label', val);
         });
       }
