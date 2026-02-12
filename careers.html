@@ -1267,238 +1267,7 @@
       text-decoration: underline;
     }
     
-            /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-        .footer-pro {
-            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-            color: #cbd5e1;
-            position: relative;
-            overflow: hidden;
-            padding: 60px 0 24px;
-        }
-        .footer-pro::before {
-            content: "";
-            position: absolute;
-            inset: -200px -200px auto auto;
-            width: 420px;
-            height: 420px;
-            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-            filter: blur(10px);
-            pointer-events: none;
-        }
-        .footer-pro::after {
-            content: "";
-            position: absolute;
-            inset: auto auto -240px -240px;
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-            filter: blur(12px);
-            pointer-events: none;
-        }
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-        }
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        /* LOGO REMOVIDA - Apenas texto da marca */
-        .footer-brand-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: rgba(226, 232, 240, 0.95);
-            margin: 0;
-            line-height: 1;
-        }
-        .footer-brand-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.8);
-            margin: 4px 0 0 0;
-        }
-        .footer-tagline {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(226, 232, 240, 0.85);
-            max-width: 420px;
-            margin: 8px 0 0 0;
-        }
-        .footer-cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .btn--footer {
-            padding: 10px 18px;
-            font-size: 14px;
-            border-radius: 10px;
-        }
-        .btn--footer.btn--outline {
-            border-color: rgba(226, 232, 240, 0.35);
-            color: rgba(226, 232, 240, 0.92);
-        }
-        .btn--footer.btn--outline:hover {
-            background: rgba(226, 232, 240, 0.12);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: none;
-            border-color: rgba(226, 232, 240, 0.5);
-        }
-        .footer-col h4 {
-            margin: 0 0 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: rgba(226, 232, 240, 0.9);
-        }
-        .footer-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-        }
-        .footer-links a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all .2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-        .footer-meta {
-            display: grid;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.9);
-        }
-        .footer-meta a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-meta a:hover {
-            color: #fff;
-        }
-        /* Estilos específicos para o link do Instagram */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 6px;
-            transition: all .2s ease;
-        }
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .social-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        .footer-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        .footer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.22);
-            background: rgba(15, 23, 42, 0.35);
-            color: rgba(226, 232, 240, 0.9);
-            font-size: 12px;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        .footer-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-        }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            padding-top: 16px;
-            position: relative;
-            z-index: 1;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: rgba(148, 163, 184, 0.9);
-        }
-        .footer-mini-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-        .footer-mini-links a {
-            color: rgba(148, 163, 184, 0.95);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-mini-links a:hover {
-            color: #fff;
-        }
-        @media (max-width: 1024px) {
-            .footer-top {
-                grid-template-columns: 1.6fr 1fr 1fr;
-            }
-            .footer-col--contact {
-                grid-column: 1 / -1;
-            }
-        }
-        @media (max-width: 768px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-mini-links {
-                justify-content: flex-start;
-            }
-            .footer-pro {
-                padding: 50px 0 20px;
-            }
-            .footer-brand-title {
-                font-size: 22px;
-            }
-        }
-
-/* ====== RESPONSIVIDADE ====== */
+    /* ====== RESPONSIVIDADE ====== */
     @media (max-width: 1024px) {
       .hero-stats {
         gap: 3rem;
@@ -1655,6 +1424,237 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ========================= FOOTER PRO - EXATAMENTE IGUAL AO INDEX ========================= */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 0 24px;
+    }
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    /* LOGO REMOVIDA - Apenas texto da marca */
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 8px 0 0 0;
+    }
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-meta a:hover {
+      color: #fff;
+    }
+    /* Estilos específicos para o link do Instagram */
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all .2s ease;
+    }
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .social-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-mini-links a:hover {
+      color: #fff;
+    }
+    @media (max-width: 1024px) {
+      .footer-top {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+      .footer-col--contact {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-mini-links {
+        justify-content: flex-start;
+      }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
+    }
   </style>
 </head>
 
@@ -1724,8 +1724,6 @@
                   </p>
                 </div>
               </a>
-
-              
 
               <a href="servicos/custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2146,89 +2144,89 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER PRO - EXATAMENTE IGUAL AO INDEX -->
   <footer class="footer-pro" role="contentinfo">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-                        <h3 class="footer-brand-title">Cobrait</h3>
-                        <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-                        </p>
-                        <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
-                                Agendar uma chamada
-                            </a>
-                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
-                                Ver serviços
-                            </a>
-                        </div>
-                        <div class="footer-badges" aria-label="Highlights">
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
-                        <ul class="footer-links">
-                            <li><a href="servicos/product-scope.html">Product Scope</a></li>
-                            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-                            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-                            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
-                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
-                        <ul class="footer-links">
-                            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-                            <li><a href="#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-                            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
-                        <div class="footer-meta">
-                            <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
-                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-                            </div>
-                            <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
-                                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
-                            </div>
-                            <div>
-                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
-                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 .013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948 .2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98 .059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                    <span>@cobra_it</span>
-                                </a>
-                            </div>
-                            <div>
-                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div>
-                        © <span id="year"></span> Cobrait — Software Factory
-                    </div>
-                    <div class="footer-mini-links">
-                        <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-                        <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-                        <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
-                    </div>
-                </div>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <!-- LOGO REMOVIDA - substituída por texto COBRAIT (igual ao index) -->
+          <h3 class="footer-brand-title">Cobrait</h3>
+          <p class="footer-brand-subtitle">Software Factory</p>
+          <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          </p>
+          <div class="footer-cta-row">
+            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
+              Agendar uma chamada
+            </a>
+            <a class="btn btn--outline btn--footer" href="index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
+              Ver serviços
+            </a>
+          </div>
+          <div class="footer-badges" aria-label="Highlights">
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+           
+            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+          <div class="footer-meta">
+            <div>
+              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
             </div>
-        </footer>
+            <div>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+            </div>
+            <div>
+              <!-- LINK DO INSTAGRAM ADICIONADO AQUI (IGUAL AO INDEX) -->
+              <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@cobra_it</span>
+              </a>
+            </div>
+            <div>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+              <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © <span id="year"></span> Cobrait — Software Factory
+        </div>
+        <div class="footer-mini-links">
+          <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     // Set current year in footer
@@ -2452,329 +2450,328 @@
     });
   </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const langButtons = document.querySelectorAll(".language-option");
-  const currentLang = document.getElementById("currentLang");
-  const currentFlag = document.getElementById("currentFlag");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const langButtons = document.querySelectorAll(".language-option");
+      const currentLang = document.getElementById("currentLang");
+      const currentFlag = document.getElementById("currentFlag");
 
-  const flags = { pt: "🇵🇹", en: "🇬🇧", es: "🇪🇸" };
+      const flags = { pt: "🇵🇹", en: "🇬🇧", es: "🇪🇸" };
 
-  // Texts for the Careers page (minimal, only to make language switch affect the page content too)
-  const texts = {
-    pt: {
-      heroBadge: "🚀 Estamos a contratar pessoas talentosas",
-      heroTitle: "Constrói o Futuro<br>da Tecnologia",
-      heroSubtitle: "Junta-te a uma equipa de inovação a construir soluções de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente dinâmico.",
-      viewPositions: "Ver vagas",
-      hiringProcess: "O nosso processo",
-      stat1Label: "Projetos de sucesso",
-      stat2Label: "Remote-first",
-      stat3Label: "Especialistas",
-      cultureSubtitle: "A NOSSA CULTURA",
-      cultureTitle: "Valores que nos movem",
-      cultureDesc: "Criamos um ambiente onde a inovação prospera, o talento cresce e o trabalho com significado gera impacto real.",
-      value1Title: "Inovação primeiro",
-      value1Desc: "Desafiamos o convencional e adotamos tecnologias de ponta para construir soluções que moldam o amanhã.",
-      value2Title: "Excelência colaborativa",
-      value2Desc: "Grandes mentes a trabalhar juntas criam resultados extraordinários. Acreditamos no poder do trabalho em equipa.",
-      value3Title: "Obcecados por qualidade",
-      value3Desc: "Entregamos qualidade excecional em cada linha de código, em cada pixel de design e em cada interação com o cliente.",
-      perksSubtitle: "VANTAGENS & BENEFÍCIOS",
-      perksTitle: "Porque vais gostar de trabalhar aqui",
-      perksDesc: "Investimos no crescimento, bem‑estar e sucesso da nossa equipa com benefícios completos e uma cultura de apoio.",
-      benefit1Title: "Crescimento de carreira",
-      benefit2Title: "Trabalho flexível",
-      benefit3Title: "Stack moderna",
-      processSubtitle: "O NOSSO PROCESSO",
-      processTitle: "Transparente e eficiente",
-      processDesc: "Simplificámos o recrutamento para respeitar o teu tempo e garantir o melhor match para ambos.",
-      step1Title: "Candidatura inicial",
-      step1Desc: "Envia os teus dados e portefólio. Revemos todas as candidaturas em 48 horas.",
-      step2Title: "Entrevista de cultura",
-      step2Desc: "Uma conversa descontraída para falarmos de valores, objetivos e expectativas.",
-      step3Title: "Avaliação técnica",
-      step3Desc: "Um desafio prático e relevante para mostrar a tua capacidade de resolver problemas.",
-      step4Title: "Entrevista final & proposta",
-      step4Desc: "Conhece a equipa, alinhamos detalhes e recebes uma proposta competitiva.",
-      openingsSubtitle: "VAGAS ATUAIS",
-      openingsTitle: "Junta-te à nossa equipa",
-      openingsDesc: "Explora oportunidades para contribuir com as tuas competências e crescer connosco.",
-      filterAll: "Todas as vagas",
-      filterEng: "Engenharia",
-      filterDesign: "Design",
-      filterRemote: "Remoto",
-      applyNow: "Candidatar-me",
-      ctaTitle: "Pronto(a) para construir algo incrível?",
-      ctaDesc: "Se não encontras a vaga perfeita mas acreditas que podes contribuir para a nossa missão, queremos falar contigo. Talento encontra sempre lugar aqui.",
-      spontaneous: "Candidatura espontânea",
-      scheduleCall: "Agendar chamada",
-      contactSubtitle: "FALA CONNOSCO",
-      contactTitle: "Vamos falar",
-      contactDesc: "Tens dúvidas sobre cultura, processo ou oportunidades? Fala com a nossa equipa.",
-      emailUs: "Envia email",
-      responseTime: "Resposta em 24–48 horas",
-      visitHQ: "Visita o nosso HQ",
-      chatWithUs: "Fala connosco",
-      chatLine: "Agenda uma chamada com a nossa equipa de recrutamento",
-      chatLine2: "Fala sobre os teus objetivos de carreira",
-    },
-    en: {
-      heroBadge: "🚀 We're Hiring Talented People",
-      heroTitle: "Shape the Future<br>of Technology",
-      heroSubtitle: "Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.",
-      viewPositions: "View Open Positions",
-      hiringProcess: "Our Hiring Process",
-      stat1Label: "Successful Projects",
-      stat2Label: "Remote First",
-      stat3Label: "Industry Experts",
-      cultureSubtitle: "OUR CULTURE",
-      cultureTitle: "Core Values That Drive Us",
-      cultureDesc: "We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact.",
-      value1Title: "Innovation First",
-      value1Desc: "We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow.",
-      value2Title: "Collaborative Excellence",
-      value2Desc: "Great minds working together create extraordinary results. We believe in the power of teamwork.",
-      value3Title: "Quality Obsessed",
-      value3Desc: "We deliver exceptional quality in every line of code, every design pixel, and every client interaction.",
-      perksSubtitle: "PERKS & BENEFITS",
-      perksTitle: "Why You'll Love Working Here",
-      perksDesc: "We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture.",
-      benefit1Title: "Career Growth",
-      benefit2Title: "Flexible Work",
-      benefit3Title: "Modern Tech Stack",
-      processSubtitle: "OUR PROCESS",
-      processTitle: "Transparent & Efficient",
-      processDesc: "We've streamlined our hiring to respect your time while ensuring the perfect match for both sides.",
-      step1Title: "Initial Application",
-      step1Desc: "Submit your details and portfolio. We review every application within 48 hours.",
-      step2Title: "Culture Fit Interview",
-      step2Desc: "A relaxed conversation to discuss values, aspirations, and mutual expectations.",
-      step3Title: "Technical Assessment",
-      step3Desc: "A practical, relevant challenge that showcases your problem-solving skills.",
-      step4Title: "Final Interview & Offer",
-      step4Desc: "Meet the team, discuss details, and receive a competitive offer package.",
-      openingsSubtitle: "CURRENT OPENINGS",
-      openingsTitle: "Join Our Growing Team",
-      openingsDesc: "Explore opportunities to contribute your skills and grow with us.",
-      filterAll: "All Positions",
-      filterEng: "Engineering",
-      filterDesign: "Design",
-      filterRemote: "Remote",
-      applyNow: "Apply Now",
-      ctaTitle: "Ready to Build Something Amazing?",
-      ctaDesc: "If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.",
-      spontaneous: "Submit Spontaneous Application",
-      scheduleCall: "Schedule Discovery Call",
-      contactSubtitle: "GET IN TOUCH",
-      contactTitle: "Let's Connect",
-      contactDesc: "Have questions about our culture, process, or opportunities? Reach out to our team.",
-      emailUs: "Email Us",
-      responseTime: "Response within 24-48 hours",
-      visitHQ: "Visit Our HQ",
-      chatWithUs: "Chat With Us",
-      chatLine: "Schedule a call with our hiring team",
-      chatLine2: "Discuss your career aspirations",
-    },
-    es: {
-      heroBadge: "🚀 Estamos contratando talento",
-      heroTitle: "Da forma al Futuro<br>de la Tecnología",
-      heroSubtitle: "Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico.",
-      viewPositions: "Ver vacantes",
-      hiringProcess: "Nuestro proceso",
-      stat1Label: "Proyectos exitosos",
-      stat2Label: "Remote-first",
-      stat3Label: "Expertos",
-      cultureSubtitle: "NUESTRA CULTURA",
-      cultureTitle: "Valores que nos impulsan",
-      cultureDesc: "Cultivamos un entorno donde la innovación florece, el talento crece y el trabajo con propósito genera impacto real.",
-      value1Title: "Innovación primero",
-      value1Desc: "Desafiamos lo establecido y adoptamos tecnologías de punta para construir soluciones que moldean el mañana.",
-      value2Title: "Excelencia colaborativa",
-      value2Desc: "Grandes mentes trabajando juntas crean resultados extraordinarios. Creemos en el poder del trabajo en equipo.",
-      value3Title: "Obsesión por la calidad",
-      value3Desc: "Entregamos calidad excepcional en cada línea de código, cada píxel de diseño y cada interacción con el cliente.",
-      perksSubtitle: "VENTAJAS Y BENEFICIOS",
-      perksTitle: "Por qué te encantará trabajar aquí",
-      perksDesc: "Invertimos en el crecimiento, bienestar y éxito del equipo con beneficios completos y una cultura de apoyo.",
-      benefit1Title: "Crecimiento profesional",
-      benefit2Title: "Trabajo flexible",
-      benefit3Title: "Stack moderno",
-      processSubtitle: "NUESTRO PROCESO",
-      processTitle: "Transparente y eficiente",
-      processDesc: "Hemos simplificado la selección para respetar tu tiempo y asegurar el mejor encaje para ambas partes.",
-      step1Title: "Solicitud inicial",
-      step1Desc: "Envía tus datos y portafolio. Revisamos cada solicitud en 48 horas.",
-      step2Title: "Entrevista cultural",
-      step2Desc: "Una conversación relajada sobre valores, aspiraciones y expectativas.",
-      step3Title: "Evaluación técnica",
-      step3Desc: "Un reto práctico y relevante que muestra tu capacidad de resolver problemas.",
-      step4Title: "Entrevista final y oferta",
-      step4Desc: "Conoce al equipo, alineamos detalles y recibes una oferta competitiva.",
-      openingsSubtitle: "VACANTES ACTUALES",
-      openingsTitle: "Únete a nuestro equipo",
-      openingsDesc: "Explora oportunidades para aportar tus habilidades y crecer con nosotros.",
-      filterAll: "Todas",
-      filterEng: "Ingeniería",
-      filterDesign: "Diseño",
-      filterRemote: "Remoto",
-      applyNow: "Postular",
-      ctaTitle: "¿Listo para construir algo increíble?",
-      ctaDesc: "Si no ves el rol perfecto pero crees que puedes contribuir a nuestra misión, queremos conocerte. El talento siempre encuentra su lugar aquí.",
-      spontaneous: "Candidatura espontánea",
-      scheduleCall: "Agendar llamada",
-      contactSubtitle: "CONTACTO",
-      contactTitle: "Hablemos",
-      contactDesc: "¿Tienes preguntas sobre cultura, proceso u oportunidades? Contacta con nuestro equipo.",
-      emailUs: "Escríbenos",
-      responseTime: "Respuesta en 24–48 horas",
-      visitHQ: "Visita nuestra sede",
-      chatWithUs: "Habla con nosotros",
-      chatLine: "Agenda una llamada con nuestro equipo de selección",
-      chatLine2: "Habla sobre tus objetivos profesionales",
-    }
-  };
-
-  function setText(el, value, useHtml = false) {
-    if (!el) return;
-    if (useHtml) el.innerHTML = value;
-    else el.textContent = value;
-  }
-
-  function applyLanguage(lang) {
-    // Header (existing behaviour)
-    langButtons.forEach(b => b.classList.remove("active"));
-    const active = document.querySelector(`.language-option[data-lang="${lang}"]`);
-    if (active) active.classList.add("active");
-
-    if (currentLang) currentLang.textContent = lang.toUpperCase();
-    if (currentFlag) currentFlag.textContent = flags[lang] || "🏳️";
-
-    // Nav items with data-pt/data-en/data-es (already present)
-    document.querySelectorAll("[data-pt]").forEach(el => {
-      const v = el.dataset[lang];
-      if (typeof v !== "undefined") el.textContent = v;
-    });
-
-    // Careers page content (no markup changes; translate by selecting existing nodes)
-    const t = texts[lang] || texts.en;
-
-    setText(document.querySelector(".hero-badge span:nth-child(2)"), t.heroBadge);
-    setText(document.querySelector(".hero-title"), t.heroTitle, true);
-    setText(document.querySelector(".hero-subtitle"), t.heroSubtitle);
-
-    const heroBtns = document.querySelectorAll(".hero-actions .btn");
-    setText(heroBtns[0], t.viewPositions);
-    if (heroBtns[0]) heroBtns[0].insertAdjacentText("beforeend", " →");
-    setText(heroBtns[1], t.hiringProcess);
-
-    const statLabels = document.querySelectorAll(".stat-label");
-    setText(statLabels[0], t.stat1Label);
-    setText(statLabels[1], t.stat2Label);
-    setText(statLabels[2], t.stat3Label);
-
-    // Values section header
-    const values = document.querySelector(".values-section");
-    if (values) {
-      setText(values.querySelector(".section-subtitle"), t.cultureSubtitle);
-      setText(values.querySelector(".section-title"), t.cultureTitle);
-      setText(values.querySelector(".section-description"), t.cultureDesc);
-      const cards = values.querySelectorAll(".value-card");
-      if (cards[0]) { setText(cards[0].querySelector(".value-title"), t.value1Title); setText(cards[0].querySelector(".value-description"), t.value1Desc); }
-      if (cards[1]) { setText(cards[1].querySelector(".value-title"), t.value2Title); setText(cards[1].querySelector(".value-description"), t.value2Desc); }
-      if (cards[2]) { setText(cards[2].querySelector(".value-title"), t.value3Title); setText(cards[2].querySelector(".value-description"), t.value3Desc); }
-    }
-
-    // Benefits section header + benefit titles
-    const benefits = document.querySelector(".benefits-section");
-    if (benefits) {
-      setText(benefits.querySelector(".section-subtitle"), t.perksSubtitle);
-      setText(benefits.querySelector(".section-title"), t.perksTitle);
-      setText(benefits.querySelector(".section-description"), t.perksDesc);
-      const items = benefits.querySelectorAll(".benefit-item .benefit-title");
-      setText(items[0], t.benefit1Title);
-      setText(items[1], t.benefit2Title);
-      setText(items[2], t.benefit3Title);
-    }
-
-    // Process section
-    const process = document.querySelector(".process-section");
-    if (process) {
-      setText(process.querySelector(".section-subtitle"), t.processSubtitle);
-      setText(process.querySelector(".section-title"), t.processTitle);
-      setText(process.querySelector(".section-description"), t.processDesc);
-      const steps = process.querySelectorAll(".process-step");
-      if (steps[0]) { setText(steps[0].querySelector("h4"), t.step1Title); setText(steps[0].querySelector("p"), t.step1Desc); }
-      if (steps[1]) { setText(steps[1].querySelector("h4"), t.step2Title); setText(steps[1].querySelector("p"), t.step2Desc); }
-      if (steps[2]) { setText(steps[2].querySelector("h4"), t.step3Title); setText(steps[2].querySelector("p"), t.step3Desc); }
-      if (steps[3]) { setText(steps[3].querySelector("h4"), t.step4Title); setText(steps[3].querySelector("p"), t.step4Desc); }
-    }
-
-    // Jobs section
-    const jobs = document.querySelector(".jobs-section");
-    if (jobs) {
-      setText(jobs.querySelector(".section-subtitle"), t.openingsSubtitle);
-      setText(jobs.querySelector(".section-title"), t.openingsTitle);
-      setText(jobs.querySelector(".section-description"), t.openingsDesc);
-
-      const filters = jobs.querySelectorAll(".jobs-filter .filter-btn");
-      setText(filters[0], t.filterAll);
-      setText(filters[1], t.filterEng);
-      setText(filters[2], t.filterDesign);
-      setText(filters[3], t.filterRemote);
-
-      // Apply buttons
-      jobs.querySelectorAll(".job-card .btn").forEach(btn => setText(btn, t.applyNow));
-    }
-
-    // CTA section
-    const cta = document.querySelector(".cta-section");
-    if (cta) {
-      setText(cta.querySelector(".cta-title"), t.ctaTitle);
-      setText(cta.querySelector(".cta-description"), t.ctaDesc);
-      const ctaBtns = cta.querySelectorAll(".cta-actions .btn");
-      setText(ctaBtns[0], t.spontaneous);
-      setText(ctaBtns[1], t.scheduleCall);
-    }
-
-    // Contact section
-    const contact = document.querySelector(".contact-section");
-    if (contact) {
-      setText(contact.querySelector(".section-subtitle"), t.contactSubtitle);
-      setText(contact.querySelector(".section-title"), t.contactTitle);
-      setText(contact.querySelector(".section-description"), t.contactDesc);
-
-      const cards = contact.querySelectorAll(".contact-card");
-      if (cards[0]) {
-        setText(cards[0].querySelector(".contact-title"), t.emailUs);
-        const ps = cards[0].querySelectorAll(".contact-details p");
-        if (ps[1]) setText(ps[1], t.responseTime);
-      }
-      if (cards[1]) setText(cards[1].querySelector(".contact-title"), t.visitHQ);
-      if (cards[2]) {
-        setText(cards[2].querySelector(".contact-title"), t.chatWithUs);
-        const ps = cards[2].querySelectorAll(".contact-details p");
-        if (ps[0]) {
-          // Keep the link, swap surrounding text
-          const a = ps[0].querySelector("a");
-          if (a) ps[0].innerHTML = `${a.outerHTML.replace(a.textContent, (lang === "pt" ? "Agenda uma chamada" : lang === "es" ? "Agenda una llamada" : "Schedule a call"))} ${lang === "pt" ? "com a nossa equipa de recrutamento" : lang === "es" ? "con nuestro equipo de selección" : "with our hiring team"}`;
+      // Texts for the Careers page (minimal, only to make language switch affect the page content too)
+      const texts = {
+        pt: {
+          heroBadge: "🚀 Estamos a contratar pessoas talentosas",
+          heroTitle: "Constrói o Futuro<br>da Tecnologia",
+          heroSubtitle: "Junta-te a uma equipa de inovação a construir soluções de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente dinâmico.",
+          viewPositions: "Ver vagas",
+          hiringProcess: "O nosso processo",
+          stat1Label: "Projetos de sucesso",
+          stat2Label: "Remote-first",
+          stat3Label: "Especialistas",
+          cultureSubtitle: "A NOSSA CULTURA",
+          cultureTitle: "Valores que nos movem",
+          cultureDesc: "Criamos um ambiente onde a inovação prospera, o talento cresce e o trabalho com significado gera impacto real.",
+          value1Title: "Inovação primeiro",
+          value1Desc: "Desafiamos o convencional e adotamos tecnologias de ponta para construir soluções que moldam o amanhã.",
+          value2Title: "Excelência colaborativa",
+          value2Desc: "Grandes mentes a trabalhar juntas criam resultados extraordinários. Acreditamos no poder do trabalho em equipa.",
+          value3Title: "Obcecados por qualidade",
+          value3Desc: "Entregamos qualidade excecional em cada linha de código, em cada pixel de design e em cada interação com o cliente.",
+          perksSubtitle: "VANTAGENS & BENEFÍCIOS",
+          perksTitle: "Porque vais gostar de trabalhar aqui",
+          perksDesc: "Investimos no crescimento, bem‑estar e sucesso da nossa equipa com benefícios completos e uma cultura de apoio.",
+          benefit1Title: "Crescimento de carreira",
+          benefit2Title: "Trabalho flexível",
+          benefit3Title: "Stack moderna",
+          processSubtitle: "O NOSSO PROCESSO",
+          processTitle: "Transparente e eficiente",
+          processDesc: "Simplificámos o recrutamento para respeitar o teu tempo e garantir o melhor match para ambos.",
+          step1Title: "Candidatura inicial",
+          step1Desc: "Envia os teus dados e portefólio. Revemos todas as candidaturas em 48 horas.",
+          step2Title: "Entrevista de cultura",
+          step2Desc: "Uma conversa descontraída para falarmos de valores, objetivos e expectativas.",
+          step3Title: "Avaliação técnica",
+          step3Desc: "Um desafio prático e relevante para mostrar a tua capacidade de resolver problemas.",
+          step4Title: "Entrevista final & proposta",
+          step4Desc: "Conhece a equipa, alinhamos detalhes e recebes uma proposta competitiva.",
+          openingsSubtitle: "VAGAS ATUAIS",
+          openingsTitle: "Junta-te à nossa equipa",
+          openingsDesc: "Explora oportunidades para contribuir com as tuas competências e crescer connosco.",
+          filterAll: "Todas as vagas",
+          filterEng: "Engenharia",
+          filterDesign: "Design",
+          filterRemote: "Remoto",
+          applyNow: "Candidatar-me",
+          ctaTitle: "Pronto(a) para construir algo incrível?",
+          ctaDesc: "Se não encontras a vaga perfeita mas acreditas que podes contribuir para a nossa missão, queremos falar contigo. Talento encontra sempre lugar aqui.",
+          spontaneous: "Candidatura espontânea",
+          scheduleCall: "Agendar chamada",
+          contactSubtitle: "FALA CONNOSCO",
+          contactTitle: "Vamos falar",
+          contactDesc: "Tens dúvidas sobre cultura, processo ou oportunidades? Fala com a nossa equipa.",
+          emailUs: "Envia email",
+          responseTime: "Resposta em 24–48 horas",
+          visitHQ: "Visita o nosso HQ",
+          chatWithUs: "Fala connosco",
+          chatLine: "Agenda uma chamada com a nossa equipa de recrutamento",
+          chatLine2: "Fala sobre os teus objetivos de carreira",
+        },
+        en: {
+          heroBadge: "🚀 We're Hiring Talented People",
+          heroTitle: "Shape the Future<br>of Technology",
+          heroSubtitle: "Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.",
+          viewPositions: "View Open Positions",
+          hiringProcess: "Our Hiring Process",
+          stat1Label: "Successful Projects",
+          stat2Label: "Remote First",
+          stat3Label: "Industry Experts",
+          cultureSubtitle: "OUR CULTURE",
+          cultureTitle: "Core Values That Drive Us",
+          cultureDesc: "We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact.",
+          value1Title: "Innovation First",
+          value1Desc: "We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow.",
+          value2Title: "Collaborative Excellence",
+          value2Desc: "Great minds working together create extraordinary results. We believe in the power of teamwork.",
+          value3Title: "Quality Obsessed",
+          value3Desc: "We deliver exceptional quality in every line of code, every design pixel, and every client interaction.",
+          perksSubtitle: "PERKS & BENEFITS",
+          perksTitle: "Why You'll Love Working Here",
+          perksDesc: "We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture.",
+          benefit1Title: "Career Growth",
+          benefit2Title: "Flexible Work",
+          benefit3Title: "Modern Tech Stack",
+          processSubtitle: "OUR PROCESS",
+          processTitle: "Transparent & Efficient",
+          processDesc: "We've streamlined our hiring to respect your time while ensuring the perfect match for both sides.",
+          step1Title: "Initial Application",
+          step1Desc: "Submit your details and portfolio. We review every application within 48 hours.",
+          step2Title: "Culture Fit Interview",
+          step2Desc: "A relaxed conversation to discuss values, aspirations, and mutual expectations.",
+          step3Title: "Technical Assessment",
+          step3Desc: "A practical, relevant challenge that showcases your problem-solving skills.",
+          step4Title: "Final Interview & Offer",
+          step4Desc: "Meet the team, discuss details, and receive a competitive offer package.",
+          openingsSubtitle: "CURRENT OPENINGS",
+          openingsTitle: "Join Our Growing Team",
+          openingsDesc: "Explore opportunities to contribute your skills and grow with us.",
+          filterAll: "All Positions",
+          filterEng: "Engineering",
+          filterDesign: "Design",
+          filterRemote: "Remote",
+          applyNow: "Apply Now",
+          ctaTitle: "Ready to Build Something Amazing?",
+          ctaDesc: "If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.",
+          spontaneous: "Submit Spontaneous Application",
+          scheduleCall: "Schedule Discovery Call",
+          contactSubtitle: "GET IN TOUCH",
+          contactTitle: "Let's Connect",
+          contactDesc: "Have questions about our culture, process, or opportunities? Reach out to our team.",
+          emailUs: "Email Us",
+          responseTime: "Response within 24-48 hours",
+          visitHQ: "Visit Our HQ",
+          chatWithUs: "Chat With Us",
+          chatLine: "Schedule a call with our hiring team",
+          chatLine2: "Discuss your career aspirations",
+        },
+        es: {
+          heroBadge: "🚀 Estamos contratando talento",
+          heroTitle: "Da forma al Futuro<br>de la Tecnología",
+          heroSubtitle: "Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico.",
+          viewPositions: "Ver vacantes",
+          hiringProcess: "Nuestro proceso",
+          stat1Label: "Proyectos exitosos",
+          stat2Label: "Remote-first",
+          stat3Label: "Expertos",
+          cultureSubtitle: "NUESTRA CULTURA",
+          cultureTitle: "Valores que nos impulsan",
+          cultureDesc: "Cultivamos un entorno donde la innovación florece, el talento crece y el trabajo con propósito genera impacto real.",
+          value1Title: "Innovación primero",
+          value1Desc: "Desafiamos lo establecido y adoptamos tecnologías de punta para construir soluciones que moldean el mañana.",
+          value2Title: "Excelencia colaborativa",
+          value2Desc: "Grandes mentes trabajando juntas crean resultados extraordinarios. Creemos en el poder del trabajo en equipo.",
+          value3Title: "Obsesión por la calidad",
+          value3Desc: "Entregamos calidad excepcional en cada línea de código, cada píxel de diseño y cada interacción con el cliente.",
+          perksSubtitle: "VENTAJAS Y BENEFICIOS",
+          perksTitle: "Por qué te encantará trabajar aquí",
+          perksDesc: "Invertimos en el crecimiento, bienestar y éxito del equipo con beneficios completos y una cultura de apoyo.",
+          benefit1Title: "Crecimiento profesional",
+          benefit2Title: "Trabajo flexible",
+          benefit3Title: "Stack moderno",
+          processSubtitle: "NUESTRO PROCESO",
+          processTitle: "Transparente y eficiente",
+          processDesc: "Hemos simplificado la selección para respetar tu tiempo y asegurar el mejor encaje para ambas partes.",
+          step1Title: "Solicitud inicial",
+          step1Desc: "Envía tus datos y portafolio. Revisamos cada solicitud en 48 horas.",
+          step2Title: "Entrevista cultural",
+          step2Desc: "Una conversación relajada sobre valores, aspiraciones y expectativas.",
+          step3Title: "Evaluación técnica",
+          step3Desc: "Un reto práctico y relevante que muestra tu capacidad de resolver problemas.",
+          step4Title: "Entrevista final y oferta",
+          step4Desc: "Conoce al equipo, alineamos detalles y recibes una oferta competitiva.",
+          openingsSubtitle: "VACANTES ACTUALES",
+          openingsTitle: "Únete a nuestro equipo",
+          openingsDesc: "Explora oportunidades para aportar tus habilidades y crecer con nosotros.",
+          filterAll: "Todas",
+          filterEng: "Ingeniería",
+          filterDesign: "Diseño",
+          filterRemote: "Remoto",
+          applyNow: "Postular",
+          ctaTitle: "¿Listo para construir algo increíble?",
+          ctaDesc: "Si no ves el rol perfecto pero crees que puedes contribuir a nuestra misión, queremos conocerte. El talento siempre encuentra su lugar aquí.",
+          spontaneous: "Candidatura espontánea",
+          scheduleCall: "Agendar llamada",
+          contactSubtitle: "CONTACTO",
+          contactTitle: "Hablemos",
+          contactDesc: "¿Tienes preguntas sobre cultura, proceso u oportunidades? Contacta con nuestro equipo.",
+          emailUs: "Escríbenos",
+          responseTime: "Respuesta en 24–48 horas",
+          visitHQ: "Visita nuestra sede",
+          chatWithUs: "Habla con nosotros",
+          chatLine: "Agenda una llamada con nuestro equipo de selección",
+          chatLine2: "Habla sobre tus objetivos profesionales",
         }
-        if (ps[1]) setText(ps[1], t.chatLine2);
+      };
+
+      function setText(el, value, useHtml = false) {
+        if (!el) return;
+        if (useHtml) el.innerHTML = value;
+        else el.textContent = value;
       }
-    }
-  }
 
-  // Bind clicks
-  langButtons.forEach(btn => {
-    btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
-  });
+      function applyLanguage(lang) {
+        // Header (existing behaviour)
+        langButtons.forEach(b => b.classList.remove("active"));
+        const active = document.querySelector(`.language-option[data-lang="${lang}"]`);
+        if (active) active.classList.add("active");
 
-  // Default language based on current active button (or HTML lang)
-  const initial = (document.querySelector(".language-option.active")?.dataset.lang)
-    || (document.documentElement.lang || "en").slice(0,2).toLowerCase();
-  applyLanguage(initial);
-});
-</script>
+        if (currentLang) currentLang.textContent = lang.toUpperCase();
+        if (currentFlag) currentFlag.textContent = flags[lang] || "🏳️";
 
+        // Nav items with data-pt/data-en/data-es (already present)
+        document.querySelectorAll("[data-pt]").forEach(el => {
+          const v = el.dataset[lang];
+          if (typeof v !== "undefined") el.textContent = v;
+        });
+
+        // Careers page content (no markup changes; translate by selecting existing nodes)
+        const t = texts[lang] || texts.en;
+
+        setText(document.querySelector(".hero-badge span:nth-child(2)"), t.heroBadge);
+        setText(document.querySelector(".hero-title"), t.heroTitle, true);
+        setText(document.querySelector(".hero-subtitle"), t.heroSubtitle);
+
+        const heroBtns = document.querySelectorAll(".hero-actions .btn");
+        setText(heroBtns[0], t.viewPositions);
+        if (heroBtns[0]) heroBtns[0].insertAdjacentText("beforeend", " →");
+        setText(heroBtns[1], t.hiringProcess);
+
+        const statLabels = document.querySelectorAll(".stat-label");
+        setText(statLabels[0], t.stat1Label);
+        setText(statLabels[1], t.stat2Label);
+        setText(statLabels[2], t.stat3Label);
+
+        // Values section header
+        const values = document.querySelector(".values-section");
+        if (values) {
+          setText(values.querySelector(".section-subtitle"), t.cultureSubtitle);
+          setText(values.querySelector(".section-title"), t.cultureTitle);
+          setText(values.querySelector(".section-description"), t.cultureDesc);
+          const cards = values.querySelectorAll(".value-card");
+          if (cards[0]) { setText(cards[0].querySelector(".value-title"), t.value1Title); setText(cards[0].querySelector(".value-description"), t.value1Desc); }
+          if (cards[1]) { setText(cards[1].querySelector(".value-title"), t.value2Title); setText(cards[1].querySelector(".value-description"), t.value2Desc); }
+          if (cards[2]) { setText(cards[2].querySelector(".value-title"), t.value3Title); setText(cards[2].querySelector(".value-description"), t.value3Desc); }
+        }
+
+        // Benefits section header + benefit titles
+        const benefits = document.querySelector(".benefits-section");
+        if (benefits) {
+          setText(benefits.querySelector(".section-subtitle"), t.perksSubtitle);
+          setText(benefits.querySelector(".section-title"), t.perksTitle);
+          setText(benefits.querySelector(".section-description"), t.perksDesc);
+          const items = benefits.querySelectorAll(".benefit-item .benefit-title");
+          setText(items[0], t.benefit1Title);
+          setText(items[1], t.benefit2Title);
+          setText(items[2], t.benefit3Title);
+        }
+
+        // Process section
+        const process = document.querySelector(".process-section");
+        if (process) {
+          setText(process.querySelector(".section-subtitle"), t.processSubtitle);
+          setText(process.querySelector(".section-title"), t.processTitle);
+          setText(process.querySelector(".section-description"), t.processDesc);
+          const steps = process.querySelectorAll(".process-step");
+          if (steps[0]) { setText(steps[0].querySelector("h4"), t.step1Title); setText(steps[0].querySelector("p"), t.step1Desc); }
+          if (steps[1]) { setText(steps[1].querySelector("h4"), t.step2Title); setText(steps[1].querySelector("p"), t.step2Desc); }
+          if (steps[2]) { setText(steps[2].querySelector("h4"), t.step3Title); setText(steps[2].querySelector("p"), t.step3Desc); }
+          if (steps[3]) { setText(steps[3].querySelector("h4"), t.step4Title); setText(steps[3].querySelector("p"), t.step4Desc); }
+        }
+
+        // Jobs section
+        const jobs = document.querySelector(".jobs-section");
+        if (jobs) {
+          setText(jobs.querySelector(".section-subtitle"), t.openingsSubtitle);
+          setText(jobs.querySelector(".section-title"), t.openingsTitle);
+          setText(jobs.querySelector(".section-description"), t.openingsDesc);
+
+          const filters = jobs.querySelectorAll(".jobs-filter .filter-btn");
+          setText(filters[0], t.filterAll);
+          setText(filters[1], t.filterEng);
+          setText(filters[2], t.filterDesign);
+          setText(filters[3], t.filterRemote);
+
+          // Apply buttons
+          jobs.querySelectorAll(".job-card .btn").forEach(btn => setText(btn, t.applyNow));
+        }
+
+        // CTA section
+        const cta = document.querySelector(".cta-section");
+        if (cta) {
+          setText(cta.querySelector(".cta-title"), t.ctaTitle);
+          setText(cta.querySelector(".cta-description"), t.ctaDesc);
+          const ctaBtns = cta.querySelectorAll(".cta-actions .btn");
+          setText(ctaBtns[0], t.spontaneous);
+          setText(ctaBtns[1], t.scheduleCall);
+        }
+
+        // Contact section
+        const contact = document.querySelector(".contact-section");
+        if (contact) {
+          setText(contact.querySelector(".section-subtitle"), t.contactSubtitle);
+          setText(contact.querySelector(".section-title"), t.contactTitle);
+          setText(contact.querySelector(".section-description"), t.contactDesc);
+
+          const cards = contact.querySelectorAll(".contact-card");
+          if (cards[0]) {
+            setText(cards[0].querySelector(".contact-title"), t.emailUs);
+            const ps = cards[0].querySelectorAll(".contact-details p");
+            if (ps[1]) setText(ps[1], t.responseTime);
+          }
+          if (cards[1]) setText(cards[1].querySelector(".contact-title"), t.visitHQ);
+          if (cards[2]) {
+            setText(cards[2].querySelector(".contact-title"), t.chatWithUs);
+            const ps = cards[2].querySelectorAll(".contact-details p");
+            if (ps[0]) {
+              // Keep the link, swap surrounding text
+              const a = ps[0].querySelector("a");
+              if (a) ps[0].innerHTML = `${a.outerHTML.replace(a.textContent, (lang === "pt" ? "Agenda uma chamada" : lang === "es" ? "Agenda una llamada" : "Schedule a call"))} ${lang === "pt" ? "com a nossa equipa de recrutamento" : lang === "es" ? "con nuestro equipo de selección" : "with our hiring team"}`;
+            }
+            if (ps[1]) setText(ps[1], t.chatLine2);
+          }
+        }
+      }
+
+      // Bind clicks
+      langButtons.forEach(btn => {
+        btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+      });
+
+      // Default language based on current active button (or HTML lang)
+      const initial = (document.querySelector(".language-option.active")?.dataset.lang)
+        || (document.documentElement.lang || "en").slice(0,2).toLowerCase();
+      applyLanguage(initial);
+    });
+  </script>
 </body>
 </html>

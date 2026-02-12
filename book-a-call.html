@@ -493,7 +493,7 @@
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
-    /* FOOTER PRO - ATUALIZADO COM "COBRA IT" */
+    /* ========================= FOOTER NOVO (PRO) - EXATAMENTE IGUAL AO INDEX ========================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
@@ -501,7 +501,6 @@
       overflow: hidden;
       padding: 60px 0 24px;
     }
-
     .footer-pro::before {
       content: "";
       position: absolute;
@@ -512,7 +511,6 @@
       filter: blur(10px);
       pointer-events: none;
     }
-
     .footer-pro::after {
       content: "";
       position: absolute;
@@ -523,7 +521,6 @@
       filter: blur(12px);
       pointer-events: none;
     }
-
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr 1fr;
@@ -533,39 +530,27 @@
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
-
     .footer-brand {
       display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: flex-start;
     }
-
-    /* LOGO ATUALIZADA PARA "COBRA IT" */
     .footer-brand-title {
       font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
+      font-weight: 700;
+      font-size: 24px;
       color: rgba(226, 232, 240, 0.95);
       margin: 0;
       line-height: 1;
     }
-
     .footer-brand-subtitle {
       font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 0.7rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 14px;
       color: rgba(203, 213, 225, 0.8);
       margin: 4px 0 0 0;
     }
-
     .footer-tagline {
       font-family: 'Inter', sans-serif;
       font-size: 14px;
@@ -574,25 +559,21 @@
       max-width: 420px;
       margin: 8px 0 0 0;
     }
-
     .footer-cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 16px;
     }
-
     .btn--footer {
       padding: 10px 18px;
       font-size: 14px;
       border-radius: 10px;
     }
-
     .btn--footer.btn--outline {
       border-color: rgba(226, 232, 240, 0.35);
       color: rgba(226, 232, 240, 0.92);
     }
-
     .btn--footer.btn--outline:hover {
       background: rgba(226, 232, 240, 0.12);
       color: #ffffff;
@@ -600,7 +581,6 @@
       box-shadow: none;
       border-color: rgba(226, 232, 240, 0.5);
     }
-
     .footer-col h4 {
       margin: 0 0 14px;
       font-family: 'Poppins', sans-serif;
@@ -610,7 +590,6 @@
       text-transform: uppercase;
       color: rgba(226, 232, 240, 0.9);
     }
-
     .footer-links {
       list-style: none;
       margin: 0;
@@ -618,7 +597,6 @@
       display: grid;
       gap: 10px;
     }
-
     .footer-links a {
       color: rgba(203, 213, 225, 0.9);
       text-decoration: none;
@@ -629,12 +607,10 @@
       align-items: center;
       gap: 8px;
     }
-
     .footer-links a:hover {
       color: #ffffff;
       transform: translateX(3px);
     }
-
     .footer-meta {
       display: grid;
       gap: 10px;
@@ -642,22 +618,37 @@
       font-size: 14px;
       color: rgba(203, 213, 225, 0.9);
     }
-
     .footer-meta a {
       color: rgba(203, 213, 225, 0.9);
       text-decoration: none;
       transition: color .2s ease;
     }
-
-    .footer-meta a:hover { color: #fff; }
-
+    .footer-meta a:hover {
+      color: #fff;
+    }
+    /* Estilos específicos para o link do Instagram */
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all .2s ease;
+    }
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .social-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
     .footer-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 16px;
     }
-
     .footer-badge {
       display: inline-flex;
       align-items: center;
@@ -671,7 +662,6 @@
       line-height: 1;
       white-space: nowrap;
     }
-
     .footer-badge-dot {
       width: 8px;
       height: 8px;
@@ -679,7 +669,6 @@
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
     }
-
     .footer-bottom {
       display: flex;
       justify-content: space-between;
@@ -692,36 +681,45 @@
       font-size: 13px;
       color: rgba(148, 163, 184, 0.9);
     }
-
     .footer-mini-links {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
     .footer-mini-links a {
       color: rgba(148, 163, 184, 0.95);
       text-decoration: none;
       transition: color .2s ease;
     }
-
-    .footer-mini-links a:hover { color: #fff; }
-
-    @media (max-width: 1024px) {
-      .footer-top { grid-template-columns: 1.6fr 1fr 1fr; }
-      .footer-col--contact { grid-column: 1 / -1; }
+    .footer-mini-links a:hover {
+      color: #fff;
     }
-
+    @media (max-width: 1024px) {
+      .footer-top {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+      .footer-col--contact {
+        grid-column: 1 / -1;
+      }
+    }
     @media (max-width: 768px) {
-      .footer-top { grid-template-columns: 1fr; gap: 20px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-mini-links { justify-content: flex-start; }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-mini-links {
+        justify-content: flex-start;
+      }
       .footer-pro {
         padding: 50px 0 20px;
       }
       .footer-brand-title {
-        font-size: 1.6rem;
+        font-size: 22px;
       }
     }
   </style>
@@ -1090,44 +1088,31 @@
       </div>
     </section>
 
-    <!-- FOOTER PRO ATUALIZADO COM "COBRA IT" -->
+    <!-- FOOTER PRO - EXATAMENTE IGUAL AO INDEX (COPIADO NA ÍNTEGRA) -->
     <footer class="footer-pro" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <div class="footer-brand">
-            <!-- LOGO ATUALIZADA PARA "COBRA IT" -->
-            <h3 class="footer-brand-title">COBRA IT</h3>
+            <!-- LOGO REMOVIDA - substituída por texto COBRAIT (igual ao index) -->
+            <h3 class="footer-brand-title">Cobrait</h3>
             <p class="footer-brand-subtitle">Software Factory</p>
-
-            <p class="footer-tagline"
-               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
-               data-en="We build digital products focused on speed, quality and growth — from scope to launch."
-               data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
               Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
             </p>
-
             <div class="footer-cta-row">
-              <a class="btn btn--primary btn--footer" href="#contact"
-                 data-pt="Agendar uma chamada"
-                 data-en="Book a call"
-                 data-es="Reservar una llamada">
+              <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
                 Agendar uma chamada
               </a>
-              <a class="btn btn--outline btn--footer" href="index.html#what-we-do"
-                 data-pt="Ver serviços"
-                 data-en="See services"
-                 data-es="Ver servicios">
+              <a class="btn btn--outline btn--footer" href="index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
                 Ver serviços
               </a>
             </div>
-
             <div class="footer-badges" aria-label="Highlights">
               <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
               <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
               <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
             </div>
           </div>
-
           <div class="footer-col">
             <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
             <ul class="footer-links">
@@ -1138,17 +1123,15 @@
               <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
             </ul>
           </div>
-
           <div class="footer-col">
             <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
             <ul class="footer-links">
-              <li><a href="index.html#about" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-              <li><a href="index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
-              <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
-              <li><a href="index.html#tech" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+              <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+              
+              <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+              <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
             </ul>
           </div>
-
           <div class="footer-col footer-col--contact">
             <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
             <div class="footer-meta">
@@ -1161,22 +1144,29 @@
                 <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
               </div>
               <div>
+                <!-- LINK DO INSTAGRAM ADICIONADO AQUI (IGUAL AO INDEX) -->
+                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  <span>@cobra_it</span>
+                </a>
+              </div>
+              <div>
                 <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                <a href="#contact"
-                   data-pt="Marca uma call."
-                   data-en="Book a call."
-                   data-es="Reserva una llamada.">Marca uma call.</a>
+                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
               </div>
             </div>
           </div>
         </div>
-
         <div class="footer-bottom">
-          <div>© <span id="year"></span> Cobra IT — Software Factory</div>
+          <div>
+            © <span id="year"></span> Cobrait — Software Factory
+          </div>
           <div class="footer-mini-links">
-            <a href="index.html#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-            <a href="index.html#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-            <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+            <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+            <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+            <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
           </div>
         </div>
       </div>
