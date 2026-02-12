@@ -12,6 +12,7 @@
   <meta name="description" content="Pricing — Cobrait Software Factory.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./apply-translations.js"></script>
 
   <style>
     /* =========================
@@ -1986,6 +1987,12 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         // Fallback para inglês para outras línguas
         return 'en';
       }
@@ -2012,14 +2019,26 @@
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
       
       // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
       // Carregar língua salva ou usar português por padrão
@@ -2068,7 +2087,7 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
@@ -2090,7 +2109,7 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
@@ -2149,5 +2168,6 @@
       updateSelectLanguage(savedLanguage);
     });
   </script>
+  <script src="./apply-translations.js"></script>
 </body>
 </html>

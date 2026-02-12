@@ -12,6 +12,7 @@
   <meta name="description" content="Pricing — Cobra IT Software Factory.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./apply-translations.js"></script>
 
   <!-- ✅ HEADER + FOOTER : IGUAL AO MVP-BUILDER.HTML  -->
   <style>
@@ -116,6 +117,16 @@
     }
 
     .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
 
     /* Dropdown */
     .dropdown { position: relative; }
@@ -1756,6 +1767,30 @@ footer.footer-pro .footer-brand-title {
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
             </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
+            </button>
           </div>
         </div>
 
@@ -1812,68 +1847,68 @@ footer.footer-pro .footer-brand-title {
           <div class="pricing-estimator-ui">
             <div class="estimator-grid">
               <div class="estimator-column">
-                <span class="estimator-title">COMPLEXITY</span>
+                <span class="estimator-title" data-pt="COMPLEXIDADE" data-en="COMPLEXITY" data-es="COMPLEJIDAD">COMPLEXITY</span>
 
                 <label class="toggle">
                   <input type="radio" name="complexity" value="low" checked>
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">Low</span>
+                  <span class="toggle-label" data-pt="Baixa" data-en="Low" data-es="Baja">Low</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="complexity" value="mid">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">Mid</span>
+                  <span class="toggle-label" data-pt="Média" data-en="Mid" data-es="Media">Mid</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="complexity" value="high">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">High</span>
+                  <span class="toggle-label" data-pt="Alta" data-en="High" data-es="Alta">High</span>
                 </label>
               </div>
 
               <div class="estimator-column">
-                <span class="estimator-title">PROJECT SIZE</span>
+                <span class="estimator-title" data-pt="TAMANHO DO PROJETO" data-en="PROJECT SIZE" data-es="TAMAÑO DEL PROYECTO">PROJECT SIZE</span>
 
                 <label class="toggle">
                   <input type="radio" name="size" value="small" checked>
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">Small</span>
+                  <span class="toggle-label" data-pt="Pequeno" data-en="Small" data-es="Pequeño">Small</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="size" value="medium">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">Medium</span>
+                  <span class="toggle-label" data-pt="Médio" data-en="Medium" data-es="Mediano">Medium</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="size" value="big">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">Big</span>
+                  <span class="toggle-label" data-pt="Grande" data-en="Big" data-es="Grande">Big</span>
                 </label>
               </div>
 
               <div class="estimator-column">
-                <span class="estimator-title">SPEED</span>
+                <span class="estimator-title" data-pt="VELOCIDADE" data-en="SPEED" data-es="VELOCIDAD">SPEED</span>
 
                 <label class="toggle">
                   <input type="radio" name="speed" value=">6">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">&gt; 6 Months</span>
+                  <span class="toggle-label" data-pt="&gt; 6 Meses" data-en="&gt; 6 Months" data-es="&gt; 6 Meses">&gt; 6 Months</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="speed" value="2-5" checked>
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">2 &gt; 5 Months</span>
+                  <span class="toggle-label" data-pt="2 &gt; 5 Meses" data-en="2 &gt; 5 Months" data-es="2 &gt; 5 Meses">2 &gt; 5 Months</span>
                 </label>
 
                 <label class="toggle">
                   <input type="radio" name="speed" value="<2">
                   <span class="toggle-switch"></span>
-                  <span class="toggle-label">&lt; 2 Months</span>
+                  <span class="toggle-label" data-pt="&lt; 2 Meses" data-en="&lt; 2 Months" data-es="&lt; 2 Meses">&lt; 2 Months</span>
                 </label>
               </div>
             </div>
@@ -1882,16 +1917,16 @@ footer.footer-pro .footer-brand-title {
 
             <div class="estimator-price">
               <div class="estimator-price-col">
-                <span class="estimator-price-title">FROM</span>
+                <span class="estimator-price-title" data-pt="DE" data-en="FROM" data-es="DESDE">FROM</span>
                 <strong class="estimator-price-value" id="budgetFrom">$30k</strong>
               </div>
               <div class="estimator-price-col">
-                <span class="estimator-price-title">TO</span>
+                <span class="estimator-price-title" data-pt="ATÉ" data-en="TO" data-es="HASTA">TO</span>
                 <strong class="estimator-price-value" id="budgetTo">$112k</strong>
               </div>
             </div>
 
-            <p class="estimator-note">This estimate considers Product, UX/UI and Software Development.</p>
+            <p class="estimator-note" data-pt="Esta estimativa considera Produto, UX/UI e Desenvolvimento de Software." data-en="This estimate considers Product, UX/UI and Software Development." data-es="Esta estimación considera Producto, UX/UI y Desarrollo de Software.">This estimate considers Product, UX/UI and Software Development.</p>
           </div>
         </div>
       </div>
@@ -2248,7 +2283,7 @@ footer.footer-pro .footer-brand-title {
           <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
           <ul class="footer-links">
             <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-            <li><a href="index.html#work" data-pt="Casos de sucesso" data-en="Case studies" data-es="Casos de éxito">Casos de sucesso</a></li>
+            
             <li><a href="index.html#about" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
             <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
           </ul>
@@ -2294,6 +2329,28 @@ footer.footer-pro .footer-brand-title {
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       // ====== Normalização de idioma (evita pt-PT quebrar) ======
       function normalizeLang(l) {
         if (!l) return 'pt';
@@ -2301,6 +2358,12 @@ footer.footer-pro .footer-brand-title {
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         // Fallback para inglês para outras línguas
         return 'en';
       }
@@ -2327,14 +2390,26 @@ footer.footer-pro .footer-brand-title {
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
       
       // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
       // Carregar língua salva ou usar português por padrão
@@ -2344,10 +2419,13 @@ footer.footer-pro .footer-brand-title {
 
       // Event listeners para as opções de língua
       languageOptions.forEach(option => {
-        option.addEventListener('click', function() {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
           const lang = normalizeLang(this.getAttribute('data-lang'));
           setActiveLanguage(lang);
           applyLanguage(lang);
+          updateSelectLanguage(lang);
           localStorage.setItem('preferredLanguage', lang);
         });
       });
@@ -2383,7 +2461,7 @@ footer.footer-pro .footer-brand-title {
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
@@ -2411,7 +2489,7 @@ footer.footer-pro .footer-brand-title {
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
@@ -2637,5 +2715,6 @@ footer.footer-pro .footer-brand-title {
       updateSelectLanguage(savedLanguage);
     });
   </script>
+  <script src="./apply-translations.js"></script>
 </body>
 </html>

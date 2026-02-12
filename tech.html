@@ -12,6 +12,7 @@
   <meta name="description" content="Tech stack, infrastructure, AI frameworks and engineering excellence — COBRA IT." />
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./apply-translations.js"></script>
 
   <!-- ✅ STYLE DA NAVBAR IGUAL AO BOOK-A-CALL, ABOUT-US E PRICING -->
   <style>
@@ -22,8 +23,6 @@
       align-items: flex-start;
       text-decoration: none;
     }
-
-  
 
     .logo-text-main {
       font-family: 'Poppins', sans-serif;
@@ -123,6 +122,16 @@
     }
 
     .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
 
     /* Dropdown */
     .dropdown { position: relative; }
@@ -652,320 +661,598 @@
       font-size: 15px;
     }
 
-    /* Approach Section */
-    .approach-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 22px 70px rgba(2,6,23,.08);
-      padding: 40px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 30px;
-      align-items: center;
+    /* ============================================================
+       NOVA ABORDAGEM — MODERNA, PROFISSIONAL E ELEGANTE
+       ============================================================ */
+    .approach-showcase {
+      background: linear-gradient(145deg, #ffffff 0%, #fafcff 100%);
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -8px rgba(0,0,0,0.08);
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(79, 70, 229, 0.12);
     }
 
-    .approach-card h2 {
+    .approach-showcase::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle at 70% 20%, rgba(79,70,229,.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .approach-showcase::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle at 30% 80%, rgba(124,58,237,.06), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .approach-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(79,70,229,.1) 0%, rgba(124,58,237,.1) 100%);
+      border-radius: 100px;
+      border: 1px solid rgba(79,70,229,.2);
+      margin-bottom: 24px;
+    }
+
+    .approach-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+
+    .approach-badge span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .approach-title {
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 2.2rem;
-      color: #0f172a;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin: 0 0 20px;
+      color: #0b1220;
+    }
+
+    .approach-highlight {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .approach-description {
+      margin-bottom: 28px;
+    }
+
+    .approach-description p {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #334155;
       margin: 0 0 16px;
     }
 
-    .approach-card p {
-      font-family: 'Inter', sans-serif;
-      color: #64748b;
-      line-height: 1.8;
-      margin: 0 0 20px;
+    .approach-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    .read-more {
+    .approach-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(79,70,229,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4f46e5;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .feature-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #0f172a;
+    }
+
+    .approach-cta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 2px solid transparent;
-      background: linear-gradient(135deg, #ff0a78 0%, #d946ef 100%);
-      color: #fff;
+      gap: 16px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
       text-decoration: none;
+      border-radius: 14px;
       font-family: 'Inter', sans-serif;
-      font-weight: 800;
-      letter-spacing: .02em;
-      transition: transform .2s ease, box-shadow .2s ease;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 20px rgba(79,70,229,.25);
+      border: none;
+      cursor: pointer;
     }
 
-    .read-more:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 34px rgba(255,10,120,.25);
+    .approach-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 30px rgba(79,70,229,.35);
     }
 
-    .illus {
+    .approach-cta svg {
+      transition: transform 0.3s ease;
+    }
+
+    .approach-cta:hover svg {
+      transform: translateX(5px);
+    }
+
+    .approach-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stats-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.05);
+      border: 1px solid rgba(226,232,240,.8);
       width: 100%;
-      max-width: 420px;
-      margin-left: auto;
+      max-width: 360px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
     }
 
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .tech-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .stats-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stats-avatar-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .stats-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      border: 2px solid white;
+      margin-right: -8px;
+    }
+
+    .stats-avatar:nth-child(2) {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+    }
+
+    .stats-avatar:nth-child(3) {
+      background: linear-gradient(135deg, #ec1b67, #be185d);
+    }
+
+    .stats-info h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #0f172a;
+      margin: 0 0 4px;
+    }
+
+    .stats-info p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .stat-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    .stats-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stats-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .star-filled {
+      color: #fbbf24;
+    }
+
+    .rating-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .floating-element {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(226,232,240,.8);
+      z-index: 1;
+    }
+
+    .floating-1 {
+      top: -20px;
+      right: -20px;
+      background: linear-gradient(145deg, white, #fafafa);
+    }
+
+    .floating-2 {
+      bottom: -20px;
+      left: -20px;
+      background: linear-gradient(145deg, white, #fafafa);
     }
 
     @media (max-width: 1024px) {
-      .approach-card { grid-template-columns: 1fr; }
-      .illus { margin: 20px auto 0; max-width: 520px; }
-      .excel-grid { grid-template-columns: 1fr; }
-      .tech-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .approach-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .approach-visual {
+        order: -1;
+      }
+      
+      .approach-title {
+        font-size: 2rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .tech-hero h1 { font-size: 2.4rem; }
-      .tech-title { font-size: 2rem; }
-      .tech-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .tech-card { padding: 12px; }
-      .approach-card { padding: 30px 20px; }
-      .excel-card { padding: 24px; }
+      .approach-showcase {
+        padding: 32px 24px;
+      }
+      
+      .approach-features {
+        grid-template-columns: 1fr;
+      }
+      
+      .approach-title {
+        font-size: 1.8rem;
+      }
+      
+      .stats-card {
+        max-width: 100%;
+      }
     }
 
-    @media (max-width: 480px) {
-      .tech-cards { grid-template-columns: 1fr; }
-      .tech-hero h1 { font-size: 2rem; }
-      .tech-title { font-size: 1.8rem; }
-      .approach-card h2 { font-size: 1.8rem; }
+    /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
+    .footer-pro {
+      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+      color: #cbd5e1;
+      position: relative;
+      overflow: hidden;
+      padding: 60px 0 24px;
     }
-
-        /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-        .footer-pro {
-            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-            color: #cbd5e1;
-            position: relative;
-            overflow: hidden;
-            padding: 60px 0 24px;
-        }
-        .footer-pro::before {
-            content: "";
-            position: absolute;
-            inset: -200px -200px auto auto;
-            width: 420px;
-            height: 420px;
-            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-            filter: blur(10px);
-            pointer-events: none;
-        }
-        .footer-pro::after {
-            content: "";
-            position: absolute;
-            inset: auto auto -240px -240px;
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-            filter: blur(12px);
-            pointer-events: none;
-        }
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-        }
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
-        }
-        /* LOGO REMOVIDA - Apenas texto da marca */
-        .footer-brand-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: rgba(226, 232, 240, 0.95);
-            margin: 0;
-            line-height: 1;
-        }
-        .footer-brand-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.8);
-            margin: 4px 0 0 0;
-        }
-        .footer-tagline {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(226, 232, 240, 0.85);
-            max-width: 420px;
-            margin: 8px 0 0 0;
-        }
-        .footer-cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .btn--footer {
-            padding: 10px 18px;
-            font-size: 14px;
-            border-radius: 10px;
-        }
-        .btn--footer.btn--outline {
-            border-color: rgba(226, 232, 240, 0.35);
-            color: rgba(226, 232, 240, 0.92);
-        }
-        .btn--footer.btn--outline:hover {
-            background: rgba(226, 232, 240, 0.12);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: none;
-            border-color: rgba(226, 232, 240, 0.5);
-        }
-        .footer-col h4 {
-            margin: 0 0 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: rgba(226, 232, 240, 0.9);
-        }
-        .footer-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-        }
-        .footer-links a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all .2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-        .footer-meta {
-            display: grid;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.9);
-        }
-        .footer-meta a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-meta a:hover {
-            color: #fff;
-        }
-        /* Estilos específicos para o link do Instagram */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 6px;
-            transition: all .2s ease;
-        }
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .social-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        .footer-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        .footer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.22);
-            background: rgba(15, 23, 42, 0.35);
-            color: rgba(226, 232, 240, 0.9);
-            font-size: 12px;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        .footer-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-        }
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            padding-top: 16px;
-            position: relative;
-            z-index: 1;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: rgba(148, 163, 184, 0.9);
-        }
-        .footer-mini-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-        .footer-mini-links a {
-            color: rgba(148, 163, 184, 0.95);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-mini-links a:hover {
-            color: #fff;
-        }
-        @media (max-width: 1024px) {
-            .footer-top {
-                grid-template-columns: 1.6fr 1fr 1fr;
-            }
-            .footer-col--contact {
-                grid-column: 1 / -1;
-            }
-        }
-        @media (max-width: 768px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-mini-links {
-                justify-content: flex-start;
-            }
-            .footer-pro {
-                padding: 50px 0 20px;
-            }
-            .footer-brand-title {
-                font-size: 22px;
-            }
-        }
-</style>
+    .footer-pro::before {
+      content: "";
+      position: absolute;
+      inset: -200px -200px auto auto;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
+    .footer-pro::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -240px -240px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .footer-brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(226, 232, 240, 0.95);
+      margin: 0;
+      line-height: 1;
+    }
+    .footer-brand-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.8);
+      margin: 4px 0 0 0;
+    }
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(226, 232, 240, 0.85);
+      max-width: 420px;
+      margin: 8px 0 0 0;
+    }
+    .footer-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .btn--footer {
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+    .btn--footer.btn--outline {
+      border-color: rgba(226, 232, 240, 0.35);
+      color: rgba(226, 232, 240, 0.92);
+    }
+    .btn--footer.btn--outline:hover {
+      background: rgba(226, 232, 240, 0.12);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: none;
+      border-color: rgba(226, 232, 240, 0.5);
+    }
+    .footer-col h4 {
+      margin: 0 0 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.9);
+    }
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .footer-links a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+    .footer-meta {
+      display: grid;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(203, 213, 225, 0.9);
+    }
+    .footer-meta a {
+      color: rgba(203, 213, 225, 0.9);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-meta a:hover {
+      color: #fff;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all .2s ease;
+    }
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .social-icon {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.35);
+      color: rgba(226, 232, 240, 0.9);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .footer-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding-top: 16px;
+      position: relative;
+      z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(148, 163, 184, 0.9);
+    }
+    .footer-mini-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .footer-mini-links a {
+      color: rgba(148, 163, 184, 0.95);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .footer-mini-links a:hover {
+      color: #fff;
+    }
+    @media (max-width: 1024px) {
+      .footer-top {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+      .footer-col--contact {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-mini-links {
+        justify-content: flex-start;
+      }
+      .footer-pro {
+        padding: 50px 0 20px;
+      }
+      .footer-brand-title {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -1035,8 +1322,6 @@
                 </div>
               </a>
 
-              
-
               <a href="servicos/custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -1101,6 +1386,30 @@
             <button class="language-option" data-lang="es">
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
+            </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
             </button>
           </div>
         </div>
@@ -1322,13 +1631,11 @@
             Frameworks de IA
           </div>
 
-            <div class="tech-cards">
+          <div class="tech-cards">
             <a class="tech-card" href="https://www.llamaindex.ai/" target="_blank" rel="noopener noreferrer">
-              <img class="tech-logo"
-               alt="LlamaIndex"
-              src="https://www.llamaindex.ai/favicon.ico">
+              <img class="tech-logo" alt="LlamaIndex" src="https://www.llamaindex.ai/favicon.ico">
               <span class="tech-name">LlamaIndex</span>
-           </a>
+            </a>
 
             <a class="tech-card" href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener noreferrer">
               <img class="tech-logo" alt="AutoGen" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoft.svg">
@@ -1397,9 +1704,9 @@
             <h3 data-pt="Inteligência Artificial" data-en="Artificial Intelligence" data-es="Inteligencia Artificial">
               Inteligência Artificial
             </h3>
-            <p data-pt="Integrações de IA prática (RAG, automação, agentes) com foco em impacto real no negócio — não só "demos"."
+            <p data-pt="Integrações de IA prática (RAG, automação, agentes) com foco em impacto real no negócio — não só 'demos'."
                data-en="Practical AI integrations (RAG, automation, agents) focused on real business impact — not just demos."
-               data-es="Integraciones de IA práctica (RAG, automatización, agentes) con foco en impacto real — no solo "demos".">
+               data-es="Integraciones de IA práctica (RAG, automatización, agentes) con foco en impacto real — no solo 'demos'.">
               Integrações de IA prática (RAG, automação, agentes) com foco em impacto real no negócio — não só "demos".
             </p>
           </article>
@@ -1431,137 +1738,201 @@
       </div>
     </section>
 
-    <!-- APPROACH + READ MORE -->
+    <!-- ✅ NOVA ABORDAGEM — MODERNA, PROFISSIONAL E ELEGANTE -->
     <section class="tech-section">
       <div class="container">
-        <div class="approach-card">
-          <div>
-            <h2 data-pt="A nossa abordagem ao desenvolvimento de software à medida"
-                data-en="Our approach to custom software development"
-                data-es="Nuestro enfoque para el desarrollo de software a medida">
-              A nossa abordagem ao desenvolvimento de software à medida
-            </h2>
-
-            <p data-pt="Adotamos uma abordagem holística e centrada no utilizador — alinhamos objetivos comerciais, prioridades e UX antes de acelerar na execução."
-               data-en="We take a holistic, user-centric approach — aligning business goals, priorities and UX before accelerating execution."
-               data-es="Adoptamos un enfoque holístico y centrado en el usuario — alineamos objetivos de negocio, prioridades y UX antes de acelerar la ejecución.">
-              Adotamos uma abordagem holística e centrada no utilizador — alinhamos objetivos comerciais, prioridades e UX antes de acelerar na execução.
-            </p>
-
-            <p data-pt="Depois, as nossas equipas de UX/UI e desenvolvimento constroem o produto com qualidade, documentação e previsibilidade de entrega."
-               data-en="Then, our UX/UI and engineering teams build with quality, documentation and predictable delivery."
-               data-es="Luego, nuestros equipos de UX/UI e ingeniería construyen con calidad, documentación y entrega predecible.">
-              Depois, as nossas equipas de UX/UI e desenvolvimento constroem o produto com qualidade, documentação e previsibilidade de entrega.
-            </p>
-
-            <a class="read-more" href="servicos/custom-software.html">
-              <span data-pt="LER MAIS" data-en="READ MORE" data-es="LEER MÁS">LER MAIS</span>
-              <span aria-hidden="true">→</span>
-            </a>
+        <div class="approach-showcase">
+          <div class="approach-grid">
+            <!-- Lado esquerdo: Conteúdo -->
+            <div class="approach-content">
+              <div class="approach-badge">
+                <span class="approach-badge-dot"></span>
+                <span data-pt="ENGENHARIA DE EXCELÊNCIA" data-en="ENGINEERING EXCELLENCE" data-es="EXCELENCIA EN INGENIERÍA">
+                  ENGENHARIA DE EXCELÊNCIA
+                </span>
+              </div>
+              
+              <h2 class="approach-title" 
+    data-pt="A nossa abordagem ao desenvolvimento de software à medida"
+    data-en="Our approach to custom software development"
+    data-es="Nuestro enfoque para el desarrollo de software a medida">
+    A nossa abordagem ao <span class="approach-highlight">desenvolvimento de software à medida</span>
+</h2>
+              
+              <div class="approach-description">
+                <p data-pt="Adotamos uma abordagem holística e centrada no utilizador — alinhamos objetivos comerciais, prioridades e UX antes de acelerar na execução. As nossas equipas multidisciplinares garantem que cada decisão técnica serve um propósito de negócio claro."
+                   data-en="We take a holistic, user-centric approach — aligning business goals, priorities and UX before accelerating execution. Our cross-functional teams ensure every technical decision serves a clear business purpose."
+                   data-es="Adoptamos un enfoque holístico y centrado en el usuario — alineamos objetivos de negocio, prioridades y UX antes de acelerar la ejecución. Nuestros equipos multidisciplinares garantizan que cada decisión técnica sirva a un propósito de negocio claro.">
+                  Adotamos uma abordagem holística e centrada no utilizador — alinhamos objetivos comerciais, prioridades e UX antes de acelerar na execução. As nossas equipas multidisciplinares garantem que cada decisão técnica serve um propósito de negócio claro.
+                </p>
+                <p data-pt="Depois, as nossas equipas de UX/UI e desenvolvimento constroem o produto com qualidade, documentação e previsibilidade de entrega — utilizando frameworks Lean e metodologias ágeis para maximizar valor e minimizar desperdício."
+                   data-en="Then, our UX/UI and engineering teams build with quality, documentation and predictable delivery — using Lean frameworks and agile methodologies to maximize value and minimize waste."
+                   data-es="Luego, nuestros equipos de UX/UI e ingeniería construyen con calidad, documentación y entrega predecible — utilizando frameworks Lean y metodologías ágiles para maximizar valor y minimizar desperdicio.">
+                  Depois, as nossas equipas de UX/UI e desenvolvimento constroem o produto com qualidade, documentação e previsibilidade de entrega — utilizando frameworks Lean e metodologias ágeis para maximizar valor e minimizar desperdício.
+                </p>
+              </div>
+              
+              <div class="approach-features">
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="Discovery & Validação" data-en="Discovery & Validation" data-es="Discovery & Validación">Discovery & Validação</span>
+                </div>
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="Design & Prototipagem" data-en="Design & Prototyping" data-es="Diseño & Prototipado">Design & Prototipagem</span>
+                </div>
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="Desenvolvimento Ágil" data-en="Agile Development" data-es="Desarrollo Ágil">Desenvolvimento Ágil</span>
+                </div>
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="QA & Testes Contínuos" data-en="QA & Continuous Testing" data-es="QA & Pruebas Continuas">QA & Testes Contínuos</span>
+                </div>
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="DevOps & Entrega" data-en="DevOps & Delivery" data-es="DevOps & Entrega">DevOps & Entrega</span>
+                </div>
+                <div class="approach-feature">
+                  <div class="feature-icon">✓</div>
+                  <span class="feature-text" data-pt="Suporte & Evolução" data-en="Support & Evolution" data-es="Soporte & Evolución">Suporte & Evolução</span>
+                </div>
+              </div>
+              
+              <a class="approach-cta" href="servicos/custom-software.html">
+                <span data-pt="DESCOBRIR METODOLOGIA" data-en="DISCOVER METHODOLOGY" data-es="DESCUBRIR METODOLOGÍA">DESCOBRIR METODOLOGIA</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+            
+            <!-- Lado direito: Visualização de estatísticas/métricas -->
+            <div class="approach-visual">
+              <div class="stats-card">
+                <div class="stats-header">
+                  <div class="stats-avatar-group">
+                    <div class="stats-avatar">JD</div>
+                    <div class="stats-avatar">MC</div>
+                    <div class="stats-avatar">AS</div>
+                  </div>
+                  <div class="stats-info">
+                    <h4 data-pt="Equipa Dedicada" data-en="Dedicated Team" data-es="Equipo Dedicado">Equipa Dedicada</h4>
+                    <p data-pt="3–8 especialistas por projeto" data-en="3–8 specialists per project" data-es="3–8 especialistas por proyecto">3–8 especialistas por projeto</p>
+                  </div>
+                </div>
+                
+                <div class="stats-grid">
+                  <div class="stat-item">
+                    <div class="stat-number">2.5x</div>
+                    <div class="stat-label" data-pt="mais rapidez no go-to-market" data-en="faster go-to-market" data-es="más rapidez en go-to-market">mais rapidez no go-to-market</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label" data-pt="satisfação dos clientes" data-en="client satisfaction" data-es="satisfacción de clientes">satisfação dos clientes</div>
+                  </div>
+                </div>
+                
+              </div>
+              
+              <!-- Elementos flutuantes decorativos -->
+              <div class="floating-element floating-1">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+              </div>
+              <div class="floating-element floating-2">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.5">
+                  <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9h-4m-7 9A9 9 0 013 12m9 9v-4M3 12A9 9 0 0112 3m-9 9h4m7-9a9 9 0 019 9"/>
+                </svg>
+              </div>
+            </div>
           </div>
-
-          <!-- Ilustração simples -->
-          <svg class="illus" viewBox="0 0 520 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="20" width="500" height="300" rx="28" fill="#F8FAFC" stroke="#E2E8F0"/>
-            <path d="M340 210L410 110L480 210H340Z" fill="#FF0A78" opacity=".92"/>
-            <path d="M270 230L330 150L390 230H270Z" fill="#7C3AED" opacity=".9"/>
-            <path d="M210 230L270 150L330 230H210Z" fill="#4F46E5" opacity=".25"/>
-            <circle cx="150" cy="160" r="56" fill="#0EA5E9"/>
-            <circle cx="134" cy="148" r="6" fill="#0B1220"/>
-            <circle cx="166" cy="148" r="6" fill="#0B1220"/>
-            <path d="M134 176C144 188 156 188 166 176" stroke="#0B1220" stroke-width="6" stroke-linecap="round"/>
-            <path d="M110 214C92 234 82 262 82 290" stroke="#0B1220" stroke-width="10" stroke-linecap="round"/>
-            <path d="M190 214C208 234 218 262 218 290" stroke="#0B1220" stroke-width="10" stroke-linecap="round"/>
-            <ellipse cx="150" cy="290" rx="92" ry="12" fill="#0B1220" opacity=".08"/>
-          </svg>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ✅ FOOTER COM "COBRA IT" (IGUAL A TODAS AS PÁGINAS) -->
-          <footer class="footer-pro" role="contentinfo">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-                        <h3 class="footer-brand-title">Cobrait</h3>
-                        <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-                        </p>
-                        <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
-                                Agendar uma chamada
-                            </a>
-                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
-                                Ver serviços
-                            </a>
-                        </div>
-                        <div class="footer-badges" aria-label="Highlights">
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
-                        <ul class="footer-links">
-                            <li><a href="servicos/product-scope.html">Product Scope</a></li>
-                            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-                            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-                            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
-                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
-                        <ul class="footer-links">
-                            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
-                            
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
-                            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
-                        <div class="footer-meta">
-                            <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
-                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-                            </div>
-                            <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
-                                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
-                            </div>
-                            <div>
-                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
-                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                    <span>@cobra_it</span>
-                                </a>
-                            </div>
-                            <div>
-                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
-                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div>
-                        © <span id="year"></span> Cobrait — Software Factory
-                    </div>
-                    <div class="footer-mini-links">
-                        <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
-                        <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
-                        <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
-                    </div>
-                </div>
+  <footer class="footer-pro" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3 class="footer-brand-title">Cobrait</h3>
+          <p class="footer-brand-subtitle">Software Factory</p>
+          <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento.">
+            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+          </p>
+          <div class="footer-cta-row">
+            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada">
+              Agendar uma chamada
+            </a>
+            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios">
+              Ver serviços
+            </a>
+          </div>
+          <div class="footer-badges" aria-label="Highlights">
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</span></span>
+            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad">Qualidade</span></span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida">Software à Medida</a></li>
+            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Equipas Dedicadas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a></li>
+            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Carreiras</a></li>
+            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech">Tech</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-col--contact">
+          <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto">Contacto</h4>
+          <div class="footer-meta">
+            <div>
+              <span data-pt="Email:" data-en="Email:" data-es="Email:">Email:</span>
+              <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
             </div>
-        </footer>
+            <div>
+              <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:">Resposta:</span>
+              <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h">normalmente em 24–48h</span>
+            </div>
+            <div>
+              <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@cobra_it</span>
+              </a>
+            </div>
+            <div>
+              <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?">Preferes rápido?</span>
+              <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada.">Marca uma call.</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>
+          © <span id="year"></span> Cobrait — Software Factory
+        </div>
+        <div class="footer-mini-links">
+          <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad">Privacidade</a>
+          <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos">Termos</a>
+          <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -1570,40 +1941,75 @@
   <!-- Script de línguas IGUAL A TODAS AS PÁGINAS -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
       
-      // Mapeamento de bandeiras para cada língua
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
       
-      // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
-      // Normalização de idioma
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         return 'en';
       }
 
-      // Carregar língua salva ou usar português por padrão
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
       setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
 
-      // Event listeners para as opções de língua
       languageOptions.forEach(option => {
         option.addEventListener('click', function() {
           const lang = normalizeLang(this.getAttribute('data-lang'));
@@ -1614,20 +2020,9 @@
       });
 
       function setActiveLanguage(lang) {
-        // Atualizar o botão do dropdown
-        if (flagMap[lang]) {
-          currentFlag.textContent = flagMap[lang];
-        } else {
-          currentFlag.textContent = '🇬🇧';
-        }
+        currentFlag.textContent = flagMap[lang] || '🇬🇧';
+        currentLang.textContent = codeMap[lang] || 'EN';
         
-        if (codeMap[lang]) {
-          currentLang.textContent = codeMap[lang];
-        } else {
-          currentLang.textContent = 'EN';
-        }
-        
-        // Atualizar as opções ativas
         languageOptions.forEach(option => {
           option.classList.remove('active');
           if (normalizeLang(option.getAttribute('data-lang')) === lang) {
@@ -1644,11 +2039,10 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
-          // Se não houver tradução para esta língua, usar inglês como fallback
           if (text === null && lang !== 'en') {
             text = el.getAttribute('data-en');
           }
@@ -1672,11 +2066,10 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
-          // Se não houver tradução para esta língua, usar inglês como fallback
           if (val === null && lang !== 'en') {
             val = el.getAttribute('data-en');
           }
@@ -1686,5 +2079,6 @@
       }
     });
   </script>
+  <script src="./apply-translations.js"></script>
 </body>
 </html>

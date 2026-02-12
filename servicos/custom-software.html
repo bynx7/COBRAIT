@@ -117,6 +117,16 @@
 
     .site-nav a:hover::after { width: 100%; }
 
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
+
     /* Dropdown */
     .dropdown { position: relative; }
 
@@ -1037,6 +1047,30 @@
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
             </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
+            </button>
           </div>
         </div>
 
@@ -1416,12 +1450,40 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         return 'en';
       }
 
@@ -1444,13 +1506,25 @@
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
       
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
@@ -1495,7 +1569,7 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
@@ -1522,7 +1596,7 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
@@ -1535,5 +1609,6 @@
       }
     });
   </script>
+  <script src="../apply-translations.js"></script>
 </body>
 </html>

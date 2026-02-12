@@ -15,32 +15,56 @@
   <link rel="stylesheet" href="styles.css">
   <!-- CSS desta página -->
   <link rel="stylesheet" href="book-a-call.css">
+  <script src="./apply-translations.js"></script>
 
-  <!-- ✅ OVERRIDES DE CORES (igual ao INDEX) — sem alterar a tua estrutura -->
+  <!-- ✅ OVERRIDES - BOTÕES EXATAMENTE IGUAIS AO INDEX -->
   <style>
-    /* FIX: botão "BOOK A CALL" no header igual ao index */
-    .header-cta .btn.btn--primary{
+    /* ===== BOTÃO PRIMARY - EXATAMENTE IGUAL AO INDEX ===== */
+    .btn--primary,
+    .hero-cta,
+    .submit-btn,
+    .footer-pro .btn--primary {
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-      color: #fff !important;
+      color: white !important;
+      border: 2px solid transparent !important;
+      border-radius: 8px !important;
+      padding: 14px 32px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 1rem !important;
+      box-shadow: none !important;
+      transition: all 0.3s ease !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-decoration: none !important;
+      line-height: 1 !important;
+    }
+
+    /* Hover - exatamente igual ao index */
+    .btn--primary:hover,
+    .hero-cta:hover,
+    .submit-btn:hover,
+    .footer-pro .btn--primary:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3) !important;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+      color: white !important;
       border: 2px solid transparent !important;
     }
 
-    .header-cta .btn.btn--primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.30) !important;
+    /* Header CTA - mantém padding específico mas mesmo estilo */
+    .header-cta .btn.btn--primary {
+      padding: 10px 24px !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
     }
 
-    /* FIX DEFINITIVO — Book a call do FOOTER */
-    .footer-pro .btn--primary{
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-      color: #ffffff !important;
-      border: none !important;
-      box-shadow: 0 10px 25px rgba(79,70,229,.35) !important;
-    }
-
-    .footer-pro .btn--primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 14px 40px rgba(79,70,229,.45) !important;
+    /* Footer buttons - padding específico mas mesmo estilo */
+    .footer-pro .btn--primary.btn--footer {
+      padding: 10px 18px !important;
+      font-size: 14px !important;
+      border-radius: 8px !important;
     }
 
     /* Paleta do index (indigo + purple) */
@@ -49,17 +73,7 @@
       --primary2:#7c3aed;
     }
 
-    /* HERO CTA: tirar rosa e alinhar com o index */
-    .hero-cta{
-      border-color: rgba(79,70,229,.55) !important;
-      box-shadow: none !important;
-    }
-    .hero-cta:hover{
-      box-shadow: 0 14px 36px rgba(79,70,229,.22) !important;
-      border-color: rgba(124,58,237,.70) !important;
-    }
-
-    /* HQ link: tirar rosa */
+    /* HQ link: igual ao index */
     .hq-link{
       color: rgba(199,210,254,.95) !important;
     }
@@ -67,27 +81,19 @@
       color: #ffffff !important;
     }
 
-    /* Video play: tirar rosa */
+    /* Video play: igual ao index */
     .video-play{
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%) !important;
       box-shadow: 0 14px 40px rgba(79,70,229,.24) !important;
+      border-radius: 50% !important;
     }
 
-    /* Checkbox: tirar rosa */
+    /* Checkbox: igual ao index */
     .book-form .check input{
       accent-color: var(--primary) !important;
     }
 
-    /* Submit button: igual ao btn--primary do index */
-    .submit-btn{
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary2) 100%) !important;
-      box-shadow: 0 18px 45px rgba(79,70,229,.22) !important;
-    }
-    .submit-btn:hover{
-      box-shadow: 0 22px 60px rgba(79,70,229,.28) !important;
-    }
-
-    /* Check bullets  */
+    /* Check bullets - igual ao index */
     .contact-bullets li::before{
       background: #eef2ff !important;
       border-color: #c7d2fe !important;
@@ -235,6 +241,16 @@
     }
 
     .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
 
     /* Dropdown */
     .dropdown { position: relative; }
@@ -493,7 +509,7 @@
     .site-header { z-index: 99999; }
     .dropdown-content, .language-dropdown-content { z-index: 999999; }
 
-    /* ========================= FOOTER NOVO (PRO) - EXATAMENTE IGUAL AO INDEX ========================= */
+    /* ========================= FOOTER PRO - EXATAMENTE IGUAL AO INDEX ========================= */
     .footer-pro {
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
       color: #cbd5e1;
@@ -856,6 +872,30 @@
             <button class="language-option" data-lang="es">
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
+            </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
             </button>
           </div>
         </div>
@@ -1233,6 +1273,28 @@
   <!-- Script de línguas IGUAL AO INDEX -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
@@ -1241,14 +1303,26 @@
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
 
       // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
       // Normalização de idioma
@@ -1258,6 +1332,12 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         return 'en';
       }
 
@@ -1307,7 +1387,7 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
 
@@ -1335,7 +1415,7 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
 

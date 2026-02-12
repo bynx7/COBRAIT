@@ -118,6 +118,16 @@
 
     .site-nav a:hover::after { width: 100%; }
 
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
+
     /* Dropdown */
     .dropdown { position: relative; }
 
@@ -1116,26 +1126,27 @@
       will-change: height;
     }
 
-    /* Animação dos cards/dots quando ficam ativos (estilo "follows scroll") */
+    /* ✅ CORREÇÃO: As etiquetas aparecem quando a linha as atinge */
     .step{
-      opacity: .55;
+      opacity: .25;
       transform: translateY(10px);
-      transition: opacity .25s ease, transform .25s ease;
+      transition: opacity .45s cubic-bezier(0.23, 1, 0.32, 1), transform .45s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .step.is-active{
+    .step.step-visible{
       opacity: 1;
       transform: translateY(0);
     }
 
     .step .dotnode{
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-      filter: saturate(.95);
+      transition: transform .25s ease, box-shadow .25s ease;
+      filter: saturate(.85);
     }
 
-    .step.is-active .dotnode{
-      transform: scale(1.08);
-      filter: saturate(1.15);
+    .step.step-visible .dotnode{
+      transform: scale(1.12);
+      filter: saturate(1.25);
+      box-shadow: 0 0 0 12px rgba(59,130,246,.18);
     }
 
     /* Respeitar utilizadores com "reduzir movimento" */
@@ -1277,6 +1288,30 @@
             <button class="language-option" data-lang="es">
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
+            </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
             </button>
           </div>
         </div>
@@ -1620,18 +1655,40 @@
             </div>
         </footer>
 
-  <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- ✅ SCRIPT DE LÍNGUAS E TIMELINE CORRIGIDA -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // ====== SISTEMA DE LÍNGUAS COM DROPDOWN (IGUAL AO BOOK-A-CALL) ======
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
 
-      const flagMap = { 'pt': '🇵🇹', 'en': '🇬🇧', 'es': '🇪🇸' };
-      const codeMap = { 'pt': 'PT', 'en': 'EN', 'es': 'ES' };
+      const flagMap = { 'pt': '🇵🇹', 'en': '🇬🇧', 'es': '🇪🇸', 'fr': '🇫🇷', 'de': '🇩🇪', 'ru': '🇷🇺', 'nl': '🇳🇱', 'ja': '🇯🇵', 'zh': '🇨🇳' };
+      const codeMap = { 'pt': 'PT', 'en': 'EN', 'es': 'ES', 'fr': 'FR', 'de': 'DE', 'ru': 'RU', 'nl': 'NL', 'ja': 'JA', 'zh': 'ZH' };
 
       function normalizeLang(l) {
         if (!l) return 'pt';
@@ -1639,6 +1696,12 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
         return 'en';
       }
 
@@ -1675,7 +1738,7 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           if (text === null && lang !== 'en') text = el.getAttribute('data-en');
@@ -1698,7 +1761,7 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           if (val === null && lang !== 'en') val = el.getAttribute('data-en');
@@ -1706,9 +1769,11 @@
         });
       }
 
-      // ====== ✅ TIMELINE PROGRESS (linha ganha cor ao scroll) ======
+      // ====== ✅ TIMELINE PROGRESS + ETIQUETAS APARECEM COM A LINHA ======
       const timeline = document.getElementById('uxTimeline');
       if (timeline) {
+        const steps = document.querySelectorAll('.step');
+        
         function clamp01(n){ return Math.max(0, Math.min(1, n)); }
 
         function updateTimelineProgress(){
@@ -1725,13 +1790,35 @@
           const p = clamp01(progressed / total);
           const pFast = Math.min(1, p * 1.9);
           timeline.style.setProperty('--timeline-progress', (pFast * 100).toFixed(2) + '%');
+          
+          // ✅ ATIVA OS PASSOS CONSOANTE A LINHA PROGRIDE
+          steps.forEach((step, index) => {
+            const stepRect = step.getBoundingClientRect();
+            const stepCenter = stepRect.top + stepRect.height / 2;
+            
+            // Calcula a posição da linha na timeline
+            const timelineTop = rect.top;
+            const progressHeight = rect.height * pFast;
+            const progressLineY = timelineTop + progressHeight;
+            
+            // Ativa o passo se o centro do passo estiver acima da linha de progresso
+            if (stepCenter <= progressLineY + 50) {
+              step.classList.add('step-visible');
+            } else {
+              step.classList.remove('step-visible');
+            }
+          });
         }
 
         updateTimelineProgress();
         window.addEventListener('scroll', updateTimelineProgress, { passive: true });
         window.addEventListener('resize', updateTimelineProgress);
+        
+        // Atualizar também quando a página carregar completamente
+        window.addEventListener('load', updateTimelineProgress);
       }
     });
   </script>
+  <script src="../apply-translations.js"></script>
 </body>
 </html>

@@ -15,10 +15,11 @@
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="./apply-translations.js"></script>
   
   <!-- ✅ STYLE DA NAVBAR IGUAL AO BOOK-A-CALL E INDEX -->
   <style>
@@ -128,6 +129,16 @@
     }
 
     .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
 
     /* Dropdown */
     .dropdown { position: relative; }
@@ -477,7 +488,7 @@
     }
     
     h1, h2, h3, h4, h5 {
-      font-family: 'Space Grotesk', 'Poppins', sans-serif;
+      font-family: 'Poppins', 'Inter', sans-serif;
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -682,7 +693,7 @@
     
     .stat-number {
       display: block;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 800;
       font-size: 3.5rem;
       background: var(--gradient-primary);
@@ -1001,7 +1012,7 @@
       border-radius: 50%;
       background: var(--gradient-primary);
       color: white;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
       font-size: 1.5rem;
       margin: 0 auto 2rem;
@@ -1415,8 +1426,8 @@
     }
     
     .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(40px);
+      opacity: 1;
+      transform: translateY(0);
       transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
@@ -1789,6 +1800,30 @@
             <button class="language-option" data-lang="es">
               <span class="lang-flag">🇪🇸</span>
               <span class="lang-name">Español</span>
+            </button>
+            <button class="language-option" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+            </button>
+            <button class="language-option" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+            </button>
+            <button class="language-option" data-lang="ru">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Русский</span>
+            </button>
+            <button class="language-option" data-lang="nl">
+              <span class="lang-flag">🇳🇱</span>
+              <span class="lang-name">Nederlands</span>
+            </button>
+            <button class="language-option" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+            </button>
+            <button class="language-option" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
             </button>
           </div>
         </div>
@@ -2244,6 +2279,28 @@
     
     // Job filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
       const filterButtons = document.querySelectorAll('.filter-btn');
       const jobCards = document.querySelectorAll('.job-card');
       
@@ -2277,6 +2334,8 @@
       });
       
       // Scroll animations
+      // Scroll animation disabled - elements now appear immediately
+      /*
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -2297,6 +2356,7 @@
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
       });
+      */
       
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2341,14 +2401,26 @@
       const flagMap = {
         'pt': '🇵🇹',
         'en': '🇬🇧',
-        'es': '🇪🇸'
+        'es': '🇪🇸',
+        'fr': '🇫🇷',
+        'de': '🇩🇪',
+        'ru': '🇷🇺',
+        'nl': '🇳🇱',
+        'ja': '🇯🇵',
+        'zh': '🇨🇳'
       };
       
       // Mapeamento de códigos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
-        'es': 'ES'
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
       };
 
       // Normalização de idioma
@@ -2407,7 +2479,7 @@
       }
 
       function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es]');
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
@@ -2435,7 +2507,7 @@
       }
 
       function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]');
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
@@ -2773,5 +2845,6 @@
       applyLanguage(initial);
     });
   </script>
+  <script src="./apply-translations.js"></script>
 </body>
 </html>
