@@ -1657,6 +1657,24 @@
 
   <!-- ✅ SCRIPT DE LÍNGUAS E TIMELINE CORRIGIDA -->
   <script>
+    // Garantir que todos os elementos com data-en também têm os data-<lang> necessários
+    (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        const langs = ['fr','de','ru','nl','ja','zh'];
+        const els = document.querySelectorAll('[data-en]');
+        els.forEach(el => {
+          const en = el.getAttribute('data-en');
+          if (!en) return;
+          langs.forEach(l => {
+            if (!el.hasAttribute('data-' + l)) {
+              el.setAttribute('data-' + l, en);
+            }
+          });
+        });
+      });
+    })();
+  </script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // ====== SISTEMA DE LÍNGUAS COM DROPDOWN (IGUAL AO BOOK-A-CALL) ======
