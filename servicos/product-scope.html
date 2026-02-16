@@ -1601,6 +1601,18 @@ footer.footer-pro .btn.btn--outline:hover {
       }
     });
   </script>
+  <script>
+    (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        const langs = ['fr','de','ru','nl','ja','zh'];
+        document.querySelectorAll('[data-en]').forEach(el => {
+          const en = el.getAttribute('data-en');
+          if (!en) return;
+          langs.forEach(l => { if (!el.hasAttribute('data-' + l)) el.setAttribute('data-' + l, en); });
+        });
+      });
+    })();
+  </script>
   <script src="../apply-translations.js"></script>
 </body>
 </html>
