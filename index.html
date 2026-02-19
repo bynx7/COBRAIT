@@ -1694,6 +1694,16 @@
                     if (val) el.setAttribute('aria-label', val);
                 });
             }
+
+            // ====== FALLBACK SCRIPT: Copiar data-en para idiomas em falta ======
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const languages = ['fr', 'de', 'ru', 'nl', 'ja', 'zh'];
+                languages.forEach(lang => {
+                    if (!el.hasAttribute(`data-${lang}`)) {
+                        el.setAttribute(`data-${lang}`, el.getAttribute('data-en'));
+                    }
+                });
+            });
         });
     </script>
 </body>
