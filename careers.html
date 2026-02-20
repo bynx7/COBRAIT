@@ -344,6 +344,47 @@
         transition: all 0.3s ease;
       }
 
+      // Functions to update from data-* attributes (same behaviour as about-us)
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+
+          if (text === null) return;
+
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+            if (el.tagName === 'OPTION') {
+              el.textContent = text;
+            } else if (el.hasAttribute('placeholder')) {
+              el.placeholder = text;
+            } else {
+              el.value = text;
+            }
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
+
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
+        ariaEls.forEach(el => {
+          let val = el.getAttribute(`data-${lang}`);
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          if (val) el.setAttribute('aria-label', val);
+        });
+      }
+
       .site-nav ul { flex-direction: column; gap: 16px; }
 
       .dropdown-content {
@@ -2474,6 +2515,12 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja') || l.startsWith('jp')) return 'ja';
+        if (l.startsWith('zh') || l.startsWith('cn')) return 'zh';
         return 'en';
       }
 
@@ -2481,6 +2528,14 @@
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
       setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
+
+      // Tornar possível disparar mudanças de idioma a partir de outros scripts
+      window.addEventListener('cobrait-set-language', (e) => {
+        const lang = normalizeLang(e.detail);
+        setActiveLanguage(lang);
+        applyLanguage(lang);
+        try { localStorage.setItem('preferredLanguage', lang); } catch (err) {}
+      });
 
       // Event listeners para as opções de língua
       languageOptions.forEach(option => {
@@ -2756,6 +2811,9 @@
       }
 
       function applyLanguage(lang) {
+        // Normalize to two-letter code
+        lang = String(lang || 'en').slice(0,2).toLowerCase();
+
         // Header (existing behaviour)
         langButtons.forEach(b => b.classList.remove("active"));
         const active = document.querySelector(`.language-option[data-lang="${lang}"]`);
@@ -2770,12 +2828,30 @@
           if (typeof v !== "undefined") el.textContent = v;
         });
 
-        // Careers page content (no markup changes; translate by selecting existing nodes)
-        const t = texts[lang] || texts.en;
+        // Careers page content (attempt to use page texts; if missing, try global translations)
+        let t = texts[lang];
+        if (!t) {
+          t = {};
+          const enSource = texts.en || {};
+          for (const key in enSource) {
+            const enText = enSource[key];
+            let val = enText;
+            try {
+              if (window.cobraitTranslations && window.cobraitTranslations[enText] && window.cobraitTranslations[enText][lang]) {
+                val = window.cobraitTranslations[enText][lang];
+              }
+            } catch (err) {}
+            t[key] = val;
+          }
+        }
 
-        setText(document.querySelector(".hero-badge span:nth-child(2)"), t.heroBadge);
-        setText(document.querySelector(".hero-title"), t.heroTitle, true);
-        setText(document.querySelector(".hero-subtitle"), t.heroSubtitle);
+        const heroBadgeEl = document.querySelector(".hero-badge span:nth-child(2)");
+        const heroTitleEl = document.querySelector(".hero-title");
+        const heroSubtitleEl = document.querySelector(".hero-subtitle");
+
+        setText(heroBadgeEl, t.heroBadge);
+        setText(heroTitleEl, t.heroTitle, true);
+        setText(heroSubtitleEl, t.heroSubtitle);
 
         const heroBtns = document.querySelectorAll(".hero-actions .btn");
         setText(heroBtns[0], t.viewPositions);
@@ -2786,6 +2862,26 @@
         setText(statLabels[0], t.stat1Label);
         setText(statLabels[1], t.stat2Label);
         setText(statLabels[2], t.stat3Label);
+
+        // Ensure these elements have `data-en` attributes so the global translation helper can fill other languages
+        try {
+          if (texts.en) {
+            if (heroBadgeEl) heroBadgeEl.setAttribute('data-en', texts.en.heroBadge || '');
+            if (heroTitleEl) { heroTitleEl.setAttribute('data-en', texts.en.heroTitle || ''); heroTitleEl.setAttribute('data-html',''); }
+            if (heroSubtitleEl) heroSubtitleEl.setAttribute('data-en', texts.en.heroSubtitle || '');
+            if (statLabels[0]) statLabels[0].setAttribute('data-en', texts.en.stat1Label || '');
+            if (statLabels[1]) statLabels[1].setAttribute('data-en', texts.en.stat2Label || '');
+            if (statLabels[2]) statLabels[2].setAttribute('data-en', texts.en.stat3Label || '');
+          }
+        } catch (err) {}
+
+        // Ask the global translation loader to populate missing data-xx attributes, then update any elements that use data-* attributes
+        try {
+          if (window.applyCobraitTranslations) window.applyCobraitTranslations();
+        } catch (err) {}
+        // Update elements that have data-pt/data-en/... attributes (copied from about-us behavior)
+        updateTextContent(lang);
+        updateAriaLabels(lang);
 
         // Values section header
         const values = document.querySelector(".values-section");
@@ -2878,15 +2974,24 @@
         }
       }
 
-      // Bind clicks
+      // When the site-wide language changes, also update Careers-specific texts
+      window.addEventListener('cobrait-set-language', (e) => {
+        const lang = (String(e.detail || 'en')).slice(0,2).toLowerCase();
+        applyLanguage(lang);
+      });
+
+      // Bind clicks: dispatch a site-wide language change event so all handlers run
       langButtons.forEach(btn => {
-        btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+        btn.addEventListener("click", () => {
+          const lang = String(btn.dataset.lang || 'en');
+          window.dispatchEvent(new CustomEvent('cobrait-set-language', { detail: lang }));
+        });
       });
 
       // Default language based on current active button (or HTML lang)
       const initial = (document.querySelector(".language-option.active")?.dataset.lang)
         || (document.documentElement.lang || "en").slice(0,2).toLowerCase();
-      applyLanguage(initial);
+      window.dispatchEvent(new CustomEvent('cobrait-set-language', { detail: initial }));
 
       // ====== FALLBACK SCRIPT: Copiar data-en para idiomas em falta ======
       document.querySelectorAll('[data-en]').forEach(el => {

@@ -1812,6 +1812,12 @@
         if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
         if (l.startsWith('en')) return 'en';
         if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja') || l.startsWith('jp')) return 'ja';
+        if (l.startsWith('zh') || l.startsWith('cn')) return 'zh';
         return 'en';
       }
 

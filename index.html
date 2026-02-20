@@ -134,6 +134,11 @@
         /* Dropdown */
         .dropdown { position: relative; }
 
+        /* Remove underline from dropdown toggle (the link with arrow) */
+        .dropdown > a::after {
+            display: none;
+        }
+
         .dropdown-content {
             position: absolute;
             top: 100%;
@@ -402,9 +407,8 @@
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         }
         .what-we-do__intro {
-            text-align: center;
             max-width: 800px;
-            margin: 0 auto 60px;
+            margin: 0 0 60px 0;
         }
         .what-we-do__kicker {
             font-family: 'Poppins', sans-serif;
@@ -428,8 +432,6 @@
             font-size: 1.125rem;
             line-height: 1.7;
             color: #64748b;
-            max-width: 700px;
-            margin: 0 auto;
         }
         .what-we-do__grid {
             display: grid;
@@ -731,6 +733,257 @@
             
             .talk-about-project__title {
                 font-size: 2rem;
+            }
+        }
+
+        /* ========================= CONTACT SECTION (DE BOOK-A-CALL) ========================= */
+        .book-contact {
+            background: #ffffff;
+            padding: 72px 0;
+        }
+
+        .book-contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            align-items: start;
+        }
+
+        .contact-title {
+            font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            line-height: 1.05;
+            font-size: clamp(34px, 4vw, 56px);
+            margin: 0 0 18px;
+            color: #0b1220;
+        }
+
+        .contact-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 22px;
+            display: grid;
+            gap: 12px;
+            color: #0b1220;
+        }
+
+        .contact-bullets li {
+            position: relative;
+            padding-left: 34px;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .contact-bullets li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            border: 1px solid #bfdbfe;
+            color: #1d4ed8;
+            font-weight: 900;
+            font-size: 12px;
+        }
+
+        .contact-video {
+            border-radius: 18px;
+            height: 270px;
+            background: radial-gradient(circle at 30% 30%, rgba(79, 70, 229, 0.18), transparent 55%),
+                        linear-gradient(135deg, #0b1220 0%, #111c32 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(2, 6, 23, 0.10);
+        }
+
+        .video-play {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: 76px;
+            height: 76px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            box-shadow: 0 14px 40px rgba(79, 70, 229, 0.24);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s ease;
+        }
+
+        .video-play:hover {
+            transform: scale(1.04);
+        }
+
+        .video-play .triangle {
+            width: 0;
+            height: 0;
+            border-left: 18px solid #fff;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 4px;
+        }
+
+        /* FORM */
+        .form-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 18px 60px rgba(2, 6, 23, 0.08);
+        }
+
+        .form-head {
+            margin-bottom: 16px;
+        }
+
+        .form-title {
+            margin: 0 0 6px;
+            font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: #0b1220;
+            font-size: 18px;
+        }
+
+        .form-sub {
+            margin: 0;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .book-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .book-form .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .book-form .field span {
+            font-family: Inter, system-ui, Arial, sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            color: #0b1220;
+            letter-spacing: -0.2px;
+        }
+
+        .book-form .field input,
+        .book-form .field select,
+        .book-form .field textarea {
+            padding: 10px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: Inter, system-ui, Arial, sans-serif;
+            font-size: 14px;
+            color: #0b1220;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .book-form .field input:focus,
+        .book-form .field select:focus,
+        .book-form .field textarea:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .book-form .check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .book-form .check input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .book-form .check span {
+            font-size: 14px;
+            color: #0f172a;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .form-foot {
+            margin: 12px 0 0;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .form-success {
+            margin-top: 14px;
+            border-radius: 14px;
+            border: 1px solid #c7d2fe;
+            background: #eef2ff;
+            padding: 14px 14px;
+            color: #0b1220;
+        }
+
+        .form-success h3 {
+            margin: 0 0 6px;
+            font-family: Poppins, Inter, system-ui, Arial, sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: -0.2px;
+            color: #0b1220;
+        }
+
+        .form-success p {
+            margin: 0;
+            font-family: Inter, system-ui, Arial, sans-serif;
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .book-contact-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .contact-video {
+                height: 240px;
             }
         }
 
@@ -1244,7 +1497,7 @@
         <section class="what-we-do" id="what-we-do">
             <div class="container">
                 <div class="what-we-do__intro">
-                    <!-- ... conteúdo existente ... -->
+                    
                 </div>
                 <div class="what-we-do__grid">
                     <!-- PRODUCT SCOPE - COM LINK -->
@@ -1434,6 +1687,227 @@
             </div>
         </section>
 
+        <!-- CONTACTO - SECTION (COPIADA DE BOOK-A-CALL) -->
+        <section id="contact-index" class="book-contact" aria-label="Contact">
+          <div class="container book-contact-grid">
+            <div class="contact-left">
+              <h2 class="contact-title" data-html
+                  data-pt="Fala connosco e<br>faz o teu projeto avançar!"
+                  data-en="Talk to us and<br>get your project moving!"
+                  data-es="Habla con nosotros y<br>haz avanzar tu proyecto!"
+                  data-fr="Parlez-nous et<br>faites avancer votre projet!"
+                  data-de="Sprechen Sie mit uns und<br>bringen Sie Ihr Projekt voran!"
+                  data-ru="Поговорите с нами и<br>продвиньте свой проект!"
+                  data-nl="Praat met ons en<br>zet je project in beweging!"
+                  data-ja="私たちと話して、<br>あなたのプロジェクトを進めてください!"
+                  data-zh="与我们交谈，<br>推动您的项目！">
+                Fala connosco e<br>faz o teu projeto avançar!
+              </h2>
+
+              <ul class="contact-bullets">
+                <li data-pt="Respondemos em até 24 horas."
+                    data-en="We will respond to you within 24 hours."
+                    data-es="Respondemos en 24 horas."
+                    data-fr="Nous vous répondrons dans 24 heures."
+                    data-de="Wir antworten innerhalb von 24 Stunden."
+                    data-ru="Мы ответим в течение 24 часов."
+                    data-nl="We respondieren binnen 24 uur."
+                    data-ja="24時間以内に返信します。"
+                    data-zh="我们将在24小时内回复您。">
+                  Respondemos em até 24 horas.
+                </li>
+                <li data-pt="Falas com especialistas de produto e tecnologia (sem account managers)."
+                    data-en="You'll be talking to product and tech experts (no account managers)."
+                    data-es="Hablarás con expertos de producto y tecnología (sin account managers)."
+                    data-fr="Vous parlerez à des experts en produits et technologie (pas de gestionnaires de compte)."
+                    data-de="Sie sprechen mit Produkt- und Technologieexperten (keine Account Manager)."
+                    data-ru="Вы будете разговаривать с экспертами по продуктам и технологиям (без менеджеров аккаунтов)."
+                    data-nl="Je praat met product- en technologie-experts (geen accountmanagers)."
+                    data-ja="製品およびテクノロジーの専門家と話し合います（アカウントマネージャーなし）。"
+                    data-zh="您将与产品和技术专家交谈（没有账户经理）。">
+                  Falas com especialistas de produto e tecnologia (sem account managers).
+                </li>
+              </ul>
+
+              <div class="contact-video" aria-label="Video">
+                <button class="video-play" type="button" aria-label="Play video">
+                  <span class="triangle" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-right">
+              <div class="form-card">
+                <div class="form-head">
+                  <h3 class="form-title"
+                      data-pt="Conta-nos sobre o teu projeto"
+                      data-en="Tell us about your project"
+                      data-es="Cuéntanos sobre tu proyecto"
+                      data-fr="Parlez-nous de votre projet"
+                      data-de="Erzählen Sie uns von Ihrem Projekt"
+                      data-ru="Расскажите нам о вашем проекте"
+                      data-nl="Vertel ons over je project"
+                      data-ja="プロジェクトについて教えてください"
+                      data-zh="告诉我们您的项目">
+                    Conta-nos sobre o teu projeto
+                  </h3>
+                  <p class="form-sub"
+                     data-pt="Preenche o formulário e respondemos normalmente em 24–48h."
+                     data-en="Fill out the form and we usually reply within 24–48h."
+                     data-es="Rellena el formulario y respondemos normalmente en 24–48h."
+                     data-fr="Remplissez le formulaire et nous répondons généralement dans 24-48h."
+                     data-de="Füllen Sie das Formular aus und wir antworten normalerweise innerhalb von 24-48h."
+                     data-ru="Заполните форму, и мы обычно отвечаем в течение 24-48 часов."
+                     data-nl="Vul het formulier in en we antwoorden meestal binnen 24-48u."
+                     data-ja="フォームに記入すると、通常24～48時間以内に返信します。"
+                     data-zh="填写表格，我们通常在24-48小时内回复。">
+                    Preenche o formulário e respondemos normalmente em 24–48h.
+                  </p>
+                </div>
+
+                <form class="book-form"
+                      id="contactForm"
+                      action="https://formsubmit.co/ajax/geral@cobrait.pt"
+                      method="POST"
+                      autocomplete="on">
+
+                  <!-- Configurações do FormSubmit -->
+                  <input type="hidden" name="_subject" value="Novo pedido — Index Contact">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_template" value="table">
+
+                  <label class="field">
+                    <span data-pt="Nome" data-en="Name" data-es="Nombre" data-fr="Nom" data-de="Name" data-ru="Имя" data-nl="Naam" data-ja="名前" data-zh="名字">Nome</span>
+                    <input type="text" name="Nome" placeholder="O teu nome" required>
+                  </label>
+
+                  <label class="field">
+                    <span data-pt="Email" data-en="Email" data-es="Email" data-fr="Email" data-de="Email" data-ru="Email" data-nl="Email" data-ja="メール" data-zh="电子邮件">Email</span>
+                    <input type="email" name="Email" placeholder="o.teu@email.com" required>
+                  </label>
+
+                  <label class="field">
+                    <span data-pt="Orçamento" data-en="Budget Size" data-es="Presupuesto" data-fr="Budget" data-de="Budget" data-ru="Бюджет" data-nl="Budget" data-ja="予算" data-zh="预算">Orçamento</span>
+                    <select name="Orçamento" required>
+                      <option value="" selected disabled data-pt="Selecionar…" data-en="Select…" data-es="Seleccionar…" data-fr="Sélectionner…" data-de="Wählen…" data-ru="Выбрать…" data-nl="Selecteer…" data-ja="選択…" data-zh="选择…">Selecionar…</option>
+                      <option>€1k–€5k</option>
+                      <option>€5k–€15k</option>
+                      <option>€15k–€50k</option>
+                      <option>€50k+</option>
+                    </select>
+                  </label>
+
+                  <label class="field">
+                    <span data-pt="Descrição" data-en="Description" data-es="Descripción" data-fr="Description" data-de="Beschreibung" data-ru="Описание" data-nl="Beschrijving" data-ja="説明" data-zh="描述">Descrição</span>
+                    <textarea name="description" rows="6"
+                              data-pt="Conta-nos em 2–3 linhas o que precisas"
+                              data-en="Tell us in 2–3 lines what you need"
+                              data-es="Cuéntanos en 2–3 líneas lo que necesitas"
+                              data-fr="Dites-nous en 2-3 lignes ce dont vous avez besoin"
+                              data-de="Erzählen Sie uns in 2-3 Zeilen, was Sie brauchen"
+                              data-ru="Расскажите нам в 2-3 строках, что вам нужно"
+                              data-nl="Vertel ons in 2-3 regels wat je nodig hebt"
+                              data-ja="2～3行で必要なことを教えてください"
+                              data-zh="用2-3行告诉我们你需要什么"
+                              placeholder="Conta-nos em 2–3 linhas o que precisas" required></textarea>
+                  </label>
+
+                  <label class="field">
+                    <span data-pt="Como soubeste de nós?"
+                          data-en="How did you hear about us?"
+                          data-es="¿Cómo nos conociste?"
+                          data-fr="Comment avez-vous entendu parler de nous?"
+                          data-de="Wie haben Sie von uns erfahren?"
+                          data-ru="Как вы о нас узнали?"
+                          data-nl="Hoe heb je van ons gehoord?"
+                          data-ja="どのようにして私たちについて聞きましたか？"
+                          data-zh="你是怎么听说我们的？">
+                      Como soubeste de nós?
+                    </span>
+                    <input type="text" name="referral"
+                           data-pt="Google, indicação, LinkedIn…"
+                           data-en="Google, referral, LinkedIn…"
+                           data-es="Google, referencia, LinkedIn…"
+                           data-fr="Google, recommandation, LinkedIn…"
+                           data-de="Google, Empfehlung, LinkedIn…"
+                           data-ru="Google, рекомендация, LinkedIn…"
+                           data-nl="Google, referentie, LinkedIn…"
+                           data-ja="Google、紹介、LinkedIn…"
+                           data-zh="Google、推荐、LinkedIn…"
+                           placeholder="Google, indicação, LinkedIn…">
+                  </label>
+
+                  <label class="check">
+                    <input type="checkbox" name="nda">
+                    <span data-pt="Este projeto requer NDA"
+                          data-en="This Project requires an NDA"
+                          data-es="Este proyecto requiere NDA"
+                          data-fr="Ce projet nécessite un NDA"
+                          data-de="Dieses Projekt erfordert ein NDA"
+                          data-ru="Этот проект требует NDA"
+                          data-nl="Dit project vereist een NDA"
+                          data-ja="このプロジェクトはNDAが必要です"
+                          data-zh="此项目需要NDA">
+                      Este projeto requer NDA
+                    </span>
+                  </label>
+
+                  <button class="submit-btn" id="submitBtn" type="submit"
+                          data-pt="ENVIAR"
+                          data-en="SUBMIT"
+                          data-es="ENVIAR"
+                          data-fr="SOUMETTRE"
+                          data-de="ABSENDEN"
+                          data-ru="ОТПРАВИТЬ"
+                          data-nl="INDIENEN"
+                          data-ja="送信"
+                          data-zh="提交">
+                    ENVIAR
+                  </button>
+
+                  <p class="form-foot"
+                     data-pt="Ao enviar, aceitas ser contactado pela Cobrait sobre este pedido."
+                     data-en="By submitting, you agree to be contacted by Cobrait about this request."
+                     data-es="Al enviar, aceptas ser contactado por Cobrait sobre esta solicitud."
+                     data-fr="En envoyant, vous acceptez d'être contacté par Cobrait à propos de cette demande."
+                     data-de="Durch Absenden akzeptieren Sie, von Cobrait zu dieser Anfrage kontaktiert zu werden."
+                     data-ru="Отправляя, вы соглашаетесь быть связанными Cobrait в отношении этого запроса."
+                     data-nl="Door in te dienen, accepteer je contact met Cobrait over deze aanvraag."
+                     data-ja="送信することで、この要求についてCobraitから連絡を受けることに同意します。"
+                     data-zh="提交后，您同意Cobrait就此请求与您联系。">
+                    Ao enviar, aceitas ser contactado pela Cobrait sobre este pedido.
+                  </p>
+                </form>
+
+                <div id="formSuccess" class="form-success" style="display:none;">
+                  <h3 data-pt="Pedido enviado com sucesso 🎉"
+                      data-en="Request sent successfully 🎉"
+                      data-es="Solicitud enviada con éxito 🎉"
+                      data-fr="Demande envoyée avec succès 🎉"
+                      data-de="Anfrage erfolgreich versendet 🎉"
+                      data-ru="Запрос успешно отправлен 🎉"
+                      data-nl="Verzoek succesvol verzonden 🎉"
+                      data-ja="リクエストが正常に送信されました 🎉"
+                      data-zh="请求已成功发送 🎉">
+                    Pedido enviado com sucesso 🎉
+                  </h3>
+                  <p data-pt="Obrigado pelo contacto. Vamos analisar e entraremos em contacto normalmente em 24–48h."
+                     data-en="Thanks for reaching out. We'll review it and get back to you usually within 24–48h."
+                     data-es="Gracias por comunicarte. Lo revisaremos y nos pondremos en contacto normalmente en 24–48h."
+                     data-fr="Merci de nous avoir contactés. Nous l'examinerons et vous recontacterons généralement dans les 24-48h."
+                     data-de="Danke, dass Sie sich an uns gewandt haben. Wir werden es überprüfen und normalerweise innerhalb von 24-48 Stunden bei Ihnen zurück."
+                     data-ru="Спасибо, что с нами связались. Мы это рассмотрим и свяжемся с вами обычно в течение 24-48 часов."
+                     data-nl="Dank je wel voor je reactie. We zullen het beoordelen en je meestal binnen 24-48u contacteren."
+                     data-ja="お問い合わせありがとうございます。レビューして、通常24～48時間以内にご連絡いたします。"
+                     data-zh="感谢您的联系。我们将审查，通常在24-48小时内与您联系。">
+                    Obrigado pelo contacto. Vamos analisar e entraremos em contacto normalmente em 24–48h.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         
         <!-- FOOTER -->
         <footer class="footer-pro" role="contentinfo">
@@ -1531,6 +2005,12 @@
                 const navLinks = document.querySelectorAll('.site-nav a');
                 
                 navLinks.forEach(link => {
+                    // Not apply .active to dropdown links
+                    if (link.closest('.dropdown')) {
+                        link.classList.remove('active');
+                        return;
+                    }
+
                     const href = link.getAttribute('href').toLowerCase();
                     
                     // Remover hash para comparação

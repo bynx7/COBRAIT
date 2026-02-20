@@ -1436,6 +1436,21 @@
       display: block;
       animation: fadeIn 0.5s ease;
     }
+
+    #budgetProjectTitle {
+      display: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0f172a;
+      margin: 0 0 30px 0;
+      padding: 0 0 20px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .budget-display.active #budgetProjectTitle {
+      display: block;
+    }
     
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -1872,7 +1887,7 @@ footer.footer-pro .footer-brand-title {
 
           <!-- (mantido para compatibilidade com o JS existente) -->
           <button class="budget-close" id="closeBudget" aria-label="Close" style="display:none">×</button>
-          <h2 id="budgetProjectTitle" style="display:none"></h2>
+          <h2 id="budgetProjectTitle"></h2>
           <span id="budgetComplexity" style="display:none"></span>
           <span id="budgetSize" style="display:none"></span>
           <span id="budgetSpeed" style="display:none"></span>
@@ -2706,8 +2721,8 @@ footer.footer-pro .footer-brand-title {
           // Mostrar a seção de budget
           budgetDisplay.classList.add('active');
           
-          // Rolar suavemente para a seção de budget
-          budgetDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Rolar suavemente para a seção de budget (sem levar tão para baixo)
+          budgetDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
           // Se não houver seleção, esconder a seção de budget
           budgetDisplay.classList.remove('active');
