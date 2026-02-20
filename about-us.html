@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-PT">
 <head>
   <meta charset="utf-8" />
@@ -871,6 +871,116 @@
       border-color: rgba(226,232,240,0.5);
     }
 
+    /* WHAT WE DO SECTION - REPLICADO DO INDEX */
+    .what-we-do {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    .what-we-do__intro {
+      max-width: 800px;
+      margin: 0 0 60px 0;
+    }
+    .what-we-do__kicker {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #3b82f6;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .what-we-do__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      color: #1e293b;
+      margin-bottom: 24px;
+    }
+    .what-we-do__description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: #64748b;
+    }
+    .what-we-do__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #e2e8f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #c7d2fe;
+    }
+    .service-card__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 28px;
+    }
+    .service-card__icon--blue {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #1d4ed8;
+    }
+    .service-card__icon--purple {
+      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+      color: #7c3aed;
+    }
+    .service-card__icon--yellow {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      color: #d97706;
+    }
+    .service-card__icon--teal {
+      background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
+      color: #0d9488;
+    }
+    .service-card__icon--pink {
+      background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+      color: #db2777;
+    }
+    .service-card__icon--orange {
+      background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+      color: #ea580c;
+    }
+    .service-card__title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.375rem;
+      color: #1e293b;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .service-card__desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #64748b;
+      margin-top: auto;
+    }
+    .what-we-do__cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     @media (max-width: 980px) {
       .about-hero-grid { grid-template-columns: 1fr; gap: 22px; }
       .about-title { font-size: 2.35rem; }
@@ -1156,6 +1266,18 @@
       border-color: rgba(226, 232, 240, 0.5) !important;
     }
 
+    .service-card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .service-card-cta {
+      display: inline-block;
+      margin-top: 15px;
+      color: #4f46e5;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
@@ -1176,10 +1298,10 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Work" data-de="Work" data-ru="Work" data-nl="Work" data-ja="Work" data-zh="Work">Work</a></li>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
           <li class="dropdown">
             <a href="index.html#what-we-do">
-              <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Services" data-ja="サービス" data-zh="服务">Serviços</span>
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
               <span class="dropdown-arrow">▼</span>
             </a>
 
@@ -1189,16 +1311,16 @@
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="Product Scope" data-de="Product Scope" data-ru="Product Scope" data-nl="Product Scope" data-ja="Product Scope" data-zh="Product Scope">Product Scope</h4>
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="Portée du produit" data-de="Produktumfang" data-ru="Область применения продукта" data-nl="Productomvang" data-ja="製品スコープ" data-zh="产品范围">Product Scope</h4>
                   <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
                      data-en="15-day process to align the product with your business goals."
                      data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
-                     data-fr="Processus de 15 jours pour aligner le produit avec les objectifs commerciaux."
-                     data-de="15-tägiger Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
-                     data-ru="15-дневный процесс для сыгласования продукта с целями вашего бизнеса."
-                     data-nl="15-daags proces om het product af te stemmen op uw bedrijfsdoelstellingen."
-                     data-ja="你の事業目標のごとに製品を上手く了解してもらうためかけるために「15日時間」を購子しています。"
-                     data-zh="15天的流程来整合你的业务目標。">
+                     data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
+                     data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
+                     data-ru="15-дневный процесс согласования продукта с целями вашего бизнеса."
+                     data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
+                     data-ja="製品をビジネス目標に合わせるための15日間のプロセス。"
+                     data-zh="15天的流程，将产品与您的业务目标保持一致。">
                     15-day process to align the product with your business goals.
                   </p>
                 </div>
@@ -1209,16 +1331,16 @@
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="MVP Builder" data-de="MVP Builder" data-ru="MVP Builder" data-nl="MVP Builder" data-ja="MVP Builder" data-zh="MVP Builder">MVP Builder</h4>
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="Построитель MVP" data-nl="MVP Builder" data-ja="MVP ビルダー" data-zh="MVP 构建者">MVP Builder</h4>
                   <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
                      data-en="Go to market quickly with a high-quality Minimum Viable Product."
                      data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
-                     data-fr="Lancez-vous rapidement sur le marché avec un Produit Minimum Viable de haute qualité."
-                     data-de="Schnell auf den Markt gehen mit einem hochwertigen Minimum Viable Product."
-                     data-ru="Быстро выйдите на рынок с высококачественным минимальным жизнеспособным продуктом."
-                     data-nl="Snel op de markt gaan met een hoogwaardig Minimum Viable Product."
-                     data-ja="高品質の最小実行可能製品を使用して、迅速に市場に参入して下さい。"
-                     data-zh="使用高质量的最小可行产品市場。">
+                     data-fr="Lancez-vous rapidement sur le marché avec un produit minimum viable de haute qualité."
+                     data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
+                     data-ru="Быстро выходите на рынок с высококачественным минимально жизнеспособным продуктом."
+                     data-nl="Ga snel op de markt met een hoogwaardig Minimum Viable Product."
+                     data-ja="高品質の最小限実行可能製品で素早く市場に投入する。"
+                     data-zh="使用高质量的最小可行产品快速进入市场。">
                     Go to market quickly with a high-quality Minimum Viable Product.
                   </p>
                 </div>
@@ -1233,18 +1355,17 @@
                   <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
                      data-en="Design an easy-to-use engaging and functional product."
                      data-es="Diseña un producto fácil de usar, atractivo y funcional."
-                     data-fr="Concevez un produit facile à utiliser, attrayant et fonctionnel."
-                     data-de="Entwerfen Sie ein benutzerfreundliches, ansprechendes und funktionierendes Produkt."
-                     data-ru="Направить его полюсы и среды для дизайна для удобства а также красивых и функциональных продуктов."
+                     data-fr="Concevoir un produit facile à utiliser, attrayant et fonctionnel."
+                     data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
+                     data-ru="Разработайте простой в использовании, привлекательный и функциональный продукт."
                      data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
-                     data-ja="u4f7fu7528しやすい、魅力的で機能的な製品を設計してください。"
-                     data-zh="设计一个易于使用、吸引人的和功能性的产品。">
+                     data-ja="使いやすく、魅力的で機能的な製品を設計する。"
+                     data-zh="设计一个易于使用、引人入胜且功能强大的产品。">
                     Design an easy-to-use engaging and functional product.
                   </p>
                 </div>
               </a>
 
-            
               <a href="servicos/custom-software.html" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -1254,8 +1375,8 @@
                       data-en="Custom Software Development"
                       data-es="Desarrollo de Software a Medida"
                       data-fr="Développement de logiciels personnalisés"
-                      data-de="Entwicklung von Maßsoftware"
-                      data-ru="Получаха раработка ПО"
+                      data-de="Benutzerdefinierte Softwareentwicklung"
+                      data-ru="Разработка пользовательского программного обеспечения"
                       data-nl="Aangepaste softwareontwikkeling"
                       data-ja="カスタムソフトウェア開発"
                       data-zh="定制软件开发">
@@ -1264,12 +1385,12 @@
                   <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
                      data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
                      data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
-                     data-fr="Frameworks lean appliqués à votre vision pour créer une solution de logiciel personnalisé innovante."
-                     data-de="Lean-Frameworks angewendet auf Ihre Vision, um eine innovative Softwarelosung zu schaffen."
-                     data-ru="Lean-frameworks маӘ методология для инновационных решений."
-                     data-nl="Lean-frameworks toegepast op uw visie om een innovatieve aangepaste softwareoplossing te creëren."
-                     data-ja="u3042なたのビジョンに恵まれたリーンフレームワークが、革新的なカスタムソフトウェアソリューションを作成します。"
-                     data-zh="应用于你的愿景的敏捷框架，以氉。">
+                     data-fr="Nous appliquons les frameworks lean à votre vision pour créer une solution logicielle personnalisée et innovante."
+                     data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative Softwarelösung zu schaffen."
+                     data-ru="Мы применяем lean-фреймворки к вашему видению, чтобы создать персонализированное и инновационное программное решение."
+                     data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creëren."
+                     data-ja="リーンフレームワークをあなたのビジョンに適用して、パーソナライズされた革新的なソフトウェアソリューションを作成します。"
+                     data-zh="我们将精益框架应用到您的愿景中，以创建个性化和创新的软件解决方案。">
                     Lean frameworks applied to your vision to create an innovative custom software solution.
                   </p>
                 </div>
@@ -1280,18 +1401,18 @@
                   <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専仏チーム" data-zh="专业团队">
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">
                     Dedicated Teams
                   </h4>
                   <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
                      data-en="Build your product with a dedicated team of developers."
                      data-es="Construye tu producto con un equipo dedicado de developers."
-                     data-fr="Construisez votre produit avec une équipe dédiée de développeurs."
-                     data-de="Bauen Sie Ihr Produkt mit einem dedizierten Team von Entwicklern."
-                     data-ru="Создавайте свой продукт с выделенной командой разработчиков."
+                     data-fr="Construisez votre produit avec une équipe de développeurs dédiée."
+                     data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
+                     data-ru="Создайте свой продукт с помощью выделенной команды разработчиков."
                      data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
-                     data-ja="専門の会Ǚを持って至上之日を会張とへ購子して下さい。"
-                     data-zh="使用专业开发人员团队构建您的产品。">
+                     data-ja="専任の開発者チームであなたの製品を構築する。"
+                     data-zh="与专业开发者团队一起构建您的产品。">
                     Build your product with a dedicated team of developers.
                   </p>
                 </div>
@@ -1299,15 +1420,15 @@
             </div>
           </li>
 
-          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios" data-fr="Tarifs" data-de="Preisgestaltung" data-ru="Цены" data-nl="Prijzen" data-ja="u4fa1u683c" data-zh="u4ef7u683c">Pricing</a></li>
+          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="Цены" data-nl="Prijzen" data-ja="価格" data-zh="定价">Pricing</a></li>
           <li><a href="about-us.html" class="active"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">About Us</span></a></li>
-          <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="u041aарьеры" data-nl="Carrières" data-ja="u30adャリア" data-zh="u4e1a务">Careers</a></li>
-          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
+          <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Careers</a></li>
+          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Технология" data-nl="Technologie" data-ja="テクノロジー" data-zh="技术">Tech</a></li>
         </ul>
       </nav>
 
       <div class="header-right">
-        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
+        <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
@@ -1360,12 +1481,12 @@
              data-pt="AGENDAR UMA CHAMADA"
              data-en="BOOK A CALL"
              data-es="RESERVAR UNA LLAMADA"
-             data-fr="RSERVER UN APPEL"
+             data-fr="RÉSERVER UN APPEL"
              data-de="EINEN ANRUF BUCHEN"
-             data-ru="КНИГА ВЫЗОВ"
-             data-nl="BELLEN"
-             data-ja="電話予約"
-             data-zh="预u7d04电话">
+             data-ru="ЗАПЛАНИРОВАТЬ ЗВОНОК"
+             data-nl="EEN GESPREK PLANNEN"
+             data-ja="通話を予約"
+             data-zh="预订通话">
             BOOK A CALL
           </a>
         </div>
@@ -1385,9 +1506,9 @@
              data-es="COBRA IT • SOFTWARE COMPANY"
              data-fr="COBRA IT • SOCIÉTÉ DE LOGICIELS"
              data-de="COBRA IT • SOFTWAREUNTERNEHMEN"
-             data-ru="COBRA IT • ПО КОМПАНИЯ"
+             data-ru="COBRA IT • ПРОГРАММНАЯ КОМПАНИЯ"
              data-nl="COBRA IT • SOFTWAREBEDRIJF"
-             data-ja="COBRA IT •ソフトウェア会社"
+             data-ja="COBRA IT • ソフトウェア会社"
              data-zh="COBRA IT • 软件公司">
             COBRA IT • SOFTWARE COMPANY
           </p>
@@ -1396,12 +1517,12 @@
               data-pt="A tua equipa de produto e engenharia."
               data-en="Your product & engineering team."
               data-es="Tu equipo de producto e ingeniería."
-              data-fr="Votre équipe de produit et d’ingénierie."
+              data-fr="Votre équipe de produit et d'ingénierie."
               data-de="Ihr Produkt- und Engineering-Team."
-              data-ru="u0412аша команда продукта и иnженерии"
+              data-ru="Ваша команда продукта и инженерии."
               data-nl="Uw product- en engineering-team."
-              data-ja="u3042なたの製品とエンジニアリングチーム。"
-              data-zh="你的产品与工程团队。">
+              data-ja="あなたの製品とエンジニアリングチーム。"
+              data-zh="您的产品和工程团队。">
             A tua equipa de produto e engenharia.
           </h1>
 
@@ -1409,12 +1530,12 @@
              data-pt="A COBRA IT constrói software à medida com foco em clareza, qualidade e escalabilidade. Trabalhamos com método, comunicação clara e entregas contínuas — do discovery ao lançamento."
              data-en="COBRA IT builds custom software with a focus on clarity, quality and scalability. We work with strong process, clear communication and continuous delivery — from discovery to launch."
              data-es="COBRA IT desarrolla software a medida con enfoque en claridad, calidad y escalabilidad. Trabajamos con método, comunicación clara y entregas continuas — del discovery al lanzamiento."
-             data-fr="COBRA IT crée un logiciel personnalisé avec l"é sur la clarté, la qualité et l'volutivité. Nous travaillons avec une solide processus, une communication claire et une livraison continue — de la découverte au lancement."
-             data-de="COBRA IT entwickelt benutzerdefinierte Software mit Fokus auf Klarheit, Qualität und Skalierbarkeit. Wir arbeiten mit starkem Prozess, klarer Kommunikation und kontinuierlicher Bereitstellung — von der Entdeckung zum Start."
-             data-ru="COBRA IT создает последовательное ПО с акцентом на яснось, качество и масштабируемость. Мы работаем с сильным процессом, ясною коммуникацией и неполрерывным от открытия к запуску."
-             data-nl="COBRA IT bouwt aangepaste software met nadruk op helderheid, kwaliteit en schaalbaarheid. We werken met sterke processen, duidelijke communicatie en continue delivery — van ontdekking tot lancering."
-             data-ja="COBRA ITは、明確性、品質、拡穀性に焦点を当てたカスタムソフトウェアを氉管。 我たちは、強いプロセス、明割なコミュニケーション、続行的な提供を推騎 — 発親から正式扛醫まで。"
-             data-zh="COBRA IT 开发专注于清晰、质量和可扩展性的定制软件。 我们以强大的流程、清晰的沟选亲妙应用不中断交付—从发现到摕得。">
+             data-fr="COBRA IT crée un logiciel personnalisé en mettant l'accent sur la clarté, la qualité et l'évolutivité. Nous travaillons avec un processus solide, une communication claire et une livraison continue — de la découverte au lancement."
+             data-de="COBRA IT entwickelt maßgeschneiderte Software mit Fokus auf Klarheit, Qualität und Skalierbarkeit. Wir arbeiten mit starkem Prozess, klarer Kommunikation und kontinuierlicher Bereitstellung — von der Entdeckung bis zum Start."
+             data-ru="COBRA IT создает индивидуальное программное обеспечение с акцентом на ясность, качество и масштабируемость. Мы работаем с надежным процессом, четкой коммуникацией и непрерывной поставкой — от открытия до запуска."
+             data-nl="COBRA IT bouwt aangepaste software met nadruk op helderheid, kwaliteit en schaalbaarheid. We werken met een sterk proces, duidelijke communicatie en continue levering — van ontdekking tot lancering."
+             data-ja="COBRA ITは、明確さ、品質、拡張性に焦点を当てたカスタムソフトウェアを構築します。私たちは、強力なプロセス、明確なコミュニケーション、継続的なデリバリーで、ディスカバリーからローンチまで取り組みます。"
+             data-zh="COBRA IT专注于清晰度、质量和可扩展性，构建定制软件。我们以强大的流程、清晰的沟通和持续交付——从发现到发布。">
             A COBRA IT constrói software à medida com foco em clareza, qualidade e escalabilidade. Trabalhamos com método, comunicação clara e entregas contínuas — do discovery ao lançamento.
           </p>
 
@@ -1425,10 +1546,10 @@
                data-es="Reservar una llamada"
                data-fr="Programmer un appel"
                data-de="Einen Anruf planen"
-               data-ru="u0417u0430u043fu043bu0430u043du0438u0440u043eu0432u0430u0442ь звонок"
+               data-ru="Запланировать звонок"
                data-nl="Een gesprek inplannen"
-               data-ja="u30dfu30bdu30bbu30e0
-               data-zh="u9884u7d04u7535u8bdd">Agendar uma chamada</a>
+               data-ja="通話を予約する"
+               data-zh="安排通话">Agendar uma chamada</a>
 
             <a class="btn btn--outline" href="index.html#what-we-do"
                data-pt="Ver serviços"
@@ -1436,10 +1557,10 @@
                data-es="Ver servicios"
                data-fr="Voir les services"
                data-de="Services anzeigen"
-               data-ru="u0421u043cu043eu0442u0440u0435u0442ь услуги"
-               data-nl="Services zien"
-               data-ja="u30b5u30b9ビスを表示"
-               data-zh="u67e5u770bu670du52a1">Ver serviços</a>
+               data-ru="Посмотреть услуги"
+               data-nl="Services bekijken"
+               data-ja="サービスを見る"
+               data-zh="查看服务">Ver serviços</a>
           </div>
         </div>
 
@@ -1447,19 +1568,19 @@
         <div class="about-visual" aria-hidden="true">
           <div class="about-visual-inner">
             <div class="chip-row">
-              <span class="chip"><span class="chip-dot"></span>Lean + Agile</span>
-              <span class="chip"><span class="chip-dot"></span>Product mindset</span>
-              <span class="chip"><span class="chip-dot"></span>Engineering quality</span>
+              <span class="chip"><span class="chip-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
+              <span class="chip"><span class="chip-dot"></span><span data-pt="Product mindset" data-en="Product mindset" data-es="Product mindset">Product mindset</span></span>
+              <span class="chip"><span class="chip-dot"></span><span data-pt="Engineering quality" data-en="Engineering quality" data-es="Engineering quality">Engineering quality</span></span>
             </div>
 
             <div class="stat-grid">
               <div class="stat">
-                <strong data-pt="End-to-end" data-en="End-to-end" data-es="End-to-end" data-fr="End-to-end" data-de="End-to-end" data-ru="End-to-end" data-nl="End-to-end" data-ja="End-to-end" data-zh="End-to-end">End-to-end</strong>
-                <span data-pt="produto + engenharia" data-en="product + engineering" data-es="producto + ingeniería" data-fr="produit + ingénierie" data-de="Produkt + Engineering" data-ru="u043fu0440u043eu0434u0443u043aт + инженерия" data-nl="product + engineering" data-ja="u7b4bpublic+エンジu30cbpu30efu30a8u30e3ヨ" data-zh="产品 + 业务">produto + engenharia</span>
+                <strong data-pt="End-to-end" data-en="End-to-end" data-es="End-to-end">End-to-end</strong>
+                <span data-pt="produto + engenharia" data-en="product + engineering" data-es="producto + ingeniería">produto + engenharia</span>
               </div>
               <div class="stat">
-                <strong data-pt="24–48h" data-en="24–48h" data-es="24–48h" data-fr="24–48h" data-de="24–48h" data-ru="24–48ч" data-nl="24–48h" data-ja="24–48h" data-zh="24–48h">24–48h</strong>
-                <span data-pt="tempo de resposta" data-en="response time" data-es="tiempo de respuesta" data-fr="temps de réponse" data-de="Reaktionszeit" data-ru="u0432рu0435u043cя ответа" data-nl="reactietijd" data-ja="u5fdc答u6642間" data-zh="业务時間">tempo de resposta</span>
+                <strong data-pt="24–48h" data-en="24–48h" data-es="24–48h">24–48h</strong>
+                <span data-pt="tempo de resposta" data-en="response time" data-es="tiempo de respuesta">tempo de resposta</span>
               </div>
               <div class="stat">
                 <strong data-pt="MVP" data-en="MVP" data-es="MVP">MVP</strong>
@@ -1470,7 +1591,7 @@
             <div class="media-card">
               <div class="media-top">
                 <strong data-pt="Como trabalhamos" data-en="How we work" data-es="Cómo trabajamos">Como trabalhamos</strong>
-                <span class="pill">Discovery → Build → Iterate</span>
+                <span class="pill" data-pt="Discovery → Build → Iterate" data-en="Discovery → Build → Iterate" data-es="Discovery → Build → Iterate">Discovery → Build → Iterate</span>
               </div>
 
               <div class="media-body">
@@ -1526,14 +1647,26 @@
           <h2 class="h2"
               data-pt="Olá — somos a COBRA IT."
               data-en="Hello — we're COBRA IT."
-              data-es="Hola — somos COBRA IT.">
+              data-es="Hola — somos COBRA IT."
+              data-fr="Bonjour — nous sommes COBRA IT."
+              data-de="Hallo — wir sind COBRA IT."
+              data-ru="Привет — мы COBRA IT."
+              data-nl="Hallo — wij zijn COBRA IT."
+              data-ja="こんにちは — COBRA ITです。"
+              data-zh="你好 — 我们是COBRA IT。">
             Olá — somos a COBRA IT.
           </h2>
 
           <p class="p"
              data-pt="Somos uma empresa de software focada em transformar ideias em produtos digitais sólidos. Trabalhamos em conjunto contigo para definir prioridades, desenhar bem e construir com qualidade — sem complicações."
              data-en="We're a software company focused on turning ideas into solid digital products. We work with you to define priorities, design well and build with quality — without unnecessary complexity."
-             data-es="Somos una empresa de software enfocada en convertir ideas en productos digitales sólidos. Trabajamos contigo para definir prioridades, diseñar bien y construir con calidad — sin complicaciones.">
+             data-es="Somos una empresa de software enfocada en convertir ideas en productos digitales sólidos. Trabajamos contigo para definir prioridades, diseñar bien y construir con calidad — sin complicaciones."
+             data-fr="Nous sommes une société de logiciels spécialisée dans la transformation d'idées en produits numériques solides. Nous travaillons avec vous pour définir les priorités, bien concevoir et construire avec qualité — sans complexité inutile."
+             data-de="Wir sind ein Softwareunternehmen, das sich darauf konzentriert, Ideen in solide digitale Produkte zu verwandeln. Wir arbeiten mit Ihnen zusammen, um Prioritäten zu definieren, gut zu gestalten und mit Qualität zu bauen — ohne unnötige Komplexität."
+             data-ru="Мы — программная компания, специализирующаяся на превращении идей в надежные цифровые продукты. Мы работаем вместе с вами, чтобы определить приоритеты, хорошо спроектировать и построить с качеством — без лишней сложности."
+             data-nl="Wij zijn een softwarebedrijf gericht op het omzetten van ideeën in solide digitale producten. We werken samen met u om prioriteiten te definiëren, goed te ontwerpen en met kwaliteit te bouwen — zonder onnodige complexiteit."
+             data-ja="私たちは、アイデアを堅牢なデジタル製品に変えることに特化したソフトウェア会社です。優先事項を定義し、適切に設計し、品質を保って構築するために、お客様と協力します—不必要な複雑さはありません。"
+             data-zh="我们是一家专注于将想法转化为坚实数字产品的软件公司。我们与您合作，确定优先级，精心设计并以质量构建——没有不必要的复杂性。">
             Somos uma empresa de software focada em transformar ideias em produtos digitais sólidos. Trabalhamos em conjunto contigo para definir prioridades, desenhar bem e construir com qualidade — sem complicações.
           </p>
 
@@ -1607,15 +1740,27 @@
           <h2 class="h2"
               data-pt="Porquê trabalhar connosco"
               data-en="Why work with us"
-              data-es="Por qué trabajar con nosotros">
+              data-es="Por qué trabajar con nosotros"
+              data-fr="Pourquoi travailler avec nous"
+              data-de="Warum mit uns arbeiten"
+              data-ru="Почему работать с нами"
+              data-nl="Waarom met ons werken"
+              data-ja="なぜ私たちと働くのか"
+              data-zh="为什么与我们合作">
             Porquê trabalhar connosco
           </h2>
 
           <p class="p"
-             data-pt="Não prometemos "mil projetos" — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto."
-             data-en="We don't promise "a thousand projects" — we promise a serious process. Less noise, more ownership, faster decisions and full focus on your product."
-             data-es="No prometemos "mil proyectos" — prometemos un proceso serio. Menos ruido, más responsabilidad, decisiones rápidas y foco total en tu producto.">
-            Não prometemos "mil projetos" — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto.
+             data-pt="Não prometemos 'mil projetos' — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto."
+             data-en="We don't promise 'a thousand projects' — we promise a serious process. Less noise, more ownership, faster decisions and full focus on your product."
+             data-es="No prometemos 'mil proyectos' — prometemos un proceso serio. Menos ruido, más responsabilidad, decisiones rápidas y foco total en tu producto."
+             data-fr="Nous ne promettons pas 'mille projets' — nous promettons un processus sérieux. Moins de bruit, plus de responsabilité, des décisions plus rapides et une concentration totale sur votre produit."
+             data-de="Wir versprechen keine 'tausend Projekte' — wir versprechen einen seriösen Prozess. Weniger Lärm, mehr Eigenverantwortung, schnellere Entscheidungen und volle Konzentration auf Ihr Produkt."
+             data-ru="Мы не обещаем 'тысячу проектов' — мы обещаем серьезный процесс. Меньше шума, больше ответственности, быстрые решения и полная концентрация на вашем продукте."
+             data-nl="We beloven geen 'duizend projecten' — we beloven een serieus proces. Minder ruis, meer eigenaarschap, snellere beslissingen en volledige focus op uw product."
+             data-ja="私たちは'千のプロジェクト'を約束するのではありません — 真剣なプロセスを約束します。ノイズが少なく、より多くのオーナーシップ、迅速な決定、そしてあなたの製品への完全な集中。"
+             data-zh="我们不承诺'一千个项目'——我们承诺一个严肃的过程。更少的噪音，更多的自主权，更快的决策，完全专注于您的产品。">
+            Não prometemos 'mil projetos' — prometemos um processo sério. Menos ruído, mais responsabilidade, decisões rápidas e foco total no teu produto.
           </p>
 
           <ul class="bullet">
@@ -1627,6 +1772,115 @@
       </div>
     </section>
 
+    <!-- WHAT WE DO - SERVIÇOS -->
+    <section class="what-we-do" id="what-we-do">
+      <div class="container">
+        <div class="what-we-do__intro">
+          <h2 class="what-we-do__title" data-pt="O que fazemos" data-en="What we do" data-es="Qué hacemos" data-fr="Ce que nous faisons" data-de="Was wir tun" data-ru="Что мы делаем" data-nl="Wat doen we" data-ja="私たちが行うこと" data-zh="我们做什么">What we do</h2>
+          <p class="what-we-do__description" data-pt="Ajudamos empreendedores e líderes empresariais a construir e lançar soluções de software personalizado inovadoras no mercado em diversos setores e indústrias. Podemos ajudá-lo a transformar sua visão em um produto bem-sucedido, seja na forma de um Produto Mínimo Viável, serviços de UX/UI, desenvolvimento completo de software personalizado ou ajuda para escalar sua empresa." data-en="We help entrepreneurs and business leaders build and launch innovative custom software solutions to the market across a range of verticals & industries. We can help you turn your vision into a successful product together, whether it's in the form of a Minimum Viable Product, UX/UI services, full product custom software development or help to scale your company." data-es="Ayudamos a emprendedores y líderes empresariales a construir y lanzar soluciones de software personalizado innovadoras en el mercado en diversos sectores e industrias. Podemos ayudarte a convertir tu visión en un producto exitoso, ya sea en forma de un Producto Mínimo Viable, servicios de UX/UI, desarrollo completo de software personalizado o ayuda para escalar tu empresa.">We help entrepreneurs and business leaders build and launch innovative custom software solutions to the market across a range of verticals & industries. We can help you turn your vision into a successful product together, whether it's in the form of a Minimum Viable Product, UX/UI services, full product custom software development or help to scale your company.</p>
+        </div>
+        <div class="what-we-do__grid">
+          <!-- PRODUCT SCOPE - COM LINK -->
+          <a href="servicos/product-scope.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-card__icon service-card__icon--blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-pt="Definição do Âmbito do Produto" data-en="Product Scope Definition" data-es="Definición del Alcance del Producto">
+                Definição do Âmbito do Produto
+              </h3>
+              <p class="service-card__desc" data-pt="Um processo estruturado de 15 dias para alinhar a tua visão do produto com os objetivos do negócio." data-en="A structured 15-day process to align your product vision with business goals." data-es="Un proceso estructurado de 15 días para alinear tu visión del producto con los objetivos del negocio.">
+                Um processo estruturado de 15 dias para alinhar a tua visão do produto com os objetivos do negócio.
+              </p>
+              <span class="service-card-cta" data-pt="Saiba mais →" data-en="Learn more →" data-es="Saber más →">Saiba mais →</span>
+            </article>
+          </a>
+
+          <!-- CUSTOM SOFTWARE - COM LINK -->
+          <a href="servicos/custom-software.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-card__icon service-card__icon--purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-pt="Desenvolvimento de Software à Medida" data-en="Custom Software Development" data-es="Desarrollo de Software a Medida">
+                Desenvolvimento de Software à Medida
+              </h3>
+              <p class="service-card__desc" data-pt="Aplicamos frameworks lean à tua visão para criar uma solução de software personalizada e inovadora." data-en="We apply lean frameworks to your vision to create a personalized and innovative software solution." data-es="Aplicamos frameworks lean a tu visión para crear una solución de software personalizada e innovadora.">
+                Aplicamos frameworks lean à tua visão para criar uma solução de software personalizada e inovadora.
+              </p>
+              <span class="service-card-cta" data-pt="Saiba mais →" data-en="Learn more →" data-es="Saber más →">Saiba mais →</span>
+            </article>
+          </a>
+
+          <!-- UX/UI - COM LINK -->
+          <a href="servicos/ux-ui.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-card__icon service-card__icon--teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-pt="Design UX/UI" data-en="UX/UI Design" data-es="Diseño UX/UI" data-fr="Conception UX/UI" data-de="UX/UI-Design" data-ru="Дизайн UX/UI" data-nl="UX/UI-ontwerp" data-ja="UX/UI デザイン" data-zh="UX/UI 设计">
+                Design UX/UI
+              </h3>
+              <p class="service-card__desc" data-pt="Criamos um produto envolvente que é fácil de usar, atraente e funcional." data-en="We create an engaging product that is easy to use, attractive and functional." data-es="Creamos un producto atractivo que es fácil de usar, atractivo y funcional." data-fr="Nous créons un produit attrayant qui est facile à utiliser, beau et fonctionnel." data-de="Wir schaffen ein ansprechendes Produkt, das einfach zu bedienen, schön und funktional ist." data-ru="Мы создаем привлекательный продукт, который легко используется, красив и функционален." data-nl="We creëren een aantrekkelijk product dat gemakkelijk in het gebruik is, mooi en functioneel." data-ja="使いやすく、魅力的で機能的な製品を作成します。" data-zh="我们创建了一个引人入胜、易于使用、美觀且功能强大的产品。">
+                Criamos um produto envolvente que é fácil de usar, atraente e funcional.
+              </p>
+              <span class="service-card-cta" data-pt="Saiba mais →" data-en="Learn more →" data-es="Saber más →">Saiba mais →</span>
+            </article>
+          </a>
+
+          <!-- MVP BUILDER -->
+          <a href="servicos/mvp-builder.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-card__icon service-card__icon--pink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-pt="Construtor de MVP" data-en="MVP Builder" data-es="Constructor de MVP" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="Построитель MVP" data-nl="MVP Builder" data-ja="MVP ビルダー" data-zh="MVP 构建者">
+                Construtor de MVP
+              </h3>
+              <p class="service-card__desc" data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade." data-en="Go to market quickly with a high-quality Minimum Viable Product." data-es="Entra al mercado rápidamente con un Producto Mínimo Viable de alta calidad." data-fr="Lancez-vous rapidement sur le marché avec un produit minimum viable de haute qualité." data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt." data-ru="Быстро выходите на рынок с высококачественным минимально жизнеспособным продуктом." data-nl="Ga snel op de markt met een hoogwaardig Minimum Viable Product." data-ja="高品質の最小限実行可能製品で素早く市場に投入する。" data-zh="使用高质量的最小可行产品快速进入市场。">
+                Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade.
+              </p>
+              <span class="service-card-cta" data-pt="Saiba mais →" data-en="Learn more →" data-es="Saber más →">Saiba mais →</span>
+            </article>
+          </a>
+
+          <!-- DEDICATED TEAMS -->
+          <a href="servicos/dedicated-teams.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-card__icon service-card__icon--orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 class="service-card__title" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">
+                Equipas Dedicadas
+              </h3>
+              <p class="service-card__desc" data-pt="Constrói o teu produto com uma equipa dedicada de programadores." data-en="Build your product with a dedicated team of developers." data-es="Construye tu producto con un equipo dedicado de desarrolladores." data-fr="Construisez votre produit avec une équipe dédiée de développeurs." data-de="Bauen Sie Ihr Produkt mit einem dedizierten Team von Entwicklern." data-ru="Создавайте свой продукт с помощью выделенной команды разработчиков." data-nl="Bouw uw product met een speciaal team van ontwikkelaars." data-ja="専門の開発者チームであなたの製品を構築します。" data-zh="使用专业开发人员团队构建您的产品。">
+                Constrói o teu produto com uma equipa dedicada de programadores.
+              </p>
+              <span class="service-card-cta" data-pt="Saiba mais →" data-en="Learn more →" data-es="Saber más →" data-fr="En savoir plus →" data-de="Mehr erfahren →" data-ru="Узнать больше →" data-nl="Meer informatie →" data-ja="詳細を確認 →" data-zh="了解更多 →">Saiba mais →</span>
+            </article>
+          </a>
+        </div>
+        <div class="what-we-do__cta">
+          <a class="btn btn--primary" href="Serviços.html" data-pt="Ver todos os serviços" data-en="View all services" data-es="Ver todos los servicios" data-fr="Voir tous les services" data-de="Alle Dienste anzeigen" data-ru="Посмотреть все услуги" data-nl="Alle services weergeven" data-ja="すべてのサービスを表示" data-zh="查看所有服务">
+            Ver todos os serviços
+          </a>
+          <a class="btn btn--outline" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Schedule a call" data-es="Agendar una llamada" data-fr="Programmer un appel" data-de="Einen Anruf planen" data-ru="Запланировать звонок" data-nl="Een gesprek inplannen" data-ja="通話をスケジュール" data-zh="安排通话">
+            Agendar uma chamada
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA FINAL -->
     <section class="about-section">
       <div class="container">
@@ -1634,12 +1888,24 @@
           <div>
             <strong data-pt="Vamos construir o teu produto?"
                     data-en="Ready to build your product?"
-                    data-es="¿Listo para construir tu producto?">
+                    data-es="¿Listo para construir tu producto?"
+                    data-fr="Prêt à construire votre produit?"
+                    data-de="Bereit, Ihr Produkt zu bauen?"
+                    data-ru="Готовы построить свой продукт?"
+                    data-nl="Klaar om uw product te bouwen?"
+                    data-ja="あなたの製品を構築する準備はできましたか？"
+                    data-zh="准备好构建您的产品了吗？">
               Vamos construir o teu produto?
             </strong>
             <span data-pt="Marca uma chamada e diz-nos o que precisas. Nós ajudamos-te a definir o caminho mais rápido e seguro."
                   data-en="Book a call and tell us what you need. We'll help you define the fastest and safest path."
-                  data-es="Reserva una llamada y cuéntanos lo que necesitas. Te ayudamos a definir el camino más rápido y seguro.">
+                  data-es="Reserva una llamada y cuéntanos lo que necesitas. Te ayudamos a definir el camino más rápido y seguro."
+                  data-fr="Réservez un appel et dites-nous ce dont vous avez besoin. Nous vous aiderons à définir le chemin le plus rapide et le plus sûr."
+                  data-de="Buchen Sie einen Anruf und sagen Sie uns, was Sie brauchen. Wir helfen Ihnen, den schnellsten und sichersten Weg zu finden."
+                  data-ru="Запланируйте звонок и расскажите нам, что вам нужно. Мы поможем вам определить самый быстрый и безопасный путь."
+                  data-nl="Plan een gesprek en vertel ons wat u nodig heeft. We helpen u het snelste en veiligste pad te bepalen."
+                  data-ja="通話を予約して、必要なことをお聞かせください。最速で最も安全な道筋を定義するお手伝いをします。"
+                  data-zh="预约通话，告诉我们您需要什么。我们将帮助您确定最快、最安全的路径。">
               Marca uma chamada e diz-nos o que precisas. Nós ajudamos-te a definir o caminho mais rápido e seguro.
             </span>
           </div>
@@ -1648,12 +1914,24 @@
             <a class="btn btn--primary" href="book-a-call.html"
                data-pt="Agendar chamada"
                data-en="Book a call"
-               data-es="Reservar llamada">Agendar chamada</a>
+               data-es="Reservar llamada"
+               data-fr="Planifier un appel"
+               data-de="Einen Anruf planen"
+               data-ru="Запланировать звонок"
+               data-nl="Een gesprek inplannen"
+               data-ja="通話を予約"
+               data-zh="安排通话">Agendar chamada</a>
 
             <a class="btn btn--outline" href="index.html"
                data-pt="Voltar ao início"
                data-en="Back to home"
-               data-es="Volver al inicio">Voltar ao início</a>
+               data-es="Volver al inicio"
+               data-fr="Retour à l'accueil"
+               data-de="Zurück zur Startseite"
+               data-ru="Вернуться на главную"
+               data-nl="Terug naar home"
+               data-ja="ホームに戻る"
+               data-zh="返回首页">Voltar ao início</a>
           </div>
         </div>
       </div>
