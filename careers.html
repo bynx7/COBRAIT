@@ -344,47 +344,6 @@
         transition: all 0.3s ease;
       }
 
-      // Functions to update from data-* attributes (same behaviour as about-us)
-      function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
-        elements.forEach(el => {
-          let text = el.getAttribute(`data-${lang}`);
-
-          // Se não houver tradução para esta língua, usar inglês como fallback
-          if (text === null && lang !== 'en') {
-            text = el.getAttribute('data-en');
-          }
-
-          if (text === null) return;
-
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
-            if (el.tagName === 'OPTION') {
-              el.textContent = text;
-            } else if (el.hasAttribute('placeholder')) {
-              el.placeholder = text;
-            } else {
-              el.value = text;
-            }
-          } else if (el.hasAttribute('data-html')) {
-            el.innerHTML = text;
-          } else {
-            el.textContent = text;
-          }
-        });
-      }
-
-      function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
-        ariaEls.forEach(el => {
-          let val = el.getAttribute(`data-${lang}`);
-          // Se não houver tradução para esta língua, usar inglês como fallback
-          if (val === null && lang !== 'en') {
-            val = el.getAttribute('data-en');
-          }
-          if (val) el.setAttribute('aria-label', val);
-        });
-      }
-
       .site-nav ul { flex-direction: column; gap: 16px; }
 
       .dropdown-content {
@@ -1727,7 +1686,7 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Work" data-de="Work" data-ru="Work" data-nl="Work" data-ja="Work" data-zh="Work">Work</a></li>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
           <li class="dropdown">
             <a href="index.html#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
@@ -1760,11 +1719,11 @@
                   <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <div class="dropdown-item-content">
-                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="MVP Builder" data-de="MVP Builder" data-ru="MVP Builder" data-nl="MVP Builder" data-ja="MVP Builder" data-zh="MVP Builder">MVP Builder</h4>
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="Построитель MVP" data-nl="MVP Builder" data-ja="MVP ビルダー" data-zh="MVP 构建者">MVP Builder</h4>
                   <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
                      data-en="Go to market quickly with a high-quality Minimum Viable Product."
                      data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
-                     data-fr="Lancez-vous rapidement sur le marché avec un produit viable minimum de haute qualité."
+                     data-fr="Lancez-vous rapidement sur le marché avec un produit minimum viable de haute qualité."
                      data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
                      data-ru="Быстро выходите на рынок с высококачественным минимально жизнеспособным продуктом."
                      data-nl="Ga snel op de markt met een minimaal leefbaar product van hoge kwaliteit."
@@ -1857,7 +1816,7 @@
       </nav>
 
       <div class="header-right">
-        <!-- DROPDOWN DE LÍNGUAS - APENAS PT, EN, ES -->
+        <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
         <div class="language-dropdown">
           <button class="language-dropdown-btn" aria-label="Select language">
             <span class="lang-flag" id="currentFlag">🇵🇹</span>
@@ -1929,23 +1888,23 @@
     <div class="container hero-content">
       <div class="hero-badge animate-on-scroll">
         <span>🚀</span>
-        <span>We're Hiring Talented People</span>
+        <span data-pt="Estamos a contratar pessoas talentosas" data-en="We're Hiring Talented People" data-es="Estamos contratando talento" data-fr="Nous recrutons des personnes talentueuses" data-de="Wir stellen talentierte Menschen ein" data-ru="Мы нанимаем талантливых людей" data-nl="We werven getalenteerde mensen aan" data-ja="私たちは才能ある人材を募集しています" data-zh="我们正在招聘有才华的人">We're Hiring Talented People</span>
       </div>
       
-      <h1 class="hero-title animate-on-scroll" data-delay="100">
+      <h1 class="hero-title animate-on-scroll" data-delay="100" data-pt="Constrói o Futuro<br>da Tecnologia" data-en="Shape the Future<br>of Technology" data-es="Da forma al Futuro<br>de la Tecnología" data-fr="Façonnez l'avenir<br>de la technologie" data-de="Gestalten Sie die Zukunft<br>der Technologie" data-ru="Формируйте будущее<br>технологий" data-nl="Vorm de toekomst<br>van technologie" data-ja="未来を形作る<br>テクノロジーの" data-zh="塑造未来<br>科技">
         Shape the Future<br>of Technology
       </h1>
       
-      <p class="hero-subtitle animate-on-scroll" data-delay="200">
+      <p class="hero-subtitle animate-on-scroll" data-delay="200" data-pt="Junta-te a uma equipa de inovação a construir soluções de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente dinâmico." data-en="Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment." data-es="Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico." data-fr="Rejoignez une équipe d'innovateurs construisant des solutions logicielles de pointe. Travaillez avec des technologies modernes, relevez des défis complexes et évoluez professionnellement dans un environnement dynamique." data-de="Schließen Sie sich einem Elite-Team von Innovatoren an, die hochmoderne Softwarelösungen entwickeln. Arbeiten Sie mit modernen Technologien, lösen Sie komplexe Herausforderungen und wachsen Sie beruflich in einem dynamischen Umfeld." data-ru="Присоединяйтесь к элитной команде новаторов, создающих передовые программные решения. Работайте с современными технологиями, решайте сложные задачи и профессионально растите в динамичной среде." data-nl="Sluit je aan bij een eliteteam van innovators die geavanceerde softwareoplossingen bouwen. Werk met moderne technologieën, los complexe uitdagingen op en groei professioneel in een dynamische omgeving." data-ja="最先端のソフトウェアソリューションを構築する革新的なチームに参加しませんか？最新のテクノロジーで働き、複雑な課題を解決し、ダイナミックな環境で専門的に成長しましょう。" data-zh="加入一个精英创新团队，构建尖端的软件解决方案。使用现代技术，解决复杂的挑战，在动态环境中实现专业成长。">
         Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.
       </p>
       
       <div class="hero-actions">
-        <a class="btn btn--primary animate-on-scroll" href="#jobs" data-delay="300">
+        <a class="btn btn--primary animate-on-scroll" href="#jobs" data-delay="300" data-pt="Ver vagas" data-en="View Open Positions" data-es="Ver vacantes" data-fr="Voir les postes ouverts" data-de="Offene Positionen anzeigen" data-ru="Посмотреть открытые вакансии" data-nl="Bekijk openstaande posities" data-ja="求人を見る" data-zh="查看职位">
           View Open Positions
           <span>→</span>
         </a>
-        <a class="btn btn--light animate-on-scroll" href="#process" data-delay="350">
+        <a class="btn btn--light animate-on-scroll" href="#process" data-delay="350" data-pt="O nosso processo" data-en="Our Hiring Process" data-es="Nuestro proceso" data-fr="Notre processus de recrutement" data-de="Unser Einstellungsprozess" data-ru="Наш процесс найма" data-nl="Ons wervingsproces" data-ja="採用プロセス" data-zh="我们的招聘流程">
           Our Hiring Process
         </a>
       </div>
@@ -1953,15 +1912,15 @@
       <div class="hero-stats">
         <div class="stat-item animate-on-scroll" data-delay="400">
           <span class="stat-number">50+</span>
-          <span class="stat-label">Successful Projects</span>
+          <span class="stat-label" data-pt="Projetos de sucesso" data-en="Successful Projects" data-es="Proyectos exitosos" data-fr="Projets réussis" data-de="Erfolgreiche Projekte" data-ru="Успешные проекты" data-nl="Succesvolle projecten" data-ja="成功したプロジェクト" data-zh="成功项目">Successful Projects</span>
         </div>
         <div class="stat-item animate-on-scroll" data-delay="450">
           <span class="stat-number">100%</span>
-          <span class="stat-label">Remote First</span>
+          <span class="stat-label" data-pt="Remote-first" data-en="Remote First" data-es="Remote-first" data-fr="Remote-first" data-de="Remote First" data-ru="Remote-first" data-nl="Remote-first" data-ja="リモートファースト" data-zh="远程优先">Remote First</span>
         </div>
         <div class="stat-item animate-on-scroll" data-delay="500">
           <span class="stat-number">15+</span>
-          <span class="stat-label">Industry Experts</span>
+          <span class="stat-label" data-pt="Especialistas" data-en="Industry Experts" data-es="Expertos" data-fr="Experts de l'industrie" data-de="Branchenexperten" data-ru="Эксперты отрасли" data-nl="Industrie-experts" data-ja="業界専門家" data-zh="行业专家">Industry Experts</span>
         </div>
       </div>
     </div>
@@ -1971,9 +1930,9 @@
   <section class="values-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">OUR CULTURE</span>
-        <h2 class="section-title animate-on-scroll">Core Values That Drive Us</h2>
-        <p class="section-description animate-on-scroll" data-delay="100">
+        <span class="section-subtitle" data-pt="A NOSSA CULTURA" data-en="OUR CULTURE" data-es="NUESTRA CULTURA" data-fr="NOTRE CULTURE" data-de="UNSERE KULTUR" data-ru="НАША КУЛЬТУРА" data-nl="ONZE CULTUUR" data-ja="私たちの文化" data-zh="我们的文化">OUR CULTURE</span>
+        <h2 class="section-title animate-on-scroll" data-pt="Valores que nos movem" data-en="Core Values That Drive Us" data-es="Valores que nos impulsan" data-fr="Valeurs fondamentales qui nous animent" data-de="Grundwerte, die uns antreiben" data-ru="Основные ценности, которые движут нами" data-nl="Kernwaarden die ons drijven" data-ja="私たちを動かす中核的価値観" data-zh="驱动我们的核心价值观">Core Values That Drive Us</h2>
+        <p class="section-description animate-on-scroll" data-delay="100" data-pt="Criamos um ambiente onde a inovação prospera, o talento cresce e o trabalho com significado gera impacto real." data-en="We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact." data-es="Cultivamos un entorno donde la innovación florece, el talento crece y el trabajo con propósito genera impacto real." data-fr="Nous cultivons un environnement où l'innovation prospère, les talents grandissent et le travail significatif crée un impact réel." data-de="Wir pflegen ein Umfeld, in dem Innovation gedeiht, Talente wachsen und sinnvolle Arbeit echte Wirkung erzielt." data-ru="Мы создаем среду, где процветают инновации, растут таланты и значимая работа создает реальное влияние." data-nl="We cultiveren een omgeving waar innovatie floreert, talent groeit en zinvol werk echte impact creëert." data-ja="イノベーションが栄え、人材が成長し、意義ある仕事が真のインパクトを生み出す環境を育んでいます。" data-zh="我们培养一个创新蓬勃、人才成长、有意义的工作创造真正影响的环境。">
           We cultivate an environment where innovation thrives, talent grows, and meaningful work creates real impact.
         </p>
       </div>
@@ -1985,8 +1944,8 @@
               <path d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <h3 class="value-title">Innovation First</h3>
-          <p class="value-description">
+          <h3 class="value-title" data-pt="Inovação primeiro" data-en="Innovation First" data-es="Innovación primero" data-fr="Innovation d'abord" data-de="Innovation zuerst" data-ru="Инновации прежде всего" data-nl="Innovatie eerst" data-ja="イノベーション第一" data-zh="创新第一">Innovation First</h3>
+          <p class="value-description" data-pt="Desafiamos o convencional e adotamos tecnologias de ponta para construir soluções que moldam o amanhã." data-en="We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow." data-es="Desafiamos lo establecido y adoptamos tecnologías de punta para construir soluciones que moldean el mañana." data-fr="Nous remettons en question les conventions et adoptons les technologies de pointe pour construire des solutions qui façonnent demain." data-de="Wir fordern Konventionen heraus und setzen auf hochmoderne Technologien, um Lösungen zu bauen, die die Zukunft gestalten." data-ru="Мы бросаем вызов условностям и принимаем передовые технологии для создания решений, которые формируют завтрашний день." data-nl="We dagen conventies uit en omarmen geavanceerde technologieën om oplossingen te bouwen die de toekomst vormgeven." data-ja="既成概念に挑戦し、最先端のテクノロジーを取り入れて、明日を形作るソリューションを構築します。" data-zh="我们挑战传统，拥抱尖端技术，构建塑造未来的解决方案。">
             We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow.
           </p>
         </div>
@@ -1999,8 +1958,8 @@
               <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
             </svg>
           </div>
-          <h3 class="value-title">Collaborative Excellence</h3>
-          <p class="value-description">
+          <h3 class="value-title" data-pt="Excelência colaborativa" data-en="Collaborative Excellence" data-es="Excelencia colaborativa" data-fr="Excellence collaborative" data-de="Kollaborative Exzellenz" data-ru="Коллаборативное совершенство" data-nl="Collaboratieve excellentie" data-ja="協働の卓越性" data-zh="协作卓越">Collaborative Excellence</h3>
+          <p class="value-description" data-pt="Grandes mentes a trabalhar juntas criam resultados extraordinários. Acreditamos no poder do trabalho em equipa." data-en="Great minds working together create extraordinary results. We believe in the power of teamwork." data-es="Grandes mentes trabajando juntas crean resultados extraordinarios. Creemos en el poder del trabajo en equipo." data-fr="De grands esprits travaillant ensemble créent des résultats extraordinaires. Nous croyons au pouvoir du travail d'équipe." data-de="Große Geister, die zusammenarbeiten, schaffen außergewöhnliche Ergebnisse. Wir glauben an die Kraft der Teamarbeit." data-ru="Великие умы, работающие вместе, создают необычайные результаты. Мы верим в силу командной работы." data-nl="Grote geesten die samenwerken creëren buitengewone resultaten. We geloven in de kracht van teamwork." data-ja="素晴らしい頭脳が協力することで、並外れた結果が生まれます。私たちはチームワークの力を信じています。" data-zh="伟大的头脑共同创造非凡的成果。我们相信团队合作的力量。">
             Great minds working together create extraordinary results. We believe in the power of teamwork.
           </p>
         </div>
@@ -2011,8 +1970,8 @@
               <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="value-title">Quality Obsessed</h3>
-          <p class="value-description">
+          <h3 class="value-title" data-pt="Obcecados por qualidade" data-en="Quality Obsessed" data-es="Obsesión por la calidad" data-fr="Obsédé par la qualité" data-de="Qualitätsbesessen" data-ru="Одержимость качеством" data-nl="Kwaliteitsgeobsedeerd" data-ja="品質にこだわる" data-zh="追求品质">Quality Obsessed</h3>
+          <p class="value-description" data-pt="Entregamos qualidade excecional em cada linha de código, em cada pixel de design e em cada interação com o cliente." data-en="We deliver exceptional quality in every line of code, every design pixel, and every client interaction." data-es="Entregamos calidad excepcional en cada línea de código, cada píxel de diseño y cada interacción con el cliente." data-fr="Nous fournissons une qualité exceptionnelle dans chaque ligne de code, chaque pixel de conception et chaque interaction client." data-de="Wir liefern außergewöhnliche Qualität in jeder Codezeile, jedem Design-Pixel und jeder Kundeninteraktion." data-ru="Мы обеспечиваем исключительное качество в каждой строке кода, каждом пикселе дизайна и каждом взаимодействии с клиентом." data-nl="We leveren uitzonderlijke kwaliteit in elke regel code, elke ontwerp pixel en elke klantinteractie." data-ja="コードの各行、デザインの各ピクセル、クライアントとの各やり取りにおいて、卓越した品質を提供します。" data-zh="我们在每一行代码、每一个设计像素、每一次客户互动中都提供卓越的质量。">
             We deliver exceptional quality in every line of code, every design pixel, and every client interaction.
           </p>
         </div>
@@ -2024,9 +1983,9 @@
   <section class="benefits-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">PERKS & BENEFITS</span>
-        <h2 class="section-title animate-on-scroll">Why You'll Love Working Here</h2>
-        <p class="section-description animate-on-scroll" data-delay="100">
+        <span class="section-subtitle" data-pt="VANTAGENS & BENEFÍCIOS" data-en="PERKS & BENEFITS" data-es="VENTAJAS Y BENEFICIOS" data-fr="AVANTAGES & BÉNÉFICES" data-de="VERGÜNSTIGUNGEN & VORTEILE" data-ru="ПРИВИЛЕГИИ И ЛЬГОТЫ" data-nl="VOORDELEN & EXTRA'S" data-ja="特典と福利厚生" data-zh="福利与待遇">PERKS & BENEFITS</span>
+        <h2 class="section-title animate-on-scroll" data-pt="Porque vais gostar de trabalhar aqui" data-en="Why You'll Love Working Here" data-es="Por qué te encantará trabajar aquí" data-fr="Pourquoi vous aimerez travailler ici" data-de="Warum Sie es lieben werden, hier zu arbeiten" data-ru="Почему вам понравится работать здесь" data-nl="Waarom je het geweldig zult vinden om hier te werken" data-ja="ここで働くのが好きになる理由" data-zh="为什么你会喜欢在这里工作">Why You'll Love Working Here</h2>
+        <p class="section-description animate-on-scroll" data-delay="100" data-pt="Investimos no crescimento, bem‑estar e sucesso da nossa equipa com benefícios completos e uma cultura de apoio." data-en="We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture." data-es="Invertimos en el crecimiento, bienestar y éxito del equipo con beneficios completos y una cultura de apoyo." data-fr="Nous investissons dans la croissance, le bien-être et le succès de notre équipe avec des avantages complets et une culture de soutien." data-de="Wir investieren in das Wachstum, Wohlbefinden und den Erfolg unseres Teams mit umfassenden Vorteilen und einer unterstützenden Kultur." data-ru="Мы инвестируем в рост, благополучие и успех нашей команды с помощью комплексных льгот и поддерживающей культуры." data-nl="We investeren in de groei, het welzijn en het succes van ons team met uitgebreide voordelen en een ondersteunende cultuur." data-ja="包括的な福利厚生と支援文化により、チームの成長、幸福、成功に投資しています。" data-zh="我们通过全面的福利和支持性文化，投资于团队的成长、福祉和成功。">
           We invest in our team's growth, wellbeing, and success with comprehensive benefits and a supportive culture.
         </p>
       </div>
@@ -2037,13 +1996,13 @@
             <div class="benefit-icon-wrapper">
               <span>💼</span>
             </div>
-            <h3 class="benefit-title">Career Growth</h3>
+            <h3 class="benefit-title" data-pt="Crescimento de carreira" data-en="Career Growth" data-es="Crecimiento profesional" data-fr="Croissance de carrière" data-de="Karrierewachstum" data-ru="Карьерный рост" data-nl="Carrièregroei" data-ja="キャリア成長" data-zh="职业发展">Career Growth</h3>
           </div>
           <ul class="benefit-list">
-            <li>Personal development budget</li>
-            <li>Mentorship from industry leaders</li>
-            <li>Clear promotion pathways</li>
-            <li>Conference and training allowances</li>
+            <li data-pt="Orçamento para desenvolvimento pessoal" data-en="Personal development budget" data-es="Presupuesto de desarrollo personal" data-fr="Budget de développement personnel" data-de="Persönliches Entwicklungsbudget" data-ru="Бюджет на личное развитие" data-nl="Persoonlijk ontwikkelingsbudget" data-ja="個人開発予算" data-zh="个人发展预算">Personal development budget</li>
+            <li data-pt="Mentoria de líderes da indústria" data-en="Mentorship from industry leaders" data-es="Mentoría de líderes de la industria" data-fr="Mentorat par des leaders de l'industrie" data-de="Mentoring durch Branchenführer" data-ru="Наставничество от лидеров отрасли" data-nl="Mentorschap van industrieleiders" data-ja="業界リーダーからのメンタリング" data-zh="行业领袖的指导">Mentorship from industry leaders</li>
+            <li data-pt="Caminhos claros de promoção" data-en="Clear promotion pathways" data-es="Caminos claros de promoción" data-fr="Voies de promotion claires" data-de="Klare Aufstiegswege" data-ru="Четкие пути продвижения" data-nl="Duidelijke promotiepaden" data-ja="明確な昇進経路" data-zh="清晰的晋升路径">Clear promotion pathways</li>
+            <li data-pt="Subsídios para conferências e formação" data-en="Conference and training allowances" data-es="Subsidios para conferencias y formación" data-fr="Indemnités pour conférences et formation" data-de="Zuschüsse für Konferenzen und Schulungen" data-ru="Пособия на конференции и обучение" data-nl="Vergoedingen voor conferenties en training" data-ja="会議・研修手当" data-zh="会议和培训津贴">Conference and training allowances</li>
           </ul>
         </div>
         
@@ -2052,13 +2011,13 @@
             <div class="benefit-icon-wrapper">
               <span>🏡</span>
             </div>
-            <h3 class="benefit-title">Flexible Work</h3>
+            <h3 class="benefit-title" data-pt="Trabalho flexível" data-en="Flexible Work" data-es="Trabajo flexible" data-fr="Travail flexible" data-de="Flexibles Arbeiten" data-ru="Гибкая работа" data-nl="Flexibel werken" data-ja="柔軟な勤務" data-zh="灵活工作">Flexible Work</h3>
           </div>
           <ul class="benefit-list">
-            <li>100% remote-first culture</li>
-            <li>Flexible working hours</li>
-            <li>Home office setup allowance</li>
-            <li>Co-working space access</li>
+            <li data-pt="Cultura 100% remote-first" data-en="100% remote-first culture" data-es="Cultura 100% remote-first" data-fr="Culture 100% remote-first" data-de="100% Remote-First-Kultur" data-ru="100% культура remote-first" data-nl="100% remote-first cultuur" data-ja="100%リモートファースト文化" data-zh="100%远程优先文化">100% remote-first culture</li>
+            <li data-pt="Horário de trabalho flexível" data-en="Flexible working hours" data-es="Horario de trabajo flexible" data-fr="Horaires de travail flexibles" data-de="Flexible Arbeitszeiten" data-ru="Гибкий рабочий график" data-nl="Flexibele werktijden" data-ja="柔軟な勤務時間" data-zh="灵活工作时间">Flexible working hours</li>
+            <li data-pt="Subsídio para setup de escritório em casa" data-en="Home office setup allowance" data-es="Subsidio para configuración de oficina en casa" data-fr="Allocation pour installation de bureau à domicile" data-de="Zuschuss für die Einrichtung des Heimbüros" data-ru="Пособие на обустройство домашнего офиса" data-nl="Thuiswerkvergoeding" data-ja="ホームオフィス設定手当" data-zh="家庭办公设置津贴">Home office setup allowance</li>
+            <li data-pt="Acesso a espaços de coworking" data-en="Co-working space access" data-es="Acceso a espacios de coworking" data-fr="Accès aux espaces de coworking" data-de="Zugang zu Co-Working-Spaces" data-ru="Доступ к коворкингам" data-nl="Toegang tot coworking-ruimtes" data-ja="コワーキングスペースアクセス" data-zh="共享办公空间访问">Co-working space access</li>
           </ul>
         </div>
         
@@ -2067,13 +2026,13 @@
             <div class="benefit-icon-wrapper">
               <span>⚡</span>
             </div>
-            <h3 class="benefit-title">Modern Tech Stack</h3>
+            <h3 class="benefit-title" data-pt="Stack tecnológica moderna" data-en="Modern Tech Stack" data-es="Stack tecnológica moderna" data-fr="Stack technologique moderne" data-de="Moderner Tech-Stack" data-ru="Современный технологический стек" data-nl="Moderne technologiestack" data-ja="モダンなテクノロジースタック" data-zh="现代技术栈">Modern Tech Stack</h3>
           </div>
           <ul class="benefit-list">
-            <li>Latest frameworks and tools</li>
-            <li>Cloud-native development</li>
-            <li>AI/ML integration projects</li>
-            <li>Continuous tech upgrades</li>
+            <li data-pt="Frameworks e ferramentas mais recentes" data-en="Latest frameworks and tools" data-es="Frameworks y herramientas más recientes" data-fr="Frameworks et outils les plus récents" data-de="Neueste Frameworks und Tools" data-ru="Новейшие фреймворки и инструменты" data-nl="Nieuwste frameworks en tools" data-ja="最新のフレームワークとツール" data-zh="最新的框架和工具">Latest frameworks and tools</li>
+            <li data-pt="Desenvolvimento cloud-native" data-en="Cloud-native development" data-es="Desarrollo cloud-native" data-fr="Développement cloud-native" data-de="Cloud-native Entwicklung" data-ru="Облачно-нативная разработка" data-nl="Cloud-native ontwikkeling" data-ja="クラウドネイティブ開発" data-zh="云原生开发">Cloud-native development</li>
+            <li data-pt="Projetos de integração AI/ML" data-en="AI/ML integration projects" data-es="Proyectos de integración AI/ML" data-fr="Projets d'intégration IA/ML" data-de="KI/ML-Integrationsprojekte" data-ru="Проекты интеграции ИИ/МО" data-nl="AI/ML-integratieprojecten" data-ja="AI/ML統合プロジェクト" data-zh="人工智能/机器学习集成项目">AI/ML integration projects</li>
+            <li data-pt="Atualizações tecnológicas contínuas" data-en="Continuous tech upgrades" data-es="Actualizaciones tecnológicas continuas" data-fr="Mises à niveau technologiques continues" data-de="Kontinuierliche Technologie-Upgrades" data-ru="Непрерывные технологические обновления" data-nl="Continue technologische upgrades" data-ja="継続的な技術アップグレード" data-zh="持续技术升级">Continuous tech upgrades</li>
           </ul>
         </div>
       </div>
@@ -2084,32 +2043,40 @@
   <section class="process-section" id="process">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">OUR PROCESS</span>
-        <h2 class="section-title animate-on-scroll">Transparent & Efficient</h2>
-        <p class="section-description animate-on-scroll" data-delay="100">
+        <span class="section-subtitle" data-pt="O NOSSO PROCESSO" data-en="OUR PROCESS" data-es="NUESTRO PROCESO" data-fr="NOTRE PROCESSUS" data-de="UNSER PROZESS" data-ru="НАШ ПРОЦЕСС" data-nl="ONS PROCES" data-ja="私たちのプロセス" data-zh="我们的流程">OUR PROCESS</span>
+        <h2 class="section-title animate-on-scroll" data-pt="Transparente e eficiente" data-en="Transparent & Efficient" data-es="Transparente y eficiente" data-fr="Transparent et efficace" data-de="Transparent & effizient" data-ru="Прозрачный и эффективный" data-nl="Transparant & efficiënt" data-ja="透明で効率的" data-zh="透明高效">Transparent & Efficient</h2>
+        <p class="section-description animate-on-scroll" data-delay="100" data-pt="Simplificámos o recrutamento para respeitar o teu tempo e garantir o melhor match para ambos." data-en="We've streamlined our hiring to respect your time while ensuring the perfect match for both sides." data-es="Hemos simplificado la selección para respetar tu tiempo y asegurar el mejor encaje para ambas partes." data-fr="Nous avons simplifié notre recrutement pour respecter votre temps tout en assurant la correspondance parfaite pour les deux parties." data-de="Wir haben unseren Einstellungsprozess optimiert, um Ihre Zeit zu respektieren und gleichzeitig die perfekte Übereinstimmung für beide Seiten zu gewährleisten." data-ru="Мы оптимизировали процесс найма, чтобы уважать ваше время и обеспечить идеальное соответствие для обеих сторон." data-nl="We hebben ons wervingsproces gestroomlijnd om uw tijd te respecteren en tegelijkertijd de perfecte match voor beide partijen te garanderen." data-ja="お客様の時間を尊重し、双方にとって完璧なマッチングを実現するために採用プロセスを合理化しました。" data-zh="我们简化了招聘流程，以尊重您的时间，同时确保双方完美匹配。">
           We've streamlined our hiring to respect your time while ensuring the perfect match for both sides.
         </p>
       </div>
       
       <div class="process-steps">
         <div class="process-step animate-on-scroll">
-          <h4>Initial Application</h4>
-          <p>Submit your details and portfolio. We review every application within 48 hours.</p>
+          <h4 data-pt="Candidatura inicial" data-en="Initial Application" data-es="Solicitud inicial" data-fr="Candidature initiale" data-de="Erstbewerbung" data-ru="Первоначальная заявка" data-nl="Initiële sollicitatie" data-ja="初期応募" data-zh="初步申请">Initial Application</h4>
+          <p data-pt="Envia os teus dados e portefólio. Revemos todas as candidaturas em 48 horas." data-en="Submit your details and portfolio. We review every application within 48 hours." data-es="Envía tus datos y portafolio. Revisamos cada solicitud en 48 horas." data-fr="Soumettez vos informations et votre portfolio. Nous examinons chaque candidature dans les 48 heures." data-de="Reichen Sie Ihre Daten und Ihr Portfolio ein. Wir prüfen jede Bewerbung innerhalb von 48 Stunden." data-ru="Отправьте свои данные и портфолио. Мы рассматриваем каждую заявку в течение 48 часов." data-nl="Dien uw gegevens en portfolio in. We beoordelen elke sollicitatie binnen 48 uur." data-ja="詳細とポートフォリオを提出してください。すべての応募を48時間以内に審査します。" data-zh="提交您的详细信息和作品集。我们会在48小时内审核每一份申请。">
+            Submit your details and portfolio. We review every application within 48 hours.
+          </p>
         </div>
         
         <div class="process-step animate-on-scroll" data-delay="100">
-          <h4>Culture Fit Interview</h4>
-          <p>A relaxed conversation to discuss values, aspirations, and mutual expectations.</p>
+          <h4 data-pt="Entrevista de cultura" data-en="Culture Fit Interview" data-es="Entrevista cultural" data-fr="Entretien d'adéquation culturelle" data-de="Kulturgespräch" data-ru="Собеседование на соответствие культуре" data-nl="Cultuurmatchinterview" data-ja="文化適合性面接" data-zh="文化契合度面试">Culture Fit Interview</h4>
+          <p data-pt="Uma conversa descontraída para falarmos de valores, objetivos e expectativas." data-en="A relaxed conversation to discuss values, aspirations, and mutual expectations." data-es="Una conversación relajada sobre valores, aspiraciones y expectativas." data-fr="Une conversation détendue pour discuter des valeurs, des aspirations et des attentes mutuelles." data-de="Ein entspanntes Gespräch über Werte, Wünsche und gegenseitige Erwartungen." data-ru="Непринужденная беседа для обсуждения ценностей, стремлений и взаимных ожиданий." data-nl="Een ontspannen gesprek om waarden, ambities en wederzijdse verwachtingen te bespreken." data-ja="価値観、願望、相互の期待について話し合うリラックスした会話。" data-zh="轻松的对话，讨论价值观、抱负和相互期望。">
+            A relaxed conversation to discuss values, aspirations, and mutual expectations.
+          </p>
         </div>
         
         <div class="process-step animate-on-scroll" data-delay="200">
-          <h4>Technical Assessment</h4>
-          <p>A practical, relevant challenge that showcases your problem-solving skills.</p>
+          <h4 data-pt="Avaliação técnica" data-en="Technical Assessment" data-es="Evaluación técnica" data-fr="Évaluation technique" data-de="Technische Bewertung" data-ru="Техническая оценка" data-nl="Technische beoordeling" data-ja="技術評価" data-zh="技术评估">Technical Assessment</h4>
+          <p data-pt="Um desafio prático e relevante para mostrar a tua capacidade de resolver problemas." data-en="A practical, relevant challenge that showcases your problem-solving skills." data-es="Un reto práctico y relevante que muestra tu capacidad de resolver problemas." data-fr="Un défi pratique et pertinent qui met en valeur vos compétences en résolution de problèmes." data-de="Eine praktische, relevante Herausforderung, die Ihre Problemlösungsfähigkeiten zeigt." data-ru="Практическое, актуальное задание, демонстрирующее ваши навыки решения проблем." data-nl="Een praktische, relevante uitdaging die uw probleemoplossend vermogen laat zien." data-ja="問題解決能力を示す実践的で関連性の高い課題。" data-zh="一个实用、相关的挑战，展示您解决问题的能力。">
+            A practical, relevant challenge that showcases your problem-solving skills.
+          </p>
         </div>
         
         <div class="process-step animate-on-scroll" data-delay="300">
-          <h4>Final Interview & Offer</h4>
-          <p>Meet the team, discuss details, and receive a competitive offer package.</p>
+          <h4 data-pt="Entrevista final & proposta" data-en="Final Interview & Offer" data-es="Entrevista final y oferta" data-fr="Entretien final et offre" data-de="Abschlussgespräch & Angebot" data-ru="Финальное собеседование и предложение" data-nl="Eindgesprek & aanbod" data-ja="最終面接とオファー" data-zh="最终面试与录用">Final Interview & Offer</h4>
+          <p data-pt="Conhece a equipa, alinhamos detalhes e recebes uma proposta competitiva." data-en="Meet the team, discuss details, and receive a competitive offer package." data-es="Conoce al equipo, alineamos detalles y recibes una oferta competitiva." data-fr="Rencontrez l'équipe, discutez des détails et recevez un package d'offre compétitif." data-de="Lernen Sie das Team kennen, besprechen Sie Details und erhalten Sie ein wettbewerbsfähiges Angebotspaket." data-ru="Встретьтесь с командой, обсудите детали и получите конкурентоспособное предложение." data-nl="Ontmoet het team, bespreek details en ontvang een concurrerend aanbod." data-ja="チームと面会し、詳細を話し合い、競争力のあるオファーを受け取ります。" data-zh="与团队见面，讨论细节，并获得有竞争力的录用方案。">
+            Meet the team, discuss details, and receive a competitive offer package.
+          </p>
         </div>
       </div>
     </div>
@@ -2119,78 +2086,72 @@
   <section class="jobs-section" id="jobs">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">CURRENT OPENINGS</span>
-        <h2 class="section-title animate-on-scroll">Join Our Growing Team</h2>
-        <p class="section-description animate-on-scroll" data-delay="100">
+        <span class="section-subtitle" data-pt="VAGAS ATUAIS" data-en="CURRENT OPENINGS" data-es="VACANTES ACTUALES" data-fr="POSTES OUVERTS" data-de="AKTUELLE STELLENANGEBOTE" data-ru="ТЕКУЩИЕ ВАКАНСИИ" data-nl="HUIDIGE VACATURES" data-ja="現在の求人" data-zh="当前职位">CURRENT OPENINGS</span>
+        <h2 class="section-title animate-on-scroll" data-pt="Junta-te à nossa equipa" data-en="Join Our Growing Team" data-es="Únete a nuestro equipo" data-fr="Rejoignez notre équipe en pleine croissance" data-de="Treten Sie unserem wachsenden Team bei" data-ru="Присоединяйтесь к нашей растущей команде" data-nl="Sluit je aan bij ons groeiende team" data-ja="成長するチームに参加しよう" data-zh="加入我们不断壮大的团队">Join Our Growing Team</h2>
+        <p class="section-description animate-on-scroll" data-delay="100" data-pt="Explora oportunidades para contribuir com as tuas competências e crescer connosco." data-en="Explore opportunities to contribute your skills and grow with us." data-es="Explora oportunidades para aportar tus habilidades y crecer con nosotros." data-fr="Explorez les opportunités de contribuer avec vos compétences et de grandir avec nous." data-de="Entdecken Sie Möglichkeiten, Ihre Fähigkeiten einzubringen und mit uns zu wachsen." data-ru="Изучите возможности применить свои навыки и расти вместе с нами." data-nl="Ontdek mogelijkheden om uw vaardigheden bij te dragen en met ons te groeien." data-ja="あなたのスキルを活かし、私たちと共に成長する機会を探しましょう。" data-zh="探索贡献您的技能并与我们共同成长的机会。">
           Explore opportunities to contribute your skills and grow with us.
         </p>
       </div>
       
       <div class="jobs-filter">
-        <button class="filter-btn active" data-filter="all">All Positions</button>
-        <button class="filter-btn" data-filter="tech">Engineering</button>
-        <button class="filter-btn" data-filter="design">Design</button>
-        <button class="filter-btn" data-filter="remote">Remote</button>
+        <button class="filter-btn active" data-filter="all" data-pt="Todas as vagas" data-en="All Positions" data-es="Todas" data-fr="Tous les postes" data-de="Alle Positionen" data-ru="Все вакансии" data-nl="Alle posities" data-ja="すべての求人" data-zh="所有职位">All Positions</button>
+        <button class="filter-btn" data-filter="tech" data-pt="Engenharia" data-en="Engineering" data-es="Ingeniería" data-fr="Ingénierie" data-de="Ingenieurwesen" data-ru="Инженерия" data-nl="Engineering" data-ja="エンジニアリング" data-zh="工程">Engineering</button>
+        <button class="filter-btn" data-filter="design" data-pt="Design" data-en="Design" data-es="Diseño" data-fr="Design" data-de="Design" data-ru="Дизайн" data-nl="Design" data-ja="デザイン" data-zh="设计">Design</button>
+        <button class="filter-btn" data-filter="remote" data-pt="Remoto" data-en="Remote" data-es="Remoto" data-fr="À distance" data-de="Remote" data-ru="Удаленно" data-nl="Remote" data-ja="リモート" data-zh="远程">Remote</button>
       </div>
       
       <div class="jobs-list">
         <div class="job-card animate-on-scroll" data-category="tech remote">
           <div class="job-info">
-            <h3>Senior Full-Stack Engineer</h3>
+            <h3 data-pt="Engenheiro Full-Stack Sénior" data-en="Senior Full-Stack Engineer" data-es="Ingeniero Full-Stack Senior" data-fr="Ingénieur Full-Stack Senior" data-de="Senior Full-Stack Engineer" data-ru="Старший Full-Stack инженер" data-nl="Senior Full-Stack Engineer" data-ja="シニアフルスタックエンジニア" data-zh="高级全栈工程师">Senior Full-Stack Engineer</h3>
             <div class="job-meta">
-              <span>📍 Remote · Portugal</span>
-              <span>⏱️ Full-time</span>
-              <span>💼 Senior Level</span>
+              <span>📍 <span data-pt="Remoto · Portugal" data-en="Remote · Portugal" data-es="Remoto · Portugal" data-fr="À distance · Portugal" data-de="Remote · Portugal" data-ru="Удаленно · Португалия" data-nl="Remote · Portugal" data-ja="リモート · ポルトガル" data-zh="远程 · 葡萄牙">Remote · Portugal</span></span>
+              <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo" data-fr="Temps plein" data-de="Vollzeit" data-ru="Полный день" data-nl="Full-time" data-ja="フルタイム" data-zh="全职">Full-time</span></span>
+              <span>💼 <span data-pt="Nível Sénior" data-en="Senior Level" data-es="Nivel Senior" data-fr="Niveau Senior" data-de="Senior Level" data-ru="Старший уровень" data-nl="Senior niveau" data-ja="シニアレベル" data-zh="高级">Senior Level</span></span>
             </div>
             <div class="job-tags">
               <span class="job-tag tech">React</span>
               <span class="job-tag tech">Node.js</span>
               <span class="job-tag tech">TypeScript</span>
-              <span class="job-tag remote">100% Remote</span>
+              <span class="job-tag remote" data-pt="100% Remoto" data-en="100% Remote" data-es="100% Remoto" data-fr="100% À distance" data-de="100% Remote" data-ru="100% Удаленно" data-nl="100% Remote" data-ja="100%リモート" data-zh="100%远程">100% Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Senior%20Full-Stack%20Engineer">
-            Apply Now
-          </a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Senior%20Full-Stack%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="Подать заявку" data-nl="Nu solliciteren" data-ja="今すぐ応募" data-zh="立即申请">Apply Now</a>
         </div>
         
         <div class="job-card animate-on-scroll" data-delay="100" data-category="design">
           <div class="job-info">
-            <h3>Product Designer</h3>
+            <h3 data-pt="Product Designer" data-en="Product Designer" data-es="Product Designer" data-fr="Product Designer" data-de="Product Designer" data-ru="Product Designer" data-nl="Product Designer" data-ja="プロダクトデザイナー" data-zh="产品设计师">Product Designer</h3>
             <div class="job-meta">
-              <span>📍 Hybrid · Porto</span>
-              <span>⏱️ Full-time</span>
-              <span>💼 Mid to Senior</span>
+              <span>📍 <span data-pt="Híbrido · Porto" data-en="Hybrid · Porto" data-es="Híbrido · Porto" data-fr="Hybride · Porto" data-de="Hybrid · Porto" data-ru="Гибрид · Порту" data-nl="Hybride · Porto" data-ja="ハイブリッド · ポルト" data-zh="混合 · 波尔图">Hybrid · Porto</span></span>
+              <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo" data-fr="Temps plein" data-de="Vollzeit" data-ru="Полный день" data-nl="Full-time" data-ja="フルタイム" data-zh="全职">Full-time</span></span>
+              <span>💼 <span data-pt="Pleno a Sénior" data-en="Mid to Senior" data-es="Mid a Senior" data-fr="Mid à Senior" data-de="Mittel bis Senior" data-ru="Средний до старшего" data-nl="Medior tot Senior" data-ja="ミッドからシニア" data-zh="中级到高级">Mid to Senior</span></span>
             </div>
             <div class="job-tags">
               <span class="job-tag design">Figma</span>
-              <span class="job-tag design">UX Research</span>
-              <span class="job-tag design">Prototyping</span>
+              <span class="job-tag design" data-pt="Pesquisa UX" data-en="UX Research" data-es="Investigación UX" data-fr="Recherche UX" data-de="UX-Forschung" data-ru="UX исследования" data-nl="UX-onderzoek" data-ja="UXリサーチ" data-zh="用户体验研究">UX Research</span>
+              <span class="job-tag design" data-pt="Prototipagem" data-en="Prototyping" data-es="Prototipado" data-fr="Prototypage" data-de="Prototyping" data-ru="Прототипирование" data-nl="Prototyping" data-ja="プロトタイピング" data-zh="原型设计">Prototyping</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Product%20Designer">
-            Apply Now
-          </a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Product%20Designer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="Подать заявку" data-nl="Nu solliciteren" data-ja="今すぐ応募" data-zh="立即申请">Apply Now</a>
         </div>
         
         <div class="job-card animate-on-scroll" data-delay="200" data-category="tech remote">
           <div class="job-info">
-            <h3>AI/ML Engineer</h3>
+            <h3 data-pt="Engenheiro AI/ML" data-en="AI/ML Engineer" data-es="Ingeniero AI/ML" data-fr="Ingénieur IA/ML" data-de="KI/ML-Ingenieur" data-ru="Инженер AI/ML" data-nl="AI/ML Engineer" data-ja="AI/MLエンジニア" data-zh="人工智能/机器学习工程师">AI/ML Engineer</h3>
             <div class="job-meta">
-              <span>📍 Remote · EU</span>
-              <span>⏱️ Full-time</span>
-              <span>💼 Senior Level</span>
+              <span>📍 <span data-pt="Remoto · UE" data-en="Remote · EU" data-es="Remoto · UE" data-fr="À distance · UE" data-de="Remote · EU" data-ru="Удаленно · ЕС" data-nl="Remote · EU" data-ja="リモート · EU" data-zh="远程 · 欧盟">Remote · EU</span></span>
+              <span>⏱️ <span data-pt="Tempo integral" data-en="Full-time" data-es="Tiempo completo" data-fr="Temps plein" data-de="Vollzeit" data-ru="Полный день" data-nl="Full-time" data-ja="フルタイム" data-zh="全职">Full-time</span></span>
+              <span>💼 <span data-pt="Nível Sénior" data-en="Senior Level" data-es="Nivel Senior" data-fr="Niveau Senior" data-de="Senior Level" data-ru="Старший уровень" data-nl="Senior niveau" data-ja="シニアレベル" data-zh="高级">Senior Level</span></span>
             </div>
             <div class="job-tags">
               <span class="job-tag tech">Python</span>
               <span class="job-tag tech">TensorFlow</span>
               <span class="job-tag tech">LLMs</span>
-              <span class="job-tag remote">Fully Remote</span>
+              <span class="job-tag remote" data-pt="Totalmente Remoto" data-en="Fully Remote" data-es="Completamente Remoto" data-fr="Entièrement à distance" data-de="Vollständig Remote" data-ru="Полностью удаленно" data-nl="Volledig Remote" data-ja="完全リモート" data-zh="完全远程">Fully Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20AI%2FML%20Engineer">
-            Apply Now
-          </a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20AI%2FML%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="Подать заявку" data-nl="Nu solliciteren" data-ja="今すぐ応募" data-zh="立即申请">Apply Now</a>
         </div>
       </div>
     </div>
@@ -2199,17 +2160,13 @@
   <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="container cta-content">
-      <h2 class="cta-title animate-on-scroll">Ready to Build Something Amazing?</h2>
-      <p class="cta-description animate-on-scroll" data-delay="100">
+      <h2 class="cta-title animate-on-scroll" data-pt="Pronto(a) para construir algo incrível?" data-en="Ready to Build Something Amazing?" data-es="¿Listo para construir algo increíble?" data-fr="Prêt à construire quelque chose d'incroyable ?" data-de="Bereit, etwas Erstaunliches zu bauen?" data-ru="Готовы построить что-то удивительное?" data-nl="Klaar om iets geweldigs te bouwen?" data-ja="何か素晴らしいものを構築する準備はできましたか？" data-zh="准备好构建令人惊叹的东西了吗？">Ready to Build Something Amazing?</h2>
+      <p class="cta-description animate-on-scroll" data-delay="100" data-pt="Se não encontras a vaga perfeita mas acreditas que podes contribuir para a nossa missão, queremos falar contigo. Talento encontra sempre lugar aqui." data-en="If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here." data-es="Si no ves el rol perfecto pero crees que puedes contribuir a nuestra misión, queremos conocerte. El talento siempre encuentra su lugar aquí." data-fr="Si vous ne voyez pas le rôle parfait mais que vous croyez pouvoir contribuer à notre mission, nous aimerions avoir de vos nouvelles. Les grands talents trouvent toujours leur place ici." data-de="Wenn Sie die perfekte Rolle nicht sehen, aber glauben, dass Sie zu unserer Mission beitragen können, würden wir uns freuen, von Ihnen zu hören. Großartige Talente finden hier immer einen Platz." data-ru="Если вы не видите идеальной роли, но считаете, что можете внести вклад в нашу миссию, мы будем рады услышать вас. Талант всегда находит здесь место." data-nl="Als je de perfecte rol niet ziet, maar gelooft dat je kunt bijdragen aan onze missie, horen we graag van je. Geweldig talent vindt hier altijd een plek." data-ja="完璧な役割が見つからなくても、私たちの使命に貢献できると信じているなら、ぜひお聞かせください。優秀な人材はいつでもここで居場所を見つけられます。" data-zh="如果您没有看到完美的职位，但相信您可以为我们的使命做出贡献，我们很乐意听到您的消息。优秀的人才总能在这里找到一席之地。">
         If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.
       </p>
       <div class="cta-actions">
-        <a class="btn btn--primary animate-on-scroll" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application" data-delay="200">
-          Submit Spontaneous Application
-        </a>
-        <a class="btn btn--outline animate-on-scroll" href="book-a-call.html" data-delay="300">
-          Schedule Discovery Call
-        </a>
+        <a class="btn btn--primary animate-on-scroll" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application" data-delay="200" data-pt="Candidatura espontânea" data-en="Submit Spontaneous Application" data-es="Candidatura espontánea" data-fr="Candidature spontanée" data-de="Initiativbewerbung" data-ru="Спонтанная заявка" data-nl="Open sollicitatie" data-ja="自発的応募" data-zh="自发申请">Submit Spontaneous Application</a>
+        <a class="btn btn--outline animate-on-scroll" href="book-a-call.html" data-delay="300" data-pt="Agendar chamada de descoberta" data-en="Schedule Discovery Call" data-es="Agendar llamada de descubrimiento" data-fr="Planifier un appel de découverte" data-de="Discovery-Anruf planen" data-ru="Запланировать звонок для знакомства" data-nl="Ontdekkingsgesprek plannen" data-ja="ディスカバリーコールを予約" data-zh="安排探索通话">Schedule Discovery Call</a>
       </div>
     </div>
   </section>
@@ -2218,9 +2175,9 @@
   <section class="contact-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">GET IN TOUCH</span>
-        <h2 class="section-title animate-on-scroll">Let's Connect</h2>
-        <p class="section-description animate-on-scroll" data-delay="100">
+        <span class="section-subtitle" data-pt="FALA CONNOSCO" data-en="GET IN TOUCH" data-es="CONTACTO" data-fr="CONTACTEZ-NOUS" data-de="KONTAKTIEREN SIE UNS" data-ru="СВЯЖИТЕСЬ С НАМИ" data-nl="NEEM CONTACT OP" data-ja="お問い合わせ" data-zh="联系我们">GET IN TOUCH</span>
+        <h2 class="section-title animate-on-scroll" data-pt="Vamos falar" data-en="Let's Connect" data-es="Hablemos" data-fr="Connectons-nous" data-de="Lassen Sie uns verbinden" data-ru="Давайте свяжемся" data-nl="Laten we verbinden" data-ja="つながりましょう" data-zh="让我们联系">Let's Connect</h2>
+        <p class="section-description animate-on-scroll" data-delay="100" data-pt="Tens dúvidas sobre cultura, processo ou oportunidades? Fala com a nossa equipa." data-en="Have questions about our culture, process, or opportunities? Reach out to our team." data-es="¿Tienes preguntas sobre cultura, proceso u oportunidades? Contacta con nuestro equipo." data-fr="Des questions sur notre culture, processus ou opportunités ? Contactez notre équipe." data-de="Haben Sie Fragen zu unserer Kultur, unserem Prozess oder unseren Möglichkeiten? Wenden Sie sich an unser Team." data-ru="Есть вопросы о нашей культуре, процессе или возможностях? Свяжитесь с нашей командой." data-nl="Heeft u vragen over onze cultuur, proces of mogelijkheden? Neem contact op met ons team." data-ja="文化、プロセス、機会について質問がありますか？私たちのチームにお問い合わせください。" data-zh="对我们的文化、流程或机会有疑问？请联系我们的团队。">
           Have questions about our culture, process, or opportunities? Reach out to our team.
         </p>
       </div>
@@ -2230,10 +2187,10 @@
           <div class="contact-icon">
             <span>📧</span>
           </div>
-          <h3 class="contact-title">Email Us</h3>
+          <h3 class="contact-title" data-pt="Envia email" data-en="Email Us" data-es="Escríbenos" data-fr="Envoyez-nous un email" data-de="Schreiben Sie uns" data-ru="Напишите нам" data-nl="E-mail ons" data-ja="メールする" data-zh="给我们发邮件">Email Us</h3>
           <div class="contact-details">
             <p><a href="mailto:careers@cobrait.com">careers@cobrait.com</a></p>
-            <p>Response within 24-48 hours</p>
+            <p data-pt="Resposta em 24–48 horas" data-en="Response within 24-48 hours" data-es="Respuesta en 24–48 horas" data-fr="Réponse dans les 24-48 heures" data-de="Antwort innerhalb von 24-48 Stunden" data-ru="Ответ в течение 24-48 часов" data-nl="Antwoord binnen 24-48 uur" data-ja="24〜48時間以内に返信" data-zh="24-48小时内回复">Response within 24-48 hours</p>
           </div>
         </div>
         
@@ -2241,7 +2198,7 @@
           <div class="contact-icon">
             <span>📍</span>
           </div>
-          <h3 class="contact-title">Visit Our HQ</h3>
+          <h3 class="contact-title" data-pt="Visita o nosso HQ" data-en="Visit Our HQ" data-es="Visita nuestra sede" data-fr="Visitez notre siège" data-de="Besuchen Sie unsere Zentrale" data-ru="Посетите наш головной офис" data-nl="Bezoek ons hoofdkantoor" data-ja="HQを訪問" data-zh="参观我们的总部">Visit Our HQ</h3>
           <div class="contact-details">
             <p>R. Eng Ferreira Dias 161</p>
             <p>4100-247 Porto, Portugal</p>
@@ -2252,10 +2209,10 @@
           <div class="contact-icon">
             <span>💬</span>
           </div>
-          <h3 class="contact-title">Chat With Us</h3>
+          <h3 class="contact-title" data-pt="Fala connosco" data-en="Chat With Us" data-es="Habla con nosotros" data-fr="Discutez avec nous" data-de="Chatten Sie mit uns" data-ru="Поболтайте с нами" data-nl="Chat met ons" data-ja="チャットする" data-zh="与我们聊天">Chat With Us</h3>
           <div class="contact-details">
-            <p><a href="book-a-call.html">Schedule a call</a> with our hiring team</p>
-            <p>Discuss your career aspirations</p>
+            <p data-pt="Agenda uma chamada com a nossa equipa de recrutamento" data-en="Schedule a call with our hiring team" data-es="Agenda una llamada con nuestro equipo de selección" data-fr="Planifiez un appel avec notre équipe de recrutement" data-de="Vereinbaren Sie einen Anruf mit unserem Einstellungsteam" data-ru="Запланируйте звонок с нашей командой по найму" data-nl="Plan een gesprek met ons wervingsteam" data-ja="採用チームとの通話を予約する" data-zh="与我们的招聘团队安排通话"><a href="book-a-call.html" data-pt="Agenda uma chamada" data-en="Schedule a call" data-es="Agenda una llamada" data-fr="Planifiez un appel" data-de="Einen Anruf planen" data-ru="Запланировать звонок" data-nl="Plan een gesprek" data-ja="通話を予約する" data-zh="安排通话">Schedule a call</a> with our hiring team</p>
+            <p data-pt="Fala sobre os teus objetivos de carreira" data-en="Discuss your career aspirations" data-es="Habla sobre tus objetivos profesionales" data-fr="Discutez de vos aspirations professionnelles" data-de="Besprechen Sie Ihre Karrierewünsche" data-ru="Обсудите ваши карьерные устремления" data-nl="Bespreek uw carrière-aspiraties" data-ja="キャリアの希望を話し合う" data-zh="讨论您的职业抱负">Discuss your career aspirations</p>
           </div>
         </div>
       </div>
@@ -2295,7 +2252,6 @@
             <li><a href="servicos/ux-ui.html">UX / UI</a></li>
             <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Développement de logiciels personnalisés" data-de="Benutzerdefinierte Softwareentwicklung" data-ru="Разработка пользовательского программного обеспечения" data-nl="Aangepaste softwareontwikkeling" data-ja="カスタムソフトウェア開発" data-zh="定制软件开发">Software à Medida</a></li>
             <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">Equipas Dedicadas</a></li>
-          </ul>
           </ul>
         </div>
         <div class="footer-col">
@@ -2342,7 +2298,7 @@
           <a href="#about" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-ru="Конфиденциальность" data-nl="Privacy" data-ja="プライバシー" data-zh="隐私">Privacidade</a>
           <a href="#about" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="Условия" data-nl="Voorwaarden" data-ja="利用規約" data-zh="条款">Termos</a>
           <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Services" data-ja="サービス" data-zh="服务">Serviços</a>
-          <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones">Livro de Reclamações</a>
+          <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de réclamations" data-de="Beschwerdebuch" data-ru="Книга жалоб" data-nl="Klachtenboek" data-ja="苦情受付帳" data-zh="投诉簿">Livro de Reclamações</a>
         </div>
       </div>
     </div>
@@ -2417,31 +2373,6 @@
           });
         });
       });
-      
-      // Scroll animations
-      // Scroll animation disabled - elements now appear immediately
-      /*
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const delay = entry.target.getAttribute('data-delay') || 0;
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, parseInt(delay));
-          }
-        });
-      }, observerOptions);
-      
-      // Observe all elements with animate-on-scroll class
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-      });
-      */
       
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2626,8 +2557,6 @@
       const langButtons = document.querySelectorAll(".language-option");
       const currentLang = document.getElementById("currentLang");
       const currentFlag = document.getElementById("currentFlag");
-
-      const flags = { pt: "🇵🇹", en: "🇬🇧", es: "🇪🇸" };
 
       // Texts for the Careers page (minimal, only to make language switch affect the page content too)
       const texts = {
