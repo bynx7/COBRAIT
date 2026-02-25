@@ -591,44 +591,45 @@
        HOW IT WORKS (timeline) — COM LINHA QUE ENCHE NO SCROLL ✅
     ========================================================= */
     .timeline{
-  position:relative;
-  max-width:1020px;
-  margin:0 auto;
-  padding:1px 0;        /* ✅ impede margin-collapsing */
-  display: flow-root;   /* ✅ ainda mais seguro */
-  --timeline-x: 50%;
-  --timeline-w: 8px;
-}
+      position:relative;
+      max-width:1020px;
+      margin:0 auto;
+      padding:1px 0;
+      display: flow-root;
+      --timeline-x: 50%;
+    }
+    .timeline::before,
+    .timeline::after{ z-index: 0; }
+    .step{ position: relative; z-index: 1; }
+    .step-dot{ position: relative; z-index: 3; }
 
-
-    /* Linha base (cinza/azulada) */
+    /* Linha base (igual ao UX/UI) */
     .timeline::before{
       content:"";
       position:absolute;
       left: var(--timeline-x);
-      top:0;
-      transform: translateX(-50%);
-      width: var(--timeline-w);
-      height:100%;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      transform: translateX(-3px);
+      background: rgba(59,130,246,.18);
       border-radius:999px;
-      background: #e5edff;
-      z-index: 0;
       pointer-events:none;
     }
 
-    /* Linha preenchida (azul) */
-    .timeline-fill{
+    /* Linha progressiva (igual ao UX/UI) */
+    .timeline::after{
+      content:"";
       position:absolute;
       left: var(--timeline-x);
-      top:0;
-      transform: translateX(-50%);
-      width: var(--timeline-w);
-      height:0%;
+      top: 0;
+      width: 6px;
+      transform: translateX(-3px);
+      height: var(--timeline-progress, 0%);
+      background: linear-gradient(180deg, rgba(59,130,246,0) 0%, rgba(59,130,246,.95) 100%);
       border-radius:999px;
-      background: linear-gradient(180deg, #3b82f6 0%, #4f46e5 45%, #7c3aed 100%);
-      box-shadow: 0 10px 35px rgba(79,70,229,.22);
-      z-index:1;
-      transition: height .12s ease-out;
+      transition: height .14s linear;
+      will-change: height;
       pointer-events:none;
     }
 
@@ -995,8 +996,9 @@
       .h1{ font-size:46px; }
       .benefits-grid{ grid-template-columns:1fr; }
 
-      /* timeline mobile: cinza e azul ficam no MESMO X */
-      .timeline{ --timeline-x: 18px; }
+      .timeline{ --timeline-x: 20px; }
+      .timeline::before,
+      .timeline::after{ transform: none; }
 
       .step{ grid-template-columns: 40px 1fr; gap:14px; }
       .step-dot{ grid-column:1; margin:0; }
@@ -1437,7 +1439,6 @@
             data-zh="运作方式">Como funciona</h2>
 
         <div class="timeline" id="timelineHow">
-          <div class="timeline-fill" id="timelineFill" aria-hidden="true"></div>
 
           <div class="step">
             <div class="step-card">
@@ -1802,10 +1803,9 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const timeline = document.getElementById('timelineHow');
-      const fill = document.getElementById('timelineFill');
       const steps = timeline ? timeline.querySelectorAll('.step') : [];
 
-      if (!timeline || !fill || !steps.length) return;
+      if (!timeline || !steps.length) return;
 
       const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
@@ -1815,7 +1815,7 @@
 
         const triggerY = vh * 0.62;
         const progress = clamp((triggerY - rect.top) / rect.height, 0, 1);
-        fill.style.height = (progress * rect.height) + 'px';
+        timeline.style.setProperty('--timeline-progress', (progress * 100).toFixed(2) + '%');
 
 
         steps.forEach(step => {
