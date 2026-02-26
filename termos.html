@@ -1,0 +1,590 @@
+﻿<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Termos e Condicoes | Cobrait</title>
+  <meta name="description" content="Regras de utilizacao do website da Cobrait." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global-enhancements.css" />
+  <style>
+    :root {
+      --legal-bg: #070b13;
+      --legal-surface: rgba(255, 255, 255, 0.04);
+      --legal-border: rgba(255, 255, 255, 0.14);
+      --legal-text: #e8edf6;
+      --legal-muted: #b8c2d8;
+      --legal-accent: #4f46e5;
+      --legal-accent-2: #7c3aed;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(1200px 500px at 100% -10%, rgba(124, 58, 237, 0.22), transparent 55%),
+        radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.2), transparent 50%),
+        var(--legal-bg);
+      color: var(--legal-text);
+    }
+
+    .legal-shell {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .legal-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .legal-back {
+      color: #c8d6ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .legal-back:hover { text-decoration: underline; }
+
+    .legal-updated {
+      color: var(--legal-muted);
+      font-size: .92rem;
+    }
+
+    .legal-hero {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.26), rgba(124, 58, 237, 0.2));
+      border: 1px solid rgba(173, 186, 255, 0.26);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(3, 8, 20, 0.34);
+      margin-bottom: 20px;
+    }
+
+    .legal-kicker {
+      display: inline-block;
+      font-size: .78rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #d8e3ff;
+      margin: 0 0 10px;
+    }
+
+    .legal-hero h1 {
+      margin: 0 0 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .legal-hero p {
+      margin: 0;
+      color: #d9e2f3;
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .legal-nav,
+    .legal-content {
+      background: var(--legal-surface);
+      border: 1px solid var(--legal-border);
+      border-radius: 18px;
+    }
+
+    .legal-nav {
+      position: sticky;
+      top: 20px;
+      padding: 18px;
+    }
+
+    .legal-nav-title {
+      margin: 0 0 12px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #d5def4;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .legal-nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .legal-nav a {
+      display: block;
+      color: #c2cee5;
+      text-decoration: none;
+      font-size: .96rem;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .legal-nav a:hover {
+      color: #fff;
+      border-color: rgba(173, 186, 255, 0.35);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .legal-content {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .legal-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .legal-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.06rem;
+      line-height: 1.35;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .legal-card p,
+    .legal-card li {
+      color: var(--legal-muted);
+      line-height: 1.75;
+      font-size: .97rem;
+    }
+
+    .legal-card ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .legal-highlight {
+      border-left: 3px solid var(--legal-accent);
+      padding-left: 12px;
+      margin-top: 10px;
+      color: #dbe6ff;
+    }
+
+    .legal-mail {
+      color: #afc7ff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .legal-mail:hover { text-decoration: underline; }
+
+    .legal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .legal-chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(173, 186, 255, 0.32);
+      background: rgba(102, 126, 234, 0.12);
+      color: #dbe4ff;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .83rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .legal-grid { grid-template-columns: 1fr; }
+      .legal-nav { position: static; }
+      .legal-shell { padding-top: 22px; }
+    }
+  
+
+/* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
+        .footer-pro {
+            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+            color: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0 24px;
+        }
+        .footer-pro::before {
+            content: "";
+            position: absolute;
+            inset: -200px -200px auto auto;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+            filter: blur(10px);
+            pointer-events: none;
+        }
+        .footer-pro::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -240px -240px;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        /* LOGO REMOVIDA - Apenas texto da marca */
+        .footer-brand-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: rgba(226, 232, 240, 0.95);
+            margin: 0;
+            line-height: 1;
+        }
+        .footer-brand-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: rgba(203, 213, 225, 0.8);
+            margin: 4px 0 0 0;
+        }
+        .footer-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(226, 232, 240, 0.85);
+            max-width: 420px;
+            margin: 8px 0 0 0;
+        }
+        .footer-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .btn--footer {
+            padding: 10px 18px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+        .btn--footer.btn--outline {
+            border-color: rgba(226, 232, 240, 0.35);
+            color: rgba(226, 232, 240, 0.92);
+        }
+        .btn--footer.btn--outline:hover {
+            background: rgba(226, 232, 240, 0.12);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: none;
+            border-color: rgba(226, 232, 240, 0.5);
+        }
+        .footer-col h4 {
+            margin: 0 0 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: rgba(226, 232, 240, 0.9);
+        }
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+        .footer-links a {
+            color: rgba(203, 213, 225, 0.9);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all .2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+        .footer-meta {
+            display: grid;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(203, 213, 225, 0.9);
+        }
+        .footer-meta a {
+            color: rgba(203, 213, 225, 0.9);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+        .footer-meta a:hover {
+            color: #fff;
+        }
+        /* Estilos especÃ­ficos para o link do Instagram */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all .2s ease;
+        }
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .footer-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            background: rgba(15, 23, 42, 0.35);
+            color: rgba(226, 232, 240, 0.9);
+            font-size: 12px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .footer-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding-top: 16px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(148, 163, 184, 0.9);
+        }
+        .footer-mini-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .footer-mini-links a {
+            color: rgba(148, 163, 184, 0.95);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+        .footer-mini-links a:hover {
+            color: #fff;
+        }
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: 1.6fr 1fr 1fr;
+            }
+            .footer-col--contact {
+                grid-column: 1 / -1;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-mini-links {
+                justify-content: flex-start;
+            }
+            .footer-pro {
+                padding: 50px 0 20px;
+            }
+            .footer-brand-title {
+                font-size: 22px;
+            }
+        }
+  </style>
+</head>
+<body>
+  <main class="legal-shell">
+    <div class="legal-topbar">
+      <a class="legal-back" href="index.html">Voltar ao inicio</a>
+      <span class="legal-updated">Ultima atualizacao: 26 de fevereiro de 2026</span>
+    </div>
+
+    <section class="legal-hero">
+      <p class="legal-kicker">Cobrait â€¢ Legal</p>
+      <h1>Termos e Condicoes</h1>
+      <p>Estes termos definem as condicoes de utilizacao do website e estabelecem os limites e responsabilidades aplicaveis.</p>
+    </section>
+
+    <section class="legal-grid">
+      <aside class="legal-nav" aria-label="Indice da pagina">
+        <p class="legal-nav-title">Indice</p>
+        <ul>
+          <li><a href="#s1">1. Objeto</a></li>
+<li><a href="#s2">2. Utilizacao do website</a></li>
+<li><a href="#s3">3. Propriedade intelectual</a></li>
+<li><a href="#s4">4. Limites de responsabilidade</a></li>
+<li><a href="#s5">5. Links de terceiros</a></li>
+<li><a href="#s6">6. Alteracoes e lei aplicavel</a></li>
+<li><a href="#s7">7. Contactos</a></li>
+        </ul>
+      </aside>
+
+      <article class="legal-content">
+        <section id="s1" class="legal-card">
+  <h2>1. Objeto</h2>
+  <p>Estes Termos e Condicoes regulam o acesso e a utilizacao do website da Cobrait, bem como a relacao inicial de contacto comercial atraves dos formularios disponiveis.</p>
+</section>
+<section id="s2" class="legal-card">
+  <h2>2. Utilizacao do website</h2>
+  <ul>
+    <li>O utilizador compromete-se a usar este website de forma licita e responsavel.</li>
+    <li>E proibido introduzir conteudo malicioso, tentar aceder a areas restritas ou comprometer a seguranca da plataforma.</li>
+    <li>A Cobrait pode limitar ou suspender o acesso em caso de uso abusivo.</li>
+  </ul>
+</section>
+<section id="s3" class="legal-card">
+  <h2>3. Propriedade intelectual</h2>
+  <p>Marcas, design, codigo, texto e restantes conteudos estao protegidos por direitos de propriedade intelectual e industrial.</p>
+  <p>A reproducao total ou parcial sem autorizacao previa e proibida, exceto nos casos permitidos por lei.</p>
+</section>
+<section id="s4" class="legal-card">
+  <h2>4. Limites de responsabilidade</h2>
+  <p>A Cobrait envida esforcos para manter o website atualizado e disponivel, mas nao garante ausencia total de interrupcoes, erros ou indisponibilidade temporaria.</p>
+  <p class="legal-highlight">Nenhuma informacao presente no website constitui proposta contratual vinculativa por si so.</p>
+</section>
+<section id="s5" class="legal-card">
+  <h2>5. Links de terceiros</h2>
+  <p>Este website pode incluir ligacoes para paginas externas. A Cobrait nao controla nem se responsabiliza pelo conteudo, politicas ou praticas desses websites.</p>
+</section>
+<section id="s6" class="legal-card">
+  <h2>6. Alteracoes e lei aplicavel</h2>
+  <p>Podemos atualizar estes Termos a qualquer momento. A versao publicada nesta pagina e a versao em vigor.</p>
+  <p>A relacao juridica e regida pela legislacao portuguesa, sem prejuizo de normas imperativas aplicaveis.</p>
+</section>
+<section id="s7" class="legal-card">
+  <h2>7. Contactos</h2>
+  <p>Para questoes juridicas ou contratuais, envia email para <a class="legal-mail" href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>.</p>
+</section>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer-pro" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3 class="footer-brand-title">Cobrait</h3>
+        <p class="footer-brand-subtitle">Software Factory</p>
+        <p class="footer-tagline">Criamos produtos digitais com foco em velocidade, qualidade e crescimento &mdash; do scope ao lan&ccedil;amento.</p>
+        <div class="footer-cta-row">
+          <a class="btn btn--primary btn--footer" href="book-a-call.html">Agendar uma chamada</a>
+          <a class="btn btn--outline btn--footer" href="index.html#what-we-do">Ver servi&ccedil;os</a>
+        </div>
+        <div class="footer-badges" aria-label="Highlights">
+          <span class="footer-badge"><span class="footer-badge-dot"></span><span>Lean + Agile</span></span>
+          <span class="footer-badge"><span class="footer-badge-dot"></span><span>Entrega r&aacute;pida</span></span>
+          <span class="footer-badge"><span class="footer-badge-dot"></span><span>Qualidade</span></span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servi&ccedil;os</h4>
+        <ul class="footer-links">
+          <li><a href="servicos/product-scope.html">Product Scope</a></li>
+          <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+          <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+          <li><a href="servicos/custom-software.html">Software &agrave; Medida</a></li>
+          <li><a href="servicos/dedicated-teams.html">Equipas Dedicadas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="about-us.html">Sobre n&oacute;s</a></li>
+          <li><a href="careers.html">Carreiras</a></li>
+          <li><a href="tech.html">Tech</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col--contact">
+        <h4>Contacto</h4>
+        <div class="footer-meta">
+          <div><span>Email:</span> <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a></div>
+          <div><span>Resposta:</span> <span>normalmente em 24&ndash;48h</span></div>
+          <div>
+            <a href="https://instagram.com/cobra_it" target="_blank" rel="noopener noreferrer" class="social-link">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>@cobra_it</span>
+            </a>
+          </div>
+          <div><span>Preferes r&aacute;pido?</span> <a href="book-a-call.html">Marca uma call.</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span id="year"></span> Cobrait &mdash; Software Factory</div>
+      <div class="footer-mini-links">
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="index.html#what-we-do">Servi&ccedil;os</a>
+        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer">Livro de Reclama&ccedil;&otilde;es</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
