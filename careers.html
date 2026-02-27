@@ -479,7 +479,7 @@
     
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--text-primary);
       background: var(--bg-white);
       overflow-x: hidden;
@@ -502,7 +502,7 @@
     
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 var(--space-xl);
     }
@@ -1892,7 +1892,7 @@
         <span data-pt="Estamos a contratar pessoas talentosas" data-en="We're Hiring Talented People" data-es="Estamos contratando talento" data-fr="Nous recrutons des personnes talentueuses" data-de="Wir stellen talentierte Menschen ein" data-ru="Мы нанимаем талантливых людей" data-nl="We werven getalenteerde mensen aan" data-ja="私たちは才能ある人材を募集しています" data-zh="我们正在招聘有才华的人">We're Hiring Talented People</span>
       </div>
       
-      <h1 class="hero-title animate-on-scroll" data-delay="100" data-pt="Constrói o Futuro da Tecnologia" data-en="Shape the Future<br>of Technology" data-es="Da forma al Futuro<br>de la Tecnología" data-fr="Façonnez l'avenir<br>de la technologie" data-de="Gestalten Sie die Zukunft<br>der Technologie" data-ru="Формируйте будущее<br>технологий" data-nl="Vorm de toekomst<br>van technologie" data-ja="未来を形作る<br>テクノロジーの" data-zh="塑造未来<br>科技">
+      <h1 class="hero-title animate-on-scroll" data-delay="100" data-html data-pt="Constrói o Futuro da Tecnologia" data-en="Shape the Future<br>of Technology" data-es="Da forma al Futuro<br>de la Tecnología" data-fr="Façonnez l'avenir<br>de la technologie" data-de="Gestalten Sie die Zukunft<br>der Technologie" data-ru="Формируйте будущее<br>технологий" data-nl="Vorm de toekomst<br>van technologie" data-ja="未来を形作る<br>テクノロジーの" data-zh="塑造未来<br>科技">
         Shape the Future<br>of Technology
       </h1>
       
@@ -2756,7 +2756,13 @@
         // Nav items with data-pt/data-en/data-es (already present)
         document.querySelectorAll("[data-pt]").forEach(el => {
           const v = el.dataset[lang];
-          if (typeof v !== "undefined") el.textContent = v;
+          if (typeof v !== "undefined") {
+            if (el.hasAttribute("data-html") || /<br\s*\/?>/i.test(v)) {
+              el.innerHTML = v;
+            } else {
+              el.textContent = v;
+            }
+          }
         });
 
         // Careers page content (attempt to use page texts; if missing, try global translations)

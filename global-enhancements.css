@@ -23,10 +23,16 @@ html {
 
 body {
   color: var(--text-main);
+  line-height: 1.6;
   background:
     radial-gradient(950px 430px at 10% -20%, rgba(79, 70, 229, 0.08), transparent 65%),
     radial-gradient(900px 420px at 95% 0%, rgba(14, 165, 233, 0.06), transparent 62%),
     var(--site-bg);
+}
+
+::selection {
+  background: rgba(79, 70, 229, 0.2);
+  color: var(--text-main);
 }
 
 .container {
@@ -43,6 +49,16 @@ body {
 
 .site-header {
   backdrop-filter: saturate(120%) blur(8px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+a {
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.9;
 }
 
 .btn,
@@ -97,7 +113,12 @@ button[type="submit"]:hover {
 .pricing-card:hover,
 .plan-card:hover,
 .card:hover {
+  transform: translateY(-2px);
   box-shadow: var(--elev-2);
+}
+
+img {
+  border-radius: 10px;
 }
 
 input,
@@ -131,6 +152,10 @@ p,
 .contact-bullets li,
 .form-sub {
   color: var(--text-muted);
+}
+
+main section {
+  scroll-margin-top: 110px;
 }
 
 @media (max-width: 980px) {
