@@ -17,5 +17,6 @@
   "BOOK A CALL": { "fr": "RÉSERVER UN APPEL", "de": "EINEN TERMIN BUCHEN", "ru": "НАЗНАЧИТЬ ВСТРЕЧУ", "nl": "RESERVEER EEN GESPREK", "ja": "通話を予約", "zh": "预订通话" },
   "We build digital products focused on speed, quality and growth — from scope to launch.": { "fr": "Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du périmètre au lancement.", "de": "Wir bauen digitale Produkte mit Fokus auf Geschwindigkeit, Qualität und Wachstum — vom Umfang bis zur Markteinführung.", "ru": "Мы создаем цифровые продукты, сосредоточенные на скорости, качестве и росте — от концепции до запуска.", "nl": "We bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering.", "ja": "スピード、品質、成長に焦点を当てたデジタル製品を構築します—スコープから立ち上げまで。", "zh": "我们构建专注于速度、质量和增长的数字产品 — 从范围到推出。" },
   "Book a call": { "fr": "Réserver un appel", "de": "Einen Termin buchen", "ru": "Назначить встречу", "nl": "Reserveer een gesprek", "ja": "通話を予約する", "zh": "预订通话" },
-  "See services": { "fr": "Voir les services", "de": "Dienstleistungen anzeigen", "ru": "Просмотреть услуги", "nl": "Bekijk services", "ja": "サービスを表示", "zh": "查看服务" }
+  "See services": { "fr": "Voir les services", "de": "Dienstleistungen anzeigen", "ru": "Просмотреть услуги", "nl": "Bekijk services", "ja": "サービスを表示", "zh": "查看服务" },
+  "__sync_marker__": "github-desktop-update"
 }

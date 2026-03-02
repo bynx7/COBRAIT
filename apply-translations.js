@@ -1,3 +1,4 @@
+// sync: github-desktop-update
 // Cobrait Translation Loader - garante idiomas do dropdown em todas as paginas
 
 if (!window.__cobraitTranslationBooted) {
