@@ -440,11 +440,6 @@
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  @media (min-width: 1025px){
-  .book-contact-grid{
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
   .contact-video{ height: 240px; }
 }
@@ -452,4 +447,72 @@
 @media (max-width: 520px){
   .book-hero{ padding: 52px 0 44px; }
   .form-card{ padding: 18px; }
+}
+
+@media (max-width: 640px){
+  .book-hero::before{
+    inset: -120px auto auto -120px;
+    width: 260px;
+    height: 260px;
+  }
+
+  .book-hero::after{
+    inset: auto -150px -150px auto;
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-title{
+    font-size: clamp(2.15rem, 11vw, 3.2rem);
+  }
+
+  .hero-trust-row{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-trust-pill,
+  .hero-cta{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-video{
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px){
+  .book-hero,
+  .book-contact{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .book-hero::before{
+    inset: -90px auto auto -90px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .book-hero::after{
+    inset: auto -105px -105px auto;
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-art,
+  .hero-hq,
+  .form-card{
+    padding: 16px;
+  }
+
+  .contact-title{
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .video-play{
+    width: 64px;
+    height: 64px;
+  }
 }

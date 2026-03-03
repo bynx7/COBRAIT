@@ -396,7 +396,7 @@
 
 .what-we-do__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-bottom: 60px;
 }
@@ -574,5 +574,63 @@
         top: 24px;
         right: 24px;
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .servicos-page .container,
+    .container {
+        width: min(1100px, calc(100% - 32px));
+        padding: 0 16px;
+    }
+
+    .servicos-page .services,
+    .servicos-page .why,
+    .what-we-do,
+    .cob-services {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .servicos-page .servicos-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .servicos-page .servicos-actions .btn {
+        width: 100%;
+    }
+
+    .cob-card,
+    .service-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicos-page .container,
+    .container {
+        width: min(1100px, calc(100% - 24px));
+        padding: 0 12px;
+    }
+
+    .servicos-page .section-title,
+    .what-we-do__title,
+    .cob-services__title {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+        line-height: 1.06;
+    }
+
+    .servicos-page .service-card,
+    .servicos-page .why-card,
+    .cob-card,
+    .service-card {
+        padding: 18px;
+    }
+
+    .service-card__icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 18px;
     }
 }

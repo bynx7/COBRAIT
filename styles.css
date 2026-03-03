@@ -1052,3 +1052,115 @@ h2{
 .dropdown-item:hover {
   text-decoration: none;
 }
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+.hero {
+  min-height: 100svh;
+}
+
+@media (max-width: 900px) {
+  .social-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .social-visual {
+    order: -1;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .hero-inner {
+    padding-top: 120px;
+    padding-bottom: 56px;
+  }
+
+  .hero-actions,
+  .what-we-do__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn,
+  .what-we-do__cta .btn {
+    width: 100%;
+  }
+
+  .trust-item {
+    width: 100%;
+  }
+
+  .hero-card {
+    max-width: none;
+    padding: 16px;
+  }
+
+  .social-media,
+  .what-we-do,
+  .cob-services {
+    padding: 64px 0;
+  }
+
+  .social-visual {
+    min-height: 240px;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 11vw, 3rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-sub {
+    font-size: 0.98rem;
+    max-width: none;
+  }
+
+  .hero-bullets {
+    gap: 8px;
+  }
+
+  .hero-chip {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cob-services__grid,
+  .what-we-do__grid,
+  .social-inner {
+    gap: 22px;
+  }
+
+  .service-card,
+  .cob-card,
+  .hero-card {
+    padding: 18px;
+  }
+
+  .service-card__icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 18px;
+  }
+
+  .service-card__title {
+    font-size: 1.2rem;
+  }
+}
