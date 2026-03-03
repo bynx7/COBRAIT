@@ -8,38 +8,49 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            padding: 20px;
+            padding: 28px 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
-            background: #f5f5f5;
+            background: radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.08), transparent 45%), #f6f8fc;
+            color: #0f172a;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,.94);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+            border: 1px solid #dbe3ee;
         }
         h1 {
             color: #4f46e5;
             margin-bottom: 20px;
+            font-size: clamp(2rem, 4vw, 2.8rem);
         }
         .instructions {
-            background: #f0f4ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f7f9ff 0%, #eef2ff 100%);
+            padding: 18px 20px;
+            border-radius: 14px;
+            margin-bottom: 24px;
             border-left: 4px solid #4f46e5;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 18px 0 8px;
         }
         button {
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 16px;
-            margin: 10px 0;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
             transition: all 0.3s;
+            box-shadow: 0 12px 28px rgba(79, 70, 229, 0.2);
         }
         button:hover {
             transform: translateY(-2px);
@@ -52,11 +63,11 @@
         }
         #output {
             margin-top: 20px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            max-height: 400px;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #dbe3ee;
+            max-height: 460px;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
             font-size: 12px;

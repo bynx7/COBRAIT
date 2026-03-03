@@ -409,16 +409,16 @@
     /* ====== VARIÁVEIS E RESET ====== */
     :root {
       /* Cores principais */
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
       --primary-light: #818cf8;
-      --secondary: #8b5cf6;
-      --accent: #06b6d4;
+      --secondary: #7c3aed;
+      --accent: #0ea5e9;
       
       /* Gradientes */
       --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      --gradient-light: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      --gradient-dark: linear-gradient(135deg, #111827 0%, #172554 58%, #1e1b4b 100%);
+      --gradient-light: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
       --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #3b82f6 100%);
       
       /* Sistema de cores */
@@ -428,12 +428,12 @@
       --text-light: #94a3b8;
       --text-on-dark: #f1f5f9;
       
-      --bg-white: #ffffff;
-      --bg-light: #f8fafc;
+      --bg-white: #f6f8fc;
+      --bg-light: #ffffff;
       --bg-dark: #0f172a;
-      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-card: rgba(255, 255, 255, 0.96);
       
-      --border-light: #e2e8f0;
+      --border-light: #dbe3ee;
       --border-medium: #cbd5e1;
       --border-dark: #1e293b;
       
@@ -443,7 +443,7 @@
       --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --shadow-primary: 0 10px 30px -5px rgba(99, 102, 241, 0.3);
+      --shadow-primary: 0 14px 34px -8px rgba(79, 70, 229, 0.32);
       
       /* Bordas arredondadas */
       --radius-sm: 8px;
@@ -482,7 +482,10 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       line-height: 1.6;
       color: var(--text-primary);
-      background: var(--bg-white);
+      background:
+        radial-gradient(950px 430px at 10% -20%, rgba(79, 70, 229, 0.08), transparent 65%),
+        radial-gradient(900px 420px at 95% 0%, rgba(14, 165, 233, 0.06), transparent 62%),
+        var(--bg-white);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -598,9 +601,9 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(14, 165, 233, 0.08) 0%, transparent 50%);
       animation: gradientShift 15s ease infinite alternate;
     }
     
@@ -626,8 +629,8 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1rem;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.2);
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(165, 180, 252, 0.24);
       border-radius: var(--radius-full);
       color: var(--primary-light);
       font-size: 0.875rem;
@@ -640,7 +643,7 @@
       font-size: clamp(3.5rem, 6vw, 5rem);
       color: white;
       margin-bottom: 1.5rem;
-      background: linear-gradient(to right, #ffffff, #c7d2fe, #a5b4fc);
+      background: linear-gradient(to right, #ffffff, #e0e7ff, #bfdbfe);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -716,7 +719,7 @@
     /* ====== SEÇÃO DE VALORES ====== */
     .values-section {
       padding: 8rem 0;
-      background: var(--bg-light);
+      background: transparent;
       position: relative;
     }
     
@@ -785,6 +788,7 @@
       transition: all var(--transition-normal);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
     }
     
     .value-card::before {
@@ -859,6 +863,7 @@
     .benefits-section {
       padding: 8rem 0;
       position: relative;
+      background: transparent;
     }
     
     .benefits-section::before {
@@ -867,9 +872,10 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 300px;
+      height: 340px;
       background: var(--gradient-light);
       z-index: -1;
+      border-bottom: 1px solid rgba(79, 70, 229, 0.06);
     }
     
     .benefits-grid {
@@ -886,6 +892,7 @@
       border: 1px solid var(--border-light);
       transition: all var(--transition-normal);
       position: relative;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
     }
     
     .benefit-item:hover {
@@ -944,7 +951,7 @@
     /* ====== PROCESSO DE RECRUTAMENTO ====== */
     .process-section {
       padding: 8rem 0;
-      background: var(--bg-dark);
+      background: var(--gradient-dark);
       color: var(--text-on-dark);
       position: relative;
       overflow: hidden;
@@ -1000,6 +1007,11 @@
       text-align: center;
       position: relative;
       z-index: 2;
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
     }
     
     .process-step::before {
@@ -1035,7 +1047,7 @@
     /* ====== SEÇÃO DE VAGAS ====== */
     .jobs-section {
       padding: 8rem 0;
-      background: var(--bg-light);
+      background: transparent;
     }
     
     .jobs-filter {
@@ -1085,6 +1097,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
     }
     
     .job-card::before {
@@ -1166,7 +1179,7 @@
     /* ====== CTA SECTION ====== */
     .cta-section {
       padding: 8rem 0;
-      background: var(--gradient-dark);
+      background: linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%);
       color: white;
       text-align: center;
       position: relative;
@@ -1178,8 +1191,8 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.12) 0%, transparent 50%);
       animation: pulse 4s ease-in-out infinite alternate;
     }
     
@@ -1223,6 +1236,7 @@
     .contact-section {
       padding: 6rem 0;
       text-align: center;
+      background: transparent;
     }
     
     .contact-grid {
@@ -1238,6 +1252,7 @@
       padding: 3rem 2rem;
       border: 1px solid var(--border-light);
       transition: all var(--transition-normal);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
     }
     
     .contact-card:hover {

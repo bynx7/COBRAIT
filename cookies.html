@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="global-enhancements.css" />
   <style>
     :root {
-      --legal-bg: #070b13;
-      --legal-surface: rgba(255, 255, 255, 0.04);
-      --legal-border: rgba(255, 255, 255, 0.14);
-      --legal-text: #e8edf6;
-      --legal-muted: #b8c2d8;
+      --legal-bg: #f6f8fc;
+      --legal-surface: rgba(255, 255, 255, 0.86);
+      --legal-border: #dbe3ee;
+      --legal-text: #0f172a;
+      --legal-muted: #64748b;
       --legal-accent: #4f46e5;
       --legal-accent-2: #7c3aed;
     }
@@ -26,8 +26,8 @@
       margin: 0;
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(1200px 500px at 100% -10%, rgba(124, 58, 237, 0.22), transparent 55%),
-        radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.2), transparent 50%),
+        radial-gradient(1200px 500px at 100% -10%, rgba(124, 58, 237, 0.12), transparent 55%),
+        radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.1), transparent 50%),
         var(--legal-bg);
       color: var(--legal-text);
     }
@@ -48,7 +48,7 @@
     }
 
     .legal-back {
-      color: #c8d6ff;
+      color: var(--legal-accent);
       text-decoration: none;
       font-weight: 600;
     }
@@ -61,11 +61,11 @@
     }
 
     .legal-hero {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.26), rgba(124, 58, 237, 0.2));
-      border: 1px solid rgba(173, 186, 255, 0.26);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 242, 255, 0.96));
+      border: 1px solid rgba(79, 70, 229, 0.14);
       border-radius: 22px;
       padding: 28px;
-      box-shadow: 0 18px 50px rgba(3, 8, 20, 0.34);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
       margin-bottom: 20px;
     }
 
@@ -75,7 +75,7 @@
       letter-spacing: .11em;
       text-transform: uppercase;
       font-weight: 700;
-      color: #d8e3ff;
+      color: var(--legal-accent);
       margin: 0 0 10px;
     }
 
