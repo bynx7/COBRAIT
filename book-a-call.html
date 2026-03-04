@@ -742,7 +742,36 @@
         }
     </style>
   <link rel="stylesheet" href="global-enhancements.css">
+  <style>
+    .book-hero {
+      min-height: auto !important;
+    }
+
+/* Encurtar a hero azul */
+.book-hero{
+  min-height: unset !important;
+  height: auto !important;
+  padding: 48px 0 36px !important; /* ajusta aqui se quiseres ainda menor */
+}
+
+/* Muitas vezes o culpado é a grid ter 100vh / min-height */
+.book-hero-grid{
+  min-height: unset !important;
+  height: auto !important;
+  align-items: start !important;
+}
+
+/* Evitar espaço extra em baixo */
+.book-hero-left,
+.book-hero-right{
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+  </style>
 </head>
+
+
 
 <body>
   <!-- HEADER ATUALIZADO COM "COBRA IT" -->
@@ -960,7 +989,7 @@
 
   <main>
     <!-- HERO ESCURO (sem espaÃ§o gigante) -->
-    <section class="book-hero" aria-label="Book a call hero">
+    <section class="book-hero" aria-label="Book a call hero" style="min-height:auto;height:auto;padding:48px 0 36px;">
       <div class="container book-hero-grid">
         <div class="book-hero-left">
           <div class="hero-brand">

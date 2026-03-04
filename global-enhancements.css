@@ -190,8 +190,7 @@ main section {
   scroll-margin-top: 110px;
 }
 
-.hero,
-.book-hero {
+.hero {
   min-height: 100svh;
 }
 

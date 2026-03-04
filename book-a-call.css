@@ -1,6 +1,6 @@
 /* sync: github-desktop-update */
 /* =========================
-   BOOK A CALL — PAGE CSS
+   BOOK A CALL â€” PAGE CSS
    (Hero dark + Form pro)
    ========================= */
 
@@ -19,22 +19,22 @@
   --radius:18px;
 }
 
-/* Evitar heranças maradas do styles.css */
+/* Evitar heranÃ§as maradas do styles.css */
 .book-hero, .book-contact{
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* =========================
-   HERO (dark) — sem espaço gigante
+   HERO (dark) â€” sem espaÃ§o gigante
    ========================= */
 .book-hero{
   background: linear-gradient(180deg, #121a22 0%, #0b1220 100%);
   color: #fff;
-  padding: 64px 0 56px;       /* ✅ não exagerado */
+  padding: 64px 0 56px;
+  min-height: auto;
   position: relative;
   overflow: hidden;
 }
-
 .book-hero::before{
   content:"";
   position:absolute;
@@ -183,7 +183,7 @@
 .hq-link:hover{ text-decoration: underline; }
 
 /* =========================
-   CONTACT (white) — pro layout
+   CONTACT (white) â€” pro layout
    ========================= */
 .book-contact{
   background: #ffffff;
@@ -224,7 +224,7 @@
 }
 
 .contact-bullets li::before{
-  content:"✓";
+  content:"âœ“";
   position:absolute;
   left:0;
   top:0;
@@ -279,7 +279,7 @@
 }
 
 /* =========================
-   FORM — o fix do “desformatado”
+   FORM â€” o fix do â€œdesformatadoâ€
    ========================= */
 .form-card{
   background: #ffffff;
@@ -289,7 +289,7 @@
   box-shadow: 0 18px 60px rgba(2,6,23,.08);
 }
 
-/* Cabeçalho do form */
+/* CabeÃ§alho do form */
 .form-head{
   margin-bottom: 16px;
 }
@@ -310,7 +310,7 @@
   line-height: 1.6;
 }
 
-/* ✅ Overrides fortes para o form não ficar inline */
+/* âœ… Overrides fortes para o form nÃ£o ficar inline */
 .book-form{
   display:flex !important;
   flex-direction: column !important;
@@ -398,7 +398,7 @@
   accent-color: #ec4899 !important;
 }
 
-/* Botão submit */
+/* BotÃ£o submit */
 .submit-btn{
   width: 100%;
   display:inline-flex;
@@ -515,4 +515,21 @@
     width: 64px;
     height: 64px;
   }
+}
+
+/* FIX definitivo: matar regras globais de 100vh/height */
+body .book-hero{
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 48px 0 36px !important;
+}
+
+body .book-hero-grid{
+  min-height: 0 !important;
+  height: auto !important;
+  align-content: start !important;
+}
+
+body main, body main > section{
+  min-height: 0 !important;
 }
