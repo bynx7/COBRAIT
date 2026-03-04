@@ -1708,7 +1708,7 @@ footer.footer-pro .btn.btn--outline:hover {
             } else {
               el.value = text;
             }
-          } else if (el.hasAttribute('data-html')) {
+          } else if (el.hasAttribute('data-html') || /<[^>]+>/.test(text)) {
             el.innerHTML = text;
           } else {
             el.textContent = text;

@@ -143,7 +143,7 @@
       padding: 16px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
+      transform: translateY(4px);
       transition: all 0.3s ease;
       z-index: 1000;
       margin-top: 16px;
@@ -250,7 +250,7 @@
       padding: 12px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
+      transform: translateY(4px);
       transition: all 0.3s ease;
       z-index: 1000;
       margin-top: 8px;
@@ -982,7 +982,7 @@
       bottom: 0;
       width: 6px;
       transform: translateX(-3px);
-      background: rgba(59,130,246,.18);
+      background: rgba(59,130,246,.24);
       border-radius: 999px;
     }
 
@@ -997,8 +997,8 @@
       height: var(--timeline-progress, 0%);
       background: linear-gradient(
         180deg,
-        rgba(59,130,246,0) 0%,
-        rgba(59,130,246,.95) 100%
+        rgba(59,130,246,.18) 0%,
+        rgba(59,130,246,1) 100%
       );
       border-radius: 999px;
       pointer-events: none;
@@ -1129,8 +1129,8 @@
 
     /* ✅ CORREÇÃO: As etiquetas aparecem quando a linha as atinge */
     .step{
-      opacity: .25;
-      transform: translateY(10px);
+      opacity: .68;
+      transform: translateY(4px);
       transition: opacity .45s cubic-bezier(0.23, 1, 0.32, 1), transform .45s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
@@ -1843,30 +1843,23 @@
         function updateTimelineProgress(){
           const rect = timeline.getBoundingClientRect();
           const vh = window.innerHeight || document.documentElement.clientHeight;
+          const scrollTop = window.scrollY || window.pageYOffset;
+          const viewportMarker = scrollTop + (vh * 0.58);
+          const timelineTop = scrollTop + rect.top;
+          const timelineBottom = timelineTop + rect.height;
+          const progressPx = Math.max(0, Math.min(viewportMarker - timelineTop, rect.height));
+          const progressRatio = rect.height > 0 ? (progressPx / rect.height) : 0;
+          const progressLineY = timelineTop + progressPx;
 
-          // começa a "encher" quando o topo entra um pouco na viewport
-          const start = vh * 0.25;
-          const end = vh * 0.85;
+          timeline.style.setProperty('--timeline-progress', (progressRatio * 100).toFixed(2) + '%');
+          timeline.classList.toggle('timeline-started', viewportMarker >= timelineTop);
+          timeline.classList.toggle('timeline-complete', viewportMarker >= timelineBottom);
 
-          const total = (rect.height + (end - start));
-          const progressed = (start - rect.top);
-
-          const p = clamp01(progressed / total);
-          const pFast = Math.min(1, p * 1.9);
-          timeline.style.setProperty('--timeline-progress', (pFast * 100).toFixed(2) + '%');
-          
-          // ✅ ATIVA OS PASSOS CONSOANTE A LINHA PROGRIDE
-          steps.forEach((step, index) => {
+          steps.forEach((step) => {
             const stepRect = step.getBoundingClientRect();
-            const stepCenter = stepRect.top + stepRect.height / 2;
-            
-            // Calcula a posição da linha na timeline
-            const timelineTop = rect.top;
-            const progressHeight = rect.height * pFast;
-            const progressLineY = timelineTop + progressHeight;
-            
-            // Ativa o passo se o centro do passo estiver acima da linha de progresso
-            if (stepCenter <= progressLineY + 50) {
+            const stepCenter = scrollTop + stepRect.top + (stepRect.height / 2);
+
+            if (stepCenter <= progressLineY + 48) {
               step.classList.add('step-visible');
             } else {
               step.classList.remove('step-visible');
