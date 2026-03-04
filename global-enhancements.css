@@ -220,6 +220,7 @@ main section {
   min-width: 0;
 }
 
+
 @media (max-width: 980px) {
   .container {
     width: min(1200px, calc(100% - 28px));
@@ -228,18 +229,6 @@ main section {
   .site-header {
     padding-top: 10px;
     padding-bottom: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  .footer-top {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 18px !important;
-  }
-
-  .footer-brand,
-  .footer-col--contact {
-    grid-column: 1 / -1 !important;
   }
 }
 
@@ -331,22 +320,17 @@ main section {
     max-width: 100% !important;
   }
 
-  .footer-top,
-  .footer-bottom,
-  .footer-mini-links,
   .hero-actions,
   .what-we-do__cta,
   .about-hero-actions,
   .tech-hero-actions,
   .csd-hero-actions,
   .cta-actions,
-  .footer-cta-row,
   .jobs-filter {
     flex-direction: column !important;
     align-items: stretch !important;
   }
 
-  .footer-top,
   .book-contact-grid,
   .about-hero-grid,
   .split,
@@ -414,27 +398,6 @@ main section {
     padding: 28px 22px !important;
   }
 
-  .footer-bottom {
-    gap: 14px !important;
-  }
-
-  .footer-top {
-    gap: 18px !important;
-  }
-
-  .footer-mini-links {
-    width: 100%;
-    justify-content: flex-start !important;
-    gap: 10px !important;
-  }
-
-  .footer-mini-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
-
-  .footer-pro::before,
   .book-hero::before,
   .talk-about-project::before {
     width: clamp(180px, 54vw, 260px) !important;
@@ -442,20 +405,11 @@ main section {
     filter: blur(8px) !important;
   }
 
-  .footer-pro::after,
   .book-hero::after,
   .talk-about-project::after {
     width: clamp(220px, 64vw, 320px) !important;
     height: clamp(220px, 64vw, 320px) !important;
     filter: blur(8px) !important;
-  }
-
-  .footer-pro::before {
-    inset: -120px -120px auto auto !important;
-  }
-
-  .footer-pro::after {
-    inset: auto auto -150px -150px !important;
   }
 
   .book-hero::before {
@@ -494,18 +448,12 @@ main section {
     gap: 8px !important;
   }
 
-  .footer-top {
-    grid-template-columns: 1fr !important;
-  }
-
-  .footer-pro::before,
   .book-hero::before,
   .talk-about-project::before {
     width: 170px !important;
     height: 170px !important;
   }
 
-  .footer-pro::after,
   .book-hero::after,
   .talk-about-project::after {
     width: 220px !important;
@@ -564,29 +512,9 @@ main section {
   .what-we-do,
   .book-contact,
   .social-media,
-  .cob-services,
-  .footer-pro {
+  .cob-services {
     padding-top: 56px !important;
     padding-bottom: 56px !important;
-  }
-
-  .logo-text-main,
-  .footer-brand-title {
-    font-size: clamp(1.45rem, 7vw, 1.8rem) !important;
-  }
-
-  .footer-tagline,
-  .footer-links a,
-  .footer-meta a {
-    overflow-wrap: anywhere;
-  }
-
-  .footer-pro::before {
-    inset: -90px -90px auto auto !important;
-  }
-
-  .footer-pro::after {
-    inset: auto auto -110px -110px !important;
   }
 
   .book-hero::before {
