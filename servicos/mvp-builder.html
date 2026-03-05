@@ -966,6 +966,7 @@
 /* Linha azul por cima da cinzenta */
 .timeline-progress {
   position: absolute;
+  z-index: 1;
   left: 18px;     /* ✅ igual à cinzenta */
   top: 0;
   width: 4px;     /* ✅ igual à cinzenta */
@@ -1538,8 +1539,8 @@ footer.footer-pro .footer-brand-title {
       <div class="container">
         <h2 class="section-title" data-pt="Como funciona" data-en="How it works" data-es="Cómo funciona">Como funciona</h2>
 
-        <div class="timeline-wrap">
-          <div class="timeline-progress"></div>
+        <div class="timeline-wrap" id="mvpTimeline">
+          <div class="timeline-progress" id="mvpTimelineProgress"></div>
           <div class="step">
             <div class="card step-card">
               <h3 class="step-title" data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h3>
@@ -2011,20 +2012,19 @@ updateTimelineProgress();
     })();
   </script>
   <script>
-    // Fallback: garante que a linha da timeline acompanha o scroll.
+    // Timeline MVP: linha azul cresce conforme o utilizador faz scroll.
     (function() {
-      function bindMvpTimelineProgress() {
-        const timeline = document.querySelector('.timeline-wrap');
-        if (!timeline) return;
-        const progressLine = timeline.querySelector('.timeline-progress');
-        if (!progressLine) return;
+      function initMvpTimelineProgress() {
+        const timeline = document.getElementById('mvpTimeline');
+        const progressLine = document.getElementById('mvpTimelineProgress');
+        if (!timeline || !progressLine) return;
 
         let ticking = false;
         function update() {
           const rect = timeline.getBoundingClientRect();
           const vh = window.innerHeight || document.documentElement.clientHeight;
-          const startY = vh * 0.70;
-          const filledPx = Math.min(Math.max(startY - rect.top, 0), rect.height);
+          const marker = vh * 0.70;
+          const filledPx = Math.max(0, Math.min(marker - rect.top, rect.height));
           progressLine.style.height = filledPx + 'px';
           ticking = false;
         }
@@ -2039,39 +2039,18 @@ updateTimelineProgress();
         window.addEventListener('scroll', requestUpdate, { passive: true });
         window.addEventListener('resize', requestUpdate);
         window.addEventListener('load', requestUpdate);
+        setTimeout(requestUpdate, 80);
+        setTimeout(requestUpdate, 300);
       }
 
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bindMvpTimelineProgress);
+        document.addEventListener('DOMContentLoaded', initMvpTimelineProgress);
       } else {
-        bindMvpTimelineProgress();
+        initMvpTimelineProgress();
       }
     })();
   </script>
   <script src="../apply-translations.js"></script>
-
-<script>
-document.addEventListener("scroll", function () {
-
-  const timeline = document.querySelector(".timeline-wrap");
-  const progress = document.querySelector(".timeline-progress");
-
-  if (!timeline || !progress) return;
-
-  const rect = timeline.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
-
-  const start = rect.top;
-  const end = rect.bottom;
-
-  let percent = (windowHeight - start) / (rect.height + windowHeight);
-
-  percent = Math.max(0, Math.min(percent, 1));
-
-  progress.style.height = percent * rect.height + "px";
-
-});
-</script>
 
 </body>
 </html>
