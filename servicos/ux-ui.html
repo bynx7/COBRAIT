@@ -971,37 +971,44 @@
       max-width: 1040px;
       margin: 0 auto;
       padding: 6px 0;
+      display: flow-root;
+      --timeline-progress: 0%;
+      --timeline-x: 50%;
     }
 
     /* linha base (cinza) */
     .timeline::before{
       content:"";
       position:absolute;
-      left: 50%;
+      left: var(--timeline-x);
       top: 0;
       bottom: 0;
       width: 6px;
       transform: translateX(-3px);
-      background: rgba(59,130,246,.24);
+      background: rgba(59,130,246,.16);
       border-radius: 999px;
+      pointer-events: none;
     }
 
     /* linha progressiva (colorida, cresce com scroll) */
-    .timeline::after{
-      content:"";
+    .timeline::after{ display:none; }
+    .timeline-progress{
       position:absolute;
-      left: 50%;
+      left: var(--timeline-x);
       top: 0;
       width: 6px;
       transform: translateX(-3px);
-      height: var(--timeline-progress, 0%);
+      height: 0;
       background: linear-gradient(
         180deg,
-        rgba(59,130,246,.18) 0%,
-        rgba(59,130,246,1) 100%
+        rgba(96,165,250,.95) 0%,
+        rgba(37,99,235,1) 100%
       );
       border-radius: 999px;
       pointer-events: none;
+      z-index: 1;
+      transition: height .14s linear;
+      will-change: height;
     }
 
     .step{
@@ -1109,8 +1116,8 @@
       .two-col{ grid-template-columns: 1fr; }
       .benefits-grid{ grid-template-columns: 1fr; }
 
-      .timeline::before{ left: 20px; transform:none; }
-      .timeline::after{ left: 20px; transform:none; }
+      .timeline{ --timeline-x: 20px; }
+      .timeline::before, .timeline::after, .timeline-progress{ transform:none; }
       .step{
         grid-template-columns: 42px 1fr;
         gap: 14px;
@@ -1119,12 +1126,6 @@
       .node{ justify-content:flex-start; }
       .node::before{ display:none; }
       .dotnode{ margin-left: 11px; }
-    }
-
-    /* Smooth da linha progressiva */
-    .timeline::after{
-      transition: height .14s linear;
-      will-change: height;
     }
 
     /* ✅ CORREÇÃO: As etiquetas aparecem quando a linha as atinge */
@@ -1152,7 +1153,7 @@
 
     /* Respeitar utilizadores com "reduzir movimento" */
     @media (prefers-reduced-motion: reduce){
-      .timeline::after, .step, .step .dotnode{ transition: none !important; }
+      .timeline::after, .timeline-progress, .step, .step .dotnode{ transition: none !important; }
     }
   </style>
   <link rel="stylesheet" href="../global-enhancements.css">
@@ -1522,6 +1523,7 @@
 
         <!-- ✅ ADICIONADO id="uxTimeline" -->
         <div class="timeline" id="uxTimeline">
+          <div class="timeline-progress" aria-hidden="true"></div>
           <!-- STEP 1 (esquerda) -->
           <div class="step">
             <div class="card step-card">
@@ -1833,96 +1835,69 @@
         });
       }
 
-      // ====== ✅ TIMELINE PROGRESS + ETIQUETAS APARECEM COM A LINHA ======
-      const timeline = document.getElementById('uxTimeline');
-      if (timeline) {
-        const steps = document.querySelectorAll('.step');
-        
-        function clamp01(n){ return Math.max(0, Math.min(1, n)); }
-
-        function updateTimelineProgress(){
-          const rect = timeline.getBoundingClientRect();
-          const vh = window.innerHeight || document.documentElement.clientHeight;
-          const scrollTop = window.scrollY || window.pageYOffset;
-          const viewportMarker = scrollTop + (vh * 0.58);
-          const timelineTop = scrollTop + rect.top;
-          const timelineBottom = timelineTop + rect.height;
-          const progressPx = Math.max(0, Math.min(viewportMarker - timelineTop, rect.height));
-          const progressRatio = rect.height > 0 ? (progressPx / rect.height) : 0;
-          const progressLineY = timelineTop + progressPx;
-
-          timeline.style.setProperty('--timeline-progress', (progressRatio * 100).toFixed(2) + '%');
-          timeline.classList.toggle('timeline-started', viewportMarker >= timelineTop);
-          timeline.classList.toggle('timeline-complete', viewportMarker >= timelineBottom);
-
-          steps.forEach((step) => {
-            const stepRect = step.getBoundingClientRect();
-            const stepCenter = scrollTop + stepRect.top + (stepRect.height / 2);
-
-            if (stepCenter <= progressLineY + 48) {
-              step.classList.add('step-visible');
-            } else {
-              step.classList.remove('step-visible');
-            }
-          });
-        }
-
-        updateTimelineProgress();
-        window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-        window.addEventListener('resize', updateTimelineProgress);
-        
-        // Atualizar também quando a página carregar completamente
-        window.addEventListener('load', updateTimelineProgress);
-      }
     });
   </script>
   <script>
-    // Fallback: garante progresso visual da timeline no scroll.
+    // Timeline UX/UI: linha vertical preenche com scroll.
     (function() {
       function bindUxTimelineProgress() {
         const timeline = document.getElementById('uxTimeline');
         if (!timeline) return;
+        const progressEl = timeline.querySelector('.timeline-progress');
         const steps = timeline.querySelectorAll('.step');
+        if (!steps.length) return;
 
-        let ticking = false;
+        const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+        let rafId = 0;
+        let loopId = 0;
+
         function update() {
           const rect = timeline.getBoundingClientRect();
-          const vh = window.innerHeight || document.documentElement.clientHeight;
-          const scrollTop = window.scrollY || window.pageYOffset;
-          const viewportMarker = scrollTop + (vh * 0.58);
-          const timelineTop = scrollTop + rect.top;
-          const timelineBottom = timelineTop + rect.height;
-          const progressPx = Math.max(0, Math.min(viewportMarker - timelineTop, rect.height));
-          const progressRatio = rect.height > 0 ? (progressPx / rect.height) : 0;
-          const progressLineY = timelineTop + progressPx;
+          if (rect.height <= 0) {
+            rafId = 0;
+            return;
+          }
 
-          timeline.style.setProperty('--timeline-progress', (progressRatio * 100).toFixed(2) + '%');
-          timeline.classList.toggle('timeline-started', viewportMarker >= timelineTop);
-          timeline.classList.toggle('timeline-complete', viewportMarker >= timelineBottom);
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          const triggerY = vh * 0.62;
+          const progress = clamp((triggerY - rect.top) / rect.height, 0, 1);
+          const progressPx = progress * rect.height;
+          const progressLineY = rect.top + progressPx;
+
+          timeline.style.setProperty('--timeline-progress', (progress * 100).toFixed(2) + '%');
+          if (progressEl) {
+            progressEl.style.height = (progress * 100).toFixed(2) + '%';
+          }
+          timeline.classList.toggle('timeline-started', progress > 0);
+          timeline.classList.toggle('timeline-complete', progress >= 1);
 
           steps.forEach((step) => {
             const stepRect = step.getBoundingClientRect();
-            const stepCenter = scrollTop + stepRect.top + (stepRect.height / 2);
-            if (stepCenter <= progressLineY + 48) {
-              step.classList.add('step-visible');
-            } else {
-              step.classList.remove('step-visible');
-            }
+            const stepCenterY = stepRect.top + (stepRect.height / 2);
+            step.classList.toggle('step-visible', stepCenterY <= progressLineY + 48);
           });
 
-          ticking = false;
+          rafId = 0;
         }
 
         function requestUpdate() {
-          if (ticking) return;
-          ticking = true;
-          window.requestAnimationFrame(update);
+          if (rafId) return;
+          rafId = window.requestAnimationFrame(update);
         }
 
         requestUpdate();
         window.addEventListener('scroll', requestUpdate, { passive: true });
+        document.addEventListener('scroll', requestUpdate, { passive: true, capture: true });
         window.addEventListener('resize', requestUpdate);
         window.addEventListener('load', requestUpdate);
+        window.addEventListener('orientationchange', requestUpdate);
+
+        // Fallback forte: atualiza em loop para cobrir ambientes onde o evento de scroll falha.
+        const loop = () => {
+          requestUpdate();
+          loopId = window.requestAnimationFrame(loop);
+        };
+        loopId = window.requestAnimationFrame(loop);
       }
 
       if (document.readyState === 'loading') {

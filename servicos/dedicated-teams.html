@@ -611,9 +611,9 @@
       left: var(--timeline-x);
       top: 0;
       bottom: 0;
-      width: 6px;
-      transform: translateX(-3px);
-      background: rgba(59,130,246,.18);
+      width: 4px;
+      transform: translateX(-2px);
+      background: rgba(148, 163, 184, .40);
       border-radius:999px;
       pointer-events:none;
     }
@@ -624,11 +624,12 @@
       position:absolute;
       left: var(--timeline-x);
       top: 0;
-      width: 6px;
-      transform: translateX(-3px);
+      width: 4px;
+      transform: translateX(-2px);
       height: var(--timeline-progress, 0%);
-      background: linear-gradient(180deg, rgba(59,130,246,0) 0%, rgba(59,130,246,.95) 100%);
+      background: linear-gradient(180deg, rgba(99,102,241,.92), rgba(79,70,229,.98));
       border-radius:999px;
+      box-shadow: 0 0 0 1px rgba(99,102,241,.08);
       transition: height .14s linear;
       will-change: height;
       pointer-events:none;
@@ -1779,10 +1780,16 @@
       if (!timeline || !steps.length) return;
 
       const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+      let rafId = 0;
+      let loopId = 0;
 
       function onScroll(){
         const rect = timeline.getBoundingClientRect();
-        const vh = window.innerHeight;
+        if (rect.height <= 0) {
+          rafId = 0;
+          return;
+        }
+        const vh = window.innerHeight || document.documentElement.clientHeight;
 
         const triggerY = vh * 0.62;
         const progress = clamp((triggerY - rect.top) / rect.height, 0, 1);
@@ -1793,11 +1800,26 @@
           const r = step.getBoundingClientRect();
           step.classList.toggle('is-active', r.top < vh * 0.68);
         });
+        rafId = 0;
       }
 
-      onScroll();
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
+      function requestUpdate() {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(onScroll);
+      }
+
+      requestUpdate();
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      document.addEventListener('scroll', requestUpdate, { passive: true, capture: true });
+      window.addEventListener('resize', requestUpdate);
+      window.addEventListener('load', requestUpdate);
+      window.addEventListener('orientationchange', requestUpdate);
+
+      const loop = () => {
+        requestUpdate();
+        loopId = window.requestAnimationFrame(loop);
+      };
+      loopId = window.requestAnimationFrame(loop);
     });
   </script>
   <script>

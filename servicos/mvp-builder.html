@@ -946,6 +946,8 @@
     /* How it works timeline */
     .timeline-wrap {
       position: relative;
+      isolation: isolate;
+      --timeline-progress: 0%;
       padding-left: 44px;
       display: flex;
       flex-direction: column;
@@ -959,25 +961,34 @@
   left: 19px;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: rgba(148, 163, 184, .55);
+  width: 4px;
+  background: rgba(148, 163, 184, .40);
+  z-index: 0;
 }
 
 /* Linha azul por cima da cinzenta */
 .timeline-progress {
   position: absolute;
   z-index: 1;
-  left: 18px;     /* ✅ igual à cinzenta */
+  left: 19px;
   top: 0;
-  width: 4px;     /* ✅ igual à cinzenta */
+  width: 4px;
   height: 0;
-  background: linear-gradient(180deg, #4f46e5, #7c3aed);
+  background: linear-gradient(180deg, rgba(99,102,241,.92), rgba(79,70,229,.98));
   border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(99,102,241,.08);
+  pointer-events: none;
+}
+
+/* Linha progressiva robusta (fallback principal) */
+.timeline-wrap::after {
+  display: none;
 }
 
 
     .step {
       position: relative;
+      z-index: 2;
     }
 
     .step::before {
@@ -995,6 +1006,7 @@
       justify-content: center;
       font-weight: 900;
       box-shadow: 0 10px 20px rgba(236, 27, 103, .18);
+      z-index: 4;
     }
 
     .step-card {
@@ -1086,6 +1098,8 @@
       .deliverables { grid-template-columns: 1fr; }
       .timeline-wrap { padding-left: 40px; }
       .timeline-wrap::before { left: 16px; }
+      .timeline-wrap::after { left: 16px; }
+      .timeline-progress { left: 16px; }
       .step::before { left: -40px; }
     }
 
@@ -1974,30 +1988,7 @@ footer.footer-pro .footer-brand-title {
         });
       }
 
-      // ===== Linha animada da timeline (MVP Builder) =====
-      // ===== Linha animada da timeline (MVP Builder) =====
-function updateTimelineProgress() {
-  const timeline = document.querySelector('.timeline-wrap');
-  if (!timeline) return;
-
-  const progressLine = timeline.querySelector('.timeline-progress');
-  const rect = timeline.getBoundingClientRect();
-  const vh = window.innerHeight;
-
-  // ponto do ecrã onde queres começar a "encher" (ajusta se quiseres)
-  const startY = vh * 0.70;
-
-  // px preenchidos desde o topo da timeline até ao startY
-  const filledPx = Math.min(Math.max(startY - rect.top, 0), rect.height);
-
-  // usa px para bater certo com a linha cinzenta
-  progressLine.style.height = `${filledPx}px`;
-}
-
-window.addEventListener('scroll', updateTimelineProgress, { passive: true });
-window.addEventListener('resize', updateTimelineProgress);
-updateTimelineProgress();
-});
+    });
   </script>
   <script>
     (function() {
@@ -2019,28 +2010,42 @@ updateTimelineProgress();
         const progressLine = document.getElementById('mvpTimelineProgress');
         if (!timeline || !progressLine) return;
 
-        let ticking = false;
+        let rafId = 0;
+        let loopId = 0;
         function update() {
           const rect = timeline.getBoundingClientRect();
+          if (rect.height <= 0) {
+            rafId = 0;
+            return;
+          }
+
           const vh = window.innerHeight || document.documentElement.clientHeight;
-          const marker = vh * 0.70;
-          const filledPx = Math.max(0, Math.min(marker - rect.top, rect.height));
-          progressLine.style.height = filledPx + 'px';
-          ticking = false;
+          const markerY = vh * 0.70;
+          const filledPx = Math.max(0, Math.min(markerY - rect.top, rect.height));
+          const progressPct = rect.height > 0 ? (filledPx / rect.height) * 100 : 0;
+
+          timeline.style.setProperty('--timeline-progress', progressPct.toFixed(2) + '%');
+          if (progressLine) progressLine.style.height = filledPx + 'px';
+          rafId = 0;
         }
 
         function requestUpdate() {
-          if (ticking) return;
-          ticking = true;
-          window.requestAnimationFrame(update);
+          if (rafId) return;
+          rafId = window.requestAnimationFrame(update);
         }
 
         requestUpdate();
         window.addEventListener('scroll', requestUpdate, { passive: true });
+        document.addEventListener('scroll', requestUpdate, { passive: true, capture: true });
         window.addEventListener('resize', requestUpdate);
         window.addEventListener('load', requestUpdate);
-        setTimeout(requestUpdate, 80);
-        setTimeout(requestUpdate, 300);
+        window.addEventListener('orientationchange', requestUpdate);
+
+        const loop = () => {
+          requestUpdate();
+          loopId = window.requestAnimationFrame(loop);
+        };
+        loopId = window.requestAnimationFrame(loop);
       }
 
       if (document.readyState === 'loading') {
