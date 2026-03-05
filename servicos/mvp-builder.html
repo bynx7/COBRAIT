@@ -2010,6 +2010,68 @@ updateTimelineProgress();
       });
     })();
   </script>
+  <script>
+    // Fallback: garante que a linha da timeline acompanha o scroll.
+    (function() {
+      function bindMvpTimelineProgress() {
+        const timeline = document.querySelector('.timeline-wrap');
+        if (!timeline) return;
+        const progressLine = timeline.querySelector('.timeline-progress');
+        if (!progressLine) return;
+
+        let ticking = false;
+        function update() {
+          const rect = timeline.getBoundingClientRect();
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          const startY = vh * 0.70;
+          const filledPx = Math.min(Math.max(startY - rect.top, 0), rect.height);
+          progressLine.style.height = filledPx + 'px';
+          ticking = false;
+        }
+
+        function requestUpdate() {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+
+        requestUpdate();
+        window.addEventListener('scroll', requestUpdate, { passive: true });
+        window.addEventListener('resize', requestUpdate);
+        window.addEventListener('load', requestUpdate);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bindMvpTimelineProgress);
+      } else {
+        bindMvpTimelineProgress();
+      }
+    })();
+  </script>
   <script src="../apply-translations.js"></script>
+
+<script>
+document.addEventListener("scroll", function () {
+
+  const timeline = document.querySelector(".timeline-wrap");
+  const progress = document.querySelector(".timeline-progress");
+
+  if (!timeline || !progress) return;
+
+  const rect = timeline.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  const start = rect.top;
+  const end = rect.bottom;
+
+  let percent = (windowHeight - start) / (rect.height + windowHeight);
+
+  percent = Math.max(0, Math.min(percent, 1));
+
+  progress.style.height = percent * rect.height + "px";
+
+});
+</script>
+
 </body>
 </html>

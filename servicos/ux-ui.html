@@ -1876,6 +1876,62 @@
       }
     });
   </script>
+  <script>
+    // Fallback: garante progresso visual da timeline no scroll.
+    (function() {
+      function bindUxTimelineProgress() {
+        const timeline = document.getElementById('uxTimeline');
+        if (!timeline) return;
+        const steps = timeline.querySelectorAll('.step');
+
+        let ticking = false;
+        function update() {
+          const rect = timeline.getBoundingClientRect();
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          const scrollTop = window.scrollY || window.pageYOffset;
+          const viewportMarker = scrollTop + (vh * 0.58);
+          const timelineTop = scrollTop + rect.top;
+          const timelineBottom = timelineTop + rect.height;
+          const progressPx = Math.max(0, Math.min(viewportMarker - timelineTop, rect.height));
+          const progressRatio = rect.height > 0 ? (progressPx / rect.height) : 0;
+          const progressLineY = timelineTop + progressPx;
+
+          timeline.style.setProperty('--timeline-progress', (progressRatio * 100).toFixed(2) + '%');
+          timeline.classList.toggle('timeline-started', viewportMarker >= timelineTop);
+          timeline.classList.toggle('timeline-complete', viewportMarker >= timelineBottom);
+
+          steps.forEach((step) => {
+            const stepRect = step.getBoundingClientRect();
+            const stepCenter = scrollTop + stepRect.top + (stepRect.height / 2);
+            if (stepCenter <= progressLineY + 48) {
+              step.classList.add('step-visible');
+            } else {
+              step.classList.remove('step-visible');
+            }
+          });
+
+          ticking = false;
+        }
+
+        function requestUpdate() {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+
+        requestUpdate();
+        window.addEventListener('scroll', requestUpdate, { passive: true });
+        window.addEventListener('resize', requestUpdate);
+        window.addEventListener('load', requestUpdate);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bindUxTimelineProgress);
+      } else {
+        bindUxTimelineProgress();
+      }
+    })();
+  </script>
   <script src="../apply-translations.js"></script>
 </body>
 </html>

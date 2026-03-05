@@ -43,7 +43,7 @@ if (!window.__cobraitTranslationBooted) {
           } else {
             el.value = text;
           }
-        } else if (el.hasAttribute("data-html") || /<br\s*\/?>/i.test(text)) {
+        } else if (el.hasAttribute("data-html") || /<\/?[a-z][^>]*>/i.test(text)) {
           el.innerHTML = text;
         } else {
           el.textContent = text;
