@@ -1,5 +1,17 @@
+﻿/*
+  COBRAIT_STYLE_DOC
+  Objetivo: Centralizar estilos visuais e comportamento responsivo da interface.
+  Organização:
+  - Variáveis e base tipográfica
+  - Componentes reutilizáveis (botões, cards, cabeçalho, rodapé)
+  - Regras responsivas por breakpoint
+  Manutenção:
+  - Reutilizar classes existentes antes de criar novas variantes.
+  - Evitar conflitos de especificidade; preferir classes sem encadeamento excessivo.
+  - Validar mudanças em desktop e mobile após alterações de layout.
+*/
 /* sync: github-desktop-update */
-/* Isolamento: só afeta esta página */
+/* Isolamento: sÃ³ afeta esta pÃ¡gina */
 .servicos-page{
   background: #fff;
 }
@@ -23,13 +35,13 @@
   opacity: .35;
 }
 
-/* Container só aqui (evita conflitos com styles.css) */
+/* Container sÃ³ aqui (evita conflitos com styles.css) */
 .servicos-page .container{
   width: min(1100px, calc(100% - 48px));
   margin-inline: auto;
 }
 
-/* Títulos */
+/* TÃ­tulos */
 .servicos-page .section-title{
   font-family: "Poppins", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-weight: 800;
@@ -92,7 +104,7 @@
   font-size: 15px;
 }
 
-/* Ícones */
+/* Ãcones */
 .servicos-page .service-icon{
   width: 44px;
   height: 44px;
@@ -344,7 +356,7 @@
 }
 
 /* ============================================
-   ESTILOS ESSENCIAIS PARA OS CARDS CLICÁVEIS
+   ESTILOS ESSENCIAIS PARA OS CARDS CLICÃVEIS
    ============================================ */
 
 /* CONTAINER - ESSENCIAL PARA O LAYOUT */
@@ -401,7 +413,7 @@
     margin-bottom: 60px;
 }
 
-/* CARDS DE SERVIÇO - VERSÃO SIMPLIFICADA E FUNCIONAL */
+/* CARDS DE SERVIÃ‡O - VERSÃƒO SIMPLIFICADA E FUNCIONAL */
 .service-card {
     background: white;
     border-radius: 16px;
@@ -430,7 +442,7 @@
 }
 
 .service-card::after {
-    content: '→';
+    content: 'â†’';
     position: absolute;
     top: 32px;
     right: 32px;
@@ -513,7 +525,7 @@
     margin-top: 10px;
 }
 
-/* BOTÕES */
+/* BOTÃ•ES */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -742,7 +754,7 @@
         .footer-meta a:hover {
             color: #fff;
         }
-        /* Estilos específicos para o link do Instagram */
+        /* Estilos especÃ­ficos para o link do Instagram */
         .social-link {
             display: inline-flex;
             align-items: center;
@@ -838,4 +850,5 @@
                 font-size: 22px;
             }
         }
+
 

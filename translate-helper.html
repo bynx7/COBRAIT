@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+﻿<!doctype html>
+<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Define a estrutura e o conteúdo desta página do site COBRAIT.
+  Estrutura principal:
+  1) Cabeçalho/navegação com seleção de idioma.
+  2) Secções de conteúdo da página (hero, blocos informativos e CTAs).
+  3) Rodapé com links institucionais e contactos.
+  Dependências comuns:
+  - styles.css e/ou CSS local da página para layout e componentes visuais.
+  - apply-translations.js e atributos data-* para internacionalização.
+  Interatividade:
+  - Scripts no final do ficheiro controlam dropdowns, idioma e componentes dinâmicos.
+  Manutenção:
+  - Preservar IDs/classes usados por JavaScript e traduções antes de refatorar markup.
+  - Ao adicionar novos textos visíveis, incluir atributos data-pt/data-en (e restantes idiomas usados).
+-->
 <!-- sync: github-desktop-update -->
 <html lang="pt-PT">
 <head>
@@ -94,23 +110,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>🌍 Cobrait Translation Helper</h1>
+        <h1>ðŸŒ Cobrait Translation Helper</h1>
         
         <div class="instructions">
             <h3>Como usar:</h3>
             <ol>
-                <li>Clica em "Extrair Textos" para ver todos os textos que precisam tradução</li>
+                <li>Clica em "Extrair Textos" para ver todos os textos que precisam traduÃ§Ã£o</li>
                 <li>Clica em "Traduzir com Google" para traduzir automaticamente</li>
                 <li>Copia o output e cola num ficheiro .txt</li>
                 <li>Usa esse output para adicionar os atributos data-fr, data-de, etc. aos ficheiros HTML</li>
             </ol>
         </div>
 
-        <button onclick="extractTexts()">📄 Extrair Textos Únicos</button>
-        <button onclick="generateReplacements()">🔧 Gerar Código de Substituição</button>
-        <button id="translateBtn" onclick="translateAllTexts()" disabled>🌐 Traduzir com Google Translate</button>
-        <button onclick="downloadAsJSON()">⬇️ Download como JSON</button>
-        <button onclick="copyToClipboard()">📋 Copiar para Clipboard</button>
+        <button onclick="extractTexts()">ðŸ“„ Extrair Textos Ãšnicos</button>
+        <button onclick="generateReplacements()">ðŸ”§ Gerar CÃ³digo de SubstituiÃ§Ã£o</button>
+        <button id="translateBtn" onclick="translateAllTexts()" disabled>ðŸŒ Traduzir com Google Translate</button>
+        <button onclick="downloadAsJSON()">â¬‡ï¸ Download como JSON</button>
+        <button onclick="copyToClipboard()">ðŸ“‹ Copiar para Clipboard</button>
 
         <div id="output"></div>
     </div>
@@ -162,7 +178,7 @@
             }
 
             const unique = Object.keys(extractedData).length;
-            output.innerHTML = `<div class="status success">✅ Extracted ${count} texts (${unique} unique)</div><pre>${JSON.stringify(extractedData, null, 2)}</pre>`;
+            output.innerHTML = `<div class="status success">âœ… Extracted ${count} texts (${unique} unique)</div><pre>${JSON.stringify(extractedData, null, 2)}</pre>`;
             document.getElementById('translateBtn').disabled = false;
         }
 
@@ -181,9 +197,9 @@
 
         async function translateAllTexts() {
             const output = document.getElementById('output');
-            const langCodes = { fr: 'Francês', de: 'Alemão', ru: 'Russo', nl: 'Holandês', ja: 'Japonês', zh: 'Chinês' };
+            const langCodes = { fr: 'FrancÃªs', de: 'AlemÃ£o', ru: 'Russo', nl: 'HolandÃªs', ja: 'JaponÃªs', zh: 'ChinÃªs' };
             
-            output.innerHTML = '<div class="status">⏳ Translating... This may take a moment...</div>';
+            output.innerHTML = '<div class="status">â³ Translating... This may take a moment...</div>';
             
             translatedData = {};
             const languages = ['fr', 'de', 'ru', 'nl', 'ja', 'zh'];
@@ -202,7 +218,7 @@
                         totalProgress++;
                         
                         if (totalProgress % 10 === 0) {
-                            output.innerHTML = `<div class="status">📊 Progress: ${totalProgress}/${totalItems}</div>`;
+                            output.innerHTML = `<div class="status">ðŸ“Š Progress: ${totalProgress}/${totalItems}</div>`;
                         }
                     } catch (e) {
                         translatedData[en][lang] = en; // Fallback to English
@@ -210,14 +226,14 @@
                 }
             }
 
-            output.innerHTML = `<div class="status success">✅ Translation complete! ${Object.keys(translatedData).length} texts translated</div><pre>${JSON.stringify(translatedData, null, 2)}</pre>`;
+            output.innerHTML = `<div class="status success">âœ… Translation complete! ${Object.keys(translatedData).length} texts translated</div><pre>${JSON.stringify(translatedData, null, 2)}</pre>`;
         }
 
         function generateReplacements() {
             const output = document.getElementById('output');
             
             if (Object.keys(translatedData).length === 0) {
-                output.innerHTML = '<div class="status error">❌ No translated data. Run translation first!</div>';
+                output.innerHTML = '<div class="status error">âŒ No translated data. Run translation first!</div>';
                 return;
             }
 
@@ -232,7 +248,7 @@
             }
 
             const output2 = JSON.stringify(replacements, null, 2);
-            output.innerHTML = `<div class="status success">✅ Generated ${replacements.length} replacements</div><pre>${output2}</pre>`;
+            output.innerHTML = `<div class="status success">âœ… Generated ${replacements.length} replacements</div><pre>${output2}</pre>`;
         }
 
         function downloadAsJSON() {
@@ -253,9 +269,10 @@
         function copyToClipboard() {
             const output = document.getElementById('output').innerText;
             navigator.clipboard.writeText(output).then(() => {
-                alert('✅ Copied to clipboard!');
+                alert('âœ… Copied to clipboard!');
             });
         }
     </script>
 </body>
 </html>
+

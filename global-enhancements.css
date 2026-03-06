@@ -1,3 +1,15 @@
+﻿/*
+  COBRAIT_STYLE_DOC
+  Objetivo: Centralizar estilos visuais e comportamento responsivo da interface.
+  Organização:
+  - Variáveis e base tipográfica
+  - Componentes reutilizáveis (botões, cards, cabeçalho, rodapé)
+  - Regras responsivas por breakpoint
+  Manutenção:
+  - Reutilizar classes existentes antes de criar novas variantes.
+  - Evitar conflitos de especificidade; preferir classes sem encadeamento excessivo.
+  - Validar mudanças em desktop e mobile após alterações de layout.
+*/
 /* sync: github-desktop-update */
 /* Global visual enhancements across all public pages */
 :root {
@@ -543,3 +555,4 @@ main section {
     scroll-behavior: auto !important;
   }
 }
+

@@ -1,23 +1,38 @@
-<!-- sync: github-desktop-update -->
-<!doctype html>
+﻿<!doctype html>
+<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Define a estrutura e o conteúdo desta página do site COBRAIT.
+  Estrutura principal:
+  1) Cabeçalho/navegação com seleção de idioma.
+  2) Secções de conteúdo da página (hero, blocos informativos e CTAs).
+  3) Rodapé com links institucionais e contactos.
+  Dependências comuns:
+  - styles.css e/ou CSS local da página para layout e componentes visuais.
+  - apply-translations.js e atributos data-* para internacionalização.
+  Interatividade:
+  - Scripts no final do ficheiro controlam dropdowns, idioma e componentes dinâmicos.
+  Manutenção:
+  - Preservar IDs/classes usados por JavaScript e traduções antes de refatorar markup.
+  - Ao adicionar novos textos visíveis, incluir atributos data-pt/data-en (e restantes idiomas usados).
+-->
 <html lang="pt-PT">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cobrait Ã¢â‚¬â€ Pricing</title>
+  <title>Cobrait ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Pricing</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <meta name="description" content="Pricing Ã¢â‚¬â€ Cobrait Software Factory.">
+  <meta name="description" content="Pricing ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Cobrait Software Factory.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="./apply-translations.js"></script>
 
   <style>
     /* =========================
-       HEADER (COPIADO DO INDEX - COM DROPDOWN DE LÃƒÂNGUAS)
+       HEADER (COPIADO DO INDEX - COM DROPDOWN DE LÃƒÆ’Ã‚ÂNGUAS)
        ========================= */
     .site-header {
       background: white;
@@ -150,7 +165,7 @@
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
     
     /* =========================
-       DROPDOWN DE LÃƒÂNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
+       DROPDOWN DE LÃƒÆ’Ã‚ÂNGUAS (EXATAMENTE IGUAL AO INDEX.HTML)
        ========================= */
     .language-dropdown {
       position: relative;
@@ -341,7 +356,7 @@
     }
 
     /* =========================
-       BOTÃƒâ€¢ES (do teu index)
+       BOTÃƒÆ’Ã¢â‚¬Â¢ES (do teu index)
        ========================= */
     .btn {
       display: inline-flex;
@@ -451,7 +466,7 @@
       .pricing-examples__visual { justify-content: flex-start; }
     }
 
-    /* Pricing cards - ESTILO IGUAL Ãƒâ‚¬ PRIMEIRA SCREENSHOT */
+    /* Pricing cards - ESTILO IGUAL ÃƒÆ’Ã¢â€šÂ¬ PRIMEIRA SCREENSHOT */
     .pricing-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -519,7 +534,7 @@
     .detail-value.mid { color: #f59e0b; }
     .detail-value.high { color: #ef4444; }
     
-    /* FAIXA DE PREÃƒâ€¡O - FROM TO */
+    /* FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O - FROM TO */
     .price-range {
       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       border-radius: 12px;
@@ -569,7 +584,7 @@
       color: #cbd5e1;
     }
     
-    /* Nota abaixo da faixa de preÃƒÂ§o */
+    /* Nota abaixo da faixa de preÃƒÆ’Ã‚Â§o */
     .price-note {
       font-family: 'Inter', sans-serif;
       font-size: 12px;
@@ -580,7 +595,7 @@
       font-style: italic;
     }
     
-    /* DescriÃƒÂ§ÃƒÂ£o do projeto */
+    /* DescriÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o do projeto */
     .pricing-card__desc {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -982,7 +997,7 @@
         .footer-meta a:hover {
             color: #fff;
         }
-        /* Estilos especÃ­ficos para o link do Instagram */
+        /* Estilos especÃƒÂ­ficos para o link do Instagram */
         .social-link {
             display: inline-flex;
             align-items: center;
@@ -1083,11 +1098,11 @@
 
 <body>
   <!-- =========================
-       HEADER (IGUAL AO INDEX - COM DROPDOWN DE LÃƒÂNGUAS)
+       HEADER (IGUAL AO INDEX - COM DROPDOWN DE LÃƒÆ’Ã‚ÂNGUAS)
        ========================= -->
   <header class="site-header">
         <div class="container header-inner">
-            <!-- LOGO SUBSTITUÃƒÂDA POR TEXTO "COBRA IT" -->
+            <!-- LOGO SUBSTITUÃƒÆ’Ã‚ÂDA POR TEXTO "COBRA IT" -->
             <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
                 <div class="logo-text-main">COBRA IT</div>
                 <div class="logo-text-tagline">Software Factory</div>
@@ -1100,11 +1115,11 @@
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="ÃÂ ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂ°" data-nl="Werk" data-ja="Ã¤Â»â€¢Ã¤Âºâ€¹" data-zh="Ã¥Â·Â¥Ã¤Â½Å“">Work</a></li>
+                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="ÃƒÂÃ‚Â ÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°" data-nl="Werk" data-ja="ÃƒÂ¤Ã‚Â»Ã¢â‚¬Â¢ÃƒÂ¤Ã‚ÂºÃ¢â‚¬Â¹" data-zh="ÃƒÂ¥Ã‚Â·Ã‚Â¥ÃƒÂ¤Ã‚Â½Ã…â€œ">Work</a></li>
                     <li class="dropdown">
                         <a href="index.html#what-we-do">
-                            <span data-pt="ServiÃƒÂ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃÂ£Ã‘ÂÃÂ»Ã‘Æ’ÃÂ³ÃÂ¸" data-nl="Diensten" data-ja="Ã£â€šÂµÃ£Æ’Â¼Ã£Æ’â€œÃ£â€šÂ¹" data-zh="Ã¦Å“ÂÃ¥Å Â¡">ServiÃƒÂ§os</span>
-                            <span class="dropdown-arrow">Ã¢â€“Â¼</span>
+                            <span data-pt="ServiÃƒÆ’Ã‚Â§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃƒÂÃ‚Â£Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸" data-nl="Diensten" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂµÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹" data-zh="ÃƒÂ¦Ã…â€œÃ‚ÂÃƒÂ¥Ã…Â Ã‚Â¡">ServiÃƒÆ’Ã‚Â§os</span>
+                            <span class="dropdown-arrow">ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼</span>
                         </a>
 
                         <div class="dropdown-content">
@@ -1113,16 +1128,16 @@
                                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="PortÃƒÂ©e du produit" data-de="Produktumfang" data-ru="ÃÅ¾ÃÂ±ÃÂ»ÃÂ°Ã‘ÂÃ‘â€šÃ‘Å’ ÃÂ¿Ã‘â‚¬ÃÂ¸ÃÂ¼ÃÂµÃÂ½ÃÂµÃÂ½ÃÂ¸Ã‘Â ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃÂ°" data-nl="Productomvang" data-ja="Ã¨Â£Â½Ã¥â€œÂÃ£â€šÂ¹Ã£â€šÂ³Ã£Æ’Â¼Ã£Æ’â€”" data-zh="Ã¤ÂºÂ§Ã¥â€œÂÃ¨Å’Æ’Ã¥â€ºÂ´">Product Scope</h4>
-                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negÃƒÂ³cio."
+                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="PortÃƒÆ’Ã‚Â©e du produit" data-de="Produktumfang" data-ru="ÃƒÂÃ…Â¾ÃƒÂÃ‚Â±ÃƒÂÃ‚Â»ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°" data-nl="Productomvang" data-ja="ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬â€" data-zh="ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¨Ã…â€™Ã†â€™ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â´">Product Scope</h4>
+                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negÃƒÆ’Ã‚Â³cio."
                                        data-en="15-day process to align the product with your business goals."
-                                       data-es="Proceso de 15 dÃƒÂ­as para alinear el producto con los objetivos de tu negocio."
+                                       data-es="Proceso de 15 dÃƒÆ’Ã‚Â­as para alinear el producto con los objetivos de tu negocio."
                                        data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
-                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren GeschÃƒÂ¤ftszielen."
-                                       data-ru="15-ÃÂ´ÃÂ½ÃÂµÃÂ²ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾Ã‘â€ ÃÂµÃ‘ÂÃ‘Â Ã‘ÂÃÂ¾ÃÂ³ÃÂ»ÃÂ°Ã‘ÂÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸Ã‘Â ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃÂ° Ã‘Â Ã‘â€ ÃÂµÃÂ»Ã‘ÂÃÂ¼ÃÂ¸ ÃÂ²ÃÂ°Ã‘Ë†ÃÂµÃÂ³ÃÂ¾ ÃÂ±ÃÂ¸ÃÂ·ÃÂ½ÃÂµÃ‘ÂÃÂ°."
+                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren GeschÃƒÆ’Ã‚Â¤ftszielen."
+                                       data-ru="15-ÃƒÂÃ‚Â´ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒÂÃ‚Â²ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã‚Â Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³ÃƒÂÃ‚Â»ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â° Ãƒâ€˜Ã‚Â Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂµÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒÂÃ‚Â°."
                                        data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
-                                       data-ja="Ã¨Â£Â½Ã¥â€œÂÃ£â€šâ€™Ã£Æ’â€œÃ£â€šÂ¸Ã£Æ’ÂÃ£â€šÂ¹Ã§â€ºÂ®Ã¦Â¨â„¢Ã£ÂÂ«Ã¥ÂË†Ã£â€šÂÃ£Ââ€ºÃ£â€šâ€¹Ã£ÂÅ¸Ã£â€šÂÃ£ÂÂ®15Ã¦â€”Â¥Ã©â€“â€œÃ£ÂÂ®Ã£Æ’â€”Ã£Æ’Â­Ã£â€šÂ»Ã£â€šÂ¹Ã£â‚¬â€š"
-                                       data-zh="15Ã¥Â¤Â©Ã§Å¡â€žÃ¦ÂµÂÃ§Â¨â€¹Ã¯Â¼Å’Ã¥Â°â€ Ã¤ÂºÂ§Ã¥â€œÂÃ¤Â¸Å½Ã¦â€šÂ¨Ã§Å¡â€žÃ¤Â¸Å¡Ã¥Å Â¡Ã§â€ºÂ®Ã¦Â â€¡Ã¤Â¿ÂÃ¦Å’ÂÃ¤Â¸â‚¬Ã¨â€¡Â´Ã£â‚¬â€š">
+                                       data-ja="ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â®ÃƒÂ¦Ã‚Â¨Ã¢â€žÂ¢ÃƒÂ£Ã‚ÂÃ‚Â«ÃƒÂ¥Ã‚ÂÃ‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂÃƒÂ£Ã‚ÂÃ¢â‚¬ÂºÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂÃƒÂ£Ã‚ÂÃ‚Â®15ÃƒÂ¦Ã¢â‚¬â€Ã‚Â¥ÃƒÂ©Ã¢â‚¬â€œÃ¢â‚¬Å“ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ£Ã†â€™Ã¢â‚¬â€ÃƒÂ£Ã†â€™Ã‚Â­ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â»ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡"
+                                       data-zh="15ÃƒÂ¥Ã‚Â¤Ã‚Â©ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¦Ã‚ÂµÃ‚ÂÃƒÂ§Ã‚Â¨Ã¢â‚¬Â¹ÃƒÂ¯Ã‚Â¼Ã…â€™ÃƒÂ¥Ã‚Â°Ã¢â‚¬Â ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¤Ã‚Â¸Ã…Â½ÃƒÂ¦Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¤Ã‚Â¸Ã…Â¡ÃƒÂ¥Ã…Â Ã‚Â¡ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â®ÃƒÂ¦Ã‚Â Ã¢â‚¬Â¡ÃƒÂ¤Ã‚Â¿Ã‚ÂÃƒÂ¦Ã…â€™Ã‚ÂÃƒÂ¤Ã‚Â¸Ã¢â€šÂ¬ÃƒÂ¨Ã¢â‚¬Â¡Ã‚Â´ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
                                     15-day process to align the product with your business goals.
                                     </p>
                                 </div>
@@ -1133,16 +1148,16 @@
                                     <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="ÃÅ¸ÃÂ¾Ã‘ÂÃ‘â€šÃ‘â‚¬ÃÂ¾ÃÂ¸Ã‘â€šÃÂµÃÂ»Ã‘Å’ MVP" data-nl="MVP Builder" data-ja="MVP Ã£Æ’â€œÃ£Æ’Â«Ã£Æ’â‚¬Ã£Æ’Â¼" data-zh="MVP Ã¦Å¾â€žÃ¥Â»ÂºÃ¨â‚¬â€¦">MVP Builder</h4>
-                                    <p data-pt="Entra no mercado rapidamente com um Produto MÃƒÂ­nimo ViÃƒÂ¡vel de alta qualidade."
+                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="ÃƒÂÃ…Â¸ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ MVP" data-nl="MVP Builder" data-ja="MVP ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã†â€™Ã‚Â«ÃƒÂ£Ã†â€™Ã¢â€šÂ¬ÃƒÂ£Ã†â€™Ã‚Â¼" data-zh="MVP ÃƒÂ¦Ã…Â¾Ã¢â‚¬Å¾ÃƒÂ¥Ã‚Â»Ã‚ÂºÃƒÂ¨Ã¢â€šÂ¬Ã¢â‚¬Â¦">MVP Builder</h4>
+                                    <p data-pt="Entra no mercado rapidamente com um Produto MÃƒÆ’Ã‚Â­nimo ViÃƒÆ’Ã‚Â¡vel de alta qualidade."
                                        data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                                       data-es="Lanza al mercado rÃƒÂ¡pidamente con un Producto MÃƒÂ­nimo Viable de alta calidad."
-                                       data-fr="Lancez-vous rapidement sur le marchÃƒÂ© avec un Produit Minimum Viable de haute qualitÃƒÂ©."
+                                       data-es="Lanza al mercado rÃƒÆ’Ã‚Â¡pidamente con un Producto MÃƒÆ’Ã‚Â­nimo Viable de alta calidad."
+                                       data-fr="Lancez-vous rapidement sur le marchÃƒÆ’Ã‚Â© avec un Produit Minimum Viable de haute qualitÃƒÆ’Ã‚Â©."
                                        data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
-                                       data-ru="Ãâ€˜Ã‘â€¹Ã‘ÂÃ‘â€šÃ‘â‚¬ÃÂ¾ ÃÂ²Ã‘â€¹ÃÂ¹ÃÂ´ÃÂ¸Ã‘â€šÃÂµ ÃÂ½ÃÂ° Ã‘â‚¬Ã‘â€¹ÃÂ½ÃÂ¾ÃÂº Ã‘Â ÃÂ²Ã‘â€¹Ã‘ÂÃÂ¾ÃÂºÃÂ¾ÃÂºÃÂ°Ã‘â€¡ÃÂµÃ‘ÂÃ‘â€šÃÂ²ÃÂµÃÂ½ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¼ÃÂ¸ÃÂ½ÃÂ¸ÃÂ¼ÃÂ°ÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¶ÃÂ¸ÃÂ·ÃÂ½ÃÂµÃ‘ÂÃÂ¿ÃÂ¾Ã‘ÂÃÂ¾ÃÂ±ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃÂ¾ÃÂ¼."
+                                       data-ru="ÃƒÂÃ¢â‚¬ËœÃƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â¶ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¼ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼."
                                        data-nl="Ga snel naar de markt met een hoogwaardig Minimum Viable Product."
-                                       data-ja="Ã©Â«ËœÃ¥â€œÂÃ¨Â³ÂªÃ£ÂÂ®Ã¦Å“â‚¬Ã¥Â°ÂÃ©â„¢ÂÃ¥Â®Å¸Ã¨Â¡Å’Ã¥ÂÂ¯Ã¨Æ’Â½Ã¨Â£Â½Ã¥â€œÂÃ£ÂÂ§Ã§Â´Â Ã¦â€”Â©Ã£ÂÂÃ¥Â¸â€šÃ¥Â Â´Ã¦Å â€¢Ã¥â€¦Â¥Ã£Ââ„¢Ã£â€šâ€¹Ã£â‚¬â€š"
-                                       data-zh="Ã¤Â½Â¿Ã§â€Â¨Ã©Â«ËœÃ¨Â´Â¨Ã©â€¡ÂÃ§Å¡â€žÃ¦Å“â‚¬Ã¥Â°ÂÃ¥ÂÂ¯Ã¨Â¡Å’Ã¤ÂºÂ§Ã¥â€œÂÃ¥Â¿Â«Ã©â‚¬Å¸Ã¤Â¸Å Ã¥Â¸â€šÃ£â‚¬â€š">
+                                       data-ja="ÃƒÂ©Ã‚Â«Ã‹Å“ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¨Ã‚Â³Ã‚ÂªÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ¦Ã…â€œÃ¢â€šÂ¬ÃƒÂ¥Ã‚Â°Ã‚ÂÃƒÂ©Ã¢â€žÂ¢Ã‚ÂÃƒÂ¥Ã‚Â®Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã…â€™ÃƒÂ¥Ã‚ÂÃ‚Â¯ÃƒÂ¨Ã†â€™Ã‚Â½ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ§Ã‚Â´Ã‚Â ÃƒÂ¦Ã¢â‚¬â€Ã‚Â©ÃƒÂ£Ã‚ÂÃ‚ÂÃƒÂ¥Ã‚Â¸Ã¢â‚¬Å¡ÃƒÂ¥Ã‚Â Ã‚Â´ÃƒÂ¦Ã…Â Ã¢â‚¬Â¢ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡"
+                                       data-zh="ÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ§Ã¢â‚¬ÂÃ‚Â¨ÃƒÂ©Ã‚Â«Ã‹Å“ÃƒÂ¨Ã‚Â´Ã‚Â¨ÃƒÂ©Ã¢â‚¬Â¡Ã‚ÂÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¦Ã…â€œÃ¢â€šÂ¬ÃƒÂ¥Ã‚Â°Ã‚ÂÃƒÂ¥Ã‚ÂÃ‚Â¯ÃƒÂ¨Ã‚Â¡Ã…â€™ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¥Ã‚Â¿Ã‚Â«ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¤Ã‚Â¸Ã…Â ÃƒÂ¥Ã‚Â¸Ã¢â‚¬Å¡ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
                                     Go to market quickly with a high-quality Minimum Viable Product.
                                     </p>
                                 </div>
@@ -1154,15 +1169,15 @@
                                 </svg>
                                 <div class="dropdown-item-content">
                                     <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI" data-fr="UX / UI" data-de="UX / UI" data-ru="UX / UI" data-nl="UX / UI" data-ja="UX / UI" data-zh="UX / UI">UX / UI</h4>
-                                    <p data-pt="Design de um produto fÃƒÂ¡cil de usar, envolvente e funcional."
+                                    <p data-pt="Design de um produto fÃƒÆ’Ã‚Â¡cil de usar, envolvente e funcional."
                                        data-en="Design an easy-to-use engaging and functional product."
-                                       data-es="DiseÃƒÂ±a un producto fÃƒÂ¡cil de usar, atractivo y funcional."
-                                       data-fr="Concevoir un produit facile ÃƒÂ  utiliser, attrayant et fonctionnel."
+                                       data-es="DiseÃƒÆ’Ã‚Â±a un producto fÃƒÆ’Ã‚Â¡cil de usar, atractivo y funcional."
+                                       data-fr="Concevoir un produit facile ÃƒÆ’Ã‚Â  utiliser, attrayant et fonctionnel."
                                        data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
-                                       data-ru="ÃÂ ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂ°ÃÂ¹Ã‘â€šÃÂµ ÃÂ¿Ã‘â‚¬ÃÂ¾Ã‘ÂÃ‘â€šÃÂ¾ÃÂ¹ ÃÂ² ÃÂ¸Ã‘ÂÃÂ¿ÃÂ¾ÃÂ»Ã‘Å’ÃÂ·ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸ÃÂ¸, ÃÂ¿Ã‘â‚¬ÃÂ¸ÃÂ²ÃÂ»ÃÂµÃÂºÃÂ°Ã‘â€šÃÂµÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¸ Ã‘â€žÃ‘Æ’ÃÂ½ÃÂºÃ‘â€ ÃÂ¸ÃÂ¾ÃÂ½ÃÂ°ÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€š."
+                                       data-ru="ÃƒÂÃ‚Â ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¹Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â² ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¸, ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â²ÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¸ Ãƒâ€˜Ã¢â‚¬Å¾Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡."
                                        data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
-                                       data-ja="Ã¤Â½Â¿Ã£Ââ€žÃ£â€šâ€žÃ£Ââ„¢Ã£ÂÂÃ£â‚¬ÂÃ©Â­â€¦Ã¥Å â€ºÃ§Å¡â€žÃ£ÂÂ§Ã¦Â©Å¸Ã¨Æ’Â½Ã§Å¡â€žÃ£ÂÂªÃ¨Â£Â½Ã¥â€œÂÃ£â€šâ€™Ã¨Â¨Â­Ã¨Â¨Ë†Ã£Ââ„¢Ã£â€šâ€¹Ã£â‚¬â€š"
-                                       data-zh="Ã¨Â®Â¾Ã¨Â®Â¡Ã¤Â¸â‚¬Ã¤Â¸ÂªÃ¦Ëœâ€œÃ¤ÂºÅ½Ã¤Â½Â¿Ã§â€Â¨Ã£â‚¬ÂÃ¥Â¼â€¢Ã¤ÂºÂºÃ¥â€¦Â¥Ã¨Æ’Å“Ã¤Â¸â€Ã¥Å Å¸Ã¨Æ’Â½Ã¥Â¼ÂºÃ¥Â¤Â§Ã§Å¡â€žÃ¤ÂºÂ§Ã¥â€œÂÃ£â‚¬â€š">
+                                       data-ja="ÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã‚ÂÃ‚ÂÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ©Ã‚Â­Ã¢â‚¬Â¦ÃƒÂ¥Ã…Â Ã¢â‚¬ÂºÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ¦Ã‚Â©Ã…Â¸ÃƒÂ¨Ã†â€™Ã‚Â½ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ‚ÂªÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¨Ã‚Â¨Ã‚Â­ÃƒÂ¨Ã‚Â¨Ã‹â€ ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡"
+                                       data-zh="ÃƒÂ¨Ã‚Â®Ã‚Â¾ÃƒÂ¨Ã‚Â®Ã‚Â¡ÃƒÂ¤Ã‚Â¸Ã¢â€šÂ¬ÃƒÂ¤Ã‚Â¸Ã‚ÂªÃƒÂ¦Ã‹Å“Ã¢â‚¬Å“ÃƒÂ¤Ã‚ÂºÃ…Â½ÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ§Ã¢â‚¬ÂÃ‚Â¨ÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ¥Ã‚Â¼Ã¢â‚¬Â¢ÃƒÂ¤Ã‚ÂºÃ‚ÂºÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¨Ã†â€™Ã…â€œÃƒÂ¤Ã‚Â¸Ã¢â‚¬ÂÃƒÂ¥Ã…Â Ã…Â¸ÃƒÂ¨Ã†â€™Ã‚Â½ÃƒÂ¥Ã‚Â¼Ã‚ÂºÃƒÂ¥Ã‚Â¤Ã‚Â§ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
                                     Design an easy-to-use engaging and functional product.
                                     </p>
                                 </div>
@@ -1174,26 +1189,26 @@
                                     <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Desenvolvimento de Software ÃƒÂ  Medida"
+                                    <h4 data-pt="Desenvolvimento de Software ÃƒÆ’Ã‚Â  Medida"
                                         data-en="Custom Software Development"
                                         data-es="Desarrollo de Software a Medida"
-                                        data-fr="DÃƒÂ©veloppement de logiciels personnalisÃƒÂ©s"
+                                        data-fr="DÃƒÆ’Ã‚Â©veloppement de logiciels personnalisÃƒÆ’Ã‚Â©s"
                                         data-de="Benutzerdefinierte Softwareentwicklung"
-                                        data-ru="ÃÂ ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂºÃÂ° ÃÂ¿ÃÂ¾ÃÂ»Ã‘Å’ÃÂ·ÃÂ¾ÃÂ²ÃÂ°Ã‘â€šÃÂµÃÂ»Ã‘Å’Ã‘ÂÃÂºÃÂ¾ÃÂ³ÃÂ¾ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ³Ã‘â‚¬ÃÂ°ÃÂ¼ÃÂ¼ÃÂ½ÃÂ¾ÃÂ³ÃÂ¾ ÃÂ¾ÃÂ±ÃÂµÃ‘ÂÃÂ¿ÃÂµÃ‘â€¡ÃÂµÃÂ½ÃÂ¸Ã‘Â"
+                                        data-ru="ÃƒÂÃ‚Â ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂºÃƒÂÃ‚Â° ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â"
                                         data-nl="Aangepaste softwareontwikkeling"
-                                        data-ja="Ã£â€šÂ«Ã£â€šÂ¹Ã£â€šÂ¿Ã£Æ’Â Ã£â€šÂ½Ã£Æ’â€¢Ã£Æ’Ë†Ã£â€šÂ¦Ã£â€šÂ§Ã£â€šÂ¢Ã©â€“â€¹Ã§â„¢Âº"
-                                        data-zh="Ã¥Â®Å¡Ã¥Ë†Â¶Ã¨Â½Â¯Ã¤Â»Â¶Ã¥Â¼â‚¬Ã¥Ââ€˜">
+                                        data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â«ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â½ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¦ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â§ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¢ÃƒÂ©Ã¢â‚¬â€œÃ¢â‚¬Â¹ÃƒÂ§Ã¢â€žÂ¢Ã‚Âº"
+                                        data-zh="ÃƒÂ¥Ã‚Â®Ã…Â¡ÃƒÂ¥Ã‹â€ Ã‚Â¶ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ¤Ã‚Â»Ã‚Â¶ÃƒÂ¥Ã‚Â¼Ã¢â€šÂ¬ÃƒÂ¥Ã‚ÂÃ¢â‚¬Ëœ">
                                     Custom Software Development
                                     </h4>
-                                    <p data-pt="Frameworks lean aplicados ÃƒÂ  tua visÃƒÂ£o para criar uma soluÃƒÂ§ÃƒÂ£o inovadora de software ÃƒÂ  medida."
+                                    <p data-pt="Frameworks lean aplicados ÃƒÆ’Ã‚Â  tua visÃƒÆ’Ã‚Â£o para criar uma soluÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o inovadora de software ÃƒÆ’Ã‚Â  medida."
                                        data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                                       data-es="Frameworks lean aplicados a tu visiÃƒÂ³n para crear una soluciÃƒÂ³n innovadora de software a medida."
-                                       data-fr="Nous appliquons les frameworks lean ÃƒÂ  votre vision pour crÃƒÂ©er une solution logicielle personnalisÃƒÂ©e et innovante."
-                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative SoftwarelÃƒÂ¶sung zu schaffen."
-                                       data-ru="ÃÅ“Ã‘â€¹ ÃÂ¿Ã‘â‚¬ÃÂ¸ÃÂ¼ÃÂµÃÂ½Ã‘ÂÃÂµÃÂ¼ lean-Ã‘â€žÃ‘â‚¬ÃÂµÃÂ¹ÃÂ¼ÃÂ²ÃÂ¾Ã‘â‚¬ÃÂºÃÂ¸ ÃÂº ÃÂ²ÃÂ°Ã‘Ë†ÃÂµÃÂ¼Ã‘Æ’ ÃÂ²ÃÂ¸ÃÂ´ÃÂµÃÂ½ÃÂ¸Ã‘Å½, Ã‘â€¡Ã‘â€šÃÂ¾ÃÂ±Ã‘â€¹ Ã‘ÂÃÂ¾ÃÂ·ÃÂ´ÃÂ°Ã‘â€šÃ‘Å’ ÃÂ¿ÃÂµÃ‘â‚¬Ã‘ÂÃÂ¾ÃÂ½ÃÂ°ÃÂ»ÃÂ¸ÃÂ·ÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ½ÃÂ¾ÃÂµ ÃÂ¸ ÃÂ¸ÃÂ½ÃÂ½ÃÂ¾ÃÂ²ÃÂ°Ã‘â€ ÃÂ¸ÃÂ¾ÃÂ½ÃÂ½ÃÂ¾ÃÂµ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ³Ã‘â‚¬ÃÂ°ÃÂ¼ÃÂ¼ÃÂ½ÃÂ¾ÃÂµ Ã‘â‚¬ÃÂµÃ‘Ë†ÃÂµÃÂ½ÃÂ¸ÃÂµ."
-                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creÃƒÂ«ren."
-                                       data-ja="Ã£Æ’ÂªÃ£Æ’Â¼Ã£Æ’Â³Ã£Æ’â€¢Ã£Æ’Â¬Ã£Æ’Â¼Ã£Æ’Â Ã£Æ’Â¯Ã£Æ’Â¼Ã£â€šÂ¯Ã£â€šâ€™Ã£Ââ€šÃ£ÂÂªÃ£ÂÅ¸Ã£ÂÂ®Ã£Æ’â€œÃ£â€šÂ¸Ã£Æ’Â§Ã£Æ’Â³Ã£ÂÂ«Ã©ÂÂ©Ã§â€Â¨Ã£Ââ€”Ã£ÂÂ¦Ã£â‚¬ÂÃ£Æ’â€˜Ã£Æ’Â¼Ã£â€šÂ½Ã£Æ’Å Ã£Æ’Â©Ã£â€šÂ¤Ã£â€šÂºÃ£Ââ€¢Ã£â€šÅ’Ã£ÂÅ¸Ã©ÂÂ©Ã¦â€“Â°Ã§Å¡â€žÃ£ÂÂªÃ£â€šÂ½Ã£Æ’â€¢Ã£Æ’Ë†Ã£â€šÂ¦Ã£â€šÂ§Ã£â€šÂ¢Ã£â€šÂ½Ã£Æ’ÂªÃ£Æ’Â¥Ã£Æ’Â¼Ã£â€šÂ·Ã£Æ’Â§Ã£Æ’Â³Ã£â€šâ€™Ã¤Â½Å“Ã¦Ë†ÂÃ£Ââ€”Ã£ÂÂ¾Ã£Ââ„¢Ã£â‚¬â€š"
-                                       data-zh="Ã¦Ë†â€˜Ã¤Â»Â¬Ã¥Â°â€ Ã§Â²Â¾Ã§â€ºÅ Ã¦Â¡â€ Ã¦Å¾Â¶Ã¥Âºâ€Ã§â€Â¨Ã¥Ë†Â°Ã¦â€šÂ¨Ã§Å¡â€žÃ¦â€žÂ¿Ã¦â„¢Â¯Ã¤Â¸Â­Ã¯Â¼Å’Ã¤Â»Â¥Ã¥Ë†â€ºÃ¥Â»ÂºÃ¤Â¸ÂªÃ¦â‚¬Â§Ã¥Å’â€“Ã¥â€™Å’Ã¥Ë†â€ºÃ¦â€“Â°Ã§Å¡â€žÃ¨Â½Â¯Ã¤Â»Â¶Ã¨Â§Â£Ã¥â€ Â³Ã¦â€“Â¹Ã¦Â¡Ë†Ã£â‚¬â€š">
+                                       data-es="Frameworks lean aplicados a tu visiÃƒÆ’Ã‚Â³n para crear una soluciÃƒÆ’Ã‚Â³n innovadora de software a medida."
+                                       data-fr="Nous appliquons les frameworks lean ÃƒÆ’Ã‚Â  votre vision pour crÃƒÆ’Ã‚Â©er une solution logicielle personnalisÃƒÆ’Ã‚Â©e et innovante."
+                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative SoftwarelÃƒÆ’Ã‚Â¶sung zu schaffen."
+                                       data-ru="ÃƒÂÃ…â€œÃƒâ€˜Ã¢â‚¬Â¹ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¼ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼ lean-Ãƒâ€˜Ã¢â‚¬Å¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¹ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ ÃƒÂÃ‚Âº ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼Ãƒâ€˜Ã†â€™ ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã…Â½, Ãƒâ€˜Ã¢â‚¬Â¡Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â·ÃƒÂÃ‚Â´ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â¿ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¸ ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â½ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒâ€˜Ã‹â€ ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Âµ."
+                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creÃƒÆ’Ã‚Â«ren."
+                                       data-ja="ÃƒÂ£Ã†â€™Ã‚ÂªÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢ÃƒÂ£Ã†â€™Ã‚Â¬ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â ÃƒÂ£Ã†â€™Ã‚Â¯ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¯ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¡ÃƒÂ£Ã‚ÂÃ‚ÂªÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã†â€™Ã‚Â§ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã‚ÂÃ‚Â«ÃƒÂ©Ã‚ÂÃ‚Â©ÃƒÂ§Ã¢â‚¬ÂÃ‚Â¨ÃƒÂ£Ã‚ÂÃ¢â‚¬â€ÃƒÂ£Ã‚ÂÃ‚Â¦ÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ£Ã†â€™Ã¢â‚¬ËœÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â½ÃƒÂ£Ã†â€™Ã…Â ÃƒÂ£Ã†â€™Ã‚Â©ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¤ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂºÃƒÂ£Ã‚ÂÃ¢â‚¬Â¢ÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ©Ã‚ÂÃ‚Â©ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â°ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ‚ÂªÃƒÂ£Ã¢â‚¬Å¡Ã‚Â½ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¦ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â§ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¢ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â½ÃƒÂ£Ã†â€™Ã‚ÂªÃƒÂ£Ã†â€™Ã‚Â¥ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â·ÃƒÂ£Ã†â€™Ã‚Â§ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚Â½Ã…â€œÃƒÂ¦Ã‹â€ Ã‚ÂÃƒÂ£Ã‚ÂÃ¢â‚¬â€ÃƒÂ£Ã‚ÂÃ‚Â¾ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡"
+                                       data-zh="ÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ¤Ã‚Â»Ã‚Â¬ÃƒÂ¥Ã‚Â°Ã¢â‚¬Â ÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ§Ã¢â‚¬ÂºÃ…Â ÃƒÂ¦Ã‚Â¡Ã¢â‚¬Â ÃƒÂ¦Ã…Â¾Ã‚Â¶ÃƒÂ¥Ã‚ÂºÃ¢â‚¬ÂÃƒÂ§Ã¢â‚¬ÂÃ‚Â¨ÃƒÂ¥Ã‹â€ Ã‚Â°ÃƒÂ¦Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¦Ã¢â‚¬Å¾Ã‚Â¿ÃƒÂ¦Ã¢â€žÂ¢Ã‚Â¯ÃƒÂ¤Ã‚Â¸Ã‚Â­ÃƒÂ¯Ã‚Â¼Ã…â€™ÃƒÂ¤Ã‚Â»Ã‚Â¥ÃƒÂ¥Ã‹â€ Ã¢â‚¬ÂºÃƒÂ¥Ã‚Â»Ã‚ÂºÃƒÂ¤Ã‚Â¸Ã‚ÂªÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ¥Ã¢â‚¬â„¢Ã…â€™ÃƒÂ¥Ã‹â€ Ã¢â‚¬ÂºÃƒÂ¦Ã¢â‚¬â€œÃ‚Â°ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ¤Ã‚Â»Ã‚Â¶ÃƒÂ¨Ã‚Â§Ã‚Â£ÃƒÂ¥Ã¢â‚¬Â Ã‚Â³ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â¹ÃƒÂ¦Ã‚Â¡Ã‹â€ ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
                                     Lean frameworks applied to your vision to create an innovative custom software solution.
                                     </p>
                                 </div>
@@ -1204,18 +1219,18 @@
                                     <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Ãƒâ€°quipes dÃƒÂ©diÃƒÂ©es" data-de="Dedizierte Teams" data-ru="Ãâ€™Ã‘â€¹ÃÂ´ÃÂµÃÂ»ÃÂµÃÂ½ÃÂ½Ã‘â€¹ÃÂµ ÃÂºÃÂ¾ÃÂ¼ÃÂ°ÃÂ½ÃÂ´Ã‘â€¹" data-nl="Speciale teams" data-ja="Ã¥Â°â€šÃ¤Â»Â»Ã£Æ’ÂÃ£Æ’Â¼Ã£Æ’Â " data-zh="Ã¤Â¸â€œÃ¤Â¸Å¡Ã¥â€ºÂ¢Ã©ËœÅ¸">
+                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="ÃƒÆ’Ã¢â‚¬Â°quipes dÃƒÆ’Ã‚Â©diÃƒÆ’Ã‚Â©es" data-de="Dedizierte Teams" data-ru="ÃƒÂÃ¢â‚¬â„¢Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â‚¬Â¹" data-nl="Speciale teams" data-ja="ÃƒÂ¥Ã‚Â°Ã¢â‚¬Å¡ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â " data-zh="ÃƒÂ¤Ã‚Â¸Ã¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã…Â¡ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â¢ÃƒÂ©Ã‹Å“Ã…Â¸">
                                     Dedicated Teams
                                     </h4>
-                                    <p data-pt="ConstrÃƒÂ³i o teu produto com uma equipa dedicada de developers."
+                                    <p data-pt="ConstrÃƒÆ’Ã‚Â³i o teu produto com uma equipa dedicada de developers."
                                        data-en="Build your product with a dedicated team of developers."
                                        data-es="Construye tu producto con un equipo dedicado de developers."
-                                       data-fr="Construisez votre produit avec une ÃƒÂ©quipe de dÃƒÂ©veloppeurs dÃƒÂ©diÃƒÂ©e."
+                                       data-fr="Construisez votre produit avec une ÃƒÆ’Ã‚Â©quipe de dÃƒÆ’Ã‚Â©veloppeurs dÃƒÆ’Ã‚Â©diÃƒÆ’Ã‚Â©e."
                                        data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
-                                       data-ru="ÃÂ¡ÃÂ¾ÃÂ·ÃÂ´ÃÂ°ÃÂ¹Ã‘â€šÃÂµ Ã‘ÂÃÂ²ÃÂ¾ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€š Ã‘Â ÃÂ¿ÃÂ¾ÃÂ¼ÃÂ¾Ã‘â€°Ã‘Å’Ã‘Å½ ÃÂ²Ã‘â€¹ÃÂ´ÃÂµÃÂ»ÃÂµÃÂ½ÃÂ½ÃÂ¾ÃÂ¹ ÃÂºÃÂ¾ÃÂ¼ÃÂ°ÃÂ½ÃÂ´Ã‘â€¹ Ã‘â‚¬ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃ‘â€¡ÃÂ¸ÃÂºÃÂ¾ÃÂ²."
+                                       data-ru="ÃƒÂÃ‚Â¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â·ÃƒÂÃ‚Â´ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¹Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Â°Ãƒâ€˜Ã…â€™Ãƒâ€˜Ã…Â½ ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¹ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â‚¬Â¹ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â·Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°ÃƒÂÃ‚Â±ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²."
                                        data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
-                                       data-ja="Ã¥Â°â€šÃ¤Â»Â»Ã£ÂÂ®Ã©â€“â€¹Ã§â„¢ÂºÃ¨â‚¬â€¦Ã£Æ’ÂÃ£Æ’Â¼Ã£Æ’Â Ã£ÂÂ§Ã£Ââ€šÃ£ÂÂªÃ£ÂÅ¸Ã£ÂÂ®Ã¨Â£Â½Ã¥â€œÂÃ£â€šâ€™Ã¦Â§â€¹Ã§Â¯â€°Ã£Ââ„¢Ã£â€šâ€¹Ã£â‚¬â€š"
-                                       data-zh="Ã¤Â¸Å½Ã¤Â¸â€œÃ¤Â¸Å¡Ã¥Â¼â‚¬Ã¥Ââ€˜Ã¨â‚¬â€¦Ã¥â€ºÂ¢Ã©ËœÅ¸Ã¤Â¸â‚¬Ã¨ÂµÂ·Ã¦Å¾â€žÃ¥Â»ÂºÃ¦â€šÂ¨Ã§Å¡â€žÃ¤ÂºÂ§Ã¥â€œÂÃ£â‚¬â€š">
+                                       data-ja="ÃƒÂ¥Ã‚Â°Ã¢â‚¬Å¡ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ©Ã¢â‚¬â€œÃ¢â‚¬Â¹ÃƒÂ§Ã¢â€žÂ¢Ã‚ÂºÃƒÂ¨Ã¢â€šÂ¬Ã¢â‚¬Â¦ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â ÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¡ÃƒÂ£Ã‚ÂÃ‚ÂªÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¦Ã‚Â§Ã¢â‚¬Â¹ÃƒÂ§Ã‚Â¯Ã¢â‚¬Â°ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡"
+                                       data-zh="ÃƒÂ¤Ã‚Â¸Ã…Â½ÃƒÂ¤Ã‚Â¸Ã¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã…Â¡ÃƒÂ¥Ã‚Â¼Ã¢â€šÂ¬ÃƒÂ¥Ã‚ÂÃ¢â‚¬ËœÃƒÂ¨Ã¢â€šÂ¬Ã¢â‚¬Â¦ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â¢ÃƒÂ©Ã‹Å“Ã…Â¸ÃƒÂ¤Ã‚Â¸Ã¢â€šÂ¬ÃƒÂ¨Ã‚ÂµÃ‚Â·ÃƒÂ¦Ã…Â¾Ã¢â‚¬Å¾ÃƒÂ¥Ã‚Â»Ã‚ÂºÃƒÂ¦Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
                                     Build your product with a dedicated team of developers.
                                     </p>
                                 </div>
@@ -1223,58 +1238,58 @@
                         </div>
                     </li>
 
-                    <li><a href="pricing.html" data-pt="PreÃƒÂ§os" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="ÃÂ¦ÃÂµÃÂ½Ã‘â€¹" data-nl="Prijzen" data-ja="Ã¤Â¾Â¡Ã¦Â Â¼" data-zh="Ã¥Â®Å¡Ã¤Â»Â·">Pricing</a></li>
-                    <li><a href="about-us.html"><span data-pt="Sobre nÃƒÂ³s" data-en="About Us" data-es="Sobre nosotros" data-fr="Ãƒâ‚¬ Propos" data-de="ÃƒÅ“ber uns" data-ru="ÃÅ¾ ÃÂ½ÃÂ°Ã‘Â" data-nl="Over ons" data-ja="Ã§Â§ÂÃ£ÂÅ¸Ã£ÂÂ¡Ã£ÂÂ«Ã£ÂÂ¤Ã£Ââ€žÃ£ÂÂ¦" data-zh="Ã¥â€¦Â³Ã¤ÂºÅ½Ã¦Ë†â€˜Ã¤Â»Â¬">About Us</span></a></li>
-                    <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃƒÂ¨res" data-de="Karrieren" data-ru="ÃÅ¡ÃÂ°Ã‘â‚¬Ã‘Å’ÃÂµÃ‘â‚¬ÃÂ°" data-nl="CarriÃƒÂ¨re" data-ja="Ã£â€šÂ­Ã£Æ’Â£Ã£Æ’ÂªÃ£â€šÂ¢" data-zh="Ã¨ÂÅ’Ã¤Â¸Å¡">Careers</a></li>
-                    <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="ÃÂ¢ÃÂµÃ‘â€¦ÃÂ½ÃÂ¾ÃÂ»ÃÂ¾ÃÂ³ÃÂ¸Ã‘Â" data-nl="Technologie" data-ja="Ã£Æ’â€ Ã£â€šÂ¯Ã£Æ’Å½Ã£Æ’Â­Ã£â€šÂ¸Ã£Æ’Â¼" data-zh="Ã¦Å â‚¬Ã¦Å“Â¯">Tech</a></li>
+                    <li><a href="pricing.html" data-pt="PreÃƒÆ’Ã‚Â§os" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="ÃƒÂÃ‚Â¦ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹" data-nl="Prijzen" data-ja="ÃƒÂ¤Ã‚Â¾Ã‚Â¡ÃƒÂ¦Ã‚Â Ã‚Â¼" data-zh="ÃƒÂ¥Ã‚Â®Ã…Â¡ÃƒÂ¤Ã‚Â»Ã‚Â·">Pricing</a></li>
+                    <li><a href="about-us.html"><span data-pt="Sobre nÃƒÆ’Ã‚Â³s" data-en="About Us" data-es="Sobre nosotros" data-fr="ÃƒÆ’Ã¢â€šÂ¬ Propos" data-de="ÃƒÆ’Ã…â€œber uns" data-ru="ÃƒÂÃ…Â¾ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â" data-nl="Over ons" data-ja="ÃƒÂ§Ã‚Â§Ã‚ÂÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã‚ÂÃ‚Â¡ÃƒÂ£Ã‚ÂÃ‚Â«ÃƒÂ£Ã‚ÂÃ‚Â¤ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ‚Â¦" data-zh="ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â³ÃƒÂ¤Ã‚ÂºÃ…Â½ÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ¤Ã‚Â»Ã‚Â¬">About Us</span></a></li>
+                    <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃƒÆ’Ã‚Â¨res" data-de="Karrieren" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã…â€™ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°" data-nl="CarriÃƒÆ’Ã‚Â¨re" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â­ÃƒÂ£Ã†â€™Ã‚Â£ÃƒÂ£Ã†â€™Ã‚ÂªÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¢" data-zh="ÃƒÂ¨Ã‚ÂÃ…â€™ÃƒÂ¤Ã‚Â¸Ã…Â¡">Careers</a></li>
+                    <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="ÃƒÂÃ‚Â¢ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Â¦ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â" data-nl="Technologie" data-ja="ÃƒÂ£Ã†â€™Ã¢â‚¬Â ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¯ÃƒÂ£Ã†â€™Ã…Â½ÃƒÂ£Ã†â€™Ã‚Â­ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã†â€™Ã‚Â¼" data-zh="ÃƒÂ¦Ã…Â Ã¢â€šÂ¬ÃƒÂ¦Ã…â€œÃ‚Â¯">Tech</a></li>
                 </ul>
             </nav>
 
             <div class="header-right">
-                <!-- DROPDOWN DE LÃƒÂNGUAS - TODAS AS 9 LÃƒÂNGUAS -->
+                <!-- DROPDOWN DE LÃƒÆ’Ã‚ÂNGUAS - TODAS AS 9 LÃƒÆ’Ã‚ÂNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">Ã°Å¸â€¡ÂµÃ°Å¸â€¡Â¹</span>
+                        <span class="lang-flag" id="currentFlag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚ÂµÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¹</span>
                         <span class="lang-code" id="currentLang">PT</span>
-                        <span class="dropdown-arrow">Ã¢â€“Â¼</span>
+                        <span class="dropdown-arrow">ÃƒÂ¢Ã¢â‚¬â€œÃ‚Â¼</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">Ã°Å¸â€¡ÂµÃ°Å¸â€¡Â¹</span>
-                            <span class="lang-name">PortuguÃƒÂªs</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚ÂµÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¹</span>
+                            <span class="lang-name">PortuguÃƒÆ’Ã‚Âªs</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">Ã°Å¸â€¡Â¬Ã°Å¸â€¡Â§</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¬ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â§</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¸</span>
-                            <span class="lang-name">EspaÃƒÂ±ol</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚ÂªÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¸</span>
+                            <span class="lang-name">EspaÃƒÆ’Ã‚Â±ol</span>
                         </button>
                         <button class="language-option" data-lang="fr">
-                            <span class="lang-flag">Ã°Å¸â€¡Â«Ã°Å¸â€¡Â·</span>
-                            <span class="lang-name">FranÃƒÂ§ais</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â«ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â·</span>
+                            <span class="lang-name">FranÃƒÆ’Ã‚Â§ais</span>
                         </button>
                         <button class="language-option" data-lang="de">
-                            <span class="lang-flag">Ã°Å¸â€¡Â©Ã°Å¸â€¡Âª</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â©ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âª</span>
                             <span class="lang-name">Deutsch</span>
                         </button>
                         <button class="language-option" data-lang="ru">
-                            <span class="lang-flag">Ã°Å¸â€¡Â·Ã°Å¸â€¡Âº</span>
-                            <span class="lang-name">ÃÂ Ã‘Æ’Ã‘ÂÃ‘ÂÃÂºÃÂ¸ÃÂ¹</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â·ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âº</span>
+                            <span class="lang-name">ÃƒÂÃ‚Â Ãƒâ€˜Ã†â€™Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¹</span>
                         </button>
                         <button class="language-option" data-lang="nl">
-                            <span class="lang-flag">Ã°Å¸â€¡Â³Ã°Å¸â€¡Â±</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â³ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â±</span>
                             <span class="lang-name">Nederlands</span>
                         </button>
                         <button class="language-option" data-lang="ja">
-                            <span class="lang-flag">Ã°Å¸â€¡Â¯Ã°Å¸â€¡Âµ</span>
-                            <span class="lang-name">Ã¦â€”Â¥Ã¦Å“Â¬Ã¨ÂªÅ¾</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¯ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âµ</span>
+                            <span class="lang-name">ÃƒÂ¦Ã¢â‚¬â€Ã‚Â¥ÃƒÂ¦Ã…â€œÃ‚Â¬ÃƒÂ¨Ã‚ÂªÃ…Â¾</span>
                         </button>
                         <button class="language-option" data-lang="zh">
-                            <span class="lang-flag">Ã°Å¸â€¡Â¨Ã°Å¸â€¡Â³</span>
-                            <span class="lang-name">Ã¤Â¸Â­Ã¦â€“â€¡</span>
+                            <span class="lang-flag">ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¨ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â³</span>
+                            <span class="lang-name">ÃƒÂ¤Ã‚Â¸Ã‚Â­ÃƒÂ¦Ã¢â‚¬â€œÃ¢â‚¬Â¡</span>
                         </button>
                     </div>
                 </div>
@@ -1284,12 +1299,12 @@
                        data-pt="AGENDAR UMA CHAMADA"
                        data-en="BOOK A CALL"
                        data-es="RESERVAR UNA LLAMADA"
-                       data-fr="RÃƒâ€°SERVER UN APPEL"
+                       data-fr="RÃƒÆ’Ã¢â‚¬Â°SERVER UN APPEL"
                        data-de="EINEN TERMIN BUCHEN"
-                       data-ru="ÃÂÃÂÃâ€”ÃÂÃÂÃÂ§ÃËœÃÂ¢ÃÂ¬ Ãâ€™ÃÂ¡ÃÂ¢ÃÂ Ãâ€¢ÃÂ§ÃÂ£"
+                       data-ru="ÃƒÂÃ‚ÂÃƒÂÃ‚ÂÃƒÂÃ¢â‚¬â€ÃƒÂÃ‚ÂÃƒÂÃ‚ÂÃƒÂÃ‚Â§ÃƒÂÃ‹Å“ÃƒÂÃ‚Â¢ÃƒÂÃ‚Â¬ ÃƒÂÃ¢â‚¬â„¢ÃƒÂÃ‚Â¡ÃƒÂÃ‚Â¢ÃƒÂÃ‚Â ÃƒÂÃ¢â‚¬Â¢ÃƒÂÃ‚Â§ÃƒÂÃ‚Â£"
                        data-nl="RESERVEER EEN GESPREK"
-                       data-ja="Ã©â‚¬Å¡Ã¨Â©Â±Ã£â€šâ€™Ã¤ÂºË†Ã§Â´â€ž"
-                       data-zh="Ã©Â¢â€žÃ¨Â®Â¢Ã©â‚¬Å¡Ã¨Â¯Â">
+                       data-ja="ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¨Ã‚Â©Ã‚Â±ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚ÂºÃ‹â€ ÃƒÂ§Ã‚Â´Ã¢â‚¬Å¾"
+                       data-zh="ÃƒÂ©Ã‚Â¢Ã¢â‚¬Å¾ÃƒÂ¨Ã‚Â®Ã‚Â¢ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¨Ã‚Â¯Ã‚Â">
                     BOOK A CALL
                     </a>
                 </div>
@@ -1304,26 +1319,26 @@
     <!-- HERO -->
     <section class="pricing-hero">
       <div class="container">
-        <h1 class="pricing-hero__title" data-pt="Escolha o tipo de projeto." data-en="Pick your type of project." data-es="Elige el tipo de proyecto." data-fr="Choisissez votre type de projet." data-de="WÃƒÂ¤hlen Sie Ihren Projekttyp." data-ru="Ãâ€™Ã‘â€¹ÃÂ±ÃÂµÃ‘â‚¬ÃÂ¸Ã‘â€šÃÂµ Ã‘â€šÃÂ¸ÃÂ¿ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂµÃÂºÃ‘â€šÃÂ°." data-nl="Kies uw projecttype." data-ja="Ã£Æ’â€”Ã£Æ’Â­Ã£â€šÂ¸Ã£â€šÂ§Ã£â€šÂ¯Ã£Æ’Ë†Ã£ÂÂ®Ã§Â¨Â®Ã©Â¡Å¾Ã£â€šâ€™Ã©ÂÂ¸Ã¦Å Å¾Ã£Ââ€”Ã£ÂÂ¦Ã£ÂÂÃ£ÂÂ Ã£Ââ€¢Ã£Ââ€žÃ£â‚¬â€š" data-zh="Ã©â‚¬â€°Ã¦â€¹Â©Ã¦â€šÂ¨Ã§Å¡â€žÃ©Â¡Â¹Ã§â€ºÂ®Ã§Â±Â»Ã¥Å¾â€¹Ã£â‚¬â€š">
+        <h1 class="pricing-hero__title" data-pt="Escolha o tipo de projeto." data-en="Pick your type of project." data-es="Elige el tipo de proyecto." data-fr="Choisissez votre type de projet." data-de="WÃƒÆ’Ã‚Â¤hlen Sie Ihren Projekttyp." data-ru="ÃƒÂÃ¢â‚¬â„¢Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â±ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¿ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°." data-nl="Kies uw projecttype." data-ja="ÃƒÂ£Ã†â€™Ã¢â‚¬â€ÃƒÂ£Ã†â€™Ã‚Â­ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â§ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¯ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ§Ã‚Â¨Ã‚Â®ÃƒÂ©Ã‚Â¡Ã…Â¾ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ©Ã‚ÂÃ‚Â¸ÃƒÂ¦Ã…Â Ã…Â¾ÃƒÂ£Ã‚ÂÃ¢â‚¬â€ÃƒÂ£Ã‚ÂÃ‚Â¦ÃƒÂ£Ã‚ÂÃ‚ÂÃƒÂ£Ã‚ÂÃ‚Â ÃƒÂ£Ã‚ÂÃ¢â‚¬Â¢ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡" data-zh="ÃƒÂ©Ã¢â€šÂ¬Ã¢â‚¬Â°ÃƒÂ¦Ã¢â‚¬Â¹Ã‚Â©ÃƒÂ¦Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ©Ã‚Â¡Ã‚Â¹ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â®ÃƒÂ§Ã‚Â±Ã‚Â»ÃƒÂ¥Ã…Â¾Ã¢â‚¬Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
           Pick your type of project.
         </h1>
         <select id="projectType" class="pricing-select" aria-label="Pick your type of project here">
-          <option value="" selected data-pt="Escolha o tipo de projeto aqui" data-en="Pick your type of project here" data-es="Elige el tipo de proyecto aquÃƒÂ­" data-fr="Choisissez votre type de projet ici" data-de="WÃƒÂ¤hlen Sie hier Ihren Projekttyp" data-ru="Ãâ€™Ã‘â€¹ÃÂ±ÃÂµÃ‘â‚¬ÃÂ¸Ã‘â€šÃÂµ Ã‘â€šÃÂ¸ÃÂ¿ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂµÃÂºÃ‘â€šÃÂ° ÃÂ·ÃÂ´ÃÂµÃ‘ÂÃ‘Å’" data-nl="Kies hier uw projecttype" data-ja="Ã£Ââ€œÃ£Ââ€œÃ£ÂÂ§Ã£Æ’â€”Ã£Æ’Â­Ã£â€šÂ¸Ã£â€šÂ§Ã£â€šÂ¯Ã£Æ’Ë†Ã£ÂÂ®Ã§Â¨Â®Ã©Â¡Å¾Ã£â€šâ€™Ã©ÂÂ¸Ã¦Å Å¾Ã£Ââ€”Ã£ÂÂ¦Ã£ÂÂÃ£ÂÂ Ã£Ââ€¢Ã£Ââ€ž" data-zh="Ã¥Å“Â¨Ã¦Â­Â¤Ã©â‚¬â€°Ã¦â€¹Â©Ã¦â€šÂ¨Ã§Å¡â€žÃ©Â¡Â¹Ã§â€ºÂ®Ã§Â±Â»Ã¥Å¾â€¹">Pick your type of project here</option>
-          <option data-pt="AplicaÃƒÂ§ÃƒÂ£o Fintech" data-en="Fintech Application" data-es="AplicaciÃƒÂ³n Fintech">Fintech Application</option>
+          <option value="" selected data-pt="Escolha o tipo de projeto aqui" data-en="Pick your type of project here" data-es="Elige el tipo de proyecto aquÃƒÆ’Ã‚Â­" data-fr="Choisissez votre type de projet ici" data-de="WÃƒÆ’Ã‚Â¤hlen Sie hier Ihren Projekttyp" data-ru="ÃƒÂÃ¢â‚¬â„¢Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â±ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â¿ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚ÂµÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â° ÃƒÂÃ‚Â·ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã…â€™" data-nl="Kies hier uw projecttype" data-ja="ÃƒÂ£Ã‚ÂÃ¢â‚¬Å“ÃƒÂ£Ã‚ÂÃ¢â‚¬Å“ÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ£Ã†â€™Ã¢â‚¬â€ÃƒÂ£Ã†â€™Ã‚Â­ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â§ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¯ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã‚ÂÃ‚Â®ÃƒÂ§Ã‚Â¨Ã‚Â®ÃƒÂ©Ã‚Â¡Ã…Â¾ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ©Ã‚ÂÃ‚Â¸ÃƒÂ¦Ã…Â Ã…Â¾ÃƒÂ£Ã‚ÂÃ¢â‚¬â€ÃƒÂ£Ã‚ÂÃ‚Â¦ÃƒÂ£Ã‚ÂÃ‚ÂÃƒÂ£Ã‚ÂÃ‚Â ÃƒÂ£Ã‚ÂÃ¢â‚¬Â¢ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾" data-zh="ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ¦Ã‚Â­Ã‚Â¤ÃƒÂ©Ã¢â€šÂ¬Ã¢â‚¬Â°ÃƒÂ¦Ã¢â‚¬Â¹Ã‚Â©ÃƒÂ¦Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ©Ã‚Â¡Ã‚Â¹ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â®ÃƒÂ§Ã‚Â±Ã‚Â»ÃƒÂ¥Ã…Â¾Ã¢â‚¬Â¹">Pick your type of project here</option>
+          <option data-pt="AplicaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o Fintech" data-en="Fintech Application" data-es="AplicaciÃƒÆ’Ã‚Â³n Fintech">Fintech Application</option>
           <option data-pt="Ferramenta de Data Mining" data-en="Data Mining Tool" data-es="Herramienta de Data Mining">Data Mining Tool</option>
           <option data-pt="App de Open Banking" data-en="Open Banking App" data-es="App de Open Banking">Open Banking App</option>
           <option data-pt="Marketplace" data-en="Marketplace" data-es="Marketplace">Marketplace</option>
           <option data-pt="API" data-en="API" data-es="API">API</option>
           <option data-pt="Dashboard de Analytics / BI" data-en="Analytics / BI Dashboard" data-es="Dashboard de Analytics / BI">Analytics / BI Dashboard</option>
           <option data-pt="Comunidade / Rede Social" data-en="Community / Social Network" data-es="Comunidad / Red Social">Community / Social Network</option>
-          <option data-pt="AplicaÃƒÂ§ÃƒÂ£o de InteligÃƒÂªncia Artificial" data-en="Artificial Intelligence Application" data-es="AplicaciÃƒÂ³n de Inteligencia Artificial">Artificial Intelligence Application</option>
+          <option data-pt="AplicaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de InteligÃƒÆ’Ã‚Âªncia Artificial" data-en="Artificial Intelligence Application" data-es="AplicaciÃƒÆ’Ã‚Â³n de Inteligencia Artificial">Artificial Intelligence Application</option>
           <option data-pt="AI no edge" data-en="AI on the edge" data-es="AI en el edge">AI on the edge</option>
-          <option data-pt="App de MÃƒÂºsica e Entretenimento" data-en="Music & Entertainment App" data-es="App de MÃƒÂºsica y Entretenimiento">Music & Entertainment App</option>
+          <option data-pt="App de MÃƒÆ’Ã‚Âºsica e Entretenimento" data-en="Music & Entertainment App" data-es="App de MÃƒÆ’Ã‚Âºsica y Entretenimiento">Music & Entertainment App</option>
           <option data-pt="Software Regtech" data-en="Regtech Software" data-es="Software Regtech">Regtech Software</option>
-          <option data-pt="Projeto de IntegraÃƒÂ§ÃƒÂ£o de Sistemas" data-en="System Integration Project" data-es="Proyecto de IntegraciÃƒÂ³n de Sistemas">System Integration Project</option>
+          <option data-pt="Projeto de IntegraÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de Sistemas" data-en="System Integration Project" data-es="Proyecto de IntegraciÃƒÆ’Ã‚Â³n de Sistemas">System Integration Project</option>
           <option data-pt="App Blockchain" data-en="Blockchain App" data-es="App Blockchain">Blockchain App</option>
           <option data-pt="App Lifestyle" data-en="Lifestyle App" data-es="App de Estilo de Vida">Lifestyle App</option>
-          <option data-pt="App de SaÃƒÂºde e Fitness" data-en="Health & Fitness App" data-es="App de Salud y Fitness">Health & Fitness App</option>
+          <option data-pt="App de SaÃƒÆ’Ã‚Âºde e Fitness" data-en="Health & Fitness App" data-es="App de Salud y Fitness">Health & Fitness App</option>
           <option data-pt="App de Viagens" data-en="Travel App" data-es="App de Viajes">Travel App</option>
           <option data-pt="App Desportiva" data-en="Sports App" data-es="App Deportiva">Sports App</option>
         </select>
@@ -1336,9 +1351,9 @@
         <div class="pricing-examples__head">
           <div>
             <h2 class="pricing-h2" data-pt="Exemplos Recentes" data-en="Recent Examples" data-es="Ejemplos Recientes">Recent Examples</h2>
-            <p class="pricing-lead" data-pt="Aqui estÃƒÂ£o alguns exemplos de projetos em que trabalhamos nos ÃƒÂºltimos meses. Isto ajudÃƒÂ¡-lo-ÃƒÂ¡ a perceber como o preÃƒÂ§o pode variar dependendo de fatores como tamanho e complexidade."
+            <p class="pricing-lead" data-pt="Aqui estÃƒÆ’Ã‚Â£o alguns exemplos de projetos em que trabalhamos nos ÃƒÆ’Ã‚Âºltimos meses. Isto ajudÃƒÆ’Ã‚Â¡-lo-ÃƒÆ’Ã‚Â¡ a perceber como o preÃƒÆ’Ã‚Â§o pode variar dependendo de fatores como tamanho e complexidade."
                data-en="Here are some examples of projects we worked on over the last few months. This will help you understand how pricing can vary depending on factors like size and complexity."
-               data-es="AquÃƒÂ­ hay algunos ejemplos de proyectos en los que trabajamos en los ÃƒÂºltimos meses. Esto le ayudarÃƒÂ¡ a entender cÃƒÂ³mo puede variar el precio en funciÃƒÂ³n de factores como el tamaÃƒÂ±o y la complejidad.">
+               data-es="AquÃƒÆ’Ã‚Â­ hay algunos ejemplos de proyectos en los que trabajamos en los ÃƒÆ’Ã‚Âºltimos meses. Esto le ayudarÃƒÆ’Ã‚Â¡ a entender cÃƒÆ’Ã‚Â³mo puede variar el precio en funciÃƒÆ’Ã‚Â³n de factores como el tamaÃƒÆ’Ã‚Â±o y la complejidad.">
               Here are some examples of projects we worked on over the last few months. This will help you understand how pricing can vary depending on factors like size and complexity.
             </p>
           </div>
@@ -1352,7 +1367,7 @@
           <!-- EXEMPLO 1: Community Management Platform -->
           <article class="pricing-card" data-type="Community / Social Network">
             <div class="pricing-card__top">
-              <h3 data-pt="Plataforma de GestÃƒÂ£o de Comunidade" data-en="Community Management Platform" data-es="Plataforma de GestiÃƒÂ³n de Comunidad">Community Management Platform</h3>
+              <h3 data-pt="Plataforma de GestÃƒÆ’Ã‚Â£o de Comunidade" data-en="Community Management Platform" data-es="Plataforma de GestiÃƒÆ’Ã‚Â³n de Comunidad">Community Management Platform</h3>
             </div>
             
             <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
@@ -1371,7 +1386,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1379,7 +1394,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$11k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$30k</div>
@@ -1388,8 +1403,8 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Um MVP para uma plataforma de Q&A para a indÃƒÂºstria da beleza."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Um MVP para uma plataforma de Q&A para a indÃƒÆ’Ã‚Âºstria da beleza."
                data-en="An MVP for a Q&A platform for the beauty industry."
                data-es="Un MVP para una plataforma de Q&A para la industria de la belleza.">
               An MVP for a Q&A platform for the beauty industry.
@@ -1418,7 +1433,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1426,7 +1441,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$8k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$20k</div>
@@ -1435,10 +1450,10 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Marketplace construÃƒÂ­do para servir as necessidades especÃƒÂ­ficas de um nicho de Arte."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Marketplace construÃƒÆ’Ã‚Â­do para servir as necessidades especÃƒÆ’Ã‚Â­ficas de um nicho de Arte."
                data-en="Marketplace built to serve the specific needs of an Art's niche."
-               data-es="Marketplace construido para servir las necesidades especÃƒÂ­ficas de un nicho de Arte.">
+               data-es="Marketplace construido para servir las necesidades especÃƒÆ’Ã‚Â­ficas de un nicho de Arte.">
               Marketplace built to serve the specific needs of an Art's niche.
             </p>
           </article>
@@ -1465,7 +1480,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1473,7 +1488,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$50k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$120k</div>
@@ -1482,8 +1497,8 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Software para integrar perfeitamente vÃƒÂ¡rias partes terceiras numa interface drag and drop."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Software para integrar perfeitamente vÃƒÆ’Ã‚Â¡rias partes terceiras numa interface drag and drop."
                data-en="Software to seamlessly integrate several different third parties in a drag and drop interface."
                data-es="Software para integrar perfectamente varias partes terceras en una interfaz drag and drop.">
               Software to seamlessly integrate several different third parties in a drag and drop interface.
@@ -1512,7 +1527,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1520,7 +1535,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$200k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$500k</div>
@@ -1529,10 +1544,10 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Ferramenta de IA que analisa pontos de dados relacionados com uma ÃƒÂ¡rea geogrÃƒÂ¡fica e calcula o valor de imÃƒÂ³veis."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Ferramenta de IA que analisa pontos de dados relacionados com uma ÃƒÆ’Ã‚Â¡rea geogrÃƒÆ’Ã‚Â¡fica e calcula o valor de imÃƒÆ’Ã‚Â³veis."
                data-en="AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets."
-               data-es="Herramienta de IA que analiza puntos de datos relacionados con un ÃƒÂ¡rea geogrÃƒÂ¡fica y calcula el valor de activos inmobiliarios.">
+               data-es="Herramienta de IA que analiza puntos de datos relacionados con un ÃƒÆ’Ã‚Â¡rea geogrÃƒÆ’Ã‚Â¡fica y calcula el valor de activos inmobiliarios.">
               AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets.
             </p>
           </article>
@@ -1559,7 +1574,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1567,7 +1582,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$60k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$150k</div>
@@ -1576,10 +1591,10 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Um MVP para uma ferramenta complexa de IA que analisa regras pÃƒÂºblicas e aconselha equipas sobre perfis de clientes."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Um MVP para uma ferramenta complexa de IA que analisa regras pÃƒÆ’Ã‚Âºblicas e aconselha equipas sobre perfis de clientes."
                data-en="An MVP for a complex AI tool that analyses public rules and advises teams on client profiles."
-               data-es="Un MVP para una herramienta compleja de IA que analiza reglas pÃƒÂºblicas y asesora a equipos sobre perfiles de clientes.">
+               data-es="Un MVP para una herramienta compleja de IA que analiza reglas pÃƒÆ’Ã‚Âºblicas y asesora a equipos sobre perfiles de clientes.">
               An MVP for a complex AI tool that analyses public rules and advises teams on client profiles.
             </p>
           </article>
@@ -1587,7 +1602,7 @@
           <!-- EXEMPLO 6: Social Network Mobile App -->
           <article class="pricing-card" data-type="Community / Social Network">
             <div class="pricing-card__top">
-              <h3 data-pt="App MÃƒÂ³vel de Rede Social" data-en="Social Network Mobile App" data-es="App MÃƒÂ³vil de Red Social">Social Network Mobile App</h3>
+              <h3 data-pt="App MÃƒÆ’Ã‚Â³vel de Rede Social" data-en="Social Network Mobile App" data-es="App MÃƒÆ’Ã‚Â³vil de Red Social">Social Network Mobile App</h3>
             </div>
             
             <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
@@ -1606,7 +1621,7 @@
               </div>
             </div>
             
-            <!-- FAIXA DE PREÃƒâ€¡O -->
+            <!-- FAIXA DE PREÃƒÆ’Ã¢â‚¬Â¡O -->
             <div class="price-range">
               <div class="price-range-label">Project Range</div>
               <div class="price-amounts">
@@ -1614,7 +1629,7 @@
                   <div class="price-title">FROM</div>
                   <div class="price-value">$30k</div>
                 </div>
-                <div class="price-divider">Ã¢â‚¬â€</div>
+                <div class="price-divider">ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â</div>
                 <div class="price-to">
                   <div class="price-title">TO</div>
                   <div class="price-value">$80k</div>
@@ -1623,10 +1638,10 @@
               <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
             </div>
             
-            <!-- DESCRIÃƒâ€¡ÃƒÆ’O -->
-            <p class="pricing-card__desc" data-pt="Uma comunidade gamificada centrada em fÃƒÂ£s onde humanos podem interagir de forma mais prÃƒÂ³xima e rica."
+            <!-- DESCRIÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã†â€™O -->
+            <p class="pricing-card__desc" data-pt="Uma comunidade gamificada centrada em fÃƒÆ’Ã‚Â£s onde humanos podem interagir de forma mais prÃƒÆ’Ã‚Â³xima e rica."
                data-en="A gamified fandom-centric community where humans can engage in a closer and richer way."
-               data-es="Una comunidad gamificada centrada en fans donde los humanos pueden interactuar de forma mÃƒÂ¡s cercana y rica.">
+               data-es="Una comunidad gamificada centrada en fans donde los humanos pueden interactuar de forma mÃƒÆ’Ã‚Â¡s cercana y rica.">
               A gamified fandom-centric community where humans can engage in a closer and richer way.
             </p>
           </article>
@@ -1637,11 +1652,11 @@
     <!-- HOW WE GET TO PRICING -->
     <section class="pricing-section" style="background:#fff;">
       <div class="container">
-        <h2 class="pricing-h2" data-pt="Como Calculamos os Nossos PreÃƒÂ§os" data-en="How We Get to Our Pricing" data-es="CÃƒÂ³mo Calculamos Nuestros Precios">How We Get to Our Pricing</h2>
+        <h2 class="pricing-h2" data-pt="Como Calculamos os Nossos PreÃƒÆ’Ã‚Â§os" data-en="How We Get to Our Pricing" data-es="CÃƒÆ’Ã‚Â³mo Calculamos Nuestros Precios">How We Get to Our Pricing</h2>
         <p class="pricing-lead" style="max-width:820px;" 
-           data-pt="Os nossos preÃƒÂ§os refletem a nossa abordagem lean e centrada no utilizador para inovaÃƒÂ§ÃƒÂ£o de produtos e desenvolvimento de software. Isto, combinado com talento de topo da indÃƒÂºstria, significa que as nossas pequenas equipas focadas entregam projetos dentro do prazo e orÃƒÂ§amento."
+           data-pt="Os nossos preÃƒÆ’Ã‚Â§os refletem a nossa abordagem lean e centrada no utilizador para inovaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de produtos e desenvolvimento de software. Isto, combinado com talento de topo da indÃƒÆ’Ã‚Âºstria, significa que as nossas pequenas equipas focadas entregam projetos dentro do prazo e orÃƒÆ’Ã‚Â§amento."
            data-en="Our pricing is reflected by our lean, user-centric approach to product innovation and software development. This, combined with top industry talent, means our small focused teams deliver projects on time and on budget."
-           data-es="Nuestros precios reflejan nuestro enfoque lean y centrado en el usuario para la innovaciÃƒÂ³n de productos y el desarrollo de software. Esto, combinado con talento de primer nivel de la industria, significa que nuestros pequeÃƒÂ±os equipos enfocados entregan proyectos a tiempo y dentro del presupuesto.">
+           data-es="Nuestros precios reflejan nuestro enfoque lean y centrado en el usuario para la innovaciÃƒÆ’Ã‚Â³n de productos y el desarrollo de software. Esto, combinado con talento de primer nivel de la industria, significa que nuestros pequeÃƒÆ’Ã‚Â±os equipos enfocados entregan proyectos a tiempo y dentro del presupuesto.">
           Our pricing is reflected by our lean, user-centric approach to product innovation and software development. This, combined with top industry talent, means our small focused teams deliver projects on time and on budget.
         </p>
 
@@ -1649,27 +1664,27 @@
           <div class="accordion" id="pricingAccordion">
             <div class="acc-item open">
               <button class="acc-btn" type="button">
-                <span data-pt="Saber mais sobre o nosso Programa Seed" data-en="Learn more about our Seed Program" data-es="Saber mÃƒÂ¡s sobre nuestro Programa Seed">Learn more about our Seed Program</span>
-                <span class="acc-icon">Ã¢â€ â€œ</span>
+                <span data-pt="Saber mais sobre o nosso Programa Seed" data-en="Learn more about our Seed Program" data-es="Saber mÃƒÆ’Ã‚Â¡s sobre nuestro Programa Seed">Learn more about our Seed Program</span>
+                <span class="acc-icon">ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“</span>
               </button>
               <div class="acc-panel">
-                <p data-pt="O nosso Programa Seed acelera a entrega usando uma fundaÃƒÂ§ÃƒÂ£o modular. Com mÃƒÂ³dulos core prontos, focamo-nos nas suas funcionalidades ÃƒÂºnicas, integraÃƒÂ§ÃƒÂµes e UI Ã¢â‚¬â€ reduzindo o tempo para MVP mantendo a qualidade elevada."
-                   data-en="Our Seed Program accelerates delivery by using a modular foundation. With core modules ready, we focus on your unique features, integrations and UI Ã¢â‚¬â€ reducing time to MVP while keeping quality high."
-                   data-es="Nuestro Programa Seed acelera la entrega utilizando una base modular. Con los mÃƒÂ³dulos core listos, nos enfocamos en sus caracterÃƒÂ­sticas ÃƒÂºnicas, integraciones y UI Ã¢â‚¬â€ reduciendo el tiempo para MVP mientras mantenemos alta calidad.">
-                  Our Seed Program accelerates delivery by using a modular foundation. With core modules ready, we focus on your unique features, integrations and UI Ã¢â‚¬â€ reducing time to MVP while keeping quality high.
+                <p data-pt="O nosso Programa Seed acelera a entrega usando uma fundaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o modular. Com mÃƒÆ’Ã‚Â³dulos core prontos, focamo-nos nas suas funcionalidades ÃƒÆ’Ã‚Âºnicas, integraÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes e UI ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â reduzindo o tempo para MVP mantendo a qualidade elevada."
+                   data-en="Our Seed Program accelerates delivery by using a modular foundation. With core modules ready, we focus on your unique features, integrations and UI ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â reducing time to MVP while keeping quality high."
+                   data-es="Nuestro Programa Seed acelera la entrega utilizando una base modular. Con los mÃƒÆ’Ã‚Â³dulos core listos, nos enfocamos en sus caracterÃƒÆ’Ã‚Â­sticas ÃƒÆ’Ã‚Âºnicas, integraciones y UI ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â reduciendo el tiempo para MVP mientras mantenemos alta calidad.">
+                  Our Seed Program accelerates delivery by using a modular foundation. With core modules ready, we focus on your unique features, integrations and UI ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â reducing time to MVP while keeping quality high.
                 </p>
               </div>
             </div>
 
             <div class="acc-item">
               <button class="acc-btn" type="button">
-                <span data-pt="Saber mais sobre o nosso Processo Estruturado" data-en="Learn more about our Structured Process" data-es="Saber mÃƒÂ¡s sobre nuestro Proceso Estructurado">Learn more about our Structured Process</span>
-                <span class="acc-icon">Ã¢â€ â€œ</span>
+                <span data-pt="Saber mais sobre o nosso Processo Estruturado" data-en="Learn more about our Structured Process" data-es="Saber mÃƒÆ’Ã‚Â¡s sobre nuestro Proceso Estructurado">Learn more about our Structured Process</span>
+                <span class="acc-icon">ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“</span>
               </button>
               <div class="acc-panel">
-                <p data-pt="Trabalhamos em iteraÃƒÂ§ÃƒÂµes curtas, milestones claras e comunicaÃƒÂ§ÃƒÂ£o transparente. Tem visibilidade sobre ÃƒÂ¢mbito, progresso e risco, enquanto protegemos a entrega atravÃƒÂ©s de padrÃƒÂµes de engenharia robustos."
+                <p data-pt="Trabalhamos em iteraÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes curtas, milestones claras e comunicaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o transparente. Tem visibilidade sobre ÃƒÆ’Ã‚Â¢mbito, progresso e risco, enquanto protegemos a entrega atravÃƒÆ’Ã‚Â©s de padrÃƒÆ’Ã‚Âµes de engenharia robustos."
                    data-en="We work in short iterations, clear milestones and transparent communication. You get visibility on scope, progress and risk, while we protect delivery through strong engineering standards."
-                   data-es="Trabajamos en iteraciones cortas, hitos claros y comunicaciÃƒÂ³n transparente. Obtienes visibilidad sobre alcance, progreso y riesgo, mientras protegemos la entrega a travÃƒÂ©s de estÃƒÂ¡ndares sÃƒÂ³lidos de ingenierÃƒÂ­a.">
+                   data-es="Trabajamos en iteraciones cortas, hitos claros y comunicaciÃƒÆ’Ã‚Â³n transparente. Obtienes visibilidad sobre alcance, progreso y riesgo, mientras protegemos la entrega a travÃƒÆ’Ã‚Â©s de estÃƒÆ’Ã‚Â¡ndares sÃƒÆ’Ã‚Â³lidos de ingenierÃƒÆ’Ã‚Â­a.">
                   We work in short iterations, clear milestones and transparent communication. You get visibility on scope, progress and risk, while we protect delivery through strong engineering standards.
                 </p>
               </div>
@@ -1677,13 +1692,13 @@
 
             <div class="acc-item">
               <button class="acc-btn" type="button">
-                <span data-pt="Saber mais sobre composiÃƒÂ§ÃƒÂ£o de equipa" data-en="Learn more about team composition" data-es="Saber mÃƒÂ¡s sobre composiciÃƒÂ³n de equipo">Learn more about team composition</span>
-                <span class="acc-icon">Ã¢â€ â€œ</span>
+                <span data-pt="Saber mais sobre composiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de equipa" data-en="Learn more about team composition" data-es="Saber mÃƒÆ’Ã‚Â¡s sobre composiciÃƒÆ’Ã‚Â³n de equipo">Learn more about team composition</span>
+                <span class="acc-icon">ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Å“</span>
               </button>
               <div class="acc-panel">
-                <p data-pt="As equipas sÃƒÂ£o dimensionadas de acordo com o seu projeto. Tipicamente: Produto + Design + Engenharia. Escalamos para cima ou para baixo conforme necessÃƒÂ¡rio, mantendo o momentum sem desperdiÃƒÂ§ar orÃƒÂ§amento."
+                <p data-pt="As equipas sÃƒÆ’Ã‚Â£o dimensionadas de acordo com o seu projeto. Tipicamente: Produto + Design + Engenharia. Escalamos para cima ou para baixo conforme necessÃƒÆ’Ã‚Â¡rio, mantendo o momentum sem desperdiÃƒÆ’Ã‚Â§ar orÃƒÆ’Ã‚Â§amento."
                    data-en="Teams are sized to match your project. Typically: Product + Design + Engineering. We scale up or down as needed, keeping momentum without wasting budget."
-                   data-es="Los equipos se dimensionan segÃƒÂºn su proyecto. TÃƒÂ­picamente: Producto + DiseÃƒÂ±o + IngenierÃƒÂ­a. Escalamos hacia arriba o hacia abajo segÃƒÂºn sea necesario, manteniendo el impulso sin desperdiciar presupuesto.">
+                   data-es="Los equipos se dimensionan segÃƒÆ’Ã‚Âºn su proyecto. TÃƒÆ’Ã‚Â­picamente: Producto + DiseÃƒÆ’Ã‚Â±o + IngenierÃƒÆ’Ã‚Â­a. Escalamos hacia arriba o hacia abajo segÃƒÆ’Ã‚Âºn sea necesario, manteniendo el impulso sin desperdiciar presupuesto.">
                   Teams are sized to match your project. Typically: Product + Design + Engineering. We scale up or down as needed, keeping momentum without wasting budget.
                 </p>
               </div>
@@ -1700,9 +1715,9 @@
           <div>
             <h2 class="pricing-h2" data-pt="Projeto Seed Explicado" data-en="Seed Project Explained" data-es="Proyecto Seed Explicado">Seed Project Explained</h2>
             <p class="pricing-lead" style="max-width:720px;" 
-               data-pt="O nosso programa Seed ÃƒÂ© uma app agnÃƒÂ³stica de propÃƒÂ³sito com uma arquitetura de microserviÃƒÂ§os altamente modular composta por um grupo de componentes que, quando combinados, podem ser a base de um projeto. Com o seed pronto, o projeto comeÃƒÂ§a com ~50% do cÃƒÂ³digo jÃƒÂ¡ feito, enquanto nos focamos em desenvolver o CORE: funcionalidades e interfaces personalizadas."
+               data-pt="O nosso programa Seed ÃƒÆ’Ã‚Â© uma app agnÃƒÆ’Ã‚Â³stica de propÃƒÆ’Ã‚Â³sito com uma arquitetura de microserviÃƒÆ’Ã‚Â§os altamente modular composta por um grupo de componentes que, quando combinados, podem ser a base de um projeto. Com o seed pronto, o projeto comeÃƒÆ’Ã‚Â§a com ~50% do cÃƒÆ’Ã‚Â³digo jÃƒÆ’Ã‚Â¡ feito, enquanto nos focamos em desenvolver o CORE: funcionalidades e interfaces personalizadas."
                data-en="Our Seed program is a purpose-agnostic app with a highly modular microservices architecture composed by a group of components that, when combined, can be the foundation of a project. With the seed in place, the project starts with ~50% of the code already done, while we can focus on developing the CORE: custom functionalities and interfaces."
-               data-es="Nuestro programa Seed es una app agnÃƒÂ³stica de propÃƒÂ³sito con una arquitectura de microservicios altamente modular compuesta por un grupo de componentes que, cuando se combinan, pueden ser la base de un proyecto. Con el seed listo, el proyecto comienza con ~50% del cÃƒÂ³digo ya hecho, mientras nos enfocamos en desarrollar el CORE: funcionalidades e interfaces personalizadas.">
+               data-es="Nuestro programa Seed es una app agnÃƒÆ’Ã‚Â³stica de propÃƒÆ’Ã‚Â³sito con una arquitectura de microservicios altamente modular compuesta por un grupo de componentes que, cuando se combinan, pueden ser la base de un proyecto. Con el seed listo, el proyecto comienza con ~50% del cÃƒÆ’Ã‚Â³digo ya hecho, mientras nos enfocamos en desarrollar el CORE: funcionalidades e interfaces personalizadas.">
               Our Seed program is a purpose-agnostic app with a highly modular microservices architecture composed by a group of components that, when combined, can be the foundation of a project. With the seed in place, the project starts with ~50% of the code already done, while we can focus on developing the CORE: custom functionalities and interfaces.
             </p>
           </div>
@@ -1719,12 +1734,12 @@
       <div class="container">
         <div class="seed-grid">
           <div>
-            <h2 class="pricing-h2" data-pt="MÃƒÂ³dulos Seed" data-en="Seed Modules" data-es="MÃƒÂ³dulos Seed">Seed Modules</h2>
+            <h2 class="pricing-h2" data-pt="MÃƒÆ’Ã‚Â³dulos Seed" data-en="Seed Modules" data-es="MÃƒÆ’Ã‚Â³dulos Seed">Seed Modules</h2>
             <p class="pricing-lead" style="max-width:720px;" 
-               data-pt="A maioria dos projetos tem uma base comum Ã¢â‚¬â€ funcionalidades/mÃƒÂ³dulos que sÃƒÂ£o sempre necessÃƒÂ¡rios: serviÃƒÂ§os de email, registo com email/redes sociais, recuperaÃƒÂ§ÃƒÂ£o de password, fluxos de validaÃƒÂ§ÃƒÂ£o de email, etc. Isto ÃƒÂ© exatamente o que o seed cobre e reflete-se nos nossos preÃƒÂ§os."
-               data-en="Most projects have a common ground Ã¢â‚¬â€ functionalities/modules that are always necessary: email services, signup with email/social networks, password recovery, email validation flows, etc. That is exactly what the seed covers and is reflected in our pricing."
-               data-es="La mayorÃƒÂ­a de los proyectos tienen un terreno comÃƒÂºn Ã¢â‚¬â€ funcionalidades/mÃƒÂ³dulos que siempre son necesarios: servicios de email, registro con email/redes sociales, recuperaciÃƒÂ³n de contraseÃƒÂ±a, flujos de validaciÃƒÂ³n de email, etc. Eso es exactamente lo que el seed cubre y se refleja en nuestros precios.">
-              Most projects have a common ground Ã¢â‚¬â€ functionalities/modules that are always necessary: email services, signup with email/social networks, password recovery, email validation flows, etc. That is exactly what the seed covers and is reflected in our pricing.
+               data-pt="A maioria dos projetos tem uma base comum ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â funcionalidades/mÃƒÆ’Ã‚Â³dulos que sÃƒÆ’Ã‚Â£o sempre necessÃƒÆ’Ã‚Â¡rios: serviÃƒÆ’Ã‚Â§os de email, registo com email/redes sociais, recuperaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de password, fluxos de validaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de email, etc. Isto ÃƒÆ’Ã‚Â© exatamente o que o seed cobre e reflete-se nos nossos preÃƒÆ’Ã‚Â§os."
+               data-en="Most projects have a common ground ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â functionalities/modules that are always necessary: email services, signup with email/social networks, password recovery, email validation flows, etc. That is exactly what the seed covers and is reflected in our pricing."
+               data-es="La mayorÃƒÆ’Ã‚Â­a de los proyectos tienen un terreno comÃƒÆ’Ã‚Âºn ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â funcionalidades/mÃƒÆ’Ã‚Â³dulos que siempre son necesarios: servicios de email, registro con email/redes sociales, recuperaciÃƒÆ’Ã‚Â³n de contraseÃƒÆ’Ã‚Â±a, flujos de validaciÃƒÆ’Ã‚Â³n de email, etc. Eso es exactamente lo que el seed cubre y se refleja en nuestros precios.">
+              Most projects have a common ground ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â functionalities/modules that are always necessary: email services, signup with email/social networks, password recovery, email validation flows, etc. That is exactly what the seed covers and is reflected in our pricing.
             </p>
           </div>
 
@@ -1742,15 +1757,15 @@
     <section class="what-we-do">
       <div class="container">
         <div class="what-we-do__intro">
-          <p class="what-we-do__kicker" data-pt="OS NOSSOS SERVIÃƒâ€¡OS" data-en="OUR SERVICES" data-es="NUESTROS SERVICIOS">OUR SERVICES</p>
-          <h2 class="what-we-do__title" data-pt="Os Nossos ServiÃƒÂ§os TÃƒÂªm um Processo Estruturado Comprovado" data-en="Our Services Have a Proven Structured Process" data-es="Nuestros Servicios Tienen un Proceso Estructurado Comprobado">
+          <p class="what-we-do__kicker" data-pt="OS NOSSOS SERVIÃƒÆ’Ã¢â‚¬Â¡OS" data-en="OUR SERVICES" data-es="NUESTROS SERVICIOS">OUR SERVICES</p>
+          <h2 class="what-we-do__title" data-pt="Os Nossos ServiÃƒÆ’Ã‚Â§os TÃƒÆ’Ã‚Âªm um Processo Estruturado Comprovado" data-en="Our Services Have a Proven Structured Process" data-es="Nuestros Servicios Tienen un Proceso Estructurado Comprobado">
             Our Services Have a Proven Structured Process
           </h2>
           <p class="what-we-do__description" 
-             data-pt="Construir grandes produtos precisa de insight de negÃƒÂ³cio profundo, e um processo muito estruturado Ã¢â‚¬â€ por isso somos guiados por processo."
-             data-en="Building great products needs deep business insight, and a very structured process Ã¢â‚¬â€ that's why we're driven by process."
-             data-es="Construir grandes productos necesita un conocimiento profundo del negocio, y un proceso muy estructurado Ã¢â‚¬â€ por eso estamos guiados por proceso.">
-            Building great products needs deep business insight, and a very structured process Ã¢â‚¬â€ that's why we're driven by process.
+             data-pt="Construir grandes produtos precisa de insight de negÃƒÆ’Ã‚Â³cio profundo, e um processo muito estruturado ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â por isso somos guiados por processo."
+             data-en="Building great products needs deep business insight, and a very structured process ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â that's why we're driven by process."
+             data-es="Construir grandes productos necesita un conocimiento profundo del negocio, y un proceso muy estructurado ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â por eso estamos guiados por proceso.">
+            Building great products needs deep business insight, and a very structured process ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â that's why we're driven by process.
           </p>
         </div>
 
@@ -1763,18 +1778,18 @@
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 class="service-card__title" data-pt="DefiniÃƒÂ§ÃƒÂ£o do Ãƒâ€šmbito do Produto" data-en="Product Scope Definition" data-es="DefiniciÃƒÂ³n del Alcance del Producto">
+              <h3 class="service-card__title" data-pt="DefiniÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o do ÃƒÆ’Ã¢â‚¬Å¡mbito do Produto" data-en="Product Scope Definition" data-es="DefiniciÃƒÆ’Ã‚Â³n del Alcance del Producto">
                 Product Scope Definition
               </h3>
-              <p class="service-card__desc" data-pt="Um processo estruturado de 15 dias para alinhar a tua visÃƒÂ£o do produto com os objetivos do negÃƒÂ³cio."
+              <p class="service-card__desc" data-pt="Um processo estruturado de 15 dias para alinhar a tua visÃƒÆ’Ã‚Â£o do produto com os objetivos do negÃƒÆ’Ã‚Â³cio."
                  data-en="A structured 15-day process to align your product vision with business goals."
-                 data-es="Un proceso estructurado de 15 dÃƒÂ­as para alinear tu visiÃƒÂ³n del producto con los objetivos del negocio.">
+                 data-es="Un proceso estructurado de 15 dÃƒÆ’Ã‚Â­as para alinear tu visiÃƒÆ’Ã‚Â³n del producto con los objetivos del negocio.">
                 A structured 15-day process to align your product vision with business goals.
               </p>
               <span class="service-card-cta"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
 
@@ -1786,18 +1801,18 @@
                   <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
-              <h3 class="service-card__title" data-pt="Desenvolvimento de Software ÃƒÂ  Medida" data-en="Custom Software Development" data-es="Desarrollo de Software a Medida">
+              <h3 class="service-card__title" data-pt="Desenvolvimento de Software ÃƒÆ’Ã‚Â  Medida" data-en="Custom Software Development" data-es="Desarrollo de Software a Medida">
                 Custom Software Development
               </h3>
-              <p class="service-card__desc" data-pt="Aplicamos frameworks lean ÃƒÂ  tua visÃƒÂ£o para criar uma soluÃƒÂ§ÃƒÂ£o de software personalizada e inovadora."
+              <p class="service-card__desc" data-pt="Aplicamos frameworks lean ÃƒÆ’Ã‚Â  tua visÃƒÆ’Ã‚Â£o para criar uma soluÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de software personalizada e inovadora."
                  data-en="We apply lean frameworks to your vision to create a personalized and innovative software solution."
-                 data-es="Aplicamos frameworks lean a tu visiÃƒÂ³n para crear una soluciÃƒÂ³n de software personalizada e innovadora.">
+                 data-es="Aplicamos frameworks lean a tu visiÃƒÆ’Ã‚Â³n para crear una soluciÃƒÆ’Ã‚Â³n de software personalizada e innovadora.">
                 We apply lean frameworks to your vision to create a personalized and innovative software solution.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
 
@@ -1809,18 +1824,18 @@
                   <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 class="service-card__title" data-pt="Desenvolvimento e CapacitaÃƒÂ§ÃƒÂ£o com IA" data-en="AI Development & Enablement" data-es="Desarrollo y CapacitaciÃƒÂ³n con IA">
+              <h3 class="service-card__title" data-pt="Desenvolvimento e CapacitaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o com IA" data-en="AI Development & Enablement" data-es="Desarrollo y CapacitaciÃƒÆ’Ã‚Â³n con IA">
                 AI Development & Enablement
               </h3>
-              <p class="service-card__desc" data-pt="Aplicamos Machine Learning e IA Generativa estrategicamente para garantir que o teu negÃƒÂ³cio estÃƒÂ¡ preparado para o futuro."
+              <p class="service-card__desc" data-pt="Aplicamos Machine Learning e IA Generativa estrategicamente para garantir que o teu negÃƒÆ’Ã‚Â³cio estÃƒÆ’Ã‚Â¡ preparado para o futuro."
                  data-en="We strategically apply Machine Learning and Generative AI to ensure your business is future-ready."
-                 data-es="Aplicamos estratÃƒÂ©gicamente Machine Learning e IA Generativa para garantizar que tu negocio estÃƒÂ© preparado para el futuro.">
+                 data-es="Aplicamos estratÃƒÆ’Ã‚Â©gicamente Machine Learning e IA Generativa para garantizar que tu negocio estÃƒÆ’Ã‚Â© preparado para el futuro.">
                 We strategically apply Machine Learning and Generative AI to ensure your business is future-ready.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
 
@@ -1832,18 +1847,18 @@
                   <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 class="service-card__title" data-pt="Design UX/UI" data-en="UX/UI Design" data-es="DiseÃƒÂ±o UX/UI">
+              <h3 class="service-card__title" data-pt="Design UX/UI" data-en="UX/UI Design" data-es="DiseÃƒÆ’Ã‚Â±o UX/UI">
                 UX/UI Design
               </h3>
-              <p class="service-card__desc" data-pt="Criamos um produto envolvente que ÃƒÂ© fÃƒÂ¡cil de usar, atraente e funcional."
+              <p class="service-card__desc" data-pt="Criamos um produto envolvente que ÃƒÆ’Ã‚Â© fÃƒÆ’Ã‚Â¡cil de usar, atraente e funcional."
                  data-en="We create an engaging product that is easy to use, attractive and functional."
-                 data-es="Creamos un producto atractivo que es fÃƒÂ¡cil de usar, atractivo y funcional.">
+                 data-es="Creamos un producto atractivo que es fÃƒÆ’Ã‚Â¡cil de usar, atractivo y funcional.">
                 We create an engaging product that is easy to use, attractive and functional.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
 
@@ -1858,15 +1873,15 @@
               <h3 class="service-card__title" data-pt="Construtor de MVP" data-en="MVP Builder" data-es="Constructor de MVP">
                 MVP Builder
               </h3>
-              <p class="service-card__desc" data-pt="Entra no mercado rapidamente com um Produto MÃƒÂ­nimo ViÃƒÂ¡vel de alta qualidade."
+              <p class="service-card__desc" data-pt="Entra no mercado rapidamente com um Produto MÃƒÆ’Ã‚Â­nimo ViÃƒÆ’Ã‚Â¡vel de alta qualidade."
                  data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                 data-es="Entra al mercado rÃƒÂ¡pidamente con un Producto MÃƒÂ­nimo Viable de alta calidad.">
+                 data-es="Entra al mercado rÃƒÆ’Ã‚Â¡pidamente con un Producto MÃƒÆ’Ã‚Â­nimo Viable de alta calidad.">
                 Go to market quickly with a high-quality Minimum Viable Product.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
 
@@ -1881,21 +1896,21 @@
               <h3 class="service-card__title" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
                 Dedicated Teams
               </h3>
-              <p class="service-card__desc" data-pt="ConstrÃƒÂ³i o teu produto com uma equipa dedicada de programadores."
+              <p class="service-card__desc" data-pt="ConstrÃƒÆ’Ã‚Â³i o teu produto com uma equipa dedicada de programadores."
                  data-en="Build your product with a dedicated team of developers."
                  data-es="Construye tu producto con un equipo dedicado de desarrolladores.">
                 Build your product with a dedicated team of developers.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais Ã¢â€ â€™"
-                    data-en="Learn more Ã¢â€ â€™"
-                    data-es="Saber mÃƒÂ¡s Ã¢â€ â€™">Saiba mais Ã¢â€ â€™</span>
+                    data-pt="Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-en="Learn more ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢"
+                    data-es="Saber mÃƒÆ’Ã‚Â¡s ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢">Saiba mais ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢</span>
             </article>
           </a>
         </div>
 
         <div class="what-we-do__cta">
-          <a class="btn btn--primary" href="ServiÃƒÂ§os.html" data-pt="Ver todos os serviÃƒÂ§os" data-en="View all services" data-es="Ver todos los servicios">
+          <a class="btn btn--primary" href="ServiÃƒÆ’Ã‚Â§os.html" data-pt="Ver todos os serviÃƒÆ’Ã‚Â§os" data-en="View all services" data-es="Ver todos los servicios">
             View all services
           </a>
           <a class="btn btn--outline" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Schedule a call" data-es="Agendar una llamada">
@@ -1914,17 +1929,17 @@
           </div>
 
           <div>
-            <h2 class="cta-title" data-pt="Obtenha uma proposta dedicada em poucos dias" data-en="Get a dedicated proposal in a couple of days" data-es="Obtenga una propuesta dedicada en un par de dÃƒÂ­as">Get a dedicated proposal in a couple of days</h2>
+            <h2 class="cta-title" data-pt="Obtenha uma proposta dedicada em poucos dias" data-en="Get a dedicated proposal in a couple of days" data-es="Obtenga una propuesta dedicada en un par de dÃƒÆ’Ã‚Â­as">Get a dedicated proposal in a couple of days</h2>
             <p class="cta-desc" 
-               data-pt="Marque uma chamada connosco e guiÃƒÂ¡-lo-emos atravÃƒÂ©s de um processo estruturado para avaliar a lista certa de funcionalidades para o seu produto. SerÃƒÂ¡ guiado por especialistas em produto, nÃƒÂ£o por business developers ou account owners."
+               data-pt="Marque uma chamada connosco e guiÃƒÆ’Ã‚Â¡-lo-emos atravÃƒÆ’Ã‚Â©s de um processo estruturado para avaliar a lista certa de funcionalidades para o seu produto. SerÃƒÆ’Ã‚Â¡ guiado por especialistas em produto, nÃƒÆ’Ã‚Â£o por business developers ou account owners."
                data-en="Book a call with us and we'll guide you through a structured process to assess the right list of features for your product. You'll be driven through this process by product experts, not business developers or account owners."
-               data-es="Reserve una llamada con nosotros y lo guiaremos a travÃƒÂ©s de un proceso estructurado para evaluar la lista correcta de caracterÃƒÂ­sticas para su producto. SerÃƒÂ¡ guiado por expertos en producto, no por business developers o account owners.">
+               data-es="Reserve una llamada con nosotros y lo guiaremos a travÃƒÆ’Ã‚Â©s de un proceso estructurado para evaluar la lista correcta de caracterÃƒÆ’Ã‚Â­sticas para su producto. SerÃƒÆ’Ã‚Â¡ guiado por expertos en producto, no por business developers o account owners.">
               Book a call with us and we'll guide you through a structured process to assess the right list of features for your product. You'll be driven through this process by product experts, not business developers or account owners.
             </p>
 
             <div class="cta-actions">
               <a class="btn btn--primary" href="book-a-call.html" data-pt="AGENDAR CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR LLAMADA">BOOK A CALL</a>
-              <a class="btn btn--outline" href="index.html#what-we-do" data-pt="VER SERVIÃƒâ€¡OS" data-en="SEE SERVICES" data-es="VER SERVICIOS">SEE SERVICES</a>
+              <a class="btn btn--outline" href="index.html#what-we-do" data-pt="VER SERVIÃƒÆ’Ã¢â‚¬Â¡OS" data-en="SEE SERVICES" data-es="VER SERVICIOS">SEE SERVICES</a>
             </div>
           </div>
         </div>
@@ -1939,55 +1954,55 @@
             <div class="container">
                 <div class="footer-top">
                     <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituÃƒÂ­da por texto COBRAIT -->
+                        <!-- LOGO REMOVIDA - substituÃƒÆ’Ã‚Â­da por texto COBRAIT -->
                         <h3 class="footer-brand-title">Cobrait</h3>
                         <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento Ã¢â‚¬â€ do scope ao lanÃƒÂ§amento." data-en="We build digital products focused on speed, quality and growth Ã¢â‚¬â€ from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento Ã¢â‚¬â€ del alcance al lanzamiento." data-fr="Nous crÃƒÂ©ons des produits numÃƒÂ©riques axÃƒÂ©s sur la vitesse, la qualitÃƒÂ© et la croissance Ã¢â‚¬â€ du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, QualitÃƒÂ¤t und Wachstum ausgerichtet sind Ã¢â‚¬â€ vom Umfang bis zum Start." data-ru="ÃÅ“Ã‘â€¹ Ã‘ÂÃÂ¾ÃÂ·ÃÂ´ÃÂ°ÃÂµÃÂ¼ Ã‘â€ ÃÂ¸Ã‘â€žÃ‘â‚¬ÃÂ¾ÃÂ²Ã‘â€¹ÃÂµ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃ‘â€¹, ÃÂ¾Ã‘â‚¬ÃÂ¸ÃÂµÃÂ½Ã‘â€šÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ½Ã‘â€¹ÃÂµ ÃÂ½ÃÂ° Ã‘ÂÃÂºÃÂ¾Ã‘â‚¬ÃÂ¾Ã‘ÂÃ‘â€šÃ‘Å’, ÃÂºÃÂ°Ã‘â€¡ÃÂµÃ‘ÂÃ‘â€šÃÂ²ÃÂ¾ ÃÂ¸ Ã‘â‚¬ÃÂ¾Ã‘ÂÃ‘â€š Ã¢â‚¬â€ ÃÂ¾Ã‘â€š ÃÂ¾ÃÂ¿Ã‘â‚¬ÃÂµÃÂ´ÃÂµÃÂ»ÃÂµÃÂ½ÃÂ¸Ã‘Â ÃÂ¾ÃÂ±Ã‘Å ÃÂµÃÂ¼ÃÂ° ÃÂ´ÃÂ¾ ÃÂ·ÃÂ°ÃÂ¿Ã‘Æ’Ã‘ÂÃÂºÃÂ°." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei Ã¢â‚¬â€ van scope tot lancering." data-ja="Ã¦Ë†â€˜Ã£â‚¬â€¦Ã£ÂÂ¯Ã£â€šÂ¹Ã£Æ’â€Ã£Æ’Â¼Ã£Æ’â€°Ã£â‚¬ÂÃ¥â€œÂÃ¨Â³ÂªÃ£â‚¬ÂÃ¦Ë†ÂÃ©â€¢Â·Ã£ÂÂ«Ã©â€¡ÂÃ§â€šÂ¹Ã£â€šâ€™Ã§Â½Â®Ã£Ââ€žÃ£ÂÅ¸Ã£Æ’â€¡Ã£â€šÂ¸Ã£â€šÂ¿Ã£Æ’Â«Ã¨Â£Â½Ã¥â€œÂÃ£â€šâ€™Ã¤Â½Å“Ã¦Ë†ÂÃ£Ââ€”Ã£ÂÂ¾Ã£Ââ„¢Ã¢â‚¬â€Ã£â€šÂ¹Ã£â€šÂ³Ã£Æ’Â¼Ã£Æ’â€”Ã£Ââ€¹Ã£â€šâ€°Ã£Æ’Â­Ã£Æ’Â¼Ã£Æ’Â³Ã£Æ’ÂÃ£ÂÂ¾Ã£ÂÂ§Ã£â‚¬â€š" data-zh="Ã¦Ë†â€˜Ã¤Â»Â¬Ã¥Ë†â€ºÃ¥Â»ÂºÃ¦â€¢Â°Ã¥Â­â€”Ã¤ÂºÂ§Ã¥â€œÂÃ¯Â¼Å’Ã¤Â¸â€œÃ¦Â³Â¨Ã¤ÂºÅ½Ã©â‚¬Å¸Ã¥ÂºÂ¦Ã£â‚¬ÂÃ¨Â´Â¨Ã©â€¡ÂÃ¥â€™Å’Ã¥Â¢Å¾Ã©â€¢Â¿Ã¢â‚¬â€ Ã¤Â»Å½Ã¨Å’Æ’Ã¥â€ºÂ´Ã¥Ë†Â°Ã¥Ââ€˜Ã¥Â¸Æ’Ã£â‚¬â€š">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento Ã¢â‚¬â€ do scope ao lanÃƒÂ§amento.
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â do scope ao lanÃƒÆ’Ã‚Â§amento." data-en="We build digital products focused on speed, quality and growth ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â del alcance al lanzamiento." data-fr="Nous crÃƒÆ’Ã‚Â©ons des produits numÃƒÆ’Ã‚Â©riques axÃƒÆ’Ã‚Â©s sur la vitesse, la qualitÃƒÆ’Ã‚Â© et la croissance ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, QualitÃƒÆ’Ã‚Â¤t und Wachstum ausgerichtet sind ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â vom Umfang bis zum Start." data-ru="ÃƒÂÃ…â€œÃƒâ€˜Ã¢â‚¬Â¹ Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â·ÃƒÂÃ‚Â´ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼ Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â´Ãƒâ€˜Ã†â€™ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â‚¬Â¹, ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¸ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â° Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™, ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â¸ Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¿Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã…Â ÃƒÂÃ‚ÂµÃƒÂÃ‚Â¼ÃƒÂÃ‚Â° ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¿Ãƒâ€˜Ã†â€™Ãƒâ€˜Ã‚ÂÃƒÂÃ‚ÂºÃƒÂÃ‚Â°." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â van scope tot lancering." data-ja="ÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Â¦ÃƒÂ£Ã‚ÂÃ‚Â¯ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã¢â‚¬ÂÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Â°ÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¨Ã‚Â³Ã‚ÂªÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ¦Ã‹â€ Ã‚ÂÃƒÂ©Ã¢â‚¬Â¢Ã‚Â·ÃƒÂ£Ã‚ÂÃ‚Â«ÃƒÂ©Ã¢â‚¬Â¡Ã‚ÂÃƒÂ§Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ§Ã‚Â½Ã‚Â®ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã†â€™Ã¢â‚¬Â¡ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¸ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â«ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚Â½Ã…â€œÃƒÂ¦Ã‹â€ Ã‚ÂÃƒÂ£Ã‚ÂÃ¢â‚¬â€ÃƒÂ£Ã‚ÂÃ‚Â¾ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬ÂÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬â€ÃƒÂ£Ã‚ÂÃ¢â‚¬Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â°ÃƒÂ£Ã†â€™Ã‚Â­ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã‚ÂÃ‚Â¾ÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡" data-zh="ÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ¤Ã‚Â»Ã‚Â¬ÃƒÂ¥Ã‹â€ Ã¢â‚¬ÂºÃƒÂ¥Ã‚Â»Ã‚ÂºÃƒÂ¦Ã¢â‚¬Â¢Ã‚Â°ÃƒÂ¥Ã‚Â­Ã¢â‚¬â€ÃƒÂ¤Ã‚ÂºÃ‚Â§ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¯Ã‚Â¼Ã…â€™ÃƒÂ¤Ã‚Â¸Ã¢â‚¬Å“ÃƒÂ¦Ã‚Â³Ã‚Â¨ÃƒÂ¤Ã‚ÂºÃ…Â½ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¥Ã‚ÂºÃ‚Â¦ÃƒÂ£Ã¢â€šÂ¬Ã‚ÂÃƒÂ¨Ã‚Â´Ã‚Â¨ÃƒÂ©Ã¢â‚¬Â¡Ã‚ÂÃƒÂ¥Ã¢â‚¬â„¢Ã…â€™ÃƒÂ¥Ã‚Â¢Ã…Â¾ÃƒÂ©Ã¢â‚¬Â¢Ã‚Â¿ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ÃƒÂ¤Ã‚Â»Ã…Â½ÃƒÂ¨Ã…â€™Ã†â€™ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â´ÃƒÂ¥Ã‹â€ Ã‚Â°ÃƒÂ¥Ã‚ÂÃ¢â‚¬ËœÃƒÂ¥Ã‚Â¸Ã†â€™ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">
+                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â do scope ao lanÃƒÆ’Ã‚Â§amento.
                         </p>
                         <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="ÃÅ¡ÃÂ½ÃÂ¸ÃÂ³ÃÂ° ÃÂ²Ã‘â€¹ÃÂ·ÃÂ¾ÃÂ²" data-nl="Een gesprek boeken" data-ja="Ã©â€ºÂ»Ã¨Â©Â±Ã¤ÂºË†Ã§Â´â€ž" data-zh="Ã©Â¢â€žÃ¥Â®Å¡Ã§â€ÂµÃ¨Â¯Â">
+                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â³ÃƒÂÃ‚Â° ÃƒÂÃ‚Â²Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â·ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²" data-nl="Een gesprek boeken" data-ja="ÃƒÂ©Ã¢â‚¬ÂºÃ‚Â»ÃƒÂ¨Ã‚Â©Ã‚Â±ÃƒÂ¤Ã‚ÂºÃ‹â€ ÃƒÂ§Ã‚Â´Ã¢â‚¬Å¾" data-zh="ÃƒÂ©Ã‚Â¢Ã¢â‚¬Å¾ÃƒÂ¥Ã‚Â®Ã…Â¡ÃƒÂ§Ã¢â‚¬ÂÃ‚ÂµÃƒÂ¨Ã‚Â¯Ã‚Â">
                                 Agendar uma chamada
                             </a>
-                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviÃƒÂ§os" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="ÃÅ¸ÃÂ¾Ã‘ÂÃÂ¼ÃÂ¾Ã‘â€šÃ‘â‚¬ÃÂµÃ‘â€šÃ‘Å’ Ã‘Æ’Ã‘ÂÃÂ»Ã‘Æ’ÃÂ³ÃÂ¸" data-nl="Services zien" data-ja="Ã£â€šÂµÃ£Æ’Â¼Ã£Æ’â€œÃ£â€šÂ¹Ã£â€šâ€™Ã¨Â¡Â¨Ã§Â¤Âº" data-zh="Ã¦Å¸Â¥Ã§Å“â€¹Ã¦Å“ÂÃ¥Å Â¡">
-                                Ver serviÃƒÂ§os
+                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviÃƒÆ’Ã‚Â§os" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="ÃƒÂÃ…Â¸ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ Ãƒâ€˜Ã†â€™Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸" data-nl="Services zien" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂµÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¨Ã‚Â¡Ã‚Â¨ÃƒÂ§Ã‚Â¤Ã‚Âº" data-zh="ÃƒÂ¦Ã…Â¸Ã‚Â¥ÃƒÂ§Ã…â€œÃ¢â‚¬Â¹ÃƒÂ¦Ã…â€œÃ‚ÂÃƒÂ¥Ã…Â Ã‚Â¡">
+                                Ver serviÃƒÆ’Ã‚Â§os
                             </a>
                         </div>
                         <div class="footer-badges" aria-label="Highlights">
                             <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rÃƒÂ¡pida" data-en="Fast delivery" data-es="Entrega rÃƒÂ¡pida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="Ãâ€˜Ã‘â€¹Ã‘ÂÃ‘â€šÃ‘â‚¬ÃÂ°Ã‘Â ÃÂ´ÃÂ¾Ã‘ÂÃ‘â€šÃÂ°ÃÂ²ÃÂºÃÂ°" data-nl="Snelle levering" data-ja="Ã¨Â¿â€¦Ã©â‚¬Å¸Ã£ÂÂªÃ©â€¦ÂÃ©â‚¬Â" data-zh="Ã¥Â¿Â«Ã©â‚¬Å¸Ã¤ÂºÂ¤Ã¤Â»Ëœ">Entrega rÃƒÂ¡pida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="QualitÃƒÂ©" data-de="QualitÃƒÂ¤t" data-ru="ÃÅ¡ÃÂ°Ã‘â€¡ÃÂµÃ‘ÂÃ‘â€šÃÂ²ÃÂ¾" data-nl="Kwaliteit" data-ja="Ã¥â€œÂÃ¨Â³Âª" data-zh="Ã¨Â´Â¨Ã©â€¡Â">Qualidade</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rÃƒÆ’Ã‚Â¡pida" data-en="Fast delivery" data-es="Entrega rÃƒÆ’Ã‚Â¡pida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="ÃƒÂÃ¢â‚¬ËœÃƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â ÃƒÂÃ‚Â´ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°" data-nl="Snelle levering" data-ja="ÃƒÂ¨Ã‚Â¿Ã¢â‚¬Â¦ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ£Ã‚ÂÃ‚ÂªÃƒÂ©Ã¢â‚¬Â¦Ã‚ÂÃƒÂ©Ã¢â€šÂ¬Ã‚Â" data-zh="ÃƒÂ¥Ã‚Â¿Ã‚Â«ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¤Ã‚ÂºÃ‚Â¤ÃƒÂ¤Ã‚Â»Ã‹Å“">Entrega rÃƒÆ’Ã‚Â¡pida</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="QualitÃƒÆ’Ã‚Â©" data-de="QualitÃƒÆ’Ã‚Â¤t" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂµÃƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾" data-nl="Kwaliteit" data-ja="ÃƒÂ¥Ã¢â‚¬Å“Ã‚ÂÃƒÂ¨Ã‚Â³Ã‚Âª" data-zh="ÃƒÂ¨Ã‚Â´Ã‚Â¨ÃƒÂ©Ã¢â‚¬Â¡Ã‚Â">Qualidade</span></span>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4 data-pt="ServiÃƒÂ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃÂ£Ã‘ÂÃÂ»Ã‘Æ’ÃÂ³ÃÂ¸" data-nl="Diensten" data-ja="Ã£â€šÂµÃ£Æ’Â¼Ã£Æ’â€œÃ£â€šÂ¹" data-zh="Ã¦Å“ÂÃ¥Å Â¡">ServiÃƒÂ§os</h4>
+                        <h4 data-pt="ServiÃƒÆ’Ã‚Â§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃƒÂÃ‚Â£Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸" data-nl="Diensten" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂµÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹" data-zh="ÃƒÂ¦Ã…â€œÃ‚ÂÃƒÂ¥Ã…Â Ã‚Â¡">ServiÃƒÆ’Ã‚Â§os</h4>
                         <ul class="footer-links">
                             <li><a href="servicos/product-scope.html">Product Scope</a></li>
                             <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
                             <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-                            <li><a href="servicos/custom-software.html" data-pt="Software ÃƒÂ  Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisÃƒÂ©" data-de="Benutzerdefinierte Software" data-ru="Ãâ€”ÃÂ°ÃÂºÃÂ°ÃÂ·ÃÂ½ÃÂ¾ÃÂµ ÃÅ¸ÃÅ¾" data-nl="Aangepaste software" data-ja="Ã£â€šÂ«Ã£â€šÂ¹Ã£â€šÂ¿Ã£Æ’Â Ã£â€šÂ½Ã£Æ’â€¢Ã£Æ’Ë†Ã£â€šÂ¦Ã£â€šÂ§Ã£â€šÂ¢" data-zh="Ã¥Â®Å¡Ã¥Ë†Â¶Ã¨Â½Â¯Ã¤Â»Â¶">Software ÃƒÂ  Medida</a></li>
-                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Ãƒâ€°quipes dÃƒÂ©diÃƒÂ©es" data-de="Dedizierte Teams" data-ru="Ãâ€™Ã‘â€¹ÃÂ´ÃÂµÃÂ»ÃÂµÃÂ½ÃÂ½Ã‘â€¹ÃÂµ ÃÂºÃÂ¾ÃÂ¼ÃÂ°ÃÂ½ÃÂ´Ã‘â€¹" data-nl="Speciale teams" data-ja="Ã¥Â°â€šÃ¤Â»Â»Ã£Æ’ÂÃ£Æ’Â¼Ã£Æ’Â " data-zh="Ã¤Â¸â€œÃ¤Â¸Å¡Ã¥â€ºÂ¢Ã©ËœÅ¸">Equipas Dedicadas</a></li>
+                            <li><a href="servicos/custom-software.html" data-pt="Software ÃƒÆ’Ã‚Â  Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisÃƒÆ’Ã‚Â©" data-de="Benutzerdefinierte Software" data-ru="ÃƒÂÃ¢â‚¬â€ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒÂÃ‚Â°ÃƒÂÃ‚Â·ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âµ ÃƒÂÃ…Â¸ÃƒÂÃ…Â¾" data-nl="Aangepaste software" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â«ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â½ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¦ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â§ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¢" data-zh="ÃƒÂ¥Ã‚Â®Ã…Â¡ÃƒÂ¥Ã‹â€ Ã‚Â¶ÃƒÂ¨Ã‚Â½Ã‚Â¯ÃƒÂ¤Ã‚Â»Ã‚Â¶">Software ÃƒÆ’Ã‚Â  Medida</a></li>
+                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="ÃƒÆ’Ã¢â‚¬Â°quipes dÃƒÆ’Ã‚Â©diÃƒÆ’Ã‚Â©es" data-de="Dedizierte Teams" data-ru="ÃƒÂÃ¢â‚¬â„¢Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â»ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â¹ÃƒÂÃ‚Âµ ÃƒÂÃ‚ÂºÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â´Ãƒâ€˜Ã¢â‚¬Â¹" data-nl="Speciale teams" data-ja="ÃƒÂ¥Ã‚Â°Ã¢â‚¬Å¡ÃƒÂ¤Ã‚Â»Ã‚Â»ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â " data-zh="ÃƒÂ¤Ã‚Â¸Ã¢â‚¬Å“ÃƒÂ¤Ã‚Â¸Ã…Â¡ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â¢ÃƒÂ©Ã‹Å“Ã…Â¸">Equipas Dedicadas</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="ÃÅ¡ÃÂ¾ÃÂ¼ÃÂ¿ÃÂ°ÃÂ½ÃÂ¸Ã‘Â" data-nl="Bedrijf" data-ja="Ã¤Â¼Å¡Ã§Â¤Â¾" data-zh="Ã¥â€¦Â¬Ã¥ÂÂ¸">Empresa</h4>
+                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â¼ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â" data-nl="Bedrijf" data-ja="ÃƒÂ¤Ã‚Â¼Ã…Â¡ÃƒÂ§Ã‚Â¤Ã‚Â¾" data-zh="ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¬ÃƒÂ¥Ã‚ÂÃ‚Â¸">Empresa</h4>
                         <ul class="footer-links">
-                            <li><a href="about-us.html" data-pt="Sobre nÃƒÂ³s" data-en="About us" data-es="Sobre nosotros" data-fr="Ãƒâ‚¬ propos de nous" data-de="ÃƒÅ“ber uns" data-ru="ÃÅ¾ ÃÂ½ÃÂ°Ã‘Â" data-nl="Over ons" data-ja="Ã§Â§ÂÃ£ÂÅ¸Ã£ÂÂ¡Ã£ÂÂ«Ã£ÂÂ¤Ã£Ââ€žÃ£ÂÂ¦" data-zh="Ã¥â€¦Â³Ã¤ÂºÅ½Ã¦Ë†â€˜Ã¤Â»Â¬">Sobre nÃƒÂ³s</a></li>
+                            <li><a href="about-us.html" data-pt="Sobre nÃƒÆ’Ã‚Â³s" data-en="About us" data-es="Sobre nosotros" data-fr="ÃƒÆ’Ã¢â€šÂ¬ propos de nous" data-de="ÃƒÆ’Ã…â€œber uns" data-ru="ÃƒÂÃ…Â¾ ÃƒÂÃ‚Â½ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚Â" data-nl="Over ons" data-ja="ÃƒÂ§Ã‚Â§Ã‚ÂÃƒÂ£Ã‚ÂÃ…Â¸ÃƒÂ£Ã‚ÂÃ‚Â¡ÃƒÂ£Ã‚ÂÃ‚Â«ÃƒÂ£Ã‚ÂÃ‚Â¤ÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ‚Â¦" data-zh="ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â³ÃƒÂ¤Ã‚ÂºÃ…Â½ÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ¤Ã‚Â»Ã‚Â¬">Sobre nÃƒÆ’Ã‚Â³s</a></li>
                             
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃƒÂ¨res" data-de="Karrieren" data-ru="ÃÅ¡ÃÂ°Ã‘â‚¬Ã‘Å’ÃÂµÃ‘â‚¬ÃÂ°" data-nl="CarriÃƒÂ¨re" data-ja="Ã£â€šÂ­Ã£Æ’Â£Ã£Æ’ÂªÃ£â€šÂ¢" data-zh="Ã¨ÂÅ’Ã¤Â¸Å¡">Carreiras</a></li>
+                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃƒÆ’Ã‚Â¨res" data-de="Karrieren" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â€šÂ¬Ãƒâ€˜Ã…â€™ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â°" data-nl="CarriÃƒÆ’Ã‚Â¨re" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â­ÃƒÂ£Ã†â€™Ã‚Â£ÃƒÂ£Ã†â€™Ã‚ÂªÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¢" data-zh="ÃƒÂ¨Ã‚ÂÃ…â€™ÃƒÂ¤Ã‚Â¸Ã…Â¡">Carreiras</a></li>
                             <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
                         </ul>
                     </div>
                     <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="ÃÅ¡ÃÂ¾ÃÂ½Ã‘â€šÃÂ°ÃÂºÃ‘â€šÃ‘â€¹" data-nl="Contact" data-ja="Ã£ÂÅ Ã¥â€¢ÂÃ£Ââ€žÃ¥ÂË†Ã£â€šÂÃ£Ââ€º" data-zh="Ã¨Ââ€Ã§Â³Â»Ã¦â€“Â¹Ã¥Â¼Â">Contacto</h4>
+                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â°ÃƒÂÃ‚ÂºÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â‚¬Â¹" data-nl="Contact" data-ja="ÃƒÂ£Ã‚ÂÃ…Â ÃƒÂ¥Ã¢â‚¬Â¢Ã‚ÂÃƒÂ£Ã‚ÂÃ¢â‚¬Å¾ÃƒÂ¥Ã‚ÂÃ‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂÃƒÂ£Ã‚ÂÃ¢â‚¬Âº" data-zh="ÃƒÂ¨Ã‚ÂÃ¢â‚¬ÂÃƒÂ§Ã‚Â³Ã‚Â»ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â¹ÃƒÂ¥Ã‚Â¼Ã‚Â">Contacto</h4>
                         <div class="footer-meta">
                             <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="Ã£Æ’Â¡Ã£Æ’Â¼Ã£Æ’Â«:" data-zh="Ã§â€ÂµÃ¥Â­ÂÃ©â€šÂ®Ã¤Â»Â¶:">Email:</span>
+                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="ÃƒÂ£Ã†â€™Ã‚Â¡ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã‚Â«:" data-zh="ÃƒÂ§Ã¢â‚¬ÂÃ‚ÂµÃƒÂ¥Ã‚Â­Ã‚ÂÃƒÂ©Ã¢â‚¬Å¡Ã‚Â®ÃƒÂ¤Ã‚Â»Ã‚Â¶:">Email:</span>
                                 <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
                             </div>
                             <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="RÃƒÂ©ponse:" data-de="Antwort:" data-ru="ÃÅ¾Ã‘â€šÃÂ²ÃÂµÃ‘â€š:" data-nl="Antwoord:" data-ja="Ã¨Â¿â€Ã¤Â¿Â¡:" data-zh="Ã¥â€ºÅ¾Ã¥Â¤Â:">Resposta:</span>
-                                <span data-pt="normalmente em 24Ã¢â‚¬â€œ48h" data-en="usually within 24Ã¢â‚¬â€œ48h" data-es="normalmente en 24Ã¢â‚¬â€œ48h" data-fr="gÃƒÂ©nÃƒÂ©ralement dans les 24Ã¢â‚¬â€œ48 heures" data-de="normalerweise innerhalb von 24Ã¢â‚¬â€œ48 Stunden" data-ru="ÃÂ¾ÃÂ±Ã‘â€¹Ã‘â€¡ÃÂ½ÃÂ¾ ÃÂ² Ã‘â€šÃÂµÃ‘â€¡ÃÂµÃÂ½ÃÂ¸ÃÂµ 24Ã¢â‚¬â€œ48 Ã‘â€¡ÃÂ°Ã‘ÂÃÂ¾ÃÂ²" data-nl="meestal binnen 24Ã¢â‚¬â€œ48 uur" data-ja="Ã©â‚¬Å¡Ã¥Â¸Â¸24Ã£â‚¬Å“48Ã¦â„¢â€šÃ©â€“â€œÃ¤Â»Â¥Ã¥â€ â€¦" data-zh="Ã©â‚¬Å¡Ã¥Â¸Â¸Ã¥Å“Â¨24-48Ã¥Â°ÂÃ¦â€”Â¶Ã¥â€ â€¦">normalmente em 24Ã¢â‚¬â€œ48h</span>
+                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="RÃƒÆ’Ã‚Â©ponse:" data-de="Antwort:" data-ru="ÃƒÂÃ…Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â²ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Å¡:" data-nl="Antwoord:" data-ja="ÃƒÂ¨Ã‚Â¿Ã¢â‚¬ÂÃƒÂ¤Ã‚Â¿Ã‚Â¡:" data-zh="ÃƒÂ¥Ã¢â‚¬ÂºÃ…Â¾ÃƒÂ¥Ã‚Â¤Ã‚Â:">Resposta:</span>
+                                <span data-pt="normalmente em 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48h" data-en="usually within 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48h" data-es="normalmente en 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48h" data-fr="gÃƒÆ’Ã‚Â©nÃƒÆ’Ã‚Â©ralement dans les 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48 heures" data-de="normalerweise innerhalb von 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48 Stunden" data-ru="ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ ÃƒÂÃ‚Â² Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚ÂµÃƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Âµ 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48 Ãƒâ€˜Ã¢â‚¬Â¡ÃƒÂÃ‚Â°Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²" data-nl="meestal binnen 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48 uur" data-ja="ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¥Ã‚Â¸Ã‚Â¸24ÃƒÂ£Ã¢â€šÂ¬Ã…â€œ48ÃƒÂ¦Ã¢â€žÂ¢Ã¢â‚¬Å¡ÃƒÂ©Ã¢â‚¬â€œÃ¢â‚¬Å“ÃƒÂ¤Ã‚Â»Ã‚Â¥ÃƒÂ¥Ã¢â‚¬Â Ã¢â‚¬Â¦" data-zh="ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¥Ã‚Â¸Ã‚Â¸ÃƒÂ¥Ã…â€œÃ‚Â¨24-48ÃƒÂ¥Ã‚Â°Ã‚ÂÃƒÂ¦Ã¢â‚¬â€Ã‚Â¶ÃƒÂ¥Ã¢â‚¬Â Ã¢â‚¬Â¦">normalmente em 24ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“48h</span>
                             </div>
                             <div>
                                 <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
@@ -1999,35 +2014,35 @@
                                 </a>
                             </div>
                             <div>
-                                <span data-pt="Preferes rÃƒÂ¡pido?" data-en="Want it fast?" data-es="Ã‚Â¿Lo quieres rÃƒÂ¡pido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="ÃÂ¥ÃÂ¾Ã‘â€šÃÂ¸Ã‘â€šÃÂµ ÃÂ±Ã‘â€¹Ã‘ÂÃ‘â€šÃ‘â‚¬ÃÂ¾?" data-nl="Wil je het snel?" data-ja="Ã¦â€”Â©Ã£ÂÂÃ£ÂÅ Ã¥Â¼ÂµÃ£â€šÅ Ã£ÂÂ§Ã£Ââ„¢Ã£Ââ€¹?" data-zh="Ã¦Æ’Â³Ã¨Â¦ÂÃ¥Â¿Â«Ã©â‚¬Å¸Ã¯Â¼Å¸">Preferes rÃƒÂ¡pido?</span>
-                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="RÃƒÂ©servez un appel." data-de="Buchen Sie einen Anruf." data-ru="Ãâ€”ÃÂ°ÃÂ¿ÃÂ»ÃÂ°ÃÂ½ÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°Ã‘â€šÃ‘Å’ ÃÂ·ÃÂ²ÃÂ¾ÃÂ½ÃÂ¾ÃÂº." data-nl="Boek een gesprek." data-ja="Ã©â‚¬Å¡Ã¨Â©Â±Ã£â€šâ€™Ã¤ÂºË†Ã§Â´â€žÃ£Ââ„¢Ã£â€šâ€¹Ã£â‚¬â€š" data-zh="Ã©Â¢â€žÃ§ÂºÂ¦Ã©â‚¬Å¡Ã¨Â¯ÂÃ£â‚¬â€š">Marca uma call.</a>
+                                <span data-pt="Preferes rÃƒÆ’Ã‚Â¡pido?" data-en="Want it fast?" data-es="Ãƒâ€šÃ‚Â¿Lo quieres rÃƒÆ’Ã‚Â¡pido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="ÃƒÂÃ‚Â¥ÃƒÂÃ‚Â¾Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â‚¬Å¡ÃƒÂÃ‚Âµ ÃƒÂÃ‚Â±Ãƒâ€˜Ã¢â‚¬Â¹Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾?" data-nl="Wil je het snel?" data-ja="ÃƒÂ¦Ã¢â‚¬â€Ã‚Â©ÃƒÂ£Ã‚ÂÃ‚ÂÃƒÂ£Ã‚ÂÃ…Â ÃƒÂ¥Ã‚Â¼Ã‚ÂµÃƒÂ£Ã¢â‚¬Å¡Ã…Â ÃƒÂ£Ã‚ÂÃ‚Â§ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã‚ÂÃ¢â‚¬Â¹?" data-zh="ÃƒÂ¦Ã†â€™Ã‚Â³ÃƒÂ¨Ã‚Â¦Ã‚ÂÃƒÂ¥Ã‚Â¿Ã‚Â«ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¯Ã‚Â¼Ã…Â¸">Preferes rÃƒÆ’Ã‚Â¡pido?</span>
+                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="RÃƒÆ’Ã‚Â©servez un appel." data-de="Buchen Sie einen Anruf." data-ru="ÃƒÂÃ¢â‚¬â€ÃƒÂÃ‚Â°ÃƒÂÃ‚Â¿ÃƒÂÃ‚Â»ÃƒÂÃ‚Â°ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸Ãƒâ€˜Ã¢â€šÂ¬ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â°Ãƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™ ÃƒÂÃ‚Â·ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾ÃƒÂÃ‚Âº." data-nl="Boek een gesprek." data-ja="ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¨Ã‚Â©Ã‚Â±ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚ÂºÃ‹â€ ÃƒÂ§Ã‚Â´Ã¢â‚¬Å¾ÃƒÂ£Ã‚ÂÃ¢â€žÂ¢ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡" data-zh="ÃƒÂ©Ã‚Â¢Ã¢â‚¬Å¾ÃƒÂ§Ã‚ÂºÃ‚Â¦ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¨Ã‚Â¯Ã‚ÂÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡">Marca uma call.</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <div>
-                        Ã‚Â© <span id="year"></span> Cobrait Ã¢â‚¬â€ Software Factory
+                        Ãƒâ€šÃ‚Â© <span id="year"></span> Cobrait ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Software Factory
                     </div>
                     <div class="footer-mini-links">
-                        <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="ConfidentialitÃƒÂ©" data-de="Datenschutz" data-ru="ÃÅ¡ÃÂ¾ÃÂ½Ã‘â€žÃÂ¸ÃÂ´ÃÂµÃÂ½Ã‘â€ ÃÂ¸ÃÂ°ÃÂ»Ã‘Å’ÃÂ½ÃÂ¾Ã‘ÂÃ‘â€šÃ‘Å’" data-nl="Privacy" data-ja="Ã£Æ’â€”Ã£Æ’Â©Ã£â€šÂ¤Ã£Æ’ÂÃ£â€šÂ·Ã£Æ’Â¼" data-zh="Ã©Å¡ÂÃ§Â§Â">Privacidade</a>
-                        <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="TÃƒÂ©rminos" data-fr="Conditions" data-de="Bedingungen" data-ru="ÃÂ£Ã‘ÂÃÂ»ÃÂ¾ÃÂ²ÃÂ¸Ã‘Â" data-nl="Voorwaarden" data-ja="Ã¥Ë†Â©Ã§â€Â¨Ã¨Â¦ÂÃ§Â´â€ž" data-zh="Ã¦ÂÂ¡Ã¦Â¬Â¾">Termos</a>
+                        <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="ConfidentialitÃƒÆ’Ã‚Â©" data-de="Datenschutz" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Å¾ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â´ÃƒÂÃ‚ÂµÃƒÂÃ‚Â½Ãƒâ€˜Ã¢â‚¬Â ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»Ãƒâ€˜Ã…â€™ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¾Ãƒâ€˜Ã‚ÂÃƒâ€˜Ã¢â‚¬Å¡Ãƒâ€˜Ã…â€™" data-nl="Privacy" data-ja="ÃƒÂ£Ã†â€™Ã¢â‚¬â€ÃƒÂ£Ã†â€™Ã‚Â©ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¤ÃƒÂ£Ã†â€™Ã‚ÂÃƒÂ£Ã¢â‚¬Å¡Ã‚Â·ÃƒÂ£Ã†â€™Ã‚Â¼" data-zh="ÃƒÂ©Ã…Â¡Ã‚ÂÃƒÂ§Ã‚Â§Ã‚Â">Privacidade</a>
+                        <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="TÃƒÆ’Ã‚Â©rminos" data-fr="Conditions" data-de="Bedingungen" data-ru="ÃƒÂÃ‚Â£Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â²ÃƒÂÃ‚Â¸Ãƒâ€˜Ã‚Â" data-nl="Voorwaarden" data-ja="ÃƒÂ¥Ã‹â€ Ã‚Â©ÃƒÂ§Ã¢â‚¬ÂÃ‚Â¨ÃƒÂ¨Ã‚Â¦Ã‚ÂÃƒÂ§Ã‚Â´Ã¢â‚¬Å¾" data-zh="ÃƒÂ¦Ã‚ÂÃ‚Â¡ÃƒÂ¦Ã‚Â¬Ã‚Â¾">Termos</a>
                         <a href="cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
-                        <a href="#what-we-do" data-pt="ServiÃƒÂ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃÂ£Ã‘ÂÃÂ»Ã‘Æ’ÃÂ³ÃÂ¸" data-nl="Services" data-ja="Ã£â€šÂµÃ£Æ’Â¼Ã£Æ’â€œÃ£â€šÂ¹" data-zh="Ã¦Å“ÂÃ¥Å Â¡">ServiÃƒÂ§os</a>
-                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de ReclamaÃƒÂ§ÃƒÂµes" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de rÃƒÂ©clamations" data-de="Beschwerdebuch" data-ru="ÃÅ¡ÃÂ½ÃÂ¸ÃÂ³ÃÂ° ÃÂ¶ÃÂ°ÃÂ»ÃÂ¾ÃÂ±" data-nl="Klachtenboek" data-ja="Ã¨â€¹Â¦Ã¦Æ’â€¦Ã¥Ââ€”Ã¤Â»ËœÃ¥Â¸Â³" data-zh="Ã¦Å â€¢Ã¨Â¯â€°Ã§Â°Â¿">Livro de ReclamaÃƒÂ§ÃƒÂµes</a>
+                        <a href="#what-we-do" data-pt="ServiÃƒÆ’Ã‚Â§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="ÃƒÂÃ‚Â£Ãƒâ€˜Ã‚ÂÃƒÂÃ‚Â»Ãƒâ€˜Ã†â€™ÃƒÂÃ‚Â³ÃƒÂÃ‚Â¸" data-nl="Services" data-ja="ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂµÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹" data-zh="ÃƒÂ¦Ã…â€œÃ‚ÂÃƒÂ¥Ã…Â Ã‚Â¡">ServiÃƒÆ’Ã‚Â§os</a>
+                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de ReclamaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de rÃƒÆ’Ã‚Â©clamations" data-de="Beschwerdebuch" data-ru="ÃƒÂÃ…Â¡ÃƒÂÃ‚Â½ÃƒÂÃ‚Â¸ÃƒÂÃ‚Â³ÃƒÂÃ‚Â° ÃƒÂÃ‚Â¶ÃƒÂÃ‚Â°ÃƒÂÃ‚Â»ÃƒÂÃ‚Â¾ÃƒÂÃ‚Â±" data-nl="Klachtenboek" data-ja="ÃƒÂ¨Ã¢â‚¬Â¹Ã‚Â¦ÃƒÂ¦Ã†â€™Ã¢â‚¬Â¦ÃƒÂ¥Ã‚ÂÃ¢â‚¬â€ÃƒÂ¤Ã‚Â»Ã‹Å“ÃƒÂ¥Ã‚Â¸Ã‚Â³" data-zh="ÃƒÂ¦Ã…Â Ã¢â‚¬Â¢ÃƒÂ¨Ã‚Â¯Ã¢â‚¬Â°ÃƒÂ§Ã‚Â°Ã‚Â¿">Livro de ReclamaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes</a>
                     </div>
                 </div>
             </div>
         </footer>
 
   <!-- =========================
-       SCRIPT FINAL (IDÃƒÅ NTICO AO INDEX.HTML)
+       SCRIPT FINAL (IDÃƒÆ’Ã…Â NTICO AO INDEX.HTML)
        ========================= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
-      // ====== NormalizaÃƒÂ§ÃƒÂ£o de idioma (evita pt-PT quebrar) ======
+      // ====== NormalizaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de idioma (evita pt-PT quebrar) ======
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
@@ -2040,7 +2055,7 @@
         if (l.startsWith('nl')) return 'nl';
         if (l.startsWith('ja')) return 'ja';
         if (l.startsWith('zh')) return 'zh';
-        // Fallback para inglÃƒÂªs para outras lÃƒÂ­nguas
+        // Fallback para inglÃƒÆ’Ã‚Âªs para outras lÃƒÆ’Ã‚Â­nguas
         return 'en';
       }
 
@@ -2057,25 +2072,25 @@
         });
       });
 
-      // ====== SISTEMA DE LÃƒÂNGUAS COM DROPDOWN ======
+      // ====== SISTEMA DE LÃƒÆ’Ã‚ÂNGUAS COM DROPDOWN ======
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
       
-      // Mapeamento de bandeiras para cada lÃƒÂ­ngua
+      // Mapeamento de bandeiras para cada lÃƒÆ’Ã‚Â­ngua
       const flagMap = {
-        'pt': 'Ã°Å¸â€¡ÂµÃ°Å¸â€¡Â¹',
-        'en': 'Ã°Å¸â€¡Â¬Ã°Å¸â€¡Â§',
-        'es': 'Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¸',
-        'fr': 'Ã°Å¸â€¡Â«Ã°Å¸â€¡Â·',
-        'de': 'Ã°Å¸â€¡Â©Ã°Å¸â€¡Âª',
-        'ru': 'Ã°Å¸â€¡Â·Ã°Å¸â€¡Âº',
-        'nl': 'Ã°Å¸â€¡Â³Ã°Å¸â€¡Â±',
-        'ja': 'Ã°Å¸â€¡Â¯Ã°Å¸â€¡Âµ',
-        'zh': 'Ã°Å¸â€¡Â¨Ã°Å¸â€¡Â³'
+        'pt': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚ÂµÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¹',
+        'en': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¬ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â§',
+        'es': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚ÂªÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¸',
+        'fr': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â«ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â·',
+        'de': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â©ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âª',
+        'ru': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â·ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âº',
+        'nl': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â³ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â±',
+        'ja': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¯ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Âµ',
+        'zh': 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¨ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â³'
       };
       
-      // Mapeamento de cÃƒÂ³digos curtos
+      // Mapeamento de cÃƒÆ’Ã‚Â³digos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
@@ -2088,12 +2103,12 @@
         'zh': 'ZH'
       };
 
-      // Carregar lÃƒÂ­ngua salva ou usar portuguÃƒÂªs por padrÃƒÂ£o
+      // Carregar lÃƒÆ’Ã‚Â­ngua salva ou usar portuguÃƒÆ’Ã‚Âªs por padrÃƒÆ’Ã‚Â£o
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
       setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
 
-      // Event listeners para as opÃƒÂ§ÃƒÂµes de lÃƒÂ­ngua
+      // Event listeners para as opÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes de lÃƒÆ’Ã‚Â­ngua
       languageOptions.forEach(option => {
         option.addEventListener('click', function() {
           const lang = normalizeLang(this.getAttribute('data-lang'));
@@ -2104,11 +2119,11 @@
       });
 
       function setActiveLanguage(lang) {
-        // Atualizar o botÃƒÂ£o do dropdown
+        // Atualizar o botÃƒÆ’Ã‚Â£o do dropdown
         if (flagMap[lang]) {
           currentFlag.textContent = flagMap[lang];
         } else {
-          currentFlag.textContent = 'Ã°Å¸â€¡Â¬Ã°Å¸â€¡Â§'; // Fallback para bandeira UK
+          currentFlag.textContent = 'ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â¬ÃƒÂ°Ã…Â¸Ã¢â‚¬Â¡Ã‚Â§'; // Fallback para bandeira UK
         }
         
         if (codeMap[lang]) {
@@ -2117,7 +2132,7 @@
           currentLang.textContent = 'EN'; // Fallback para EN
         }
         
-        // Atualizar as opÃƒÂ§ÃƒÂµes ativas
+        // Atualizar as opÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes ativas
         languageOptions.forEach(option => {
           option.classList.remove('active');
           if (normalizeLang(option.getAttribute('data-lang')) === lang) {
@@ -2138,7 +2153,7 @@
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
-          // Se nÃƒÂ£o houver traduÃƒÂ§ÃƒÂ£o para esta lÃƒÂ­ngua, usar inglÃƒÂªs como fallback
+          // Se nÃƒÆ’Ã‚Â£o houver traduÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para esta lÃƒÆ’Ã‚Â­ngua, usar inglÃƒÆ’Ã‚Âªs como fallback
           if (text === null && lang !== 'en') {
             text = el.getAttribute('data-en');
           }
@@ -2160,7 +2175,7 @@
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
-          // Se nÃƒÂ£o houver traduÃƒÂ§ÃƒÂ£o para esta lÃƒÂ­ngua, usar inglÃƒÂªs como fallback
+          // Se nÃƒÆ’Ã‚Â£o houver traduÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para esta lÃƒÆ’Ã‚Â­ngua, usar inglÃƒÆ’Ã‚Âªs como fallback
           if (val === null && lang !== 'en') {
             val = el.getAttribute('data-en');
           }
@@ -2169,9 +2184,9 @@
         });
       }
 
-      // ====== FUNCIONALIDADE DA PÃƒÂGINA PRICING ======
+      // ====== FUNCIONALIDADE DA PÃƒÆ’Ã‚ÂGINA PRICING ======
       
-      // AcordeÃƒÂ£o
+      // AcordeÃƒÆ’Ã‚Â£o
       document.querySelectorAll('#pricingAccordion .acc-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const item = btn.closest('.acc-item');
@@ -2188,7 +2203,7 @@
       const select = document.getElementById('projectType');
       const cards = Array.from(document.querySelectorAll('#examplesGrid .pricing-card'));
 
-      // Atualizar opÃƒÂ§ÃƒÂµes do select ao mudar idioma
+      // Atualizar opÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes do select ao mudar idioma
       function updateSelectLanguage(lang) {
         const options = select.querySelectorAll('option');
         options.forEach(option => {
@@ -2211,7 +2226,7 @@
         });
       });
       
-      // Inicializar select com a lÃƒÂ­ngua atual
+      // Inicializar select com a lÃƒÆ’Ã‚Â­ngua atual
       updateSelectLanguage(savedLanguage);
 
       // ====== FALLBACK SCRIPT: Copiar data-en para idiomas em falta ======
@@ -2228,3 +2243,4 @@
   <script src="./apply-translations.js"></script>
 </body>
 </html>
+

@@ -1,3 +1,14 @@
+﻿/**
+ * COBRAIT_SCRIPT_DOC
+ * Objetivo: Gerir interações da interface e aplicação dinâmica de traduções.
+ * Responsabilidades principais:
+ * - Ler idioma preferido e sincronizar UI de idioma.
+ * - Atualizar conteúdo via atributos data-*.
+ * - Configurar handlers de componentes interativos da página.
+ * Manutenção:
+ * - Preservar nomes de atributos e seletores usados no DOM.
+ * - Garantir fallback para idioma EN quando tradução específica não existir.
+ */
 // sync: github-desktop-update
 // Cobrait Translation Loader - garante idiomas do dropdown em todas as paginas
 
@@ -137,3 +148,4 @@ if (!window.__cobraitTranslationBooted) {
     };
   })();
 }
+

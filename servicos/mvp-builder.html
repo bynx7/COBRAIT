@@ -1,10 +1,26 @@
+﻿<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Define a estrutura e o conteúdo desta página do site COBRAIT.
+  Estrutura principal:
+  1) Cabeçalho/navegação com seleção de idioma.
+  2) Secções de conteúdo da página (hero, blocos informativos e CTAs).
+  3) Rodapé com links institucionais e contactos.
+  Dependências comuns:
+  - styles.css e/ou CSS local da página para layout e componentes visuais.
+  - apply-translations.js e atributos data-* para internacionalização.
+  Interatividade:
+  - Scripts no final do ficheiro controlam dropdowns, idioma e componentes dinâmicos.
+  Manutenção:
+  - Preservar IDs/classes usados por JavaScript e traduções antes de refatorar markup.
+  - Ao adicionar novos textos visíveis, incluir atributos data-pt/data-en (e restantes idiomas usados).
+-->
 <!-- sync: github-desktop-update -->
 <!doctype html>
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Builder - Cobra IT — Software Factory</title>
+  <title>MVP Builder - Cobra IT â€” Software Factory</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +30,7 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-  <!-- ✅ HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
+  <!-- âœ… HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
   <style>
     /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
     .logo-text-brand {
@@ -200,7 +216,7 @@
     .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
     .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
 
-    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
+    /* DROPDOWN DE LÃNGUAS NO HEADER (IGUAL AO INDEX) */
     .language-dropdown {
       position: relative;
     }
@@ -528,7 +544,7 @@
         .footer-meta a:hover {
             color: #fff;
         }
-        /* Estilos específicos para o link do Instagram */
+        /* Estilos especÃ­ficos para o link do Instagram */
         .social-link {
             display: inline-flex;
             align-items: center;
@@ -625,10 +641,10 @@
             }
         }</style>
 
-  <!-- ✅ ESTILOS ESPECÍFICOS DO MVP BUILDER -->
+  <!-- âœ… ESTILOS ESPECÃFICOS DO MVP BUILDER -->
   <style>
     /* =========================================================
-       CONTEÚDO ESPECÍFICO DO MVP BUILDER (MANTIDO)
+       CONTEÃšDO ESPECÃFICO DO MVP BUILDER (MANTIDO)
     ========================================================= */
     :root {
       --ink: #0f172a;
@@ -659,7 +675,7 @@
     }
 
     /* =========================================================
-       HERO (layout premium como o site inspiração)
+       HERO (layout premium como o site inspiraÃ§Ã£o)
     ========================================================= */
     .service-hero {
       padding: 70px 0 30px;
@@ -717,7 +733,7 @@
       align-items: center;
     }
 
-    /* BOTÕES EXATAMENTE IGUAIS AO INDEX.HTML */
+    /* BOTÃ•ES EXATAMENTE IGUAIS AO INDEX.HTML */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -848,7 +864,7 @@
     }
 
     /* =========================================================
-       Secções
+       SecÃ§Ãµes
     ========================================================= */
     .section {
       padding: 70px 0;
@@ -992,7 +1008,7 @@
     }
 
     .step::before {
-      content: "➜";
+      content: "âžœ";
       position: absolute;
       left: -44px;
       top: 22px;
@@ -1103,7 +1119,7 @@
       .step::before { left: -40px; }
     }
 
-/* ✅ FIX: Footer IGUAL ao Index/Product Scope (tamanhos e cores) */
+/* âœ… FIX: Footer IGUAL ao Index/Product Scope (tamanhos e cores) */
 footer.footer-pro .btn {
   display: inline-flex;
   align-items: center;
@@ -1118,7 +1134,7 @@ footer.footer-pro .btn {
   border: 2px solid transparent;
 }
 
-/* Botão primário do footer */
+/* BotÃ£o primÃ¡rio do footer */
 footer.footer-pro .btn.btn--primary {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
   color: #ffffff !important;
@@ -1129,7 +1145,7 @@ footer.footer-pro .btn.btn--primary:hover {
   box-shadow: 0 10px 25px rgba(79, 70, 229, 0.30);
 }
 
-/* Botão outline do footer */
+/* BotÃ£o outline do footer */
 footer.footer-pro .btn.btn--outline {
   background: transparent !important;
   color: rgba(226, 232, 240, 0.92) !important;
@@ -1159,10 +1175,10 @@ footer.footer-pro .footer-brand-title {
 </head>
 
 <body>
-  <!-- ✅ HEADER IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- âœ… HEADER IGUAL AO BOOK-A-CALL.HTML -->
   <header class="site-header">
         <div class="container header-inner">
-            <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+            <!-- LOGO SUBSTITUÃDA POR TEXTO "COBRA IT" -->
             <a class="brand logo-text-brand" href="../index.html" aria-label="Cobra IT">
                 <div class="logo-text-main">COBRA IT</div>
                 <div class="logo-text-tagline">Software Factory</div>
@@ -1175,11 +1191,11 @@ footer.footer-pro .footer-brand-title {
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Ð Ð°Ð±Ð¾Ñ‚Ð°" data-nl="Werk" data-ja="ä»•äº‹" data-zh="å·¥ä½œ">Work</a></li>
+                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="ÃÂ ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂ°" data-nl="Werk" data-ja="Ã¤Â»â€¢Ã¤Âºâ€¹" data-zh="Ã¥Â·Â¥Ã¤Â½Å“">Work</a></li>
                     <li class="dropdown">
                         <a href="../index.html#what-we-do">
-                            <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
-                            <span class="dropdown-arrow">▼</span>
+                            <span data-pt="ServiÃ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Ð£ÑÐ»ÑƒÐ³Ð¸" data-nl="Diensten" data-ja="ã‚µãƒ¼ãƒ“ã‚¹" data-zh="æœåŠ¡">ServiÃ§os</span>
+                            <span class="dropdown-arrow">â–¼</span>
                         </a>
 
                         <div class="dropdown-content">
@@ -1188,16 +1204,16 @@ footer.footer-pro .footer-brand-title {
                                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="Portée du produit" data-de="Produktumfang" data-ru="Область применения продукта" data-nl="Productomvang" data-ja="製品スコープ" data-zh="产品范围">Product Scope</h4>
-                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="PortÃ©e du produit" data-de="Produktumfang" data-ru="ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð¿Ñ€Ð¸Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚Ð°" data-nl="Productomvang" data-ja="è£½å“ã‚¹ã‚³ãƒ¼ãƒ—" data-zh="äº§å“èŒƒå›´">Product Scope</h4>
+                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negÃ³cio."
                                        data-en="15-day process to align the product with your business goals."
-                                       data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
+                                       data-es="Proceso de 15 dÃ­as para alinear el producto con los objetivos de tu negocio."
                                        data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
-                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
-                                       data-ru="15-Ð´Ð½ÐµÐ²Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ñ†ÐµÑÑ ÑÐ¾Ð³Ð»Ð°ÑÐ¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚Ð° Ñ Ñ†ÐµÐ»ÑÐ¼Ð¸ Ð²Ð°ÑˆÐµÐ³Ð¾ Ð±Ð¸Ð·Ð½ÐµÑÐ°."
+                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren GeschÃ¤ftszielen."
+                                       data-ru="15-ÃÂ´ÃÂ½ÃÂµÃÂ²ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾Ã‘â€ ÃÂµÃ‘ÂÃ‘Â Ã‘ÂÃÂ¾ÃÂ³ÃÂ»ÃÂ°Ã‘ÂÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸Ã‘Â ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃÂ° Ã‘Â Ã‘â€ ÃÂµÃÂ»Ã‘ÂÃÂ¼ÃÂ¸ ÃÂ²ÃÂ°Ã‘Ë†ÃÂµÃÂ³ÃÂ¾ ÃÂ±ÃÂ¸ÃÂ·ÃÂ½ÃÂµÃ‘ÂÃÂ°."
                                        data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
-                                       data-ja="製品をビジネス目標に合わせるための15日間のプロセス。"
-                                       data-zh="15天的流程，将产品与您的业务目标保持一致。">
+                                       data-ja="è£½å“ã‚’ãƒ“ã‚¸ãƒã‚¹ç›®æ¨™ã«åˆã‚ã›ã‚‹ãŸã‚ã®15æ—¥é–“ã®ãƒ—ãƒ­ã‚»ã‚¹ã€‚"
+                                       data-zh="15å¤©çš„æµç¨‹ï¼Œå°†äº§å“ä¸Žæ‚¨çš„ä¸šåŠ¡ç›®æ ‡ä¿æŒä¸€è‡´ã€‚">
                                     15-day process to align the product with your business goals.
                                     </p>
                                 </div>
@@ -1208,16 +1224,16 @@ footer.footer-pro .footer-brand-title {
                                     <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="Построитель MVP" data-nl="MVP Builder" data-ja="MVP ビルダー" data-zh="MVP 构建者">MVP Builder</h4>
-                                    <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="ÐŸÐ¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÐµÐ»ÑŒ MVP" data-nl="MVP Builder" data-ja="MVP ãƒ“ãƒ«ãƒ€ãƒ¼" data-zh="MVP æž„å»ºè€…">MVP Builder</h4>
+                                    <p data-pt="Entra no mercado rapidamente com um Produto MÃ­nimo ViÃ¡vel de alta qualidade."
                                        data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                                       data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
-                                       data-fr="Lancez-vous rapidement sur le marché avec un Produit Minimum Viable de haute qualité."
+                                       data-es="Lanza al mercado rÃ¡pidamente con un Producto MÃ­nimo Viable de alta calidad."
+                                       data-fr="Lancez-vous rapidement sur le marchÃ© avec un Produit Minimum Viable de haute qualitÃ©."
                                        data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
-                                       data-ru="Ð‘Ñ‹ÑÑ‚Ñ€Ð¾ Ð²Ñ‹Ð¹Ð´Ð¸Ñ‚Ðµ Ð½Ð° Ñ€Ñ‹Ð½Ð¾Ðº Ñ Ð²Ñ‹ÑÐ¾ÐºÐ¾ÐºÐ°Ñ‡ÐµÑÑ‚Ð²ÐµÐ½Ð½Ñ‹Ð¼ Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¼ Ð¶Ð¸Ð·Ð½ÐµÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ñ‹Ð¼ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚Ð¾Ð¼."
+                                       data-ru="Ãâ€˜Ã‘â€¹Ã‘ÂÃ‘â€šÃ‘â‚¬ÃÂ¾ ÃÂ²Ã‘â€¹ÃÂ¹ÃÂ´ÃÂ¸Ã‘â€šÃÂµ ÃÂ½ÃÂ° Ã‘â‚¬Ã‘â€¹ÃÂ½ÃÂ¾ÃÂº Ã‘Â ÃÂ²Ã‘â€¹Ã‘ÂÃÂ¾ÃÂºÃÂ¾ÃÂºÃÂ°Ã‘â€¡ÃÂµÃ‘ÂÃ‘â€šÃÂ²ÃÂµÃÂ½ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¼ÃÂ¸ÃÂ½ÃÂ¸ÃÂ¼ÃÂ°ÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¶ÃÂ¸ÃÂ·ÃÂ½ÃÂµÃ‘ÂÃÂ¿ÃÂ¾Ã‘ÂÃÂ¾ÃÂ±ÃÂ½Ã‘â€¹ÃÂ¼ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€šÃÂ¾ÃÂ¼."
                                        data-nl="Ga snel naar de markt met een hoogwaardig Minimum Viable Product."
-                                       data-ja="高品質の最小限実行可能製品で素早く市場投入する。"
-                                       data-zh="使用高质量的最小可行产品快速上市。">
+                                       data-ja="é«˜å“è³ªã®æœ€å°é™å®Ÿè¡Œå¯èƒ½è£½å“ã§ç´ æ—©ãå¸‚å ´æŠ•å…¥ã™ã‚‹ã€‚"
+                                       data-zh="ä½¿ç”¨é«˜è´¨é‡çš„æœ€å°å¯è¡Œäº§å“å¿«é€Ÿä¸Šå¸‚ã€‚">
                                     Go to market quickly with a high-quality Minimum Viable Product.
                                     </p>
                                 </div>
@@ -1229,15 +1245,15 @@ footer.footer-pro .footer-brand-title {
                                 </svg>
                                 <div class="dropdown-item-content">
                                     <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI" data-fr="UX / UI" data-de="UX / UI" data-ru="UX / UI" data-nl="UX / UI" data-ja="UX / UI" data-zh="UX / UI">UX / UI</h4>
-                                    <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                                    <p data-pt="Design de um produto fÃ¡cil de usar, envolvente e funcional."
                                        data-en="Design an easy-to-use engaging and functional product."
-                                       data-es="Diseña un producto fácil de usar, atractivo y funcional."
-                                       data-fr="Concevoir un produit facile à utiliser, attrayant et fonctionnel."
+                                       data-es="DiseÃ±a un producto fÃ¡cil de usar, atractivo y funcional."
+                                       data-fr="Concevoir un produit facile Ã  utiliser, attrayant et fonctionnel."
                                        data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
-                                       data-ru="Ð Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð¹Ñ‚Ðµ Ð¿Ñ€Ð¾ÑÑ‚Ð¾Ð¹ Ð² Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ð¸, Ð¿Ñ€Ð¸Ð²Ð»ÐµÐºÐ°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚."
+                                       data-ru="ÃÂ ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂ°ÃÂ¹Ã‘â€šÃÂµ ÃÂ¿Ã‘â‚¬ÃÂ¾Ã‘ÂÃ‘â€šÃÂ¾ÃÂ¹ ÃÂ² ÃÂ¸Ã‘ÂÃÂ¿ÃÂ¾ÃÂ»Ã‘Å’ÃÂ·ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ¸ÃÂ¸, ÃÂ¿Ã‘â‚¬ÃÂ¸ÃÂ²ÃÂ»ÃÂµÃÂºÃÂ°Ã‘â€šÃÂµÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¸ Ã‘â€žÃ‘Æ’ÃÂ½ÃÂºÃ‘â€ ÃÂ¸ÃÂ¾ÃÂ½ÃÂ°ÃÂ»Ã‘Å’ÃÂ½Ã‘â€¹ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€š."
                                        data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
-                                       data-ja="使いやすく、魅力的で機能的な製品を設計する。"
-                                       data-zh="设计一个易于使用、引人入胜且功能强大的产品。">
+                                       data-ja="ä½¿ã„ã‚„ã™ãã€é­…åŠ›çš„ã§æ©Ÿèƒ½çš„ãªè£½å“ã‚’è¨­è¨ˆã™ã‚‹ã€‚"
+                                       data-zh="è®¾è®¡ä¸€ä¸ªæ˜“äºŽä½¿ç”¨ã€å¼•äººå…¥èƒœä¸”åŠŸèƒ½å¼ºå¤§çš„äº§å“ã€‚">
                                     Design an easy-to-use engaging and functional product.
                                     </p>
                                 </div>
@@ -1249,26 +1265,26 @@ footer.footer-pro .footer-brand-title {
                                     <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Desenvolvimento de Software à Medida"
+                                    <h4 data-pt="Desenvolvimento de Software Ã  Medida"
                                         data-en="Custom Software Development"
                                         data-es="Desarrollo de Software a Medida"
-                                        data-fr="Développement de logiciels personnalisés"
+                                        data-fr="DÃ©veloppement de logiciels personnalisÃ©s"
                                         data-de="Benutzerdefinierte Softwareentwicklung"
-                                        data-ru="Ð Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð½Ð¾Ð³Ð¾ Ð¾Ð±ÐµÑÐ¿ÐµÑ‡ÐµÐ½Ð¸Ñ"
+                                        data-ru="ÃÂ ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂºÃÂ° ÃÂ¿ÃÂ¾ÃÂ»Ã‘Å’ÃÂ·ÃÂ¾ÃÂ²ÃÂ°Ã‘â€šÃÂµÃÂ»Ã‘Å’Ã‘ÂÃÂºÃÂ¾ÃÂ³ÃÂ¾ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ³Ã‘â‚¬ÃÂ°ÃÂ¼ÃÂ¼ÃÂ½ÃÂ¾ÃÂ³ÃÂ¾ ÃÂ¾ÃÂ±ÃÂµÃ‘ÂÃÂ¿ÃÂµÃ‘â€¡ÃÂµÃÂ½ÃÂ¸Ã‘Â"
                                         data-nl="Aangepaste softwareontwikkeling"
-                                        data-ja="カスタムソフトウェア開発"
-                                        data-zh="å®šåˆ¶è½¯ä»¶å¼€å‘">
+                                        data-ja="ã‚«ã‚¹ã‚¿ãƒ ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™º"
+                                        data-zh="Ã¥Â®Å¡Ã¥Ë†Â¶Ã¨Â½Â¯Ã¤Â»Â¶Ã¥Â¼â‚¬Ã¥Ââ€˜">
                                     Custom Software Development
                                     </h4>
-                                    <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                                    <p data-pt="Frameworks lean aplicados Ã  tua visÃ£o para criar uma soluÃ§Ã£o inovadora de software Ã  medida."
                                        data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                                       data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
-                                       data-fr="Nous appliquons les frameworks lean à votre vision pour créer une solution logicielle personnalisée et innovante."
-                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative Softwarelösung zu schaffen."
-                                       data-ru="ÐœÑ‹ Ð¿Ñ€Ð¸Ð¼ÐµÐ½ÑÐµÐ¼ lean-Ñ„Ñ€ÐµÐ¹Ð¼Ð²Ð¾Ñ€ÐºÐ¸ Ðº Ð²Ð°ÑˆÐµÐ¼Ñƒ Ð²Ð¸Ð´ÐµÐ½Ð¸ÑŽ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ðµ Ð¸ Ð¸Ð½Ð½Ð¾Ð²Ð°Ñ†Ð¸Ð¾Ð½Ð½Ð¾Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð½Ð¾Ðµ Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ."
-                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creëren."
-                                       data-ja="リーンフレームワークをあなたのビジョンに適用して、パーソナライズされた革新的なソフトウェアソリューションを作成します。"
-                                       data-zh="我们将精益框架应用到您的愿景中，以创建个性化和创新的软件解决方案。">
+                                       data-es="Frameworks lean aplicados a tu visiÃ³n para crear una soluciÃ³n innovadora de software a medida."
+                                       data-fr="Nous appliquons les frameworks lean Ã  votre vision pour crÃ©er une solution logicielle personnalisÃ©e et innovante."
+                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative SoftwarelÃ¶sung zu schaffen."
+                                       data-ru="ÃÅ“Ã‘â€¹ ÃÂ¿Ã‘â‚¬ÃÂ¸ÃÂ¼ÃÂµÃÂ½Ã‘ÂÃÂµÃÂ¼ lean-Ã‘â€žÃ‘â‚¬ÃÂµÃÂ¹ÃÂ¼ÃÂ²ÃÂ¾Ã‘â‚¬ÃÂºÃÂ¸ ÃÂº ÃÂ²ÃÂ°Ã‘Ë†ÃÂµÃÂ¼Ã‘Æ’ ÃÂ²ÃÂ¸ÃÂ´ÃÂµÃÂ½ÃÂ¸Ã‘Å½, Ã‘â€¡Ã‘â€šÃÂ¾ÃÂ±Ã‘â€¹ Ã‘ÂÃÂ¾ÃÂ·ÃÂ´ÃÂ°Ã‘â€šÃ‘Å’ ÃÂ¿ÃÂµÃ‘â‚¬Ã‘ÂÃÂ¾ÃÂ½ÃÂ°ÃÂ»ÃÂ¸ÃÂ·ÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°ÃÂ½ÃÂ½ÃÂ¾ÃÂµ ÃÂ¸ ÃÂ¸ÃÂ½ÃÂ½ÃÂ¾ÃÂ²ÃÂ°Ã‘â€ ÃÂ¸ÃÂ¾ÃÂ½ÃÂ½ÃÂ¾ÃÂµ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ³Ã‘â‚¬ÃÂ°ÃÂ¼ÃÂ¼ÃÂ½ÃÂ¾ÃÂµ Ã‘â‚¬ÃÂµÃ‘Ë†ÃÂµÃÂ½ÃÂ¸ÃÂµ."
+                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creÃ«ren."
+                                       data-ja="ãƒªãƒ¼ãƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’ã‚ãªãŸã®ãƒ“ã‚¸ãƒ§ãƒ³ã«é©ç”¨ã—ã¦ã€ãƒ‘ãƒ¼ã‚½ãƒŠãƒ©ã‚¤ã‚ºã•ã‚ŒãŸé©æ–°çš„ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚½ãƒªãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã—ã¾ã™ã€‚"
+                                       data-zh="æˆ‘ä»¬å°†ç²¾ç›Šæ¡†æž¶åº”ç”¨åˆ°æ‚¨çš„æ„¿æ™¯ä¸­ï¼Œä»¥åˆ›å»ºä¸ªæ€§åŒ–å’Œåˆ›æ–°çš„è½¯ä»¶è§£å†³æ–¹æ¡ˆã€‚">
                                     Lean frameworks applied to your vision to create an innovative custom software solution.
                                     </p>
                                 </div>
@@ -1279,18 +1295,18 @@ footer.footer-pro .footer-brand-title {
                                     <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                                 <div class="dropdown-item-content">
-                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">
+                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Ã‰quipes dÃ©diÃ©es" data-de="Dedizierte Teams" data-ru="Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹" data-nl="Speciale teams" data-ja="å°‚ä»»ãƒãƒ¼ãƒ " data-zh="ä¸“ä¸šå›¢é˜Ÿ">
                                     Dedicated Teams
                                     </h4>
-                                    <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                                    <p data-pt="ConstrÃ³i o teu produto com uma equipa dedicada de developers."
                                        data-en="Build your product with a dedicated team of developers."
                                        data-es="Construye tu producto con un equipo dedicado de developers."
-                                       data-fr="Construisez votre produit avec une équipe de développeurs dédiée."
+                                       data-fr="Construisez votre produit avec une Ã©quipe de dÃ©veloppeurs dÃ©diÃ©e."
                                        data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
-                                       data-ru="Ð¡Ð¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ ÑÐ²Ð¾Ð¹ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹ Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¾Ð²."
+                                       data-ru="ÃÂ¡ÃÂ¾ÃÂ·ÃÂ´ÃÂ°ÃÂ¹Ã‘â€šÃÂµ Ã‘ÂÃÂ²ÃÂ¾ÃÂ¹ ÃÂ¿Ã‘â‚¬ÃÂ¾ÃÂ´Ã‘Æ’ÃÂºÃ‘â€š Ã‘Â ÃÂ¿ÃÂ¾ÃÂ¼ÃÂ¾Ã‘â€°Ã‘Å’Ã‘Å½ ÃÂ²Ã‘â€¹ÃÂ´ÃÂµÃÂ»ÃÂµÃÂ½ÃÂ½ÃÂ¾ÃÂ¹ ÃÂºÃÂ¾ÃÂ¼ÃÂ°ÃÂ½ÃÂ´Ã‘â€¹ Ã‘â‚¬ÃÂ°ÃÂ·Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃ‘â€¡ÃÂ¸ÃÂºÃÂ¾ÃÂ²."
                                        data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
-                                       data-ja="専任の開発者チームであなたの製品を構築する。"
-                                       data-zh="与专业开发者团队一起构建您的产品。">
+                                       data-ja="å°‚ä»»ã®é–‹ç™ºè€…ãƒãƒ¼ãƒ ã§ã‚ãªãŸã®è£½å“ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚"
+                                       data-zh="ä¸Žä¸“ä¸šå¼€å‘è€…å›¢é˜Ÿä¸€èµ·æž„å»ºæ‚¨çš„äº§å“ã€‚">
                                     Build your product with a dedicated team of developers.
                                     </p>
                                 </div>
@@ -1298,58 +1314,58 @@ footer.footer-pro .footer-brand-title {
                         </div>
                     </li>
 
-                    <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="Цены" data-nl="Prijzen" data-ja="価格" data-zh="定价">Pricing</a></li>
-                    <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros" data-fr="À Propos" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">About Us</span></a></li>
-                    <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Careers</a></li>
-                    <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Технология" data-nl="Technologie" data-ja="テクノロジー" data-zh="技术">Tech</a></li>
+                    <li><a href="../pricing.html" data-pt="PreÃ§os" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="Ð¦ÐµÐ½Ñ‹" data-nl="Prijzen" data-ja="ä¾¡æ ¼" data-zh="å®šä»·">Pricing</a></li>
+                    <li><a href="../about-us.html"><span data-pt="Sobre nÃ³s" data-en="About Us" data-es="Sobre nosotros" data-fr="Ã€ Propos" data-de="Ãœber uns" data-ru="Ðž Ð½Ð°Ñ" data-nl="Over ons" data-ja="ç§ãŸã¡ã«ã¤ã„ã¦" data-zh="å…³äºŽæˆ‘ä»¬">About Us</span></a></li>
+                    <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃ¨res" data-de="Karrieren" data-ru="ÐšÐ°Ñ€ÑŒÐµÑ€Ð°" data-nl="CarriÃ¨re" data-ja="ã‚­ãƒ£ãƒªã‚¢" data-zh="èŒä¸š">Careers</a></li>
+                    <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Ð¢ÐµÑ…Ð½Ð¾Ð»Ð¾Ð³Ð¸Ñ" data-nl="Technologie" data-ja="ãƒ†ã‚¯ãƒŽãƒ­ã‚¸ãƒ¼" data-zh="æŠ€æœ¯">Tech</a></li>
                 </ul>
             </nav>
 
             <div class="header-right">
-                <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
+                <!-- DROPDOWN DE LÃNGUAS - TODAS AS 9 LÃNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">🇵🇹</span>
+                        <span class="lang-flag" id="currentFlag">ðŸ‡µðŸ‡¹</span>
                         <span class="lang-code" id="currentLang">PT</span>
-                        <span class="dropdown-arrow">▼</span>
+                        <span class="dropdown-arrow">â–¼</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">🇵🇹</span>
-                            <span class="lang-name">Português</span>
+                            <span class="lang-flag">ðŸ‡µðŸ‡¹</span>
+                            <span class="lang-name">PortuguÃªs</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">🇬🇧</span>
+                            <span class="lang-flag">ðŸ‡¬ðŸ‡§</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">🇪🇸</span>
-                            <span class="lang-name">Español</span>
+                            <span class="lang-flag">ðŸ‡ªðŸ‡¸</span>
+                            <span class="lang-name">EspaÃ±ol</span>
                         </button>
                         <button class="language-option" data-lang="fr">
-                            <span class="lang-flag">🇫🇷</span>
-                            <span class="lang-name">Français</span>
+                            <span class="lang-flag">ðŸ‡«ðŸ‡·</span>
+                            <span class="lang-name">FranÃ§ais</span>
                         </button>
                         <button class="language-option" data-lang="de">
-                            <span class="lang-flag">🇩🇪</span>
+                            <span class="lang-flag">ðŸ‡©ðŸ‡ª</span>
                             <span class="lang-name">Deutsch</span>
                         </button>
                         <button class="language-option" data-lang="ru">
-                            <span class="lang-flag">🇷🇺</span>
-                            <span class="lang-name">Русский</span>
+                            <span class="lang-flag">ðŸ‡·ðŸ‡º</span>
+                            <span class="lang-name">Ð ÑƒÑÑÐºÐ¸Ð¹</span>
                         </button>
                         <button class="language-option" data-lang="nl">
-                            <span class="lang-flag">🇳🇱</span>
+                            <span class="lang-flag">ðŸ‡³ðŸ‡±</span>
                             <span class="lang-name">Nederlands</span>
                         </button>
                         <button class="language-option" data-lang="ja">
-                            <span class="lang-flag">🇯🇵</span>
-                            <span class="lang-name">日本語</span>
+                            <span class="lang-flag">ðŸ‡¯ðŸ‡µ</span>
+                            <span class="lang-name">æ—¥æœ¬èªž</span>
                         </button>
                         <button class="language-option" data-lang="zh">
-                            <span class="lang-flag">🇨🇳</span>
-                            <span class="lang-name">中文</span>
+                            <span class="lang-flag">ðŸ‡¨ðŸ‡³</span>
+                            <span class="lang-name">ä¸­æ–‡</span>
                         </button>
                     </div>
                 </div>
@@ -1359,12 +1375,12 @@ footer.footer-pro .footer-brand-title {
                        data-pt="AGENDAR UMA CHAMADA"
                        data-en="BOOK A CALL"
                        data-es="RESERVAR UNA LLAMADA"
-                       data-fr="RÉSERVER UN APPEL"
+                       data-fr="RÃ‰SERVER UN APPEL"
                        data-de="EINEN TERMIN BUCHEN"
-                       data-ru="ÐÐÐ—ÐÐÐ§Ð˜Ð¢Ð¬ Ð’Ð¡Ð¢Ð Ð•Ð§Ð£"
+                       data-ru="ÃÂÃÂÃâ€”ÃÂÃÂÃÂ§ÃËœÃÂ¢ÃÂ¬ Ãâ€™ÃÂ¡ÃÂ¢ÃÂ Ãâ€¢ÃÂ§ÃÂ£"
                        data-nl="RESERVEER EEN GESPREK"
-                       data-ja="通話を予約"
-                       data-zh="é¢„è®¢é€šè¯">
+                       data-ja="é€šè©±ã‚’äºˆç´„"
+                       data-zh="Ã©Â¢â€žÃ¨Â®Â¢Ã©â‚¬Å¡Ã¨Â¯Â">
                     BOOK A CALL
                     </a>
                 </div>
@@ -1377,22 +1393,22 @@ footer.footer-pro .footer-brand-title {
     <section class="service-hero">
       <div class="container hero-grid">
         <div>
-          <div class="hero-kicker" data-pt="Serviço" data-en="Service" data-es="Servicio" data-fr="Service" data-de="Service" data-ru="Услуга" data-nl="Service" data-ja="サービス" data-zh="服务">Serviço</div>
+          <div class="hero-kicker" data-pt="ServiÃ§o" data-en="Service" data-es="Servicio" data-fr="Service" data-de="Service" data-ru="Ð£ÑÐ»ÑƒÐ³Ð°" data-nl="Service" data-ja="ã‚µãƒ¼ãƒ“ã‚¹" data-zh="æœåŠ¡">ServiÃ§o</div>
 
-          <h1 class="hero-title" data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="MVP Builder" data-de="MVP Builder" data-ru="MVP Builder" data-nl="MVP Builder" data-ja="MVPビルダー" data-zh="MVP 构建">MVP Builder</h1>
+          <h1 class="hero-title" data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="MVP Builder" data-de="MVP Builder" data-ru="MVP Builder" data-nl="MVP Builder" data-ja="MVPãƒ“ãƒ«ãƒ€ãƒ¼" data-zh="MVP æž„å»º">MVP Builder</h1>
 
           <p class="hero-sub" 
-             data-pt="Entra no mercado rapidamente com um MVP (Minimum Viable Product) de alta qualidade, desenhado para testar as tuas principais hipóteses e acelerar tração."
+             data-pt="Entra no mercado rapidamente com um MVP (Minimum Viable Product) de alta qualidade, desenhado para testar as tuas principais hipÃ³teses e acelerar traÃ§Ã£o."
              data-en="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
-             data-es="Entra al mercado rápidamente con un MVP (Producto Mínimo Viable) de alta calidad, diseñado para probar tus hipótesis clave y acelerar la tracción."
+             data-es="Entra al mercado rÃ¡pidamente con un MVP (Producto MÃ­nimo Viable) de alta calidad, diseÃ±ado para probar tus hipÃ³tesis clave y acelerar la tracciÃ³n."
              data-fr="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
              data-de="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
              data-ru="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
              data-nl="Go to market quickly with a high-quality MVP (Minimum Viable Product), designed to test your key hypotheses and accelerate traction."
-             data-ja="高品質なMVP（Minimum Viable Product）で迅速に市場投入し、重要な仮説を検証してトラクションを加速させます。"
-             data-zh="通过高质量的MVP（最简可行产品）快速进入市场，旨在验证关键假设并加速获取用户。">
+             data-ja="é«˜å“è³ªãªMVPï¼ˆMinimum Viable Productï¼‰ã§è¿…é€Ÿã«å¸‚å ´æŠ•å…¥ã—ã€é‡è¦ãªä»®èª¬ã‚’æ¤œè¨¼ã—ã¦ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³ã‚’åŠ é€Ÿã•ã›ã¾ã™ã€‚"
+             data-zh="é€šè¿‡é«˜è´¨é‡çš„MVPï¼ˆæœ€ç®€å¯è¡Œäº§å“ï¼‰å¿«é€Ÿè¿›å…¥å¸‚åœºï¼Œæ—¨åœ¨éªŒè¯å…³é”®å‡è®¾å¹¶åŠ é€ŸèŽ·å–ç”¨æˆ·ã€‚">
             Entra no mercado rapidamente com um <strong>MVP (Minimum Viable Product)</strong> de alta qualidade,
-            desenhado para testar as tuas principais hipóteses e acelerar tração.
+            desenhado para testar as tuas principais hipÃ³teses e acelerar traÃ§Ã£o.
           </p>
 
           <div class="hero-actions">
@@ -1402,22 +1418,22 @@ footer.footer-pro .footer-brand-title {
                data-es="Agendar una llamada"
                data-fr="Programmer un appel"
                data-de="Einen Anruf buchen"
-               data-ru="Ð—Ð°Ð¿Ð»Ð°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð·Ð²Ð¾Ð½Ð¾Ðº"
+               data-ru="Ãâ€”ÃÂ°ÃÂ¿ÃÂ»ÃÂ°ÃÂ½ÃÂ¸Ã‘â‚¬ÃÂ¾ÃÂ²ÃÂ°Ã‘â€šÃ‘Å’ ÃÂ·ÃÂ²ÃÂ¾ÃÂ½ÃÂ¾ÃÂº"
                data-nl="Een gesprek boeken"
-               data-ja="通話を予約する"
-               data-zh="é¢„çº¦é€šè¯">
+               data-ja="é€šè©±ã‚’äºˆç´„ã™ã‚‹"
+               data-zh="Ã©Â¢â€žÃ§ÂºÂ¦Ã©â‚¬Å¡Ã¨Â¯Â">
               Agendar uma chamada
             </a>
             <a class="btn-ghost" href="#how-it-works"
                data-pt="Ver como funciona"
                data-en="See how it works"
-               data-es="Ver cómo funciona"
-               data-fr="Voir comment ça marche"
+               data-es="Ver cÃ³mo funciona"
+               data-fr="Voir comment Ã§a marche"
                data-de="Sehen Sie, wie es funktioniert"
-               data-ru="ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ, ÐºÐ°Ðº ÑÑ‚Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚"
+               data-ru="ÃÅ¸ÃÂ¾Ã‘ÂÃÂ¼ÃÂ¾Ã‘â€šÃ‘â‚¬ÃÂµÃ‘â€šÃ‘Å’, ÃÂºÃÂ°ÃÂº Ã‘ÂÃ‘â€šÃÂ¾ Ã‘â‚¬ÃÂ°ÃÂ±ÃÂ¾Ã‘â€šÃÂ°ÃÂµÃ‘â€š"
                data-nl="Bekijk hoe het werkt"
-               data-ja="仕組みを見る"
-               data-zh="æŸ¥çœ‹å¦‚ä½•è¿ä½œ">
+               data-ja="ä»•çµ„ã¿ã‚’è¦‹ã‚‹"
+               data-zh="Ã¦Å¸Â¥Ã§Å“â€¹Ã¥Â¦â€šÃ¤Â½â€¢Ã¨Â¿ÂÃ¤Â½Å“">
               Ver como funciona
             </a>
           </div>
@@ -1429,10 +1445,10 @@ footer.footer-pro .footer-brand-title {
               <img class="hero-image" src="../images/mvp-hero.png" alt="">
             </div>
             <div class="hero-badges">
-              <span class="badge" data-pt="Go-to-market rápido" data-en="Fast go-to-market" data-es="Go-to-market rápido" data-fr="Fast go-to-market" data-de="Fast go-to-market" data-ru="Fast go-to-market" data-nl="Fast go-to-market" data-ja="迅速な市場投入" data-zh="快速上市">Go-to-market rápido</span>
-              <span class="badge" data-pt="Design + Dev" data-en="Design + Dev" data-es="Diseño + Dev" data-fr="Design + Dev" data-de="Design + Dev" data-ru="Design + Dev" data-nl="Design + Dev" data-ja="デザイン + 開発" data-zh="设计 + 开发">Design + Dev</span>
-              <span class="badge" data-pt="Qualidade de produto" data-en="Product quality" data-es="Calidad de producto" data-fr="Product quality" data-de="Product quality" data-ru="Product quality" data-nl="Product quality" data-ja="è£½å“å“è³ª" data-zh="äº§å“è´¨é‡">Qualidade de produto</span>
-              <span class="badge" data-pt="Iteração contínua" data-en="Continuous iteration" data-es="Iteración continua" data-fr="Continuous iteration" data-de="Continuous iteration" data-ru="Continuous iteration" data-nl="Continuous iteration" data-ja="継続的な反復" data-zh="持续迭代">Iteração contínua</span>
+              <span class="badge" data-pt="Go-to-market rÃ¡pido" data-en="Fast go-to-market" data-es="Go-to-market rÃ¡pido" data-fr="Fast go-to-market" data-de="Fast go-to-market" data-ru="Fast go-to-market" data-nl="Fast go-to-market" data-ja="è¿…é€Ÿãªå¸‚å ´æŠ•å…¥" data-zh="å¿«é€Ÿä¸Šå¸‚">Go-to-market rÃ¡pido</span>
+              <span class="badge" data-pt="Design + Dev" data-en="Design + Dev" data-es="DiseÃ±o + Dev" data-fr="Design + Dev" data-de="Design + Dev" data-ru="Design + Dev" data-nl="Design + Dev" data-ja="ãƒ‡ã‚¶ã‚¤ãƒ³ + é–‹ç™º" data-zh="è®¾è®¡ + å¼€å‘">Design + Dev</span>
+              <span class="badge" data-pt="Qualidade de produto" data-en="Product quality" data-es="Calidad de producto" data-fr="Product quality" data-de="Product quality" data-ru="Product quality" data-nl="Product quality" data-ja="Ã¨Â£Â½Ã¥â€œÂÃ¥â€œÂÃ¨Â³Âª" data-zh="Ã¤ÂºÂ§Ã¥â€œÂÃ¨Â´Â¨Ã©â€¡Â">Qualidade de produto</span>
+              <span class="badge" data-pt="IteraÃ§Ã£o contÃ­nua" data-en="Continuous iteration" data-es="IteraciÃ³n continua" data-fr="Continuous iteration" data-de="Continuous iteration" data-ru="Continuous iteration" data-nl="Continuous iteration" data-ja="ç¶™ç¶šçš„ãªåå¾©" data-zh="æŒç»­è¿­ä»£">IteraÃ§Ã£o contÃ­nua</span>
             </div>
           </div>
         </div>
@@ -1444,31 +1460,31 @@ footer.footer-pro .footer-brand-title {
       <div class="container">
         <div class="two-col">
           <div class="card what-card">
-            <h2 class="what-title" data-pt="O que é o MVP Builder?" data-en="What is MVP Builder?" data-es="¿Qué es MVP Builder?">
-              O que é o MVP Builder?
+            <h2 class="what-title" data-pt="O que Ã© o MVP Builder?" data-en="What is MVP Builder?" data-es="Â¿QuÃ© es MVP Builder?">
+              O que Ã© o MVP Builder?
             </h2>
             <p class="what-desc"
-               data-pt="Usamos um processo estruturado para construir o teu MVP de forma rápida e controlada. Começamos por simplificar o teu produto às funcionalidades vitais (as que realmente validam o negócio), passamos pelo UX/UI com foco em clareza e conversão, e depois desenvolvemos do zero com boas práticas. O objetivo é lançares cedo, aprenderes rápido e melhorares com feedback real."
+               data-pt="Usamos um processo estruturado para construir o teu MVP de forma rÃ¡pida e controlada. ComeÃ§amos por simplificar o teu produto Ã s funcionalidades vitais (as que realmente validam o negÃ³cio), passamos pelo UX/UI com foco em clareza e conversÃ£o, e depois desenvolvemos do zero com boas prÃ¡ticas. O objetivo Ã© lanÃ§ares cedo, aprenderes rÃ¡pido e melhorares com feedback real."
                data-en="We use a structured process to build your MVP quickly and controlled. We start by simplifying your product to the vital features (those that truly validate the business), go through UX/UI focused on clarity and conversion, and then develop from scratch with best practices. The goal is for you to launch early, learn fast, and improve with real feedback."
-               data-es="Utilizamos un proceso estructurado para construir tu MVP de forma rápida y controlada. Comenzamos simplificando tu producto a las funcionalidades vitales (las que realmente validan el negocio), pasamos por UX/UI enfocado en claridad y conversión, y luego desarrollamos desde cero con buenas prácticas. El objetivo es que lances temprano, aprendas rápido y mejores con feedback real.">
-              Usamos um processo estruturado para construir o teu MVP de forma rápida e controlada.
-              Começamos por simplificar o teu produto às funcionalidades vitais (as que realmente validam o negócio),
-              passamos pelo UX/UI com foco em clareza e conversão, e depois desenvolvemos do zero com boas práticas.
-              O objetivo é lançares cedo, aprenderes rápido e melhorares com feedback real.
+               data-es="Utilizamos un proceso estructurado para construir tu MVP de forma rÃ¡pida y controlada. Comenzamos simplificando tu producto a las funcionalidades vitales (las que realmente validan el negocio), pasamos por UX/UI enfocado en claridad y conversiÃ³n, y luego desarrollamos desde cero con buenas prÃ¡cticas. El objetivo es que lances temprano, aprendas rÃ¡pido y mejores con feedback real.">
+              Usamos um processo estruturado para construir o teu MVP de forma rÃ¡pida e controlada.
+              ComeÃ§amos por simplificar o teu produto Ã s funcionalidades vitais (as que realmente validam o negÃ³cio),
+              passamos pelo UX/UI com foco em clareza e conversÃ£o, e depois desenvolvemos do zero com boas prÃ¡ticas.
+              O objetivo Ã© lanÃ§ares cedo, aprenderes rÃ¡pido e melhorares com feedback real.
             </p>
           </div>
 
           <div class="card what-card">
-            <h2 class="what-title" data-pt="Quando faz sentido?" data-en="When does it make sense?" data-es="¿Cuándo tiene sentido?">
+            <h2 class="what-title" data-pt="Quando faz sentido?" data-en="When does it make sense?" data-es="Â¿CuÃ¡ndo tiene sentido?">
               Quando faz sentido?
             </h2>
             <p class="what-desc"
-               data-pt="Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versão para captação de clientes/investimento, ou quando precisas de substituir 'protótipos' por produto real. Um MVP bem feito dá velocidade sem sacrificar base técnica."
+               data-pt="Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versÃ£o para captaÃ§Ã£o de clientes/investimento, ou quando precisas de substituir 'protÃ³tipos' por produto real. Um MVP bem feito dÃ¡ velocidade sem sacrificar base tÃ©cnica."
                data-en="When you have an idea and need to validate the market, when you want a first version for customer/investor acquisition, or when you need to replace 'prototypes' with real product. A well-done MVP gives speed without sacrificing technical foundation."
-               data-es="Cuando tienes una idea y necesitas validar el mercado, cuando quieres una primera versión para captación de clientes/inversión, o cuando necesitas reemplazar 'prototipos' por producto real. Un MVP bien hecho da velocidad sin sacrificar base técnica.">
-              Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versão para captação
-              de clientes/investimento, ou quando precisas de substituir "protótipos" por produto real.
-              Um MVP bem feito dá velocidade sem sacrificar base técnica.
+               data-es="Cuando tienes una idea y necesitas validar el mercado, cuando quieres una primera versiÃ³n para captaciÃ³n de clientes/inversiÃ³n, o cuando necesitas reemplazar 'prototipos' por producto real. Un MVP bien hecho da velocidad sin sacrificar base tÃ©cnica.">
+              Quando tens uma ideia e precisas de validar mercado, quando queres uma primeira versÃ£o para captaÃ§Ã£o
+              de clientes/investimento, ou quando precisas de substituir "protÃ³tipos" por produto real.
+              Um MVP bem feito dÃ¡ velocidade sem sacrificar base tÃ©cnica.
             </p>
           </div>
         </div>
@@ -1478,7 +1494,7 @@ footer.footer-pro .footer-brand-title {
     <!-- KEY BENEFITS -->
     <section class="section section--alt">
       <div class="container">
-        <h2 class="section-title" data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</h2>
+        <h2 class="section-title" data-pt="BenefÃ­cios" data-en="Benefits" data-es="Beneficios">BenefÃ­cios</h2>
 
         <div class="benefits-grid">
           <article class="card benefit">
@@ -1489,11 +1505,11 @@ footer.footer-pro .footer-brand-title {
               </svg>
             </div>
             <h3 data-pt="Menos risco" data-en="Less risk" data-es="Menos riesgo">Menos risco</h3>
-            <p data-pt="Evitas construir um produto enorme antes de saber se o mercado quer. Testamos as hipóteses com o mínimo necessário — e só depois escalamos."
-               data-en="You avoid building a huge product before knowing if the market wants it. We test hypotheses with the minimum necessary — and only then scale."
-               data-es="Evitas construir un producto enorme antes de saber si el mercado lo quiere. Probamos las hipótesis con lo mínimo necesario — y solo después escalamos.">
+            <p data-pt="Evitas construir um produto enorme antes de saber se o mercado quer. Testamos as hipÃ³teses com o mÃ­nimo necessÃ¡rio â€” e sÃ³ depois escalamos."
+               data-en="You avoid building a huge product before knowing if the market wants it. We test hypotheses with the minimum necessary â€” and only then scale."
+               data-es="Evitas construir un producto enorme antes de saber si el mercado lo quiere. Probamos las hipÃ³tesis con lo mÃ­nimo necesario â€” y solo despuÃ©s escalamos.">
               Evitas construir um produto enorme antes de saber se o mercado quer.
-              Testamos as hipóteses com o mínimo necessário — e só depois escalamos.
+              Testamos as hipÃ³teses com o mÃ­nimo necessÃ¡rio â€” e sÃ³ depois escalamos.
             </p>
           </article>
 
@@ -1505,11 +1521,11 @@ footer.footer-pro .footer-brand-title {
               </svg>
             </div>
             <h3 data-pt="Menor custo" data-en="Lower cost" data-es="Menor costo">Menor custo</h3>
-            <p data-pt="Menos funcionalidades = menos desenvolvimento e menos manutenção. O orçamento vai para o que realmente cria valor e valida o produto."
+            <p data-pt="Menos funcionalidades = menos desenvolvimento e menos manutenÃ§Ã£o. O orÃ§amento vai para o que realmente cria valor e valida o produto."
                data-en="Fewer features = less development and less maintenance. The budget goes to what truly creates value and validates the product."
                data-es="Menos funcionalidades = menos desarrollo y menos mantenimiento. El presupuesto va a lo que realmente crea valor y valida el producto.">
-              Menos funcionalidades = menos desenvolvimento e menos manutenção.
-              O orçamento vai para o que realmente cria valor e valida o produto.
+              Menos funcionalidades = menos desenvolvimento e menos manutenÃ§Ã£o.
+              O orÃ§amento vai para o que realmente cria valor e valida o produto.
             </p>
           </article>
 
@@ -1520,12 +1536,12 @@ footer.footer-pro .footer-brand-title {
                 <path d="M12 7v6l4 2"/>
               </svg>
             </div>
-            <h3 data-pt="Mais rapidez" data-en="More speed" data-es="Más velocidad">Mais rapidez</h3>
-            <p data-pt="Lançar cedo dá-te vantagem: feedback real, tração e iteração. O MVP é a forma mais rápida de aprender com o mercado."
+            <h3 data-pt="Mais rapidez" data-en="More speed" data-es="MÃ¡s velocidad">Mais rapidez</h3>
+            <p data-pt="LanÃ§ar cedo dÃ¡-te vantagem: feedback real, traÃ§Ã£o e iteraÃ§Ã£o. O MVP Ã© a forma mais rÃ¡pida de aprender com o mercado."
                data-en="Launching early gives you an advantage: real feedback, traction and iteration. MVP is the fastest way to learn from the market."
-               data-es="Lanzar temprano te da ventaja: feedback real, tracción e iteración. El MVP es la forma más rápida de aprender del mercado.">
-              Lançar cedo dá-te vantagem: feedback real, tração e iteração.
-              O MVP é a forma mais rápida de aprender com o mercado.
+               data-es="Lanzar temprano te da ventaja: feedback real, tracciÃ³n e iteraciÃ³n. El MVP es la forma mÃ¡s rÃ¡pida de aprender del mercado.">
+              LanÃ§ar cedo dÃ¡-te vantagem: feedback real, traÃ§Ã£o e iteraÃ§Ã£o.
+              O MVP Ã© a forma mais rÃ¡pida de aprender com o mercado.
             </p>
           </article>
 
@@ -1536,12 +1552,12 @@ footer.footer-pro .footer-brand-title {
                 <path d="M14 7h7v7"/>
               </svg>
             </div>
-            <h3 data-pt="Foco no negócio" data-en="Focus on business" data-es="Enfoque en el negocio">Foco no negócio</h3>
-            <p data-pt="Uma equipa experiente acelera decisões e execução. Tu ficas focado(a) no negócio — nós tratamos de produto, design e engenharia."
-               data-en="An experienced team speeds up decisions and execution. You stay focused on business — we handle product, design and engineering."
-               data-es="Un equipo experimentado acelera decisiones y ejecución. Tú te enfocas en el negocio — nosotros nos encargamos de producto, diseño e ingeniería.">
-              Uma equipa experiente acelera decisões e execução.
-              Tu ficas focado(a) no negócio — nós tratamos de produto, design e engenharia.
+            <h3 data-pt="Foco no negÃ³cio" data-en="Focus on business" data-es="Enfoque en el negocio">Foco no negÃ³cio</h3>
+            <p data-pt="Uma equipa experiente acelera decisÃµes e execuÃ§Ã£o. Tu ficas focado(a) no negÃ³cio â€” nÃ³s tratamos de produto, design e engenharia."
+               data-en="An experienced team speeds up decisions and execution. You stay focused on business â€” we handle product, design and engineering."
+               data-es="Un equipo experimentado acelera decisiones y ejecuciÃ³n. TÃº te enfocas en el negocio â€” nosotros nos encargamos de producto, diseÃ±o e ingenierÃ­a.">
+              Uma equipa experiente acelera decisÃµes e execuÃ§Ã£o.
+              Tu ficas focado(a) no negÃ³cio â€” nÃ³s tratamos de produto, design e engenharia.
             </p>
           </article>
         </div>
@@ -1551,7 +1567,7 @@ footer.footer-pro .footer-brand-title {
     <!-- HOW IT WORKS -->
     <section class="section" id="how-it-works">
       <div class="container">
-        <h2 class="section-title" data-pt="Como funciona" data-en="How it works" data-es="Cómo funciona">Como funciona</h2>
+        <h2 class="section-title" data-pt="Como funciona" data-en="How it works" data-es="CÃ³mo funciona">Como funciona</h2>
 
         <div class="timeline-wrap" id="mvpTimeline">
           <div class="timeline-progress" id="mvpTimelineProgress"></div>
@@ -1559,15 +1575,15 @@ footer.footer-pro .footer-brand-title {
             <div class="card step-card">
               <h3 class="step-title" data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h3>
               <p class="step-desc"
-                 data-pt="Alinhamos a visão do produto, objetivos e prioridades. Definimos o 'core' do MVP e criamos um plano de entrega claro para reduzir risco e acelerar o lançamento."
+                 data-pt="Alinhamos a visÃ£o do produto, objetivos e prioridades. Definimos o 'core' do MVP e criamos um plano de entrega claro para reduzir risco e acelerar o lanÃ§amento."
                  data-en="We align product vision, goals and priorities. We define the MVP 'core' and create a clear delivery plan to reduce risk and accelerate launch."
-                 data-es="Alineamos la visión del producto, objetivos y prioridades. Definimos el 'core' del MVP y creamos un plan de entrega claro para reducir riesgo y acelerar el lanzamiento.">
-                Alinhamos a visão do produto, objetivos e prioridades. Definimos o "core" do MVP e
-                criamos um plano de entrega claro para reduzir risco e acelerar o lançamento.
+                 data-es="Alineamos la visiÃ³n del producto, objetivos y prioridades. Definimos el 'core' del MVP y creamos un plan de entrega claro para reducir riesgo y acelerar el lanzamiento.">
+                Alinhamos a visÃ£o do produto, objetivos e prioridades. Definimos o "core" do MVP e
+                criamos um plano de entrega claro para reduzir risco e acelerar o lanÃ§amento.
               </p>
 
               <div class="deliverables">
-                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
+                <h4 data-pt="EntregÃ¡veis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">EntregÃ¡veis da fase:</h4>
 
                 <ul>
                   <li data-pt="User Stories" data-en="User Stories" data-es="User Stories">User Stories</li>
@@ -1588,15 +1604,15 @@ footer.footer-pro .footer-brand-title {
             <div class="card step-card">
               <h3 class="step-title" data-pt="Key Screens" data-en="Key Screens" data-es="Key Screens">Key Screens</h3>
               <p class="step-desc"
-                 data-pt="Criamos as principais screens para validares direção visual e fluxos. Isto permite aprovar UX/UI antes de expandir o design para o produto completo."
+                 data-pt="Criamos as principais screens para validares direÃ§Ã£o visual e fluxos. Isto permite aprovar UX/UI antes de expandir o design para o produto completo."
                  data-en="We create the key screens for you to validate visual direction and flows. This allows UX/UI approval before expanding design to the complete product."
-                 data-es="Creamos las pantallas clave para que valides dirección visual y flujos. Esto permite aprobar UX/UI antes de expandir el diseño al producto completo.">
-                Criamos as principais screens para validares direção visual e fluxos.
+                 data-es="Creamos las pantallas clave para que valides direcciÃ³n visual y flujos. Esto permite aprobar UX/UI antes de expandir el diseÃ±o al producto completo.">
+                Criamos as principais screens para validares direÃ§Ã£o visual e fluxos.
                 Isto permite aprovar UX/UI antes de expandir o design para o produto completo.
               </p>
 
               <div class="deliverables">
-                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
+                <h4 data-pt="EntregÃ¡veis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">EntregÃ¡veis da fase:</h4>
 
                 <ul>
                   <li data-pt="UI Concept" data-en="UI Concept" data-es="UI Concept">UI Concept</li>
@@ -1615,15 +1631,15 @@ footer.footer-pro .footer-brand-title {
             <div class="card step-card">
               <h3 class="step-title" data-pt="All Screens" data-en="All Screens" data-es="All Screens">All Screens</h3>
               <p class="step-desc"
-                 data-pt="Depois de aprovares as Key Screens, expandimos o design para todas as screens necessárias para o MVP ficar completo e pronto para desenvolvimento."
+                 data-pt="Depois de aprovares as Key Screens, expandimos o design para todas as screens necessÃ¡rias para o MVP ficar completo e pronto para desenvolvimento."
                  data-en="After you approve the Key Screens, we expand the design to all screens needed for the MVP to be complete and ready for development."
-                 data-es="Después de que apruebes las Key Screens, expandimos el diseño a todas las pantallas necesarias para que el MVP esté completo y listo para desarrollo.">
-                Depois de aprovares as Key Screens, expandimos o design para todas as screens necessárias
+                 data-es="DespuÃ©s de que apruebes las Key Screens, expandimos el diseÃ±o a todas las pantallas necesarias para que el MVP estÃ© completo y listo para desarrollo.">
+                Depois de aprovares as Key Screens, expandimos o design para todas as screens necessÃ¡rias
                 para o MVP ficar completo e pronto para desenvolvimento.
               </p>
 
               <div class="deliverables">
-                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
+                <h4 data-pt="EntregÃ¡veis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">EntregÃ¡veis da fase:</h4>
 
                 <ul>
                   <li data-pt="Full Product UX/UI" data-en="Full Product UX/UI" data-es="Full Product UX/UI">Full Product UX/UI</li>
@@ -1642,15 +1658,15 @@ footer.footer-pro .footer-brand-title {
             <div class="card step-card">
               <h3 class="step-title" data-pt="Desenvolvimento" data-en="Development" data-es="Desarrollo">Desenvolvimento</h3>
               <p class="step-desc"
-                 data-pt="Implementamos o MVP com boas práticas e entregas progressivas. Vais testando módulos enquanto desenvolvemos — com updates regulares e transparência."
-                 data-en="We implement the MVP with best practices and progressive deliveries. You test modules as we develop — with regular updates and transparency."
-                 data-es="Implementamos el MVP con buenas prácticas y entregas progresivas. Vas probando módulos mientras desarrollamos — con actualizaciones regulares y transparencia.">
-                Implementamos o MVP com boas práticas e entregas progressivas.
-                Vais testando módulos enquanto desenvolvemos — com updates regulares e transparência.
+                 data-pt="Implementamos o MVP com boas prÃ¡ticas e entregas progressivas. Vais testando mÃ³dulos enquanto desenvolvemos â€” com updates regulares e transparÃªncia."
+                 data-en="We implement the MVP with best practices and progressive deliveries. You test modules as we develop â€” with regular updates and transparency."
+                 data-es="Implementamos el MVP con buenas prÃ¡cticas y entregas progresivas. Vas probando mÃ³dulos mientras desarrollamos â€” con actualizaciones regulares y transparencia.">
+                Implementamos o MVP com boas prÃ¡ticas e entregas progressivas.
+                Vais testando mÃ³dulos enquanto desenvolvemos â€” com updates regulares e transparÃªncia.
               </p>
 
               <div class="deliverables">
-                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
+                <h4 data-pt="EntregÃ¡veis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">EntregÃ¡veis da fase:</h4>
 
                 <ul>
                   <li data-pt="Progressive module delivery" data-en="Progressive module delivery" data-es="Progressive module delivery">Progressive module delivery</li>
@@ -1667,17 +1683,17 @@ footer.footer-pro .footer-brand-title {
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title" data-pt="Testes e lançamento" data-en="Testing & launch" data-es="Pruebas y lanzamiento">Testes e lançamento</h3>
+              <h3 class="step-title" data-pt="Testes e lanÃ§amento" data-en="Testing & launch" data-es="Pruebas y lanzamiento">Testes e lanÃ§amento</h3>
               <p class="step-desc"
-                 data-pt="Entramos numa fase de testes para corrigir bugs críticos e garantir qualidade. Preparamos o lançamento com validação final e 'launch readiness'."
+                 data-pt="Entramos numa fase de testes para corrigir bugs crÃ­ticos e garantir qualidade. Preparamos o lanÃ§amento com validaÃ§Ã£o final e 'launch readiness'."
                  data-en="We enter a testing phase to fix critical bugs and ensure quality. We prepare launch with final validation and 'launch readiness'."
-                 data-es="Entramos en una fase de pruebas para corregir bugs críticos y garantizar calidad. Preparamos el lanzamiento con validación final y 'launch readiness'.">
-                Entramos numa fase de testes para corrigir bugs críticos e garantir qualidade.
-                Preparamos o lançamento com validação final e "launch readiness".
+                 data-es="Entramos en una fase de pruebas para corregir bugs crÃ­ticos y garantizar calidad. Preparamos el lanzamiento con validaciÃ³n final y 'launch readiness'.">
+                Entramos numa fase de testes para corrigir bugs crÃ­ticos e garantir qualidade.
+                Preparamos o lanÃ§amento com validaÃ§Ã£o final e "launch readiness".
               </p>
 
               <div class="deliverables">
-                <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
+                <h4 data-pt="EntregÃ¡veis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">EntregÃ¡veis da fase:</h4>
 
                 <ul>
                   <li data-pt="Bug reports & fixes" data-en="Bug reports & fixes" data-es="Bug reports & fixes">Bug reports & fixes</li>
@@ -1693,17 +1709,17 @@ footer.footer-pro .footer-brand-title {
           </div>
         </div>
 
-        <!-- CTA final dentro da mesma secção -->
+        <!-- CTA final dentro da mesma secÃ§Ã£o -->
         <div style="margin-top: 46px;">
           <div class="final-cta">
-            <h2 data-pt="Pronto para construir o teu MVP?" data-en="Ready to build your MVP?" data-es="¿Listo para construir tu MVP?">
+            <h2 data-pt="Pronto para construir o teu MVP?" data-en="Ready to build your MVP?" data-es="Â¿Listo para construir tu MVP?">
               Pronto para construir o teu MVP?
             </h2>
-            <p data-pt="Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução — sem sacrificar qualidade nem base técnica."
-               data-en="Let's transform your idea into a real product, focusing on essentials and execution speed — without sacrificing quality or technical foundation."
-               data-es="Transformemos tu idea en un producto real, enfocándonos en lo esencial y velocidad de ejecución — sin sacrificar calidad ni base técnica.">
-              Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução —
-              sem sacrificar qualidade nem base técnica.
+            <p data-pt="Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execuÃ§Ã£o â€” sem sacrificar qualidade nem base tÃ©cnica."
+               data-en="Let's transform your idea into a real product, focusing on essentials and execution speed â€” without sacrificing quality or technical foundation."
+               data-es="Transformemos tu idea en un producto real, enfocÃ¡ndonos en lo esencial y velocidad de ejecuciÃ³n â€” sin sacrificar calidad ni base tÃ©cnica.">
+              Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execuÃ§Ã£o â€”
+              sem sacrificar qualidade nem base tÃ©cnica.
             </p>
             <a class="btn btn--primary" href="../book-a-call.html"
                data-pt="Agendar uma chamada"
@@ -1718,60 +1734,60 @@ footer.footer-pro .footer-brand-title {
     </section>
   </main>
 
-  <!-- ✅ FOOTER IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- âœ… FOOTER IGUAL AO BOOK-A-CALL.HTML -->
   <footer class="footer-pro" role="contentinfo">
             <div class="container">
                 <div class="footer-top">
                     <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
+                        <!-- LOGO REMOVIDA - substituÃ­da por texto COBRAIT -->
                         <h3 class="footer-brand-title">Cobrait</h3>
                         <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind — vom Umfang bis zum Start." data-ru="Мы создаем цифровые продукты, ориентированные на скорость, качество и рост — от определения объема до запуска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering." data-ja="我々はスピード、品質、成長に重点を置いたデジタル製品を作成します—スコープからローンチまで。" data-zh="我们创建数字产品，专注于速度、质量和增长— 从范围到发布。">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento â€” do scope ao lanÃ§amento." data-en="We build digital products focused on speed, quality and growth â€” from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento â€” del alcance al lanzamiento." data-fr="Nous crÃ©ons des produits numÃ©riques axÃ©s sur la vitesse, la qualitÃ© et la croissance â€” du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, QualitÃ¤t und Wachstum ausgerichtet sind â€” vom Umfang bis zum Start." data-ru="ÐœÑ‹ ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ Ñ†Ð¸Ñ„Ñ€Ð¾Ð²Ñ‹Ðµ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚Ñ‹, Ð¾Ñ€Ð¸ÐµÐ½Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð½Ð° ÑÐºÐ¾Ñ€Ð¾ÑÑ‚ÑŒ, ÐºÐ°Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¸ Ñ€Ð¾ÑÑ‚ â€” Ð¾Ñ‚ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ñ Ð¾Ð±ÑŠÐµÐ¼Ð° Ð´Ð¾ Ð·Ð°Ð¿ÑƒÑÐºÐ°." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei â€” van scope tot lancering." data-ja="æˆ‘ã€…ã¯ã‚¹ãƒ”ãƒ¼ãƒ‰ã€å“è³ªã€æˆé•·ã«é‡ç‚¹ã‚’ç½®ã„ãŸãƒ‡ã‚¸ã‚¿ãƒ«è£½å“ã‚’ä½œæˆã—ã¾ã™â€”ã‚¹ã‚³ãƒ¼ãƒ—ã‹ã‚‰ãƒ­ãƒ¼ãƒ³ãƒã¾ã§ã€‚" data-zh="æˆ‘ä»¬åˆ›å»ºæ•°å­—äº§å“ï¼Œä¸“æ³¨äºŽé€Ÿåº¦ã€è´¨é‡å’Œå¢žé•¿â€” ä»ŽèŒƒå›´åˆ°å‘å¸ƒã€‚">
+                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento â€” do scope ao lanÃ§amento.
                         </p>
                         <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="../book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="ÐšÐ½Ð¸Ð³Ð° Ð²Ñ‹Ð·Ð¾Ð²" data-nl="Een gesprek boeken" data-ja="é›»è©±äºˆç´„" data-zh="é¢„å®šç”µè¯">
+                            <a class="btn btn--primary btn--footer" href="../book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="ÃÅ¡ÃÂ½ÃÂ¸ÃÂ³ÃÂ° ÃÂ²Ã‘â€¹ÃÂ·ÃÂ¾ÃÂ²" data-nl="Een gesprek boeken" data-ja="Ã©â€ºÂ»Ã¨Â©Â±Ã¤ÂºË†Ã§Â´â€ž" data-zh="Ã©Â¢â€žÃ¥Â®Å¡Ã§â€ÂµÃ¨Â¯Â">
                                 Agendar uma chamada
                             </a>
-                            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="Посмотреть услуги" data-nl="Services zien" data-ja="サービスを表示" data-zh="查看服务">
-                                Ver serviços
+                            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do" data-pt="Ver serviÃ§os" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ ÑƒÑÐ»ÑƒÐ³Ð¸" data-nl="Services zien" data-ja="ã‚µãƒ¼ãƒ“ã‚¹ã‚’è¡¨ç¤º" data-zh="æŸ¥çœ‹æœåŠ¡">
+                                Ver serviÃ§os
                             </a>
                         </div>
                         <div class="footer-badges" aria-label="Highlights">
                             <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="Быстрая доставка" data-nl="Snelle levering" data-ja="迅速な配送" data-zh="快速交付">Entrega rápida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="Qualité" data-de="Qualität" data-ru="Качество" data-nl="Kwaliteit" data-ja="品質" data-zh="质量">Qualidade</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rÃ¡pida" data-en="Fast delivery" data-es="Entrega rÃ¡pida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="Ð‘Ñ‹ÑÑ‚Ñ€Ð°Ñ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ°" data-nl="Snelle levering" data-ja="è¿…é€Ÿãªé…é€" data-zh="å¿«é€Ÿäº¤ä»˜">Entrega rÃ¡pida</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="QualitÃ©" data-de="QualitÃ¤t" data-ru="ÐšÐ°Ñ‡ÐµÑÑ‚Ð²Ð¾" data-nl="Kwaliteit" data-ja="å“è³ª" data-zh="è´¨é‡">Qualidade</span></span>
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</h4>
+                        <h4 data-pt="ServiÃ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Ð£ÑÐ»ÑƒÐ³Ð¸" data-nl="Diensten" data-ja="ã‚µãƒ¼ãƒ“ã‚¹" data-zh="æœåŠ¡">ServiÃ§os</h4>
                         <ul class="footer-links">
                             <li><a href="product-scope.html">Product Scope</a></li>
                             <li><a href="mvp-builder.html">MVP Builder</a></li>
                             <li><a href="ux-ui.html">UX / UI</a></li>
-                            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisé" data-de="Benutzerdefinierte Software" data-ru="Заказное ПО" data-nl="Aangepaste software" data-ja="カスタムソフトウェア" data-zh="定制软件">Software à Medida</a></li>
-                            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">Equipas Dedicadas</a></li>
+                            <li><a href="custom-software.html" data-pt="Software Ã  Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisÃ©" data-de="Benutzerdefinierte Software" data-ru="Ð—Ð°ÐºÐ°Ð·Ð½Ð¾Ðµ ÐŸÐž" data-nl="Aangepaste software" data-ja="ã‚«ã‚¹ã‚¿ãƒ ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢" data-zh="å®šåˆ¶è½¯ä»¶">Software Ã  Medida</a></li>
+                            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Ã‰quipes dÃ©diÃ©es" data-de="Dedizierte Teams" data-ru="Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñ‹" data-nl="Speciale teams" data-ja="å°‚ä»»ãƒãƒ¼ãƒ " data-zh="ä¸“ä¸šå›¢é˜Ÿ">Equipas Dedicadas</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="ÐšÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ" data-nl="Bedrijf" data-ja="ä¼šç¤¾" data-zh="å…¬å¸">Empresa</h4>
+                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="ÃÅ¡ÃÂ¾ÃÂ¼ÃÂ¿ÃÂ°ÃÂ½ÃÂ¸Ã‘Â" data-nl="Bedrijf" data-ja="Ã¤Â¼Å¡Ã§Â¤Â¾" data-zh="Ã¥â€¦Â¬Ã¥ÂÂ¸">Empresa</h4>
                         <ul class="footer-links">
-                            <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">Sobre nós</a></li>
+                            <li><a href="../about-us.html" data-pt="Sobre nÃ³s" data-en="About us" data-es="Sobre nosotros" data-fr="Ã€ propos de nous" data-de="Ãœber uns" data-ru="Ðž Ð½Ð°Ñ" data-nl="Over ons" data-ja="ç§ãŸã¡ã«ã¤ã„ã¦" data-zh="å…³äºŽæˆ‘ä»¬">Sobre nÃ³s</a></li>
                             
-                            <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Carreiras</a></li>
+                            <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="CarriÃ¨res" data-de="Karrieren" data-ru="ÐšÐ°Ñ€ÑŒÐµÑ€Ð°" data-nl="CarriÃ¨re" data-ja="ã‚­ãƒ£ãƒªã‚¢" data-zh="èŒä¸š">Carreiras</a></li>
                             <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
                         </ul>
                     </div>
                     <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="Контакты" data-nl="Contact" data-ja="お問い合わせ" data-zh="联系方式">Contacto</h4>
+                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ‹" data-nl="Contact" data-ja="ãŠå•ã„åˆã‚ã›" data-zh="è”ç³»æ–¹å¼">Contacto</h4>
                         <div class="footer-meta">
                             <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="メール:" data-zh="电子邮件:">Email:</span>
+                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="ãƒ¡ãƒ¼ãƒ«:" data-zh="ç”µå­é‚®ä»¶:">Email:</span>
                                 <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
                             </div>
                             <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="Réponse:" data-de="Antwort:" data-ru="Ответ:" data-nl="Antwoord:" data-ja="返信:" data-zh="回复:">Resposta:</span>
-                                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h" data-fr="généralement dans les 24–48 heures" data-de="normalerweise innerhalb von 24–48 Stunden" data-ru="обычно в течение 24–48 часов" data-nl="meestal binnen 24–48 uur" data-ja="通常24〜48時間以内" data-zh="通常在24-48小时内">normalmente em 24–48h</span>
+                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="RÃ©ponse:" data-de="Antwort:" data-ru="ÐžÑ‚Ð²ÐµÑ‚:" data-nl="Antwoord:" data-ja="è¿”ä¿¡:" data-zh="å›žå¤:">Resposta:</span>
+                                <span data-pt="normalmente em 24â€“48h" data-en="usually within 24â€“48h" data-es="normalmente en 24â€“48h" data-fr="gÃ©nÃ©ralement dans les 24â€“48 heures" data-de="normalerweise innerhalb von 24â€“48 Stunden" data-ru="Ð¾Ð±Ñ‹Ñ‡Ð½Ð¾ Ð² Ñ‚ÐµÑ‡ÐµÐ½Ð¸Ðµ 24â€“48 Ñ‡Ð°ÑÐ¾Ð²" data-nl="meestal binnen 24â€“48 uur" data-ja="é€šå¸¸24ã€œ48æ™‚é–“ä»¥å†…" data-zh="é€šå¸¸åœ¨24-48å°æ—¶å†…">normalmente em 24â€“48h</span>
                             </div>
                             <div>
                                 <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
@@ -1783,33 +1799,33 @@ footer.footer-pro .footer-brand-title {
                                 </a>
                             </div>
                             <div>
-                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="Хотите быстро?" data-nl="Wil je het snel?" data-ja="早くお張りですか?" data-zh="想要快速？">Preferes rápido?</span>
-                                <a href="../book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="Réservez un appel." data-de="Buchen Sie einen Anruf." data-ru="Запланировать звонок." data-nl="Boek een gesprek." data-ja="通話を予約する。" data-zh="预约通话。">Marca uma call.</a>
+                                <span data-pt="Preferes rÃ¡pido?" data-en="Want it fast?" data-es="Â¿Lo quieres rÃ¡pido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="Ð¥Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð±Ñ‹ÑÑ‚Ñ€Ð¾?" data-nl="Wil je het snel?" data-ja="æ—©ããŠå¼µã‚Šã§ã™ã‹?" data-zh="æƒ³è¦å¿«é€Ÿï¼Ÿ">Preferes rÃ¡pido?</span>
+                                <a href="../book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="RÃ©servez un appel." data-de="Buchen Sie einen Anruf." data-ru="Ð—Ð°Ð¿Ð»Ð°Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð·Ð²Ð¾Ð½Ð¾Ðº." data-nl="Boek een gesprek." data-ja="é€šè©±ã‚’äºˆç´„ã™ã‚‹ã€‚" data-zh="é¢„çº¦é€šè¯ã€‚">Marca uma call.</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
                     <div>
-                        © <span id="year"></span> Cobrait — Software Factory
+                        Â© <span id="year"></span> Cobrait â€” Software Factory
                     </div>
                     <div class="footer-mini-links">
-                        <a href="../privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-ru="Конфиденциальность" data-nl="Privacy" data-ja="プライバシー" data-zh="隐私">Privacidade</a>
-                        <a href="../termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="Условия" data-nl="Voorwaarden" data-ja="利用規約" data-zh="条款">Termos</a>
+                        <a href="../privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="ConfidentialitÃ©" data-de="Datenschutz" data-ru="ÐšÐ¾Ð½Ñ„Ð¸Ð´ÐµÐ½Ñ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ" data-nl="Privacy" data-ja="ãƒ—ãƒ©ã‚¤ãƒã‚·ãƒ¼" data-zh="éšç§">Privacidade</a>
+                        <a href="../termos.html" data-pt="Termos" data-en="Terms" data-es="TÃ©rminos" data-fr="Conditions" data-de="Bedingungen" data-ru="Ð£ÑÐ»Ð¾Ð²Ð¸Ñ" data-nl="Voorwaarden" data-ja="åˆ©ç”¨è¦ç´„" data-zh="æ¡æ¬¾">Termos</a>
                         <a href="../cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
-                        <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Services" data-ja="サービス" data-zh="服务">Serviços</a>
-                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de réclamations" data-de="Beschwerdebuch" data-ru="Книга жалоб" data-nl="Klachtenboek" data-ja="苦情受付帳" data-zh="投诉簿">Livro de Reclamações</a>
+                        <a href="../index.html#what-we-do" data-pt="ServiÃ§os" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Ð£ÑÐ»ÑƒÐ³Ð¸" data-nl="Services" data-ja="ã‚µãƒ¼ãƒ“ã‚¹" data-zh="æœåŠ¡">ServiÃ§os</a>
+                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de ReclamaÃ§Ãµes" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de rÃ©clamations" data-de="Beschwerdebuch" data-ru="ÐšÐ½Ð¸Ð³Ð° Ð¶Ð°Ð»Ð¾Ð±" data-nl="Klachtenboek" data-ja="è‹¦æƒ…å—ä»˜å¸³" data-zh="æŠ•è¯‰ç°¿">Livro de ReclamaÃ§Ãµes</a>
                     </div>
                 </div>
             </div>
         </footer>
 
-  <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- âœ… SCRIPT DE LÃNGUAS IGUAL AO BOOK-A-CALL.HTML -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.addEventListener('DOMContentLoaded', function() {
-      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      // ====== DETECTAR PÃGINA ATUAL E MARCAR COMO ACTIVE ======
       function setActivePage() {
         const currentUrl = window.location.pathname.toLowerCase();
         const navLinks = document.querySelectorAll('.site-nav a');
@@ -1817,10 +1833,10 @@ footer.footer-pro .footer-brand-title {
         navLinks.forEach(link => {
           const href = link.getAttribute('href').toLowerCase();
           
-          // Remover hash para comparação
+          // Remover hash para comparaÃ§Ã£o
           const hrefWithoutHash = href.split('#')[0];
           
-          // Verificar se é a página atual
+          // Verificar se Ã© a pÃ¡gina atual
           if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
             link.classList.add('active');
           } else {
@@ -1841,7 +1857,7 @@ footer.footer-pro .footer-brand-title {
         });
       });
 
-      // Normalização de idioma
+      // NormalizaÃ§Ã£o de idioma
       function normalizeLang(l) {
         if (!l) return 'pt';
         l = String(l).toLowerCase();
@@ -1870,25 +1886,25 @@ footer.footer-pro .footer-brand-title {
         });
       });
 
-      // SISTEMA DE LÍNGUAS COM DROPDOWN
+      // SISTEMA DE LÃNGUAS COM DROPDOWN
       const languageOptions = document.querySelectorAll('.language-option');
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
       
-      // Mapeamento de bandeiras para cada língua
+      // Mapeamento de bandeiras para cada lÃ­ngua
       const flagMap = {
-        'pt': '🇵🇹',
-        'en': '🇬🇧',
-        'es': '🇪🇸',
-        'fr': '🇫🇷',
-        'de': '🇩🇪',
-        'ru': '🇷🇺',
-        'nl': '🇳🇱',
-        'ja': '🇯🇵',
-        'zh': '🇨🇳'
+        'pt': 'ðŸ‡µðŸ‡¹',
+        'en': 'ðŸ‡¬ðŸ‡§',
+        'es': 'ðŸ‡ªðŸ‡¸',
+        'fr': 'ðŸ‡«ðŸ‡·',
+        'de': 'ðŸ‡©ðŸ‡ª',
+        'ru': 'ðŸ‡·ðŸ‡º',
+        'nl': 'ðŸ‡³ðŸ‡±',
+        'ja': 'ðŸ‡¯ðŸ‡µ',
+        'zh': 'ðŸ‡¨ðŸ‡³'
       };
       
-      // Mapeamento de códigos curtos
+      // Mapeamento de cÃ³digos curtos
       const codeMap = {
         'pt': 'PT',
         'en': 'EN',
@@ -1901,12 +1917,12 @@ footer.footer-pro .footer-brand-title {
         'zh': 'ZH'
       };
 
-      // Carregar língua salva ou usar português por padrão
+      // Carregar lÃ­ngua salva ou usar portuguÃªs por padrÃ£o
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
       setActiveLanguage(savedLanguage);
       applyLanguage(savedLanguage);
 
-      // Event listeners para as opções de língua
+      // Event listeners para as opÃ§Ãµes de lÃ­ngua
       languageOptions.forEach(option => {
         option.addEventListener('click', function() {
           const lang = normalizeLang(this.getAttribute('data-lang'));
@@ -1917,11 +1933,11 @@ footer.footer-pro .footer-brand-title {
       });
 
       function setActiveLanguage(lang) {
-        // Atualizar o botão do dropdown
+        // Atualizar o botÃ£o do dropdown
         if (flagMap[lang]) {
           currentFlag.textContent = flagMap[lang];
         } else {
-          currentFlag.textContent = '🇬🇧';
+          currentFlag.textContent = 'ðŸ‡¬ðŸ‡§';
         }
         
         if (codeMap[lang]) {
@@ -1930,7 +1946,7 @@ footer.footer-pro .footer-brand-title {
           currentLang.textContent = 'EN';
         }
         
-        // Atualizar as opções ativas
+        // Atualizar as opÃ§Ãµes ativas
         languageOptions.forEach(option => {
           option.classList.remove('active');
           if (normalizeLang(option.getAttribute('data-lang')) === lang) {
@@ -1951,7 +1967,7 @@ footer.footer-pro .footer-brand-title {
         elements.forEach(el => {
           let text = el.getAttribute(`data-${lang}`);
           
-          // Se não houver tradução para esta língua, usar inglês como fallback
+          // Se nÃ£o houver traduÃ§Ã£o para esta lÃ­ngua, usar inglÃªs como fallback
           if (text === null && lang !== 'en') {
             text = el.getAttribute('data-en');
           }
@@ -1979,7 +1995,7 @@ footer.footer-pro .footer-brand-title {
         ariaEls.forEach(el => {
           let val = el.getAttribute(`data-${lang}`);
           
-          // Se não houver tradução para esta língua, usar inglês como fallback
+          // Se nÃ£o houver traduÃ§Ã£o para esta lÃ­ngua, usar inglÃªs como fallback
           if (val === null && lang !== 'en') {
             val = el.getAttribute('data-en');
           }
@@ -2059,3 +2075,4 @@ footer.footer-pro .footer-brand-title {
 
 </body>
 </html>
+

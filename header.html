@@ -1,3 +1,19 @@
+﻿<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Define a estrutura e o conteúdo desta página do site COBRAIT.
+  Estrutura principal:
+  1) Cabeçalho/navegação com seleção de idioma.
+  2) Secções de conteúdo da página (hero, blocos informativos e CTAs).
+  3) Rodapé com links institucionais e contactos.
+  Dependências comuns:
+  - styles.css e/ou CSS local da página para layout e componentes visuais.
+  - apply-translations.js e atributos data-* para internacionalização.
+  Interatividade:
+  - Scripts no final do ficheiro controlam dropdowns, idioma e componentes dinâmicos.
+  Manutenção:
+  - Preservar IDs/classes usados por JavaScript e traduções antes de refatorar markup.
+  - Ao adicionar novos textos visíveis, incluir atributos data-pt/data-en (e restantes idiomas usados).
+-->
 <!-- sync: github-desktop-update -->
 <!-- HEADER IGUAL AO BOOK-A-CALL.HTML -->
 <header class="site-header">
@@ -18,8 +34,8 @@
                 <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
                 <li class="dropdown">
                     <a href="index.html#what-we-do">
-                        <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
-                        <span class="dropdown-arrow">▼</span>
+                        <span data-pt="ServiÃ§os" data-en="Services" data-es="Servicios">ServiÃ§os</span>
+                        <span class="dropdown-arrow">â–¼</span>
                     </a>
 
                     <div class="dropdown-content">
@@ -29,9 +45,9 @@
                             </svg>
                             <div class="dropdown-item-content">
                                 <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
-                                <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                                <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negÃ³cio."
                                    data-en="15-day process to align the product with your business goals."
-                                   data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                                   data-es="Proceso de 15 dÃ­as para alinear el producto con los objetivos de tu negocio.">
                                     15-day process to align the product with your business goals.
                                 </p>
                             </div>
@@ -43,9 +59,9 @@
                             </svg>
                             <div class="dropdown-item-content">
                                 <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
-                                <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                                <p data-pt="Entra no mercado rapidamente com um Produto MÃ­nimo ViÃ¡vel de alta qualidade."
                                    data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                                   data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                                   data-es="Lanza al mercado rÃ¡pidamente con un Producto MÃ­nimo Viable de alta calidad.">
                                     Go to market quickly with a high-quality Minimum Viable Product.
                                 </p>
                             </div>
@@ -57,9 +73,9 @@
                             </svg>
                             <div class="dropdown-item-content">
                                 <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
-                                <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                                <p data-pt="Design de um produto fÃ¡cil de usar, envolvente e funcional."
                                    data-en="Design an easy-to-use engaging and functional product."
-                                   data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                                   data-es="DiseÃ±a un producto fÃ¡cil de usar, atractivo y funcional.">
                                     Design an easy-to-use engaging and functional product.
                                 </p>
                             </div>
@@ -70,14 +86,14 @@
                                 <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                             <div class="dropdown-item-content">
-                                <h4 data-pt="Desenvolvimento e Capacitação com IA"
+                                <h4 data-pt="Desenvolvimento e CapacitaÃ§Ã£o com IA"
                                     data-en="AI Development & Enablement"
-                                    data-es="Desarrollo y Capacitación con IA">
+                                    data-es="Desarrollo y CapacitaciÃ³n con IA">
                                     AI Development & Enablement
                                 </h4>
-                                <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                                <p data-pt="Aplicamos ML e IA Generativa de forma estratÃ©gica para preparar o teu negÃ³cio para o futuro."
                                    data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
-                                   data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
+                                   data-es="Aplicamos ML e IA Generativa estratÃ©gicamente para que tu negocio estÃ© listo para el futuro.">
                                     We leverage ML and Generative AI strategically to ensure your business is future-ready.
                                 </p>
                             </div>
@@ -88,14 +104,14 @@
                                 <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                             </svg>
                             <div class="dropdown-item-content">
-                                <h4 data-pt="Desenvolvimento de Software à Medida"
+                                <h4 data-pt="Desenvolvimento de Software Ã  Medida"
                                     data-en="Custom Software Development"
                                     data-es="Desarrollo de Software a Medida">
                                     Custom Software Development
                                 </h4>
-                                <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                                <p data-pt="Frameworks lean aplicados Ã  tua visÃ£o para criar uma soluÃ§Ã£o inovadora de software Ã  medida."
                                    data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                                   data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                                   data-es="Frameworks lean aplicados a tu visiÃ³n para crear una soluciÃ³n innovadora de software a medida.">
                                     Lean frameworks applied to your vision to create an innovative custom software solution.
                                 </p>
                             </div>
@@ -109,7 +125,7 @@
                                 <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
                                     Dedicated Teams
                                 </h4>
-                                <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                                <p data-pt="ConstrÃ³i o teu produto com uma equipa dedicada de developers."
                                    data-en="Build your product with a dedicated team of developers."
                                    data-es="Construye tu producto con un equipo dedicado de developers.">
                                     Build your product with a dedicated team of developers.
@@ -119,34 +135,34 @@
                     </div>
                 </li>
 
-                <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
-                <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+                <li><a href="pricing.html" data-pt="PreÃ§os" data-en="Pricing" data-es="Precios">Pricing</a></li>
+                <li><a href="about-us.html"><span data-pt="Sobre nÃ³s" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
                 <li><a href="index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
                 <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
             </ul>
         </nav>
 
         <div class="header-right">
-            <!-- DROPDOWN DE LÍNGUAS -->
+            <!-- DROPDOWN DE LÃNGUAS -->
             <div class="language-dropdown">
                 <button class="language-dropdown-btn" aria-label="Select language">
-                    <span class="lang-flag" id="currentFlag">🇵🇹</span>
+                    <span class="lang-flag" id="currentFlag">ðŸ‡µðŸ‡¹</span>
                     <span class="lang-code" id="currentLang">PT</span>
-                    <span class="dropdown-arrow">▼</span>
+                    <span class="dropdown-arrow">â–¼</span>
                 </button>
                 
                 <div class="language-dropdown-content">
                     <button class="language-option active" data-lang="pt">
-                        <span class="lang-flag">🇵🇹</span>
-                        <span class="lang-name">Português</span>
+                        <span class="lang-flag">ðŸ‡µðŸ‡¹</span>
+                        <span class="lang-name">PortuguÃªs</span>
                     </button>
                     <button class="language-option" data-lang="en">
-                        <span class="lang-flag">🇬🇧</span>
+                        <span class="lang-flag">ðŸ‡¬ðŸ‡§</span>
                         <span class="lang-name">English</span>
                     </button>
                     <button class="language-option" data-lang="es">
-                        <span class="lang-flag">🇪🇸</span>
-                        <span class="lang-name">Español</span>
+                        <span class="lang-flag">ðŸ‡ªðŸ‡¸</span>
+                        <span class="lang-name">EspaÃ±ol</span>
                     </button>
                 </div>
             </div>
