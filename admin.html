@@ -1,0 +1,362 @@
+<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Painel ADMIN local para visualizar e gerir acesso rapido a todas as paginas.
+  Nota: A autenticacao desta pagina e apenas cliente (nao segura para producao).
+-->
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>COBRAIT Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f8fc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --ok: #16a34a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+    }
+    .wrap {
+      width: min(1160px, calc(100% - 32px));
+      margin: 24px auto 40px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      margin-bottom: 16px;
+    }
+    .brand {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .muted { color: var(--muted); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .18s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-ghost {
+      color: var(--text);
+      border-color: var(--line);
+      background: #fff;
+    }
+    .btn-ghost:hover { background: #f8fafc; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      padding: 16px;
+    }
+    .login-box {
+      width: min(520px, 100%);
+      margin: 60px auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+    h1, h2, h3 { margin: 0; }
+    .login-box h1 { font-size: 24px; margin-bottom: 6px; }
+    .login-box p { margin: 0 0 14px; color: var(--muted); }
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .input {
+      width: 100%;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+    }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+    }
+    .kpi b {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 480px;
+      overflow: auto;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 12px 0;
+    }
+    .item:last-child { border-bottom: none; }
+    .item-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      border: 1px solid #bae6fd;
+      color: #0369a1;
+      background: #f0f9ff;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-right: 6px;
+    }
+    .status-ok {
+      color: var(--ok);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .hidden { display: none !important; }
+    .err {
+      color: #b91c1c;
+      margin-top: 6px;
+      font-size: 13px;
+      min-height: 18px;
+    }
+    @media (max-width: 900px) {
+      .row, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section id="loginSection" class="login-box">
+      <h1>Admin Area</h1>
+      <p>Acesso local para veres todas as paginas e estado rapido do site.</p>
+      <label class="field-label" for="adminPass">Password</label>
+      <input id="adminPass" class="input" type="password" placeholder="Introduz a password" />
+      <button id="loginBtn" class="btn btn-primary" type="button">Entrar</button>
+      <div id="loginError" class="err"></div>
+      <p class="muted" style="margin-top:12px;font-size:12px;">
+        Dica: password inicial <code>cobrait-admin</code> (altera no topo do script).
+      </p>
+    </section>
+
+    <section id="adminSection" class="hidden">
+      <div class="topbar">
+        <div>
+          <div class="brand">COBRAIT ADMIN</div>
+          <div class="muted" id="sessionInfo">Sessao ativa</div>
+        </div>
+        <div>
+          <a class="btn btn-ghost" href="index.html">Abrir site</a>
+          <button id="logoutBtn" class="btn btn-primary" type="button">Sair</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="kpi">
+          <b id="kpiTotal">0</b>
+          <span class="muted">Paginas mapeadas</span>
+        </div>
+        <div class="kpi">
+          <b id="kpiServicos">0</b>
+          <span class="muted">Paginas de servicos</span>
+        </div>
+        <div class="kpi">
+          <b id="kpiChecks">0</b>
+          <span class="muted">Checks titulo OK</span>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="panel">
+          <h2 style="font-size:18px;margin-bottom:4px;">Todas as paginas</h2>
+          <p class="muted" style="margin-top:0;margin-bottom:12px;">Acesso direto a cada pagina do projeto.</p>
+          <ul id="pagesList" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <h2 style="font-size:18px;margin-bottom:4px;">Estado rapido</h2>
+          <p class="muted" style="margin-top:0;margin-bottom:12px;">Verifica se cada pagina responde e tem tag title.</p>
+          <ul id="checksList" class="list"></ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Autenticacao local (cliente). Para producao, usar backend seguro.
+    const ADMIN_PASSWORD = "cobrait-admin";
+    const SESSION_KEY = "cobrait_admin_session";
+
+    const pages = [
+      { path: "index.html", label: "Home", group: "core" },
+      { path: "about-us.html", label: "About Us", group: "core" },
+      { path: "pricing.html", label: "Pricing", group: "core" },
+      { path: "project.html", label: "Project", group: "core" },
+      { path: "book-a-call.html", label: "Book a Call", group: "core" },
+      { path: "careers.html", label: "Careers", group: "core" },
+      { path: "tech.html", label: "Tech", group: "core" },
+      { path: "Serviços.html", label: "Servicos", group: "core" },
+      { path: "privacidade.html", label: "Privacidade", group: "legal" },
+      { path: "termos.html", label: "Termos", group: "legal" },
+      { path: "cookies.html", label: "Cookies", group: "legal" },
+      { path: "servicos/product-scope.html", label: "Product Scope", group: "servicos" },
+      { path: "servicos/mvp-builder.html", label: "MVP Builder", group: "servicos" },
+      { path: "servicos/ux-ui.html", label: "UX/UI", group: "servicos" },
+      { path: "servicos/custom-software.html", label: "Custom Software", group: "servicos" },
+      { path: "servicos/dedicated-teams.html", label: "Dedicated Teams", group: "servicos" },
+      { path: "translate-helper.html", label: "Translate Helper", group: "tools" },
+      { path: "test-translations.html", label: "Test Translations", group: "tools" },
+      { path: "header.html", label: "Header (snippet)", group: "tools" }
+    ];
+
+    const loginSection = document.getElementById("loginSection");
+    const adminSection = document.getElementById("adminSection");
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const loginPass = document.getElementById("adminPass");
+    const loginError = document.getElementById("loginError");
+    const pagesList = document.getElementById("pagesList");
+    const checksList = document.getElementById("checksList");
+    const kpiTotal = document.getElementById("kpiTotal");
+    const kpiServicos = document.getElementById("kpiServicos");
+    const kpiChecks = document.getElementById("kpiChecks");
+    const sessionInfo = document.getElementById("sessionInfo");
+
+    function openAdmin() {
+      loginSection.classList.add("hidden");
+      adminSection.classList.remove("hidden");
+      sessionInfo.textContent = "Sessao ativa em " + new Date().toLocaleString("pt-PT");
+      renderPages();
+      runChecks();
+    }
+
+    function renderPages() {
+      pagesList.innerHTML = "";
+      kpiTotal.textContent = String(pages.length);
+      kpiServicos.textContent = String(pages.filter(p => p.group === "servicos").length);
+
+      pages.forEach((page) => {
+        const li = document.createElement("li");
+        li.className = "item";
+        li.innerHTML = `
+          <div>
+            <div class="item-title">${page.label}</div>
+            <div class="muted"><span class="badge">${page.group}</span>${page.path}</div>
+          </div>
+          <a class="btn btn-ghost" href="${page.path}" target="_blank" rel="noopener noreferrer">Abrir</a>
+        `;
+        pagesList.appendChild(li);
+      });
+    }
+
+    async function runChecks() {
+      checksList.innerHTML = "";
+      let okCount = 0;
+
+      for (const page of pages) {
+        const li = document.createElement("li");
+        li.className = "item";
+        li.innerHTML = `
+          <div>
+            <div class="item-title">${page.label}</div>
+            <div class="muted">${page.path}</div>
+          </div>
+          <div class="muted">A verificar...</div>
+        `;
+        checksList.appendChild(li);
+
+        try {
+          const res = await fetch(page.path, { cache: "no-store" });
+          const html = await res.text();
+          const hasTitle = /<title>[^<]+<\/title>/i.test(html);
+          if (res.ok && hasTitle) okCount++;
+          li.lastElementChild.outerHTML = `<div class="status-ok">${res.ok ? "OK" : "ERRO"} | title ${hasTitle ? "OK" : "FALTA"}</div>`;
+        } catch (err) {
+          li.lastElementChild.outerHTML = `<div class="err">ERRO fetch</div>`;
+        }
+      }
+      kpiChecks.textContent = String(okCount);
+    }
+
+    loginBtn.addEventListener("click", () => {
+      if (loginPass.value === ADMIN_PASSWORD) {
+        localStorage.setItem(SESSION_KEY, "1");
+        loginError.textContent = "";
+        openAdmin();
+      } else {
+        loginError.textContent = "Password invalida.";
+      }
+    });
+
+    loginPass.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") loginBtn.click();
+    });
+
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem(SESSION_KEY);
+      adminSection.classList.add("hidden");
+      loginSection.classList.remove("hidden");
+      loginPass.value = "";
+    });
+
+    if (localStorage.getItem(SESSION_KEY) === "1") openAdmin();
+  </script>
+</body>
+</html>
