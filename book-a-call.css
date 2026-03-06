@@ -1,4 +1,4 @@
-﻿/*
+/*
   COBRAIT_STYLE_DOC
   Objetivo: Centralizar estilos visuais e comportamento responsivo da interface.
   Organizacao:
@@ -12,7 +12,7 @@
 */
 /* sync: github-desktop-update */
 /* =========================
-   BOOK A CALL Ã¢â‚¬â€ PAGE CSS
+   BOOK A CALL — PAGE CSS
    (Hero dark + Form pro)
    ========================= */
 
@@ -193,7 +193,7 @@
 .hq-link:hover{ text-decoration: underline; }
 
 /* =========================
-   CONTACT (white) Ã¢â‚¬â€ pro layout
+   CONTACT (white) — pro layout
    ========================= */
 .book-contact{
   background: #ffffff;
@@ -289,7 +289,7 @@
 }
 
 /* =========================
-   FORM Ã¢â‚¬â€ o fix do Ã¢â‚¬Å“desformatadoÃ¢â‚¬Â
+   FORM — o fix do “desformatado”
    ========================= */
 .form-card{
   background: #ffffff;
@@ -299,7 +299,7 @@
   box-shadow: 0 18px 60px rgba(2,6,23,.08);
 }
 
-/* CabeÃƒÂ§alho do form */
+/* Cabeçalho do form */
 .form-head{
   margin-bottom: 16px;
 }
@@ -320,7 +320,7 @@
   line-height: 1.6;
 }
 
-/* Ã¢Å“â€¦ Overrides fortes para o form nÃƒÂ£o ficar inline */
+/* ✅ Overrides fortes para o form não ficar inline */
 .book-form{
   display:flex !important;
   flex-direction: column !important;
@@ -408,7 +408,7 @@
   accent-color: #ec4899 !important;
 }
 
-/* BotÃƒÂ£o submit */
+/* Botão submit */
 .submit-btn{
   width: 100%;
   display:inline-flex;

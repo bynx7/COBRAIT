@@ -1,4 +1,4 @@
-﻿/*
+/*
   COBRAIT_STYLE_DOC
   Objetivo: Centralizar estilos visuais e comportamento responsivo da interface.
   Organizacao:
@@ -47,11 +47,11 @@ a:hover{ opacity:.9; }
   padding: 0 24px;
 }
 
-/* Header: garantir que fica acima e clicÃ¡vel */
+/* Header: garantir que fica acima e clicável */
 .site-header{
   position: absolute;
   top:0; left:0; right:0;
-  z-index: 9999;     /* âœ… acima de overlays */
+  z-index: 9999;     /* ✅ acima de overlays */
   padding: 18px 0;
   pointer-events: auto;
 }
@@ -93,7 +93,7 @@ a:hover{ opacity:.9; }
   letter-spacing: .4px;
   transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
   position: relative;
-  z-index: 10001; /* âœ… garante click mesmo com overlays */
+  z-index: 10001; /* ✅ garante click mesmo com overlays */
 }
 
 .btn:active{ transform: translateY(1px); }
@@ -135,14 +135,14 @@ a:hover{ opacity:.9; }
   transform: scale(1.05);
   filter: saturate(.9) contrast(.95) brightness(.75);
   z-index:0;
-  pointer-events: none; /* âœ… nunca bloquear cliques */
+  pointer-events: none; /* ✅ nunca bloquear cliques */
 }
 
 .hero-overlay{
   position:absolute;
   inset:0;
   z-index:1;
-  pointer-events: none; /* âœ… isto Ã© o mais importante */
+  pointer-events: none; /* ✅ isto é o mais importante */
   background:
     radial-gradient(1100px 700px at 80% 60%, rgba(0,0,0,0.35), transparent 60%),
     radial-gradient(900px 650px at 0% 35%, rgba(0,0,0,0.60), transparent 55%),
@@ -315,7 +315,7 @@ h2{
     radial-gradient(900px 360px at 60% 30%, rgba(236,72,153,.18), transparent 55%),
     radial-gradient(900px 360px at 35% 70%, rgba(14,165,233,.16), transparent 55%),
     #ffffff;
-  color: #0f172a; /* importantÃ­ssimo: texto escuro nesta secÃ§Ã£o */
+  color: #0f172a; /* importantíssimo: texto escuro nesta secção */
 }
 
 .cob-services *{
@@ -380,12 +380,12 @@ h2{
   gap: 10px;
 }
 
-/* cards clicÃ¡veis (botÃµes) */
+/* cards clicáveis (botões) */
 .cob-card{
   width: 100%;
   text-align: left;
 
-  /* reset do botÃ£o para ficar card */
+  /* reset do botão para ficar card */
   appearance: none;
   -webkit-appearance: none;
   border: 1px solid rgba(15,23,42,.10);
@@ -428,7 +428,7 @@ h2{
   font-size: 14px;
 }
 
-/* Ãcones */
+/* Ícones */
 .cob-ico{
   width: 44px;
   height: 44px;
@@ -529,7 +529,7 @@ h2{
   gap: 10px;
 }
 
-/* botÃµes com aparÃªncia de card */
+/* botões com aparência de card */
 .cob-card{
   width: 100%;
   text-align: left;
@@ -577,7 +577,7 @@ h2{
   font-size: 14px;
 }
 
-/* Ã­cones */
+/* ícones */
 .cob-ico{
   width: 44px;
   height: 44px;
@@ -958,7 +958,7 @@ h2{
 }
 
 /* ============================================
-   ESTILOS PARA OS CARDS DE SERVIÃ‡O CLICÃVEIS
+   ESTILOS PARA OS CARDS DE SERVIÇO CLICÁVEIS
    ============================================ */
 
 /* Link que envolve o card */
@@ -972,7 +972,7 @@ h2{
   outline: none;
 }
 
-/* Remove o focus outline (se nÃ£o for importante para acessibilidade) */
+/* Remove o focus outline (se não for importante para acessibilidade) */
 .service-card-link:focus {
   outline: none;
 }
@@ -992,7 +992,7 @@ h2{
 }
 
 .service-card::after {
-  content: 'â†’';
+  content: '→';
   position: absolute;
   top: 32px;
   right: 32px;
@@ -1009,7 +1009,7 @@ h2{
   transform: translateX(0);
 }
 
-/* Efeito de brilho no Ã­cone */
+/* Efeito de brilho no ícone */
 .service-card-link:hover .service-card__icon {
   transform: scale(1.1);
   transition: transform 0.3s ease;
@@ -1034,7 +1034,7 @@ h2{
   text-decoration: none;
 }
 
-/* Melhorias para acessibilidade - foco visÃ­vel */
+/* Melhorias para acessibilidade - foco visível */
 .service-card-link:focus-visible {
   outline: 2px solid #4f46e5;
   outline-offset: 4px;

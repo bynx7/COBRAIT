@@ -1,4 +1,4 @@
-﻿/*
+/*
   COBRAIT_STYLE_DOC
   Objetivo: Centralizar estilos visuais e comportamento responsivo da interface.
   Organizacao:
@@ -11,7 +11,7 @@
   - Validar mudancas em desktop e mobile apos alteracoes de layout.
 */
 /* sync: github-desktop-update */
-/* Isolamento: sÃ³ afeta esta pÃ¡gina */
+/* Isolamento: s? afeta esta página */
 .servicos-page{
   background: #fff;
 }
@@ -35,13 +35,13 @@
   opacity: .35;
 }
 
-/* Container sÃ³ aqui (evita conflitos com styles.css) */
+/* Container s? aqui (evita conflitos com styles.css) */
 .servicos-page .container{
   width: min(1100px, calc(100% - 48px));
   margin-inline: auto;
 }
 
-/* TÃ­tulos */
+/* T?tulos */
 .servicos-page .section-title{
   font-family: "Poppins", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-weight: 800;
@@ -104,7 +104,7 @@
   font-size: 15px;
 }
 
-/* Ãcones */
+/* ?cones */
 .servicos-page .service-icon{
   width: 44px;
   height: 44px;
@@ -356,7 +356,7 @@
 }
 
 /* ============================================
-   ESTILOS ESSENCIAIS PARA OS CARDS CLICÃVEIS
+   ESTILOS ESSENCIAIS PARA OS CARDS CLIC?VEIS
    ============================================ */
 
 /* CONTAINER - ESSENCIAL PARA O LAYOUT */
@@ -413,7 +413,7 @@
     margin-bottom: 60px;
 }
 
-/* CARDS DE SERVIÃ‡O - VERSÃƒO SIMPLIFICADA E FUNCIONAL */
+/* CARDS DE SERVI?O - VERS?O SIMPLIFICADA E FUNCIONAL */
 .service-card {
     background: white;
     border-radius: 16px;
@@ -442,7 +442,7 @@
 }
 
 .service-card::after {
-    content: 'â†’';
+    content: '?';
     position: absolute;
     top: 32px;
     right: 32px;
@@ -525,7 +525,7 @@
     margin-top: 10px;
 }
 
-/* BOTÃ•ES */
+/* BOTÕES */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -754,7 +754,7 @@
         .footer-meta a:hover {
             color: #fff;
         }
-        /* Estilos especÃ­ficos para o link do Instagram */
+        /* Estilos específicos para o link do Instagram */
         .social-link {
             display: inline-flex;
             align-items: center;

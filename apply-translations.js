@@ -18,18 +18,116 @@ if (!window.__cobraitTranslationBooted) {
 
   (async function () {
     const EXTRA_LANGS = ["fr", "de", "ru", "nl", "ja", "zh"];
+    const ALLOWED_DROPDOWN_LANGS = ["pt", "en", "es"];
+    const LANGUAGE_META = {
+      pt: { code: "PT", name: "Português", flag: "PT" },
+      en: { code: "EN", name: "English", flag: "EN" },
+      es: { code: "ES", name: "Español", flag: "ES" },
+    };
+
+    function ensureLanguageDropdownStyle() {
+      if (document.getElementById("cobrait-lang-fix-style")) return;
+      const style = document.createElement("style");
+      style.id = "cobrait-lang-fix-style";
+      style.textContent = `
+        .language-option .lang-flag,
+        .language-dropdown-btn .lang-flag {
+          min-width: 24px;
+          width: 24px;
+          height: 16px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 4px;
+          background: #eef2ff;
+          color: #4338ca;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.3px;
+          line-height: 1;
+          text-transform: uppercase;
+          font-family: Inter, Arial, sans-serif;
+        }
+        .language-option.active .lang-flag {
+          background: rgba(255, 255, 255, 0.22);
+          color: #ffffff;
+        }
+        .language-option .lang-name {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    function syncLanguageDropdownUI(activeLang) {
+      ensureLanguageDropdownStyle();
+      const normalized = normalizeLang(activeLang || localStorage.getItem("preferredLanguage") || "pt");
+
+      function ensureOptionShape(option, lang) {
+        const meta = LANGUAGE_META[lang] || LANGUAGE_META.en;
+        option.setAttribute("data-lang", lang);
+        option.type = "button";
+
+        let flagEl = option.querySelector(".lang-flag");
+        if (!flagEl) {
+          flagEl = document.createElement("span");
+          flagEl.className = "lang-flag";
+          option.prepend(flagEl);
+        }
+
+        let nameEl = option.querySelector(".lang-name");
+        if (!nameEl) {
+          nameEl = document.createElement("span");
+          nameEl.className = "lang-name";
+          option.appendChild(nameEl);
+        }
+
+        flagEl.textContent = meta.flag;
+        nameEl.textContent = meta.name;
+        option.classList.toggle("active", lang === normalized);
+      }
+
+      const dropdowns = document.querySelectorAll(".language-dropdown-content");
+      dropdowns.forEach((dropdown) => {
+        const currentByLang = new Map();
+        dropdown.querySelectorAll(".language-option").forEach((option) => {
+          const lang = normalizeLang(option.getAttribute("data-lang"));
+          if (!ALLOWED_DROPDOWN_LANGS.includes(lang)) {
+            option.remove();
+            return;
+          }
+          if (!currentByLang.has(lang)) {
+            currentByLang.set(lang, option);
+          } else {
+            option.remove();
+          }
+        });
+
+        ALLOWED_DROPDOWN_LANGS.forEach((lang) => {
+          let option = currentByLang.get(lang);
+          if (!option) {
+            option = document.createElement("button");
+            option.className = "language-option";
+          }
+          ensureOptionShape(option, lang);
+          dropdown.appendChild(option);
+        });
+      });
+
+      const currentFlag = document.getElementById("currentFlag");
+      const currentLang = document.getElementById("currentLang");
+      const activeMeta = LANGUAGE_META[normalized] || LANGUAGE_META.en;
+      if (currentFlag) currentFlag.textContent = activeMeta.flag;
+      if (currentLang) currentLang.textContent = activeMeta.code;
+    }
 
     function normalizeLang(lang) {
       const l = String(lang || "").toLowerCase();
       if (l === "pt-pt" || l === "pt_pt" || l.startsWith("pt")) return "pt";
       if (l.startsWith("en")) return "en";
       if (l.startsWith("es")) return "es";
-      if (l.startsWith("fr")) return "fr";
-      if (l.startsWith("de")) return "de";
-      if (l.startsWith("ru")) return "ru";
-      if (l.startsWith("nl")) return "nl";
-      if (l.startsWith("ja") || l.startsWith("jp")) return "ja";
-      if (l.startsWith("zh") || l.startsWith("cn")) return "zh";
       return "en";
     }
 
@@ -113,7 +211,11 @@ if (!window.__cobraitTranslationBooted) {
     function boot() {
       loadTranslationsIntoAttributes();
       const preferred = normalizeLang(localStorage.getItem("preferredLanguage") || document.documentElement.lang || "pt");
+      try { localStorage.setItem("preferredLanguage", preferred); } catch (_e) {}
       applyLanguageToDom(preferred);
+      syncLanguageDropdownUI(preferred);
+      // Segundo passe para ganhar a scripts locais que correm no mesmo DOMContentLoaded.
+      setTimeout(() => syncLanguageDropdownUI(preferred), 0);
     }
 
     if (document.readyState === "loading") {
@@ -129,10 +231,12 @@ if (!window.__cobraitTranslationBooted) {
         const option = event.target.closest(".language-option");
         if (!option) return;
         const lang = normalizeLang(option.getAttribute("data-lang"));
+        try { localStorage.setItem("preferredLanguage", lang); } catch (_e) {}
         loadTranslationsIntoAttributes();
         // Reaplica no fim do ciclo para cobrir paginas sem handler robusto.
         setTimeout(() => {
           applyLanguageToDom(lang);
+          syncLanguageDropdownUI(lang);
           window.dispatchEvent(new CustomEvent("cobrait-set-language", { detail: lang }));
         }, 0);
       },
@@ -142,10 +246,17 @@ if (!window.__cobraitTranslationBooted) {
     // Expor helper global caso alguma pagina queira forcar idioma manualmente.
     window.cobraitApplyLanguage = function (lang) {
       const normalized = normalizeLang(lang);
+      try { localStorage.setItem("preferredLanguage", normalized); } catch (_e) {}
       loadTranslationsIntoAttributes();
       applyLanguageToDom(normalized);
+      syncLanguageDropdownUI(normalized);
       window.dispatchEvent(new CustomEvent("cobrait-set-language", { detail: normalized }));
     };
+
+    // Garante sync também quando scripts locais disparam este evento.
+    window.addEventListener("cobrait-set-language", (ev) => {
+      syncLanguageDropdownUI(ev && ev.detail ? ev.detail : null);
+    });
   })();
 }
 
