@@ -17,1117 +17,1406 @@
 <!-- sync: github-desktop-update -->
 <!doctype html>
 <html lang="pt-PT">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cobra IT — Custom Software Development</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cobra IT — Custom Software Development</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <meta name="description" content="Desenvolvimento de Software à Medida — Cobra IT. UX/UI, tecnologia certa e desenvolvimento robusto." />
+    <meta
+      name="description"
+      content="Desenvolvimento de Software à Medida — Cobra IT. UX/UI, tecnologia certa e desenvolvimento robusto."
+    />
 
-  <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css" />
 
-  <!-- ✅ HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
-  <style>
-    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
-    .logo-text-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      text-decoration: none;
-    }
-
-    .logo-text-main {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
-      line-height: 1;
-      margin: 0;
-    }
-
-    .logo-text-tagline {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 0.7rem;
-      color: #6b7280;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    /* Estilos do Header */
-    .site-header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 16px 0;
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-    }
-
-    .nav-toggle { display: none; }
-
-    .nav-toggle-btn {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    .nav-toggle-btn span {
-      width: 25px;
-      height: 2px;
-      background: #4f46e5;
-      margin: 4px 0;
-      transition: 0.3s;
-    }
-
-    .site-nav ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 32px;
-    }
-
-    .site-nav a {
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 15px;
-      color: #64748b;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      position: relative;
-      padding: 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .site-nav a:hover { color: #4f46e5; }
-
-    .site-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      transition: width 0.3s ease;
-    }
-
-    .site-nav a:hover::after { width: 100%; }
-
-    /* Active page indicator */
-    .site-nav a.active {
-      color: #4f46e5;
-      font-weight: 600;
-    }
-
-    .site-nav a.active::after {
-      width: 100%;
-    }
-
-    /* Dropdown */
-    .dropdown { position: relative; }
-
-    .dropdown-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 280px;
-      background: white;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      padding: 16px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      margin-top: 16px;
-    }
-
-    .dropdown:hover .dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #334155;
-      transition: all 0.2s ease;
-      margin-bottom: 8px;
-    }
-
-    .dropdown-item:last-child { margin-bottom: 0; }
-
-    .dropdown-item:hover {
-      background: #f8fafc;
-      transform: translateX(4px);
-    }
-
-    .dropdown-item svg {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    .dropdown-item-content h4 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 14px;
-      color: #1e293b;
-      margin: 0 0 4px 0;
-    }
-
-    .dropdown-item-content p {
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
-    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
-
-    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
-    .language-dropdown {
-      position: relative;
-    }
-
-    .language-dropdown-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      color: #64748b;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .language-dropdown-btn:hover {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-    }
-
-    .language-dropdown-btn .lang-flag {
-      width: 16px;
-      height: 12px;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .language-dropdown-btn .lang-code {
-      font-weight: 600;
-      color: #4f46e5;
-    }
-
-    .language-dropdown-content {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      min-width: 200px;
-      background: white;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      padding: 12px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      margin-top: 8px;
-    }
-
-    .language-dropdown:hover .language-dropdown-content {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .language-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #334155;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      background: none;
-      width: 100%;
-      text-align: left;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-    }
-
-    .language-option:hover {
-      background: #f8fafc;
-      transform: translateX(4px);
-    }
-
-    .language-option.active {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      color: white;
-    }
-
-    .language-option.active:hover {
-      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
-    }
-
-    .language-option .lang-flag {
-      width: 20px;
-      height: 15px;
-      border-radius: 2px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .language-option .lang-name {
-      flex: 1;
-    }
-
-    .header-right { display: flex; align-items: center; gap: 24px; }
-    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .header-inner { gap: 20px; }
-      .site-nav ul { gap: 20px; }
-      .header-right { gap: 16px; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-toggle-btn { display: flex; }
-
-      .site-nav {
-        position: fixed;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+    <!-- ✅ HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
+    <style>
+      /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+      .logo-text-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-decoration: none;
       }
 
-      .site-nav ul { flex-direction: column; gap: 16px; }
+      .logo-text-main {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.5px;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .logo-text-tagline {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 0.7rem;
+        color: #6b7280;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+
+      /* Estilos do Header */
+      .site-header {
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 16px 0;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+
+      .nav-toggle {
+        display: none;
+      }
+
+      .nav-toggle-btn {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+      }
+
+      .nav-toggle-btn span {
+        width: 25px;
+        height: 2px;
+        background: #4f46e5;
+        margin: 4px 0;
+        transition: 0.3s;
+      }
+
+      .site-nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 32px;
+      }
+
+      .site-nav a {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        color: #64748b;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .site-nav a:hover {
+        color: #4f46e5;
+      }
+
+      .site-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        transition: width 0.3s ease;
+      }
+
+      .site-nav a:hover::after {
+        width: 100%;
+      }
+
+      /* Active page indicator */
+      .site-nav a.active {
+        color: #4f46e5;
+        font-weight: 600;
+      }
+
+      .site-nav a.active::after {
+        width: 100%;
+      }
+
+      /* Dropdown */
+      .dropdown {
+        position: relative;
+      }
 
       .dropdown-content {
-        position: static;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 280px;
+        background: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 16px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        margin-top: 16px;
+      }
+
+      .dropdown:hover .dropdown-content {
         opacity: 1;
         visibility: visible;
-        transform: none;
-        box-shadow: none;
-        padding: 0;
-        margin: 8px 0 0 20px;
-        border-left: 2px solid #e2e8f0;
+        transform: translateY(0);
       }
 
-      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
-
-      .header-right {
-        flex-direction: column;
-        width: 100%;
-        margin-top: 20px;
-        gap: 12px;
+      .dropdown-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #334155;
+        transition: all 0.2s ease;
+        margin-bottom: 8px;
       }
 
+      .dropdown-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .dropdown-item:hover {
+        background: #f8fafc;
+        transform: translateX(4px);
+      }
+
+      .dropdown-item svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .dropdown-item-content h4 {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #1e293b;
+        margin: 0 0 4px 0;
+      }
+
+      .dropdown-item-content p {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #64748b;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .dropdown-arrow {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+      .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO INDEX) */
       .language-dropdown {
-        width: 100%;
+        position: relative;
       }
 
       .language-dropdown-btn {
-        width: 100%;
-        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        color: #64748b;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .language-dropdown-btn:hover {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+
+      .language-dropdown-btn .lang-flag {
+        width: 16px;
+        height: 12px;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .language-dropdown-btn .lang-code {
+        font-weight: 600;
+        color: #4f46e5;
       }
 
       .language-dropdown-content {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 200px;
+        background: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
         margin-top: 8px;
-        width: 100%;
       }
 
-      .header-cta { width: 100%; }
-      .header-cta .btn { width: 100%; justify-content: center; }
-
-      .nav-toggle:checked ~ .site-nav {
-        transform: translateY(0);
+      .language-dropdown:hover .language-dropdown-content {
         opacity: 1;
         visibility: visible;
+        transform: translateY(0);
       }
 
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
-      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-    }
+      .language-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #334155;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+      }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .site-header { z-index: 99999; }
-    .dropdown-content, .language-dropdown-content { z-index: 999999; }
+      .language-option:hover {
+        background: #f8fafc;
+        transform: translateX(4px);
+      }
 
-   /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-        .footer-pro {
-            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-            color: #cbd5e1;
-            position: relative;
-            overflow: hidden;
-            padding: 60px 0 24px;
+      .language-option.active {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+      }
+
+      .language-option.active:hover {
+        background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+      }
+
+      .language-option .lang-flag {
+        width: 20px;
+        height: 15px;
+        border-radius: 2px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .language-option .lang-name {
+        flex: 1;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .header-cta .btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .header-inner {
+          gap: 20px;
         }
-        .footer-pro::before {
-            content: "";
-            position: absolute;
-            inset: -200px -200px auto auto;
-            width: 420px;
-            height: 420px;
-            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-            filter: blur(10px);
-            pointer-events: none;
+        .site-nav ul {
+          gap: 20px;
         }
-        .footer-pro::after {
-            content: "";
-            position: absolute;
-            inset: auto auto -240px -240px;
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-            filter: blur(12px);
-            pointer-events: none;
+        .header-right {
+          gap: 16px;
         }
+      }
+
+      @media (max-width: 768px) {
+        .nav-toggle-btn {
+          display: flex;
+        }
+
+        .site-nav {
+          position: fixed;
+          top: 72px;
+          left: 0;
+          width: 100%;
+          background: white;
+          padding: 20px;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+          transform: translateY(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .site-nav ul {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .dropdown-content {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          padding: 0;
+          margin: 8px 0 0 20px;
+          border-left: 2px solid #e2e8f0;
+        }
+
+        .dropdown-item {
+          padding: 10px 0 10px 16px;
+          margin-bottom: 0;
+        }
+
+        .header-right {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 20px;
+          gap: 12px;
+        }
+
+        .language-dropdown {
+          width: 100%;
+        }
+
+        .language-dropdown-btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .language-dropdown-content {
+          position: static;
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+          box-shadow: none;
+          margin-top: 8px;
+          width: 100%;
+        }
+
+        .header-cta {
+          width: 100%;
+        }
+        .header-cta .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .nav-toggle:checked ~ .site-nav {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) {
+          opacity: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .site-header {
+        z-index: 99999;
+      }
+      .dropdown-content,
+      .language-dropdown-content {
+        z-index: 999999;
+      }
+
+      /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
+      .footer-pro {
+        background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+        color: #cbd5e1;
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0 24px;
+      }
+      .footer-pro::before {
+        content: "";
+        position: absolute;
+        inset: -200px -200px auto auto;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(124, 58, 237, 0.35),
+          transparent 60%
+        );
+        filter: blur(10px);
+        pointer-events: none;
+      }
+      .footer-pro::after {
+        content: "";
+        position: absolute;
+        inset: auto auto -240px -240px;
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(
+          circle at 60% 60%,
+          rgba(79, 70, 229, 0.35),
+          transparent 60%
+        );
+        filter: blur(12px);
+        pointer-events: none;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 24px;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      /* LOGO REMOVIDA - Apenas texto da marca */
+      .footer-brand-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: rgba(226, 232, 240, 0.95);
+        margin: 0;
+        line-height: 1;
+      }
+      .footer-brand-subtitle {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.8);
+        margin: 4px 0 0 0;
+      }
+      .footer-tagline {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.85);
+        max-width: 420px;
+        margin: 8px 0 0 0;
+      }
+      .footer-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .btn--footer {
+        padding: 10px 18px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+      .btn--footer.btn--outline {
+        border-color: rgba(226, 232, 240, 0.35);
+        color: rgba(226, 232, 240, 0.92);
+      }
+      .btn--footer.btn--outline:hover {
+        background: rgba(226, 232, 240, 0.12);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: none;
+        border-color: rgba(226, 232, 240, 0.5);
+      }
+      .footer-col h4 {
+        margin: 0 0 14px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+      .footer-links a {
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links a:hover {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+      .footer-meta {
+        display: grid;
+        gap: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.9);
+      }
+      .footer-meta a {
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .footer-meta a:hover {
+        color: #fff;
+      }
+      /* Estilos específicos para o link do Instagram */
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+      .social-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .social-icon {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+      .footer-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .footer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        background: rgba(15, 23, 42, 0.35);
+        color: rgba(226, 232, 240, 0.9);
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .footer-badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding-top: 16px;
+        position: relative;
+        z-index: 1;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        color: rgba(148, 163, 184, 0.9);
+      }
+      .footer-mini-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .footer-mini-links a {
+        color: rgba(148, 163, 184, 0.95);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .footer-mini-links a:hover {
+        color: #fff;
+      }
+      @media (max-width: 1024px) {
         .footer-top {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+          grid-template-columns: 1.6fr 1fr 1fr;
         }
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
+        .footer-col--contact {
+          grid-column: 1 / -1;
         }
-        /* LOGO REMOVIDA - Apenas texto da marca */
-        .footer-brand-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: rgba(226, 232, 240, 0.95);
-            margin: 0;
-            line-height: 1;
-        }
-        .footer-brand-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.8);
-            margin: 4px 0 0 0;
-        }
-        .footer-tagline {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(226, 232, 240, 0.85);
-            max-width: 420px;
-            margin: 8px 0 0 0;
-        }
-        .footer-cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .btn--footer {
-            padding: 10px 18px;
-            font-size: 14px;
-            border-radius: 10px;
-        }
-        .btn--footer.btn--outline {
-            border-color: rgba(226, 232, 240, 0.35);
-            color: rgba(226, 232, 240, 0.92);
-        }
-        .btn--footer.btn--outline:hover {
-            background: rgba(226, 232, 240, 0.12);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: none;
-            border-color: rgba(226, 232, 240, 0.5);
-        }
-        .footer-col h4 {
-            margin: 0 0 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: rgba(226, 232, 240, 0.9);
-        }
-        .footer-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-        }
-        .footer-links a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all .2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-        .footer-meta {
-            display: grid;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.9);
-        }
-        .footer-meta a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-meta a:hover {
-            color: #fff;
-        }
-        /* Estilos específicos para o link do Instagram */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 6px;
-            transition: all .2s ease;
-        }
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .social-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        .footer-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        .footer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.22);
-            background: rgba(15, 23, 42, 0.35);
-            color: rgba(226, 232, 240, 0.9);
-            font-size: 12px;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        .footer-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+      }
+      @media (max-width: 768px) {
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 20px;
         }
         .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            padding-top: 16px;
-            position: relative;
-            z-index: 1;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: rgba(148, 163, 184, 0.9);
+          flex-direction: column;
+          align-items: flex-start;
         }
         .footer-mini-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+          justify-content: flex-start;
         }
-        .footer-mini-links a {
-            color: rgba(148, 163, 184, 0.95);
-            text-decoration: none;
-            transition: color .2s ease;
+        .footer-pro {
+          padding: 50px 0 20px;
         }
-        .footer-mini-links a:hover {
-            color: #fff;
+        .footer-brand-title {
+          font-size: 22px;
         }
-        @media (max-width: 1024px) {
-            .footer-top {
-                grid-template-columns: 1.6fr 1fr 1fr;
-            }
-            .footer-col--contact {
-                grid-column: 1 / -1;
-            }
-        }
-        @media (max-width: 768px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-mini-links {
-                justify-content: flex-start;
-            }
-            .footer-pro {
-                padding: 50px 0 20px;
-            }
-            .footer-brand-title {
-                font-size: 22px;
-            }
-        }
+      }
     </style>
-  <!-- ✅ ESTILOS ESPECÍFICOS DO CUSTOM SOFTWARE -->
-  <style>
-    /* ======= CSS DA PÁGINA ======= */
-    .csd-hero{
-      padding: 84px 0 48px;
-      background: #fff;
-    }
+    <!-- ✅ ESTILOS ESPECÍFICOS DO CUSTOM SOFTWARE -->
+    <style>
+      /* ======= CSS DA PÁGINA ======= */
+      .csd-hero {
+        padding: 84px 0 48px;
+        background: #fff;
+      }
 
-    .csd-hero-grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 36px;
-      align-items: center;
-    }
+      .csd-hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 36px;
+        align-items: center;
+      }
 
-    .csd-hero h1{
-      font-family:'Poppins',sans-serif;
-      font-weight: 800;
-      font-size: 3.2rem;
-      line-height: 1.05;
-      color:#0f172a;
-      margin: 0 0 14px;
-    }
+      .csd-hero h1 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 3.2rem;
+        line-height: 1.05;
+        color: #0f172a;
+        margin: 0 0 14px;
+      }
 
-    .csd-hero p{
-      font-family:'Inter',sans-serif;
-      color:#64748b;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      margin: 0 0 18px;
-      max-width: 60ch;
-    }
+      .csd-hero p {
+        font-family: "Inter", sans-serif;
+        color: #64748b;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        margin: 0 0 18px;
+        max-width: 60ch;
+      }
 
-    .csd-hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px; }
+      .csd-hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
 
-    .csd-side{
-      border-radius: 18px;
-      border: 1px solid #e2e8f0;
-      background: #ffffff;
-      box-shadow: 0 20px 50px rgba(2,6,23,.08);
-      padding: 22px;
-    }
+      .csd-side {
+        border-radius: 18px;
+        border: 1px solid #e2e8f0;
+        background: #ffffff;
+        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.08);
+        padding: 22px;
+      }
 
-    .csd-side h3{
-      font-family:'Poppins',sans-serif;
-      font-weight: 800;
-      margin: 0 0 10px;
-      color:#0f172a;
-      font-size: 1.5rem;
-    }
+      .csd-side h3 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        margin: 0 0 10px;
+        color: #0f172a;
+        font-size: 1.5rem;
+      }
 
-    .csd-side p{
-      margin:0;
-      color:#64748b;
-      font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      font-size: 14px;
-    }
+      .csd-side p {
+        margin: 0;
+        color: #64748b;
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        font-size: 14px;
+      }
 
-    .csd-benefits{
-      background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      padding: 84px 0;
-      color:#e2e8f0;
-    }
+      .csd-benefits {
+        background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+        padding: 84px 0;
+        color: #e2e8f0;
+      }
 
-    .csd-benefits h2{
-      font-family:'Poppins',sans-serif;
-      font-weight:800;
-      font-size: 2.2rem;
-      margin:0 0 10px;
-      color:#fff;
-    }
+      .csd-benefits h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 2.2rem;
+        margin: 0 0 10px;
+        color: #fff;
+      }
 
-    .csd-benefits .sub{
-      color: rgba(226,232,240,.78);
-      font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      margin: 0 0 26px;
-      max-width: 70ch;
-    }
+      .csd-benefits .sub {
+        color: rgba(226, 232, 240, 0.78);
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        margin: 0 0 26px;
+        max-width: 70ch;
+      }
 
-    .csd-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 24px;
-    }
+      .csd-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 24px;
+      }
 
-    .csd-card{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(148,163,184,.18);
-      border-radius: 16px;
-      padding: 22px;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    }
+      .csd-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 16px;
+        padding: 22px;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease;
+      }
 
-    .csd-card:hover{
-      transform: translateY(-6px);
-      border-color: rgba(199,210,254,.45);
-      box-shadow: 0 20px 50px rgba(0,0,0,.35);
-    }
+      .csd-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(199, 210, 254, 0.45);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      }
 
-    .csd-icon{
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(255,0,122,.10);
-      border: 1px solid rgba(255,0,122,.18);
-      margin-bottom: 14px;
-      font-weight: 800;
-      color:#fff;
-    }
+      .csd-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 0, 122, 0.1);
+        border: 1px solid rgba(255, 0, 122, 0.18);
+        margin-bottom: 14px;
+        font-weight: 800;
+        color: #fff;
+      }
 
-    .csd-card h3{
-      margin: 0 0 8px;
-      font-family:'Poppins',sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color:#fff;
-    }
+      .csd-card h3 {
+        margin: 0 0 8px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #fff;
+      }
 
-    .csd-card p{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      color: rgba(226,232,240,.78);
-      line-height: 1.7;
-      font-size: 14px;
-    }
+      .csd-card p {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        color: rgba(226, 232, 240, 0.78);
+        line-height: 1.7;
+        font-size: 14px;
+      }
 
-    .csd-process{
-      padding: 84px 0;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    }
+      .csd-process {
+        padding: 84px 0;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      }
 
-    .csd-process h2{
-      font-family:'Poppins',sans-serif;
-      font-weight:800;
-      font-size: 2.4rem;
-      margin:0 0 10px;
-      color:#0f172a;
-    }
+      .csd-process h2 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 2.4rem;
+        margin: 0 0 10px;
+        color: #0f172a;
+      }
 
-    .csd-process .sub{
-      font-family:'Inter',sans-serif;
-      color:#64748b;
-      line-height:1.7;
-      margin:0 0 26px;
-      max-width: 75ch;
-    }
+      .csd-process .sub {
+        font-family: "Inter", sans-serif;
+        color: #64748b;
+        line-height: 1.7;
+        margin: 0 0 26px;
+        max-width: 75ch;
+      }
 
-    .csd-steps{
-      display:grid;
-      gap: 16px;
-      max-width: 1020px;
-    }
+      .csd-steps {
+        display: grid;
+        gap: 16px;
+        max-width: 1020px;
+      }
 
-    .csd-step{
-      background:#fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 12px 32px rgba(2,6,23,.06);
-    }
+      .csd-step {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 12px 32px rgba(2, 6, 23, 0.06);
+      }
 
-    .csd-step-top{
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
+      .csd-step-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+      }
 
-    .csd-step-top h3{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      font-weight:800;
-      color:#0f172a;
-      font-size: 1.25rem;
-    }
+      .csd-step-top h3 {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        color: #0f172a;
+        font-size: 1.25rem;
+      }
 
-    .csd-step-num{
-      font-family:'Poppins',sans-serif;
-      font-weight:800;
-      color:#94a3b8;
-    }
+      .csd-step-num {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        color: #94a3b8;
+      }
 
-    .csd-step p{
-      margin:0 0 12px;
-      color:#64748b;
-      font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      font-size: 14px;
-    }
+      .csd-step p {
+        margin: 0 0 12px;
+        color: #64748b;
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        font-size: 14px;
+      }
 
-    .csd-cols{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 10px;
-    }
+      .csd-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 10px;
+      }
 
-    .csd-cols b{
-      display:block;
-      font-family:'Inter',sans-serif;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 12px;
-      color:#0f172a;
-      margin-bottom: 8px;
-    }
+      .csd-cols b {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 12px;
+        color: #0f172a;
+        margin-bottom: 8px;
+      }
 
-    .csd-list{ margin:0; padding-left: 18px; color:#475569; font-family:'Inter',sans-serif; line-height:1.7; font-size: 14px; }
-    .csd-list li{ margin: 6px 0; }
+      .csd-list {
+        margin: 0;
+        padding-left: 18px;
+        color: #475569;
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+        font-size: 14px;
+      }
+      .csd-list li {
+        margin: 6px 0;
+      }
 
-    .csd-cta{
-      margin-top: 26px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #0b1220 0%, #111a2e 100%);
-      border: 1px solid rgba(148,163,184,.18);
-      padding: 22px;
-      display:flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+      .csd-cta {
+        margin-top: 26px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #0b1220 0%, #111a2e 100%);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        padding: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
 
-    .csd-cta h3{
-      margin:0 0 6px;
-      font-family:'Poppins',sans-serif;
-      font-weight:800;
-      color:#fff;
-      font-size: 1.35rem;
-    }
+      .csd-cta h3 {
+        margin: 0 0 6px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        color: #fff;
+        font-size: 1.35rem;
+      }
 
-    .csd-cta p{ margin:0; color: rgba(226,232,240,.78); font-family:'Inter',sans-serif; line-height: 1.7; }
+      .csd-cta p {
+        margin: 0;
+        color: rgba(226, 232, 240, 0.78);
+        font-family: "Inter", sans-serif;
+        line-height: 1.7;
+      }
 
-    /* BOTÕES EXATAMENTE IGUAIS AO INDEX */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 32px;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
-    }
+      /* BOTÕES EXATAMENTE IGUAIS AO INDEX */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
 
-    .btn--primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-      color: white;
-    }
+      .btn--primary {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+      }
 
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
-    }
+      .btn--primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+      }
 
-    .btn--outline {
-      background: transparent;
-      color: #4f46e5;
-      border-color: #4f46e5;
-    }
+      .btn--outline {
+        background: transparent;
+        color: #4f46e5;
+        border-color: #4f46e5;
+      }
 
-    .btn--outline:hover {
-      background: #4f46e5;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
-    }
+      .btn--outline:hover {
+        background: #4f46e5;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+      }
 
-    @media (max-width: 1024px){
-      .csd-hero-grid{ grid-template-columns: 1fr; }
-      .csd-grid{ grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 768px){
-      .csd-hero h1{ font-size: 2.2rem; }
-      .csd-grid{ grid-template-columns: 1fr; }
-      .csd-cols{ grid-template-columns: 1fr; }
-    }
-  </style>
-  <link rel="stylesheet" href="../global-enhancements.css">
-</head>
+      @media (max-width: 1024px) {
+        .csd-hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .csd-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .csd-hero h1 {
+          font-size: 2.2rem;
+        }
+        .csd-grid {
+          grid-template-columns: 1fr;
+        }
+        .csd-cols {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="../global-enhancements.css" />
+  </head>
 
-<body>
-  <!-- ✅ HEADER IGUAL AO BOOK-A-CALL.HTML -->
-  <header class="site-header">
-        <div class="container header-inner">
-            <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
-            <a class="brand logo-text-brand" href="../index.html" aria-label="Cobra IT">
-                <div class="logo-text-main">COBRA IT</div>
-                <div class="logo-text-tagline">Software Factory</div>
-            </a>
+  <body>
+    <!-- ✅ HEADER IGUAL AO BOOK-A-CALL.HTML -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+        <a
+          class="brand logo-text-brand"
+          href="../index.html"
+          aria-label="Cobra IT"
+        >
+          <div class="logo-text-main">COBRA IT</div>
+          <div class="logo-text-tagline">Software Factory</div>
+        </a>
 
-            <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-            <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
-                <span></span><span></span><span></span>
-            </label>
+        <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+        <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </label>
 
-            <nav class="site-nav" aria-label="Main navigation">
-                <ul>
-                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
-                    <li class="dropdown">
-                        <a href="../index.html#what-we-do">
-                            <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
-                            <span class="dropdown-arrow">▼</span>
-                        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul>
+            <li>
+              <a
+                href="../index.html#work"
+                data-pt="Work"
+                data-en="Work"
+                data-es="Work"
+                data-fr="Travail"
+                data-de="Arbeit"
+                data-ru="Работа"
+                data-nl="Werk"
+                data-ja="仕事"
+                data-zh="工作"
+                >Work</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="../index.html#what-we-do">
+                <span
+                  data-pt="Serviços"
+                  data-en="Services"
+                  data-es="Servicios"
+                  data-fr="Services"
+                  data-de="Dienstleistungen"
+                  data-ru="Услуги"
+                  data-nl="Diensten"
+                  data-ja="サービス"
+                  data-zh="服务"
+                  >Serviços</span
+                >
+                <span class="dropdown-arrow">▼</span>
+              </a>
 
-                        <div class="dropdown-content">
-                            <a href="../servicos/product-scope.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="Portée du produit" data-de="Produktumfang" data-ru="Область применения продукта" data-nl="Productomvang" data-ja="製品スコープ" data-zh="产品范围">Product Scope</h4>
-                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
-                                       data-en="15-day process to align the product with your business goals."
-                                       data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
-                                       data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
-                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
-                                       data-ru="15-дневный процесс согласования продукта с целями вашего бизнеса."
-                                       data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
-                                       data-ja="製品をビジネス目標に合わせるための15日間のプロセス。"
-                                       data-zh="15天的流程，将产品与您的业务目标保持一致。">
-                                    15-day process to align the product with your business goals.
-                                    </p>
-                                </div>
-                            </a>
+              <div class="dropdown-content">
+                <a href="../servicos/product-scope.html" class="dropdown-item">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div class="dropdown-item-content">
+                    <h4
+                      data-pt="Product Scope"
+                      data-en="Product Scope"
+                      data-es="Product Scope"
+                      data-fr="Portée du produit"
+                      data-de="Produktumfang"
+                      data-ru="Область применения продукта"
+                      data-nl="Productomvang"
+                      data-ja="製品スコープ"
+                      data-zh="产品范围"
+                    >
+                      Product Scope
+                    </h4>
+                    <p
+                      data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                      data-en="15-day process to align the product with your business goals."
+                      data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
+                      data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
+                      data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
+                      data-ru="15-дневный процесс согласования продукта с целями вашего бизнеса."
+                      data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
+                      data-ja="製品をビジネス目標に合わせるための15日間のプロセス。"
+                      data-zh="15天的流程，将产品与您的业务目标保持一致。"
+                    >
+                      15-day process to align the product with your business
+                      goals.
+                    </p>
+                  </div>
+                </a>
 
-                            <a href="../servicos/mvp-builder.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="Построитель MVP" data-nl="MVP Builder" data-ja="MVP ビルダー" data-zh="MVP 构建者">MVP Builder</h4>
-                                    <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
-                                       data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                                       data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
-                                       data-fr="Lancez-vous rapidement sur le marché avec un Produit Minimum Viable de haute qualité."
-                                       data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
-                                       data-ru="Быстро выйдите на рынок с высококачественным минимальным жизнеспособным продуктом."
-                                       data-nl="Ga snel naar de markt met een hoogwaardig Minimum Viable Product."
-                                       data-ja="高品質の最小限実行可能製品で素早く市場投入する。"
-                                       data-zh="使用高质量的最小可行产品快速上市。">
-                                    Go to market quickly with a high-quality Minimum Viable Product.
-                                    </p>
-                                </div>
-                            </a>
+                <a href="../servicos/mvp-builder.html" class="dropdown-item">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <div class="dropdown-item-content">
+                    <h4
+                      data-pt="MVP Builder"
+                      data-en="MVP Builder"
+                      data-es="MVP Builder"
+                      data-fr="Constructeur MVP"
+                      data-de="MVP-Builder"
+                      data-ru="Построитель MVP"
+                      data-nl="MVP Builder"
+                      data-ja="MVP ビルダー"
+                      data-zh="MVP 构建者"
+                    >
+                      MVP Builder
+                    </h4>
+                    <p
+                      data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                      data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                      data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
+                      data-fr="Lancez-vous rapidement sur le marché avec un Produit Minimum Viable de haute qualité."
+                      data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
+                      data-ru="Быстро выйдите на рынок с высококачественным минимальным жизнеспособным продуктом."
+                      data-nl="Ga snel naar de markt met een hoogwaardig Minimum Viable Product."
+                      data-ja="高品質の最小限実行可能製品で素早く市場投入する。"
+                      data-zh="使用高质量的最小可行产品快速上市。"
+                    >
+                      Go to market quickly with a high-quality Minimum Viable
+                      Product.
+                    </p>
+                  </div>
+                </a>
 
-                            <a href="../servicos/ux-ui.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI" data-fr="UX / UI" data-de="UX / UI" data-ru="UX / UI" data-nl="UX / UI" data-ja="UX / UI" data-zh="UX / UI">UX / UI</h4>
-                                    <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
-                                       data-en="Design an easy-to-use engaging and functional product."
-                                       data-es="Diseña un producto fácil de usar, atractivo y funcional."
-                                       data-fr="Concevoir un produit facile à utiliser, attrayant et fonctionnel."
-                                       data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
-                                       data-ru="Разработайте простой в использовании, привлекательный и функциональный продукт."
-                                       data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
-                                       data-ja="使いやすく、魅力的で機能的な製品を設計する。"
-                                       data-zh="设计一个易于使用、引人入胜且功能强大的产品。">
-                                    Design an easy-to-use engaging and functional product.
-                                    </p>
-                                </div>
-                            </a>
-                          
+                <a href="../servicos/ux-ui.html" class="dropdown-item">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <div class="dropdown-item-content">
+                    <h4
+                      data-pt="UX / UI"
+                      data-en="UX / UI"
+                      data-es="UX / UI"
+                      data-fr="UX / UI"
+                      data-de="UX / UI"
+                      data-ru="UX / UI"
+                      data-nl="UX / UI"
+                      data-ja="UX / UI"
+                      data-zh="UX / UI"
+                    >
+                      UX / UI
+                    </h4>
+                    <p
+                      data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                      data-en="Design an easy-to-use engaging and functional product."
+                      data-es="Diseña un producto fácil de usar, atractivo y funcional."
+                      data-fr="Concevoir un produit facile à utiliser, attrayant et fonctionnel."
+                      data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
+                      data-ru="Разработайте простой в использовании, привлекательный и функциональный продукт."
+                      data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
+                      data-ja="使いやすく、魅力的で機能的な製品を設計する。"
+                      data-zh="设计一个易于使用、引人入胜且功能强大的产品。"
+                    >
+                      Design an easy-to-use engaging and functional product.
+                    </p>
+                  </div>
+                </a>
 
-                            <a href="../servicos/custom-software.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Desenvolvimento de Software à Medida"
-                                        data-en="Custom Software Development"
-                                        data-es="Desarrollo de Software a Medida"
-                                        data-fr="Développement de logiciels personnalisés"
-                                        data-de="Benutzerdefinierte Softwareentwicklung"
-                                        data-ru="Разработка пользовательского программного обеспечения"
-                                        data-nl="Aangepaste softwareontwikkeling"
-                                        data-ja="カスタムソフトウェア開発"
-                                        data-zh="定制软件开发">
-                                    Custom Software Development
-                                    </h4>
-                                    <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
-                                       data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                                       data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
-                                       data-fr="Nous appliquons les frameworks lean à votre vision pour créer une solution logicielle personnalisée et innovante."
-                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative Softwarelösung zu schaffen."
-                                       data-ru="Мы применяем lean-фреймворки к вашему видению, чтобы создать персонализированное и инновационное программное решение."
-                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creëren."
-                                       data-ja="リーンフレームワークをあなたのビジョンに適用して、パーソナライズされた革新的なソフトウェアソリューションを作成します。"
-                                       data-zh="我们将精益框架应用到您的愿景中，以创建个性化和创新的软件解决方案。">
-                                    Lean frameworks applied to your vision to create an innovative custom software solution.
-                                    </p>
-                                </div>
-                            </a>
+                <a
+                  href="../servicos/custom-software.html"
+                  class="dropdown-item"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                  <div class="dropdown-item-content">
+                    <h4
+                      data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida"
+                      data-fr="Développement de logiciels personnalisés"
+                      data-de="Benutzerdefinierte Softwareentwicklung"
+                      data-ru="Разработка пользовательского программного обеспечения"
+                      data-nl="Aangepaste softwareontwikkeling"
+                      data-ja="カスタムソフトウェア開発"
+                      data-zh="定制软件开发"
+                    >
+                      Custom Software Development
+                    </h4>
+                    <p
+                      data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                      data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                      data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
+                      data-fr="Nous appliquons les frameworks lean à votre vision pour créer une solution logicielle personnalisée et innovante."
+                      data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative Softwarelösung zu schaffen."
+                      data-ru="Мы применяем lean-фреймворки к вашему видению, чтобы создать персонализированное и инновационное программное решение."
+                      data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creëren."
+                      data-ja="リーンフレームワークをあなたのビジョンに適用して、パーソナライズされた革新的なソフトウェアソリューションを作成します。"
+                      data-zh="我们将精益框架应用到您的愿景中，以创建个性化和创新的软件解决方案。"
+                    >
+                      Lean frameworks applied to your vision to create an
+                      innovative custom software solution.
+                    </p>
+                  </div>
+                </a>
 
-                            <a href="../servicos/dedicated-teams.html" class="dropdown-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                <div class="dropdown-item-content">
-                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">
-                                    Dedicated Teams
-                                    </h4>
-                                    <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
-                                       data-en="Build your product with a dedicated team of developers."
-                                       data-es="Construye tu producto con un equipo dedicado de developers."
-                                       data-fr="Construisez votre produit avec une équipe de développeurs dédiée."
-                                       data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
-                                       data-ru="Создайте свой продукт с помощью выделенной команды разработчиков."
-                                       data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
-                                       data-ja="専任の開発者チームであなたの製品を構築する。"
-                                       data-zh="与专业开发者团队一起构建您的产品。">
-                                    Build your product with a dedicated team of developers.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+                <a
+                  href="../servicos/dedicated-teams.html"
+                  class="dropdown-item"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <div class="dropdown-item-content">
+                    <h4
+                      data-pt="Equipas Dedicadas"
+                      data-en="Dedicated Teams"
+                      data-es="Equipos Dedicados"
+                      data-fr="Équipes dédiées"
+                      data-de="Dedizierte Teams"
+                      data-ru="Выделенные команды"
+                      data-nl="Speciale teams"
+                      data-ja="専任チーム"
+                      data-zh="专业团队"
+                    >
+                      Dedicated Teams
+                    </h4>
+                    <p
+                      data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                      data-en="Build your product with a dedicated team of developers."
+                      data-es="Construye tu producto con un equipo dedicado de developers."
+                      data-fr="Construisez votre produit avec une équipe de développeurs dédiée."
+                      data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
+                      data-ru="Создайте свой продукт с помощью выделенной команды разработчиков."
+                      data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
+                      data-ja="専任の開発者チームであなたの製品を構築する。"
+                      data-zh="与专业开发者团队一起构建您的产品。"
+                    >
+                      Build your product with a dedicated team of developers.
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
 
-                    <li><a href="../pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="Цены" data-nl="Prijzen" data-ja="価格" data-zh="定价">Pricing</a></li>
-                    <li><a href="../about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros" data-fr="À Propos" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">About Us</span></a></li>
-                    <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Careers</a></li>
-                    <li><a href="../tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Технология" data-nl="Technologie" data-ja="テクノロジー" data-zh="技术">Tech</a></li>
-                </ul>
-            </nav>
+            <li>
+              <a
+                href="../pricing.html"
+                data-pt="Preços"
+                data-en="Pricing"
+                data-es="Precios"
+                data-fr="Tarification"
+                data-de="Preisgestaltung"
+                data-ru="Цены"
+                data-nl="Prijzen"
+                data-ja="価格"
+                data-zh="定价"
+                >Pricing</a
+              >
+            </li>
+            <li>
+              <a href="../about-us.html"
+                ><span
+                  data-pt="Sobre nós"
+                  data-en="About Us"
+                  data-es="Sobre nosotros"
+                  data-fr="À Propos"
+                  data-de="Über uns"
+                  data-ru="О нас"
+                  data-nl="Over ons"
+                  data-ja="私たちについて"
+                  data-zh="关于我们"
+                  >About Us</span
+                ></a
+              >
+            </li>
+            <li>
+              <a
+                href="../careers.html"
+                data-pt="Carreiras"
+                data-en="Careers"
+                data-es="Carreras"
+                data-fr="Carrières"
+                data-de="Karrieren"
+                data-ru="Карьера"
+                data-nl="Carrière"
+                data-ja="キャリア"
+                data-zh="职业"
+                >Careers</a
+              >
+            </li>
+            <li>
+              <a
+                href="../tech.html"
+                data-pt="Tecnologia"
+                data-en="Tech"
+                data-es="Tech"
+                data-fr="Technologie"
+                data-de="Technologie"
+                data-ru="Технология"
+                data-nl="Technologie"
+                data-ja="テクノロジー"
+                data-zh="技术"
+                >Tech</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-            <div class="header-right">
-                <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
-                <div class="language-dropdown">
-                    <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">🇵🇹</span>
-                        <span class="lang-code" id="currentLang">PT</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    
-                    <div class="language-dropdown-content">
-                        <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">🇵🇹</span>
-                            <span class="lang-name">Português</span>
-                        </button>
-                        <button class="language-option" data-lang="en">
-                            <span class="lang-flag">🇬🇧</span>
-                            <span class="lang-name">English</span>
-                        </button>
-                        <button class="language-option" data-lang="es">
-                            <span class="lang-flag">🇪🇸</span>
-                            <span class="lang-name">Español</span>
-                        </button>
-                    </div>
-                </div>
+        <div class="header-right">
+          <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
+          <div class="language-dropdown">
+            <button class="language-dropdown-btn" aria-label="Select language">
+              <span class="lang-flag" id="currentFlag">🇵🇹</span>
+              <span class="lang-code" id="currentLang">PT</span>
+              <span class="dropdown-arrow">▼</span>
+            </button>
 
-                <div class="header-cta">
-                    <a class="btn btn--primary" href="../book-a-call.html"
-                       data-pt="AGENDAR UMA CHAMADA"
-                       data-en="BOOK A CALL"
-                       data-es="RESERVAR UNA LLAMADA"
-                       data-fr="RÉSERVER UN APPEL"
-                       data-de="EINEN TERMIN BUCHEN"
-                       data-ru="НАЗНАЧИТЬ ВСТРЕЧУ"
-                       data-nl="RESERVEER EEN GESPREK"
-                       data-ja="通話を予約"
-                       data-zh="预订通话">
-                    BOOK A CALL
-                    </a>
-                </div>
+            <div class="language-dropdown-content">
+              <button class="language-option active" data-lang="pt">
+                <span class="lang-flag">🇵🇹</span>
+                <span class="lang-name">Português</span>
+              </button>
+              <button class="language-option" data-lang="en">
+                <span class="lang-flag">🇬🇧</span>
+                <span class="lang-name">English</span>
+              </button>
+              <button class="language-option" data-lang="es">
+                <span class="lang-flag">🇪🇸</span>
+                <span class="lang-name">Español</span>
+              </button>
             </div>
+          </div>
+
+          <div class="header-cta">
+            <a
+              class="btn btn--primary"
+              href="../book-a-call.html"
+              data-pt="AGENDAR UMA CHAMADA"
+              data-en="BOOK A CALL"
+              data-es="RESERVAR UNA LLAMADA"
+              data-fr="RÉSERVER UN APPEL"
+              data-de="EINEN TERMIN BUCHEN"
+              data-ru="НАЗНАЧИТЬ ВСТРЕЧУ"
+              data-nl="RESERVEER EEN GESPREK"
+              data-ja="通話を予約"
+              data-zh="预订通话"
+            >
+              BOOK A CALL
+            </a>
+          </div>
         </div>
+      </div>
     </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="csd-hero">
-      <div class="container csd-hero-grid">
-        <div>
-          <h1 data-pt="Desenvolvimento de Software à Medida"
+    <main>
+      <!-- HERO -->
+      <section class="csd-hero">
+        <div class="container csd-hero-grid">
+          <div>
+            <h1
+              data-pt="Desenvolvimento de Software à Medida"
               data-en="Custom Software Development"
               data-es="Desarrollo de Software a Medida"
               data-fr="Développement de logiciels personnalisés"
@@ -1135,53 +1424,64 @@
               data-ru="Разработка пользовательского программного обеспечения"
               data-nl="Aangepaste softwareontwikkeling"
               data-ja="カスタムソフトウェア開発"
-              data-zh="定制软件开发">
-            Desenvolvimento de Software à Medida
-          </h1>
+              data-zh="定制软件开发"
+            >
+              Desenvolvimento de Software à Medida
+            </h1>
 
-          <p data-pt="Seja qual for o desafio, escolhemos a tecnologia certa e criamos a experiência ideal para os teus utilizadores."
-             data-en="Whatever the challenge, we choose the right technology and create the ideal experience for your users."
-             data-es="Sea cual sea el desafío, elegimos la tecnología adecuada y creamos la experiencia ideal para tus usuarios."
-             data-fr="Quel que soit le défi, nous choisissons la bonne technologie et créons l'expérience idéale pour vos utilisateurs."
-             data-de="Was auch immer die Herausforderung ist, wir wählen die richtige Technologie und schaffen das ideale Erlebnis für Ihre Benutzer."
-             data-ru="Независимо от задачи, мы выбираем правильные технологии и создаем идеальный опыт для ваших пользователей."
-             data-nl="Wat de uitdaging ook is, we kiezen de juiste technologie en creëren de ideale ervaring voor uw gebruikers."
-             data-ja="どんな課題でも、適切なテクノロジーを選択し、ユーザーに最適なエクスペリエンスを創造します。"
-             data-zh="无论面临什么挑战，我们都选择合适的技术，为您的用户创造理想的体验。">
-            Seja qual for o desafio, escolhemos a tecnologia certa e criamos a experiência ideal para os teus utilizadores.
-          </p>
+            <p
+              data-pt="Seja qual for o desafio, escolhemos a tecnologia certa e criamos a experiência ideal para os teus utilizadores."
+              data-en="Whatever the challenge, we choose the right technology and create the ideal experience for your users."
+              data-es="Sea cual sea el desafío, elegimos la tecnología adecuada y creamos la experiencia ideal para tus usuarios."
+              data-fr="Quel que soit le défi, nous choisissons la bonne technologie et créons l'expérience idéale pour vos utilisateurs."
+              data-de="Was auch immer die Herausforderung ist, wir wählen die richtige Technologie und schaffen das ideale Erlebnis für Ihre Benutzer."
+              data-ru="Независимо от задачи, мы выбираем правильные технологии и создаем идеальный опыт для ваших пользователей."
+              data-nl="Wat de uitdaging ook is, we kiezen de juiste technologie en creëren de ideale ervaring voor uw gebruikers."
+              data-ja="どんな課題でも、適切なテクノロジーを選択し、ユーザーに最適なエクスペリエンスを創造します。"
+              data-zh="无论面临什么挑战，我们都选择合适的技术，为您的用户创造理想的体验。"
+            >
+              Seja qual for o desafio, escolhemos a tecnologia certa e criamos a
+              experiência ideal para os teus utilizadores.
+            </p>
 
-          <div class="csd-hero-actions">
-            <a class="btn btn--primary" href="../book-a-call.html"
-               data-pt="Agendar uma chamada"
-               data-en="Schedule a call"
-               data-es="Agendar una llamada"
-               data-fr="Planifier un appel"
-               data-de="Einen Anruf planen"
-               data-ru="Запланировать звонок"
-               data-nl="Een gesprek plannen"
-               data-ja="通話を予約する"
-               data-zh="安排通话">
-              Agendar uma chamada
-            </a>
+            <div class="csd-hero-actions">
+              <a
+                class="btn btn--primary"
+                href="../book-a-call.html"
+                data-pt="Agendar uma chamada"
+                data-en="Schedule a call"
+                data-es="Agendar una llamada"
+                data-fr="Planifier un appel"
+                data-de="Einen Anruf planen"
+                data-ru="Запланировать звонок"
+                data-nl="Een gesprek plannen"
+                data-ja="通話を予約する"
+                data-zh="安排通话"
+              >
+                Agendar uma chamada
+              </a>
 
-            <a class="btn btn--outline" href="../index.html#what-we-do"
-               data-pt="Ver serviços"
-               data-en="View services"
-               data-es="Ver servicios"
-               data-fr="Voir les services"
-               data-de="Services anzeigen"
-               data-ru="Посмотреть услуги"
-               data-nl="Services bekijken"
-               data-ja="サービスを見る"
-               data-zh="查看服务">
-              Ver serviços
-            </a>
+              <a
+                class="btn btn--outline"
+                href="../index.html#what-we-do"
+                data-pt="Ver serviços"
+                data-en="View services"
+                data-es="Ver servicios"
+                data-fr="Voir les services"
+                data-de="Services anzeigen"
+                data-ru="Посмотреть услуги"
+                data-nl="Services bekijken"
+                data-ja="サービスを見る"
+                data-zh="查看服务"
+              >
+                Ver serviços
+              </a>
+            </div>
           </div>
-        </div>
 
-        <aside class="csd-side">
-          <h3 data-pt="O que é software à medida?"
+          <aside class="csd-side">
+            <h3
+              data-pt="O que é software à medida?"
               data-en="What is custom software?"
               data-es="¿Qué es el software a medida?"
               data-fr="Qu'est-ce qu'un logiciel personnalisé ?"
@@ -1189,29 +1489,35 @@
               data-ru="Что такое заказное ПО?"
               data-nl="Wat is maatwerksoftware?"
               data-ja="カスタムソフトウェアとは？"
-              data-zh="什么是定制软件？">
-            O que é software à medida?
-          </h3>
+              data-zh="什么是定制软件？"
+            >
+              O que é software à medida?
+            </h3>
 
-          <p data-pt="É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade."
-             data-en="It's a solution designed, built, and launched for your product's specific needs — focusing on business, UX, and scalability."
-             data-es="Es una solución diseñada, construida y lanzada para las necesidades específicas de tu producto — con enfoque en negocio, UX y escalabilidad."
-             data-fr="C'est une solution conçue, construite et lancée pour les besoins spécifiques de votre produit — en mettant l'accent sur le business, l'UX et l'évolutivité."
-             data-de="Es ist eine Lösung, die für die spezifischen Anforderungen Ihres Produkts entwickelt, gebaut und eingeführt wird — mit Fokus auf Business, UX und Skalierbarkeit."
-             data-ru="Это решение, разработанное, построенное и запущенное для конкретных потребностей вашего продукта — с фокусом на бизнес, UX и масштабируемость."
-             data-nl="Het is een oplossing die is ontworpen, gebouwd en gelanceerd voor de specifieke behoeften van uw product — met focus op business, UX en schaalbaarheid."
-             data-ja="お客様の製品の特定のニーズに合わせて設計、構築、リリースされたソリューションです — ビジネス、UX、スケーラビリティに焦点を当てています。"
-             data-zh="它是针对您产品的特定需求而设计、构建和发布的解决方案 — 专注于业务、用户体验和可扩展性。">
-            É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade.
-          </p>
-        </aside>
-      </div>
-    </section>
+            <p
+              data-pt="É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade."
+              data-en="It's a solution designed, built, and launched for your product's specific needs — focusing on business, UX, and scalability."
+              data-es="Es una solución diseñada, construida y lanzada para las necesidades específicas de tu producto — con enfoque en negocio, UX y escalabilidad."
+              data-fr="C'est une solution conçue, construite et lancée pour les besoins spécifiques de votre produit — en mettant l'accent sur le business, l'UX et l'évolutivité."
+              data-de="Es ist eine Lösung, die für die spezifischen Anforderungen Ihres Produkts entwickelt, gebaut und eingeführt wird — mit Fokus auf Business, UX und Skalierbarkeit."
+              data-ru="Это решение, разработанное, построенное и запущенное для конкретных потребностей вашего продукта — с фокусом на бизнес, UX и масштабируемость."
+              data-nl="Het is een oplossing die is ontworpen, gebouwd en gelanceerd voor de specifieke behoeften van uw product — met focus op business, UX en schaalbaarheid."
+              data-ja="お客様の製品の特定のニーズに合わせて設計、構築、リリースされたソリューションです — ビジネス、UX、スケーラビリティに焦点を当てています。"
+              data-zh="它是针对您产品的特定需求而设计、构建和发布的解决方案 — 专注于业务、用户体验和可扩展性。"
+            >
+              É uma solução desenhada, construída e lançada para as necessidades
+              específicas do teu produto — com foco em negócio, UX e
+              escalabilidade.
+            </p>
+          </aside>
+        </div>
+      </section>
 
-    <!-- KEY BENEFITS -->
-    <section class="csd-benefits">
-      <div class="container">
-        <h2 data-pt="Principais Benefícios"
+      <!-- KEY BENEFITS -->
+      <section class="csd-benefits">
+        <div class="container">
+          <h2
+            data-pt="Principais Benefícios"
             data-en="Key Benefits"
             data-es="Beneficios Principales"
             data-fr="Avantages clés"
@@ -1219,25 +1525,31 @@
             data-ru="Ключевые преимущества"
             data-nl="Belangrijkste voordelen"
             data-ja="主なメリット"
-            data-zh="主要优势">
-          Principais Benefícios
-        </h2>
-        <p class="sub" data-pt="Mais controlo, mais flexibilidade e mais diferenciação — sem limitações de soluções genéricas."
-           data-en="More control, more flexibility, and more differentiation — without the limitations of generic solutions."
-           data-es="Más control, más flexibilidad y más diferenciación — sin las limitaciones de soluciones genéricas."
-           data-fr="Plus de contrôle, plus de flexibilité et plus de différenciation — sans les limites des solutions génériques."
-           data-de="Mehr Kontrolle, mehr Flexibilität und mehr Differenzierung — ohne die Einschränkungen generischer Lösungen."
-           data-ru="Больше контроля, больше гибкости и больше дифференциации — без ограничений типовых решений."
-           data-nl="Meer controle, meer flexibiliteit en meer differentiatie — zonder de beperkingen van generieke oplossingen."
-           data-ja="より多くのコントロール、より多くの柔軟性、そしてより多くの差別化 — 汎用的なソリューションの制限なし。"
-           data-zh="更多控制、更多灵活性、更多差异化 — 没有通用解决方案的限制。">
-          Mais controlo, mais flexibilidade e mais diferenciação — sem limitações de soluções genéricas.
-        </p>
+            data-zh="主要优势"
+          >
+            Principais Benefícios
+          </h2>
+          <p
+            class="sub"
+            data-pt="Mais controlo, mais flexibilidade e mais diferenciação — sem limitações de soluções genéricas."
+            data-en="More control, more flexibility, and more differentiation — without the limitations of generic solutions."
+            data-es="Más control, más flexibilidad y más diferenciación — sin las limitaciones de soluciones genéricas."
+            data-fr="Plus de contrôle, plus de flexibilité et plus de différenciation — sans les limites des solutions génériques."
+            data-de="Mehr Kontrolle, mehr Flexibilität und mehr Differenzierung — ohne die Einschränkungen generischer Lösungen."
+            data-ru="Больше контроля, больше гибкости и больше дифференциации — без ограничений типовых решений."
+            data-nl="Meer controle, meer flexibiliteit en meer differentiatie — zonder de beperkingen van generieke oplossingen."
+            data-ja="より多くのコントロール、より多くの柔軟性、そしてより多くの差別化 — 汎用的なソリューションの制限なし。"
+            data-zh="更多控制、更多灵活性、更多差异化 — 没有通用解决方案的限制。"
+          >
+            Mais controlo, mais flexibilidade e mais diferenciação — sem
+            limitações de soluções genéricas.
+          </p>
 
-        <div class="csd-grid">
-          <article class="csd-card">
-            <div class="csd-icon">★</div>
-            <h3 data-pt="Propriedade total"
+          <div class="csd-grid">
+            <article class="csd-card">
+              <div class="csd-icon">★</div>
+              <h3
+                data-pt="Propriedade total"
                 data-en="Full ownership"
                 data-es="Propiedad total"
                 data-fr="Propriété totale"
@@ -1245,25 +1557,30 @@
                 data-ru="Полное владение"
                 data-nl="Volledige eigendom"
                 data-ja="完全な所有権"
-                data-zh="完全所有权">
-              Propriedade total
-            </h3>
-            <p data-pt="Ficas com 100% do software e do código — sem royalties e sem lock-in."
-               data-en="You keep 100% of the software and code — no royalties, no lock-in."
-               data-es="Te quedas con el 100% del software y del código — sin royalties y sin lock-in."
-               data-fr="Vous gardez 100% du logiciel et du code — sans royalties et sans lock-in."
-               data-de="Sie behalten 100% der Software und des Codes — keine Lizenzgebühren, keine Bindung."
-               data-ru="Вы получаете 100% программного обеспечения и кода — без роялти и без привязки к вендору."
-               data-nl="U behoudt 100% van de software en code — geen royalty's, geen lock-in."
-               data-ja="ソフトウェアとコードの100％を保持 — ロイヤリティなし、ロックインなし。"
-               data-zh="您拥有100%的软件和代码 — 无版税、无锁定。">
-              Ficas com 100% do software e do código — sem royalties e sem lock-in.
-            </p>
-          </article>
+                data-zh="完全所有权"
+              >
+                Propriedade total
+              </h3>
+              <p
+                data-pt="Ficas com 100% do software e do código — sem royalties e sem lock-in."
+                data-en="You keep 100% of the software and code — no royalties, no lock-in."
+                data-es="Te quedas con el 100% del software y del código — sin royalties y sin lock-in."
+                data-fr="Vous gardez 100% du logiciel et du code — sans royalties et sans lock-in."
+                data-de="Sie behalten 100% der Software und des Codes — keine Lizenzgebühren, keine Bindung."
+                data-ru="Вы получаете 100% программного обеспечения и кода — без роялти и без привязки к вендору."
+                data-nl="U behoudt 100% van de software en code — geen royalty's, geen lock-in."
+                data-ja="ソフトウェアとコードの100％を保持 — ロイヤリティなし、ロックインなし。"
+                data-zh="您拥有100%的软件和代码 — 无版税、无锁定。"
+              >
+                Ficas com 100% do software e do código — sem royalties e sem
+                lock-in.
+              </p>
+            </article>
 
-          <article class="csd-card">
-            <div class="csd-icon">↔</div>
-            <h3 data-pt="Flexibilidade"
+            <article class="csd-card">
+              <div class="csd-icon">↔</div>
+              <h3
+                data-pt="Flexibilidade"
                 data-en="Flexibility"
                 data-es="Flexibilidad"
                 data-fr="Flexibilité"
@@ -1271,25 +1588,30 @@
                 data-ru="Гибкость"
                 data-nl="Flexibiliteit"
                 data-ja="柔軟性"
-                data-zh="灵活性">
-              Flexibilidade
-            </h3>
-            <p data-pt="Evolui o produto rapidamente conforme o mercado e a tua equipa mudam."
-               data-en="Evolve the product quickly as the market and your team change."
-               data-es="Evoluciona el producto rápidamente a medida que el mercado y tu equipo cambian."
-               data-fr="Faites évoluer le produit rapidement à mesure que le marché et votre équipe changent."
-               data-de="Entwickeln Sie das Produkt schnell weiter, wenn sich Markt und Team ändern."
-               data-ru="Быстро развивайте продукт по мере изменения рынка и вашей команды."
-               data-nl="Evolueer het product snel naarmate de markt en uw team veranderen."
-               data-ja="市場やチームの変化に合わせて、迅速に製品を進化させます。"
-               data-zh="随着市场和团队的变化，快速演进产品。">
-              Evolui o produto rapidamente conforme o mercado e a tua equipa mudam.
-            </p>
-          </article>
+                data-zh="灵活性"
+              >
+                Flexibilidade
+              </h3>
+              <p
+                data-pt="Evolui o produto rapidamente conforme o mercado e a tua equipa mudam."
+                data-en="Evolve the product quickly as the market and your team change."
+                data-es="Evoluciona el producto rápidamente a medida que el mercado y tu equipo cambian."
+                data-fr="Faites évoluer le produit rapidement à mesure que le marché et votre équipe changent."
+                data-de="Entwickeln Sie das Produkt schnell weiter, wenn sich Markt und Team ändern."
+                data-ru="Быстро развивайте продукт по мере изменения рынка и вашей команды."
+                data-nl="Evolueer het product snel naarmate de markt en uw team veranderen."
+                data-ja="市場やチームの変化に合わせて、迅速に製品を進化させます。"
+                data-zh="随着市场和团队的变化，快速演进产品。"
+              >
+                Evolui o produto rapidamente conforme o mercado e a tua equipa
+                mudam.
+              </p>
+            </article>
 
-          <article class="csd-card">
-            <div class="csd-icon">⚑</div>
-            <h3 data-pt="Vantagem competitiva"
+            <article class="csd-card">
+              <div class="csd-icon">⚑</div>
+              <h3
+                data-pt="Vantagem competitiva"
                 data-en="Competitive advantage"
                 data-es="Ventaja competitiva"
                 data-fr="Avantage concurrentiel"
@@ -1297,25 +1619,30 @@
                 data-ru="Конкурентное преимущество"
                 data-nl="Concurrentievoordeel"
                 data-ja="競争上の優位性"
-                data-zh="竞争优势">
-              Vantagem competitiva
-            </h3>
-            <p data-pt="Funcionalidades e UX únicas para te diferenciares da concorrência."
-               data-en="Unique features and UX to differentiate yourself from the competition."
-               data-es="Funcionalidades y UX únicas para diferenciarte de la competencia."
-               data-fr="Fonctionnalités et UX uniques pour vous différencier de la concurrence."
-               data-de="Einzigartige Funktionen und UX, um sich von der Konkurrenz abzuheben."
-               data-ru="Уникальные функции и UX, чтобы выделиться среди конкурентов."
-               data-nl="Unieke functies en UX om u te onderscheiden van de concurrentie."
-               data-ja="競合他社と差別化するための独自の機能とUX。"
-               data-zh="独特的功能和用户体验，让您从竞争中脱颖而出。">
-              Funcionalidades e UX únicas para te diferenciares da concorrência.
-            </p>
-          </article>
+                data-zh="竞争优势"
+              >
+                Vantagem competitiva
+              </h3>
+              <p
+                data-pt="Funcionalidades e UX únicas para te diferenciares da concorrência."
+                data-en="Unique features and UX to differentiate yourself from the competition."
+                data-es="Funcionalidades y UX únicas para diferenciarte de la competencia."
+                data-fr="Fonctionnalités et UX uniques pour vous différencier de la concurrence."
+                data-de="Einzigartige Funktionen und UX, um sich von der Konkurrenz abzuheben."
+                data-ru="Уникальные функции и UX, чтобы выделиться среди конкурентов."
+                data-nl="Unieke functies en UX om u te onderscheiden van de concurrentie."
+                data-ja="競合他社と差別化するための独自の機能とUX。"
+                data-zh="独特的功能和用户体验，让您从竞争中脱颖而出。"
+              >
+                Funcionalidades e UX únicas para te diferenciares da
+                concorrência.
+              </p>
+            </article>
 
-          <article class="csd-card">
-            <div class="csd-icon">⬈</div>
-            <h3 data-pt="Escalabilidade"
+            <article class="csd-card">
+              <div class="csd-icon">⬈</div>
+              <h3
+                data-pt="Escalabilidade"
                 data-en="Scalability"
                 data-es="Escalabilidad"
                 data-fr="Évolutivité"
@@ -1323,25 +1650,30 @@
                 data-ru="Масштабируемость"
                 data-nl="Schaalbaarheid"
                 data-ja="スケーラビリティ"
-                data-zh="可扩展性">
-              Escalabilidade
-            </h3>
-            <p data-pt="Arquitetura preparada para crescer com performance, segurança e observabilidade."
-               data-en="Architecture ready to grow with performance, security, and observability."
-               data-es="Arquitectura preparada para crecer con rendimiento, seguridad y observabilidad."
-               data-fr="Architecture prête à évoluer avec performance, sécurité et observabilité."
-               data-de="Architektur bereit zu wachsen mit Leistung, Sicherheit und Beobachtbarkeit."
-               data-ru="Архитектура, готовая к росту с производительностью, безопасностью и наблюдаемостью."
-               data-nl="Architectuur klaar om te groeien met prestaties, beveiliging en observeerbaarheid."
-               data-ja="パフォーマンス、セキュリティ、可観測性を備えた成長可能なアーキテクチャ。"
-               data-zh="架构已准备好以性能、安全性和可观测性进行扩展。">
-              Arquitetura preparada para crescer com performance, segurança e observabilidade.
-            </p>
-          </article>
+                data-zh="可扩展性"
+              >
+                Escalabilidade
+              </h3>
+              <p
+                data-pt="Arquitetura preparada para crescer com performance, segurança e observabilidade."
+                data-en="Architecture ready to grow with performance, security, and observability."
+                data-es="Arquitectura preparada para crecer con rendimiento, seguridad y observabilidad."
+                data-fr="Architecture prête à évoluer avec performance, sécurité et observabilité."
+                data-de="Architektur bereit zu wachsen mit Leistung, Sicherheit und Beobachtbarkeit."
+                data-ru="Архитектура, готовая к росту с производительностью, безопасностью и наблюдаемостью."
+                data-nl="Architectuur klaar om te groeien met prestaties, beveiliging en observeerbaarheid."
+                data-ja="パフォーマンス、セキュリティ、可観測性を備えた成長可能なアーキテクチャ。"
+                data-zh="架构已准备好以性能、安全性和可观测性进行扩展。"
+              >
+                Arquitetura preparada para crescer com performance, segurança e
+                observabilidade.
+              </p>
+            </article>
 
-          <article class="csd-card">
-            <div class="csd-icon">€</div>
-            <h3 data-pt="Custos a longo prazo"
+            <article class="csd-card">
+              <div class="csd-icon">€</div>
+              <h3
+                data-pt="Custos a longo prazo"
                 data-en="Long-term costs"
                 data-es="Costes a largo plazo"
                 data-fr="Coûts à long terme"
@@ -1349,25 +1681,29 @@
                 data-ru="Долгосрочные затраты"
                 data-nl="Langetermijnkosten"
                 data-ja="長期的なコスト"
-                data-zh="长期成本">
-              Custos a longo prazo
-            </h3>
-            <p data-pt="Menos subscrições e workarounds — melhor ROI com o tempo."
-               data-en="Fewer subscriptions and workarounds — better ROI over time."
-               data-es="Menos suscripciones y workarounds — mejor ROI con el tiempo."
-               data-fr="Moins d'abonnements et de solutions de contournement — meilleur ROI au fil du temps."
-               data-de="Weniger Abonnements und Workarounds — bessere Kapitalrendite im Laufe der Zeit."
-               data-ru="Меньше подписок и обходных путей — лучшая окупаемость инвестиций с течением времени."
-               data-nl="Minder abonnementen en workarounds — beter ROI na verloop van tijd."
-               data-ja="サブスクリプションと回避策の削減 — 長期的なROIの向上。"
-               data-zh="更少的订阅和变通方法 — 随着时间的推移获得更好的投资回报率。">
-              Menos subscrições e workarounds — melhor ROI com o tempo.
-            </p>
-          </article>
+                data-zh="长期成本"
+              >
+                Custos a longo prazo
+              </h3>
+              <p
+                data-pt="Menos subscrições e workarounds — melhor ROI com o tempo."
+                data-en="Fewer subscriptions and workarounds — better ROI over time."
+                data-es="Menos suscripciones y workarounds — mejor ROI con el tiempo."
+                data-fr="Moins d'abonnements et de solutions de contournement — meilleur ROI au fil du temps."
+                data-de="Weniger Abonnements und Workarounds — bessere Kapitalrendite im Laufe der Zeit."
+                data-ru="Меньше подписок и обходных путей — лучшая окупаемость инвестиций с течением времени."
+                data-nl="Minder abonnementen en workarounds — beter ROI na verloop van tijd."
+                data-ja="サブスクリプションと回避策の削減 — 長期的なROIの向上。"
+                data-zh="更少的订阅和变通方法 — 随着时间的推移获得更好的投资回报率。"
+              >
+                Menos subscrições e workarounds — melhor ROI com o tempo.
+              </p>
+            </article>
 
-          <article class="csd-card">
-            <div class="csd-icon">☺</div>
-            <h3 data-pt="Experiência do utilizador"
+            <article class="csd-card">
+              <div class="csd-icon">☺</div>
+              <h3
+                data-pt="Experiência do utilizador"
                 data-en="User experience"
                 data-es="Experiencia del usuario"
                 data-fr="Expérience utilisateur"
@@ -1375,29 +1711,33 @@
                 data-ru="Пользовательский опыт"
                 data-nl="Gebruikerservaring"
                 data-ja="ユーザーエクスペリエンス"
-                data-zh="用户体验">
-              Experiência do utilizador
-            </h3>
-            <p data-pt="UX/UI com foco em conversão, retenção e clareza em cada fluxo."
-               data-en="UX/UI focused on conversion, retention, and clarity in every flow."
-               data-es="UX/UI enfocado en conversión, retención y claridad en cada flujo."
-               data-fr="UX/UI axée sur la conversion, la rétention et la clarté dans chaque flux."
-               data-de="UX/UI fokussiert auf Konversion, Bindung und Klarheit in jedem Fluss."
-               data-ru="UX/UI, ориентированный на конверсию, удержание и ясность в каждом потоке."
-               data-nl="UX/UI gericht op conversie, retentie en helderheid in elke flow."
-               data-ja="コンバージョン、リテンション、各フローの明瞭さに焦点を当てたUX/UI。"
-               data-zh="专注于每个流程中的转化、留存和清晰度的用户体验/用户界面设计。">
-              UX/UI com foco em conversão, retenção e clareza em cada fluxo.
-            </p>
-          </article>
+                data-zh="用户体验"
+              >
+                Experiência do utilizador
+              </h3>
+              <p
+                data-pt="UX/UI com foco em conversão, retenção e clareza em cada fluxo."
+                data-en="UX/UI focused on conversion, retention, and clarity in every flow."
+                data-es="UX/UI enfocado en conversión, retención y claridad en cada flujo."
+                data-fr="UX/UI axée sur la conversion, la rétention et la clarté dans chaque flux."
+                data-de="UX/UI fokussiert auf Konversion, Bindung und Klarheit in jedem Fluss."
+                data-ru="UX/UI, ориентированный на конверсию, удержание и ясность в каждом потоке."
+                data-nl="UX/UI gericht op conversie, retentie en helderheid in elke flow."
+                data-ja="コンバージョン、リテンション、各フローの明瞭さに焦点を当てたUX/UI。"
+                data-zh="专注于每个流程中的转化、留存和清晰度的用户体验/用户界面设计。"
+              >
+                UX/UI com foco em conversão, retenção e clareza em cada fluxo.
+              </p>
+            </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="csd-process">
-      <div class="container">
-        <h2 data-pt="Como funciona"
+      <!-- HOW IT WORKS -->
+      <section class="csd-process">
+        <div class="container">
+          <h2
+            data-pt="Como funciona"
             data-en="How it works"
             data-es="Cómo funciona"
             data-fr="Comment ça marche"
@@ -1405,25 +1745,31 @@
             data-ru="Как это работает"
             data-nl="Hoe het werkt"
             data-ja="仕組み"
-            data-zh="运作方式">
-          Como funciona
-        </h2>
-        <p class="sub" data-pt="Um processo claro e estruturado — do scope à entrega e evolução contínua."
-           data-en="A clear and structured process — from scope to delivery and continuous evolution."
-           data-es="Un proceso claro y estructurado — del alcance a la entrega y evolución continua."
-           data-fr="Un processus clair et structuré — du périmètre à la livraison et à l'évolution continue."
-           data-de="Ein klarer und strukturierter Prozess — vom Umfang bis zur Lieferung und kontinuierlichen Weiterentwicklung."
-           data-ru="Четкий и структурированный процесс — от определения области применения до доставки и непрерывного развития."
-           data-nl="Een duidelijk en gestructureerd proces — van scope tot oplevering en continue evolutie."
-           data-ja="明確で構造化されたプロセス — スコープから納品、継続的な進化まで。"
-           data-zh="清晰结构化的流程 — 从范围到交付和持续演进。">
-          Um processo claro e estruturado — do scope à entrega e evolução contínua.
-        </p>
+            data-zh="运作方式"
+          >
+            Como funciona
+          </h2>
+          <p
+            class="sub"
+            data-pt="Um processo claro e estruturado — do scope à entrega e evolução contínua."
+            data-en="A clear and structured process — from scope to delivery and continuous evolution."
+            data-es="Un proceso claro y estructurado — del alcance a la entrega y evolución continua."
+            data-fr="Un processus clair et structuré — du périmètre à la livraison et à l'évolution continue."
+            data-de="Ein klarer und strukturierter Prozess — vom Umfang bis zur Lieferung und kontinuierlichen Weiterentwicklung."
+            data-ru="Четкий и структурированный процесс — от определения области применения до доставки и непрерывного развития."
+            data-nl="Een duidelijk en gestructureerd proces — van scope tot oplevering en continue evolutie."
+            data-ja="明確で構造化されたプロセス — スコープから納品、継続的な進化まで。"
+            data-zh="清晰结构化的流程 — 从范围到交付和持续演进。"
+          >
+            Um processo claro e estruturado — do scope à entrega e evolução
+            contínua.
+          </p>
 
-        <div class="csd-steps">
-          <div class="csd-step">
-            <div class="csd-step-top">
-              <h3 data-pt="Product Scope"
+          <div class="csd-steps">
+            <div class="csd-step">
+              <div class="csd-step-top">
+                <h3
+                  data-pt="Product Scope"
                   data-en="Product Scope"
                   data-es="Product Scope"
                   data-fr="Product Scope"
@@ -1431,60 +1777,131 @@
                   data-ru="Product Scope"
                   data-nl="Product Scope"
                   data-ja="プロダクトスコープ"
-                  data-zh="产品范围">
-                Product Scope
-              </h3>
-              <div class="csd-step-num">01</div>
-            </div>
-            <p data-pt="Sessões intensivas para alinhar visão, objetivos, requisitos e prioridades do produto."
-               data-en="Intensive sessions to align vision, goals, requirements, and product priorities."
-               data-es="Sesiones intensivas para alinear visión, objetivos, requisitos y prioridades del producto."
-               data-fr="Sessions intensives pour aligner la vision, les objectifs, les exigences et les priorités du produit."
-               data-de="Intensive Sitzungen zur Abstimmung von Vision, Zielen, Anforderungen und Produktprioritäten."
-               data-ru="Интенсивные сессии для согласования видения, целей, требований и приоритетов продукта."
-               data-nl="Intensieve sessies om visie, doelen, vereisten en productprioriteiten op elkaar af te stemmen."
-               data-ja="ビジョン、目標、要件、製品の優先事項を調整するための集中的なセッション。"
-               data-zh="密集的会议，以协调愿景、目标、需求和产品优先级。">
-              Sessões intensivas para alinhar visão, objetivos, requisitos e prioridades do produto.
-            </p>
-            <div class="csd-cols">
-              <div>
-                <b data-pt="Entregáveis"
-                   data-en="Deliverables"
-                   data-es="Entregables"
-                   data-fr="Livrables"
-                   data-de="Liefergegenstände"
-                   data-ru="Результаты"
-                   data-nl="Opleveringen"
-                   data-ja="成果物"
-                   data-zh="可交付成果">Entregáveis</b>
-                <ul class="csd-list">
-                  <li data-pt="User Stories" data-en="User Stories" data-es="User Stories" data-fr="User Stories" data-de="User Stories" data-ru="User Stories" data-nl="User Stories" data-ja="ユーザーストーリー" data-zh="用户故事">User Stories</li>
-                  <li data-pt="Sitemap" data-en="Sitemap" data-es="Sitemap" data-fr="Sitemap" data-de="Sitemap" data-ru="Sitemap" data-nl="Sitemap" data-ja="サイトマップ" data-zh="站点地图">Sitemap</li>
-                  <li data-pt="Stakeholder Analysis" data-en="Stakeholder Analysis" data-es="Análisis de Stakeholders" data-fr="Analyse des parties prenantes" data-de="Stakeholder-Analyse" data-ru="Анализ заинтересованных сторон" data-nl="Stakeholderanalyse" data-ja="ステークホルダー分析" data-zh="利益相关者分析">Stakeholder Analysis</li>
-                </ul>
+                  data-zh="产品范围"
+                >
+                  Product Scope
+                </h3>
+                <div class="csd-step-num">01</div>
               </div>
-              <div>
-                <b data-pt="Também inclui"
-                   data-en="Also includes"
-                   data-es="También incluye"
-                   data-fr="Inclut également"
-                   data-de="Beinhaltet auch"
-                   data-ru="Также включает"
-                   data-nl="Omvat ook"
-                   data-ja="以下も含む"
-                   data-zh="还包括">Também inclui</b>
-                <ul class="csd-list">
-                  <li data-pt="Tech Spike" data-en="Tech Spike" data-es="Tech Spike" data-fr="Tech Spike" data-de="Tech Spike" data-ru="Tech Spike" data-nl="Tech Spike" data-ja="テックスパイク" data-zh="技术调研">Tech Spike</li>
-                  <li data-pt="Processos-chave (BPMN)" data-en="Key processes (BPMN)" data-es="Procesos clave (BPMN)" data-fr="Processus clés (BPMN)" data-de="Schlüsselprozesse (BPMN)" data-ru="Ключевые процессы (BPMN)" data-nl="Sleutelprocessen (BPMN)" data-ja="主要プロセス (BPMN)" data-zh="关键流程 (BPMN)">Processos-chave (BPMN)</li>
-                </ul>
+              <p
+                data-pt="Sessões intensivas para alinhar visão, objetivos, requisitos e prioridades do produto."
+                data-en="Intensive sessions to align vision, goals, requirements, and product priorities."
+                data-es="Sesiones intensivas para alinear visión, objetivos, requisitos y prioridades del producto."
+                data-fr="Sessions intensives pour aligner la vision, les objectifs, les exigences et les priorités du produit."
+                data-de="Intensive Sitzungen zur Abstimmung von Vision, Zielen, Anforderungen und Produktprioritäten."
+                data-ru="Интенсивные сессии для согласования видения, целей, требований и приоритетов продукта."
+                data-nl="Intensieve sessies om visie, doelen, vereisten en productprioriteiten op elkaar af te stemmen."
+                data-ja="ビジョン、目標、要件、製品の優先事項を調整するための集中的なセッション。"
+                data-zh="密集的会议，以协调愿景、目标、需求和产品优先级。"
+              >
+                Sessões intensivas para alinhar visão, objetivos, requisitos e
+                prioridades do produto.
+              </p>
+              <div class="csd-cols">
+                <div>
+                  <b
+                    data-pt="Entregáveis"
+                    data-en="Deliverables"
+                    data-es="Entregables"
+                    data-fr="Livrables"
+                    data-de="Liefergegenstände"
+                    data-ru="Результаты"
+                    data-nl="Opleveringen"
+                    data-ja="成果物"
+                    data-zh="可交付成果"
+                    >Entregáveis</b
+                  >
+                  <ul class="csd-list">
+                    <li
+                      data-pt="User Stories"
+                      data-en="User Stories"
+                      data-es="User Stories"
+                      data-fr="User Stories"
+                      data-de="User Stories"
+                      data-ru="User Stories"
+                      data-nl="User Stories"
+                      data-ja="ユーザーストーリー"
+                      data-zh="用户故事"
+                    >
+                      User Stories
+                    </li>
+                    <li
+                      data-pt="Sitemap"
+                      data-en="Sitemap"
+                      data-es="Sitemap"
+                      data-fr="Sitemap"
+                      data-de="Sitemap"
+                      data-ru="Sitemap"
+                      data-nl="Sitemap"
+                      data-ja="サイトマップ"
+                      data-zh="站点地图"
+                    >
+                      Sitemap
+                    </li>
+                    <li
+                      data-pt="Stakeholder Analysis"
+                      data-en="Stakeholder Analysis"
+                      data-es="Análisis de Stakeholders"
+                      data-fr="Analyse des parties prenantes"
+                      data-de="Stakeholder-Analyse"
+                      data-ru="Анализ заинтересованных сторон"
+                      data-nl="Stakeholderanalyse"
+                      data-ja="ステークホルダー分析"
+                      data-zh="利益相关者分析"
+                    >
+                      Stakeholder Analysis
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <b
+                    data-pt="Também inclui"
+                    data-en="Also includes"
+                    data-es="También incluye"
+                    data-fr="Inclut également"
+                    data-de="Beinhaltet auch"
+                    data-ru="Также включает"
+                    data-nl="Omvat ook"
+                    data-ja="以下も含む"
+                    data-zh="还包括"
+                    >Também inclui</b
+                  >
+                  <ul class="csd-list">
+                    <li
+                      data-pt="Tech Spike"
+                      data-en="Tech Spike"
+                      data-es="Tech Spike"
+                      data-fr="Tech Spike"
+                      data-de="Tech Spike"
+                      data-ru="Tech Spike"
+                      data-nl="Tech Spike"
+                      data-ja="テックスパイク"
+                      data-zh="技术调研"
+                    >
+                      Tech Spike
+                    </li>
+                    <li
+                      data-pt="Processos-chave (BPMN)"
+                      data-en="Key processes (BPMN)"
+                      data-es="Procesos clave (BPMN)"
+                      data-fr="Processus clés (BPMN)"
+                      data-de="Schlüsselprozesse (BPMN)"
+                      data-ru="Ключевые процессы (BPMN)"
+                      data-nl="Sleutelprocessen (BPMN)"
+                      data-ja="主要プロセス (BPMN)"
+                      data-zh="关键流程 (BPMN)"
+                    >
+                      Processos-chave (BPMN)
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="csd-step">
-            <div class="csd-step-top">
-              <h3 data-pt="Development"
+            <div class="csd-step">
+              <div class="csd-step-top">
+                <h3
+                  data-pt="Development"
                   data-en="Development"
                   data-es="Desarrollo"
                   data-fr="Développement"
@@ -1492,60 +1909,119 @@
                   data-ru="Разработка"
                   data-nl="Ontwikkeling"
                   data-ja="開発"
-                  data-zh="开发">
-                Development
-              </h3>
-              <div class="csd-step-num">02</div>
-            </div>
-            <p data-pt="Implementação por módulos com entregas progressivas, testes e updates regulares."
-               data-en="Implementation by modules with progressive deliveries, testing, and regular updates."
-               data-es="Implementación por módulos con entregas progresivas, pruebas y actualizaciones regulares."
-               data-fr="Implémentation par modules avec livraisons progressives, tests et mises à jour régulières."
-               data-de="Modulare Implementierung mit progressiven Lieferungen, Tests und regelmäßigen Updates."
-               data-ru="Модульная реализация с поэтапными поставками, тестированием и регулярными обновлениями."
-               data-nl="Implementatie in modules met progressieve opleveringen, testen en regelmatige updates."
-               data-ja="段階的な納品、テスト、定期的なアップデートによるモジュール単位の実装。"
-               data-zh="模块化实施，逐步交付、测试和定期更新。">
-              Implementação por módulos com entregas progressivas, testes e updates regulares.
-            </p>
-            <div class="csd-cols">
-              <div>
-                <b data-pt="Entrega"
-                   data-en="Delivery"
-                   data-es="Entrega"
-                   data-fr="Livraison"
-                   data-de="Lieferung"
-                   data-ru="Доставка"
-                   data-nl="Oplevering"
-                   data-ja="納品"
-                   data-zh="交付">Entrega</b>
-                <ul class="csd-list">
-                  <li data-pt="Módulos incrementais" data-en="Incremental modules" data-es="Módulos incrementales" data-fr="Modules incrémentaux" data-de="Inkrementelle Module" data-ru="Инкрементальные модули" data-nl="Incrementele modules" data-ja="段階的モジュール" data-zh="增量模块">Módulos incrementais</li>
-                  <li data-pt="Documentação" data-en="Documentation" data-es="Documentación" data-fr="Documentation" data-de="Dokumentation" data-ru="Документация" data-nl="Documentatie" data-ja="ドキュメンテーション" data-zh="文档">Documentação</li>
-                </ul>
+                  data-zh="开发"
+                >
+                  Development
+                </h3>
+                <div class="csd-step-num">02</div>
               </div>
-              <div>
-                <b data-pt="Qualidade"
-                   data-en="Quality"
-                   data-es="Calidad"
-                   data-fr="Qualité"
-                   data-de="Qualität"
-                   data-ru="Качество"
-                   data-nl="Kwaliteit"
-                   data-ja="品質"
-                   data-zh="质量">Qualidade</b>
-                <ul class="csd-list">
-                  <li data-pt="QA + UAT" data-en="QA + UAT" data-es="QA + UAT" data-fr="QA + UAT" data-de="QA + UAT" data-ru="QA + UAT" data-nl="QA + UAT" data-ja="QA + UAT" data-zh="质量保证 + 用户验收测试">QA + UAT</li>
-                  <li data-pt="Launch readiness" data-en="Launch readiness" data-es="Preparación para lanzamiento" data-fr="Prêt pour le lancement" data-de="Startbereitschaft" data-ru="Готовность к запуску" data-nl="Lanceer gereedheid" data-ja="ローンチ準備" data-zh="启动就绪">Launch readiness</li>
-                </ul>
+              <p
+                data-pt="Implementação por módulos com entregas progressivas, testes e updates regulares."
+                data-en="Implementation by modules with progressive deliveries, testing, and regular updates."
+                data-es="Implementación por módulos con entregas progresivas, pruebas y actualizaciones regulares."
+                data-fr="Implémentation par modules avec livraisons progressives, tests et mises à jour régulières."
+                data-de="Modulare Implementierung mit progressiven Lieferungen, Tests und regelmäßigen Updates."
+                data-ru="Модульная реализация с поэтапными поставками, тестированием и регулярными обновлениями."
+                data-nl="Implementatie in modules met progressieve opleveringen, testen en regelmatige updates."
+                data-ja="段階的な納品、テスト、定期的なアップデートによるモジュール単位の実装。"
+                data-zh="模块化实施，逐步交付、测试和定期更新。"
+              >
+                Implementação por módulos com entregas progressivas, testes e
+                updates regulares.
+              </p>
+              <div class="csd-cols">
+                <div>
+                  <b
+                    data-pt="Entrega"
+                    data-en="Delivery"
+                    data-es="Entrega"
+                    data-fr="Livraison"
+                    data-de="Lieferung"
+                    data-ru="Доставка"
+                    data-nl="Oplevering"
+                    data-ja="納品"
+                    data-zh="交付"
+                    >Entrega</b
+                  >
+                  <ul class="csd-list">
+                    <li
+                      data-pt="Módulos incrementais"
+                      data-en="Incremental modules"
+                      data-es="Módulos incrementales"
+                      data-fr="Modules incrémentaux"
+                      data-de="Inkrementelle Module"
+                      data-ru="Инкрементальные модули"
+                      data-nl="Incrementele modules"
+                      data-ja="段階的モジュール"
+                      data-zh="增量模块"
+                    >
+                      Módulos incrementais
+                    </li>
+                    <li
+                      data-pt="Documentação"
+                      data-en="Documentation"
+                      data-es="Documentación"
+                      data-fr="Documentation"
+                      data-de="Dokumentation"
+                      data-ru="Документация"
+                      data-nl="Documentatie"
+                      data-ja="ドキュメンテーション"
+                      data-zh="文档"
+                    >
+                      Documentação
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <b
+                    data-pt="Qualidade"
+                    data-en="Quality"
+                    data-es="Calidad"
+                    data-fr="Qualité"
+                    data-de="Qualität"
+                    data-ru="Качество"
+                    data-nl="Kwaliteit"
+                    data-ja="品質"
+                    data-zh="质量"
+                    >Qualidade</b
+                  >
+                  <ul class="csd-list">
+                    <li
+                      data-pt="QA + UAT"
+                      data-en="QA + UAT"
+                      data-es="QA + UAT"
+                      data-fr="QA + UAT"
+                      data-de="QA + UAT"
+                      data-ru="QA + UAT"
+                      data-nl="QA + UAT"
+                      data-ja="QA + UAT"
+                      data-zh="质量保证 + 用户验收测试"
+                    >
+                      QA + UAT
+                    </li>
+                    <li
+                      data-pt="Launch readiness"
+                      data-en="Launch readiness"
+                      data-es="Preparación para lanzamiento"
+                      data-fr="Prêt pour le lancement"
+                      data-de="Startbereitschaft"
+                      data-ru="Готовность к запуску"
+                      data-nl="Lanceer gereedheid"
+                      data-ja="ローンチ準備"
+                      data-zh="启动就绪"
+                    >
+                      Launch readiness
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="csd-cta">
-          <div>
-            <h3 data-pt="Vamos falar sobre o teu projeto"
+          <div class="csd-cta">
+            <div>
+              <h3
+                data-pt="Vamos falar sobre o teu projeto"
                 data-en="Let's talk about your project"
                 data-es="Hablemos de tu proyecto"
                 data-fr="Parlons de votre projet"
@@ -1553,302 +2029,620 @@
                 data-ru="Давайте поговорим о вашем проекте"
                 data-nl="Laten we praten over uw project"
                 data-ja="プロジェクトについて話しましょう"
-                data-zh="让我们谈谈您的项目">
-              Vamos falar sobre o teu projeto
-            </h3>
-            <p data-pt="Conta-nos o que queres construir e recebemos-te com um plano claro e realista."
-               data-en="Tell us what you want to build and we'll welcome you with a clear and realistic plan."
-               data-es="Cuéntanos qué quieres construir y te recibiremos con un plan claro y realista."
-               data-fr="Dites-nous ce que vous voulez construire et nous vous accueillerons avec un plan clair et réaliste."
-               data-de="Sagen Sie uns, was Sie bauen möchten, und wir begrüßen Sie mit einem klaren und realistischen Plan."
-               data-ru="Расскажите нам, что вы хотите построить, и мы встретим вас четким и реалистичным планом."
-               data-nl="Vertel ons wat u wilt bouwen en we verwelkomen u met een duidelijk en realistisch plan."
-               data-ja="何を構築したいか教えてください。明確で現実的なプランをご提案します。"
-               data-zh="告诉我们您想要构建什么，我们将以清晰、现实的计划欢迎您。">
-              Conta-nos o que queres construir e recebemos-te com um plano claro e realista.
-            </p>
+                data-zh="让我们谈谈您的项目"
+              >
+                Vamos falar sobre o teu projeto
+              </h3>
+              <p
+                data-pt="Conta-nos o que queres construir e recebemos-te com um plano claro e realista."
+                data-en="Tell us what you want to build and we'll welcome you with a clear and realistic plan."
+                data-es="Cuéntanos qué quieres construir y te recibiremos con un plan claro y realista."
+                data-fr="Dites-nous ce que vous voulez construire et nous vous accueillerons avec un plan clair et réaliste."
+                data-de="Sagen Sie uns, was Sie bauen möchten, und wir begrüßen Sie mit einem klaren und realistischen Plan."
+                data-ru="Расскажите нам, что вы хотите построить, и мы встретим вас четким и реалистичным планом."
+                data-nl="Vertel ons wat u wilt bouwen en we verwelkomen u met een duidelijk en realistisch plan."
+                data-ja="何を構築したいか教えてください。明確で現実的なプランをご提案します。"
+                data-zh="告诉我们您想要构建什么，我们将以清晰、现实的计划欢迎您。"
+              >
+                Conta-nos o que queres construir e recebemos-te com um plano
+                claro e realista.
+              </p>
+            </div>
+            <a
+              class="btn btn--primary"
+              href="../book-a-call.html"
+              data-pt="Agendar chamada"
+              data-en="Schedule call"
+              data-es="Agendar llamada"
+              data-fr="Planifier un appel"
+              data-de="Anruf planen"
+              data-ru="Запланировать звонок"
+              data-nl="Gesprek plannen"
+              data-ja="通話を予約"
+              data-zh="安排通话"
+            >
+              Agendar chamada
+            </a>
           </div>
-          <a class="btn btn--primary" href="../book-a-call.html"
-             data-pt="Agendar chamada"
-             data-en="Schedule call"
-             data-es="Agendar llamada"
-             data-fr="Planifier un appel"
-             data-de="Anruf planen"
-             data-ru="Запланировать звонок"
-             data-nl="Gesprek plannen"
-             data-ja="通話を予約"
-             data-zh="安排通话">
-            Agendar chamada
-          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ✅ FOOTER IGUAL AO BOOK-A-CALL.HTML -->
+    <footer class="footer-pro" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
+            <h3 class="footer-brand-title">Cobrait</h3>
+            <p class="footer-brand-subtitle">Software Factory</p>
+            <p
+              class="footer-tagline"
+              data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+              data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+              data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento."
+              data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du champ d'application au lancement."
+              data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind — vom Umfang bis zum Start."
+              data-ru="Мы создаем цифровые продукты, ориентированные на скорость, качество и рост — от определения объема до запуска."
+              data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering."
+              data-ja="我々はスピード、品質、成長に重点を置いたデジタル製品を作成します—スコープからローンチまで。"
+              data-zh="我们创建数字产品，专注于速度、质量和增长— 从范围到发布。"
+            >
+              Criamos produtos digitais com foco em velocidade, qualidade e
+              crescimento — do scope ao lançamento.
+            </p>
+            <div class="footer-cta-row">
+              <a
+                class="btn btn--primary btn--footer"
+                href="../book-a-call.html"
+                data-pt="Agendar uma chamada"
+                data-en="Book a call"
+                data-es="Reservar una llamada"
+                data-fr="Programmez un appel"
+                data-de="Einen Anruf buchen"
+                data-ru="Книга вызов"
+                data-nl="Een gesprek boeken"
+                data-ja="電話予約"
+                data-zh="预定电话"
+              >
+                Agendar uma chamada
+              </a>
+              <a
+                class="btn btn--outline btn--footer"
+                href="../index.html#what-we-do"
+                data-pt="Ver serviços"
+                data-en="See services"
+                data-es="Ver servicios"
+                data-fr="Voir les services"
+                data-de="Services anzeigen"
+                data-ru="Посмотреть услуги"
+                data-nl="Services zien"
+                data-ja="サービスを表示"
+                data-zh="查看服务"
+              >
+                Ver serviços
+              </a>
+            </div>
+            <div class="footer-badges" aria-label="Highlights">
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Lean + Agile"
+                  data-en="Lean + Agile"
+                  data-es="Lean + Agile"
+                  data-fr="Lean + Agile"
+                  data-de="Lean + Agile"
+                  data-ru="Lean + Agile"
+                  data-nl="Lean + Agile"
+                  data-ja="Lean + Agile"
+                  data-zh="Lean + Agile"
+                  >Lean + Agile</span
+                ></span
+              >
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Entrega rápida"
+                  data-en="Fast delivery"
+                  data-es="Entrega rápida"
+                  data-fr="Livraison rapide"
+                  data-de="Schnelle Lieferung"
+                  data-ru="Быстрая доставка"
+                  data-nl="Snelle levering"
+                  data-ja="迅速な配送"
+                  data-zh="快速交付"
+                  >Entrega rápida</span
+                ></span
+              >
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Qualidade"
+                  data-en="Quality"
+                  data-es="Calidad"
+                  data-fr="Qualité"
+                  data-de="Qualität"
+                  data-ru="Качество"
+                  data-nl="Kwaliteit"
+                  data-ja="品質"
+                  data-zh="质量"
+                  >Qualidade</span
+                ></span
+              >
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4
+              data-pt="Serviços"
+              data-en="Services"
+              data-es="Servicios"
+              data-fr="Services"
+              data-de="Dienstleistungen"
+              data-ru="Услуги"
+              data-nl="Diensten"
+              data-ja="サービス"
+              data-zh="服务"
+            >
+              Serviços
+            </h4>
+            <ul class="footer-links">
+              <li><a href="product-scope.html">Product Scope</a></li>
+              <li><a href="mvp-builder.html">MVP Builder</a></li>
+              <li><a href="ux-ui.html">UX / UI</a></li>
+              <li>
+                <a
+                  href="custom-software.html"
+                  data-pt="Software à Medida"
+                  data-en="Custom Software"
+                  data-es="Software a Medida"
+                  data-fr="Logiciel personnalisé"
+                  data-de="Benutzerdefinierte Software"
+                  data-ru="Заказное ПО"
+                  data-nl="Aangepaste software"
+                  data-ja="カスタムソフトウェア"
+                  data-zh="定制软件"
+                  >Software à Medida</a
+                >
+              </li>
+              <li>
+                <a
+                  href="dedicated-teams.html"
+                  data-pt="Equipas Dedicadas"
+                  data-en="Dedicated Teams"
+                  data-es="Equipos Dedicados"
+                  data-fr="Équipes dédiées"
+                  data-de="Dedizierte Teams"
+                  data-ru="Выделенные команды"
+                  data-nl="Speciale teams"
+                  data-ja="専任チーム"
+                  data-zh="专业团队"
+                  >Equipas Dedicadas</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4
+              data-pt="Empresa"
+              data-en="Company"
+              data-es="Empresa"
+              data-fr="Entreprise"
+              data-de="Unternehmen"
+              data-ru="Компания"
+              data-nl="Bedrijf"
+              data-ja="会社"
+              data-zh="公司"
+            >
+              Empresa
+            </h4>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="../about-us.html"
+                  data-pt="Sobre nós"
+                  data-en="About us"
+                  data-es="Sobre nosotros"
+                  data-fr="À propos de nous"
+                  data-de="Über uns"
+                  data-ru="О нас"
+                  data-nl="Over ons"
+                  data-ja="私たちについて"
+                  data-zh="关于我们"
+                  >Sobre nós</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="../careers.html"
+                  data-pt="Carreiras"
+                  data-en="Careers"
+                  data-es="Carreras"
+                  data-fr="Carrières"
+                  data-de="Karrieren"
+                  data-ru="Карьера"
+                  data-nl="Carrière"
+                  data-ja="キャリア"
+                  data-zh="职业"
+                  >Carreiras</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../tech.html"
+                  data-pt="Tech"
+                  data-en="Tech"
+                  data-es="Tech"
+                  data-fr="Tech"
+                  data-de="Tech"
+                  data-ru="Tech"
+                  data-nl="Tech"
+                  data-ja="Tech"
+                  data-zh="Tech"
+                  >Tech</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col footer-col--contact">
+            <h4
+              data-pt="Contacto"
+              data-en="Contact"
+              data-es="Contacto"
+              data-fr="Contact"
+              data-de="Kontakt"
+              data-ru="Контакты"
+              data-nl="Contact"
+              data-ja="お問い合わせ"
+              data-zh="联系方式"
+            >
+              Contacto
+            </h4>
+            <div class="footer-meta">
+              <div>
+                <span
+                  data-pt="Email:"
+                  data-en="Email:"
+                  data-es="Email:"
+                  data-fr="E-mail :"
+                  data-de="E-Mail:"
+                  data-ru="Email:"
+                  data-nl="E-mail:"
+                  data-ja="メール:"
+                  data-zh="电子邮件:"
+                  >Email:</span
+                >
+                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+              </div>
+              <div>
+                <span
+                  data-pt="Resposta:"
+                  data-en="Response:"
+                  data-es="Respuesta:"
+                  data-fr="Réponse:"
+                  data-de="Antwort:"
+                  data-ru="Ответ:"
+                  data-nl="Antwoord:"
+                  data-ja="返信:"
+                  data-zh="回复:"
+                  >Resposta:</span
+                >
+                <span
+                  data-pt="normalmente em 24–48h"
+                  data-en="usually within 24–48h"
+                  data-es="normalmente en 24–48h"
+                  data-fr="généralement dans les 24–48 heures"
+                  data-de="normalerweise innerhalb von 24–48 Stunden"
+                  data-ru="обычно в течение 24–48 часов"
+                  data-nl="meestal binnen 24–48 uur"
+                  data-ja="通常24〜48時間以内"
+                  data-zh="通常在24-48小时内"
+                  >normalmente em 24–48h</span
+                >
+              </div>
+              <div>
+                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
+                <a
+                  href="https://instagram.com/cobra_it"
+                  target="_blank"
+                  class="social-link"
+                >
+                  <svg
+                    class="social-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                    />
+                  </svg>
+                  <span>@cobra_it</span>
+                </a>
+              </div>
+              <div>
+                <span
+                  data-pt="Preferes rápido?"
+                  data-en="Want it fast?"
+                  data-es="¿Lo quieres rápido?"
+                  data-fr="Vous le voulez vite?"
+                  data-de="Willst du es schnell?"
+                  data-ru="Хотите быстро?"
+                  data-nl="Wil je het snel?"
+                  data-ja="早くお張りですか?"
+                  data-zh="想要快速？"
+                  >Preferes rápido?</span
+                >
+                <a
+                  href="../book-a-call.html"
+                  data-pt="Marca uma call."
+                  data-en="Book a call."
+                  data-es="Reserva una llamada."
+                  data-fr="Réservez un appel."
+                  data-de="Buchen Sie einen Anruf."
+                  data-ru="Запланировать звонок."
+                  data-nl="Boek een gesprek."
+                  data-ja="通話を予約する。"
+                  data-zh="预约通话。"
+                  >Marca uma call.</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Cobrait — Software Factory</div>
+          <div class="footer-mini-links">
+            <a
+              href="../privacidade.html"
+              data-pt="Privacidade"
+              data-en="Privacy"
+              data-es="Privacidad"
+              data-fr="Confidentialité"
+              data-de="Datenschutz"
+              data-ru="Конфиденциальность"
+              data-nl="Privacy"
+              data-ja="プライバシー"
+              data-zh="隐私"
+              >Privacidade</a
+            >
+            <a
+              href="../termos.html"
+              data-pt="Termos"
+              data-en="Terms"
+              data-es="Términos"
+              data-fr="Conditions"
+              data-de="Bedingungen"
+              data-ru="Условия"
+              data-nl="Voorwaarden"
+              data-ja="利用規約"
+              data-zh="条款"
+              >Termos</a
+            >
+            <a
+              href="../cookies.html"
+              data-pt="Cookies"
+              data-en="Cookies"
+              data-es="Cookies"
+              data-fr="Cookies"
+              data-de="Cookies"
+              data-ru="Cookies"
+              data-nl="Cookies"
+              data-ja="Cookies"
+              data-zh="Cookies"
+              >Cookies</a
+            >
+            <a
+              href="../index.html#what-we-do"
+              data-pt="Serviços"
+              data-en="Services"
+              data-es="Servicios"
+              data-fr="Services"
+              data-de="Dienstleistungen"
+              data-ru="Услуги"
+              data-nl="Services"
+              data-ja="サービス"
+              data-zh="服务"
+              >Serviços</a
+            >
+            <a
+              href="https://www.livroreclamacoes.pt"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-pt="Livro de Reclamações"
+              data-en="Complaints Book"
+              data-es="Libro de Reclamaciones"
+              data-fr="Livre de réclamations"
+              data-de="Beschwerdebuch"
+              data-ru="Книга жалоб"
+              data-nl="Klachtenboek"
+              data-ja="苦情受付帳"
+              data-zh="投诉簿"
+              >Livro de Reclamações</a
+            >
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- ✅ FOOTER IGUAL AO BOOK-A-CALL.HTML -->
-  <footer class="footer-pro" role="contentinfo">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-                        <h3 class="footer-brand-title">Cobrait</h3>
-                        <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind — vom Umfang bis zum Start." data-ru="Мы создаем цифровые продукты, ориентированные на скорость, качество и рост — от определения объема до запуска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering." data-ja="我々はスピード、品質、成長に重点を置いたデジタル製品を作成します—スコープからローンチまで。" data-zh="我们创建数字产品，专注于速度、质量和增长— 从范围到发布。">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-                        </p>
-                        <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="../book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="Книга вызов" data-nl="Een gesprek boeken" data-ja="電話予約" data-zh="预定电话">
-                                Agendar uma chamada
-                            </a>
-                            <a class="btn btn--outline btn--footer" href="../index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="Посмотреть услуги" data-nl="Services zien" data-ja="サービスを表示" data-zh="查看服务">
-                                Ver serviços
-                            </a>
-                        </div>
-                        <div class="footer-badges" aria-label="Highlights">
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="Быстрая доставка" data-nl="Snelle levering" data-ja="迅速な配送" data-zh="快速交付">Entrega rápida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="Qualité" data-de="Qualität" data-ru="Качество" data-nl="Kwaliteit" data-ja="品質" data-zh="质量">Qualidade</span></span>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</h4>
-                        <ul class="footer-links">
-                            <li><a href="product-scope.html">Product Scope</a></li>
-                            <li><a href="mvp-builder.html">MVP Builder</a></li>
-                            <li><a href="ux-ui.html">UX / UI</a></li>
-                            <li><a href="custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisé" data-de="Benutzerdefinierte Software" data-ru="Заказное ПО" data-nl="Aangepaste software" data-ja="カスタムソフトウェア" data-zh="定制软件">Software à Medida</a></li>
-                            <li><a href="dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">Equipas Dedicadas</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="Компания" data-nl="Bedrijf" data-ja="会社" data-zh="公司">Empresa</h4>
-                        <ul class="footer-links">
-                            <li><a href="../about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">Sobre nós</a></li>
-                            
-                            <li><a href="../careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Carreiras</a></li>
-                            <li><a href="../tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="Контакты" data-nl="Contact" data-ja="お問い合わせ" data-zh="联系方式">Contacto</h4>
-                        <div class="footer-meta">
-                            <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="メール:" data-zh="电子邮件:">Email:</span>
-                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-                            </div>
-                            <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="Réponse:" data-de="Antwort:" data-ru="Ответ:" data-nl="Antwoord:" data-ja="返信:" data-zh="回复:">Resposta:</span>
-                                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h" data-fr="généralement dans les 24–48 heures" data-de="normalerweise innerhalb von 24–48 Stunden" data-ru="обычно в течение 24–48 часов" data-nl="meestal binnen 24–48 uur" data-ja="通常24〜48時間以内" data-zh="通常在24-48小时内">normalmente em 24–48h</span>
-                            </div>
-                            <div>
-                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
-                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                    <span>@cobra_it</span>
-                                </a>
-                            </div>
-                            <div>
-                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="Хотите быстро?" data-nl="Wil je het snel?" data-ja="早くお張りですか?" data-zh="想要快速？">Preferes rápido?</span>
-                                <a href="../book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="Réservez un appel." data-de="Buchen Sie einen Anruf." data-ru="Запланировать звонок." data-nl="Boek een gesprek." data-ja="通話を予約する。" data-zh="预约通话。">Marca uma call.</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div>
-                        © <span id="year"></span> Cobrait — Software Factory
-                    </div>
-                    <div class="footer-mini-links">
-                        <a href="../privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-ru="Конфиденциальность" data-nl="Privacy" data-ja="プライバシー" data-zh="隐私">Privacidade</a>
-                        <a href="../termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="Условия" data-nl="Voorwaarden" data-ja="利用規約" data-zh="条款">Termos</a>
-                        <a href="../cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
-                        <a href="../index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Services" data-ja="サービス" data-zh="服务">Serviços</a>
-                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de réclamations" data-de="Beschwerdebuch" data-ru="Книга жалоб" data-nl="Klachtenboek" data-ja="苦情受付帳" data-zh="投诉簿">Livro de Reclamações</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- ✅ SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.addEventListener('DOMContentLoaded', function() {
-      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
-      function setActivePage() {
-        const currentUrl = window.location.pathname.toLowerCase();
-        const navLinks = document.querySelectorAll('.site-nav a');
-        
-        navLinks.forEach(link => {
-          const href = link.getAttribute('href').toLowerCase();
-          
-          // Remover hash para comparação
-          const hrefWithoutHash = href.split('#')[0];
-          
-          // Verificar se é a página atual
-          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
-      }
-      
-      setActivePage();
-      
-      function normalizeLang(l) {
-        if (!l) return 'pt';
-        l = String(l).toLowerCase();
-        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
-        if (l.startsWith('en')) return 'en';
-        if (l.startsWith('es')) return 'es';
-        if (l.startsWith('fr')) return 'fr';
-        if (l.startsWith('de')) return 'de';
-        if (l.startsWith('ru')) return 'ru';
-        if (l.startsWith('nl')) return 'nl';
-        if (l.startsWith('ja')) return 'ja';
-        if (l.startsWith('zh')) return 'zh';
-        return 'en';
-      }
-
-      document.addEventListener('click', function(event) {
-        const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
-        dropdowns.forEach(dropdown => {
-          if (!dropdown.contains(event.target)) {
-            const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
-            if (content && window.innerWidth <= 768) {
-              content.style.display = '';
-            }
-          }
-        });
-      });
-
-      const languageOptions = document.querySelectorAll('.language-option');
-      const currentFlag = document.getElementById('currentFlag');
-      const currentLang = document.getElementById('currentLang');
-      
-      const flagMap = {
-        'pt': '🇵🇹',
-        'en': '🇬🇧',
-        'es': '🇪🇸',
-        'fr': '🇫🇷',
-        'de': '🇩🇪',
-        'ru': '🇷🇺',
-        'nl': '🇳🇱',
-        'ja': '🇯🇵',
-        'zh': '🇨🇳'
-      };
-      
-      const codeMap = {
-        'pt': 'PT',
-        'en': 'EN',
-        'es': 'ES',
-        'fr': 'FR',
-        'de': 'DE',
-        'ru': 'RU',
-        'nl': 'NL',
-        'ja': 'JA',
-        'zh': 'ZH'
-      };
-
-      const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
-      setActiveLanguage(savedLanguage);
-      applyLanguage(savedLanguage);
-
-      languageOptions.forEach(option => {
-        option.addEventListener('click', function() {
-          const lang = normalizeLang(this.getAttribute('data-lang'));
-          setActiveLanguage(lang);
-          applyLanguage(lang);
-          localStorage.setItem('preferredLanguage', lang);
-        });
-      });
-
-      function setActiveLanguage(lang) {
-        if (flagMap[lang]) {
-          currentFlag.textContent = flagMap[lang];
-        } else {
-          currentFlag.textContent = '🇬🇧';
-        }
-        
-        if (codeMap[lang]) {
-          currentLang.textContent = codeMap[lang];
-        } else {
-          currentLang.textContent = 'EN';
-        }
-        
-        languageOptions.forEach(option => {
-          option.classList.remove('active');
-          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
-            option.classList.add('active');
-          }
-        });
-      }
-
-      function applyLanguage(lang) {
-        lang = normalizeLang(lang);
-        document.documentElement.lang = (lang === 'pt') — 'pt-PT' : lang;
-        updateTextContent(lang);
-        updateAriaLabels(lang);
-      }
-
-      function updateTextContent(lang) {
-        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
-        elements.forEach(el => {
-          let text = el.getAttribute(`data-${lang}`);
-          
-          if (text === null && lang !== 'en') {
-            text = el.getAttribute('data-en');
-          }
-          
-          if (text === null) return;
-
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
-            if (el.tagName === 'OPTION') {
-              el.textContent = text;
-            } else if (el.hasAttribute('placeholder')) {
-              el.placeholder = text;
-            } else {
-              el.value = text;
-            }
-          } else if (el.hasAttribute('data-html')) {
-            el.innerHTML = text;
-          } else {
-            el.textContent = text;
-          }
-        });
-      }
-
-      function updateAriaLabels(lang) {
-        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
-        ariaEls.forEach(el => {
-          let val = el.getAttribute(`data-${lang}`);
-          
-          if (val === null && lang !== 'en') {
-            val = el.getAttribute('data-en');
-          }
-          
-          if (val) el.setAttribute('aria-label', val);
-        });
-      }
-    });
-  </script>
-  <script>
-    (function() {
       document.addEventListener('DOMContentLoaded', function() {
-        const langs = ['fr','de','ru','nl','ja','zh'];
-        document.querySelectorAll('[data-en]').forEach(el => {
-          const en = el.getAttribute('data-en');
-          if (!en) return;
-          langs.forEach(l => { if (!el.hasAttribute('data-' + l)) el.setAttribute('data-' + l, en); });
+        // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+        function setActivePage() {
+          const currentUrl = window.location.pathname.toLowerCase();
+          const navLinks = document.querySelectorAll('.site-nav a');
+
+          navLinks.forEach(link => {
+            const href = link.getAttribute('href').toLowerCase();
+
+            // Remover hash para comparação
+            const hrefWithoutHash = href.split('#')[0];
+
+            // Verificar se é a página atual
+            if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        setActivePage();
+
+        function normalizeLang(l) {
+          if (!l) return 'pt';
+          l = String(l).toLowerCase();
+          if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+          if (l.startsWith('en')) return 'en';
+          if (l.startsWith('es')) return 'es';
+          if (l.startsWith('fr')) return 'fr';
+          if (l.startsWith('de')) return 'de';
+          if (l.startsWith('ru')) return 'ru';
+          if (l.startsWith('nl')) return 'nl';
+          if (l.startsWith('ja')) return 'ja';
+          if (l.startsWith('zh')) return 'zh';
+          return 'en';
+        }
+
+        document.addEventListener('click', function(event) {
+          const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
+          dropdowns.forEach(dropdown => {
+            if (!dropdown.contains(event.target)) {
+              const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
+              if (content && window.innerWidth <= 768) {
+                content.style.display = '';
+              }
+            }
+          });
         });
+
+        const languageOptions = document.querySelectorAll('.language-option');
+        const currentFlag = document.getElementById('currentFlag');
+        const currentLang = document.getElementById('currentLang');
+
+        const flagMap = {
+          'pt': '🇵🇹',
+          'en': '🇬🇧',
+          'es': '🇪🇸',
+          'fr': '🇫🇷',
+          'de': '🇩🇪',
+          'ru': '🇷🇺',
+          'nl': '🇳🇱',
+          'ja': '🇯🇵',
+          'zh': '🇨🇳'
+        };
+
+        const codeMap = {
+          'pt': 'PT',
+          'en': 'EN',
+          'es': 'ES',
+          'fr': 'FR',
+          'de': 'DE',
+          'ru': 'RU',
+          'nl': 'NL',
+          'ja': 'JA',
+          'zh': 'ZH'
+        };
+
+        const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));
+        setActiveLanguage(savedLanguage);
+        applyLanguage(savedLanguage);
+
+        languageOptions.forEach(option => {
+          option.addEventListener('click', function() {
+            const lang = normalizeLang(this.getAttribute('data-lang'));
+            setActiveLanguage(lang);
+            applyLanguage(lang);
+            localStorage.setItem('preferredLanguage', lang);
+          });
+        });
+
+        function setActiveLanguage(lang) {
+          if (flagMap[lang]) {
+            currentFlag.textContent = flagMap[lang];
+          } else {
+            currentFlag.textContent = '🇬🇧';
+          }
+
+          if (codeMap[lang]) {
+            currentLang.textContent = codeMap[lang];
+          } else {
+            currentLang.textContent = 'EN';
+          }
+
+          languageOptions.forEach(option => {
+            option.classList.remove('active');
+            if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+              option.classList.add('active');
+            }
+          });
+        }
+
+        function applyLanguage(lang) {
+          lang = normalizeLang(lang);
+          document.documentElement.lang = (lang === 'pt') — 'pt-PT' : lang;
+          updateTextContent(lang);
+          updateAriaLabels(lang);
+        }
+
+        function updateTextContent(lang) {
+          const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
+          elements.forEach(el => {
+            let text = el.getAttribute(`data-${lang}`);
+
+            if (text === null && lang !== 'en') {
+              text = el.getAttribute('data-en');
+            }
+
+            if (text === null) return;
+
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'OPTION') {
+              if (el.tagName === 'OPTION') {
+                el.textContent = text;
+              } else if (el.hasAttribute('placeholder')) {
+                el.placeholder = text;
+              } else {
+                el.value = text;
+              }
+            } else if (el.hasAttribute('data-html')) {
+              el.innerHTML = text;
+            } else {
+              el.textContent = text;
+            }
+          });
+        }
+
+        function updateAriaLabels(lang) {
+          const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
+          ariaEls.forEach(el => {
+            let val = el.getAttribute(`data-${lang}`);
+
+            if (val === null && lang !== 'en') {
+              val = el.getAttribute('data-en');
+            }
+
+            if (val) el.setAttribute('aria-label', val);
+          });
+        }
       });
-    })();
-  </script>
-  <script src="../apply-translations.js"></script>
-</body>
+    </script>
+    <script>
+      (function () {
+        document.addEventListener("DOMContentLoaded", function () {
+          const langs = ["fr", "de", "ru", "nl", "ja", "zh"];
+          document.querySelectorAll("[data-en]").forEach((el) => {
+            const en = el.getAttribute("data-en");
+            if (!en) return;
+            langs.forEach((l) => {
+              if (!el.hasAttribute("data-" + l))
+                el.setAttribute("data-" + l, en);
+            });
+          });
+        });
+      })();
+    </script>
+    <script src="../apply-translations.js"></script>
+  </body>
 </html>
-
-

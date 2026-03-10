@@ -17,165 +17,275 @@
 <!-- sync: github-desktop-update -->
 <!-- HEADER IGUAL AO BOOK-A-CALL.HTML -->
 <header class="site-header">
-    <div class="container header-inner">
-        <!-- LOGO "COBRA IT" -->
-        <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
-            <div class="logo-text-main">COBRA IT</div>
-            <div class="logo-text-tagline">Software Factory</div>
-        </a>
+  <div class="container header-inner">
+    <!-- LOGO "COBRA IT" -->
+    <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
+      <div class="logo-text-main">COBRA IT</div>
+      <div class="logo-text-tagline">Software Factory</div>
+    </a>
 
-        <input id="nav-toggle" class="nav-toggle" type="checkbox" />
-        <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
-            <span></span><span></span><span></span>
-        </label>
+    <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+    <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </label>
 
-        <nav class="site-nav" aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work">Work</a></li>
-                <li class="dropdown">
-                    <a href="index.html#what-we-do">
-                        <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li>
+          <a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work"
+            >Work</a
+          >
+        </li>
+        <li class="dropdown">
+          <a href="index.html#what-we-do">
+            <span data-pt="Serviços" data-en="Services" data-es="Servicios"
+              >Serviços</span
+            >
+            <span class="dropdown-arrow">▼</span>
+          </a>
 
-                    <div class="dropdown-content">
-                        <a href="servicos/product-scope.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
-                                <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
-                                   data-en="15-day process to align the product with your business goals."
-                                   data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
-                                    15-day process to align the product with your business goals.
-                                </p>
-                            </div>
-                        </a>
+          <div class="dropdown-content">
+            <a href="servicos/product-scope.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4
+                  data-pt="Product Scope"
+                  data-en="Product Scope"
+                  data-es="Product Scope"
+                >
+                  Product Scope
+                </h4>
+                <p
+                  data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                  data-en="15-day process to align the product with your business goals."
+                  data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
+                >
+                  15-day process to align the product with your business goals.
+                </p>
+              </div>
+            </a>
 
-                        <a href="servicos/mvp-builder.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
-                                <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
-                                   data-en="Go to market quickly with a high-quality Minimum Viable Product."
-                                   data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
-                                    Go to market quickly with a high-quality Minimum Viable Product.
-                                </p>
-                            </div>
-                        </a>
+            <a href="servicos/mvp-builder.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4
+                  data-pt="MVP Builder"
+                  data-en="MVP Builder"
+                  data-es="MVP Builder"
+                >
+                  MVP Builder
+                </h4>
+                <p
+                  data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                  data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                  data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
+                >
+                  Go to market quickly with a high-quality Minimum Viable
+                  Product.
+                </p>
+              </div>
+            </a>
 
-                        <a href="servicos/ux-ui.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
-                                <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
-                                   data-en="Design an easy-to-use engaging and functional product."
-                                   data-es="Diseña un producto fácil de usar, atractivo y funcional.">
-                                    Design an easy-to-use engaging and functional product.
-                                </p>
-                            </div>
-                        </a>
+            <a href="servicos/ux-ui.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">
+                  UX / UI
+                </h4>
+                <p
+                  data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                  data-en="Design an easy-to-use engaging and functional product."
+                  data-es="Diseña un producto fácil de usar, atractivo y funcional."
+                >
+                  Design an easy-to-use engaging and functional product.
+                </p>
+              </div>
+            </a>
 
-                        <a href="servicos/ai-development.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="Desenvolvimento e Capacitação com IA"
-                                    data-en="AI Development & Enablement"
-                                    data-es="Desarrollo y Capacitación con IA">
-                                    AI Development & Enablement
-                                </h4>
-                                <p data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
-                                   data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
-                                   data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro.">
-                                    We leverage ML and Generative AI strategically to ensure your business is future-ready.
-                                </p>
-                            </div>
-                        </a>
+            <a href="servicos/ai-development.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4
+                  data-pt="Desenvolvimento e Capacitação com IA"
+                  data-en="AI Development & Enablement"
+                  data-es="Desarrollo y Capacitación con IA"
+                >
+                  AI Development & Enablement
+                </h4>
+                <p
+                  data-pt="Aplicamos ML e IA Generativa de forma estratégica para preparar o teu negócio para o futuro."
+                  data-en="We leverage ML and Generative AI strategically to ensure your business is future-ready."
+                  data-es="Aplicamos ML e IA Generativa estratégicamente para que tu negocio esté listo para el futuro."
+                >
+                  We leverage ML and Generative AI strategically to ensure your
+                  business is future-ready.
+                </p>
+              </div>
+            </a>
 
-                        <a href="servicos/custom-software.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="Desenvolvimento de Software à Medida"
-                                    data-en="Custom Software Development"
-                                    data-es="Desarrollo de Software a Medida">
-                                    Custom Software Development
-                                </h4>
-                                <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
-                                   data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
-                                   data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
-                                    Lean frameworks applied to your vision to create an innovative custom software solution.
-                                </p>
-                            </div>
-                        </a>
+            <a href="servicos/custom-software.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4
+                  data-pt="Desenvolvimento de Software à Medida"
+                  data-en="Custom Software Development"
+                  data-es="Desarrollo de Software a Medida"
+                >
+                  Custom Software Development
+                </h4>
+                <p
+                  data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                  data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                  data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
+                >
+                  Lean frameworks applied to your vision to create an innovative
+                  custom software solution.
+                </p>
+              </div>
+            </a>
 
-                        <a href="servicos/dedicated-teams.html" class="dropdown-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                            <div class="dropdown-item-content">
-                                <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">
-                                    Dedicated Teams
-                                </h4>
-                                <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
-                                   data-en="Build your product with a dedicated team of developers."
-                                   data-es="Construye tu producto con un equipo dedicado de developers.">
-                                    Build your product with a dedicated team of developers.
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+            <a href="servicos/dedicated-teams.html" class="dropdown-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <div class="dropdown-item-content">
+                <h4
+                  data-pt="Equipas Dedicadas"
+                  data-en="Dedicated Teams"
+                  data-es="Equipos Dedicados"
+                >
+                  Dedicated Teams
+                </h4>
+                <p
+                  data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                  data-en="Build your product with a dedicated team of developers."
+                  data-es="Construye tu producto con un equipo dedicado de developers."
+                >
+                  Build your product with a dedicated team of developers.
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
 
-                <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
-                <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
-                <li><a href="index.html#careers" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
-                <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
-            </ul>
-        </nav>
+        <li>
+          <a
+            href="pricing.html"
+            data-pt="Preços"
+            data-en="Pricing"
+            data-es="Precios"
+            >Pricing</a
+          >
+        </li>
+        <li>
+          <a href="about-us.html"
+            ><span
+              data-pt="Sobre nós"
+              data-en="About Us"
+              data-es="Sobre nosotros"
+              >About Us</span
+            ></a
+          >
+        </li>
+        <li>
+          <a
+            href="index.html#careers"
+            data-pt="Carreiras"
+            data-en="Careers"
+            data-es="Carreras"
+            >Careers</a
+          >
+        </li>
+        <li>
+          <a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech"
+            >Tech</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-        <div class="header-right">
-            <!-- DROPDOWN DE LÍNGUAS -->
-            <div class="language-dropdown">
-                <button class="language-dropdown-btn" aria-label="Select language">
-                    <span class="lang-flag" id="currentFlag">🇵🇹</span>
-                    <span class="lang-code" id="currentLang">PT</span>
-                    <span class="dropdown-arrow">▼</span>
-                </button>
-                
-                <div class="language-dropdown-content">
-                    <button class="language-option active" data-lang="pt">
-                        <span class="lang-flag">🇵🇹</span>
-                        <span class="lang-name">Português</span>
-                    </button>
-                    <button class="language-option" data-lang="en">
-                        <span class="lang-flag">🇬🇧</span>
-                        <span class="lang-name">English</span>
-                    </button>
-                    <button class="language-option" data-lang="es">
-                        <span class="lang-flag">🇪🇸</span>
-                        <span class="lang-name">Español</span>
-                    </button>
-                </div>
-            </div>
+    <div class="header-right">
+      <!-- DROPDOWN DE LÍNGUAS -->
+      <div class="language-dropdown">
+        <button class="language-dropdown-btn" aria-label="Select language">
+          <span class="lang-flag" id="currentFlag">🇵🇹</span>
+          <span class="lang-code" id="currentLang">PT</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
 
-            <div class="header-cta">
-                <a class="btn btn--primary" href="book-a-call.html"
-                   data-pt="AGENDAR UMA CHAMADA"
-                   data-en="BOOK A CALL"
-                   data-es="RESERVAR UNA LLAMADA">
-                    BOOK A CALL
-                </a>
-            </div>
+        <div class="language-dropdown-content">
+          <button class="language-option active" data-lang="pt">
+            <span class="lang-flag">🇵🇹</span>
+            <span class="lang-name">Português</span>
+          </button>
+          <button class="language-option" data-lang="en">
+            <span class="lang-flag">🇬🇧</span>
+            <span class="lang-name">English</span>
+          </button>
+          <button class="language-option" data-lang="es">
+            <span class="lang-flag">🇪🇸</span>
+            <span class="lang-name">Español</span>
+          </button>
         </div>
-    </div>
-</header>   
+      </div>
 
+      <div class="header-cta">
+        <a
+          class="btn btn--primary"
+          href="book-a-call.html"
+          data-pt="AGENDAR UMA CHAMADA"
+          data-en="BOOK A CALL"
+          data-es="RESERVAR UNA LLAMADA"
+        >
+          BOOK A CALL
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

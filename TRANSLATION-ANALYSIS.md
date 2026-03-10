@@ -1,6 +1,7 @@
 # Translation Analysis: Missing Language Attributes
 
 ## Overview
+
 This document consolidates all HTML elements requiring translations across 8 COBRAIT files. Each element currently has **3 languages** (data-pt, data-en, data-es) and needs **6 additional languages** (data-fr, data-de, data-ru, data-nl, data-ja, data-zh).
 
 ---
@@ -8,9 +9,11 @@ This document consolidates all HTML elements requiring translations across 8 COB
 ## FILE 1: book-a-call.html
 
 ### Navigation Links (Lines ~760-770)
+
 All nav items appear at approximately the same line numbers across files.
 
 **Element 1: "Work" link**
+
 - Line: ~760
 - Current: `data-pt="Work" data-en="Work" data-es="Work"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -18,6 +21,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Work"` | `data-de="Work"` | `data-ru="Work"` | `data-nl="Work"` | `data-ja="Work"` | `data-zh="Work"`
 
 **Element 2: "Services" dropdown**
+
 - Line: ~763
 - Current: `data-pt="Serviços" data-en="Services" data-es="Servicios"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -25,6 +29,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Services"` | `data-de="Dienstleistungen"` | `data-ru="Услуги"` | `data-nl="Services"` | `data-ja="サービス"` | `data-zh="服务"`
 
 **Element 3: "Pricing" link**
+
 - Line: ~766
 - Current: `data-pt="Preços" data-en="Pricing" data-es="Precios"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -32,6 +37,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Tarification"` | `data-de="Preisgestaltung"` | `data-ru="Цены"` | `data-nl="Prijzen"` | `data-ja="価格"` | `data-zh="定价"`
 
 **Element 4: "About Us" link**
+
 - Line: ~767
 - Current: `data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -39,6 +45,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="À Propos"` | `data-de="Über uns"` | `data-ru="О нас"` | `data-nl="Over ons"` | `data-ja="私たちについて"` | `data-zh="关于我们"`
 
 **Element 5: "Careers" link**
+
 - Line: ~768
 - Current: `data-pt="Carreiras" data-en="Careers" data-es="Carreras"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -46,6 +53,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Carrières"` | `data-de="Karrieren"` | `data-ru="Карьера"` | `data-nl="Carrière"` | `data-ja="キャリア"` | `data-zh="职业"`
 
 **Element 6: "Tech" link**
+
 - Line: ~769
 - Current: `data-pt="Tecnologia" data-en="Tech" data-es="Tech"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -55,6 +63,7 @@ All nav items appear at approximately the same line numbers across files.
 ### Service Dropdown Items (Lines ~774-839)
 
 **Element 7: "Product Scope"**
+
 - Line: ~774
 - Current: `data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -62,6 +71,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Portée du produit"` | `data-de="Produktumfang"` | `data-ru="Область применения продукта"` | `data-nl="Productomvang"` | `data-ja="製品スコープ"` | `data-zh="产品范围"`
 
 **Element 8: "Product Scope description"**
+
 - Line: ~775-777
 - Current: `data-pt="Processo de 15 dias..." data-en="15-day process..." data-es="Proceso de 15 días..."`
 - Missing: fr, de, ru, nl, ja, zh
@@ -74,6 +84,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-zh="为期15天的流程，将产品与您的业务目标相一致。"`
 
 **Element 9: "MVP Builder"**
+
 - Line: ~788
 - Current: `data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -81,6 +92,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Constructeur MVP"` | `data-de="MVP-Builder"` | `data-ru="Построитель MVP"` | `data-nl="MVP Builder"` | `data-ja="MVP ビルダー"` | `data-zh="MVP 构建者"`
 
 **Element 10: "MVP Builder description"**
+
 - Line: ~789-791
 - Current: `data-pt="Entra no mercado rapidamente..." data-en="Go to market quickly..." data-es="Lanza al mercado..."`
 - Missing: fr, de, ru, nl, ja, zh
@@ -93,6 +105,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-zh="通过高质量的最小可行产品快速进入市场。"`
 
 **Element 11: "UX / UI"**
+
 - Line: ~802
 - Current: `data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -100,6 +113,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="UX / UI"` | `data-de="UX / UI"` | `data-ru="UX / UI"` | `data-nl="UX / UI"` | `data-ja="UX / UI"` | `data-zh="UX / UI"`
 
 **Element 12: "UX / UI description"**
+
 - Line: ~803-805
 - Current: `data-pt="Design de um produto..." data-en="Design an easy-to-use..." data-es="Diseña un producto..."`
 - Missing: fr, de, ru, nl, ja, zh
@@ -112,6 +126,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-zh="设计一个易于使用、有吸引力且功能齐全的产品。"`
 
 **Element 13: "Custom Software Development"**
+
 - Line: ~816-818
 - Current: `data-pt="Desenvolvimento de Software à Medida" data-en="Custom Software Development" data-es="Desarrollo de Software a Medida"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -119,6 +134,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Développement logiciel personnalisé"` | `data-de="Benutzerdefinierte Softwareentwicklung"` | `data-ru="Пользовательская разработка программного обеспечения"` | `data-nl="Aangepaste softwareontwikkeling"` | `data-ja="カスタムソフトウェア開発"` | `data-zh="定制软件开发"`
 
 **Element 14: "Custom Software Development description"**
+
 - Line: ~821-823
 - Current: `data-pt="Frameworks lean..." data-en="Lean frameworks..." data-es="Frameworks lean..."`
 - Missing: fr, de, ru, nl, ja, zh
@@ -131,6 +147,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-zh="应用于您的愿景以创建创新定制软件解决方案的精益框架。"`
 
 **Element 15: "Dedicated Teams"**
+
 - Line: ~834
 - Current: `data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -138,6 +155,7 @@ All nav items appear at approximately the same line numbers across files.
   - `data-fr="Équipes Dédiées"` | `data-de="Dedizierte Teams"` | `data-ru="Выделенные команды"` | `data-nl="Toegewezen teams"` | `data-ja="専任チーム"` | `data-zh="专业团队"`
 
 **Element 16: "Dedicated Teams description"**
+
 - Line: ~837-839
 - Current: `data-pt="Constrói o teu produto..." data-en="Build your product..." data-es="Construye tu producto..."`
 - Missing: fr, de, ru, nl, ja, zh
@@ -152,6 +170,7 @@ All nav items appear at approximately the same line numbers across files.
 ### Page-Specific Content (Form Section)
 
 **Element 17: "BOOK A CALL" button**
+
 - Line: ~905
 - Current: `data-pt="AGENDAR UMA CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR UNA LLAMADA"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -166,12 +185,15 @@ All nav items appear at approximately the same line numbers across files.
 **Additional unique elements**:
 
 ### Career-Specific CTA (Line ~905)
+
 **Element**: "BOOK A CALL" button
+
 - Same translations as book-a-call.html
 
 ### Footer Elements (Lines ~2202-2235)
 
 **Element 18: Footer section headings**
+
 - "Services", "Company", "Contact" sections
 - Current: `data-pt` and `data-en` variants
 - Missing: All need fr, de, ru, nl, ja, zh
@@ -186,6 +208,7 @@ All nav items appear at approximately the same line numbers across files.
 
 **Element 19: Project Type Selector**
 Multiple project options need translations (~12 items):
+
 - "Sports App"
 - "Travel App"
 - "Fintech App"
@@ -200,6 +223,7 @@ Multiple project options need translations (~12 items):
 - "Custom Project"
 
 **Element 20: Complexity toggle**
+
 - Line: ~1850-1860
 - Current: "COMPLEXITY", "Low", "Mid", "High"
 - Missing: All need fr, de, ru, nl, ja, zh
@@ -208,6 +232,7 @@ Multiple project options need translations (~12 items):
 - Suggested translations (Low/Mid/High - same across languages per translations.json pattern)
 
 **Element 21: Project Size selector**
+
 - Line: ~1860-1872
 - Similar structure to complexity toggle
 
@@ -218,7 +243,9 @@ Multiple project options need translations (~12 items):
 **Structure**: Mostly identical to book-a-call.html with modifications:
 
 ### Modified Navigation
+
 **Element 22: "Resources" link**
+
 - Line: ~1205-1207
 - Current: `data-pt="Resources" data-en="Resources" data-es="Resources"`
 - Missing: fr, de, ru, nl, ja, zh
@@ -226,14 +253,18 @@ Multiple project options need translations (~12 items):
   - `data-fr="Resources"` | `data-de="Ressourcen"` | `data-ru="Ресурсы"` | `data-nl="Resources"` | `data-ja="リソース"` | `data-zh="资源"`
 
 ### Modified Service Dropdown
+
 **Element 23: "AI Development & Enablement" service**
+
 - Line: ~1127-1134
 - Current: `data-pt` and `data-en` only (needs data-es and all 6 new languages)
 - Suggested translations:
   - `data-fr="Développement et activation de l'IA"` | `data-de="KI-Entwicklung und Aktivierung"` | `data-ru="Разработка и внедрение ИИ"` | `data-nl="AI-ontwikkeling en inschakeling"` | `data-ja="AI開発と有効化"` | `data-zh="人工智能开发和启用"`
 
 ### Project-Specific Content
+
 **Element 24: Project options selector**
+
 - Line: ~1284-1295 (multiple project type options)
 - Similar structure to pricing.html project types
 
@@ -246,6 +277,7 @@ Multiple project options need translations (~12 items):
 ### Tech Stack Section (Lines ~1492-1716)
 
 **Element 25: Tech Stack Headers**
+
 - "Front-end", "Back-end & Databases", "Infrastructure", "AI Frameworks"
 - Current: All have data-pt, data-en, data-es
 - Missing: fr, de, ru, nl, ja, zh
@@ -259,6 +291,7 @@ Multiple project options need translations (~12 items):
   - `data-fr="Frameworks IA"` | `data-de="KI-Frameworks"` | `data-ru="Фреймворки ИИ"` | `data-nl="AI-frameworks"` | `data-ja="AIフレームワーク"` | `data-zh="人工智能框架"`
 
 **Element 26: Expertise Section (Lines ~1692-1716)**
+
 - "Full-Stack Applications", "Artificial Intelligence", "Data-Intensive Applications"
 - All need fr, de, ru, nl, ja, zh
 - Suggested translations (Full-Stack Applications):
@@ -277,6 +310,7 @@ Multiple project options need translations (~12 items):
 ### Footer Additional Content
 
 **Element 27: Footer links**
+
 - "Privacidade" (Privacy)
 - "Termos" (Terms)
 - Line: ~776-778
@@ -296,6 +330,7 @@ Multiple project options need translations (~12 items):
 ### Service-Specific Content
 
 **Element 28-35**: Same benefit statements as mvp-builder.html and other service pages
+
 - "What is custom software?"
 - "Key Benefits"
 - Benefit items with detailed descriptions
@@ -313,12 +348,14 @@ All of these need fr, de, ru, nl, ja, zh added.
 ### Service-Specific Content
 
 **Element 36: "What is a Dedicated Team?"**
+
 - Current: `data-pt`, `data-en`, `data-es`
 - Missing: fr, de, ru, nl, ja, zh
 
 **Element 37-44: Benefits Section (Lines ~1253-1302)**
+
 - "Vetted Talent"
-- "Reduced Cost & Risk"  
+- "Reduced Cost & Risk"
 - "Training"
 - "Focus on Growing the Business"
 - "Continuity & Ownership"
@@ -335,6 +372,7 @@ All need fr, de, ru, nl, ja, zh
 ### Service-Specific Badges (Lines ~1355-1358)
 
 **Element 45: Badge elements**
+
 - "Go-to-market rápido" (Fast go-to-market)
 - "Design + Dev"
 - "Qualidade de produto" (Product quality)
@@ -343,6 +381,7 @@ All need fr, de, ru, nl, ja, zh
 All need fr, de, ru, nl, ja, zh
 
 **Element 46-51: Content sections**
+
 - "What is MVP Builder?"
 - "When does it make sense?"
 - "Benefits" (with sub-items like "Less risk", "Lower cost")
@@ -358,16 +397,19 @@ All need fr, de, ru, nl, ja, zh
 ### Service-Specific Elements
 
 **Element 52: Main hero title**
+
 - Line: 1207
 - Current: `data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope"`
 - Missing: fr, de, ru, nl, ja, zh
 
 **Element 53: Hero subtitle**
+
 - Line: 1209-1211
 - Current: `data-pt="O Processo Estruturado..." data-en="The Structured Process..." data-es="El Proceso Estructurado..."`
 - Missing: fr, de, ru, nl, ja, zh
 
 **Element 54-62: Benefits Section (Lines ~1251-1281)**
+
 - "Immersive Focus"
 - "Reduced Risk"
 - "Reduced Cost"
@@ -377,6 +419,7 @@ All need fr, de, ru, nl, ja, zh
 All need fr, de, ru, nl, ja, zh
 
 **Element 63-68: Process Section (Lines ~1297+)**
+
 - "Discovery Sprint"
 - "Design & User Stories"
 - "Technical Plan"
@@ -393,6 +436,7 @@ All need fr, de, ru, nl, ja, zh
 ### Service-Specific Badges (Lines ~1396-1399)
 
 **Element 69: Badge elements**
+
 - "Pesquisa & Insights" (Research & Insights)
 - "Wireframes"
 - "UI System"
@@ -401,6 +445,7 @@ All need fr, de, ru, nl, ja, zh
 All need fr, de, ru, nl, ja, zh
 
 **Element 70-77: Content sections**
+
 - "What is UX/UI?"
 - "When does it make sense?"
 - "Key benefits" (with sub-items like "Acquisition & Retention", "Cost reduction")
@@ -412,14 +457,16 @@ All need fr, de, ru, nl, ja, zh
 ## SUMMARY OF REQUIRED TRANSLATIONS
 
 ### By Language (Total occurrences estimated):
+
 - **French (fr)**: ~180+ elements requiring data-fr attribute
-- **German (de)**: ~180+ elements requiring data-de attribute  
+- **German (de)**: ~180+ elements requiring data-de attribute
 - **Russian (ru)**: ~180+ elements requiring data-ru attribute
 - **Dutch (nl)**: ~180+ elements requiring data-nl attribute
 - **Japanese (ja)**: ~180+ elements requiring data-ja attribute
 - **Mandarin Chinese (zh)**: ~180+ elements requiring data-zh attribute
 
 ### By Category:
+
 1. **Navigation Items** (6 items × 11 files = 66 attributes): Work, Services, Pricing, About Us, Careers, Tech
 2. **Service Dropdown Items** (5 items × 11 files = 55 attributes): Product Scope, MVP Builder, UX/UI, Custom Software, Dedicated Teams
 3. **Service Descriptions** (5 items × 11 files = 55 attributes): Descriptions for each service

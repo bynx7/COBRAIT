@@ -17,617 +17,1006 @@
 <!-- sync: github-desktop-update -->
 <!doctype html>
 <html lang="pt-PT">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Politica de Privacidade | Cobrait</title>
-  <meta name="description" content="Como a Cobrait recolhe, usa e protege os teus dados pessoais." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="global-enhancements.css" />
-  <style>
-    :root {
-      --legal-bg: #f6f8fc;
-      --legal-surface: rgba(255, 255, 255, 0.86);
-      --legal-border: #dbe3ee;
-      --legal-text: #0f172a;
-      --legal-muted: #64748b;
-      --legal-accent: #4f46e5;
-      --legal-accent-2: #7c3aed;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Politica de Privacidade | Cobrait</title>
+    <meta
+      name="description"
+      content="Como a Cobrait recolhe, usa e protege os teus dados pessoais."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="global-enhancements.css" />
+    <style>
+      :root {
+        --legal-bg: #f6f8fc;
+        --legal-surface: rgba(255, 255, 255, 0.86);
+        --legal-border: #dbe3ee;
+        --legal-text: #0f172a;
+        --legal-muted: #64748b;
+        --legal-accent: #4f46e5;
+        --legal-accent-2: #7c3aed;
+      }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(1200px 500px at 100% -10%, rgba(124, 58, 237, 0.12), transparent 55%),
-        radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.1), transparent 50%),
-        var(--legal-bg);
-      color: var(--legal-text);
-    }
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background:
+          radial-gradient(
+            1200px 500px at 100% -10%,
+            rgba(124, 58, 237, 0.12),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 420px at 0% 0%,
+            rgba(79, 70, 229, 0.1),
+            transparent 50%
+          ),
+          var(--legal-bg);
+        color: var(--legal-text);
+      }
 
-    .legal-shell {
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 28px 20px 80px;
-    }
+      .legal-shell {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 28px 20px 80px;
+      }
 
-    .legal-topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
+      .legal-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
 
-    .legal-back {
-      color: var(--legal-accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
+      .legal-back {
+        color: var(--legal-accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
 
-    .legal-back:hover { text-decoration: underline; }
+      .legal-back:hover {
+        text-decoration: underline;
+      }
 
-    .legal-updated {
-      color: var(--legal-muted);
-      font-size: .92rem;
-    }
+      .legal-updated {
+        color: var(--legal-muted);
+        font-size: 0.92rem;
+      }
 
-    .legal-hero {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 242, 255, 0.96));
-      border: 1px solid rgba(79, 70, 229, 0.14);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
-      margin-bottom: 20px;
-    }
+      .legal-hero {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(238, 242, 255, 0.96)
+        );
+        border: 1px solid rgba(79, 70, 229, 0.14);
+        border-radius: 22px;
+        padding: 28px;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
+        margin-bottom: 20px;
+      }
 
-    .legal-kicker {
-      display: inline-block;
-      font-size: .78rem;
-      letter-spacing: .11em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--legal-accent);
-      margin: 0 0 10px;
-    }
+      .legal-kicker {
+        display: inline-block;
+        font-size: 0.78rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--legal-accent);
+        margin: 0 0 10px;
+      }
 
-    .legal-hero h1 {
-      margin: 0 0 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(1.7rem, 3vw, 2.7rem);
-      line-height: 1.15;
-    }
+      .legal-hero h1 {
+        margin: 0 0 10px;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(1.7rem, 3vw, 2.7rem);
+        line-height: 1.15;
+      }
 
-    .legal-hero p {
-      margin: 0;
-      color: var(--legal-muted);
-      line-height: 1.7;
-      max-width: 820px;
-    }
+      .legal-hero p {
+        margin: 0;
+        color: var(--legal-muted);
+        line-height: 1.7;
+        max-width: 820px;
+      }
 
-    .legal-grid {
-      display: grid;
-      grid-template-columns: 290px minmax(0, 1fr);
-      gap: 20px;
-      align-items: start;
-    }
+      .legal-grid {
+        display: grid;
+        grid-template-columns: 290px minmax(0, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
 
-    .legal-nav,
-    .legal-content {
-      background: var(--legal-surface);
-      border: 1px solid var(--legal-border);
-      border-radius: 18px;
-    }
+      .legal-nav,
+      .legal-content {
+        background: var(--legal-surface);
+        border: 1px solid var(--legal-border);
+        border-radius: 18px;
+      }
 
-    .legal-nav {
-      position: sticky;
-      top: 20px;
-      padding: 18px;
-    }
+      .legal-nav {
+        position: sticky;
+        top: 20px;
+        padding: 18px;
+      }
 
-    .legal-nav-title {
-      margin: 0 0 12px;
-      font-size: .9rem;
-      font-weight: 700;
-      color: #475569;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
+      .legal-nav-title {
+        margin: 0 0 12px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #475569;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
 
-    .legal-nav ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
+      .legal-nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
 
-    .legal-nav a {
-      display: block;
-      color: #475569;
-      text-decoration: none;
-      font-size: .96rem;
-      line-height: 1.4;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      transition: .2s ease;
-    }
+      .legal-nav a {
+        display: block;
+        color: #475569;
+        text-decoration: none;
+        font-size: 0.96rem;
+        line-height: 1.4;
+        padding: 8px 10px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        transition: 0.2s ease;
+      }
 
-    .legal-nav a:hover {
-      color: var(--legal-accent);
-      border-color: rgba(173, 186, 255, 0.35);
-      background: rgba(79, 70, 229, 0.08);
-    }
+      .legal-nav a:hover {
+        color: var(--legal-accent);
+        border-color: rgba(173, 186, 255, 0.35);
+        background: rgba(79, 70, 229, 0.08);
+      }
 
-    .legal-content {
-      padding: 22px;
-      display: grid;
-      gap: 16px;
-    }
+      .legal-content {
+        padding: 22px;
+        display: grid;
+        gap: 16px;
+      }
 
-    .legal-card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(79, 70, 229, 0.12);
-      border-radius: 14px;
-      padding: 16px 18px;
-    }
+      .legal-card {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(79, 70, 229, 0.12);
+        border-radius: 14px;
+        padding: 16px 18px;
+      }
 
-    .legal-card h2 {
-      margin: 0 0 10px;
-      font-size: 1.06rem;
-      line-height: 1.35;
-      font-family: 'Poppins', sans-serif;
-    }
+      .legal-card h2 {
+        margin: 0 0 10px;
+        font-size: 1.06rem;
+        line-height: 1.35;
+        font-family: "Poppins", sans-serif;
+      }
 
-    .legal-card p,
-    .legal-card li {
-      color: var(--legal-muted);
-      line-height: 1.75;
-      font-size: .97rem;
-    }
+      .legal-card p,
+      .legal-card li {
+        color: var(--legal-muted);
+        line-height: 1.75;
+        font-size: 0.97rem;
+      }
 
-    .legal-card ul {
-      margin: 8px 0 0;
-      padding-left: 18px;
-    }
+      .legal-card ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
 
-    .legal-highlight {
-      border-left: 3px solid var(--legal-accent);
-      padding-left: 12px;
-      margin-top: 10px;
-      color: #334155;
-    }
+      .legal-highlight {
+        border-left: 3px solid var(--legal-accent);
+        padding-left: 12px;
+        margin-top: 10px;
+        color: #334155;
+      }
 
-    .legal-mail {
-      color: var(--legal-accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
+      .legal-mail {
+        color: var(--legal-accent);
+        font-weight: 600;
+        text-decoration: none;
+      }
 
-    .legal-mail:hover { text-decoration: underline; }
+      .legal-mail:hover {
+        text-decoration: underline;
+      }
 
-    .legal-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
+      .legal-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
 
-    .legal-chip {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid rgba(173, 186, 255, 0.32);
-      background: rgba(102, 126, 234, 0.12);
-      color: #4f46e5;
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: .83rem;
-      font-weight: 600;
-    }
+      .legal-chip {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(173, 186, 255, 0.32);
+        background: rgba(102, 126, 234, 0.12);
+        color: #4f46e5;
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 0.83rem;
+        font-weight: 600;
+      }
 
-    @media (max-width: 960px) {
-      .legal-grid { grid-template-columns: 1fr; }
-      .legal-nav { position: static; }
-      .legal-shell { padding-top: 22px; }
-    }
-  
-
-/* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-        .footer-pro {
-            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-            color: #cbd5e1;
-            position: relative;
-            overflow: hidden;
-            padding: 60px 0 24px;
+      @media (max-width: 960px) {
+        .legal-grid {
+          grid-template-columns: 1fr;
         }
-        .footer-pro::before {
-            content: "";
-            position: absolute;
-            inset: -200px -200px auto auto;
-            width: 420px;
-            height: 420px;
-            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
-            filter: blur(10px);
-            pointer-events: none;
+        .legal-nav {
+          position: static;
         }
-        .footer-pro::after {
-            content: "";
-            position: absolute;
-            inset: auto auto -240px -240px;
-            width: 520px;
-            height: 520px;
-            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
-            filter: blur(12px);
-            pointer-events: none;
+        .legal-shell {
+          padding-top: 22px;
         }
+      }
+
+      /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
+      .footer-pro {
+        background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+        color: #cbd5e1;
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0 24px;
+      }
+      .footer-pro::before {
+        content: "";
+        position: absolute;
+        inset: -200px -200px auto auto;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(124, 58, 237, 0.35),
+          transparent 60%
+        );
+        filter: blur(10px);
+        pointer-events: none;
+      }
+      .footer-pro::after {
+        content: "";
+        position: absolute;
+        inset: auto auto -240px -240px;
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(
+          circle at 60% 60%,
+          rgba(79, 70, 229, 0.35),
+          transparent 60%
+        );
+        filter: blur(12px);
+        pointer-events: none;
+      }
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 24px;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      /* LOGO REMOVIDA - Apenas texto da marca */
+      .footer-brand-title {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: rgba(226, 232, 240, 0.95);
+        margin: 0;
+        line-height: 1;
+      }
+      .footer-brand-subtitle {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.8);
+        margin: 4px 0 0 0;
+      }
+      .footer-tagline {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.85);
+        max-width: 420px;
+        margin: 8px 0 0 0;
+      }
+      .footer-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .btn--footer {
+        padding: 10px 18px;
+        font-size: 14px;
+        border-radius: 10px;
+      }
+      .btn--footer.btn--outline {
+        border-color: rgba(226, 232, 240, 0.35);
+        color: rgba(226, 232, 240, 0.92);
+      }
+      .btn--footer.btn--outline:hover {
+        background: rgba(226, 232, 240, 0.12);
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: none;
+        border-color: rgba(226, 232, 240, 0.5);
+      }
+      .footer-col h4 {
+        margin: 0 0 14px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+      .footer-links a {
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .footer-links a:hover {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+      .footer-meta {
+        display: grid;
+        gap: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.9);
+      }
+      .footer-meta a {
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .footer-meta a:hover {
+        color: var(--legal-accent);
+      }
+      /* Estilos específicos para o link do Instagram */
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+      .social-link:hover {
+        background: rgba(79, 70, 229, 0.08);
+      }
+      .social-icon {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+      .footer-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .footer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        background: rgba(15, 23, 42, 0.35);
+        color: rgba(226, 232, 240, 0.9);
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .footer-badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding-top: 16px;
+        position: relative;
+        z-index: 1;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        color: rgba(148, 163, 184, 0.9);
+      }
+      .footer-mini-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .footer-mini-links a {
+        color: rgba(148, 163, 184, 0.95);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .footer-mini-links a:hover {
+        color: var(--legal-accent);
+      }
+      @media (max-width: 1024px) {
         .footer-top {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+          grid-template-columns: 1.6fr 1fr 1fr;
         }
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
+        .footer-col--contact {
+          grid-column: 1 / -1;
         }
-        /* LOGO REMOVIDA - Apenas texto da marca */
-        .footer-brand-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: rgba(226, 232, 240, 0.95);
-            margin: 0;
-            line-height: 1;
-        }
-        .footer-brand-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.8);
-            margin: 4px 0 0 0;
-        }
-        .footer-tagline {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            line-height: 1.7;
-            color: rgba(226, 232, 240, 0.85);
-            max-width: 420px;
-            margin: 8px 0 0 0;
-        }
-        .footer-cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        .btn--footer {
-            padding: 10px 18px;
-            font-size: 14px;
-            border-radius: 10px;
-        }
-        .btn--footer.btn--outline {
-            border-color: rgba(226, 232, 240, 0.35);
-            color: rgba(226, 232, 240, 0.92);
-        }
-        .btn--footer.btn--outline:hover {
-            background: rgba(226, 232, 240, 0.12);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: none;
-            border-color: rgba(226, 232, 240, 0.5);
-        }
-        .footer-col h4 {
-            margin: 0 0 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: rgba(226, 232, 240, 0.9);
-        }
-        .footer-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-        }
-        .footer-links a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all .2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links a:hover {
-            color: #ffffff;
-            transform: translateX(3px);
-        }
-        .footer-meta {
-            display: grid;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            color: rgba(203, 213, 225, 0.9);
-        }
-        .footer-meta a {
-            color: rgba(203, 213, 225, 0.9);
-            text-decoration: none;
-            transition: color .2s ease;
-        }
-        .footer-meta a:hover {
-            color: var(--legal-accent);
-        }
-        /* Estilos específicos para o link do Instagram */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            border-radius: 6px;
-            transition: all .2s ease;
-        }
-        .social-link:hover {
-            background: rgba(79, 70, 229, 0.08);
-        }
-        .social-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        .footer-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        .footer-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.22);
-            background: rgba(15, 23, 42, 0.35);
-            color: rgba(226, 232, 240, 0.9);
-            font-size: 12px;
-            line-height: 1;
-            white-space: nowrap;
-        }
-        .footer-badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+      }
+      @media (max-width: 768px) {
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 20px;
         }
         .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            padding-top: 16px;
-            position: relative;
-            z-index: 1;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            color: rgba(148, 163, 184, 0.9);
+          flex-direction: column;
+          align-items: flex-start;
         }
         .footer-mini-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+          justify-content: flex-start;
         }
-        .footer-mini-links a {
-            color: rgba(148, 163, 184, 0.95);
-            text-decoration: none;
-            transition: color .2s ease;
+        .footer-pro {
+          padding: 50px 0 20px;
         }
-        .footer-mini-links a:hover {
-            color: var(--legal-accent);
+        .footer-brand-title {
+          font-size: 22px;
         }
-        @media (max-width: 1024px) {
-            .footer-top {
-                grid-template-columns: 1.6fr 1fr 1fr;
-            }
-            .footer-col--contact {
-                grid-column: 1 / -1;
-            }
-        }
-        @media (max-width: 768px) {
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-mini-links {
-                justify-content: flex-start;
-            }
-            .footer-pro {
-                padding: 50px 0 20px;
-            }
-            .footer-brand-title {
-                font-size: 22px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-  <main class="legal-shell">
-    <div class="legal-topbar">
-      <a class="legal-back" href="index.html">Voltar ao inicio</a>
-      <span class="legal-updated">Última atualização: 26 de fevereiro de 2026</span>
-    </div>
+  </head>
+  <body>
+    <main class="legal-shell">
+      <div class="legal-topbar">
+        <a class="legal-back" href="index.html">Voltar ao inicio</a>
+        <span class="legal-updated"
+          >Última atualização: 26 de fevereiro de 2026</span
+        >
+      </div>
 
-    <section class="legal-hero">
-      <p class="legal-kicker">Cobrait • Legal</p>
-      <h1>Política de Privacidade</h1>
-      <p>Esta política explica de forma clara como tratamos dados pessoais quando interages com o website e com os nossos canais de contacto.</p>
-    </section>
+      <section class="legal-hero">
+        <p class="legal-kicker">Cobrait • Legal</p>
+        <h1>Política de Privacidade</h1>
+        <p>
+          Esta política explica de forma clara como tratamos dados pessoais
+          quando interages com o website e com os nossos canais de contacto.
+        </p>
+      </section>
 
-    <section class="legal-grid">
-      <aside class="legal-nav" aria-label="Índice da página">
-        <p class="legal-nav-title">Índice</p>
-        <ul>
-          <li><a href="#s1">1. Quem trata os teus dados</a></li>
-<li><a href="#s2">2. Dados recolhidos</a></li>
-<li><a href="#s3">3. Finalidades e base legal</a></li>
-<li><a href="#s4">4. Partilha e transferências</a></li>
-<li><a href="#s5">5. Conservação</a></li>
-<li><a href="#s6">6. Direitos do titular</a></li>
-<li><a href="#s7">7. Seguranca e contacto</a></li>
-        </ul>
-      </aside>
+      <section class="legal-grid">
+        <aside class="legal-nav" aria-label="Índice da página">
+          <p class="legal-nav-title">Índice</p>
+          <ul>
+            <li><a href="#s1">1. Quem trata os teus dados</a></li>
+            <li><a href="#s2">2. Dados recolhidos</a></li>
+            <li><a href="#s3">3. Finalidades e base legal</a></li>
+            <li><a href="#s4">4. Partilha e transferências</a></li>
+            <li><a href="#s5">5. Conservação</a></li>
+            <li><a href="#s6">6. Direitos do titular</a></li>
+            <li><a href="#s7">7. Seguranca e contacto</a></li>
+          </ul>
+        </aside>
 
-      <article class="legal-content">
-        <section id="s1" class="legal-card">
-  <h2>1. Quem trata os teus dados</h2>
-  <p>A Cobrait é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste website e dos formulários de contacto associados.</p>
-</section>
-<section id="s2" class="legal-card">
-  <h2>2. Dados recolhidos</h2>
-  <ul>
-    <li>Dados de identificação e contacto: nome, email, telefone e empresa.</li>
-    <li>Dados de contexto comercial: mensagem, objetivo do projeto e informação enviada voluntariamente.</li>
-    <li>Dados técnicos: endereço IP, browser, dispositivo, páginas visitadas e eventos de navegação.</li>
-  </ul>
-</section>
-<section id="s3" class="legal-card">
-  <h2>3. Finalidades e base legal</h2>
-  <p>Tratamos os dados para responder a pedidos, preparar propostas, melhorar o desempenho do site e cumprir obrigações legais.</p>
-  <p class="legal-highlight">Bases legais aplicadas: consentimento, diligências pré-contratuais, execução contratual e interesse legítimo.</p>
-</section>
-<section id="s4" class="legal-card">
-  <h2>4. Partilha e transferências</h2>
-  <p>Os dados podem ser partilhados apenas com fornecedores necessários para operação técnica (hosting, analytics, ferramentas de comunicação), sob obrigações de confidencialidade e segurança.</p>
-  <p>Não vendemos dados pessoais a terceiros.</p>
-</section>
-<section id="s5" class="legal-card">
-  <h2>5. Conservação</h2>
-  <p>Conservamos os dados apenas pelo período necessário para as finalidades descritas, ou pelo prazo legal aplicável quando exigido por lei.</p>
-</section>
-<section id="s6" class="legal-card">
-  <h2>6. Direitos do titular</h2>
-  <p>Podes pedir acesso, retificação, apagamento, limitação, oposição e portabilidade dos teus dados.</p>
-  <div class="legal-actions">
-    <span class="legal-chip">Acesso</span>
-    <span class="legal-chip">Retificacao</span>
-    <span class="legal-chip">Apagamento</span>
-    <span class="legal-chip">Portabilidade</span>
-  </div>
-</section>
-<section id="s7" class="legal-card">
-  <h2>7. Segurança e contacto</h2>
-  <p>Aplicamos medidas técnicas e organizativas adequadas para proteger os dados pessoais.</p>
-  <p>Para pedidos relacionados com privacidade, contacta: <a class="legal-mail" href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>.</p>
-</section>
-      </article>
-    </section>
-  </main>
-
-  <footer class="footer-pro" role="contentinfo">
-            <div class="container">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-                        <h3 class="footer-brand-title">Cobrait</h3>
-                        <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth — from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind — vom Umfang bis zum Start." data-ru="Мы создаем цифровые продукты, ориентированные на скорость, качество и рост — от определения объема до запуска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering." data-ja="我々はスピード、品質、成長に重点を置いたデジタル製品を作成します—スコープからローンチまで。" data-zh="我们创建数字产品，专注于速度、质量和增长— 从范围到发布。">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
-                        </p>
-                        <div class="footer-cta-row">
-                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="Книга вызов" data-nl="Een gesprek boeken" data-ja="電話予約" data-zh="预定电话">
-                                Agendar uma chamada
-                            </a>
-                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="Посмотреть услуги" data-nl="Services zien" data-ja="サービスを表示" data-zh="查看服务">
-                                Ver serviços
-                            </a>
-                        </div>
-                        <div class="footer-badges" aria-label="Highlights">
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="Быстрая доставка" data-nl="Snelle levering" data-ja="迅速な配送" data-zh="快速交付">Entrega rápida</span></span>
-                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="Qualité" data-de="Qualität" data-ru="Качество" data-nl="Kwaliteit" data-ja="品質" data-zh="质量">Qualidade</span></span>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</h4>
-                        <ul class="footer-links">
-                            <li><a href="servicos/product-scope.html">Product Scope</a></li>
-                            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-                            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-                            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisé" data-de="Benutzerdefinierte Software" data-ru="Заказное ПО" data-nl="Aangepaste software" data-ja="カスタムソフトウェア" data-zh="定制软件">Software à Medida</a></li>
-                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">Equipas Dedicadas</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="Компания" data-nl="Bedrijf" data-ja="会社" data-zh="公司">Empresa</h4>
-                        <ul class="footer-links">
-                            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">Sobre nós</a></li>
-                            
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Carreiras</a></li>
-                            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col footer-col--contact">
-                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="Контакты" data-nl="Contact" data-ja="連絡先" data-zh="联系方式">Contacto</h4>
-                        <div class="footer-meta">
-                            <div>
-                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="メール:" data-zh="电子邮件:">Email:</span>
-                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-                            </div>
-                            <div>
-                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="Réponse:" data-de="Antwort:" data-ru="Ответ:" data-nl="Antwoord:" data-ja="返信:" data-zh="回复:">Resposta:</span>
-                                <span data-pt="normalmente em 24–48h" data-en="usually within 24–48h" data-es="normalmente en 24–48h" data-fr="généralement dans les 24–48 heures" data-de="normalerweise innerhalb von 24–48 Stunden" data-ru="обычно в течение 24–48 часов" data-nl="meestal binnen 24–48 uur" data-ja="通常24〜48時間以内" data-zh="通常在24-48小时内">normalmente em 24–48h</span>
-                            </div>
-                            <div>
-                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
-                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                    </svg>
-                                    <span>@cobra_it</span>
-                                </a>
-                            </div>
-                            <div>
-                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="Хотите быстро?" data-nl="Wil je het snel?" data-ja="早くお張りですか?" data-zh="想要快速？">Preferes rápido?</span>
-                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="Réservez un appel." data-de="Buchen Sie einen Anruf." data-ru="Запланировать звонок." data-nl="Boek een gesprek." data-ja="通話を予約する。" data-zh="预约通话。">Marca uma call.</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <div>
-                        © <span id="year"></span> Cobrait — Software Factory
-                    </div>
-                    <div class="footer-mini-links">
-                        <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-ru="Конфиденциальность" data-nl="Privacy" data-ja="プライバシー" data-zh="隐私">Privacidade</a>
-                        <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="Условия" data-nl="Voorwaarden" data-ja="利用規約" data-zh="条款">Termos</a>
-                        <a href="cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
-                        <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Services" data-ja="サービス" data-zh="服务">Serviços</a>
-                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de réclamations" data-de="Beschwerdebuch" data-ru="Книга жалоб" data-nl="Klachtenboek" data-ja="苦情受付帳" data-zh="投诉簿">Livro de Reclamações</a>
-                    </div>
-                </div>
+        <article class="legal-content">
+          <section id="s1" class="legal-card">
+            <h2>1. Quem trata os teus dados</h2>
+            <p>
+              A Cobrait é a entidade responsável pelo tratamento dos dados
+              pessoais recolhidos através deste website e dos formulários de
+              contacto associados.
+            </p>
+          </section>
+          <section id="s2" class="legal-card">
+            <h2>2. Dados recolhidos</h2>
+            <ul>
+              <li>
+                Dados de identificação e contacto: nome, email, telefone e
+                empresa.
+              </li>
+              <li>
+                Dados de contexto comercial: mensagem, objetivo do projeto e
+                informação enviada voluntariamente.
+              </li>
+              <li>
+                Dados técnicos: endereço IP, browser, dispositivo, páginas
+                visitadas e eventos de navegação.
+              </li>
+            </ul>
+          </section>
+          <section id="s3" class="legal-card">
+            <h2>3. Finalidades e base legal</h2>
+            <p>
+              Tratamos os dados para responder a pedidos, preparar propostas,
+              melhorar o desempenho do site e cumprir obrigações legais.
+            </p>
+            <p class="legal-highlight">
+              Bases legais aplicadas: consentimento, diligências
+              pré-contratuais, execução contratual e interesse legítimo.
+            </p>
+          </section>
+          <section id="s4" class="legal-card">
+            <h2>4. Partilha e transferências</h2>
+            <p>
+              Os dados podem ser partilhados apenas com fornecedores necessários
+              para operação técnica (hosting, analytics, ferramentas de
+              comunicação), sob obrigações de confidencialidade e segurança.
+            </p>
+            <p>Não vendemos dados pessoais a terceiros.</p>
+          </section>
+          <section id="s5" class="legal-card">
+            <h2>5. Conservação</h2>
+            <p>
+              Conservamos os dados apenas pelo período necessário para as
+              finalidades descritas, ou pelo prazo legal aplicável quando
+              exigido por lei.
+            </p>
+          </section>
+          <section id="s6" class="legal-card">
+            <h2>6. Direitos do titular</h2>
+            <p>
+              Podes pedir acesso, retificação, apagamento, limitação, oposição e
+              portabilidade dos teus dados.
+            </p>
+            <div class="legal-actions">
+              <span class="legal-chip">Acesso</span>
+              <span class="legal-chip">Retificacao</span>
+              <span class="legal-chip">Apagamento</span>
+              <span class="legal-chip">Portabilidade</span>
             </div>
-        </footer>
+          </section>
+          <section id="s7" class="legal-card">
+            <h2>7. Segurança e contacto</h2>
+            <p>
+              Aplicamos medidas técnicas e organizativas adequadas para proteger
+              os dados pessoais.
+            </p>
+            <p>
+              Para pedidos relacionados com privacidade, contacta:
+              <a class="legal-mail" href="mailto:cobrait@geral.pt"
+                >cobrait@geral.pt</a
+              >.
+            </p>
+          </section>
+        </article>
+      </section>
+    </main>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
+    <footer class="footer-pro" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
+            <h3 class="footer-brand-title">Cobrait</h3>
+            <p class="footer-brand-subtitle">Software Factory</p>
+            <p
+              class="footer-tagline"
+              data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento."
+              data-en="We build digital products focused on speed, quality and growth — from scope to launch."
+              data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento."
+              data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance — du champ d'application au lancement."
+              data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind — vom Umfang bis zum Start."
+              data-ru="Мы создаем цифровые продукты, ориентированные на скорость, качество и рост — от определения объема до запуска."
+              data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei — van scope tot lancering."
+              data-ja="我々はスピード、品質、成長に重点を置いたデジタル製品を作成します—スコープからローンチまで。"
+              data-zh="我们创建数字产品，专注于速度、质量和增长— 从范围到发布。"
+            >
+              Criamos produtos digitais com foco em velocidade, qualidade e
+              crescimento — do scope ao lançamento.
+            </p>
+            <div class="footer-cta-row">
+              <a
+                class="btn btn--primary btn--footer"
+                href="book-a-call.html"
+                data-pt="Agendar uma chamada"
+                data-en="Book a call"
+                data-es="Reservar una llamada"
+                data-fr="Programmez un appel"
+                data-de="Einen Anruf buchen"
+                data-ru="Книга вызов"
+                data-nl="Een gesprek boeken"
+                data-ja="電話予約"
+                data-zh="预定电话"
+              >
+                Agendar uma chamada
+              </a>
+              <a
+                class="btn btn--outline btn--footer"
+                href="#what-we-do"
+                data-pt="Ver serviços"
+                data-en="See services"
+                data-es="Ver servicios"
+                data-fr="Voir les services"
+                data-de="Services anzeigen"
+                data-ru="Посмотреть услуги"
+                data-nl="Services zien"
+                data-ja="サービスを表示"
+                data-zh="查看服务"
+              >
+                Ver serviços
+              </a>
+            </div>
+            <div class="footer-badges" aria-label="Highlights">
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Lean + Agile"
+                  data-en="Lean + Agile"
+                  data-es="Lean + Agile"
+                  data-fr="Lean + Agile"
+                  data-de="Lean + Agile"
+                  data-ru="Lean + Agile"
+                  data-nl="Lean + Agile"
+                  data-ja="Lean + Agile"
+                  data-zh="Lean + Agile"
+                  >Lean + Agile</span
+                ></span
+              >
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Entrega rápida"
+                  data-en="Fast delivery"
+                  data-es="Entrega rápida"
+                  data-fr="Livraison rapide"
+                  data-de="Schnelle Lieferung"
+                  data-ru="Быстрая доставка"
+                  data-nl="Snelle levering"
+                  data-ja="迅速な配送"
+                  data-zh="快速交付"
+                  >Entrega rápida</span
+                ></span
+              >
+              <span class="footer-badge"
+                ><span class="footer-badge-dot"></span
+                ><span
+                  data-pt="Qualidade"
+                  data-en="Quality"
+                  data-es="Calidad"
+                  data-fr="Qualité"
+                  data-de="Qualität"
+                  data-ru="Качество"
+                  data-nl="Kwaliteit"
+                  data-ja="品質"
+                  data-zh="质量"
+                  >Qualidade</span
+                ></span
+              >
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4
+              data-pt="Serviços"
+              data-en="Services"
+              data-es="Servicios"
+              data-fr="Services"
+              data-de="Dienstleistungen"
+              data-ru="Услуги"
+              data-nl="Diensten"
+              data-ja="サービス"
+              data-zh="服务"
+            >
+              Serviços
+            </h4>
+            <ul class="footer-links">
+              <li><a href="servicos/product-scope.html">Product Scope</a></li>
+              <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+              <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+              <li>
+                <a
+                  href="servicos/custom-software.html"
+                  data-pt="Software à Medida"
+                  data-en="Custom Software"
+                  data-es="Software a Medida"
+                  data-fr="Logiciel personnalisé"
+                  data-de="Benutzerdefinierte Software"
+                  data-ru="Заказное ПО"
+                  data-nl="Aangepaste software"
+                  data-ja="カスタムソフトウェア"
+                  data-zh="定制软件"
+                  >Software à Medida</a
+                >
+              </li>
+              <li>
+                <a
+                  href="servicos/dedicated-teams.html"
+                  data-pt="Equipas Dedicadas"
+                  data-en="Dedicated Teams"
+                  data-es="Equipos Dedicados"
+                  data-fr="Équipes dédiées"
+                  data-de="Dedizierte Teams"
+                  data-ru="Выделенные команды"
+                  data-nl="Speciale teams"
+                  data-ja="専任チーム"
+                  data-zh="专业团队"
+                  >Equipas Dedicadas</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4
+              data-pt="Empresa"
+              data-en="Company"
+              data-es="Empresa"
+              data-fr="Entreprise"
+              data-de="Unternehmen"
+              data-ru="Компания"
+              data-nl="Bedrijf"
+              data-ja="会社"
+              data-zh="公司"
+            >
+              Empresa
+            </h4>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="about-us.html"
+                  data-pt="Sobre nós"
+                  data-en="About us"
+                  data-es="Sobre nosotros"
+                  data-fr="À propos de nous"
+                  data-de="Über uns"
+                  data-ru="О нас"
+                  data-nl="Over ons"
+                  data-ja="私たちについて"
+                  data-zh="关于我们"
+                  >Sobre nós</a
+                >
+              </li>
+
+              <li>
+                <a
+                  href="careers.html"
+                  data-pt="Carreiras"
+                  data-en="Careers"
+                  data-es="Carreras"
+                  data-fr="Carrières"
+                  data-de="Karrieren"
+                  data-ru="Карьера"
+                  data-nl="Carrière"
+                  data-ja="キャリア"
+                  data-zh="职业"
+                  >Carreiras</a
+                >
+              </li>
+              <li>
+                <a
+                  href="tech.html"
+                  data-pt="Tech"
+                  data-en="Tech"
+                  data-es="Tech"
+                  data-fr="Tech"
+                  data-de="Tech"
+                  data-ru="Tech"
+                  data-nl="Tech"
+                  data-ja="Tech"
+                  data-zh="Tech"
+                  >Tech</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-col footer-col--contact">
+            <h4
+              data-pt="Contacto"
+              data-en="Contact"
+              data-es="Contacto"
+              data-fr="Contact"
+              data-de="Kontakt"
+              data-ru="Контакты"
+              data-nl="Contact"
+              data-ja="連絡先"
+              data-zh="联系方式"
+            >
+              Contacto
+            </h4>
+            <div class="footer-meta">
+              <div>
+                <span
+                  data-pt="Email:"
+                  data-en="Email:"
+                  data-es="Email:"
+                  data-fr="E-mail :"
+                  data-de="E-Mail:"
+                  data-ru="Email:"
+                  data-nl="E-mail:"
+                  data-ja="メール:"
+                  data-zh="电子邮件:"
+                  >Email:</span
+                >
+                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+              </div>
+              <div>
+                <span
+                  data-pt="Resposta:"
+                  data-en="Response:"
+                  data-es="Respuesta:"
+                  data-fr="Réponse:"
+                  data-de="Antwort:"
+                  data-ru="Ответ:"
+                  data-nl="Antwoord:"
+                  data-ja="返信:"
+                  data-zh="回复:"
+                  >Resposta:</span
+                >
+                <span
+                  data-pt="normalmente em 24–48h"
+                  data-en="usually within 24–48h"
+                  data-es="normalmente en 24–48h"
+                  data-fr="généralement dans les 24–48 heures"
+                  data-de="normalerweise innerhalb von 24–48 Stunden"
+                  data-ru="обычно в течение 24–48 часов"
+                  data-nl="meestal binnen 24–48 uur"
+                  data-ja="通常24〜48時間以内"
+                  data-zh="通常在24-48小时内"
+                  >normalmente em 24–48h</span
+                >
+              </div>
+              <div>
+                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
+                <a
+                  href="https://instagram.com/cobra_it"
+                  target="_blank"
+                  class="social-link"
+                >
+                  <svg
+                    class="social-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                    />
+                  </svg>
+                  <span>@cobra_it</span>
+                </a>
+              </div>
+              <div>
+                <span
+                  data-pt="Preferes rápido?"
+                  data-en="Want it fast?"
+                  data-es="¿Lo quieres rápido?"
+                  data-fr="Vous le voulez vite?"
+                  data-de="Willst du es schnell?"
+                  data-ru="Хотите быстро?"
+                  data-nl="Wil je het snel?"
+                  data-ja="早くお張りですか?"
+                  data-zh="想要快速？"
+                  >Preferes rápido?</span
+                >
+                <a
+                  href="book-a-call.html"
+                  data-pt="Marca uma call."
+                  data-en="Book a call."
+                  data-es="Reserva una llamada."
+                  data-fr="Réservez un appel."
+                  data-de="Buchen Sie einen Anruf."
+                  data-ru="Запланировать звонок."
+                  data-nl="Boek een gesprek."
+                  data-ja="通話を予約する。"
+                  data-zh="预约通话。"
+                  >Marca uma call.</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>© <span id="year"></span> Cobrait — Software Factory</div>
+          <div class="footer-mini-links">
+            <a
+              href="privacidade.html"
+              data-pt="Privacidade"
+              data-en="Privacy"
+              data-es="Privacidad"
+              data-fr="Confidentialité"
+              data-de="Datenschutz"
+              data-ru="Конфиденциальность"
+              data-nl="Privacy"
+              data-ja="プライバシー"
+              data-zh="隐私"
+              >Privacidade</a
+            >
+            <a
+              href="termos.html"
+              data-pt="Termos"
+              data-en="Terms"
+              data-es="Términos"
+              data-fr="Conditions"
+              data-de="Bedingungen"
+              data-ru="Условия"
+              data-nl="Voorwaarden"
+              data-ja="利用規約"
+              data-zh="条款"
+              >Termos</a
+            >
+            <a
+              href="cookies.html"
+              data-pt="Cookies"
+              data-en="Cookies"
+              data-es="Cookies"
+              data-fr="Cookies"
+              data-de="Cookies"
+              data-ru="Cookies"
+              data-nl="Cookies"
+              data-ja="Cookies"
+              data-zh="Cookies"
+              >Cookies</a
+            >
+            <a
+              href="#what-we-do"
+              data-pt="Serviços"
+              data-en="Services"
+              data-es="Servicios"
+              data-fr="Services"
+              data-de="Dienstleistungen"
+              data-ru="Услуги"
+              data-nl="Services"
+              data-ja="サービス"
+              data-zh="服务"
+              >Serviços</a
+            >
+            <a
+              href="https://www.livroreclamacoes.pt"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-pt="Livro de Reclamações"
+              data-en="Complaints Book"
+              data-es="Libro de Reclamaciones"
+              data-fr="Livre de réclamations"
+              data-de="Beschwerdebuch"
+              data-ru="Книга жалоб"
+              data-nl="Klachtenboek"
+              data-ja="苦情受付帳"
+              data-zh="投诉簿"
+              >Livro de Reclamações</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
-

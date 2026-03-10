@@ -63,7 +63,9 @@ if (!window.__cobraitTranslationBooted) {
 
     function syncLanguageDropdownUI(activeLang) {
       ensureLanguageDropdownStyle();
-      const normalized = normalizeLang(activeLang || localStorage.getItem("preferredLanguage") || "pt");
+      const normalized = normalizeLang(
+        activeLang || localStorage.getItem("preferredLanguage") || "pt",
+      );
 
       function ensureOptionShape(option, lang) {
         const meta = LANGUAGE_META[lang] || LANGUAGE_META.en;
@@ -133,18 +135,24 @@ if (!window.__cobraitTranslationBooted) {
 
     function applyLanguageToDom(lang) {
       const normalized = normalizeLang(lang);
-      document.documentElement.lang = normalized === "pt" ? "pt-PT" : normalized;
+      document.documentElement.lang =
+        normalized === "pt" ? "pt-PT" : normalized;
 
       const elements = document.querySelectorAll(
-        "[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]"
+        "[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]",
       );
 
       elements.forEach((el) => {
         let text = el.getAttribute("data-" + normalized);
-        if (text === null && normalized !== "en") text = el.getAttribute("data-en");
+        if (text === null && normalized !== "en")
+          text = el.getAttribute("data-en");
         if (text === null) return;
 
-        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "OPTION") {
+        if (
+          el.tagName === "INPUT" ||
+          el.tagName === "TEXTAREA" ||
+          el.tagName === "OPTION"
+        ) {
           if (el.tagName === "OPTION") {
             el.textContent = text;
           } else if (el.hasAttribute("placeholder")) {
@@ -152,7 +160,10 @@ if (!window.__cobraitTranslationBooted) {
           } else {
             el.value = text;
           }
-        } else if (el.hasAttribute("data-html") || /<\/?[a-z][^>]*>/i.test(text)) {
+        } else if (
+          el.hasAttribute("data-html") ||
+          /<\/?[a-z][^>]*>/i.test(text)
+        ) {
           el.innerHTML = text;
         } else {
           el.textContent = text;
@@ -160,11 +171,12 @@ if (!window.__cobraitTranslationBooted) {
       });
 
       const ariaEls = document.querySelectorAll(
-        "[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]"
+        "[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]",
       );
       ariaEls.forEach((el) => {
         let val = el.getAttribute("data-" + normalized);
-        if (val === null && normalized !== "en") val = el.getAttribute("data-en");
+        if (val === null && normalized !== "en")
+          val = el.getAttribute("data-en");
         if (val) el.setAttribute("aria-label", val);
       });
     }
@@ -175,7 +187,9 @@ if (!window.__cobraitTranslationBooted) {
         const enText = el.getAttribute("data-en");
         if (!enText) return;
 
-        const trans = window.cobraitTranslations ? window.cobraitTranslations[enText] : null;
+        const trans = window.cobraitTranslations
+          ? window.cobraitTranslations[enText]
+          : null;
         EXTRA_LANGS.forEach((lang) => {
           const existing = el.getAttribute("data-" + lang);
           const translated = trans && trans[lang] ? trans[lang] : null;
@@ -198,20 +212,31 @@ if (!window.__cobraitTranslationBooted) {
       let response;
       try {
         response = await fetch("./translations.json");
-        if (!response.ok) throw new Error("translations.json not found at root");
+        if (!response.ok)
+          throw new Error("translations.json not found at root");
       } catch (_e) {
         response = await fetch("../translations.json");
-        if (!response.ok) throw new Error("translations.json not found at parent");
+        if (!response.ok)
+          throw new Error("translations.json not found at parent");
       }
       window.cobraitTranslations = await response.json();
     } catch (error) {
-      console.warn("Cobrait translations: fallback only (using EN for missing extra languages).", error);
+      console.warn(
+        "Cobrait translations: fallback only (using EN for missing extra languages).",
+        error,
+      );
     }
 
     function boot() {
       loadTranslationsIntoAttributes();
-      const preferred = normalizeLang(localStorage.getItem("preferredLanguage") || document.documentElement.lang || "pt");
-      try { localStorage.setItem("preferredLanguage", preferred); } catch (_e) {}
+      const preferred = normalizeLang(
+        localStorage.getItem("preferredLanguage") ||
+          document.documentElement.lang ||
+          "pt",
+      );
+      try {
+        localStorage.setItem("preferredLanguage", preferred);
+      } catch (_e) {}
       applyLanguageToDom(preferred);
       syncLanguageDropdownUI(preferred);
       // Segundo passe para ganhar a scripts locais que correm no mesmo DOMContentLoaded.
@@ -231,26 +256,34 @@ if (!window.__cobraitTranslationBooted) {
         const option = event.target.closest(".language-option");
         if (!option) return;
         const lang = normalizeLang(option.getAttribute("data-lang"));
-        try { localStorage.setItem("preferredLanguage", lang); } catch (_e) {}
+        try {
+          localStorage.setItem("preferredLanguage", lang);
+        } catch (_e) {}
         loadTranslationsIntoAttributes();
         // Reaplica no fim do ciclo para cobrir paginas sem handler robusto.
         setTimeout(() => {
           applyLanguageToDom(lang);
           syncLanguageDropdownUI(lang);
-          window.dispatchEvent(new CustomEvent("cobrait-set-language", { detail: lang }));
+          window.dispatchEvent(
+            new CustomEvent("cobrait-set-language", { detail: lang }),
+          );
         }, 0);
       },
-      true
+      true,
     );
 
     // Expor helper global caso alguma pagina queira forcar idioma manualmente.
     window.cobraitApplyLanguage = function (lang) {
       const normalized = normalizeLang(lang);
-      try { localStorage.setItem("preferredLanguage", normalized); } catch (_e) {}
+      try {
+        localStorage.setItem("preferredLanguage", normalized);
+      } catch (_e) {}
       loadTranslationsIntoAttributes();
       applyLanguageToDom(normalized);
       syncLanguageDropdownUI(normalized);
-      window.dispatchEvent(new CustomEvent("cobrait-set-language", { detail: normalized }));
+      window.dispatchEvent(
+        new CustomEvent("cobrait-set-language", { detail: normalized }),
+      );
     };
 
     // Garante sync também quando scripts locais disparam este evento.
@@ -259,4 +292,3 @@ if (!window.__cobraitTranslationBooted) {
     });
   })();
 }
-
