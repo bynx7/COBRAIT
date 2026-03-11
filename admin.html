@@ -11,231 +11,550 @@
   <title>COBRAIT Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f8fc;
-      --panel: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --primary: #0ea5e9;
-      --primary-dark: #0284c7;
-      --ok: #16a34a;
+      --bg: #edf3fa;
+      --bg-soft: #f7fbff;
+      --surface: #ffffff;
+      --surface-strong: #f5f8fd;
+      --ink: #0a1429;
+      --ink-muted: #5f6f86;
+      --line: #d6e0ed;
+      --primary: #0f7bff;
+      --primary-dark: #095fd2;
+      --accent: #0fb6a6;
+      --ok-bg: #e7f8ee;
+      --ok-text: #0f7a48;
+      --warn-bg: #fff5dd;
+      --warn-text: #8c6200;
+      --bad-bg: #ffe7e8;
+      --bad-text: #ac242d;
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+      --elev-1: 0 8px 22px rgba(7, 31, 68, 0.08);
+      --elev-2: 0 14px 34px rgba(7, 31, 68, 0.12);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      min-height: 100%;
     }
-    .wrap {
-      width: min(1160px, calc(100% - 32px));
-      margin: 24px auto 40px;
+
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(920px 360px at 8% -10%, rgba(15, 123, 255, 0.17), transparent 65%),
+        radial-gradient(840px 350px at 96% 0%, rgba(15, 182, 166, 0.14), transparent 66%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 14px 16px;
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Sora", "Manrope", sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(1240px, calc(100% - 36px));
+      margin: 22px auto 40px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .card {
       border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--panel);
-      margin-bottom: 16px;
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      box-shadow: var(--elev-1);
     }
-    .brand {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
+
+    .muted {
+      color: var(--ink-muted);
     }
-    .muted { color: var(--muted); }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       border: 1px solid transparent;
-      border-radius: 10px;
+      border-radius: 11px;
       padding: 10px 14px;
       font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+      font-weight: 700;
+      line-height: 1;
       text-decoration: none;
-      transition: all .18s ease;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
     .btn-primary {
-      background: var(--primary);
-      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(15, 123, 255, 0.28);
     }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-ghost {
-      color: var(--text);
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 24px rgba(15, 123, 255, 0.34);
+    }
+
+    .btn-soft {
+      background: #ffffff;
+      color: var(--ink);
       border-color: var(--line);
-      background: #fff;
     }
-    .btn-ghost:hover { background: #f8fafc; }
-    .panel {
+
+    .btn-soft:hover {
+      background: var(--surface-strong);
+    }
+
+    .auth {
+      width: min(580px, 100%);
+      margin: 70px auto;
+      padding: 26px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--panel);
-      padding: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+      box-shadow: var(--elev-2);
     }
-    .login-box {
-      width: min(520px, 100%);
-      margin: 60px auto;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--panel);
-      padding: 22px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+
+    .auth-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
     }
-    h1, h2, h3 { margin: 0; }
-    .login-box h1 { font-size: 24px; margin-bottom: 6px; }
-    .login-box p { margin: 0 0 14px; color: var(--muted); }
+
+    .auth-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-family: "Sora", "Manrope", sans-serif;
+      font-weight: 800;
+      color: #ffffff;
+      background: linear-gradient(145deg, var(--primary), var(--accent));
+      box-shadow: 0 8px 20px rgba(15, 123, 255, 0.3);
+    }
+
+    .auth h1 {
+      font-size: clamp(24px, 3vw, 30px);
+      margin-bottom: 6px;
+    }
+
+    .auth p {
+      margin: 0 0 14px;
+      color: var(--ink-muted);
+    }
+
     .field-label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
+      color: var(--ink);
     }
+
     .input {
       width: 100%;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 11px 12px;
+      border: 1px solid #c6d3e5;
+      border-radius: 11px;
+      padding: 12px 13px;
       font-size: 14px;
       margin-bottom: 12px;
       outline: none;
+      background: #ffffff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
+
     .input:focus {
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
+      border-color: #4aa3ff;
+      box-shadow: 0 0 0 4px rgba(74, 163, 255, 0.2);
     }
-    .row {
+
+    .hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .err {
+      color: #b32634;
+      margin-top: 8px;
+      font-size: 13px;
+      min-height: 18px;
+    }
+
+    .topbar {
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .topbar-brand .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #2371dd;
+      margin-bottom: 2px;
+    }
+
+    .topbar-brand .brand {
+      font-size: clamp(21px, 2.5vw, 27px);
+      margin-bottom: 2px;
+    }
+
+    .topbar-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .kpis {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
+
     .kpi {
+      position: relative;
+      overflow: hidden;
+      padding: 16px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
-      background: #fff;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+      box-shadow: var(--elev-1);
     }
+
+    .kpi::before {
+      content: "";
+      position: absolute;
+      width: 66px;
+      height: 66px;
+      top: -18px;
+      right: -18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(15, 123, 255, 0.2), rgba(15, 123, 255, 0));
+      pointer-events: none;
+    }
+
     .kpi b {
       display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
+      font-family: "Sora", "Manrope", sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1;
+      margin-bottom: 7px;
     }
-    .grid {
+
+    .kpi-label {
+      color: var(--ink-muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
+
+    .panel {
+      padding: 16px;
+      min-height: 0;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .panel-head h2 {
+      font-size: 21px;
+      margin-bottom: 4px;
+    }
+
+    .panel-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      min-width: 220px;
+      width: clamp(220px, 26vw, 290px);
+      padding: 9px 11px;
+      border-radius: 10px;
+      border: 1px solid #c8d5e7;
+      font: inherit;
+      font-size: 13px;
+      color: var(--ink);
+      outline: none;
+      background: #ffffff;
+    }
+
+    .search:focus {
+      border-color: #4aa3ff;
+      box-shadow: 0 0 0 3px rgba(74, 163, 255, 0.18);
+    }
+
     .list {
       list-style: none;
       margin: 0;
       padding: 0;
-      max-height: 480px;
+      max-height: 520px;
       overflow: auto;
+      scrollbar-gutter: stable;
+      border-top: 1px solid #edf2f8;
     }
+
+    .list::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .list::-webkit-scrollbar-thumb {
+      background: #c7d6ea;
+      border-radius: 99px;
+      border: 2px solid #f4f8fd;
+    }
+
     .item {
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid #f1f5f9;
-      padding: 12px 0;
+      gap: 12px;
+      padding: 13px 2px;
+      border-bottom: 1px solid #eef3f8;
     }
-    .item:last-child { border-bottom: none; }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .item-main {
+      min-width: 0;
+    }
+
     .item-title {
-      font-weight: 600;
       font-size: 14px;
-      margin-bottom: 2px;
+      font-weight: 700;
+      margin-bottom: 3px;
     }
+
+    .item-meta {
+      color: var(--ink-muted);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .badge {
       display: inline-block;
-      font-size: 11px;
-      border: 1px solid #bae6fd;
-      color: #0369a1;
-      background: #f0f9ff;
-      padding: 2px 8px;
+      margin-right: 7px;
+      border: 1px solid transparent;
       border-radius: 999px;
-      margin-right: 6px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: lowercase;
+      letter-spacing: 0.01em;
     }
-    .status-ok {
-      color: var(--ok);
+
+    .badge[data-group="core"] {
+      border-color: #bfd6f8;
+      color: #1d5ea8;
+      background: #edf5ff;
+    }
+
+    .badge[data-group="servicos"] {
+      border-color: #bfeadf;
+      color: #0f7e6e;
+      background: #eafbf6;
+    }
+
+    .badge[data-group="legal"] {
+      border-color: #f3debc;
+      color: #946303;
+      background: #fff8e8;
+    }
+
+    .badge[data-group="tools"] {
+      border-color: #d7c9fa;
+      color: #6940b8;
+      background: #f5f0ff;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 6px 11px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      border: 1px solid transparent;
     }
-    .hidden { display: none !important; }
-    .err {
-      color: #b91c1c;
-      margin-top: 6px;
-      font-size: 13px;
-      min-height: 18px;
+
+    .status-pill--ok {
+      background: var(--ok-bg);
+      border-color: #bde8ce;
+      color: var(--ok-text);
     }
+
+    .status-pill--warn {
+      background: var(--warn-bg);
+      border-color: #f2deb0;
+      color: var(--warn-text);
+    }
+
+    .status-pill--bad {
+      background: var(--bad-bg);
+      border-color: #f3bec2;
+      color: var(--bad-text);
+    }
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 900px) {
-      .row, .grid { grid-template-columns: 1fr; }
+      .kpis {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .panel-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section id="loginSection" class="login-box">
-      <h1>Admin Area</h1>
-      <p>Acesso local para veres todas as paginas e estado rapido do site.</p>
+  <main class="shell">
+    <section id="loginSection" class="auth">
+      <div class="auth-brand">
+        <div class="auth-mark">C</div>
+        <div>
+          <h2>COBRAIT Admin Access</h2>
+          <p class="muted">Painel local para gerir acessos e verificacoes rapidas.</p>
+        </div>
+      </div>
+
+      <h1>Entrar no painel</h1>
+      <p>Usa a password de administrador para abrir o centro de controlo.</p>
+
       <label class="field-label" for="adminPass">Password</label>
-      <input id="adminPass" class="input" type="password" placeholder="Introduz a password" />
+      <input id="adminPass" class="input" type="password" placeholder="Introduz a password" autocomplete="current-password" />
       <button id="loginBtn" class="btn btn-primary" type="button">Entrar</button>
       <div id="loginError" class="err"></div>
-      <p class="muted" style="margin-top:12px;font-size:12px;">
-        Dica: password inicial <code>cobrait-admin</code> (altera no topo do script).
-      </p>
+      <p class="hint">Dica: password inicial <code>cobrait-admin</code> (altera no topo do script).</p>
     </section>
 
     <section id="adminSection" class="hidden">
-      <div class="topbar">
-        <div>
-          <div class="brand">COBRAIT ADMIN</div>
+      <header class="topbar card">
+        <div class="topbar-brand">
+          <div class="eyebrow">Control Center</div>
+          <h1 class="brand">COBRAIT Admin</h1>
           <div class="muted" id="sessionInfo">Sessao ativa</div>
         </div>
-        <div>
-          <a class="btn btn-ghost" href="index.html">Abrir site</a>
+        <div class="topbar-actions">
+          <a class="btn btn-soft" href="index.html">Abrir site</a>
           <button id="logoutBtn" class="btn btn-primary" type="button">Sair</button>
         </div>
-      </div>
+      </header>
 
-      <div class="row">
-        <div class="kpi">
+      <section class="kpis">
+        <article class="kpi">
           <b id="kpiTotal">0</b>
-          <span class="muted">Paginas mapeadas</span>
-        </div>
-        <div class="kpi">
+          <div class="kpi-label">Paginas mapeadas</div>
+        </article>
+        <article class="kpi">
           <b id="kpiServicos">0</b>
-          <span class="muted">Paginas de servicos</span>
-        </div>
-        <div class="kpi">
+          <div class="kpi-label">Paginas de servicos</div>
+        </article>
+        <article class="kpi">
           <b id="kpiChecks">0</b>
-          <span class="muted">Checks titulo OK</span>
-        </div>
-      </div>
+          <div class="kpi-label">Checks title OK</div>
+        </article>
+      </section>
 
-      <div class="grid">
-        <section class="panel">
-          <h2 style="font-size:18px;margin-bottom:4px;">Todas as paginas</h2>
-          <p class="muted" style="margin-top:0;margin-bottom:12px;">Acesso direto a cada pagina do projeto.</p>
+      <section class="layout">
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2>Todas as paginas</h2>
+              <p class="muted">Acesso direto a cada pagina do projeto.</p>
+            </div>
+            <div class="panel-actions">
+              <input id="pagesFilter" class="search" type="search" placeholder="Filtrar por nome, path ou grupo" />
+            </div>
+          </div>
           <ul id="pagesList" class="list"></ul>
         </section>
 
-        <section class="panel">
-          <h2 style="font-size:18px;margin-bottom:4px;">Estado rapido</h2>
-          <p class="muted" style="margin-top:0;margin-bottom:12px;">Verifica se cada pagina responde e tem tag title.</p>
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2>Estado rapido</h2>
+              <p class="muted">Verifica se cada pagina responde e tem a tag title.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="rerunChecksBtn" class="btn btn-soft" type="button">Revalidar</button>
+            </div>
+          </div>
           <ul id="checksList" class="list"></ul>
         </section>
-      </div>
+      </section>
     </section>
   </main>
 
@@ -252,7 +571,7 @@
       { path: "book-a-call.html", label: "Book a Call", group: "core" },
       { path: "careers.html", label: "Careers", group: "core" },
       { path: "tech.html", label: "Tech", group: "core" },
-      { path: "Serviços.html", label: "Servicos", group: "core" },
+      { path: "Servi\u00E7os.html", label: "Servicos", group: "core" },
       { path: "privacidade.html", label: "Privacidade", group: "legal" },
       { path: "termos.html", label: "Termos", group: "legal" },
       { path: "cookies.html", label: "Cookies", group: "legal" },
@@ -270,6 +589,8 @@
     const adminSection = document.getElementById("adminSection");
     const loginBtn = document.getElementById("loginBtn");
     const logoutBtn = document.getElementById("logoutBtn");
+    const rerunChecksBtn = document.getElementById("rerunChecksBtn");
+    const pagesFilter = document.getElementById("pagesFilter");
     const loginPass = document.getElementById("adminPass");
     const loginError = document.getElementById("loginError");
     const pagesList = document.getElementById("pagesList");
@@ -279,6 +600,8 @@
     const kpiChecks = document.getElementById("kpiChecks");
     const sessionInfo = document.getElementById("sessionInfo");
 
+    let checksRunning = false;
+
     function openAdmin() {
       loginSection.classList.add("hidden");
       adminSection.classList.remove("hidden");
@@ -287,26 +610,54 @@
       runChecks();
     }
 
+    function getFilteredPages() {
+      const q = String(pagesFilter.value || "").trim().toLowerCase();
+      if (!q) return pages;
+      return pages.filter((page) =>
+        page.label.toLowerCase().includes(q) ||
+        page.path.toLowerCase().includes(q) ||
+        page.group.toLowerCase().includes(q)
+      );
+    }
+
     function renderPages() {
+      const filtered = getFilteredPages();
       pagesList.innerHTML = "";
       kpiTotal.textContent = String(pages.length);
-      kpiServicos.textContent = String(pages.filter(p => p.group === "servicos").length);
+      kpiServicos.textContent = String(pages.filter((p) => p.group === "servicos").length);
 
-      pages.forEach((page) => {
+      filtered.forEach((page) => {
         const li = document.createElement("li");
         li.className = "item";
         li.innerHTML = `
-          <div>
+          <div class="item-main">
             <div class="item-title">${page.label}</div>
-            <div class="muted"><span class="badge">${page.group}</span>${page.path}</div>
+            <div class="item-meta"><span class="badge" data-group="${page.group}">${page.group}</span>${page.path}</div>
           </div>
-          <a class="btn btn-ghost" href="${page.path}" target="_blank" rel="noopener noreferrer">Abrir</a>
+          <a class="btn btn-soft" href="${page.path}" target="_blank" rel="noopener noreferrer">Abrir</a>
         `;
         pagesList.appendChild(li);
       });
+
+      if (filtered.length === 0) {
+        const empty = document.createElement("li");
+        empty.className = "item";
+        empty.innerHTML = `<div class="muted">Sem resultados para este filtro.</div>`;
+        pagesList.appendChild(empty);
+      }
+    }
+
+    function makeStatusClass(ok, hasTitle) {
+      if (ok && hasTitle) return "status-pill status-pill--ok";
+      if (ok && !hasTitle) return "status-pill status-pill--warn";
+      return "status-pill status-pill--bad";
     }
 
     async function runChecks() {
+      if (checksRunning) return;
+      checksRunning = true;
+      rerunChecksBtn.disabled = true;
+      rerunChecksBtn.textContent = "A validar...";
       checksList.innerHTML = "";
       let okCount = 0;
 
@@ -314,9 +665,9 @@
         const li = document.createElement("li");
         li.className = "item";
         li.innerHTML = `
-          <div>
+          <div class="item-main">
             <div class="item-title">${page.label}</div>
-            <div class="muted">${page.path}</div>
+            <div class="item-meta">${page.path}</div>
           </div>
           <div class="muted">A verificar...</div>
         `;
@@ -327,12 +678,19 @@
           const html = await res.text();
           const hasTitle = /<title>[^<]+<\/title>/i.test(html);
           if (res.ok && hasTitle) okCount++;
-          li.lastElementChild.outerHTML = `<div class="status-ok">${res.ok ? "OK" : "ERRO"} | title ${hasTitle ? "OK" : "FALTA"}</div>`;
-        } catch (err) {
-          li.lastElementChild.outerHTML = `<div class="err">ERRO fetch</div>`;
+
+          const statusClass = makeStatusClass(res.ok, hasTitle);
+          const statusText = `${res.ok ? "OK" : "ERRO"} | title ${hasTitle ? "OK" : "FALTA"}`;
+          li.lastElementChild.outerHTML = `<div class="${statusClass}">${statusText}</div>`;
+        } catch (_err) {
+          li.lastElementChild.outerHTML = `<div class="status-pill status-pill--bad">ERRO fetch</div>`;
         }
       }
+
       kpiChecks.textContent = String(okCount);
+      rerunChecksBtn.disabled = false;
+      rerunChecksBtn.textContent = "Revalidar";
+      checksRunning = false;
     }
 
     loginBtn.addEventListener("click", () => {
@@ -349,11 +707,15 @@
       if (e.key === "Enter") loginBtn.click();
     });
 
+    pagesFilter.addEventListener("input", renderPages);
+    rerunChecksBtn.addEventListener("click", runChecks);
+
     logoutBtn.addEventListener("click", () => {
       localStorage.removeItem(SESSION_KEY);
       adminSection.classList.add("hidden");
       loginSection.classList.remove("hidden");
       loginPass.value = "";
+      pagesFilter.value = "";
     });
 
     if (localStorage.getItem(SESSION_KEY) === "1") openAdmin();
