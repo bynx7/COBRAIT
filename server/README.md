@@ -1,0 +1,71 @@
+# COBRAIT Admin API
+
+Backend minimo para autenticacao do painel admin e gestao de utilizadores em Postgres.
+
+## O que faz
+
+- autentica utilizadores com `email + password`
+- guarda utilizadores em `admin_users`
+- guarda leads em `contact_requests`
+- guarda pedidos de agendamento em `call_bookings`
+- expoe rotas `/api/auth/*` e `/api/users`
+- cria um admin inicial automaticamente se `ADMIN_EMAIL` e `ADMIN_PASSWORD` estiverem definidos
+
+## Arranque rapido
+
+1. Sobe o Postgres:
+
+```powershell
+docker compose up -d postgres
+```
+
+2. Copia `server/.env.example` para `server/.env` e ajusta os valores.
+
+3. Se estiveres a usar uma base criada manualmente no pgAdmin, executa tambem:
+
+```text
+server/sql/001_init.sql
+server/sql/002_site_operations.sql
+server/sql/003_call_booking_sources.sql
+```
+
+4. Instala dependencias:
+
+```powershell
+cd server
+npm install
+```
+
+5. Inicia a API:
+
+```powershell
+npm start
+```
+
+6. Serve os HTML do projeto noutra consola:
+
+```powershell
+.\serve-local.ps1 -Port 5500
+```
+
+7. Abre `http://localhost:5500/admin.html`.
+
+Por defeito, o `admin.html` tenta usar `http://localhost:4000/api` quando e aberto localmente.
+
+O `index.html` envia o formulario principal para `POST /api/contact-requests` e o `book-a-call.html` envia para `POST /api/call-bookings`.
+
+## Rotas principais
+
+- `GET /api/health`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
+- `GET /api/users`
+- `POST /api/users`
+- `PATCH /api/users/:id`
+- `POST /api/contact-requests`
+- `GET /api/contact-requests`
+- `PATCH /api/contact-requests/:id`
+- `POST /api/call-bookings`
+- `GET /api/call-bookings`
+- `PATCH /api/call-bookings/:id`

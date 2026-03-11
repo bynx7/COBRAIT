@@ -380,6 +380,72 @@ main section {
     gap: 28px !important;
   }
 
+  .talk-about-project__inner,
+  .footer-top {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .footer-bottom,
+  .footer-cta-row,
+  .footer-mini-links,
+  .social-actions,
+  .servicos-actions,
+  .talk-about-project__actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .footer-mini-links a,
+  .footer-cta-row .btn,
+  .social-actions .btn,
+  .servicos-actions .btn,
+  .talk-about-project__actions .btn {
+    width: 100% !important;
+    max-width: none !important;
+    justify-content: center !important;
+  }
+
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1.05fr 0.95fr"],
+  [style*="grid-template-columns:1.05fr 0.95fr"],
+  [style*="grid-template-columns: 1.4fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  [style*="width: 420px"],
+  [style*="width:420px"],
+  [style*="width: 520px"],
+  [style*="width:520px"],
+  [style*="width: 620px"],
+  [style*="width:620px"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .footer-brand,
+  .footer-col,
+  .footer-meta,
+  .contact-left,
+  .contact-right,
+  .hero-copy,
+  .hero-visual,
+  .hero-card,
+  .hero-hq,
+  .form-card,
+  .social-visual,
+  .contact-video {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
   .job-card {
     grid-template-columns: 1fr !important;
     text-align: center !important;
@@ -457,6 +523,10 @@ main section {
   .footer-links,
   .footer-mini-links {
     gap: 8px !important;
+  }
+
+  .footer-bottom {
+    text-align: left !important;
   }
 
   .book-hero::before,
