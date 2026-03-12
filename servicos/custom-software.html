@@ -1789,7 +1789,7 @@
 
       function applyLanguage(lang) {
         lang = normalizeLang(lang);
-        document.documentElement.lang = (lang === 'pt') — 'pt-PT' : lang;
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
         updateTextContent(lang);
         updateAriaLabels(lang);
       }
@@ -1848,6 +1848,8 @@
     })();
   </script>
   <script src="../apply-translations.js"></script>
+  <script src="../cms-client.js"></script>
+  <script src="../cms-inline-editor.js"></script>
 </body>
 </html>
 

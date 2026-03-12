@@ -1304,10 +1304,364 @@
                 font-size: 22px;
             }
         }
+
+        .case-study-home {
+            position: relative;
+            padding: 116px 0;
+            background: linear-gradient(180deg, #f6f8fb 0%, #ffffff 18%, #ffffff 100%);
+        }
+
+        .case-study-home::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 160px;
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 48%, rgba(15, 23, 42, 0.03) 100%);
+            pointer-events: none;
+        }
+
+        .case-study-home__intro {
+            position: relative;
+            max-width: 840px;
+            margin-bottom: 38px;
+            z-index: 1;
+        }
+
+        .case-study-home__kicker {
+            margin: 0 0 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #2563eb;
+        }
+
+        .case-study-home__title {
+            margin: 0 0 18px;
+            max-width: 760px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.35rem, 4.2vw, 4.3rem);
+            line-height: 1.02;
+            letter-spacing: -0.05em;
+            color: #0f172a;
+        }
+
+        .case-study-home__description {
+            margin: 0;
+            max-width: 740px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.06rem;
+            line-height: 1.82;
+            color: #475569;
+        }
+
+        .case-study-home__grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 22px;
+        }
+
+        .case-study-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+            gap: 28px 34px;
+            align-items: start;
+            padding: 34px;
+            background: #ffffff;
+            border: 1px solid #dbe4ef;
+            border-radius: 32px;
+            box-shadow: 0 24px 72px rgba(15, 23, 42, 0.08);
+        }
+
+        .case-study-panel__eyebrow {
+            grid-column: 1;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+        .case-study-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: #f8fafc;
+            border: 1px solid #d9e4f0;
+            color: #0f172a;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .case-study-tag--muted {
+            color: #0f766e;
+            background: #f3fbf8;
+            border-color: #cfeee3;
+        }
+
+        .case-study-panel__title {
+            grid-column: 1;
+            margin: 0;
+            max-width: 560px;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 3.4vw, 3.4rem);
+            line-height: 1.04;
+            letter-spacing: -0.05em;
+            color: #0f172a;
+        }
+
+        .case-study-panel__text {
+            grid-column: 1;
+            margin: 0;
+            max-width: 560px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.02rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .case-study-flow {
+            grid-column: 2;
+            grid-row: 1 / span 3;
+            display: grid;
+            gap: 14px;
+            align-content: start;
+        }
+
+        .case-study-flow__card,
+        .case-study-flow__mini {
+            border-radius: 24px;
+            border: 1px solid #d9e4ef;
+            background: #ffffff;
+        }
+
+        .case-study-flow__card {
+            padding: 20px 22px;
+            background: linear-gradient(180deg, #f8fbff 0%, #f2f6fb 100%);
+        }
+
+        .case-study-flow__label,
+        .case-study-flow__mini-label {
+            display: block;
+            margin-bottom: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #2563eb;
+        }
+
+        .case-study-flow__line {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 16px;
+            padding: 15px 0;
+            border-top: 1px solid #dde6f0;
+        }
+
+        .case-study-flow__line:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .case-study-flow__line:last-of-type {
+            padding-bottom: 0;
+        }
+
+        .case-study-flow__line span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.93rem;
+            font-weight: 700;
+            color: #64748b;
+        }
+
+        .case-study-flow__line strong,
+        .case-study-flow__mini strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.48;
+            color: #0f172a;
+        }
+
+        .case-study-flow__stack {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .case-study-flow__mini {
+            min-height: 0;
+            padding: 18px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .case-study-side {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .case-study-note,
+        .case-study-home__actions {
+            height: 100%;
+            border-radius: 26px;
+            padding: 26px;
+            border: 1px solid #dbe4ef;
+            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.05);
+        }
+
+        .case-study-note {
+            background: #ffffff;
+        }
+
+        .case-study-note--accent {
+            background: linear-gradient(180deg, #fbfdff 0%, #f5f8fc 100%);
+            border-color: #d7e3f1;
+        }
+
+        .case-study-note__kicker,
+        .case-study-actions__kicker {
+            margin: 0 0 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #2563eb;
+        }
+
+        .case-study-note__text,
+        .case-study-actions__text {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.98rem;
+            line-height: 1.78;
+            color: #475569;
+        }
+
+        .case-study-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .case-study-list li {
+            position: relative;
+            padding-left: 22px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.98rem;
+            line-height: 1.66;
+            color: #334155;
+        }
+
+        .case-study-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #2563eb;
+        }
+
+        .case-study-home__actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+            background: linear-gradient(180deg, #0f172a 0%, #18253c 100%);
+            border-color: #223655;
+            box-shadow: 0 24px 56px rgba(15, 23, 42, 0.12);
+        }
+
+        .case-study-actions__title {
+            margin: 0 0 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.65rem;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+        }
+
+        .case-study-home__actions .case-study-actions__text {
+            color: rgba(226, 232, 240, 0.84);
+        }
+
+        .case-study-actions__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .case-study-home__actions .btn--outline {
+            border-color: rgba(226, 232, 240, 0.24);
+            color: #e2e8f0;
+        }
+
+        .case-study-home__actions .btn--outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.42);
+            color: #ffffff;
+            box-shadow: none;
+        }
+
+        @media (max-width: 1180px) {
+            .case-study-side {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .case-study-home__actions {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .case-study-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-flow {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-home {
+                padding: 78px 0;
+            }
+
+            .case-study-panel,
+            .case-study-note,
+            .case-study-home__actions {
+                padding: 22px;
+            }
+
+            .case-study-flow__stack,
+            .case-study-side {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-actions__buttons {
+                flex-direction: column;
+            }
+
+            .case-study-home__actions .btn {
+                width: 100%;
+            }
+        }
     </style>
   <link rel="stylesheet" href="global-enhancements.css">
 </head>
-<body>
+<body data-cms-page="home">
     <!-- ? HEADER ATUALIZADO COM "COBRA IT" (IGUAL AO BOOK-A-CALL) -->
     <header class="site-header">
         <div class="container header-inner">
@@ -1521,7 +1875,7 @@
                     </ul>
                     <div class="hero-actions">
                         <a class="btn btn--primary" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Schedule a call" data-es="Agendar una llamada" data-fr="Planifier un appel" data-de="Termin vereinbaren" data-ru="????????????? ?????" data-nl="Plan een gesprek" data-ja="???????" data-zh="????">Agendar uma chamada</a>
-                        <a class="btn btn--outline" href="#what-we-do" data-pt="Ver serviços" data-en="View services" data-es="Ver servicios" data-fr="Voir les services" data-de="Dienstleistungen anzeigen" data-ru="??????????? ??????" data-nl="Services weergeven" data-ja="???????" data-zh="????">Ver serviços</a>
+                        <a class="btn btn--outline" href="#work" data-pt="Ver caso real" data-en="View real case" data-es="View real case" data-fr="View real case" data-de="View real case" data-ru="View real case" data-nl="View real case" data-ja="View real case" data-zh="View real case">Ver caso real</a>
                     </div>
                     <div class="hero-trust" aria-label="Indicadores de confiança">
                         <div class="trust-item">
@@ -1709,6 +2063,97 @@
                 <div class="social-visual" aria-hidden="true">
                     <img class="social-image" src="images/social-photo.jpg" alt="">
                     <div class="social-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-study-home" id="work">
+            <div class="container">
+                <div class="case-study-home__intro">
+                    <p class="case-study-home__kicker" data-cms-key="caseStudy.kicker" data-pt="CASO REAL" data-en="REAL CASE" data-es="REAL CASE" data-fr="REAL CASE" data-de="REAL CASE" data-ru="REAL CASE" data-nl="REAL CASE" data-ja="REAL CASE" data-zh="REAL CASE">CASO REAL</p>
+                    <h2 class="case-study-home__title" data-cms-key="caseStudy.title" data-pt="O último produto que lançámos foi feito para uma clínica veterinária." data-en="The latest product we launched was built for a veterinary clinic." data-es="The latest product we launched was built for a veterinary clinic." data-fr="The latest product we launched was built for a veterinary clinic." data-de="The latest product we launched was built for a veterinary clinic." data-ru="The latest product we launched was built for a veterinary clinic." data-nl="The latest product we launched was built for a veterinary clinic." data-ja="The latest product we launched was built for a veterinary clinic." data-zh="The latest product we launched was built for a veterinary clinic.">
+                        O último produto que lançámos foi feito para uma clínica veterinária.
+                    </h2>
+                    <p class="case-study-home__description" data-cms-key="caseStudy.description" data-pt="Em vez de promessas vagas, mostramos trabalho real: uma aplicação pensada para organizar marcações, fichas clínicas, equipa e follow-up num único fluxo diário." data-en="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-es="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-fr="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-de="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-ru="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-nl="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-ja="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow." data-zh="Instead of vague promises, we show real work: an application designed to organise appointments, medical records, staff coordination and follow-up in one daily workflow.">
+                        Em vez de promessas vagas, mostramos trabalho real: uma aplicação pensada para organizar marcações, fichas clínicas, equipa e follow-up num único fluxo diário.
+                    </p>
+                </div>
+
+                <div class="case-study-home__grid">
+                    <article class="case-study-panel">
+                        <div class="case-study-panel__eyebrow">
+                            <span class="case-study-tag" data-pt="Aplicação web" data-en="Web application" data-es="Web application" data-fr="Web application" data-de="Web application" data-ru="Web application" data-nl="Web application" data-ja="Web application" data-zh="Web application">Aplicação web</span>
+                            <span class="case-study-tag case-study-tag--muted" data-pt="Saúde animal" data-en="Animal health" data-es="Animal health" data-fr="Animal health" data-de="Animal health" data-ru="Animal health" data-nl="Animal health" data-ja="Animal health" data-zh="Animal health">Saúde animal</span>
+                        </div>
+
+                        <h3 class="case-study-panel__title" data-cms-key="caseStudy.panelTitle" data-pt="Plataforma operacional para clínica veterinária" data-en="Operational platform for a veterinary clinic" data-es="Operational platform for a veterinary clinic" data-fr="Operational platform for a veterinary clinic" data-de="Operational platform for a veterinary clinic" data-ru="Operational platform for a veterinary clinic" data-nl="Operational platform for a veterinary clinic" data-ja="Operational platform for a veterinary clinic" data-zh="Operational platform for a veterinary clinic">
+                            Plataforma operacional para clínica veterinária
+                        </h3>
+
+                        <p class="case-study-panel__text" data-cms-key="caseStudy.panelText" data-pt="Desenhámos um produto para a receção e para a equipa clínica trabalharem sobre o mesmo sistema, com agenda, histórico do animal, notas e acompanhamento pós-consulta." data-en="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-es="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-fr="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-de="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-ru="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-nl="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-ja="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up." data-zh="We designed a product where reception and clinical staff work from the same system, with scheduling, pet history, notes and post-visit follow-up.">
+                            Desenhámos um produto para a receção e para a equipa clínica trabalharem sobre o mesmo sistema, com agenda, histórico do animal, notas e acompanhamento pós-consulta.
+                        </p>
+
+                        <div class="case-study-flow" aria-hidden="true">
+                            <div class="case-study-flow__card">
+                                <span class="case-study-flow__label" data-pt="Hoje na clínica" data-en="Today in the clinic" data-es="Today in the clinic" data-fr="Today in the clinic" data-de="Today in the clinic" data-ru="Today in the clinic" data-nl="Today in the clinic" data-ja="Today in the clinic" data-zh="Today in the clinic">Hoje na clínica</span>
+                                <div class="case-study-flow__line">
+                                    <span>08:30</span>
+                                    <strong data-pt="Consulta de rotina" data-en="Routine check-up" data-es="Routine check-up" data-fr="Routine check-up" data-de="Routine check-up" data-ru="Routine check-up" data-nl="Routine check-up" data-ja="Routine check-up" data-zh="Routine check-up">Consulta de rotina</strong>
+                                </div>
+                                <div class="case-study-flow__line">
+                                    <span>10:00</span>
+                                    <strong data-pt="Vacinação" data-en="Vaccination" data-es="Vaccination" data-fr="Vaccination" data-de="Vaccination" data-ru="Vaccination" data-nl="Vaccination" data-ja="Vaccination" data-zh="Vaccination">Vacinação</strong>
+                                </div>
+                                <div class="case-study-flow__line">
+                                    <span>14:30</span>
+                                    <strong data-pt="Follow-up pós-cirurgia" data-en="Post-surgery follow-up" data-es="Post-surgery follow-up" data-fr="Post-surgery follow-up" data-de="Post-surgery follow-up" data-ru="Post-surgery follow-up" data-nl="Post-surgery follow-up" data-ja="Post-surgery follow-up" data-zh="Post-surgery follow-up">Follow-up pós-cirurgia</strong>
+                                </div>
+                            </div>
+
+                            <div class="case-study-flow__stack">
+                                <div class="case-study-flow__mini">
+                                    <span class="case-study-flow__mini-label" data-pt="Ficha do animal" data-en="Pet profile" data-es="Pet profile" data-fr="Pet profile" data-de="Pet profile" data-ru="Pet profile" data-nl="Pet profile" data-ja="Pet profile" data-zh="Pet profile">Ficha do animal</span>
+                                    <strong data-pt="Histórico, medicação e alertas" data-en="History, medication and alerts" data-es="History, medication and alerts" data-fr="History, medication and alerts" data-de="History, medication and alerts" data-ru="History, medication and alerts" data-nl="History, medication and alerts" data-ja="History, medication and alerts" data-zh="History, medication and alerts">Histórico, medicação e alertas</strong>
+                                </div>
+
+                                <div class="case-study-flow__mini">
+                                    <span class="case-study-flow__mini-label" data-pt="Equipa" data-en="Team" data-es="Team" data-fr="Team" data-de="Team" data-ru="Team" data-nl="Team" data-ja="Team" data-zh="Team">Equipa</span>
+                                    <strong data-pt="Receção, veterinário e seguimento" data-en="Reception, vet and follow-up" data-es="Reception, vet and follow-up" data-fr="Reception, vet and follow-up" data-de="Reception, vet and follow-up" data-ru="Reception, vet and follow-up" data-nl="Reception, vet and follow-up" data-ja="Reception, vet and follow-up" data-zh="Reception, vet and follow-up">Receção, veterinário e seguimento</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="case-study-side">
+                        <article class="case-study-note">
+                            <p class="case-study-note__kicker" data-cms-key="caseStudy.challengeKicker" data-pt="O desafio" data-en="The challenge" data-es="The challenge" data-fr="The challenge" data-de="The challenge" data-ru="The challenge" data-nl="The challenge" data-ja="The challenge" data-zh="The challenge">O desafio</p>
+                            <ul class="case-study-list">
+                                <li data-cms-key="caseStudy.challengeItem1" data-pt="Agenda e operação diária dispersas em vários pontos" data-en="Scheduling and daily operations spread across multiple places" data-es="Scheduling and daily operations spread across multiple places" data-fr="Scheduling and daily operations spread across multiple places" data-de="Scheduling and daily operations spread across multiple places" data-ru="Scheduling and daily operations spread across multiple places" data-nl="Scheduling and daily operations spread across multiple places" data-ja="Scheduling and daily operations spread across multiple places" data-zh="Scheduling and daily operations spread across multiple places">Agenda e operação diária dispersas em vários pontos</li>
+                                <li data-cms-key="caseStudy.challengeItem2" data-pt="Histórico do animal difícil de consultar no momento certo" data-en="Pet history that was hard to access at the right moment" data-es="Pet history that was hard to access at the right moment" data-fr="Pet history that was hard to access at the right moment" data-de="Pet history that was hard to access at the right moment" data-ru="Pet history that was hard to access at the right moment" data-nl="Pet history that was hard to access at the right moment" data-ja="Pet history that was hard to access at the right moment" data-zh="Pet history that was hard to access at the right moment">Histórico do animal difícil de consultar no momento certo</li>
+                                <li data-cms-key="caseStudy.challengeItem3" data-pt="Comunicação entre receção e equipa clínica sem contexto central" data-en="Communication between reception and clinical staff without shared context" data-es="Communication between reception and clinical staff without shared context" data-fr="Communication between reception and clinical staff without shared context" data-de="Communication between reception and clinical staff without shared context" data-ru="Communication between reception and clinical staff without shared context" data-nl="Communication between reception and clinical staff without shared context" data-ja="Communication between reception and clinical staff without shared context" data-zh="Communication between reception and clinical staff without shared context">Comunicação entre receção e equipa clínica sem contexto central</li>
+                            </ul>
+                        </article>
+
+                        <article class="case-study-note case-study-note--accent">
+                            <p class="case-study-note__kicker" data-cms-key="caseStudy.designedKicker" data-pt="O que desenhámos" data-en="What we designed" data-es="What we designed" data-fr="What we designed" data-de="What we designed" data-ru="What we designed" data-nl="What we designed" data-ja="What we designed" data-zh="What we designed">O que desenhámos</p>
+                            <p class="case-study-note__text" data-cms-key="caseStudy.designedText" data-pt="Uma agenda central, consulta rápida do histórico clínico e um fluxo claro entre receção, veterinário e seguimento. Menos atrito, mais contexto e melhor operação no dia a dia." data-en="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-es="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-fr="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-de="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-ru="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-nl="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-ja="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation." data-zh="One central schedule, quick access to the pet's clinical history and a clear flow between reception, the vet and follow-up. Less friction, more context and a stronger day-to-day operation.">
+                                Uma agenda central, consulta rápida do histórico clínico e um fluxo claro entre receção, veterinário e seguimento. Menos atrito, mais contexto e melhor operação no dia a dia.
+                            </p>
+                        </article>
+
+                        <div class="case-study-home__actions">
+                            <div class="case-study-actions__copy">
+                                <p class="case-study-actions__kicker" data-cms-key="caseStudy.ctaKicker" data-pt="Vamos conversar" data-en="Let's talk" data-es="Let's talk" data-fr="Let's talk" data-de="Let's talk" data-ru="Let's talk" data-nl="Let's talk" data-ja="Let's talk" data-zh="Let's talk">Vamos conversar</p>
+                                <h3 class="case-study-actions__title" data-cms-key="caseStudy.ctaTitle" data-pt="Se precisas de software com esta profundidade, falamos." data-en="If you need software built with this level of depth, let's talk." data-es="If you need software built with this level of depth, let's talk." data-fr="If you need software built with this level of depth, let's talk." data-de="If you need software built with this level of depth, let's talk." data-ru="If you need software built with this level of depth, let's talk." data-nl="If you need software built with this level of depth, let's talk." data-ja="If you need software built with this level of depth, let's talk." data-zh="If you need software built with this level of depth, let's talk.">Se precisas de software com esta profundidade, falamos.</h3>
+                                <p class="case-study-actions__text" data-cms-key="caseStudy.ctaText" data-pt="Produto, UX/UI e desenvolvimento alinhados no mesmo ciclo, sem ruído nem camadas desnecessárias." data-en="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-es="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-fr="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-de="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-ru="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-nl="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-ja="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers." data-zh="Product, UX/UI and development aligned in the same cycle, without noise or unnecessary layers.">Produto, UX/UI e desenvolvimento alinhados no mesmo ciclo, sem ruído nem camadas desnecessárias.</p>
+                            </div>
+                            <div class="case-study-actions__buttons">
+                                <a class="btn btn--primary" href="book-a-call.html" data-cms-key="caseStudy.primaryCtaLabel" data-pt="Quero construir algo assim" data-en="I want to build something like this" data-es="I want to build something like this" data-fr="I want to build something like this" data-de="I want to build something like this" data-ru="I want to build something like this" data-nl="I want to build something like this" data-ja="I want to build something like this" data-zh="I want to build something like this">Quero construir algo assim</a>
+                                <a class="btn btn--outline" href="about-us.html" data-cms-key="caseStudy.secondaryCtaLabel" data-pt="Ver como trabalhamos" data-en="See how we work" data-es="See how we work" data-fr="See how we work" data-de="See how we work" data-ru="See how we work" data-nl="See how we work" data-ja="See how we work" data-zh="See how we work">Ver como trabalhamos</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2344,6 +2789,8 @@
             });
         });
     </script>
+    <script src="./cms-client.js"></script>
+    <script src="./cms-inline-editor.js"></script>
 </body>
 </html>
 

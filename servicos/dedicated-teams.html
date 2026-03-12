@@ -524,14 +524,92 @@
       box-shadow: var(--shadow2);
       overflow:hidden;
     }
-    .hero-visual img{
+    .hero-team-preview{
       position:absolute;
       left:24px;
-      bottom:0;
-      height:420px;
-      width:auto;
-      max-width:95%;
-      object-fit:contain;
+      right:24px;
+      bottom:24px;
+      display:grid;
+      gap:14px;
+      z-index:1;
+    }
+    .hero-team-board{
+      padding:20px;
+      border-radius:20px;
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(226,232,240,.9);
+      box-shadow:0 20px 40px rgba(15,23,42,.08);
+      backdrop-filter:blur(10px);
+    }
+    .hero-team-header{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:16px;
+    }
+    .hero-team-dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      box-shadow:0 0 0 5px rgba(79,70,229,.12);
+    }
+    .hero-team-title{
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:#4f46e5;
+    }
+    .hero-team-stack{
+      display:grid;
+      gap:12px;
+    }
+    .hero-team-role{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:#fff;
+      border:1px solid #e2e8f0;
+    }
+    .hero-team-role strong{
+      display:block;
+      font-size:15px;
+      color:var(--ink);
+    }
+    .hero-team-role span{
+      display:block;
+      margin-top:4px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .hero-team-tag{
+      flex-shrink:0;
+      padding:8px 10px;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#4338ca;
+      font-size:12px;
+      font-weight:700;
+    }
+    .hero-team-metrics{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .hero-team-metrics span{
+      display:inline-flex;
+      align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      background:rgba(15,23,42,.72);
+      color:#f8fafc;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.3px;
     }
     .hero-badge{
       position:absolute;
@@ -742,6 +820,75 @@
 
 
 .spacer{ height:1px; }
+
+    @media (max-width: 1024px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .hero-visual{
+        min-height:540px;
+      }
+      .step-card h3{
+        font-size:26px;
+      }
+    }
+
+    @media (max-width: 768px){
+      .page-hero{
+        padding:56px 0 28px;
+      }
+      .h1{
+        font-size:44px;
+      }
+      .hero-visual{
+        min-height:560px;
+      }
+      .hero-team-preview{
+        left:16px;
+        right:16px;
+        bottom:16px;
+      }
+      .hero-badge{
+        top:16px;
+        left:16px;
+        right:16px;
+        max-width:none;
+      }
+      .benefits-grid{
+        grid-template-columns:1fr;
+      }
+      .timeline{
+        --timeline-x: 18px;
+      }
+      .timeline::before,
+      .timeline::after{
+        left:18px;
+      }
+      .step{
+        grid-template-columns:36px 1fr;
+        gap:14px;
+        margin:20px 0;
+      }
+      .timeline .step:nth-of-type(odd) .step-card,
+      .timeline .step:nth-of-type(even) .step-card{
+        grid-column:2;
+      }
+      .timeline .step:nth-of-type(odd) .step-dot,
+      .timeline .step:nth-of-type(even) .step-dot{
+        grid-column:1;
+      }
+      .timeline .step:nth-of-type(odd) .spacer,
+      .timeline .step:nth-of-type(even) .spacer{
+        display:none;
+      }
+      .step-card{
+        padding:22px;
+      }
+      .step-card h3{
+        font-size:24px;
+      }
+    }
 
 
     /* CTA banner */
@@ -1280,7 +1427,42 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <img src="../images/dedicated-hero.png" alt="">
+          <div class="hero-team-preview">
+            <div class="hero-team-board">
+              <div class="hero-team-header">
+                <span class="hero-team-dot"></span>
+                <span class="hero-team-title">Dedicated Team</span>
+              </div>
+              <div class="hero-team-stack">
+                <div class="hero-team-role">
+                  <div>
+                    <strong>Front-end</strong>
+                    <span>React, Next.js, design system</span>
+                  </div>
+                  <span class="hero-team-tag">Core</span>
+                </div>
+                <div class="hero-team-role">
+                  <div>
+                    <strong>Full-stack</strong>
+                    <span>Node.js, APIs, integrations</span>
+                  </div>
+                  <span class="hero-team-tag">Delivery</span>
+                </div>
+                <div class="hero-team-role">
+                  <div>
+                    <strong>QA & Support</strong>
+                    <span>Quality checks, release flow</span>
+                  </div>
+                  <span class="hero-team-tag">Scale</span>
+                </div>
+              </div>
+            </div>
+            <div class="hero-team-metrics">
+              <span>Remote-first</span>
+              <span>Weekly sync</span>
+              <span>Fast ramp-up</span>
+            </div>
+          </div>
           <div class="hero-badge">
             <strong data-pt="O que é uma Equipa Dedicada?"
                     data-en="What is a Dedicated Team?"
@@ -1469,7 +1651,7 @@
 
           <div class="step">
             <div class="step-card">
-              <span class="step-meta" data-pt="PASSO TRÁS" data-en="STEP THREE" data-es="PASO TRES" data-fr="?TAPE TROIS" data-de="SCHRITT DREI" data-ru="??? ??????" data-nl="STAP DRIE" data-ja="????3" data-zh="???">PASSO TRÁS</span>
+              <span class="step-meta" data-pt="PASSO TRÊS" data-en="STEP THREE" data-es="PASO TRES" data-fr="?TAPE TROIS" data-de="SCHRITT DREI" data-ru="??? ??????" data-nl="STAP DRIE" data-ja="????3" data-zh="???">PASSO TRÊS</span>
               <h3 data-pt="Onboarding" data-en="Onboarding" data-es="Onboarding" data-fr="Onboarding" data-de="Onboarding" data-ru="?????????" data-nl="Onboarding" data-ja="????????" data-zh="????">Onboarding</h3>
               <p data-pt="Integramos a equipa ao teu processo (Agile/Lean), ferramentas e padrões. Garantimos velocidade sem perder qualidade."
                  data-en="We integrate the team into your process (Agile/Lean), tools, and standards. Fast ramp-up without losing quality."
@@ -1492,7 +1674,7 @@
             <div class="step-dot" aria-hidden="true"></div>
             <div class="step-card">
               <span class="step-meta" data-pt="PASSO QUATRO" data-en="STEP FOUR" data-es="PASO CUATRO" data-fr="?TAPE QUATRE" data-de="SCHRITT VIER" data-ru="??? ?????????" data-nl="STAP VIER" data-ja="????4" data-zh="???">PASSO QUATRO</span>
-              <h3 data-pt="Gestáo e Escala" data-en="Management & Scaling" data-es="Gestión y Escalado" data-fr="Gestion et mise — l'?chelle" data-de="Management & Skalierung" data-ru="?????????? — ???????????????" data-nl="Beheer en schaling" data-ja="?????????" data-zh="?????">Gestáo e Escala</h3>
+              <h3 data-pt="Gestão e Escala" data-en="Management & Scaling" data-es="Gestión y Escalado" data-fr="Gestion et mise — l'?chelle" data-de="Management & Skalierung" data-ru="?????????? — ???????????????" data-nl="Beheer en schaling" data-ja="?????????" data-zh="?????">Gestão e Escala</h3>
               <p data-pt="Acompanhamos entregas, performance e comunicação. À medida que o produto cresce, escalamos a equipa com segurança."
                  data-en="We track delivery, performance, and communication. As your product grows, we scale the team safely."
                  data-es="Acompanhamos entregas, rendimiento y comunicación. A medida que el producto crece, escalamos el equipo con seguridad."
@@ -1718,7 +1900,7 @@
       });
 
       function setActiveLanguage(lang) {
-        currentFlag.textContent = flagMap[lang] || 'EN';
+        currentFlag.textContent = flagMap[lang] || '🇬🇧';
         currentLang.textContent = codeMap[lang] || 'EN';
 
         languageOptions.forEach(option => {
@@ -1731,7 +1913,7 @@
 
       function applyLanguage(lang) {
         lang = normalizeLang(lang);
-        document.documentElement.lang = (lang === 'pt') — 'pt-PT' : lang;
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
         updateTextContent(lang);
         updateAriaLabels(lang);
       }
@@ -1827,6 +2009,8 @@
     })();
   </script>
   <script src="../apply-translations.js"></script>
+  <script src="../cms-client.js"></script>
+  <script src="../cms-inline-editor.js"></script>
 </body>
 </html>
 

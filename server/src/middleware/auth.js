@@ -49,8 +49,17 @@ function requireAdmin(request, response, next) {
   next();
 }
 
+function requireEditor(request, response, next) {
+  if (!request.user || (request.user.role !== "admin" && request.user.role !== "editor")) {
+    next(new HttpError(403, "Acesso reservado a administradores e editores."));
+    return;
+  }
+
+  next();
+}
+
 module.exports = {
   requireAdmin,
+  requireEditor,
   requireAuth
 };
-

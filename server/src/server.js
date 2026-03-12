@@ -1,10 +1,12 @@
 const app = require("./app");
 const config = require("./config");
 const { query, pool } = require("./db");
+const { ensureContentStorage } = require("./services/content.service");
 const { ensureBootstrapAdmin } = require("./services/users.service");
 
 async function start() {
   await query("SELECT 1");
+  await ensureContentStorage();
   await ensureBootstrapAdmin();
 
   app.listen(config.port, () => {

@@ -4,6 +4,7 @@ const express = require("express");
 const config = require("./config");
 const { errorHandler, notFound } = require("./middleware/error-handler");
 const authRoutes = require("./routes/auth.routes");
+const contentRoutes = require("./routes/content.routes");
 const opsRoutes = require("./routes/ops.routes");
 const publicRoutes = require("./routes/public.routes");
 const usersRoutes = require("./routes/users.routes");
@@ -38,6 +39,7 @@ app.get("/api/health", async (request, response) => {
 app.use("/api", publicRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api", contentRoutes);
 app.use("/api", opsRoutes);
 
 app.use(notFound);

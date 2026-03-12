@@ -1,8 +1,26 @@
 const express = require("express");
 const { createAuditLog } = require("../services/users.service");
+const { getSiteContentEntry } = require("../services/content.service");
 const { createCallBooking, createContactRequest } = require("../services/ops.service");
 
 const router = express.Router();
+
+router.get("/site-content/:pageKey([a-z0-9._-]+)", async (request, response, next) => {
+  try {
+    const contentEntry = await getSiteContentEntry(request.params.pageKey);
+    response.json({
+      contentEntry: contentEntry || {
+        pageKey: request.params.pageKey,
+        content: {},
+        updatedBy: null,
+        createdAt: null,
+        updatedAt: null
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.post("/contact-requests", async (request, response, next) => {
   try {
@@ -35,4 +53,3 @@ router.post("/call-bookings", async (request, response, next) => {
 });
 
 module.exports = router;
-

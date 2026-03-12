@@ -1847,10 +1847,60 @@
       max-width: 74ch;
     }
 
+    .careers-refresh .values-section,
+    .careers-refresh .benefits-section,
+    .careers-refresh .contact-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .careers-refresh .values-section {
+      background:
+        radial-gradient(circle at 10% 12%, rgba(6, 182, 212, 0.12), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #f3f7fd 100%);
+      border-top: 1px solid rgba(203, 213, 225, 0.75);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.55);
+    }
+
+    .careers-refresh .benefits-section {
+      background:
+        radial-gradient(circle at 88% 0%, rgba(79, 70, 229, 0.12), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .careers-refresh .contact-section {
+      background:
+        radial-gradient(circle at 18% 0%, rgba(14, 165, 233, 0.12), transparent 26%),
+        linear-gradient(180deg, #f4f8fc 0%, #eef4ff 100%);
+      border-top: 1px solid rgba(203, 213, 225, 0.7);
+    }
+
+    .careers-refresh .values-section::before,
+    .careers-refresh .benefits-section::before,
+    .careers-refresh .contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.45), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.55), transparent 26%);
+      opacity: 0.82;
+    }
+
+    .careers-refresh .section-header {
+      max-width: 860px;
+      margin: 0 auto 3.3rem;
+      text-align: center;
+    }
+
     .careers-refresh .values-grid,
     .careers-refresh .benefits-grid,
     .careers-refresh .contact-grid {
-      gap: 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+      align-items: stretch;
     }
 
     .careers-refresh .value-card,
@@ -1858,51 +1908,458 @@
     .careers-refresh .job-card,
     .careers-refresh .contact-card {
       border: 1px solid #dbe3ee;
-      border-radius: 22px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border-radius: 28px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, #f8fbff 100%);
     }
 
     .careers-refresh .value-card,
     .careers-refresh .benefit-item,
     .careers-refresh .contact-card {
-      padding: 2.1rem 1.7rem;
+      padding: 2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .careers-refresh .value-card::before,
+    .careers-refresh .benefit-item::before,
+    .careers-refresh .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, var(--card-accent, #4f46e5) 0%, rgba(6, 182, 212, 0.92) 100%);
+      opacity: 0.98;
+    }
+
+    .careers-refresh .value-card::after,
+    .careers-refresh .benefit-item::after,
+    .careers-refresh .contact-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -48px -48px auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--card-glow, rgba(79, 70, 229, 0.12));
+      pointer-events: none;
+      z-index: -1;
     }
 
     .careers-refresh .value-card:hover,
     .careers-refresh .benefit-item:hover,
     .careers-refresh .job-card:hover,
     .careers-refresh .contact-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       border-color: #c7d2fe;
-      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 24px 52px rgba(15, 23, 42, 0.15);
     }
 
-    .careers-refresh .value-card::before {
-      height: 3px;
-      background: linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%);
+    .careers-refresh .value-card:nth-child(1),
+    .careers-refresh .benefit-item:nth-child(1),
+    .careers-refresh .contact-card:nth-child(1) {
+      --card-accent: #0891b2;
+      --card-glow: rgba(6, 182, 212, 0.16);
+    }
+
+    .careers-refresh .value-card:nth-child(2),
+    .careers-refresh .benefit-item:nth-child(2),
+    .careers-refresh .contact-card:nth-child(2) {
+      --card-accent: #4f46e5;
+      --card-glow: rgba(99, 102, 241, 0.18);
+    }
+
+    .careers-refresh .value-card:nth-child(3),
+    .careers-refresh .benefit-item:nth-child(3),
+    .careers-refresh .contact-card:nth-child(3) {
+      --card-accent: #0f766e;
+      --card-glow: rgba(20, 184, 166, 0.16);
+    }
+
+    .careers-refresh .value-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      min-height: 100%;
+      text-align: left;
+    }
+
+    .careers-refresh .values-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .careers-refresh .values-section::before {
+      display: none;
+    }
+
+    .careers-refresh .values-grid {
+      gap: 1.5rem;
+    }
+
+    .careers-refresh .value-card {
+      padding: 1.85rem 1.75rem;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .careers-refresh .value-card::after {
+      display: none;
+    }
+
+    .careers-refresh .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 38px rgba(15, 23, 42, 0.1);
+    }
+
+    .careers-refresh .value-card-head,
+    .careers-refresh .contact-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .careers-refresh .value-card-head {
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .careers-refresh .value-index,
+    .careers-refresh .benefit-index,
+    .careers-refresh .contact-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 52px;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(255, 255, 255, 0.78);
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
     }
 
     .careers-refresh .value-icon {
-      width: 68px;
-      height: 68px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.24);
-      margin-bottom: 1.45rem;
+      order: 1;
+      width: 56px;
+      height: 56px;
+      margin: 0;
+      border-radius: 18px;
+      border: none;
+      background: var(--card-accent, #4f46e5);
+      color: white;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .careers-refresh .value-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .careers-refresh .value-index {
+      order: 2;
+      margin-left: auto;
+      min-width: 44px;
+      padding: 0.38rem 0.65rem;
+      background: #f8fafc;
+      border-color: #dbe3ee;
+      color: #64748b;
+      font-size: 0.72rem;
+    }
+
+    .careers-refresh .value-title {
+      font-size: clamp(1.35rem, 2vw, 1.65rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+      max-width: none;
+    }
+
+    .careers-refresh .value-description {
+      color: #475569;
+      line-height: 1.72;
+      max-width: none;
+      margin-top: auto;
+      padding-top: 0.95rem;
+      border-top: 1px solid #e8edf5;
+    }
+
+    .careers-refresh .benefit-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      min-height: 100%;
+    }
+
+    .careers-refresh .benefit-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.1rem;
     }
 
     .careers-refresh .benefit-icon-wrapper {
-      background: rgba(79, 70, 229, 0.1);
-      color: #4338ca;
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.2) 100%);
+      color: var(--card-accent, #4f46e5);
+      box-shadow: none;
+    }
+
+    .careers-refresh .benefit-icon-wrapper svg,
+    .careers-refresh .benefit-icon-wrapper span,
+    .careers-refresh .benefit-index {
+      display: none;
+    }
+
+    .careers-refresh .benefit-icon-wrapper::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      display: block;
+      background: currentColor;
+      -webkit-mask: var(--benefit-icon) center / contain no-repeat;
+      mask: var(--benefit-icon) center / contain no-repeat;
+    }
+
+    .careers-refresh .benefit-item:nth-child(1) .benefit-icon-wrapper {
+      --benefit-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 16l5-5 4 4 7-7'/%3E%3Cpath d='M14 8h6v6'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .benefit-item:nth-child(2) .benefit-icon-wrapper {
+      --benefit-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Cpath d='M12 8v4l3 2'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .benefit-item:nth-child(3) .benefit-icon-wrapper {
+      --benefit-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 7L4 12l4 5'/%3E%3Cpath d='M16 7l4 5-4 5'/%3E%3Cpath d='M10 19h4'/%3E%3Cpath d='M10 5h4'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .benefit-header::after {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 52px;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(255, 255, 255, 0.78);
+      color: #0f172a;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .careers-refresh .benefit-item:nth-child(1) .benefit-header::after {
+      content: "01";
+    }
+
+    .careers-refresh .benefit-item:nth-child(2) .benefit-header::after {
+      content: "02";
+    }
+
+    .careers-refresh .benefit-item:nth-child(3) .benefit-header::after {
+      content: "03";
+    }
+
+    .careers-refresh .benefit-title {
+      flex: 1;
+      font-size: 1.55rem;
+      line-height: 1.06;
+      letter-spacing: -0.05em;
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .careers-refresh .benefit-list {
+      gap: 0.85rem;
+      margin-top: auto;
     }
 
     .careers-refresh .benefit-list li {
       color: #334155;
+      position: relative;
+      display: block;
+      padding: 0.9rem 1rem 0.9rem 2.9rem;
+      background: rgba(248, 250, 252, 0.92);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      line-height: 1.55;
     }
 
     .careers-refresh .benefit-list li::before {
-      color: #4f46e5;
+      content: "\2713";
+      position: absolute;
+      left: 0.95rem;
+      top: 0.95rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--card-accent, #4f46e5);
+      display: grid;
+      place-items: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .careers-refresh .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 100%;
+      text-align: left;
+    }
+
+    .careers-refresh .contact-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: linear-gradient(135deg, var(--card-accent, #4f46e5) 0%, rgba(15, 23, 42, 0.45) 100%);
+      color: white;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.14);
+    }
+
+    .careers-refresh .contact-title {
+      font-size: 1.55rem;
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      margin: 0.15rem 0 0.2rem;
+      color: #0f172a;
+    }
+
+    .careers-refresh .contact-details {
+      color: #475569;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .careers-refresh .contact-details p {
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    .careers-refresh .contact-icon svg,
+    .careers-refresh .contact-icon span {
+      display: none;
+    }
+
+    .careers-refresh .contact-icon::before {
+      content: "";
+      width: 28px;
+      height: 28px;
+      display: block;
+      background: currentColor;
+      -webkit-mask: var(--contact-icon) center / contain no-repeat;
+      mask: var(--contact-icon) center / contain no-repeat;
+    }
+
+    .careers-refresh .contact-card:nth-child(1) .contact-icon {
+      --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6h16v12H4z'/%3E%3Cpath d='M4 7l8 6 8-6'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .contact-card:nth-child(2) .contact-icon {
+      --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6-4.35-6-10a6 6 0 1 1 12 0c0 5.65-6 10-6 10z'/%3E%3Ccircle cx='12' cy='11' r='2.5'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .contact-card:nth-child(3) .contact-icon {
+      --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12a7 7 0 0 1 12-4.9'/%3E%3Cpath d='M19 12a7 7 0 0 1-12 4.9'/%3E%3Cpath d='M17 4v4h-4'/%3E%3Cpath d='M7 20v-4h4'/%3E%3C/svg%3E");
+    }
+
+    .careers-refresh .contact-link,
+    .careers-refresh .contact-details a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 0.78rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 211, 252, 0.65);
+      background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+      color: #0f172a;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 24px rgba(14, 165, 233, 0.12);
+    }
+
+    .careers-refresh .contact-link:hover,
+    .careers-refresh .contact-details a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 70, 229, 0.42);
+      background: #ffffff;
+      box-shadow: 0 14px 28px rgba(79, 70, 229, 0.14);
+      text-decoration: none;
+    }
+
+    .careers-refresh .contact-card--featured .contact-details p:first-child {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    .careers-refresh .contact-card--featured {
+      background: linear-gradient(160deg, #0f172a 0%, #172554 55%, #1d4ed8 100%);
+      border-color: rgba(99, 102, 241, 0.28);
+      box-shadow: 0 28px 58px rgba(15, 23, 42, 0.24);
+    }
+
+    .careers-refresh .contact-card--featured::before {
+      background: linear-gradient(90deg, #67e8f9 0%, #ffffff 100%);
+    }
+
+    .careers-refresh .contact-card--featured::after {
+      background: rgba(191, 219, 254, 0.18);
+    }
+
+    .careers-refresh .contact-card--featured .contact-title,
+    .careers-refresh .contact-card--featured .contact-details,
+    .careers-refresh .contact-card--featured .contact-details p,
+    .careers-refresh .contact-card--featured .contact-details a,
+    .careers-refresh .contact-card--featured .contact-index {
+      color: #e2e8f0;
+    }
+
+    .careers-refresh .contact-card--featured .contact-index {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .careers-refresh .contact-card--featured .contact-icon {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(103, 232, 249, 0.22) 100%);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: none;
+    }
+
+    .careers-refresh .contact-card--featured .contact-link,
+    .careers-refresh .contact-card--featured .contact-details a {
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #0f172a;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
+    }
+
+    .careers-refresh .contact-card--featured .contact-link:hover,
+    .careers-refresh .contact-card--featured .contact-details a:hover {
+      background: #ffffff;
     }
 
     .careers-refresh .process-section {
@@ -2055,6 +2512,12 @@
         max-width: 860px;
       }
 
+      .careers-refresh .values-grid,
+      .careers-refresh .benefits-grid,
+      .careers-refresh .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .careers-refresh .process-steps {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -2081,6 +2544,12 @@
         grid-template-columns: 1fr;
       }
 
+      .careers-refresh .values-grid,
+      .careers-refresh .benefits-grid,
+      .careers-refresh .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
       .careers-refresh .values-section,
       .careers-refresh .benefits-section,
       .careers-refresh .process-section,
@@ -2097,6 +2566,13 @@
       .careers-refresh .job-card {
         grid-template-columns: 1fr;
         text-align: left;
+      }
+
+      .careers-refresh .value-title,
+      .careers-refresh .benefit-title,
+      .careers-refresh .contact-title,
+      .careers-refresh .value-description {
+        max-width: none;
       }
 
       .careers-refresh .cta-content {
@@ -2353,10 +2829,13 @@
       
       <div class="values-grid">
         <div class="value-card animate-on-scroll">
-          <div class="value-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+          <div class="value-card-head">
+            <span class="value-index" aria-hidden="true">01</span>
+            <div class="value-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"></path>
+              </svg>
+            </div>
           </div>
           <h3 class="value-title" data-pt="Inovação primeiro" data-en="Innovation First" data-es="Innovación primero" data-fr="Innovation d'abord" data-de="Innovation zuerst" data-ru="????????? ?????? ?????" data-nl="Innovatie eerst" data-ja="?????????" data-zh="????">Innovation First</h3>
           <p class="value-description" data-pt="Desafiamos o convencional e adotamos tecnologias de ponta para construir soluções que moldam o amanhã." data-en="We challenge conventions and embrace cutting-edge technologies to build solutions that shape tomorrow." data-es="Desafiamos lo establecido y adoptamos tecnologías de punta para construir soluciones que moldean el mañana." data-fr="Nous remettons en question les conventions et adoptons les technologies de pointe pour construire des solutions qui fa?onnent demain." data-de="Wir fordern Konventionen heraus und setzen auf hochmoderne Technologien, um L?sungen zu bauen, die die Zukunft gestalten." data-ru="?? ??????? ????? ??????????? ? ????????? ????????? ?????????? ??? ???????? ???????, ??????? ????????? ?????????? ????." data-nl="We dagen conventies uit en omarmen geavanceerde technologie?n om oplossingen te bouwen die de toekomst vormgeven." data-ja="??????????????????????????????????????????????" data-zh="??????,??????,????????????">
@@ -2365,12 +2844,18 @@
         </div>
         
         <div class="value-card animate-on-scroll" data-delay="100">
-          <div class="value-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
-            </svg>
+          <div class="value-card-head">
+            <span class="value-index" aria-hidden="true">02</span>
+            <div class="value-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 19a4 4 0 0 0-8 0"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M7 15a3 3 0 0 0-3 3"></path>
+                <circle cx="6" cy="9" r="2"></circle>
+                <path d="M20 18a3 3 0 0 0-3-3"></path>
+                <circle cx="18" cy="9" r="2"></circle>
+              </svg>
+            </div>
           </div>
           <h3 class="value-title" data-pt="Excelência colaborativa" data-en="Collaborative Excellence" data-es="Excelencia colaborativa" data-fr="Excellence collaborative" data-de="Kollaborative Exzellenz" data-ru="??????????????? ????????????" data-nl="Collaboratieve excellentie" data-ja="??????" data-zh="????">Collaborative Excellence</h3>
           <p class="value-description" data-pt="Grandes mentes a trabalhar juntas criam resultados extraordinários. Acreditamos no poder do trabalho em equipa." data-en="Great minds working together create extraordinary results. We believe in the power of teamwork." data-es="Grandes mentes trabajando juntas crean resultados extraordinarios. Creemos en el poder del trabajo en equipo." data-fr="De grands esprits travaillant ensemble cr?ent des r?sultats extraordinaires. Nous croyons au pouvoir du travail d'?quipe." data-de="Gro?e Geister, die zusammenarbeiten, schaffen au?ergew?hnliche Ergebnisse. Wir glauben an die Kraft der Teamarbeit." data-ru="??????? ???, ?????????? ??????, ??????? ??????????? ??????????. ?? ????? ? ???? ????????? ??????." data-nl="Grote geesten die samenwerken cre?ren buitengewone resultaten. We geloven in de kracht van teamwork." data-ja="?????????????????????????????????????????????????" data-zh="???????????????????????????">
@@ -2379,10 +2864,14 @@
         </div>
         
         <div class="value-card animate-on-scroll" data-delay="200">
-          <div class="value-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+          <div class="value-card-head">
+            <span class="value-index" aria-hidden="true">03</span>
+            <div class="value-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.4-2.8 7.8-7 9-4.2-1.2-7-4.6-7-9V6l7-3z"></path>
+                <path d="M9.5 12.5l1.8 1.8 3.6-3.6"></path>
+              </svg>
+            </div>
           </div>
           <h3 class="value-title" data-pt="Obcecados por qualidade" data-en="Quality Obsessed" data-es="Obsesión por la calidad" data-fr="Obs?d? par la qualit?" data-de="Qualit?tsbesessen" data-ru="??????????? ?????????" data-nl="Kwaliteitsgeobsedeerd" data-ja="???????" data-zh="????">Quality Obsessed</h3>
           <p class="value-description" data-pt="Entregamos qualidade excecional em cada linha de código, em cada pixel de design e em cada interação com o cliente." data-en="We deliver exceptional quality in every line of code, every design pixel, and every client interaction." data-es="Entregamos calidad excepcional en cada línea de código, cada píxel de diseño y cada interacción con el cliente." data-fr="Nous fournissons une qualit? exceptionnelle dans chaque ligne de code, chaque pixel de conception et chaque interaction client." data-de="Wir liefern au?ergew?hnliche Qualit?t in jeder Codezeile, jedem Design-Pixel und jeder Kundeninteraktion." data-ru="?? ???????????? ?????????????? ???????? ? ?????? ?????? ????, ?????? ??????? ??????? ? ?????? ?????????????? ? ????????." data-nl="We leveren uitzonderlijke kwaliteit in elke regel code, elke ontwerp pixel en elke klantinteractie." data-ja="?????????????????????????????????????????????????" data-zh="??????????????????????????????????">
@@ -2408,8 +2897,13 @@
         <div class="benefit-item animate-on-scroll">
           <div class="benefit-header">
             <div class="benefit-icon-wrapper">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 16l5-5 4 4 7-7"></path>
+                <path d="M14 8h6v6"></path>
+              </svg>
               <span>•</span>
             </div>
+            <span class="benefit-index" aria-hidden="true">01</span>
             <h3 class="benefit-title" data-pt="Crescimento de carreira" data-en="Career Growth" data-es="Crecimiento profesional" data-fr="Croissance de carri?re" data-de="Karrierewachstum" data-ru="????????? ????" data-nl="Carri?regroei" data-ja="??????" data-zh="????">Career Growth</h3>
           </div>
           <ul class="benefit-list">
@@ -2530,7 +3024,7 @@
               <span class="job-tag remote" data-pt="100% Remoto" data-en="100% Remote" data-es="100% Remoto" data-fr="100% ? distance" data-de="100% Remote" data-ru="100% ????????" data-nl="100% Remote" data-ja="100%????" data-zh="100%??">100% Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.comêsubject=Application%20for%20Senior%20Full-Stack%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Senior%20Full-Stack%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
         </div>
         
         <div class="job-card animate-on-scroll" data-delay="100" data-category="design">
@@ -2547,7 +3041,7 @@
               <span class="job-tag design" data-pt="Prototipagem" data-en="Prototyping" data-es="Prototipado" data-fr="Prototypage" data-de="Prototyping" data-ru="????????????????" data-nl="Prototyping" data-ja="????????" data-zh="????">Prototyping</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.comêsubject=Application%20for%20Product%20Designer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20Product%20Designer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
         </div>
         
         <div class="job-card animate-on-scroll" data-delay="200" data-category="tech remote">
@@ -2565,7 +3059,7 @@
               <span class="job-tag remote" data-pt="Totalmente Remoto" data-en="Fully Remote" data-es="Completamente Remoto" data-fr="Enti?rement ? distance" data-de="Vollst?ndig Remote" data-ru="????????? ????????" data-nl="Volledig Remote" data-ja="??????" data-zh="????">Fully Remote</span>
             </div>
           </div>
-          <a class="btn btn--primary" href="mailto:careers@cobrait.comêsubject=Application%20for%20AI%2FML%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
+          <a class="btn btn--primary" href="mailto:careers@cobrait.com?subject=Application%20for%20AI%2FML%20Engineer" data-pt="Candidatar-me" data-en="Apply Now" data-es="Postular" data-fr="Postuler" data-de="Jetzt bewerben" data-ru="?????? ??????" data-nl="Nu solliciteren" data-ja="?????" data-zh="????">Apply Now</a>
         </div>
       </div>
     </div>
@@ -2579,7 +3073,7 @@
         If you don't see the perfect role but believe you can contribute to our mission, we'd love to hear from you. Great talent always finds a place here.
       </p>
       <div class="cta-actions">
-        <a class="btn btn--primary animate-on-scroll" href="mailto:careers@cobrait.comêsubject=Spontaneous%20Application" data-delay="200" data-pt="Candidatura espontánea" data-en="Submit Spontaneous Application" data-es="Candidatura espontánea" data-fr="Candidature spontan?e" data-de="Initiativbewerbung" data-ru="?????????? ??????" data-nl="Open sollicitatie" data-ja="?????" data-zh="????">Submit Spontaneous Application</a>
+        <a class="btn btn--primary animate-on-scroll" href="mailto:careers@cobrait.com?subject=Spontaneous%20Application" data-delay="200" data-pt="Candidatura espontánea" data-en="Submit Spontaneous Application" data-es="Candidatura espontánea" data-fr="Candidature spontan?e" data-de="Initiativbewerbung" data-ru="?????????? ??????" data-nl="Open sollicitatie" data-ja="?????" data-zh="????">Submit Spontaneous Application</a>
         <a class="btn btn--outline animate-on-scroll" href="book-a-call.html" data-delay="300" data-pt="Agendar chamada de descoberta" data-en="Schedule Discovery Call" data-es="Agendar llamada de descubrimiento" data-fr="Planifier un appel de d?couverte" data-de="Discovery-Anruf planen" data-ru="????????????? ?????? ??? ??????????" data-nl="Ontdekkingsgesprek plannen" data-ja="?????????????" data-zh="??????">Schedule Discovery Call</a>
       </div>
     </div>
@@ -2599,6 +3093,10 @@
       <div class="contact-grid">
         <div class="contact-card animate-on-scroll">
           <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16v12H4z"></path>
+              <path d="M4 7l8 6 8-6"></path>
+            </svg>
             <span>•</span>
           </div>
           <h3 class="contact-title" data-pt="Envia email" data-en="Email Us" data-es="Escríbenos" data-fr="Envoyez-nous un email" data-de="Schreiben Sie uns" data-ru="???????? ???" data-nl="E-mail ons" data-ja="?????" data-zh="??????">Email Us</h3>
@@ -2614,13 +3112,19 @@
           </div>
           <h3 class="contact-title" data-pt="Visita o nosso HQ" data-en="Visit Our HQ" data-es="Visita nuestra sede" data-fr="Visitez notre si?ge" data-de="Besuchen Sie unsere Zentrale" data-ru="???????? ??? ???????? ????" data-nl="Bezoek ons hoofdkantoor" data-ja="HQ???" data-zh="???????">Visit Our HQ</h3>
           <div class="contact-details">
-            <p>R. Eng Ferreira Dias 161</p>
+            <p><a href="https://maps.google.com/?q=R.%20Eng%20Ferreira%20Dias%20161%2C%204100-247%20Porto%2C%20Portugal" target="_blank" rel="noreferrer">R. Eng Ferreira Dias 161</a></p>
             <p>4100-247 Porto, Portugal</p>
           </div>
         </div>
         
-        <div class="contact-card animate-on-scroll" data-delay="200">
+        <div class="contact-card contact-card--featured animate-on-scroll" data-delay="200">
           <div class="contact-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12a7 7 0 0 1 12-4.9"></path>
+              <path d="M19 12a7 7 0 0 1-12 4.9"></path>
+              <path d="M17 4v4h-4"></path>
+              <path d="M7 20v-4h4"></path>
+            </svg>
             <span>•</span>
           </div>
           <h3 class="contact-title" data-pt="Fala connosco" data-en="Chat With Us" data-es="Habla con nosotros" data-fr="Discutez avec nous" data-de="Chatten Sie mit uns" data-ru="?????????? ? ????" data-nl="Chat met ons" data-ja="??????" data-zh="?????">Chat With Us</h3>
@@ -3045,7 +3549,7 @@
           chatLine2: "Fala sobre os teus objetivos de carreira",
         },
         en: {
-          heroBadge: "? We're Hiring Talented People",
+          heroBadge: "We're Hiring Top Talent",
           heroTitle: "Shape the Future<br>of Technology",
           heroSubtitle: "Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment.",
           viewPositions: "View Open Positions",
@@ -3367,6 +3871,8 @@
     });
   </script>
   <script src="./apply-translations.js"></script>
+  <script src="./cms-client.js"></script>
+  <script src="./cms-inline-editor.js"></script>
 </body>
 </html>
 
