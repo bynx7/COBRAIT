@@ -461,8 +461,15 @@
     function defaultApiBase() {
       const saved = localStorage.getItem("cobrait_admin_api_base");
       if (saved) return sanitizeApiBase(saved);
-      const localStatic = ["localhost", "127.0.0.1"].includes(window.location.hostname) && ["5500", "8080", "3000"].includes(window.location.port);
-      if (window.location.protocol === "file:" || localStatic) return DEFAULT_LOCAL_API;
+      const staticPorts = new Set(["3000", "5500", "8080", "8092"]);
+      const isStaticHost = staticPorts.has(window.location.port);
+      if (window.location.protocol === "file:") return DEFAULT_LOCAL_API;
+      if (isStaticHost) {
+        const apiHost = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+          ? "localhost"
+          : window.location.hostname;
+        return sanitizeApiBase("http://" + apiHost + ":4000/api");
+      }
       return sanitizeApiBase(window.location.origin + "/api");
     }
     function formatDate(value) {

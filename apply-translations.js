@@ -218,6 +218,93 @@ if (!window.__cobraitTranslationBooted) {
       setTimeout(() => syncLanguageDropdownUI(preferred), 0);
     }
 
+    function ensureMobileHeaderBehavior() {
+      const navToggle = document.querySelector(".nav-toggle");
+      const siteNav = document.querySelector(".site-nav");
+      const navLinks = document.querySelectorAll(".site-nav a");
+      const languageDropdown = document.querySelector(".language-dropdown");
+      const languageButton = languageDropdown ? languageDropdown.querySelector(".language-dropdown-btn") : null;
+
+      function isMobileViewport() {
+        return window.innerWidth <= 768;
+      }
+
+      function syncNavState() {
+        const navOpen = !!(navToggle && navToggle.checked && isMobileViewport());
+        document.body.classList.toggle("cobrait-nav-open", navOpen);
+        if (!navOpen && siteNav) {
+          siteNav.scrollTop = 0;
+        }
+      }
+
+      function closeLanguageDropdown() {
+        if (languageDropdown) {
+          languageDropdown.classList.remove("is-open");
+        }
+        if (languageButton) {
+          languageButton.setAttribute("aria-expanded", "false");
+        }
+      }
+
+      function toggleLanguageDropdown(forceOpen) {
+        if (!languageDropdown || !languageButton || !isMobileViewport()) return;
+        const nextState = typeof forceOpen === "boolean" ? forceOpen : !languageDropdown.classList.contains("is-open");
+        languageDropdown.classList.toggle("is-open", nextState);
+        languageButton.setAttribute("aria-expanded", nextState ? "true" : "false");
+      }
+
+      if (navToggle && !navToggle.dataset.cobraitBound) {
+        navToggle.dataset.cobraitBound = "true";
+        navToggle.addEventListener("change", () => {
+          if (navToggle.checked) closeLanguageDropdown();
+          syncNavState();
+        });
+      }
+
+      navLinks.forEach((link) => {
+        if (link.dataset.cobraitBound) return;
+        link.dataset.cobraitBound = "true";
+        link.addEventListener("click", () => {
+          if (navToggle && isMobileViewport()) {
+            navToggle.checked = false;
+            syncNavState();
+          }
+        });
+      });
+
+      if (languageButton && !languageButton.dataset.cobraitBound) {
+        languageButton.dataset.cobraitBound = "true";
+        languageButton.setAttribute("aria-expanded", "false");
+        languageButton.addEventListener("click", (event) => {
+          if (!isMobileViewport()) return;
+          event.preventDefault();
+          event.stopPropagation();
+          if (navToggle) navToggle.checked = false;
+          syncNavState();
+          toggleLanguageDropdown();
+        });
+      }
+
+      if (!document.body.dataset.cobraitHeaderBound) {
+        document.body.dataset.cobraitHeaderBound = "true";
+        document.addEventListener("click", (event) => {
+          if (languageDropdown && !languageDropdown.contains(event.target)) {
+            closeLanguageDropdown();
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (!isMobileViewport()) {
+            if (navToggle) navToggle.checked = false;
+            closeLanguageDropdown();
+          }
+          syncNavState();
+        });
+      }
+
+      syncNavState();
+    }
+
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", boot);
     } else {
@@ -257,6 +344,12 @@ if (!window.__cobraitTranslationBooted) {
     window.addEventListener("cobrait-set-language", (ev) => {
       syncLanguageDropdownUI(ev && ev.detail ? ev.detail : null);
     });
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", ensureMobileHeaderBehavior);
+    } else {
+      ensureMobileHeaderBehavior();
+    }
   })();
 }
 
