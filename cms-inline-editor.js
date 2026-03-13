@@ -185,13 +185,13 @@
     ui.launcher = document.createElement("button");
     ui.launcher.type = "button";
     ui.launcher.className = "cms-inline-launcher";
-    ui.launcher.textContent = "Editar pagina";
+    ui.launcher.textContent = "Editar página";
 
     ui.panel = document.createElement("aside");
     ui.panel.className = "cms-inline-panel";
     ui.panel.innerHTML = [
-      "<h3>Modo edicao</h3>",
-      '<p id="cmsInlineHelp">Ativa a edicao e clica num texto da pagina para o alterar.</p>',
+      "<h3>Modo edição</h3>",
+      '<p id="cmsInlineHelp">Ativa a edição e clica num texto da página para o alterar.</p>',
       '<label id="cmsInlineFieldLabel" for="cmsInlineTextarea">Campo</label>',
       '<textarea id="cmsInlineTextarea"></textarea>',
       '<div class="cms-inline-actions">',
@@ -214,11 +214,11 @@
     ui.launcher.addEventListener("click", function () {
       state.enabled = !state.enabled;
       document.body.classList.toggle("cms-inline-enabled", state.enabled);
-      ui.launcher.textContent = state.enabled ? "Sair da edicao" : "Editar pagina";
+      ui.launcher.textContent = state.enabled ? "Sair da edição" : "Editar página";
 
       if (state.enabled) {
         refreshEditableNodes();
-        ui.help.textContent = "Clica num texto assinalado na pagina para o editar.";
+        ui.help.textContent = "Clica num texto assinalado na página para o editar.";
       } else {
         clearEditableNodes();
         closePanel();
@@ -268,7 +268,7 @@
     state.activeElement = element;
     ui.fieldLabel.textContent = fieldLabelForElement(element);
     ui.textarea.value = fieldValue(element, key);
-    ui.help.textContent = "Estas a editar o texto selecionado na pagina.";
+    ui.help.textContent = "Estás a editar o texto selecionado na página.";
     ui.status.textContent = "";
     ui.panel.classList.add("is-open");
     ui.textarea.focus();
@@ -354,14 +354,14 @@
       updateFieldOnPage(state.activeFieldKey, ui.textarea.value);
       cms.applyContent(state.content);
       refreshEditableNodes();
-      ui.status.textContent = "Alteracao guardada.";
+      ui.status.textContent = "Alteração guardada.";
     } catch (error) {
       if (error && error.status === 401) {
-        ui.status.textContent = "Sessao expirada. Volta ao admin e inicia sessao de novo.";
+        ui.status.textContent = "Sessão expirada. Volta ao admin e inicia sessão de novo.";
       } else if (error && error.status === 403) {
-        ui.status.textContent = "A tua conta nao tem permissao para editar.";
+        ui.status.textContent = "A tua conta não tem permissão para editar.";
       } else {
-        ui.status.textContent = error.message || "Nao foi possivel guardar.";
+        ui.status.textContent = error.message || "Não foi possível guardar.";
       }
     } finally {
       ui.save.disabled = false;
