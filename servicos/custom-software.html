@@ -642,176 +642,614 @@
   <style>
     /* ======= CSS DA PÁGINA ======= */
     .csd-hero{
-      padding: 84px 0 48px;
-      background: #fff;
+      position:relative;
+      overflow:hidden;
+      padding: 88px 0 64px;
+      background:
+        radial-gradient(1200px 540px at 92% 10%, rgba(79,70,229,.16), transparent 52%),
+        radial-gradient(920px 480px at 10% 0%, rgba(14,165,233,.12), transparent 48%),
+        linear-gradient(180deg, #f8fbff 0%, #ffffff 60%, #f8fafc 100%);
+    }
+
+    .csd-hero::before{
+      content:"";
+      position:absolute;
+      inset:auto auto 36px -96px;
+      width:280px;
+      height:280px;
+      border-radius:50%;
+      background:radial-gradient(circle at center, rgba(79,70,229,.12), transparent 70%);
+      pointer-events:none;
+    }
+
+    .csd-hero::after{
+      content:"";
+      position:absolute;
+      top:54px;
+      right:10%;
+      width:220px;
+      height:220px;
+      border:1px solid rgba(148,163,184,.22);
+      border-radius:28px;
+      transform:rotate(16deg);
+      opacity:.6;
+      pointer-events:none;
     }
 
     .csd-hero-grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 36px;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 48px;
       align-items: center;
+      position:relative;
+      z-index:1;
+    }
+
+    .csd-hero-copy{
+      position:relative;
+      z-index:1;
+    }
+
+    .csd-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin:0 0 18px;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.8);
+      border:1px solid rgba(148,163,184,.2);
+      box-shadow:0 12px 28px rgba(15,23,42,.08);
+      font-family:'Inter',sans-serif;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#334155;
+    }
+
+    .csd-kicker::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
+      box-shadow:0 0 0 5px rgba(79,70,229,.12);
     }
 
     .csd-hero h1{
       font-family:'Poppins',sans-serif;
-      font-weight: 800;
-      font-size: 3.2rem;
-      line-height: 1.05;
+      font-weight:800;
+      font-size:clamp(2.9rem, 5vw, 4.5rem);
+      line-height:1.02;
+      letter-spacing:-.04em;
       color:#0f172a;
-      margin: 0 0 14px;
+      margin:0 0 18px;
+      max-width:11ch;
     }
 
     .csd-hero p{
       font-family:'Inter',sans-serif;
       color:#64748b;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      margin: 0 0 18px;
-      max-width: 60ch;
+      font-size:1.08rem;
+      line-height:1.75;
+      margin:0 0 24px;
+      max-width:58ch;
     }
 
-    .csd-hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px; }
+    .csd-hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
 
     .csd-side{
-      border-radius: 18px;
-      border: 1px solid #e2e8f0;
-      background: #ffffff;
-      box-shadow: 0 20px 50px rgba(2,6,23,.08);
-      padding: 22px;
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      border:1px solid rgba(148,163,184,.18);
+      background:linear-gradient(160deg, #0f172a 0%, #111c33 48%, #0b1220 100%);
+      box-shadow:0 32px 80px rgba(2,6,23,.28);
+      padding:28px;
+      min-height:420px;
+    }
+
+    .csd-side::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(520px 220px at 18% 10%, rgba(59,130,246,.18), transparent 60%),
+        radial-gradient(360px 220px at 88% 88%, rgba(79,70,229,.22), transparent 62%);
+      pointer-events:none;
+    }
+
+    .csd-side > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .csd-side-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(15,23,42,.42);
+      border:1px solid rgba(148,163,184,.18);
+      color:#c7d2fe;
+      font-family:'Inter',sans-serif;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    .csd-side-kicker::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
+      box-shadow:0 0 0 5px rgba(56,189,248,.12);
     }
 
     .csd-side h3{
       font-family:'Poppins',sans-serif;
-      font-weight: 800;
-      margin: 0 0 10px;
-      color:#0f172a;
-      font-size: 1.5rem;
+      font-weight:800;
+      margin:0 0 10px;
+      color:#fff;
+      font-size:1.72rem;
+      max-width:15ch;
     }
 
     .csd-side p{
-      margin:0;
-      color:#64748b;
+      margin:0 0 22px;
+      color:rgba(226,232,240,.78);
       font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      font-size: 14px;
+      line-height:1.7;
+      font-size:14px;
+      max-width:44ch;
+    }
+
+    .csd-side-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .csd-side-board{
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(148,163,184,.16);
+      background:rgba(255,255,255,.06);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+      display:grid;
+      gap:12px;
+    }
+
+    .csd-side-board-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .csd-side-board-title{
+      color:#f8fafc;
+      font-family:'Poppins',sans-serif;
+      font-weight:700;
+      font-size:1rem;
+    }
+
+    .csd-side-board-note{
+      color:#94a3b8;
+      font-family:'Inter',sans-serif;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .csd-flow{
+      display:grid;
+      gap:12px;
+    }
+
+    .csd-flow-step{
+      position:relative;
+      padding:14px 16px 14px 48px;
+      border-radius:16px;
+      background:rgba(15,23,42,.72);
+      border:1px solid rgba(148,163,184,.16);
+    }
+
+    .csd-flow-step::before{
+      content:attr(data-step);
+      position:absolute;
+      left:16px;
+      top:14px;
+      color:#38bdf8;
+      font-family:'Inter',sans-serif;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.14em;
+    }
+
+    .csd-flow-step strong{
+      display:block;
+      color:#fff;
+      font-family:'Inter',sans-serif;
+      font-size:14px;
+      margin-bottom:4px;
+    }
+
+    .csd-flow-step span{
+      display:block;
+      color:#94a3b8;
+      font-family:'Inter',sans-serif;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .csd-side-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .csd-mini-card{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(248,250,252,.94);
+      border:1px solid rgba(255,255,255,.75);
+      box-shadow:0 18px 30px rgba(2,6,23,.14);
+    }
+
+    .csd-mini-card--dark{
+      background:rgba(15,23,42,.82);
+      border-color:rgba(148,163,184,.16);
+    }
+
+    .csd-mini-eyebrow{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#64748b;
+      margin-bottom:8px;
+    }
+
+    .csd-mini-card--dark .csd-mini-eyebrow{
+      color:#93c5fd;
+    }
+
+    .csd-mini-card strong{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-size:15px;
+      color:#0f172a;
+      margin-bottom:4px;
+    }
+
+    .csd-mini-card--dark strong{
+      color:#fff;
+    }
+
+    .csd-mini-card span{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-size:13px;
+      line-height:1.6;
+      color:#475569;
+    }
+
+    .csd-mini-card--dark span{
+      color:#cbd5e1;
+    }
+
+    .csd-side-metrics{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .csd-pill{
+      display:inline-flex;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(148,163,184,.16);
+      color:#e2e8f0;
+      font-family:'Inter',sans-serif;
+      font-size:12px;
+      font-weight:700;
     }
 
     .csd-benefits{
+      position:relative;
+      overflow:hidden;
       background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-      padding: 84px 0;
+      padding: 96px 0;
       color:#e2e8f0;
+    }
+
+    .csd-benefits::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(900px 420px at 8% 0%, rgba(59,130,246,.12), transparent 55%),
+        radial-gradient(780px 380px at 100% 100%, rgba(79,70,229,.16), transparent 58%);
+      pointer-events:none;
+    }
+
+    .csd-benefits .container{
+      position:relative;
+      z-index:1;
     }
 
     .csd-benefits h2{
       font-family:'Poppins',sans-serif;
       font-weight:800;
-      font-size: 2.2rem;
+      font-size:2.35rem;
       margin:0 0 10px;
       color:#fff;
+      max-width:14ch;
     }
 
     .csd-benefits .sub{
-      color: rgba(226,232,240,.78);
+      color:rgba(226,232,240,.78);
       font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      margin: 0 0 26px;
-      max-width: 70ch;
+      line-height:1.8;
+      margin:0 0 28px;
+      max-width:70ch;
     }
 
     .csd-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 24px;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap:18px;
+      margin-top:28px;
     }
 
     .csd-card{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(148,163,184,.18);
-      border-radius: 16px;
-      padding: 22px;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      grid-column:span 4;
+      position:relative;
+      overflow:hidden;
+      min-height:100%;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:20px;
+      padding:24px;
+      transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .csd-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:2px;
+      background:linear-gradient(90deg, rgba(56,189,248,.9), rgba(129,140,248,.9));
+      opacity:.85;
+    }
+
+    .csd-card::after{
+      content:"";
+      position:absolute;
+      top:-40px;
+      right:-24px;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.14), transparent 62%);
+      pointer-events:none;
     }
 
     .csd-card:hover{
-      transform: translateY(-6px);
-      border-color: rgba(199,210,254,.45);
-      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+      transform:translateY(-8px);
+      border-color:rgba(199,210,254,.45);
+      box-shadow:0 24px 50px rgba(0,0,0,.35);
     }
 
+    .csd-card:nth-child(1){ grid-column:span 5; }
+    .csd-card:nth-child(2){ grid-column:span 3; }
+    .csd-card:nth-child(3){ grid-column:span 4; }
+
     .csd-icon{
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+      min-width:48px;
+      width:max-content;
+      height:48px;
+      padding:0 14px;
+      border-radius:14px;
       display:flex;
       align-items:center;
       justify-content:center;
-      background: rgba(255,0,122,.10);
-      border: 1px solid rgba(255,0,122,.18);
-      margin-bottom: 14px;
-      font-weight: 800;
+      background:linear-gradient(135deg, rgba(56,189,248,.18), rgba(99,102,241,.2));
+      border:1px solid rgba(125,211,252,.24);
+      box-shadow:0 12px 24px rgba(15,23,42,.12);
+      margin-bottom:16px;
+      font-family:'Inter',sans-serif;
+      font-weight:800;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
       color:#fff;
     }
 
+    .csd-card:nth-child(2) .csd-icon{
+      background:linear-gradient(135deg, rgba(34,197,94,.18), rgba(14,165,233,.18));
+      border-color:rgba(134,239,172,.24);
+    }
+
+    .csd-card:nth-child(3) .csd-icon{
+      background:linear-gradient(135deg, rgba(244,114,182,.18), rgba(99,102,241,.18));
+      border-color:rgba(244,114,182,.24);
+    }
+
+    .csd-card:nth-child(4) .csd-icon{
+      background:linear-gradient(135deg, rgba(14,165,233,.18), rgba(45,212,191,.18));
+      border-color:rgba(103,232,249,.24);
+    }
+
+    .csd-card:nth-child(5) .csd-icon{
+      background:linear-gradient(135deg, rgba(250,204,21,.18), rgba(249,115,22,.18));
+      border-color:rgba(253,224,71,.24);
+    }
+
+    .csd-card:nth-child(6) .csd-icon{
+      background:linear-gradient(135deg, rgba(129,140,248,.18), rgba(59,130,246,.18));
+      border-color:rgba(165,180,252,.24);
+    }
+
     .csd-card h3{
-      margin: 0 0 8px;
+      margin:0 0 10px;
       font-family:'Poppins',sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
+      font-weight:700;
+      font-size:1.2rem;
       color:#fff;
+      max-width:14ch;
     }
 
     .csd-card p{
       margin:0;
       font-family:'Inter',sans-serif;
-      color: rgba(226,232,240,.78);
-      line-height: 1.7;
-      font-size: 14px;
+      color:rgba(226,232,240,.78);
+      line-height:1.7;
+      font-size:14px;
     }
 
     .csd-process{
-      padding: 84px 0;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      position:relative;
+      overflow:hidden;
+      padding:96px 0;
+      background:linear-gradient(180deg, #f8fafc 0%, #ffffff 44%, #eef4ff 100%);
+    }
+
+    .csd-process::before{
+      content:"";
+      position:absolute;
+      top:56px;
+      right:8%;
+      width:260px;
+      height:260px;
+      border-radius:32px;
+      border:1px solid rgba(148,163,184,.18);
+      transform:rotate(12deg);
+      opacity:.6;
+      pointer-events:none;
     }
 
     .csd-process h2{
       font-family:'Poppins',sans-serif;
       font-weight:800;
-      font-size: 2.4rem;
+      font-size:2.5rem;
       margin:0 0 10px;
       color:#0f172a;
+      max-width:10ch;
     }
 
     .csd-process .sub{
       font-family:'Inter',sans-serif;
       color:#64748b;
-      line-height:1.7;
-      margin:0 0 26px;
-      max-width: 75ch;
+      line-height:1.8;
+      margin:0 0 30px;
+      max-width:75ch;
     }
 
     .csd-steps{
+      position:relative;
       display:grid;
-      gap: 16px;
-      max-width: 1020px;
+      gap:22px;
+      max-width:1080px;
+      padding-left:44px;
+    }
+
+    .csd-steps::before{
+      content:"";
+      position:absolute;
+      left:15px;
+      top:18px;
+      bottom:18px;
+      width:2px;
+      background:linear-gradient(180deg, rgba(79,70,229,.16), rgba(14,165,233,.6), rgba(79,70,229,.12));
+    }
+
+    .csd-steps-progress{
+      position:absolute;
+      left:15px;
+      top:18px;
+      width:3px;
+      height:0;
+      border-radius:999px;
+      background:linear-gradient(180deg, #38bdf8 0%, #4f46e5 100%);
+      box-shadow:0 0 18px rgba(79,70,229,.2);
+      pointer-events:none;
+      z-index:0;
     }
 
     .csd-step{
-      background:#fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 12px 32px rgba(2,6,23,.06);
+      position:relative;
+      overflow:hidden;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(226,232,240,.95);
+      border-radius:24px;
+      padding:26px 26px 24px 28px;
+      box-shadow:0 20px 48px rgba(2,6,23,.08);
+      backdrop-filter:blur(8px);
+      z-index:1;
+      transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+
+    .csd-step::before{
+      content:"";
+      position:absolute;
+      left:-35px;
+      top:32px;
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background:linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
+      box-shadow:0 0 0 7px rgba(79,70,229,.12);
+    }
+
+    .csd-step::after{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:4px;
+      border-radius:24px 24px 0 0;
+      background:linear-gradient(180deg, #38bdf8 0%, #4f46e5 100%);
+    }
+
+    .csd-step:nth-child(2n){
+      margin-left:0;
+    }
+
+    .csd-step.is-active{
+      border-color:rgba(99,102,241,.3);
+      box-shadow:0 24px 52px rgba(37,99,235,.1);
+      transform:translateY(-2px);
+    }
+
+    .csd-step.is-active::before{
+      box-shadow:0 0 0 7px rgba(79,70,229,.18), 0 0 20px rgba(59,130,246,.22);
     }
 
     .csd-step-top{
       display:flex;
-      justify-content: space-between;
+      justify-content:space-between;
       align-items:center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
     }
 
     .csd-step-top h3{
@@ -819,55 +1257,81 @@
       font-family:'Poppins',sans-serif;
       font-weight:800;
       color:#0f172a;
-      font-size: 1.25rem;
+      font-size:1.28rem;
     }
 
     .csd-step-num{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:52px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#4338ca;
       font-family:'Poppins',sans-serif;
       font-weight:800;
-      color:#94a3b8;
+      letter-spacing:.08em;
     }
 
     .csd-step p{
-      margin:0 0 12px;
+      margin:0 0 14px;
       color:#64748b;
       font-family:'Inter',sans-serif;
-      line-height: 1.7;
-      font-size: 14px;
+      line-height:1.75;
+      font-size:14px;
     }
 
     .csd-cols{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 10px;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:16px;
+    }
+
+    .csd-cols > div{
+      padding:14px 16px;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
     }
 
     .csd-cols b{
       display:block;
       font-family:'Inter',sans-serif;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:12px;
       color:#0f172a;
-      margin-bottom: 8px;
+      margin-bottom:8px;
     }
 
-    .csd-list{ margin:0; padding-left: 18px; color:#475569; font-family:'Inter',sans-serif; line-height:1.7; font-size: 14px; }
-    .csd-list li{ margin: 6px 0; }
+    .csd-list{
+      margin:0;
+      padding-left:18px;
+      color:#475569;
+      font-family:'Inter',sans-serif;
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .csd-list li{
+      margin:6px 0;
+    }
 
     .csd-cta{
-      margin-top: 26px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #0b1220 0%, #111a2e 100%);
-      border: 1px solid rgba(148,163,184,.18);
-      padding: 22px;
+      margin-top:32px;
+      border-radius:22px;
+      background:linear-gradient(135deg, #0b1220 0%, #10182c 60%, #0f172a 100%);
+      border:1px solid rgba(148,163,184,.18);
+      box-shadow:0 22px 60px rgba(2,6,23,.18);
+      padding:26px;
       display:flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
     }
 
     .csd-cta h3{
@@ -875,10 +1339,15 @@
       font-family:'Poppins',sans-serif;
       font-weight:800;
       color:#fff;
-      font-size: 1.35rem;
+      font-size:1.4rem;
     }
 
-    .csd-cta p{ margin:0; color: rgba(226,232,240,.78); font-family:'Inter',sans-serif; line-height: 1.7; }
+    .csd-cta p{
+      margin:0;
+      color:rgba(226,232,240,.78);
+      font-family:'Inter',sans-serif;
+      line-height:1.7;
+    }
 
     /* BOTÕES EXATAMENTE IGUAIS AO INDEX */
     .btn {
@@ -920,13 +1389,81 @@
     }
 
     @media (max-width: 1024px){
-      .csd-hero-grid{ grid-template-columns: 1fr; }
-      .csd-grid{ grid-template-columns: 1fr 1fr; }
+      .csd-hero-grid{
+        grid-template-columns:1fr;
+      }
+
+      .csd-side-grid{
+        grid-template-columns:1fr;
+      }
+
+      .csd-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .csd-card,
+      .csd-card:nth-child(1),
+      .csd-card:nth-child(2),
+      .csd-card:nth-child(3){
+        grid-column:auto;
+      }
     }
+
     @media (max-width: 768px){
-      .csd-hero h1{ font-size: 2.2rem; }
-      .csd-grid{ grid-template-columns: 1fr; }
-      .csd-cols{ grid-template-columns: 1fr; }
+      .csd-hero{
+        padding:64px 0 42px;
+      }
+
+      .csd-kicker{
+        margin-bottom:14px;
+      }
+
+      .csd-hero h1{
+        font-size:2.45rem;
+        max-width:none;
+      }
+
+      .csd-side{
+        min-height:unset;
+        padding:22px;
+      }
+
+      .csd-benefits,
+      .csd-process{
+        padding:72px 0;
+      }
+
+      .csd-grid{
+        grid-template-columns:1fr;
+      }
+
+      .csd-steps{
+        padding-left:30px;
+      }
+
+      .csd-steps::before{
+        left:10px;
+      }
+
+      .csd-steps-progress{
+        left:10px;
+      }
+
+      .csd-step{
+        padding:22px 20px 20px 22px;
+      }
+
+      .csd-step::before{
+        left:-24px;
+      }
+
+      .csd-step:nth-child(2n){
+        margin-left:0;
+      }
+
+      .csd-cols{
+        grid-template-columns:1fr;
+      }
     }
   </style>
   <link rel="stylesheet" href="../global-enhancements.css">
@@ -1126,7 +1663,19 @@
     <!-- HERO -->
     <section class="csd-hero">
       <div class="container csd-hero-grid">
-        <div>
+        <div class="csd-hero-copy">
+          <p class="csd-kicker"
+             data-pt="SERVICOS"
+             data-en="SERVICES"
+             data-es="SERVICIOS"
+             data-fr="SERVICES"
+             data-de="DIENSTLEISTUNGEN"
+             data-ru="SERVICES"
+             data-nl="DIENSTEN"
+             data-ja="SERVICES"
+             data-zh="SERVICES">
+            SERVICOS
+          </p>
           <h1 data-pt="Desenvolvimento de Software à Medida"
               data-en="Custom Software Development"
               data-es="Desarrollo de Software a Medida"
@@ -1181,6 +1730,7 @@
         </div>
 
         <aside class="csd-side">
+          <span class="csd-side-kicker">Business-first delivery</span>
           <h3 data-pt="O que é software à medida?"
               data-en="What is custom software?"
               data-es="¿Qué es el software a medida?"
@@ -1204,6 +1754,52 @@
              data-zh="它是针对您产品的特定需求而设计、构建和发布的解决方案 — 专注于业务、用户体验和可扩展性。">
             É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto — com foco em negócio, UX e escalabilidade.
           </p>
+
+          <div class="csd-side-grid" aria-hidden="true">
+            <div class="csd-side-board">
+              <div class="csd-side-board-header">
+                <span class="csd-side-board-title">Delivery blueprint</span>
+                <span class="csd-side-board-note">Scope to scale</span>
+              </div>
+
+              <div class="csd-flow">
+                <div class="csd-flow-step" data-step="01">
+                  <strong>Discovery</strong>
+                  <span>Goals, workflows, constraints and product priorities.</span>
+                </div>
+
+                <div class="csd-flow-step" data-step="02">
+                  <strong>Build</strong>
+                  <span>Interfaces, APIs, automations and clean release flow.</span>
+                </div>
+
+                <div class="csd-flow-step" data-step="03">
+                  <strong>Operate</strong>
+                  <span>QA, handoff, monitoring and room for the next iteration.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="csd-side-stack">
+              <div class="csd-mini-card">
+                <span class="csd-mini-eyebrow">Architecture</span>
+                <strong>API + Data layer</strong>
+                <span>Roles, services and integrations ready to evolve with the product.</span>
+              </div>
+
+              <div class="csd-mini-card csd-mini-card--dark">
+                <span class="csd-mini-eyebrow">Product ops</span>
+                <strong>Release-ready</strong>
+                <span>QA checkpoints, launch prep and support planning from day one.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="csd-side-metrics" aria-hidden="true">
+            <span class="csd-pill">Scope-led</span>
+            <span class="csd-pill">Integration-ready</span>
+            <span class="csd-pill">Built to scale</span>
+          </div>
         </aside>
       </div>
     </section>
@@ -1236,7 +1832,7 @@
 
         <div class="csd-grid">
           <article class="csd-card">
-            <div class="csd-icon">★</div>
+            <div class="csd-icon">IP</div>
             <h3 data-pt="Propriedade total"
                 data-en="Full ownership"
                 data-es="Propiedad total"
@@ -1262,7 +1858,7 @@
           </article>
 
           <article class="csd-card">
-            <div class="csd-icon">↔</div>
+            <div class="csd-icon">FLEX</div>
             <h3 data-pt="Flexibilidade"
                 data-en="Flexibility"
                 data-es="Flexibilidad"
@@ -1288,7 +1884,7 @@
           </article>
 
           <article class="csd-card">
-            <div class="csd-icon">⚑</div>
+            <div class="csd-icon">EDGE</div>
             <h3 data-pt="Vantagem competitiva"
                 data-en="Competitive advantage"
                 data-es="Ventaja competitiva"
@@ -1314,7 +1910,7 @@
           </article>
 
           <article class="csd-card">
-            <div class="csd-icon">⬈</div>
+            <div class="csd-icon">SCALE</div>
             <h3 data-pt="Escalabilidade"
                 data-en="Scalability"
                 data-es="Escalabilidad"
@@ -1340,7 +1936,7 @@
           </article>
 
           <article class="csd-card">
-            <div class="csd-icon">€</div>
+            <div class="csd-icon">ROI</div>
             <h3 data-pt="Custos a longo prazo"
                 data-en="Long-term costs"
                 data-es="Costes a largo plazo"
@@ -1366,7 +1962,7 @@
           </article>
 
           <article class="csd-card">
-            <div class="csd-icon">☺</div>
+            <div class="csd-icon">UX</div>
             <h3 data-pt="Experiência do utilizador"
                 data-en="User experience"
                 data-es="Experiencia del usuario"
@@ -1420,7 +2016,8 @@
           Um processo claro e estruturado — do scope à entrega e evolução contínua.
         </p>
 
-        <div class="csd-steps">
+        <div class="csd-steps" id="csdTimeline">
+          <div class="csd-steps-progress" id="csdTimelineProgress" aria-hidden="true"></div>
           <div class="csd-step">
             <div class="csd-step-top">
               <h3 data-pt="Product Scope"
@@ -1834,6 +2431,69 @@
         });
       }
     });
+  </script>
+  <script>
+    (function() {
+      function initCustomSoftwareTimelineProgress() {
+        const timeline = document.getElementById('csdTimeline');
+        const progressLine = document.getElementById('csdTimelineProgress');
+        const steps = timeline ? timeline.querySelectorAll('.csd-step') : [];
+        if (!timeline || !progressLine || !steps.length) return;
+
+        let rafId = 0;
+        let loopId = 0;
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+        function update() {
+          const rect = timeline.getBoundingClientRect();
+          const trackOffset = 18;
+          const trackHeight = Math.max(rect.height - (trackOffset * 2), 0);
+
+          if (trackHeight <= 0) {
+            progressLine.style.height = '0px';
+            rafId = 0;
+            return;
+          }
+
+          const vh = window.innerHeight || document.documentElement.clientHeight;
+          const markerY = vh * 0.68;
+          const filledPx = clamp(markerY - rect.top - trackOffset, 0, trackHeight);
+
+          progressLine.style.height = filledPx + 'px';
+
+          steps.forEach(step => {
+            const stepRect = step.getBoundingClientRect();
+            step.classList.toggle('is-active', stepRect.top < vh * 0.72);
+          });
+
+          rafId = 0;
+        }
+
+        function requestUpdate() {
+          if (rafId) return;
+          rafId = window.requestAnimationFrame(update);
+        }
+
+        requestUpdate();
+        window.addEventListener('scroll', requestUpdate, { passive: true });
+        document.addEventListener('scroll', requestUpdate, { passive: true, capture: true });
+        window.addEventListener('resize', requestUpdate);
+        window.addEventListener('load', requestUpdate);
+        window.addEventListener('orientationchange', requestUpdate);
+
+        const loop = () => {
+          requestUpdate();
+          loopId = window.requestAnimationFrame(loop);
+        };
+        loopId = window.requestAnimationFrame(loop);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCustomSoftwareTimelineProgress);
+      } else {
+        initCustomSoftwareTimelineProgress();
+      }
+    })();
   </script>
   <script>
     (function() {
