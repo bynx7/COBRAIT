@@ -19,6 +19,7 @@ if (!window.__cobraitTranslationBooted) {
   (async function () {
     const EXTRA_LANGS = ["fr", "de", "ru", "nl", "ja", "zh"];
     const ALLOWED_DROPDOWN_LANGS = ["pt", "en", "es"];
+    const MOBILE_HEADER_MAX_WIDTH = 960;
     const LANGUAGE_META = {
       pt: { code: "PT", name: "Português", flag: "PT" },
       en: { code: "EN", name: "English", flag: "EN" },
@@ -226,7 +227,7 @@ if (!window.__cobraitTranslationBooted) {
       const languageButton = languageDropdown ? languageDropdown.querySelector(".language-dropdown-btn") : null;
 
       function isMobileViewport() {
-        return window.innerWidth <= 768;
+        return window.innerWidth <= MOBILE_HEADER_MAX_WIDTH;
       }
 
       function syncNavState() {
