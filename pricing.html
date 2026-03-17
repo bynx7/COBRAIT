@@ -91,6 +91,7 @@
     }
 
     .nav-toggle-btn span {
+      display: block;
       width: 25px;
       height: 2px;
       background: #4f46e5;
@@ -333,7 +334,31 @@
     }
 
     @media (max-width: 768px) {
-      .nav-toggle-btn { display: flex; }
+      .header-inner {
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background:
+          linear-gradient(#4f46e5 0 0) center calc(50% - 8px) / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center calc(50% + 8px) / 20px 2px no-repeat,
+          #fff;
+        font-size: 0;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .nav-toggle-btn span { display: none; }
 
       .site-nav {
         position: fixed;
@@ -1998,7 +2023,7 @@ footer.footer-pro .footer-brand-title {
 
         <div class="pricing-split" style="margin-top:28px;">
           <div class="accordion" id="pricingAccordion">
-            <div class="acc-item open">
+            <div class="acc-item">
               <button class="acc-btn" type="button">
                 <span data-pt="Saber mais sobre o nosso Programa Seed" data-en="Learn more about our Seed Program" data-es="Saber más sobre nuestro Programa Seed">Learn more about our Seed Program</span>
                 <span class="acc-icon">⌄</span>
@@ -2551,14 +2576,26 @@ footer.footer-pro .footer-brand-title {
       
       // Acordeão
       document.querySelectorAll('#pricingAccordion .acc-btn').forEach(btn => {
+        const item = btn.closest('.acc-item');
+        btn.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+
         btn.addEventListener('click', () => {
           const item = btn.closest('.acc-item');
           const accordion = btn.closest('.accordion');
+          const wasOpen = item.classList.contains('open');
 
           // fecha todos
-          accordion.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
-          // abre o clicado
-          item.classList.add('open');
+          accordion.querySelectorAll('.acc-item').forEach(i => {
+            i.classList.remove('open');
+            const accordionBtn = i.querySelector('.acc-btn');
+            if (accordionBtn) accordionBtn.setAttribute('aria-expanded', 'false');
+          });
+
+          // alterna o clicado
+          if (!wasOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
         });
       });
 
