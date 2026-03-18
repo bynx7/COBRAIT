@@ -1157,16 +1157,91 @@
       .two-col{ grid-template-columns: 1fr; }
       .benefits-grid{ grid-template-columns: 1fr; }
 
-      .timeline{ --timeline-x: 20px; }
-      .timeline::before, .timeline::after, .timeline-progress{ transform:none; }
+      .timeline{ --timeline-x: 14px; }
+      .timeline::before,
+      .timeline::after,
+      .timeline-progress{
+        left: 14px;
+        width: 4px;
+        transform: translateX(-50%);
+      }
       .step{
-        grid-template-columns: 42px 1fr;
-        gap: 14px;
+        grid-template-columns: 28px minmax(0, 1fr);
+        align-items: start;
+        gap: 18px;
+      }
+      .step > .step-card{
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+        padding: 22px 20px;
+      }
+      .step > .node{
+        grid-column: 1;
+        grid-row: 1;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+        padding-top: 18px;
       }
       .step .spacer{ display:none; }
-      .node{ justify-content:flex-start; }
       .node::before{ display:none; }
-      .dotnode{ margin-left: 11px; }
+      .dotnode{
+        width: 16px;
+        height: 16px;
+        margin: 0 auto;
+        box-shadow: 0 0 0 6px rgba(59,130,246,.18);
+      }
+      .step.step-visible .dotnode{
+        transform: scale(1.08);
+        box-shadow: 0 0 0 8px rgba(59,130,246,.18);
+      }
+      .step-kicker{
+        font-size: 11px;
+        line-height: 1.25;
+      }
+      .step-title{
+        font-size: 22px;
+        line-height: 1.18;
+      }
+      .step-desc{
+        font-size: 15px;
+        line-height: 1.68;
+      }
+    }
+
+    @media (max-width: 480px){
+      .timeline{ --timeline-x: 13px; }
+      .timeline::before,
+      .timeline::after,
+      .timeline-progress{
+        left: 13px;
+      }
+      .step{
+        grid-template-columns: 26px minmax(0, 1fr);
+        gap: 16px;
+        margin: 18px 0;
+      }
+      .step > .node{
+        padding-top: 16px;
+      }
+      .step > .step-card{
+        padding: 20px 18px;
+      }
+      .dotnode{
+        width: 15px;
+        height: 15px;
+        box-shadow: 0 0 0 5px rgba(59,130,246,.16);
+      }
+      .step.step-visible .dotnode{
+        box-shadow: 0 0 0 7px rgba(59,130,246,.16);
+      }
+      .step-title{
+        font-size: 18px;
+      }
+      .step-desc{
+        font-size: 14px;
+      }
     }
 
     /* — CORRE??O: As etiquetas aparecem quando a linha as atinge */
@@ -1217,7 +1292,7 @@
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
+                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
                     <li class="dropdown">
                         <a href="../index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Diensten" data-ja="????" data-zh="??">Serviços</span>

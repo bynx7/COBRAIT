@@ -1745,7 +1745,7 @@ footer.footer-pro .footer-brand-title {
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
+                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
                     <li class="dropdown">
                         <a href="index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Diensten" data-ja="????" data-zh="??">Serviços</span>
@@ -2740,21 +2740,6 @@ footer.footer-pro .footer-brand-title {
       };
 
 
-      // Helpers para refletir os valores nos toggles do menu
-      const mapComplexity = { 'Low': 'low', 'Mid': 'mid', 'High': 'high' };
-      const mapSize = { 'Small': 'small', 'Medium': 'medium', 'Big': 'big' };
-      const mapSpeed = {
-        '> 6 Months': '>6',
-        '2-5 Months': '2-5',
-        '2 > 5 Months': '2-5',
-        '< 2 Months': '<2'
-      };
-
-      function setRadio(name, value) {
-        const input = document.querySelector(`input[name="${name}"][value="${value}"]`);
-        if (input) input.checked = true;
-      }
-
       // Event listener para o select
       select.addEventListener('change', function() {
         const selectedValue = this.value;
@@ -2777,10 +2762,6 @@ footer.footer-pro .footer-brand-title {
           budgetDescription.textContent = data.description;
           budgetFrom.textContent = data.from;
           budgetTo.textContent = data.to;
-          // Atualizar toggles para corresponder aos dados do projeto
-          setRadio('complexity', mapComplexity[data.complexity] || 'low');
-          setRadio('size', mapSize[data.size] || 'small');
-          setRadio('speed', mapSpeed[data.speed] || '2-5');
 
           
           // Mostrar a seção de budget

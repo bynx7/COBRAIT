@@ -884,15 +884,18 @@
         grid-template-columns:1fr;
       }
       .timeline{
-        --timeline-x: 18px;
+        --timeline-x: 14px;
       }
       .timeline::before,
       .timeline::after{
-        left:18px;
+        left:14px;
+        width:3px;
+        transform: translateX(-50%);
       }
       .step{
-        grid-template-columns:36px 1fr;
-        gap:14px;
+        grid-template-columns:28px minmax(0, 1fr);
+        align-items:start;
+        gap:18px;
         margin:20px 0;
       }
       .timeline .step:nth-of-type(odd) .step-card,
@@ -907,11 +910,66 @@
       .timeline .step:nth-of-type(even) .spacer{
         display:none;
       }
+      .step-dot{
+        width:18px;
+        height:18px;
+        border-width:4px;
+        align-self:start;
+        margin:18px auto 0;
+      }
+      .step.is-active .step-dot{
+        box-shadow: 0 0 0 7px rgba(59,130,246,.14);
+        transform:none;
+      }
       .step-card{
-        padding:22px;
+        min-width:0;
+        padding:22px 20px;
       }
       .step-card h3{
-        font-size:24px;
+        font-size:22px;
+        line-height:1.18;
+      }
+      .step-card p{
+        font-size:15px;
+        line-height:1.68;
+      }
+    }
+
+    @media (max-width: 480px){
+      .timeline{
+        --timeline-x: 13px;
+      }
+      .timeline::before,
+      .timeline::after{
+        left:13px;
+      }
+      .step{
+        grid-template-columns:26px minmax(0, 1fr);
+        gap:16px;
+        margin:18px 0;
+      }
+      .step-dot{
+        width:16px;
+        height:16px;
+        border-width:4px;
+        margin-top:16px;
+      }
+      .step.is-active .step-dot{
+        box-shadow: 0 0 0 6px rgba(59,130,246,.14);
+      }
+      .step-card{
+        padding:20px 18px;
+        border-radius:16px;
+      }
+      .step-meta{
+        font-size:11px;
+        letter-spacing:1.15px;
+      }
+      .step-card h3{
+        font-size:18px;
+      }
+      .step-card p{
+        font-size:14px;
       }
     }
 
@@ -1213,7 +1271,7 @@
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
+                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="??????" data-nl="Werk" data-ja="??" data-zh="??">Work</a></li>
                     <li class="dropdown">
                         <a href="../index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Diensten" data-ja="????" data-zh="??">Serviços</span>

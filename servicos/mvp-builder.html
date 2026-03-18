@@ -854,6 +854,7 @@
       justify-content: center;
       gap: 12px;
       padding: 14px;
+      min-height: 280px;
     }
 
     .hero-image {
@@ -863,6 +864,122 @@
       display: block;
       border-radius: 18px;
       background: #fff;
+    }
+
+    .hero-mockup {
+      width: 100%;
+      max-width: 420px;
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(226, 232, 240, .92);
+      background:
+        radial-gradient(320px 180px at 16% 12%, rgba(79, 70, 229, .12), transparent 70%),
+        linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(248, 250, 252, .96));
+      box-shadow: 0 14px 30px rgba(15, 23, 42, .08);
+    }
+
+    .hero-mockup__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero-mockup__dots {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hero-mockup__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, .55);
+    }
+
+    .hero-mockup__dots span:nth-child(1) { background: rgba(236, 72, 153, .72); }
+    .hero-mockup__dots span:nth-child(2) { background: rgba(59, 130, 246, .72); }
+    .hero-mockup__dots span:nth-child(3) { background: rgba(14, 165, 233, .72); }
+
+    .hero-mockup__label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #4f46e5;
+      white-space: nowrap;
+    }
+
+    .hero-mockup__board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 12px;
+    }
+
+    .hero-mockup__panel {
+      border-radius: 16px;
+      border: 1px solid rgba(226, 232, 240, .95);
+      background: rgba(255, 255, 255, .86);
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .hero-mockup__eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(79, 70, 229, .10);
+      color: #4338ca;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-mockup__line {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, .08);
+      margin-bottom: 10px;
+    }
+
+    .hero-mockup__line:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero-mockup__line--lg { width: 100%; }
+    .hero-mockup__line--md { width: 78%; }
+    .hero-mockup__line--sm { width: 58%; }
+
+    .hero-mockup__stats {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-mockup__stat {
+      border-radius: 14px;
+      border: 1px solid rgba(226, 232, 240, .95);
+      background: #ffffff;
+      padding: 12px;
+    }
+
+    .hero-mockup__stat strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .hero-mockup__stat span {
+      display: block;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #64748b;
     }
 
     .hero-badges {
@@ -886,6 +1003,30 @@
     @media (max-width: 980px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-visual { min-height: unset; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card-inner {
+        min-height: 0;
+        padding: 10px;
+      }
+
+      .hero-mockup {
+        padding: 16px;
+      }
+
+      .hero-mockup__board {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 11px;
+        padding: 8px 10px;
+      }
     }
 
     /* =========================================================
@@ -1216,7 +1357,7 @@ footer.footer-pro .footer-brand-title {
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Ð Ð°Ð±Ð¾Ñ‚Ð°" data-nl="Werk" data-ja="ä»•äº‹" data-zh="å·¥ä½œ">Work</a></li>
+                    <li><a href="../index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="Ð Ð°Ð±Ð¾Ñ‚Ð°" data-nl="Werk" data-ja="ä»•äº‹" data-zh="å·¥ä½œ">Work</a></li>
                     <li class="dropdown">
                         <a href="../index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
@@ -1443,7 +1584,37 @@ footer.footer-pro .footer-brand-title {
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-card">
             <div class="hero-card-inner">
-              <img class="hero-image" src="../images/mvp-hero.png" alt="">
+              <img class="hero-image" src="../images/mvp-hero.png" alt="" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
+              <div class="hero-mockup" hidden>
+                <div class="hero-mockup__top">
+                  <div class="hero-mockup__dots" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="hero-mockup__label" data-pt="Board de lançamento" data-en="Launch board" data-es="Panel de lanzamiento">Launch board</div>
+                </div>
+
+                <div class="hero-mockup__board">
+                  <div class="hero-mockup__panel">
+                    <span class="hero-mockup__eyebrow" data-pt="Núcleo do MVP" data-en="MVP core" data-es="Núcleo del MVP">MVP core</span>
+                    <div class="hero-mockup__line hero-mockup__line--lg"></div>
+                    <div class="hero-mockup__line hero-mockup__line--md"></div>
+                    <div class="hero-mockup__line hero-mockup__line--sm"></div>
+                  </div>
+
+                  <div class="hero-mockup__stats">
+                    <div class="hero-mockup__stat">
+                      <strong data-pt="Scope validado" data-en="Validated scope" data-es="Alcance validado">Scope validado</strong>
+                      <span data-pt="Fluxos e prioridades definidos." data-en="Flows and priorities defined." data-es="Flujos y prioridades definidos.">Fluxos e prioridades definidos.</span>
+                    </div>
+                    <div class="hero-mockup__stat">
+                      <strong data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida">Entrega rápida</strong>
+                      <span data-pt="Sprints curtos com checkpoints." data-en="Short sprints with checkpoints." data-es="Sprints cortos con checkpoints.">Sprints curtos com checkpoints.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="hero-badges">
               <span class="badge" data-pt="Go-to-market rápido" data-en="Fast go-to-market" data-es="Go-to-market rápido" data-fr="Fast go-to-market" data-de="Fast go-to-market" data-ru="Fast go-to-market" data-nl="Fast go-to-market" data-ja="迅速な市場投入" data-zh="快速上市">Go-to-market rápido</span>
@@ -1587,15 +1758,15 @@ footer.footer-pro .footer-brand-title {
                 <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li data-pt="User Stories" data-en="User Stories" data-es="User Stories">User Stories</li>
-                  <li data-pt="Sitemap" data-en="Sitemap" data-es="Sitemap">Sitemap</li>
-                  <li data-pt="UX Personas" data-en="UX Personas" data-es="UX Personas">UX Personas</li>
+                  <li data-pt="User Stories" data-en="User Stories" data-es="Historias de usuario">User Stories</li>
+                  <li data-pt="Sitemap" data-en="Sitemap" data-es="Mapa del sitio">Sitemap</li>
+                  <li data-pt="UX Personas" data-en="UX Personas" data-es="Personas UX">UX Personas</li>
                 </ul>
 
                 <ul>
-                  <li data-pt="Key BPMN" data-en="Key BPMN" data-es="Key BPMN">Key BPMN</li>
-                  <li data-pt="Tech Spike" data-en="Tech Spike" data-es="Tech Spike">Tech Spike</li>
-                  <li data-pt="Stakeholder Analysis" data-en="Stakeholder Analysis" data-es="Stakeholder Analysis">Stakeholder Analysis</li>
+                  <li data-pt="Key BPMN" data-en="Key BPMN" data-es="BPMN clave">Key BPMN</li>
+                  <li data-pt="Tech Spike" data-en="Tech Spike" data-es="Spike técnico">Tech Spike</li>
+                  <li data-pt="Stakeholder Analysis" data-en="Stakeholder Analysis" data-es="Análisis de partes interesadas">Stakeholder Analysis</li>
                 </ul>
               </div>
             </div>
@@ -1603,7 +1774,7 @@ footer.footer-pro .footer-brand-title {
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title" data-pt="Key Screens" data-en="Key Screens" data-es="Key Screens">Key Screens</h3>
+              <h3 class="step-title" data-pt="Key Screens" data-en="Key Screens" data-es="Pantallas clave">Key Screens</h3>
               <p class="step-desc"
                  data-pt="Criamos as principais screens para validares direção visual e fluxos. Isto permite aprovar UX/UI antes de expandir o design para o produto completo."
                  data-en="We create the key screens for you to validate visual direction and flows. This allows UX/UI approval before expanding design to the complete product."
@@ -1616,13 +1787,13 @@ footer.footer-pro .footer-brand-title {
                 <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li data-pt="UI Concept" data-en="UI Concept" data-es="UI Concept">UI Concept</li>
-                  <li data-pt="User Flow" data-en="User Flow" data-es="User Flow">User Flow</li>
+                  <li data-pt="UI Concept" data-en="UI Concept" data-es="Concepto UI">UI Concept</li>
+                  <li data-pt="User Flow" data-en="User Flow" data-es="Flujo de usuario">User Flow</li>
                 </ul>
 
                 <ul>
-                  <li data-pt="Design System" data-en="Design System" data-es="Design System">Design System</li>
-                  <li data-pt="Component Library" data-en="Component Library" data-es="Component Library">Component Library</li>
+                  <li data-pt="Design System" data-en="Design System" data-es="Sistema de diseño">Design System</li>
+                  <li data-pt="Component Library" data-en="Component Library" data-es="Librería de componentes">Component Library</li>
                 </ul>
               </div>
             </div>
@@ -1630,7 +1801,7 @@ footer.footer-pro .footer-brand-title {
 
           <div class="step">
             <div class="card step-card">
-              <h3 class="step-title" data-pt="All Screens" data-en="All Screens" data-es="All Screens">All Screens</h3>
+              <h3 class="step-title" data-pt="All Screens" data-en="All Screens" data-es="Todas las pantallas">All Screens</h3>
               <p class="step-desc"
                  data-pt="Depois de aprovares as Key Screens, expandimos o design para todas as screens necessárias para o MVP ficar completo e pronto para desenvolvimento."
                  data-en="After you approve the Key Screens, we expand the design to all screens needed for the MVP to be complete and ready for development."
@@ -1643,13 +1814,13 @@ footer.footer-pro .footer-brand-title {
                 <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li data-pt="Full Product UX/UI" data-en="Full Product UX/UI" data-es="Full Product UX/UI">Full Product UX/UI</li>
-                  <li data-pt="Responsive states" data-en="Responsive states" data-es="Responsive states">Responsive states</li>
+                  <li data-pt="Full Product UX/UI" data-en="Full Product UX/UI" data-es="UX/UI completo del producto">Full Product UX/UI</li>
+                  <li data-pt="Responsive states" data-en="Responsive states" data-es="Estados responsive">Responsive states</li>
                 </ul>
 
                 <ul>
-                  <li data-pt="Design QA checklist" data-en="Design QA checklist" data-es="Design QA checklist">Design QA checklist</li>
-                  <li data-pt="Handover specs" data-en="Handover specs" data-es="Handover specs">Handover specs</li>
+                  <li data-pt="Design QA checklist" data-en="Design QA checklist" data-es="Checklist QA de diseño">Design QA checklist</li>
+                  <li data-pt="Handover specs" data-en="Handover specs" data-es="Especificaciones de entrega">Handover specs</li>
                 </ul>
               </div>
             </div>
@@ -1670,13 +1841,13 @@ footer.footer-pro .footer-brand-title {
                 <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li data-pt="Progressive module delivery" data-en="Progressive module delivery" data-es="Progressive module delivery">Progressive module delivery</li>
-                  <li data-pt="Ongoing testing & feedback" data-en="Ongoing testing & feedback" data-es="Ongoing testing & feedback">Ongoing testing & feedback</li>
+                  <li data-pt="Progressive module delivery" data-en="Progressive module delivery" data-es="Entrega progresiva de módulos">Progressive module delivery</li>
+                  <li data-pt="Ongoing testing & feedback" data-en="Ongoing testing & feedback" data-es="Pruebas continuas y feedback">Ongoing testing & feedback</li>
                 </ul>
 
                 <ul>
-                  <li data-pt="Codebase documentation" data-en="Codebase documentation" data-es="Codebase documentation">Codebase documentation</li>
-                  <li data-pt="Regular progress updates" data-en="Regular progress updates" data-es="Regular progress updates">Regular progress updates</li>
+                  <li data-pt="Codebase documentation" data-en="Codebase documentation" data-es="Documentación del código base">Codebase documentation</li>
+                  <li data-pt="Regular progress updates" data-en="Regular progress updates" data-es="Actualizaciones regulares de progreso">Regular progress updates</li>
                 </ul>
               </div>
             </div>
@@ -1697,13 +1868,13 @@ footer.footer-pro .footer-brand-title {
                 <h4 data-pt="Entregáveis da fase:" data-en="Phase deliverables:" data-es="Entregables de la fase:">Entregáveis da fase:</h4>
 
                 <ul>
-                  <li data-pt="Bug reports & fixes" data-en="Bug reports & fixes" data-es="Bug reports & fixes">Bug reports & fixes</li>
-                  <li data-pt="Final QA" data-en="Final QA" data-es="Final QA">Final QA</li>
+                  <li data-pt="Bug reports & fixes" data-en="Bug reports & fixes" data-es="Informes de errores y correcciones">Bug reports & fixes</li>
+                  <li data-pt="Final QA" data-en="Final QA" data-es="QA final">Final QA</li>
                 </ul>
 
                 <ul>
-                  <li data-pt="User acceptance testing (UAT)" data-en="User acceptance testing (UAT)" data-es="User acceptance testing (UAT)">User acceptance testing (UAT)</li>
-                  <li data-pt="Launch readiness sign-off" data-en="Launch readiness sign-off" data-es="Launch readiness sign-off">Launch readiness sign-off</li>
+                  <li data-pt="User acceptance testing (UAT)" data-en="User acceptance testing (UAT)" data-es="Pruebas de aceptación de usuario (UAT)">User acceptance testing (UAT)</li>
+                  <li data-pt="Launch readiness sign-off" data-en="Launch readiness sign-off" data-es="Validación final de lanzamiento">Launch readiness sign-off</li>
                 </ul>
               </div>
             </div>

@@ -1019,6 +1019,39 @@
       .about-title { font-size: 2.05rem; }
     }
 
+    @media (max-width: 640px) {
+      .media-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .media-top .pill {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 12px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.35;
+      }
+
+      .how-steps .step-top {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+      }
+
+      .how-steps h5 {
+        min-width: 0;
+        line-height: 1.35;
+      }
+
+      .step-badge {
+        align-self: start;
+      }
+    }
+
     /* =========================
        FOOTER NOVO (PRO) - IGUAL AO INDEX
        ========================= */
@@ -1272,7 +1305,7 @@
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Work" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
+                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
                     <li class="dropdown">
                         <a href="index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
@@ -1424,30 +1457,6 @@
                             <span class="lang-flag">🇪🇸</span>
                             <span class="lang-name">Español</span>
                         </button>
-                        <button class="language-option" data-lang="fr">
-                            <span class="lang-flag">🇫🇷</span>
-                            <span class="lang-name">Français</span>
-                        </button>
-                        <button class="language-option" data-lang="de">
-                            <span class="lang-flag">🇩🇪</span>
-                            <span class="lang-name">Deutsch</span>
-                        </button>
-                        <button class="language-option" data-lang="ru">
-                            <span class="lang-flag">🇷🇺</span>
-                            <span class="lang-name">Русский</span>
-                        </button>
-                        <button class="language-option" data-lang="nl">
-                            <span class="lang-flag">🇳🇱</span>
-                            <span class="lang-name">Nederlands</span>
-                        </button>
-                        <button class="language-option" data-lang="ja">
-                            <span class="lang-flag">🇯🇵</span>
-                            <span class="lang-name">日本語</span>
-                        </button>
-                        <button class="language-option" data-lang="zh">
-                            <span class="lang-flag">🇨🇳</span>
-                            <span class="lang-name">中文</span>
-                        </button>
                     </div>
                 </div>
 
@@ -1544,8 +1553,8 @@
           <div class="about-visual-inner">
             <div class="chip-row">
               <span class="chip"><span class="chip-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile">Lean + Agile</span></span>
-              <span class="chip"><span class="chip-dot"></span><span data-pt="Product mindset" data-en="Product mindset" data-es="Product mindset">Product mindset</span></span>
-              <span class="chip"><span class="chip-dot"></span><span data-pt="Engineering quality" data-en="Engineering quality" data-es="Engineering quality">Engineering quality</span></span>
+              <span class="chip"><span class="chip-dot"></span><span data-pt="Product mindset" data-en="Product mindset" data-es="Mentalidad de producto">Product mindset</span></span>
+              <span class="chip"><span class="chip-dot"></span><span data-pt="Engineering quality" data-en="Engineering quality" data-es="Calidad de ingeniería">Engineering quality</span></span>
             </div>
 
             <div class="stat-grid">
@@ -1566,7 +1575,7 @@
             <div class="media-card">
               <div class="media-top">
                 <strong data-pt="Como trabalhamos" data-en="How we work" data-es="Cómo trabajamos">Como trabalhamos</strong>
-                <span class="pill" data-pt="Discovery → Build → Iterate" data-en="Discovery → Build → Iterate" data-es="Discovery → Build → Iterate">Discovery → Build → Iterate</span>
+                <span class="pill" data-pt="Discovery → Build → Iterate" data-en="Discovery → Build → Iterate" data-es="Descubrir → Construir → Iterar">Discovery → Build → Iterate</span>
               </div>
 
               <div class="media-body">

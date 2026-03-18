@@ -20,13 +20,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Politica de Cookies | Cobrait</title>
-  <meta name="description" content="Informacao sobre os cookies utilizados no website da Cobrait." />
+  <title>Política de Cookies | Cobrait</title>
+  <meta name="description" content="Informação sobre os cookies utilizados no website da Cobrait." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="global-enhancements.css" />
+  <script src="./apply-translations.js"></script>
   <style>
     :root {
       --legal-bg: #f6f8fc;
@@ -234,6 +235,34 @@
       .legal-grid { grid-template-columns: 1fr; }
       .legal-nav { position: static; }
       .legal-shell { padding-top: 22px; }
+    }
+    @media (max-width: 640px) {
+      .legal-shell {
+        padding: 18px 14px 56px;
+      }
+      .legal-topbar {
+        align-items: flex-start;
+        margin-bottom: 14px;
+      }
+      .legal-hero {
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+      .legal-hero h1 {
+        font-size: 1.95rem;
+      }
+      .legal-nav,
+      .legal-content {
+        padding: 16px;
+      }
+      .legal-card {
+        padding: 15px 16px;
+      }
+      .legal-card p,
+      .legal-card li,
+      .legal-nav a {
+        font-size: 0.95rem;
+      }
     }
   
 
@@ -470,15 +499,132 @@
     </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
+      </a>
+
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Casos">Work</a></li>
+          <li class="dropdown">
+            <a href="index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-content">
+              <a href="servicos/product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">Custom Software Development</h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Dedicated Teams</h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
+          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt"><span class="lang-flag">🇵🇹</span><span class="lang-name">Português</span></button>
+            <button class="language-option" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button>
+            <button class="language-option" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button>
+          </div>
+        </div>
+
+        <div class="header-cta">
+          <a class="btn btn--primary" href="book-a-call.html" data-pt="AGENDAR UMA CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
+        </div>
+      </div>
+    </div>
+  </header>
   <main class="legal-shell">
     <div class="legal-topbar">
-      <a class="legal-back" href="index.html">Voltar ao inicio</a>
-      <span class="legal-updated">Última atualiza??o: 26 de fevereiro de 2026</span>
+      <a class="legal-back" href="index.html">Voltar ao início</a>
+      <span class="legal-updated">Última atualização: 26 de fevereiro de 2026</span>
     </div>
 
     <section class="legal-hero">
-      <p class="legal-kicker">Cobrait ? Legal</p>
-      <h1>Pol?tica de Cookies</h1>
+      <p class="legal-kicker">Cobrait • Legal</p>
+      <h1>Política de Cookies</h1>
       <p>Aqui explicamos que cookies usamos, para que servem e como os podes gerir no teu browser.</p>
     </section>
 
@@ -499,14 +645,14 @@
       <article class="legal-content">
         <section id="s1" class="legal-card">
   <h2>1. O que são cookies</h2>
-  <p>Cookies são pequenos ficheiros de texto armazenados no teu dispositivo para reconhecer prefer?ncias, melhorar desempenho e analisar utilização do website.</p>
+  <p>Cookies são pequenos ficheiros de texto armazenados no teu dispositivo para reconhecer preferências, melhorar desempenho e analisar utilização do website.</p>
 </section>
 <section id="s2" class="legal-card">
   <h2>2. Tipos de cookies</h2>
   <ul>
-    <li><strong>Essenciais:</strong> necessérios para funcionalidades base e segurança.</li>
-    <li><strong>Anal?ticos:</strong> ajudam-nos a compreender tr?fego, navegação e uso de páginas.</li>
-    <li><strong>Funcionais:</strong> memorizam prefer?ncias para melhorar a experiência.</li>
+    <li><strong>Essenciais:</strong> necessários para funcionalidades base e segurança.</li>
+    <li><strong>Analíticos:</strong> ajudam-nos a compreender tráfego, navegação e uso de páginas.</li>
+    <li><strong>Funcionais:</strong> memorizam preferências para melhorar a experiência.</li>
   </ul>
 </section>
 <section id="s3" class="legal-card">
@@ -515,15 +661,15 @@
 </section>
 <section id="s4" class="legal-card">
   <h2>4. Como gerir cookies</h2>
-  <p>Podes configurar o teu browser para aceitar, recusar ou remover cookies. A desativa??o de cookies essenciais pode afetar o funcionamento de algumas partes do website.</p>
+  <p>Podes configurar o teu browser para aceitar, recusar ou remover cookies. A desativação de cookies essenciais pode afetar o funcionamento de algumas partes do website.</p>
 </section>
 <section id="s5" class="legal-card">
   <h2>5. Cookies de terceiros</h2>
-  <p>Algumas ferramentas externas podem instalar cookies pr?prios para analytics ou medi??o. Recomendamos consultar também as pol?ticas desses fornecedores.</p>
+  <p>Algumas ferramentas externas podem instalar cookies próprios para analytics ou medição. Recomendamos consultar também as políticas desses fornecedores.</p>
 </section>
 <section id="s6" class="legal-card">
   <h2>6. Atualizações</h2>
-  <p>Esta Pol?tica de Cookies pode ser revista para refletir altera??es técnicas, legais ou operacionais.</p>
+  <p>Esta Política de Cookies pode ser revista para refletir alterações técnicas, legais ou operacionais.</p>
 </section>
 <section id="s7" class="legal-card">
   <h2>7. Contacto</h2>
@@ -540,14 +686,14 @@
                         <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
                         <h3 class="footer-brand-title">Cobrait</h3>
                         <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lan?amento." data-en="We build digital products focused on speed, quality and growth ? from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous cr?ons des produits num?riques ax?s sur la vitesse, la qualit? et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualit?t und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="?? ??????? ???????? ????????, ??????????????? ?? ????????, ???????? ? ???? ? ?? ??????????? ?????? ?? ???????." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering." data-ja="??????????????????????????????????????????????" data-zh="????????,???????????? ???????">
-                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lan?amento.
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth ? from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous cr?ons des produits num?riques ax?s sur la vitesse, la qualit? et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualit?t und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="?? ??????? ???????? ????????, ??????????????? ?? ????????, ???????? ? ???? ? ?? ??????????? ?????? ?? ???????." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering." data-ja="??????????????????????????????????????????????" data-zh="????????,???????????? ???????">
+                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
                         </p>
                         <div class="footer-cta-row">
                             <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="Книга вызов" data-nl="Een gesprek boeken" data-ja="電話予約" data-zh="预定电话">
                                 Agendar uma chamada
                             </a>
-                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="?????????? ??????" data-nl="Services zien" data-ja="???????" data-zh="????">
+                            <a class="btn btn--outline btn--footer" href="index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="?????????? ??????" data-nl="Services zien" data-ja="???????" data-zh="????">
                                 Ver serviços
                             </a>
                         </div>
@@ -605,13 +751,13 @@
                 </div>
                 <div class="footer-bottom">
                     <div>
-                        © <span id="year"></span> Cobrait - Software Factory
+                        © <span id="year"></span> Cobrait — Software Factory
                     </div>
                     <div class="footer-mini-links">
                         <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialit?" data-de="Datenschutz" data-ru="??????????????????" data-nl="Privacy" data-ja="??????" data-zh="??">Privacidade</a>
                         <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="???????" data-nl="Voorwaarden" data-ja="????" data-zh="??">Termos</a>
                         <a href="cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
-                        <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Services" data-ja="????" data-zh="??">Serviços</a>
+                        <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Services" data-ja="????" data-zh="??">Serviços</a>
                         <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de r?clamations" data-de="Beschwerdebuch" data-ru="????? ?????" data-nl="Klachtenboek" data-ja="?????" data-zh="???">Livro de Reclamações</a>
                     </div>
                 </div>
