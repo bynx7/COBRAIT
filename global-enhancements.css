@@ -1345,4 +1345,422 @@ main section {
   }
 }
 
+/* Cobrait AI chat widget */
+.cobrait-chat-root {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10030;
+  pointer-events: none;
+}
+
+.cobrait-chat-root > * {
+  pointer-events: auto;
+}
+
+.cobrait-chat-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 16px 12px 12px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.96));
+  color: #ffffff;
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.26), 0 0 0 1px rgba(148, 163, 184, 0.18);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cobrait-chat-launcher:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 42px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(148, 163, 184, 0.2);
+}
+
+.cobrait-chat-launcher__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.cobrait-chat-launcher__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cobrait-chat-launcher__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.cobrait-chat-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.34);
+  backdrop-filter: blur(6px);
+}
+
+.cobrait-chat-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 84px;
+  width: min(420px, calc(100vw - 28px));
+  max-height: min(720px, calc(100vh - 120px));
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cobrait-chat-panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.cobrait-chat-panel__shell {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+  box-shadow: 0 28px 64px rgba(15, 23, 42, 0.22);
+}
+
+.cobrait-chat-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.cobrait-chat-panel__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.cobrait-chat-panel__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.25);
+  flex-shrink: 0;
+}
+
+.cobrait-chat-panel__title {
+  display: block;
+  color: var(--text-main);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.cobrait-chat-panel__subtitle {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.cobrait-chat-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cobrait-chat-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: rgba(255, 255, 255, 0.86);
+  color: #334155;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cobrait-chat-action:hover {
+  transform: translateY(-1px);
+  border-color: rgba(129, 140, 248, 0.48);
+  background: rgba(238, 242, 255, 0.88);
+}
+
+.cobrait-chat-action svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cobrait-chat-panel__body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0 18px 12px;
+}
+
+.cobrait-chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 260px;
+  max-height: 390px;
+  overflow-y: auto;
+  padding: 16px 2px 8px 0;
+}
+
+.cobrait-chat-message {
+  display: flex;
+}
+
+.cobrait-chat-message--assistant {
+  justify-content: flex-start;
+}
+
+.cobrait-chat-message--user {
+  justify-content: flex-end;
+}
+
+.cobrait-chat-bubble {
+  max-width: min(85%, 320px);
+  border-radius: 18px;
+  padding: 12px 14px;
+  font-size: 0.94rem;
+  line-height: 1.58;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.cobrait-chat-message--assistant .cobrait-chat-bubble {
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  border-top-left-radius: 8px;
+}
+
+.cobrait-chat-message--user .cobrait-chat-bubble {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  border-top-right-radius: 8px;
+}
+
+.cobrait-chat-bubble--typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cobrait-chat-bubble--typing span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(79, 70, 229, 0.72);
+  animation: cobrait-chat-dot 1.2s infinite ease-in-out;
+}
+
+.cobrait-chat-bubble--typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.cobrait-chat-bubble--typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.cobrait-chat-quick {
+  margin-top: 4px;
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.cobrait-chat-quick__label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+.cobrait-chat-quick__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cobrait-chat-chip {
+  border: 1px solid rgba(203, 213, 225, 0.92);
+  background: rgba(255, 255, 255, 0.88);
+  color: #1e293b;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cobrait-chat-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(99, 102, 241, 0.42);
+  background: rgba(238, 242, 255, 0.92);
+}
+
+.cobrait-chat-quick__privacy {
+  margin: 10px 2px 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.cobrait-chat-panel__footer {
+  display: grid;
+  gap: 12px;
+  padding: 14px 18px 18px;
+  border-top: 1px solid rgba(226, 232, 240, 0.92);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.cobrait-chat-composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.cobrait-chat-input {
+  width: 100%;
+  min-height: 52px;
+  max-height: 140px;
+  resize: none;
+  border-radius: 16px;
+  padding: 14px 15px;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text-main);
+  line-height: 1.5;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.cobrait-chat-send,
+.cobrait-chat-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-radius: 16px;
+  padding: 0 18px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cobrait-chat-send {
+  border: 0;
+  background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(79, 70, 229, 0.24);
+  cursor: pointer;
+}
+
+.cobrait-chat-send:hover,
+.cobrait-chat-book:hover {
+  transform: translateY(-1px);
+}
+
+.cobrait-chat-book {
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  background: rgba(238, 242, 255, 0.72);
+  color: #3730a3;
+}
+
+@keyframes cobrait-chat-dot {
+  0%, 80%, 100% {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body.cobrait-chat-open {
+    overflow: hidden;
+  }
+
+  .cobrait-chat-root {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .cobrait-chat-panel {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+    max-height: calc(100vh - 24px);
+    transform-origin: bottom center;
+  }
+
+  .cobrait-chat-panel__shell {
+    border-radius: 22px;
+  }
+
+  .cobrait-chat-launcher {
+    padding-right: 14px;
+  }
+
+  .cobrait-chat-launcher__text {
+    display: none;
+  }
+
+  .cobrait-chat-panel__header,
+  .cobrait-chat-panel__body,
+  .cobrait-chat-panel__footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .cobrait-chat-messages {
+    max-height: calc(100vh - 320px);
+  }
+
+  .cobrait-chat-composer {
+    grid-template-columns: 1fr;
+  }
+
+  .cobrait-chat-send,
+  .cobrait-chat-book {
+    width: 100%;
+  }
+}
+
 

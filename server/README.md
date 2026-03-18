@@ -8,6 +8,7 @@ Backend minimo para autenticacao do painel admin e gestao de utilizadores em Pos
 - guarda utilizadores em `admin_users`
 - guarda leads em `contact_requests`
 - guarda pedidos de agendamento em `call_bookings`
+- expõe um assistente público em `POST /api/chat`
 - expoe rotas `/api/auth/*` e `/api/users`
 - cria um admin inicial automaticamente se `ADMIN_EMAIL` e `ADMIN_PASSWORD` estiverem definidos
 
@@ -62,6 +63,8 @@ Por defeito, o `admin.html` tenta usar `http://localhost:4000/api` quando e aber
 
 O `index.html` envia o formulario principal para `POST /api/contact-requests` e o `book-a-call.html` envia para `POST /api/call-bookings`.
 
+Se definires `OPENAI_API_KEY`, o assistente do site usa a OpenAI para responder com contexto da Cobrait. Sem essa chave, o widget continua a funcionar com respostas locais para perguntas simples e FAQs base.
+
 ## Rotas principais
 
 - `GET /api/health`
@@ -75,5 +78,6 @@ O `index.html` envia o formulario principal para `POST /api/contact-requests` e 
 - `GET /api/contact-requests`
 - `PATCH /api/contact-requests/:id`
 - `POST /api/call-bookings`
+- `POST /api/chat`
 - `GET /api/call-bookings`
 - `PATCH /api/call-bookings/:id`

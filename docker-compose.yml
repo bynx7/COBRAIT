@@ -41,6 +41,8 @@ services:
       ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@cobrait.pt}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
       ADMIN_NAME: ${ADMIN_NAME:-COBRAIT Admin}
+      OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
+      OPENAI_CHAT_MODEL: ${OPENAI_CHAT_MODEL:-gpt-5.4-mini}
     ports:
       - "${API_PORT:-4000}:4000"
     healthcheck:

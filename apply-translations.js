@@ -437,3 +437,30 @@ if (!window.__cobraitTranslationBooted) {
   })();
 }
 
+if (!window.__cobraitChatWidgetInjected && document.documentElement.dataset.noSiteChat !== "true") {
+  window.__cobraitChatWidgetInjected = true;
+
+  (function loadCobraitChatWidget() {
+    var script = document.createElement("script");
+    var source = "/site-chat-widget.js";
+
+    if (window.location.protocol === "file:") {
+      var currentScript = Array.from(document.scripts).find(function (item) {
+        return /apply-translations\.js(?:\?|$)/.test(item.src || "");
+      });
+
+      if (currentScript && currentScript.src) {
+        source = currentScript.src.replace(/apply-translations\.js(?:\?.*)?$/, "site-chat-widget.js");
+      } else {
+        source = "./site-chat-widget.js";
+      }
+    } else {
+      source = window.location.origin + "/site-chat-widget.js";
+    }
+
+    script.src = source;
+    script.defer = true;
+    document.head.appendChild(script);
+  })();
+}
+

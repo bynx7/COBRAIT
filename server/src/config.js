@@ -40,5 +40,7 @@ module.exports = {
   corsOrigins: parseList(process.env.CORS_ORIGINS || "http://localhost:5500,http://127.0.0.1:5500"),
   bootstrapAdminEmail: String(process.env.ADMIN_EMAIL || "").trim().toLowerCase(),
   bootstrapAdminPassword: String(process.env.ADMIN_PASSWORD || ""),
-  bootstrapAdminName: String(process.env.ADMIN_NAME || "COBRAIT Admin").trim()
+  bootstrapAdminName: String(process.env.ADMIN_NAME || "COBRAIT Admin").trim(),
+  openaiApiKey: String(process.env.OPENAI_API_KEY || "").trim(),
+  openaiChatModel: String(process.env.OPENAI_CHAT_MODEL || "gpt-5.4-mini").trim()
 };
