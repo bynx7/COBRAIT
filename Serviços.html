@@ -72,7 +72,7 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 99999;
       padding: 16px 0;
     }
 
@@ -164,7 +164,7 @@
       visibility: hidden;
       transform: translateY(10px);
       transition: all 0.3s ease;
-      z-index: 1000;
+      z-index: 999999;
       margin-top: 16px;
     }
 
@@ -271,7 +271,7 @@
       visibility: hidden;
       transform: translateY(10px);
       transition: all 0.3s ease;
-      z-index: 1000;
+      z-index: 999999;
       margin-top: 8px;
     }
 
@@ -327,6 +327,139 @@
 
     .header-right { display: flex; align-items: center; gap: 24px; }
     .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+    @media (min-width: 769px) {
+      .site-header .site-nav {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+
+      .site-header .site-nav::before { display: none !important; }
+
+      .site-header .site-nav > ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 32px !important;
+        width: auto !important;
+        min-height: 0 !important;
+      }
+
+      .site-header .site-nav ul,
+      .site-header .site-nav li,
+      .site-header .dropdown,
+      .site-header .language-dropdown,
+      .site-header .header-right {
+        width: auto !important;
+      }
+
+      .site-header .site-nav > ul > li > a,
+      .site-header .site-nav a {
+        min-height: auto !important;
+        padding: 8px 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        justify-content: flex-start !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+      }
+
+      .site-header .site-nav .dropdown:not(.is-open) > .dropdown-content {
+        display: block !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin-top: 16px !important;
+        padding: 16px !important;
+      }
+
+      .site-header .site-nav .dropdown-content {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: auto !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
+        background: white !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 12px !important;
+        border-left: 0 !important;
+        padding: 16px !important;
+        display: block !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(10px) !important;
+        margin-top: 16px !important;
+        overflow: visible !important;
+      }
+
+      .site-header .site-nav .dropdown:hover > .dropdown-content,
+      .site-header .site-nav .dropdown.is-open > .dropdown-content,
+      .site-header .site-nav .dropdown:focus-within > .dropdown-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+      }
+
+      .site-header .site-nav .dropdown-item {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        padding: 12px !important;
+        margin-bottom: 8px !important;
+        border: 0 !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .site-header .site-nav .dropdown-item:hover {
+        background: #f8fafc !important;
+        transform: translateX(4px) !important;
+      }
+
+      .site-header .site-nav .dropdown-item svg {
+        width: 20px !important;
+        height: 20px !important;
+        margin: 2px 12px 0 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+      }
+
+      .site-header .site-nav .dropdown-item-content h4 {
+        font-size: 14px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .site-header .site-nav .dropdown-item-content p {
+        display: -webkit-box !important;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+    }
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -452,7 +585,6 @@
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Casos" data-fr="Travail" data-de="Arbeit" data-ru="Работа" data-nl="Werk" data-ja="仕事" data-zh="工作">Work</a></li>
                     <li class="dropdown">
                         <a href="index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
@@ -577,7 +709,6 @@
 
                     <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios" data-fr="Tarification" data-de="Preisgestaltung" data-ru="Цены" data-nl="Prijzen" data-ja="価格" data-zh="定价">Pricing</a></li>
                     <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros" data-fr="À Propos" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">About Us</span></a></li>
-                    <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Careers</a></li>
                     <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Технология" data-nl="Technologie" data-ja="テクノロジー" data-zh="技术">Tech</a></li>
                 </ul>
             </nav>
@@ -778,7 +909,6 @@
                         <ul class="footer-links">
                             <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">Sobre nós</a></li>
                             
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Carreiras</a></li>
                             <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
                         </ul>
                     </div>

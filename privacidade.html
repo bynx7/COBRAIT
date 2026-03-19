@@ -49,6 +49,411 @@
       color: var(--legal-text);
     }
 
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle { display: none; }
+
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .nav-toggle-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a:hover { color: #4f46e5; }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+    }
+
+    .dropdown-item:last-child { margin-bottom: 0; }
+
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .dropdown-item svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO BOOK-A-CALL) */
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background:
+          linear-gradient(#4f46e5 0 0) center calc(50% - 8px) / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center calc(50% + 8px) / 20px 2px no-repeat,
+          #fff;
+        font-size: 0;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .nav-toggle-btn span { display: none; }
+
+      .site-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .site-nav ul { flex-direction: column; gap: 16px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
+      .header-cta { width: 100%; }
+      .header-cta .btn { width: 100%; justify-content: center; }
+
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .site-header { z-index: 99999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
+
     .legal-shell {
       max-width: 1150px;
       margin: 0 auto;
@@ -513,7 +918,7 @@
 
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#work" data-pt="Work" data-en="Work" data-es="Casos">Work</a></li>
+                    <li><a href="index.html" data-pt="Home" data-en="Home" data-es="Inicio">Home</a></li>
           <li class="dropdown">
             <a href="index.html#what-we-do">
               <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
@@ -591,7 +996,6 @@
           </li>
           <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
           <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
-          <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras">Careers</a></li>
           <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
         </ul>
       </nav>
@@ -727,7 +1131,6 @@
                         <ul class="footer-links">
                             <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="À propos de nous" data-de="Über uns" data-ru="О нас" data-nl="Over ons" data-ja="私たちについて" data-zh="关于我们">Sobre nós</a></li>
                             
-                            <li><a href="careers.html" data-pt="Carreiras" data-en="Careers" data-es="Carreras" data-fr="Carrières" data-de="Karrieren" data-ru="Карьера" data-nl="Carrière" data-ja="キャリア" data-zh="职业">Carreiras</a></li>
                             <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
                         </ul>
                     </div>
