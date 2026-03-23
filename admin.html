@@ -1,433 +1,1194 @@
 <!--
   COBRAIT_PAGE_DOC
-  Objetivo: Painel ADMIN local para visualizar e gerir acesso rapido a todas as paginas.
-  Nota: A autenticacao desta pagina e apenas cliente (nao segura para producao).
+  Objetivo: Painel admin com autenticacao real via API e utilizadores em Postgres.
 -->
 <!doctype html>
 <html lang="pt-PT">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>COBRAIT Admin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f6f8fc;
-        --panel: #ffffff;
-        --text: #0f172a;
-        --muted: #64748b;
-        --line: #e2e8f0;
-        --primary: #0ea5e9;
-        --primary-dark: #0284c7;
-        --ok: #16a34a;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>COBRAIT Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #edf3fa;
+      --surface: #ffffff;
+      --surface-soft: #f5f8fd;
+      --ink: #0a1429;
+      --muted: #5f6f86;
+      --line: #d6e0ed;
+      --primary: #0f7bff;
+      --primary-dark: #095fd2;
+      --accent: #0fb6a6;
+      --ok-bg: #e7f8ee;
+      --ok-text: #0f7a48;
+      --warn-bg: #fff5dd;
+      --warn-text: #8c6200;
+      --bad-bg: #ffe7e8;
+      --bad-text: #ac242d;
+      --info-bg: #e9f3ff;
+      --info-text: #1c60af;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(920px 360px at 8% -10%, rgba(15, 123, 255, 0.17), transparent 65%),
+        radial-gradient(840px 350px at 96% 0%, rgba(15, 182, 166, 0.14), transparent 66%),
+        linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
+    }
+    h1, h2, h3 { margin: 0; font-family: "Sora", "Manrope", sans-serif; letter-spacing: -0.02em; }
+    a { color: inherit; }
+    button, input, select { font: inherit; }
+
+    .shell { width: min(1240px, calc(100% - 32px)); margin: 24px auto 40px; }
+    .hidden { display: none !important; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(7, 31, 68, 0.08);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 11px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      box-shadow: 0 8px 18px rgba(15, 123, 255, 0.26);
+    }
+    .btn-soft { background: #fff; color: var(--ink); border-color: var(--line); }
+    .input, .search {
+      width: 100%;
+      padding: 12px 13px;
+      border-radius: 11px;
+      border: 1px solid #c6d3e5;
+      background: #fff;
+      outline: none;
+    }
+    .input:focus, .search:focus { border-color: #4aa3ff; box-shadow: 0 0 0 4px rgba(74, 163, 255, 0.18); }
+    .input:disabled { background: #f3f6fb; color: #7a889a; cursor: not-allowed; }
+    .field-label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 700; }
+    .muted { color: var(--muted); }
+    .err { min-height: 18px; margin-top: 6px; color: #b32634; font-size: 13px; }
+    .notice {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .notice--info { background: var(--info-bg); border-color: #c8def9; color: var(--info-text); }
+    .notice--ok { background: var(--ok-bg); border-color: #bde8ce; color: var(--ok-text); }
+    .notice--bad { background: var(--bad-bg); border-color: #f3bec2; color: var(--bad-text); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      text-transform: lowercase;
+    }
+    .pill--ok { background: var(--ok-bg); border-color: #bde8ce; color: var(--ok-text); }
+    .pill--warn { background: var(--warn-bg); border-color: #f2deb0; color: var(--warn-text); }
+    .pill--bad { background: var(--bad-bg); border-color: #f3bec2; color: var(--bad-text); }
+    .pill--info { background: var(--info-bg); border-color: #c8def9; color: var(--info-text); }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      text-transform: lowercase;
+    }
+    .badge[data-group="core"], .badge[data-role="admin"] { background: #edf5ff; color: #1d5ea8; border-color: #bfd6f8; }
+    .badge[data-group="servicos"], .badge[data-role="editor"] { background: #eafbf6; color: #0f7e6e; border-color: #bfeadf; }
+    .badge[data-group="legal"] { background: #fff8e8; color: #946303; border-color: #f3debc; }
+    .badge[data-group="tools"], .badge[data-role="viewer"] { background: #f5f0ff; color: #6940b8; border-color: #d7c9fa; }
+
+    .auth {
+      width: min(620px, 100%);
+      margin: 70px auto;
+      padding: 28px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fcff 100%);
+    }
+    .auth-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .auth-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      background: linear-gradient(145deg, var(--primary), var(--accent));
+      box-shadow: 0 8px 20px rgba(15, 123, 255, 0.3);
+    }
+    .auth h1 { font-size: clamp(24px, 3vw, 30px); margin-bottom: 6px; }
+    .auth p { margin: 0 0 14px; color: var(--muted); }
+    .hint { margin-top: 12px; font-size: 12px; color: var(--muted); }
+
+    .topbar, .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .topbar { padding: 18px; margin-bottom: 14px; }
+    .topbar-actions, .panel-actions { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+    .kpi { padding: 16px; position: relative; overflow: hidden; }
+    .kpi::before {
+      content: "";
+      position: absolute;
+      width: 66px;
+      height: 66px;
+      top: -18px;
+      right: -18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(15, 123, 255, 0.2), rgba(15, 123, 255, 0));
+    }
+    .kpi b { display: block; font-size: clamp(24px, 3vw, 34px); line-height: 1; margin-bottom: 7px; font-family: "Sora", "Manrope", sans-serif; }
+    .kpi-label { color: var(--muted); font-size: 13px; font-weight: 600; }
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .users-layout { margin-top: 12px; }
+    .panel { padding: 16px; }
+    .panel-head { margin-bottom: 12px; }
+    .search { max-width: 300px; }
+    .search--compact { max-width: 240px; min-width: 220px; }
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid #edf2f8;
+      max-height: 520px;
+      overflow: auto;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 2px;
+      border-bottom: 1px solid #eef3f8;
+    }
+    .item:last-child { border-bottom: none; }
+    .item-main { min-width: 0; }
+    .item-title { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+    .item-meta { color: var(--muted); font-size: 13px; line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-meta-wrap { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+    .item-actions { display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .compact-select {
+      min-width: 150px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #c6d3e5;
+      background: #fff;
+      color: var(--ink);
+    }
+    .compact-select:focus { border-color: #4aa3ff; outline: none; box-shadow: 0 0 0 3px rgba(74, 163, 255, 0.16); }
+    .item-summary {
+      margin-top: 4px;
+      color: #314154;
+      font-size: 13px;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      border: 1px solid #d7e2ef;
+      color: #37506c;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .span-2 { grid-column: 1 / -1; }
+    .form-note, .panel-footer { color: var(--muted); font-size: 12px; }
+    .panel-footer { margin-top: 12px; }
+    textarea.input { min-height: 124px; resize: vertical; }
+
+    @media (max-width: 1120px) {
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .topbar, .panel-head { flex-direction: column; align-items: flex-start; }
+      .search { max-width: none; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1240px); }
+      .kpis, .form-grid { grid-template-columns: 1fr; }
+      .item { grid-template-columns: 1fr; }
+      .item-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section id="loginSection" class="auth card">
+      <div class="auth-brand">
+        <div class="auth-mark">C</div>
+        <div>
+          <h2>COBRAIT Admin Access</h2>
+          <p class="muted">Autenticacao real via API e base de dados Postgres.</p>
+        </div>
+      </div>
+      <h1>Entrar no painel</h1>
+      <p>Usa um utilizador gravado na tabela <code>admin_users</code>.</p>
+      <label class="field-label" for="apiBaseInput">API Base</label>
+      <input id="apiBaseInput" class="input" type="text" placeholder="http://localhost:4000/api" autocomplete="off" />
+      <label class="field-label" for="adminEmail">Email</label>
+      <input id="adminEmail" class="input" type="email" placeholder="admin@cobrait.pt" autocomplete="username" />
+      <label class="field-label" for="adminPass">Password</label>
+      <input id="adminPass" class="input" type="password" placeholder="Introduz a password" autocomplete="current-password" />
+      <button id="loginBtn" class="btn btn-primary" type="button">Entrar</button>
+      <div id="loginError" class="err"></div>
+      <p class="hint">Se ainda nao existir nenhum admin, define <code>ADMIN_EMAIL</code> e <code>ADMIN_PASSWORD</code> em <code>server/.env</code> e arranca a API.</p>
+    </section>
+
+    <section id="adminSection" class="hidden">
+      <header class="topbar card">
+        <div>
+          <div class="muted" style="font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#2371dd;">Control Center</div>
+          <h1 style="font-size:clamp(21px,2.5vw,27px);margin-bottom:2px;">COBRAIT Admin</h1>
+          <div id="sessionInfo" class="muted">Sessao ativa</div>
+        </div>
+        <div class="topbar-actions">
+          <div id="sessionRole" class="pill pill--info">viewer</div>
+          <a class="btn btn-soft" href="index.html">Abrir site</a>
+          <button id="logoutBtn" class="btn btn-primary" type="button">Sair</button>
+        </div>
+      </header>
+
+      <section class="kpis">
+        <article class="kpi card"><b id="kpiTotal">0</b><div class="kpi-label">Paginas mapeadas</div></article>
+        <article class="kpi card"><b id="kpiServicos">0</b><div class="kpi-label">Paginas de servicos</div></article>
+        <article class="kpi card"><b id="kpiChecks">0</b><div class="kpi-label">Checks title OK</div></article>
+        <article class="kpi card"><b id="kpiUsers">-</b><div class="kpi-label">Utilizadores ativos</div></article>
+        <article class="kpi card"><b id="kpiBookings">-</b><div class="kpi-label">Chamadas novas</div></article>
+        <article class="kpi card"><b id="kpiContacts">-</b><div class="kpi-label">Contactos novos</div></article>
+      </section>
+
+      <section class="layout">
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Todas as paginas</h2>
+              <p class="muted">Acesso direto a cada pagina do projeto.</p>
+            </div>
+            <div class="panel-actions">
+              <input id="pagesFilter" class="search" type="search" placeholder="Filtrar por nome, path ou grupo" />
+            </div>
+          </div>
+          <ul id="pagesList" class="list"></ul>
+        </section>
+
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Estado rapido</h2>
+              <p class="muted">Verifica se cada pagina responde e tem a tag title.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="rerunChecksBtn" class="btn btn-soft" type="button">Revalidar</button>
+            </div>
+          </div>
+          <ul id="checksList" class="list"></ul>
+        </section>
+      </section>
+
+      <section class="layout users-layout">
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Utilizadores</h2>
+              <p id="usersMeta" class="muted">Contas gravadas em Postgres para o painel admin.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="refreshUsersBtn" class="btn btn-soft" type="button">Atualizar</button>
+            </div>
+          </div>
+          <div id="usersNotice" class="notice notice--info hidden"></div>
+          <ul id="usersList" class="list"></ul>
+        </section>
+
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 id="userFormTitle" style="font-size:21px;margin-bottom:4px;">Novo utilizador</h2>
+              <p class="muted">Cria ou edita acessos admin, editor e viewer.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="resetUserFormBtn" class="btn btn-soft" type="button">Limpar</button>
+            </div>
+          </div>
+          <div id="userFormStatus" class="notice notice--info hidden"></div>
+          <form id="userForm">
+            <input id="editingUserId" type="hidden" />
+            <div class="form-grid">
+              <div class="span-2">
+                <label class="field-label" for="userFullName">Nome completo</label>
+                <input id="userFullName" class="input" type="text" placeholder="Ex: Maria Silva" autocomplete="name" />
+              </div>
+              <div class="span-2">
+                <label class="field-label" for="userEmail">Email</label>
+                <input id="userEmail" class="input" type="email" placeholder="maria@cobrait.pt" autocomplete="email" />
+              </div>
+              <div>
+                <label class="field-label" for="userRole">Role</label>
+                <select id="userRole" class="input">
+                  <option value="viewer">viewer</option>
+                  <option value="editor">editor</option>
+                  <option value="admin">admin</option>
+                </select>
+              </div>
+              <div>
+                <label class="field-label" for="userActive">Estado</label>
+                <select id="userActive" class="input">
+                  <option value="true">ativo</option>
+                  <option value="false">inativo</option>
+                </select>
+              </div>
+              <div class="span-2">
+                <label class="field-label" for="userPassword">Password</label>
+                <input id="userPassword" class="input" type="password" placeholder="Minimo 8 caracteres" autocomplete="new-password" />
+                <div id="userPasswordHint" class="form-note">Obrigatoria ao criar um novo utilizador.</div>
+              </div>
+            </div>
+            <div class="panel-actions">
+              <button id="saveUserBtn" class="btn btn-primary" type="submit">Criar utilizador</button>
+            </div>
+          </form>
+          <div class="panel-footer">Cada utilizador criado aqui e inserido na tabela <code>admin_users</code> do PostgreSQL. A API protege a sessao com cookie HTTP-only e pode ser estendida para listar tambem <code>contact_requests</code> e <code>call_bookings</code>.</div>
+        </section>
+      </section>
+
+      <section class="layout users-layout">
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Agendar chamadas</h2>
+              <p id="bookingsMeta" class="muted">Pedidos recebidos pelo formulario do site.</p>
+            </div>
+            <div class="panel-actions">
+              <input id="bookingsFilter" class="search search--compact" type="search" placeholder="Filtrar por nome, email ou estado" />
+              <button id="refreshBookingsBtn" class="btn btn-soft" type="button">Atualizar</button>
+            </div>
+          </div>
+          <div id="bookingsNotice" class="notice notice--info hidden"></div>
+          <ul id="bookingsList" class="list"></ul>
+        </section>
+
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Pedidos de contacto</h2>
+              <p id="contactsMeta" class="muted">Leads gerais guardadas para o backoffice.</p>
+            </div>
+            <div class="panel-actions">
+              <input id="contactsFilter" class="search search--compact" type="search" placeholder="Filtrar por nome, email ou estado" />
+              <button id="refreshContactsBtn" class="btn btn-soft" type="button">Atualizar</button>
+            </div>
+          </div>
+          <div id="contactsNotice" class="notice notice--info hidden"></div>
+          <ul id="contactsList" class="list"></ul>
+        </section>
+      </section>
+    </section>
+  </main>
+  <script>
+    const DEFAULT_LOCAL_API = "http://localhost:4000/api";
+    const pages = [
+      { path: "index.html", label: "Home", group: "core" },
+      { path: "about-us.html", label: "About Us", group: "core" },
+      { path: "pricing.html", label: "Pricing", group: "core" },
+      { path: "project.html", label: "Project", group: "core" },
+      { path: "book-a-call.html", label: "Book a Call", group: "core" },
+      { path: "tech.html", label: "Tech", group: "core" },
+      { path: "Serviços.html", label: "Servicos", group: "core" },
+      { path: "privacidade.html", label: "Privacidade", group: "legal" },
+      { path: "termos.html", label: "Termos", group: "legal" },
+      { path: "cookies.html", label: "Cookies", group: "legal" },
+      { path: "servicos/product-scope.html", label: "Product Scope", group: "servicos" },
+      { path: "servicos/mvp-builder.html", label: "MVP Builder", group: "servicos" },
+      { path: "servicos/ux-ui.html", label: "UX/UI", group: "servicos" },
+      { path: "servicos/custom-software.html", label: "Custom Software", group: "servicos" },
+      { path: "servicos/dedicated-teams.html", label: "Dedicated Teams", group: "servicos" },
+      { path: "translate-helper.html", label: "Translate Helper", group: "tools" },
+      { path: "test-translations.html", label: "Test Translations", group: "tools" },
+      { path: "header.html", label: "Header (snippet)", group: "tools" }
+    ];
+
+    function qs(id) { return document.getElementById(id); }
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+    function sanitizeApiBase(value) { return String(value || "").trim().replace(/\/+$/, ""); }
+    function defaultApiBase() {
+      const saved = localStorage.getItem("cobrait_admin_api_base");
+      if (saved) return sanitizeApiBase(saved);
+      const staticPorts = new Set(["3000", "5500", "8080", "8092"]);
+      const isStaticHost = staticPorts.has(window.location.port);
+      if (window.location.protocol === "file:") return DEFAULT_LOCAL_API;
+      if (isStaticHost) {
+        const apiHost = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+          ? "localhost"
+          : window.location.hostname;
+        return sanitizeApiBase("http://" + apiHost + ":4000/api");
       }
-      * {
-        box-sizing: border-box;
+      return sanitizeApiBase(window.location.origin + "/api");
+    }
+    function formatDate(value) {
+      if (!value) return "sem registo";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "sem registo";
+      return new Intl.DateTimeFormat("pt-PT", { dateStyle: "medium", timeStyle: "short" }).format(date);
+    }
+    function showNotice(element, message, tone) {
+      if (!message) {
+        element.textContent = "";
+        element.className = "notice notice--info hidden";
+        return;
       }
-      body {
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        color: var(--text);
-        background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      element.textContent = message;
+      element.className = "notice notice--" + (tone || "info");
+    }
+
+    const CONTACT_STATUS_OPTIONS = ["new", "contacted", "qualified", "proposal_sent", "won", "lost", "archived"];
+    const BOOKING_STATUS_OPTIONS = ["new", "contacted", "scheduled", "confirmed", "completed", "cancelled", "no_show"];
+
+    const state = {
+      apiBase: defaultApiBase(),
+      currentUser: null,
+      users: [],
+      callBookings: [],
+      contactRequests: [],
+      checksRunning: false
+    };
+
+    const loginSection = qs("loginSection");
+    const adminSection = qs("adminSection");
+    const apiBaseInput = qs("apiBaseInput");
+    const loginEmail = qs("adminEmail");
+    const loginPass = qs("adminPass");
+    const loginBtn = qs("loginBtn");
+    const loginError = qs("loginError");
+    const logoutBtn = qs("logoutBtn");
+    const sessionInfo = qs("sessionInfo");
+    const sessionRole = qs("sessionRole");
+    const pagesFilter = qs("pagesFilter");
+    const pagesList = qs("pagesList");
+    const checksList = qs("checksList");
+    const rerunChecksBtn = qs("rerunChecksBtn");
+    const kpiTotal = qs("kpiTotal");
+    const kpiServicos = qs("kpiServicos");
+    const kpiChecks = qs("kpiChecks");
+    const kpiUsers = qs("kpiUsers");
+    const kpiBookings = qs("kpiBookings");
+    const kpiContacts = qs("kpiContacts");
+    const usersMeta = qs("usersMeta");
+    const usersNotice = qs("usersNotice");
+    const usersList = qs("usersList");
+    const refreshUsersBtn = qs("refreshUsersBtn");
+    const bookingsMeta = qs("bookingsMeta");
+    const bookingsNotice = qs("bookingsNotice");
+    const bookingsList = qs("bookingsList");
+    const bookingsFilter = qs("bookingsFilter");
+    const refreshBookingsBtn = qs("refreshBookingsBtn");
+    const contactsMeta = qs("contactsMeta");
+    const contactsNotice = qs("contactsNotice");
+    const contactsList = qs("contactsList");
+    const contactsFilter = qs("contactsFilter");
+    const refreshContactsBtn = qs("refreshContactsBtn");
+    const userForm = qs("userForm");
+    const userFormStatus = qs("userFormStatus");
+    const userFormTitle = qs("userFormTitle");
+    const resetUserFormBtn = qs("resetUserFormBtn");
+    const editingUserId = qs("editingUserId");
+    const userFullName = qs("userFullName");
+    const userEmail = qs("userEmail");
+    const userRole = qs("userRole");
+    const userActive = qs("userActive");
+    const userPassword = qs("userPassword");
+    const userPasswordHint = qs("userPasswordHint");
+    const saveUserBtn = qs("saveUserBtn");
+
+    function setApiBaseFromInput() {
+      state.apiBase = sanitizeApiBase(apiBaseInput.value || defaultApiBase());
+      apiBaseInput.value = state.apiBase;
+      localStorage.setItem("cobrait_admin_api_base", state.apiBase);
+    }
+
+    async function apiFetch(path, options) {
+      const requestOptions = options || {};
+      const init = { method: requestOptions.method || "GET", credentials: "include", headers: {} };
+      if (requestOptions.body !== undefined) {
+        init.headers["Content-Type"] = "application/json";
+        init.body = JSON.stringify(requestOptions.body);
       }
-      .wrap {
-        width: min(1160px, calc(100% - 32px));
-        margin: 24px auto 40px;
+      const response = await fetch(state.apiBase + path, init);
+      const raw = await response.text();
+      let payload = null;
+      if (raw) {
+        try { payload = JSON.parse(raw); } catch (_error) { payload = { message: raw }; }
       }
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 14px 16px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: var(--panel);
-        margin-bottom: 16px;
+      if (!response.ok) {
+        const error = new Error((payload && payload.message) || ("Pedido falhou: " + response.status));
+        error.status = response.status;
+        throw error;
       }
-      .brand {
-        font-size: 18px;
-        font-weight: 800;
-        letter-spacing: 0.2px;
+      return payload;
+    }
+
+    function filteredPages() {
+      const query = String(pagesFilter.value || "").trim().toLowerCase();
+      if (!query) return pages;
+      return pages.filter((page) =>
+        page.label.toLowerCase().includes(query) ||
+        page.path.toLowerCase().includes(query) ||
+        page.group.toLowerCase().includes(query)
+      );
+    }
+
+    function renderPages() {
+      pagesList.innerHTML = "";
+      kpiTotal.textContent = String(pages.length);
+      kpiServicos.textContent = String(pages.filter((page) => page.group === "servicos").length);
+      const current = filteredPages();
+      current.forEach((page) => {
+        const item = document.createElement("li");
+        item.className = "item";
+        item.innerHTML =
+          '<div class="item-main"><div class="item-title">' + escapeHtml(page.label) + '</div><div class="item-meta"><span class="badge" data-group="' +
+          escapeHtml(page.group) + '">' + escapeHtml(page.group) + "</span>" + escapeHtml(page.path) + '</div></div><a class="btn btn-soft" href="' +
+          escapeHtml(page.path) + '" target="_blank" rel="noopener noreferrer">Abrir</a>';
+        pagesList.appendChild(item);
+      });
+      if (!current.length) {
+        const empty = document.createElement("li");
+        empty.className = "item";
+        empty.innerHTML = '<div class="muted">Sem resultados para este filtro.</div>';
+        pagesList.appendChild(empty);
       }
-      .muted {
-        color: var(--muted);
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        padding: 10px 14px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.18s ease;
-      }
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
-      }
-      .btn-primary:hover {
-        background: var(--primary-dark);
-      }
-      .btn-ghost {
-        color: var(--text);
-        border-color: var(--line);
-        background: #fff;
-      }
-      .btn-ghost:hover {
-        background: #f8fafc;
-      }
-      .panel {
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: var(--panel);
-        padding: 16px;
-      }
-      .login-box {
-        width: min(520px, 100%);
-        margin: 60px auto;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: var(--panel);
-        padding: 22px;
-        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-      }
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-      }
-      .login-box h1 {
-        font-size: 24px;
-        margin-bottom: 6px;
-      }
-      .login-box p {
-        margin: 0 0 14px;
-        color: var(--muted);
-      }
-      .field-label {
-        display: block;
-        margin-bottom: 6px;
-        font-size: 13px;
-        font-weight: 600;
-      }
-      .input {
-        width: 100%;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
-        padding: 11px 12px;
-        font-size: 14px;
-        margin-bottom: 12px;
-        outline: none;
-      }
-      .input:focus {
-        border-color: #38bdf8;
-        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16);
-      }
-      .row {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-bottom: 16px;
-      }
-      .kpi {
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 14px;
-        background: #fff;
-      }
-      .kpi b {
-        display: block;
-        font-size: 22px;
-        margin-bottom: 4px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      .list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        max-height: 480px;
-        overflow: auto;
-      }
-      .item {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 10px;
-        border-bottom: 1px solid #f1f5f9;
-        padding: 12px 0;
-      }
-      .item:last-child {
-        border-bottom: none;
-      }
-      .item-title {
-        font-weight: 600;
-        font-size: 14px;
-        margin-bottom: 2px;
-      }
-      .badge {
-        display: inline-block;
-        font-size: 11px;
-        border: 1px solid #bae6fd;
-        color: #0369a1;
-        background: #f0f9ff;
-        padding: 2px 8px;
-        border-radius: 999px;
-        margin-right: 6px;
-      }
-      .status-ok {
-        color: var(--ok);
-        font-size: 12px;
-        font-weight: 600;
-      }
-      .hidden {
-        display: none !important;
-      }
-      .err {
-        color: #b91c1c;
-        margin-top: 6px;
-        font-size: 13px;
-        min-height: 18px;
-      }
-      @media (max-width: 900px) {
-        .row,
-        .grid {
-          grid-template-columns: 1fr;
+    }
+
+    function checkClass(ok, hasTitle) {
+      if (ok && hasTitle) return "pill pill--ok";
+      if (ok && !hasTitle) return "pill pill--warn";
+      return "pill pill--bad";
+    }
+
+    function checkLabel(ok, hasTitle) {
+      if (ok && hasTitle) return "Disponivel | Titulo validado";
+      if (ok && !hasTitle) return "Disponivel | Falta titulo";
+      return "Pagina indisponivel";
+    }
+
+    async function runChecks() {
+      if (state.checksRunning) return;
+      state.checksRunning = true;
+      rerunChecksBtn.disabled = true;
+      rerunChecksBtn.textContent = "A validar...";
+      checksList.innerHTML = "";
+      let okCount = 0;
+      for (const page of pages) {
+        const item = document.createElement("li");
+        item.className = "item";
+        item.innerHTML = '<div class="item-main"><div class="item-title">' + escapeHtml(page.label) + '</div><div class="item-meta">' + escapeHtml(page.path) + '</div></div><div class="muted">A verificar...</div>';
+        checksList.appendChild(item);
+        try {
+          const response = await fetch(page.path, { cache: "no-store" });
+          const html = await response.text();
+          const hasTitle = /<title>[^<]+<\/title>/i.test(html);
+          if (response.ok && hasTitle) okCount += 1;
+          item.lastElementChild.outerHTML = '<div class="' + checkClass(response.ok, hasTitle) + '">' + checkLabel(response.ok, hasTitle) + "</div>";
+        } catch (_error) {
+          item.lastElementChild.outerHTML = '<div class="pill pill--bad">Falha ao verificar</div>';
         }
       }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <section id="loginSection" class="login-box">
-        <h1>Admin Area</h1>
-        <p>Acesso local para veres todas as paginas e estado rapido do site.</p>
-        <label class="field-label" for="adminPass">Password</label>
-        <input
-          id="adminPass"
-          class="input"
-          type="password"
-          placeholder="Introduz a password"
-        />
-        <button id="loginBtn" class="btn btn-primary" type="button">
-          Entrar
-        </button>
-        <div id="loginError" class="err"></div>
-        <p class="muted" style="margin-top: 12px; font-size: 12px">
-          Dica: password inicial <code>cobrait-admin</code> (altera no topo do
-          script).
-        </p>
-      </section>
+      kpiChecks.textContent = String(okCount);
+      rerunChecksBtn.disabled = false;
+      rerunChecksBtn.textContent = "Revalidar";
+      state.checksRunning = false;
+    }
 
-      <section id="adminSection" class="hidden">
-        <div class="topbar">
-          <div>
-            <div class="brand">COBRAIT ADMIN</div>
-            <div class="muted" id="sessionInfo">Sessao ativa</div>
-          </div>
-          <div>
-            <a class="btn btn-ghost" href="index.html">Abrir site</a>
-            <button id="logoutBtn" class="btn btn-primary" type="button">
-              Sair
-            </button>
-          </div>
-        </div>
+    function renderEmptyUsers(message) {
+      usersList.innerHTML = "";
+      const item = document.createElement("li");
+      item.className = "item";
+      item.innerHTML = '<div class="muted">' + escapeHtml(message) + "</div>";
+      usersList.appendChild(item);
+    }
 
-        <div class="row">
-          <div class="kpi">
-            <b id="kpiTotal">0</b>
-            <span class="muted">Paginas mapeadas</span>
-          </div>
-          <div class="kpi">
-            <b id="kpiServicos">0</b>
-            <span class="muted">Paginas de servicos</span>
-          </div>
-          <div class="kpi">
-            <b id="kpiChecks">0</b>
-            <span class="muted">Checks titulo OK</span>
-          </div>
-        </div>
+    function renderUsers() {
+      usersList.innerHTML = "";
+      if (!state.users.length) {
+        usersMeta.textContent = "0 utilizadores registados.";
+        kpiUsers.textContent = "0";
+        renderEmptyUsers("Ainda nao existem utilizadores.");
+        return;
+      }
+      const activeUsers = state.users.filter((user) => user.isActive).length;
+      const activeAdmins = state.users.filter((user) => user.isActive && user.role === "admin").length;
+      usersMeta.textContent = state.users.length + " utilizadores, " + activeAdmins + " admins ativos.";
+      kpiUsers.textContent = String(activeUsers);
+      state.users.forEach((user) => {
+        const current = state.currentUser && state.currentUser.id === user.id;
+        const item = document.createElement("li");
+        item.className = "item";
+        item.innerHTML =
+          '<div class="item-main"><div class="item-title">' + escapeHtml(user.fullName) +
+          '<span class="badge" data-role="' + escapeHtml(user.role) + '">' + escapeHtml(user.role) + '</span><span class="' + (user.isActive ? "pill pill--ok" : "pill pill--bad") + '">' + (user.isActive ? "ativo" : "inativo") + '</span>' +
+          (current ? '<span class="pill pill--info">sessao atual</span>' : "") +
+          '</div><div class="item-meta">' + escapeHtml(user.email) + '</div><div class="item-meta">Ultimo login: ' + escapeHtml(formatDate(user.lastLoginAt)) + " | Criado: " + escapeHtml(formatDate(user.createdAt)) +
+          '</div></div><div class="item-actions"><button class="btn btn-soft" type="button" data-action="edit" data-id="' + escapeHtml(user.id) + '">Editar</button><button class="btn btn-soft" type="button" data-action="toggle" data-id="' + escapeHtml(user.id) + '">' + (user.isActive ? "Desativar" : "Ativar") + "</button></div>";
+        usersList.appendChild(item);
+      });
+    }
 
-        <div class="grid">
-          <section class="panel">
-            <h2 style="font-size: 18px; margin-bottom: 4px">
-              Todas as paginas
-            </h2>
-            <p class="muted" style="margin-top: 0; margin-bottom: 12px">
-              Acesso direto a cada pagina do projeto.
-            </p>
-            <ul id="pagesList" class="list"></ul>
-          </section>
+    function renderEmptyList(target, message) {
+      target.innerHTML = "";
+      const item = document.createElement("li");
+      item.className = "item";
+      item.innerHTML = '<div class="muted">' + escapeHtml(message) + "</div>";
+      target.appendChild(item);
+    }
 
-          <section class="panel">
-            <h2 style="font-size: 18px; margin-bottom: 4px">Estado rapido</h2>
-            <p class="muted" style="margin-top: 0; margin-bottom: 12px">
-              Verifica se cada pagina responde e tem tag title.
-            </p>
-            <ul id="checksList" class="list"></ul>
-          </section>
-        </div>
-      </section>
-    </main>
+    function statusOptions(options, current) {
+      return options
+        .map((status) => '<option value="' + status + '"' + (status === current ? " selected" : "") + ">" + status + "</option>")
+        .join("");
+    }
 
-    <script>
-      // Autenticacao local (cliente). Para producao, usar backend seguro.
-      const ADMIN_PASSWORD = "cobrait-admin";
-      const SESSION_KEY = "cobrait_admin_session";
+    function metaChips(values) {
+      return values
+        .filter(Boolean)
+        .map((value) => '<span class="meta-chip">' + escapeHtml(value) + "</span>")
+        .join("");
+    }
 
-      const pages = [
-        { path: "index.html", label: "Home", group: "core" },
-        { path: "about-us.html", label: "About Us", group: "core" },
-        { path: "pricing.html", label: "Pricing", group: "core" },
-        { path: "project.html", label: "Project", group: "core" },
-        { path: "book-a-call.html", label: "Book a Call", group: "core" },
-        { path: "careers.html", label: "Careers", group: "core" },
-        { path: "tech.html", label: "Tech", group: "core" },
-        { path: "Serviços.html", label: "Servicos", group: "core" },
-        { path: "privacidade.html", label: "Privacidade", group: "legal" },
-        { path: "termos.html", label: "Termos", group: "legal" },
-        { path: "cookies.html", label: "Cookies", group: "legal" },
-        {
-          path: "servicos/product-scope.html",
-          label: "Product Scope",
-          group: "servicos",
-        },
-        {
-          path: "servicos/mvp-builder.html",
-          label: "MVP Builder",
-          group: "servicos",
-        },
-        { path: "servicos/ux-ui.html", label: "UX/UI", group: "servicos" },
-        {
-          path: "servicos/custom-software.html",
-          label: "Custom Software",
-          group: "servicos",
-        },
-        {
-          path: "servicos/dedicated-teams.html",
-          label: "Dedicated Teams",
-          group: "servicos",
-        },
-        {
-          path: "translate-helper.html",
-          label: "Translate Helper",
-          group: "tools",
-        },
-        {
-          path: "test-translations.html",
-          label: "Test Translations",
-          group: "tools",
-        },
-        { path: "header.html", label: "Header (snippet)", group: "tools" },
-      ];
+    function filterCollection(entries, query, fields) {
+      const normalized = String(query || "").trim().toLowerCase();
+      if (!normalized) return entries;
+      return entries.filter((entry) =>
+        fields(entry).some((value) => String(value || "").toLowerCase().includes(normalized))
+      );
+    }
 
-      const loginSection = document.getElementById("loginSection");
-      const adminSection = document.getElementById("adminSection");
-      const loginBtn = document.getElementById("loginBtn");
-      const logoutBtn = document.getElementById("logoutBtn");
-      const loginPass = document.getElementById("adminPass");
-      const loginError = document.getElementById("loginError");
-      const pagesList = document.getElementById("pagesList");
-      const checksList = document.getElementById("checksList");
-      const kpiTotal = document.getElementById("kpiTotal");
-      const kpiServicos = document.getElementById("kpiServicos");
-      const kpiChecks = document.getElementById("kpiChecks");
-      const sessionInfo = document.getElementById("sessionInfo");
+    function filteredBookings() {
+      return filterCollection(state.callBookings, bookingsFilter.value, (booking) => [
+        booking.fullName,
+        booking.email,
+        booking.phone,
+        booking.company,
+        booking.status,
+        booking.budgetRange,
+        booking.serviceInterest,
+        booking.sourceCampaign,
+        booking.sourcePage
+      ]);
+    }
 
-      function openAdmin() {
-        loginSection.classList.add("hidden");
-        adminSection.classList.remove("hidden");
-        sessionInfo.textContent =
-          "Sessao ativa em " + new Date().toLocaleString("pt-PT");
-        renderPages();
-        runChecks();
+    function filteredContacts() {
+      return filterCollection(state.contactRequests, contactsFilter.value, (contact) => [
+        contact.fullName,
+        contact.email,
+        contact.phone,
+        contact.company,
+        contact.status,
+        contact.subject,
+        contact.sourceCampaign,
+        contact.sourcePage
+      ]);
+    }
+
+    function updateOpsKpis() {
+      kpiBookings.textContent = String(state.callBookings.filter((item) => item.status === "new").length);
+      kpiContacts.textContent = String(state.contactRequests.filter((item) => item.status === "new").length);
+    }
+
+    function renderCallBookings() {
+      bookingsList.innerHTML = "";
+      const currentBookings = filteredBookings();
+      const bookingsQuery = String(bookingsFilter.value || "").trim();
+
+      if (!state.callBookings.length) {
+        bookingsMeta.textContent = "0 pedidos de agendamento recebidos.";
+        renderEmptyList(bookingsList, "Ainda nao existem pedidos de chamada.");
+        updateOpsKpis();
+        return;
       }
 
-      function renderPages() {
-        pagesList.innerHTML = "";
-        kpiTotal.textContent = String(pages.length);
-        kpiServicos.textContent = String(
-          pages.filter((p) => p.group === "servicos").length,
-        );
+      bookingsMeta.textContent =
+        (currentBookings.length === state.callBookings.length
+          ? state.callBookings.length + " pedidos guardados no backoffice."
+          : currentBookings.length + " de " + state.callBookings.length + " pedidos visiveis.") +
+        " " +
+        state.callBookings.filter((booking) => booking.status === "new").length +
+        " novos no total.";
 
-        pages.forEach((page) => {
-          const li = document.createElement("li");
-          li.className = "item";
-          li.innerHTML = `
-          <div>
-            <div class="item-title">${page.label}</div>
-            <div class="muted"><span class="badge">${page.group}</span>${page.path}</div>
-          </div>
-          <a class="btn btn-ghost" href="${page.path}" target="_blank" rel="noopener noreferrer">Abrir</a>
-        `;
-          pagesList.appendChild(li);
+      if (!currentBookings.length) {
+        renderEmptyList(bookingsList, bookingsQuery ? "Sem resultados para o filtro aplicado." : "Ainda nao existem pedidos de chamada.");
+        updateOpsKpis();
+        return;
+      }
+
+      currentBookings.forEach((booking) => {
+        const item = document.createElement("li");
+        item.className = "item";
+        const bookingMeta = metaChips([
+          booking.email,
+          booking.phone ? "Telefone: " + booking.phone : "",
+          booking.company ? "Empresa: " + booking.company : "",
+          booking.budgetRange ? "Orcamento: " + booking.budgetRange : "",
+          booking.preferredDate ? "Data: " + booking.preferredDate : "",
+          booking.serviceInterest ? "Interesse: " + booking.serviceInterest : "",
+          booking.sourceCampaign ? "Origem: " + booking.sourceCampaign : "",
+          booking.sourcePage ? "Pagina: " + booking.sourcePage : ""
+        ]);
+        item.innerHTML =
+          '<div class="item-main"><div class="item-title">' + escapeHtml(booking.fullName) +
+          '<span class="pill ' + (booking.status === "new" ? "pill--warn" : "pill--info") + '">' + escapeHtml(booking.status) + '</span></div>' +
+          '<div class="item-meta-wrap">' + bookingMeta + '</div>' +
+          '<div class="item-summary">' + escapeHtml(booking.projectSummary || "Sem resumo adicional.") + '</div>' +
+          '<div class="item-meta">Recebido em ' + escapeHtml(formatDate(booking.createdAt)) + '</div></div>' +
+          '<div class="item-actions"><select class="compact-select" data-kind="booking-status" data-id="' + escapeHtml(booking.id) + '">' + statusOptions(BOOKING_STATUS_OPTIONS, booking.status) + '</select>' +
+          '<button class="btn btn-soft" type="button" data-action="save-booking" data-id="' + escapeHtml(booking.id) + '">Guardar</button></div>';
+        bookingsList.appendChild(item);
+      });
+
+      updateOpsKpis();
+    }
+
+    function renderContactRequests() {
+      contactsList.innerHTML = "";
+      const currentContacts = filteredContacts();
+      const contactsQuery = String(contactsFilter.value || "").trim();
+
+      if (!state.contactRequests.length) {
+        contactsMeta.textContent = "0 pedidos de contacto recebidos.";
+        renderEmptyList(contactsList, "Ainda nao existem pedidos de contacto.");
+        updateOpsKpis();
+        return;
+      }
+
+      contactsMeta.textContent =
+        (currentContacts.length === state.contactRequests.length
+          ? state.contactRequests.length + " leads guardadas no backoffice."
+          : currentContacts.length + " de " + state.contactRequests.length + " leads visiveis.") +
+        " " +
+        state.contactRequests.filter((contact) => contact.status === "new").length +
+        " novas no total.";
+
+      if (!currentContacts.length) {
+        renderEmptyList(contactsList, contactsQuery ? "Sem resultados para o filtro aplicado." : "Ainda nao existem pedidos de contacto.");
+        updateOpsKpis();
+        return;
+      }
+
+      currentContacts.forEach((contact) => {
+        const item = document.createElement("li");
+        item.className = "item";
+        const contactMeta = metaChips([
+          contact.email,
+          contact.phone ? "Telefone: " + contact.phone : "",
+          contact.company ? "Empresa: " + contact.company : "",
+          contact.subject ? "Assunto: " + contact.subject : "",
+          contact.sourceCampaign ? "Origem: " + contact.sourceCampaign : "",
+          contact.sourcePage ? "Pagina: " + contact.sourcePage : ""
+        ]);
+        item.innerHTML =
+          '<div class="item-main"><div class="item-title">' + escapeHtml(contact.fullName) +
+          '<span class="pill ' + (contact.status === "new" ? "pill--warn" : "pill--info") + '">' + escapeHtml(contact.status) + '</span></div>' +
+          '<div class="item-meta-wrap">' + contactMeta + '</div>' +
+          '<div class="item-summary">' + escapeHtml(contact.message || "Sem mensagem.") + '</div>' +
+          '<div class="item-meta">Recebido em ' + escapeHtml(formatDate(contact.createdAt)) + '</div></div>' +
+          '<div class="item-actions"><select class="compact-select" data-kind="contact-status" data-id="' + escapeHtml(contact.id) + '">' + statusOptions(CONTACT_STATUS_OPTIONS, contact.status) + '</select>' +
+          '<button class="btn btn-soft" type="button" data-action="save-contact" data-id="' + escapeHtml(contact.id) + '">Guardar</button></div>';
+        contactsList.appendChild(item);
+      });
+
+      updateOpsKpis();
+    }
+
+    function resetUserForm() {
+      editingUserId.value = "";
+      userFormTitle.textContent = "Novo utilizador";
+      userFullName.value = "";
+      userEmail.value = "";
+      userRole.value = "viewer";
+      userActive.value = "true";
+      userPassword.value = "";
+      userPassword.placeholder = "Minimo 8 caracteres";
+      userPasswordHint.textContent = "Obrigatoria ao criar um novo utilizador.";
+      saveUserBtn.textContent = "Criar utilizador";
+      showNotice(userFormStatus, "", "info");
+    }
+
+    function populateUserForm(user) {
+      editingUserId.value = user.id;
+      userFormTitle.textContent = "Editar utilizador";
+      userFullName.value = user.fullName;
+      userEmail.value = user.email;
+      userRole.value = user.role;
+      userActive.value = String(Boolean(user.isActive));
+      userPassword.value = "";
+      userPassword.placeholder = "Deixa vazio para manter a password atual";
+      userPasswordHint.textContent = "Opcional ao editar. So preenche se quiseres trocar a password.";
+      saveUserBtn.textContent = "Guardar alteracoes";
+      showNotice(userFormStatus, "", "info");
+      userFullName.focus();
+    }
+
+    function applyUserPermissions() {
+      const canManageUsers = !!(state.currentUser && state.currentUser.role === "admin");
+      userForm.querySelectorAll("input, select, button").forEach((control) => { control.disabled = !canManageUsers; });
+      refreshUsersBtn.disabled = !canManageUsers;
+      refreshBookingsBtn.disabled = !canManageUsers;
+      refreshContactsBtn.disabled = !canManageUsers;
+      bookingsFilter.disabled = !canManageUsers;
+      contactsFilter.disabled = !canManageUsers;
+      resetUserFormBtn.disabled = !canManageUsers;
+      if (!canManageUsers) {
+        showNotice(usersNotice, "A tua conta pode entrar no painel, mas so admins podem gerir utilizadores.", "info");
+        usersMeta.textContent = "Sem permissao para listar utilizadores.";
+        kpiUsers.textContent = "-";
+        kpiBookings.textContent = "-";
+        kpiContacts.textContent = "-";
+        renderEmptyUsers("Gestao de utilizadores reservada a admins.");
+        bookingsMeta.textContent = "Sem permissao para listar pedidos de chamada.";
+        contactsMeta.textContent = "Sem permissao para listar pedidos de contacto.";
+        renderEmptyList(bookingsList, "Pipeline de agendamentos reservada a admins.");
+        renderEmptyList(contactsList, "Pipeline de contactos reservada a admins.");
+        showNotice(bookingsNotice, "So admins podem gerir pedidos de chamada.", "info");
+        showNotice(contactsNotice, "So admins podem gerir pedidos de contacto.", "info");
+        showNotice(userFormStatus, "Sem permissao para criar ou editar utilizadores.", "bad");
+        return false;
+      }
+      showNotice(usersNotice, "", "info");
+      showNotice(bookingsNotice, "", "info");
+      showNotice(contactsNotice, "", "info");
+      showNotice(userFormStatus, "", "info");
+      return true;
+    }
+
+    function updateSessionUi() {
+      if (!state.currentUser) return;
+      sessionRole.textContent = state.currentUser.role;
+      sessionInfo.textContent = "Ligado como " + state.currentUser.fullName + " <" + state.currentUser.email + "> em " + new Date().toLocaleString("pt-PT");
+    }
+
+    function showLogin(message) {
+      state.currentUser = null;
+      loginSection.classList.remove("hidden");
+      adminSection.classList.add("hidden");
+      loginPass.value = "";
+      loginError.textContent = message || "";
+    }
+
+    function openAdmin(user) {
+      state.currentUser = user;
+      loginSection.classList.add("hidden");
+      adminSection.classList.remove("hidden");
+      loginError.textContent = "";
+      updateSessionUi();
+      renderPages();
+      resetUserForm();
+      applyUserPermissions();
+      runChecks();
+      loadUsers();
+      loadCallBookings();
+      loadContactRequests();
+    }
+
+    async function loadUsers() {
+      if (!applyUserPermissions()) return;
+      refreshUsersBtn.disabled = true;
+      refreshUsersBtn.textContent = "A carregar...";
+      try {
+        const data = await apiFetch("/users");
+        state.users = Array.isArray(data && data.users) ? data.users : [];
+        renderUsers();
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(usersNotice, error.message || "Nao foi possivel carregar os utilizadores.", "bad");
+        renderEmptyUsers("Falha ao contactar a API.");
+      } finally {
+        refreshUsersBtn.disabled = false;
+        refreshUsersBtn.textContent = "Atualizar";
+      }
+    }
+
+    async function loadCallBookings() {
+      if (!applyUserPermissions()) return;
+      refreshBookingsBtn.disabled = true;
+      refreshBookingsBtn.textContent = "A carregar...";
+      try {
+        const data = await apiFetch("/call-bookings");
+        state.callBookings = Array.isArray(data && data.callBookings) ? data.callBookings : [];
+        renderCallBookings();
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(bookingsNotice, error.message || "Nao foi possivel carregar os agendamentos.", "bad");
+        renderEmptyList(bookingsList, "Falha ao contactar a API.");
+      } finally {
+        refreshBookingsBtn.disabled = false;
+        refreshBookingsBtn.textContent = "Atualizar";
+      }
+    }
+
+    async function loadContactRequests() {
+      if (!applyUserPermissions()) return;
+      refreshContactsBtn.disabled = true;
+      refreshContactsBtn.textContent = "A carregar...";
+      try {
+        const data = await apiFetch("/contact-requests");
+        state.contactRequests = Array.isArray(data && data.contactRequests) ? data.contactRequests : [];
+        renderContactRequests();
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(contactsNotice, error.message || "Nao foi possivel carregar os contactos.", "bad");
+        renderEmptyList(contactsList, "Falha ao contactar a API.");
+      } finally {
+        refreshContactsBtn.disabled = false;
+        refreshContactsBtn.textContent = "Atualizar";
+      }
+    }
+
+    async function saveBookingStatus(bookingId, button) {
+      const select = bookingsList.querySelector('select[data-kind="booking-status"][data-id="' + bookingId + '"]');
+      if (!select) return;
+      button.disabled = true;
+      try {
+        await apiFetch("/call-bookings/" + bookingId, {
+          method: "PATCH",
+          body: { status: select.value }
         });
-      }
-
-      async function runChecks() {
-        checksList.innerHTML = "";
-        let okCount = 0;
-
-        for (const page of pages) {
-          const li = document.createElement("li");
-          li.className = "item";
-          li.innerHTML = `
-          <div>
-            <div class="item-title">${page.label}</div>
-            <div class="muted">${page.path}</div>
-          </div>
-          <div class="muted">A verificar...</div>
-        `;
-          checksList.appendChild(li);
-
-          try {
-            const res = await fetch(page.path, { cache: "no-store" });
-            const html = await res.text();
-            const hasTitle = /<title>[^<]+<\/title>/i.test(html);
-            if (res.ok && hasTitle) okCount++;
-            li.lastElementChild.outerHTML = `<div class="status-ok">${res.ok ? "OK" : "ERRO"} | title ${hasTitle ? "OK" : "FALTA"}</div>`;
-          } catch (err) {
-            li.lastElementChild.outerHTML = `<div class="err">ERRO fetch</div>`;
-          }
+        await loadCallBookings();
+        showNotice(bookingsNotice, "Estado do pedido de chamada atualizado.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
         }
-        kpiChecks.textContent = String(okCount);
+        showNotice(bookingsNotice, error.message || "Nao foi possivel atualizar o agendamento.", "bad");
+      } finally {
+        button.disabled = false;
       }
+    }
 
-      loginBtn.addEventListener("click", () => {
-        if (loginPass.value === ADMIN_PASSWORD) {
-          localStorage.setItem(SESSION_KEY, "1");
-          loginError.textContent = "";
-          openAdmin();
-        } else {
-          loginError.textContent = "Password invalida.";
+    async function saveContactStatus(contactId, button) {
+      const select = contactsList.querySelector('select[data-kind="contact-status"][data-id="' + contactId + '"]');
+      if (!select) return;
+      button.disabled = true;
+      try {
+        await apiFetch("/contact-requests/" + contactId, {
+          method: "PATCH",
+          body: { status: select.value }
+        });
+        await loadContactRequests();
+        showNotice(contactsNotice, "Estado do pedido de contacto atualizado.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(contactsNotice, error.message || "Nao foi possivel atualizar o contacto.", "bad");
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    async function refreshSessionIfNeeded(userId) {
+      if (!state.currentUser || state.currentUser.id !== userId) return;
+      const data = await apiFetch("/auth/me");
+      state.currentUser = data.user;
+      updateSessionUi();
+      applyUserPermissions();
+    }
+
+    async function submitUserForm(event) {
+      event.preventDefault();
+      if (!applyUserPermissions()) return;
+      const editingId = editingUserId.value;
+      const body = {
+        fullName: userFullName.value.trim(),
+        email: userEmail.value.trim(),
+        role: userRole.value,
+        isActive: userActive.value === "true"
+      };
+      if (!editingId || userPassword.value) body.password = userPassword.value;
+      saveUserBtn.disabled = true;
+      saveUserBtn.textContent = editingId ? "A guardar..." : "A criar...";
+      showNotice(userFormStatus, "", "info");
+      try {
+        const data = await apiFetch(editingId ? "/users/" + editingId : "/users", { method: editingId ? "PATCH" : "POST", body: body });
+        await refreshSessionIfNeeded(data.user.id);
+        await loadUsers();
+        populateUserForm(data.user);
+        showNotice(userFormStatus, editingId ? "Utilizador atualizado com sucesso." : "Utilizador criado com sucesso.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(userFormStatus, error.message || "Nao foi possivel guardar o utilizador.", "bad");
+      } finally {
+        saveUserBtn.disabled = false;
+        saveUserBtn.textContent = editingUserId.value ? "Guardar alteracoes" : "Criar utilizador";
+      }
+    }
+
+    async function toggleUser(userId, button) {
+      const user = state.users.find((entry) => entry.id === userId);
+      if (!user) return;
+      button.disabled = true;
+      try {
+        const data = await apiFetch("/users/" + userId, { method: "PATCH", body: { isActive: !user.isActive } });
+        await refreshSessionIfNeeded(data.user.id);
+        await loadUsers();
+        if (editingUserId.value === userId) populateUserForm(data.user);
+        showNotice(usersNotice, "Estado do utilizador atualizado.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessao expirada. Inicia sessao novamente.");
+          return;
+        }
+        showNotice(usersNotice, error.message || "Nao foi possivel atualizar o estado.", "bad");
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    async function login() {
+      setApiBaseFromInput();
+      loginError.textContent = "";
+      loginBtn.disabled = true;
+      loginBtn.textContent = "A entrar...";
+      try {
+        const data = await apiFetch("/auth/login", { method: "POST", body: { email: loginEmail.value.trim(), password: loginPass.value } });
+        openAdmin(data.user);
+      } catch (error) {
+        loginError.textContent = error && error.status ? error.message : ("Nao foi possivel ligar a API em " + state.apiBase + ".");
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Entrar";
+      }
+    }
+
+    async function restoreSession() {
+      apiBaseInput.value = state.apiBase;
+      renderPages();
+      try {
+        const data = await apiFetch("/auth/me");
+        openAdmin(data.user);
+      } catch (error) {
+        showLogin("");
+        if (!error || (error.status !== 401 && error.status !== 403)) {
+          loginError.textContent = "API pronta em " + state.apiBase + "?";
+        }
+      }
+    }
+
+    pagesFilter.addEventListener("input", renderPages);
+    rerunChecksBtn.addEventListener("click", runChecks);
+    refreshUsersBtn.addEventListener("click", loadUsers);
+    refreshBookingsBtn.addEventListener("click", loadCallBookings);
+    refreshContactsBtn.addEventListener("click", loadContactRequests);
+    bookingsFilter.addEventListener("input", renderCallBookings);
+    contactsFilter.addEventListener("input", renderContactRequests);
+    resetUserFormBtn.addEventListener("click", resetUserForm);
+    userForm.addEventListener("submit", submitUserForm);
+    loginBtn.addEventListener("click", login);
+    [loginEmail, loginPass, apiBaseInput].forEach((input) => {
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          login();
         }
       });
+    });
+    apiBaseInput.addEventListener("change", setApiBaseFromInput);
+    apiBaseInput.addEventListener("blur", setApiBaseFromInput);
+    logoutBtn.addEventListener("click", async () => {
+      try { await apiFetch("/auth/logout", { method: "POST" }); } catch (_error) {}
+      state.users = [];
+      state.callBookings = [];
+      state.contactRequests = [];
+      bookingsFilter.value = "";
+      contactsFilter.value = "";
+      usersList.innerHTML = "";
+      bookingsList.innerHTML = "";
+      contactsList.innerHTML = "";
+      showLogin("");
+    });
+    usersList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      const userId = button.getAttribute("data-id");
+      const user = state.users.find((entry) => entry.id === userId);
+      if (!user) return;
+      if (button.getAttribute("data-action") === "edit") {
+        populateUserForm(user);
+        return;
+      }
+      toggleUser(userId, button);
+    });
+    bookingsList.addEventListener("click", (event) => {
+      const button = event.target.closest('button[data-action="save-booking"]');
+      if (!button) return;
+      saveBookingStatus(button.getAttribute("data-id"), button);
+    });
+    contactsList.addEventListener("click", (event) => {
+      const button = event.target.closest('button[data-action="save-contact"]');
+      if (!button) return;
+      saveContactStatus(button.getAttribute("data-id"), button);
+    });
 
-      loginPass.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") loginBtn.click();
-      });
-
-      logoutBtn.addEventListener("click", () => {
-        localStorage.removeItem(SESSION_KEY);
-        adminSection.classList.add("hidden");
-        loginSection.classList.remove("hidden");
-        loginPass.value = "";
-      });
-
-      if (localStorage.getItem(SESSION_KEY) === "1") openAdmin();
-    </script>
-  </body>
+    restoreSession();
+  </script>
+</body>
 </html>

@@ -17,991 +17,1160 @@
 <!-- sync: github-desktop-update -->
 <!doctype html>
 <html lang="pt-PT">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Politica de Cookies | Cobrait</title>
-    <meta
-      name="description"
-      content="Informacao sobre os cookies utilizados no website da Cobrait."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="global-enhancements.css" />
-    <style>
-      :root {
-        --legal-bg: #f6f8fc;
-        --legal-surface: rgba(255, 255, 255, 0.86);
-        --legal-border: #dbe3ee;
-        --legal-text: #0f172a;
-        --legal-muted: #64748b;
-        --legal-accent: #4f46e5;
-        --legal-accent-2: #7c3aed;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Política de Cookies | Cobrait</title>
+  <meta name="description" content="Informação sobre os cookies utilizados no website da Cobrait." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="global-enhancements.css" />
+  <script src="./apply-translations.js"></script>
+  <style>
+    :root {
+      --legal-bg: #f6f8fc;
+      --legal-surface: rgba(255, 255, 255, 0.86);
+      --legal-border: #dbe3ee;
+      --legal-text: #0f172a;
+      --legal-muted: #64748b;
+      --legal-accent: #4f46e5;
+      --legal-accent-2: #7c3aed;
+    }
 
-      body {
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        background:
-          radial-gradient(
-            1200px 500px at 100% -10%,
-            rgba(124, 58, 237, 0.12),
-            transparent 55%
-          ),
-          radial-gradient(
-            900px 420px at 0% 0%,
-            rgba(79, 70, 229, 0.1),
-            transparent 50%
-          ),
-          var(--legal-bg);
-        color: var(--legal-text);
-      }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(1200px 500px at 100% -10%, rgba(124, 58, 237, 0.12), transparent 55%),
+        radial-gradient(900px 420px at 0% 0%, rgba(79, 70, 229, 0.1), transparent 50%),
+        var(--legal-bg);
+      color: var(--legal-text);
+    }
 
-      .legal-shell {
-        max-width: 1150px;
-        margin: 0 auto;
-        padding: 28px 20px 80px;
-      }
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
 
-      .legal-topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-toggle { display: none; }
+
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .nav-toggle-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a:hover { color: #4f46e5; }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+    }
+
+    .dropdown-item:last-child { margin-bottom: 0; }
+
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .dropdown-item svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    /* DROPDOWN DE LÍNGUAS NO HEADER (IGUAL AO BOOK-A-CALL) */
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
         flex-wrap: wrap;
-        margin-bottom: 18px;
+        align-items: center;
       }
 
-      .legal-back {
-        color: var(--legal-accent);
-        text-decoration: none;
-        font-weight: 600;
+      .nav-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background:
+          linear-gradient(#4f46e5 0 0) center calc(50% - 8px) / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center calc(50% + 8px) / 20px 2px no-repeat,
+          #fff;
+        font-size: 0;
+        margin-left: auto;
+        flex-shrink: 0;
       }
 
-      .legal-back:hover {
-        text-decoration: underline;
+      .nav-toggle-btn span { display: none; }
+
+      .site-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
       }
 
-      .legal-updated {
-        color: var(--legal-muted);
-        font-size: 0.92rem;
+      .site-nav ul { flex-direction: column; gap: 16px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
       }
 
+      .dropdown-item { padding: 10px 0 10px 16px; margin-bottom: 0; }
+
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 20px;
+        gap: 12px;
+      }
+
+      .language-dropdown {
+        width: 100%;
+      }
+
+      .language-dropdown-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .language-dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 8px;
+        width: 100%;
+      }
+
+      .header-cta { width: 100%; }
+      .header-cta .btn { width: 100%; justify-content: center; }
+
+      .nav-toggle:checked ~ .site-nav {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(2) { opacity: 0; }
+      .nav-toggle:checked + .nav-toggle-btn span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .site-header { z-index: 99999; }
+    .dropdown-content, .language-dropdown-content { z-index: 999999; }
+
+    .legal-shell {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+
+    .legal-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .legal-back {
+      color: var(--legal-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .legal-back:hover { text-decoration: underline; }
+
+    .legal-updated {
+      color: var(--legal-muted);
+      font-size: .92rem;
+    }
+
+    .legal-hero {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 242, 255, 0.96));
+      border: 1px solid rgba(79, 70, 229, 0.14);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .legal-kicker {
+      display: inline-block;
+      font-size: .78rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--legal-accent);
+      margin: 0 0 10px;
+    }
+
+    .legal-hero h1 {
+      margin: 0 0 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .legal-hero p {
+      margin: 0;
+      color: var(--legal-muted);
+      line-height: 1.7;
+      max-width: 820px;
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .legal-nav,
+    .legal-content {
+      background: var(--legal-surface);
+      border: 1px solid var(--legal-border);
+      border-radius: 18px;
+    }
+
+    .legal-nav {
+      position: sticky;
+      top: 20px;
+      padding: 18px;
+    }
+
+    .legal-nav-title {
+      margin: 0 0 12px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #475569;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .legal-nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .legal-nav a {
+      display: block;
+      color: #475569;
+      text-decoration: none;
+      font-size: .96rem;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: .2s ease;
+    }
+
+    .legal-nav a:hover {
+      color: var(--legal-accent);
+      border-color: rgba(173, 186, 255, 0.35);
+      background: rgba(79, 70, 229, 0.08);
+    }
+
+    .legal-content {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .legal-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(79, 70, 229, 0.12);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .legal-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.06rem;
+      line-height: 1.35;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .legal-card p,
+    .legal-card li {
+      color: var(--legal-muted);
+      line-height: 1.75;
+      font-size: .97rem;
+    }
+
+    .legal-card ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .legal-highlight {
+      border-left: 3px solid var(--legal-accent);
+      padding-left: 12px;
+      margin-top: 10px;
+      color: #334155;
+    }
+
+    .legal-mail {
+      color: var(--legal-accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .legal-mail:hover { text-decoration: underline; }
+
+    .legal-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .legal-chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(173, 186, 255, 0.32);
+      background: rgba(102, 126, 234, 0.12);
+      color: #4f46e5;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .83rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .legal-grid { grid-template-columns: 1fr; }
+      .legal-nav { position: static; }
+      .legal-shell { padding-top: 22px; }
+    }
+    @media (max-width: 640px) {
+      .legal-shell {
+        padding: 18px 14px 56px;
+      }
+      .legal-topbar {
+        align-items: flex-start;
+        margin-bottom: 14px;
+      }
       .legal-hero {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.96),
-          rgba(238, 242, 255, 0.96)
-        );
-        border: 1px solid rgba(79, 70, 229, 0.14);
-        border-radius: 22px;
-        padding: 28px;
-        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.1);
-        margin-bottom: 20px;
-      }
-
-      .legal-kicker {
-        display: inline-block;
-        font-size: 0.78rem;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--legal-accent);
-        margin: 0 0 10px;
-      }
-
-      .legal-hero h1 {
-        margin: 0 0 10px;
-        font-family: "Poppins", sans-serif;
-        font-size: clamp(1.7rem, 3vw, 2.7rem);
-        line-height: 1.15;
-      }
-
-      .legal-hero p {
-        margin: 0;
-        color: var(--legal-muted);
-        line-height: 1.7;
-        max-width: 820px;
-      }
-
-      .legal-grid {
-        display: grid;
-        grid-template-columns: 290px minmax(0, 1fr);
-        gap: 20px;
-        align-items: start;
-      }
-
-      .legal-nav,
-      .legal-content {
-        background: var(--legal-surface);
-        border: 1px solid var(--legal-border);
+        padding: 22px 18px;
         border-radius: 18px;
       }
-
-      .legal-nav {
-        position: sticky;
-        top: 20px;
-        padding: 18px;
+      .legal-hero h1 {
+        font-size: 1.95rem;
       }
-
-      .legal-nav-title {
-        margin: 0 0 12px;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: #475569;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-      }
-
-      .legal-nav ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: grid;
-        gap: 10px;
-      }
-
-      .legal-nav a {
-        display: block;
-        color: #475569;
-        text-decoration: none;
-        font-size: 0.96rem;
-        line-height: 1.4;
-        padding: 8px 10px;
-        border-radius: 10px;
-        border: 1px solid transparent;
-        transition: 0.2s ease;
-      }
-
-      .legal-nav a:hover {
-        color: var(--legal-accent);
-        border-color: rgba(173, 186, 255, 0.35);
-        background: rgba(79, 70, 229, 0.08);
-      }
-
+      .legal-nav,
       .legal-content {
-        padding: 22px;
-        display: grid;
-        gap: 16px;
+        padding: 16px;
       }
-
       .legal-card {
-        background: rgba(255, 255, 255, 0.92);
-        border: 1px solid rgba(79, 70, 229, 0.12);
-        border-radius: 14px;
-        padding: 16px 18px;
+        padding: 15px 16px;
       }
-
-      .legal-card h2 {
-        margin: 0 0 10px;
-        font-size: 1.06rem;
-        line-height: 1.35;
-        font-family: "Poppins", sans-serif;
-      }
-
       .legal-card p,
-      .legal-card li {
-        color: var(--legal-muted);
-        line-height: 1.75;
-        font-size: 0.97rem;
+      .legal-card li,
+      .legal-nav a {
+        font-size: 0.95rem;
       }
+    }
+  
 
-      .legal-card ul {
-        margin: 8px 0 0;
-        padding-left: 18px;
-      }
-
-      .legal-highlight {
-        border-left: 3px solid var(--legal-accent);
-        padding-left: 12px;
-        margin-top: 10px;
-        color: #334155;
-      }
-
-      .legal-mail {
-        color: var(--legal-accent);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .legal-mail:hover {
-        text-decoration: underline;
-      }
-
-      .legal-actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 8px;
-      }
-
-      .legal-chip {
-        display: inline-flex;
-        align-items: center;
-        border: 1px solid rgba(173, 186, 255, 0.32);
-        background: rgba(102, 126, 234, 0.12);
-        color: #4f46e5;
-        border-radius: 999px;
-        padding: 7px 12px;
-        font-size: 0.83rem;
-        font-weight: 600;
-      }
-
-      @media (max-width: 960px) {
-        .legal-grid {
-          grid-template-columns: 1fr;
+/* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
+        .footer-pro {
+            background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+            color: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0 24px;
         }
-        .legal-nav {
-          position: static;
+        .footer-pro::before {
+            content: "";
+            position: absolute;
+            inset: -200px -200px auto auto;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+            filter: blur(10px);
+            pointer-events: none;
         }
-        .legal-shell {
-          padding-top: 22px;
+        .footer-pro::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -240px -240px;
+            width: 520px;
+            height: 520px;
+            background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+            filter: blur(12px);
+            pointer-events: none;
         }
-      }
-
-      /* ========================= FOOTER NOVO (PRO) - SEM LOGO ========================= */
-      .footer-pro {
-        background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
-        color: #cbd5e1;
-        position: relative;
-        overflow: hidden;
-        padding: 60px 0 24px;
-      }
-      .footer-pro::before {
-        content: "";
-        position: absolute;
-        inset: -200px -200px auto auto;
-        width: 420px;
-        height: 420px;
-        background: radial-gradient(
-          circle at 30% 30%,
-          rgba(124, 58, 237, 0.35),
-          transparent 60%
-        );
-        filter: blur(10px);
-        pointer-events: none;
-      }
-      .footer-pro::after {
-        content: "";
-        position: absolute;
-        inset: auto auto -240px -240px;
-        width: 520px;
-        height: 520px;
-        background: radial-gradient(
-          circle at 60% 60%,
-          rgba(79, 70, 229, 0.35),
-          transparent 60%
-        );
-        filter: blur(12px);
-        pointer-events: none;
-      }
-      .footer-top {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        gap: 24px;
-        position: relative;
-        z-index: 1;
-        padding-bottom: 20px;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-      }
-      .footer-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        align-items: flex-start;
-      }
-      /* LOGO REMOVIDA - Apenas texto da marca */
-      .footer-brand-title {
-        font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        font-size: 24px;
-        color: rgba(226, 232, 240, 0.95);
-        margin: 0;
-        line-height: 1;
-      }
-      .footer-brand-subtitle {
-        font-family: "Inter", sans-serif;
-        font-weight: 500;
-        font-size: 14px;
-        color: rgba(203, 213, 225, 0.8);
-        margin: 4px 0 0 0;
-      }
-      .footer-tagline {
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        line-height: 1.7;
-        color: rgba(226, 232, 240, 0.85);
-        max-width: 420px;
-        margin: 8px 0 0 0;
-      }
-      .footer-cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 16px;
-      }
-      .btn--footer {
-        padding: 10px 18px;
-        font-size: 14px;
-        border-radius: 10px;
-      }
-      .btn--footer.btn--outline {
-        border-color: rgba(226, 232, 240, 0.35);
-        color: rgba(226, 232, 240, 0.92);
-      }
-      .btn--footer.btn--outline:hover {
-        background: rgba(226, 232, 240, 0.12);
-        color: #ffffff;
-        transform: translateY(-2px);
-        box-shadow: none;
-        border-color: rgba(226, 232, 240, 0.5);
-      }
-      .footer-col h4 {
-        margin: 0 0 14px;
-        font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        color: rgba(226, 232, 240, 0.9);
-      }
-      .footer-links {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 10px;
-      }
-      .footer-links a {
-        color: rgba(203, 213, 225, 0.9);
-        text-decoration: none;
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        transition: all 0.2s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .footer-links a:hover {
-        color: #ffffff;
-        transform: translateX(3px);
-      }
-      .footer-meta {
-        display: grid;
-        gap: 10px;
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        color: rgba(203, 213, 225, 0.9);
-      }
-      .footer-meta a {
-        color: rgba(203, 213, 225, 0.9);
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-      .footer-meta a:hover {
-        color: var(--legal-accent);
-      }
-      /* Estilos específicos para o link do Instagram */
-      .social-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 10px;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-      }
-      .social-link:hover {
-        background: rgba(79, 70, 229, 0.08);
-      }
-      .social-icon {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-      }
-      .footer-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 16px;
-      }
-      .footer-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.22);
-        background: rgba(15, 23, 42, 0.35);
-        color: rgba(226, 232, 240, 0.9);
-        font-size: 12px;
-        line-height: 1;
-        white-space: nowrap;
-      }
-      .footer-badge-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
-      }
-      .footer-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
-        padding-top: 16px;
-        position: relative;
-        z-index: 1;
-        font-family: "Inter", sans-serif;
-        font-size: 13px;
-        color: rgba(148, 163, 184, 0.9);
-      }
-      .footer-mini-links {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-      .footer-mini-links a {
-        color: rgba(148, 163, 184, 0.95);
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-      .footer-mini-links a:hover {
-        color: var(--legal-accent);
-      }
-      @media (max-width: 1024px) {
         .footer-top {
-          grid-template-columns: 1.6fr 1fr 1fr;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
         }
-        .footer-col--contact {
-          grid-column: 1 / -1;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
         }
-      }
-      @media (max-width: 768px) {
-        .footer-top {
-          grid-template-columns: 1fr;
-          gap: 20px;
+        /* LOGO REMOVIDA - Apenas texto da marca */
+        .footer-brand-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: rgba(226, 232, 240, 0.95);
+            margin: 0;
+            line-height: 1;
+        }
+        .footer-brand-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: rgba(203, 213, 225, 0.8);
+            margin: 4px 0 0 0;
+        }
+        .footer-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(226, 232, 240, 0.85);
+            max-width: 420px;
+            margin: 8px 0 0 0;
+        }
+        .footer-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .btn--footer {
+            padding: 10px 18px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+        .btn--footer.btn--outline {
+            border-color: rgba(226, 232, 240, 0.35);
+            color: rgba(226, 232, 240, 0.92);
+        }
+        .btn--footer.btn--outline:hover {
+            background: rgba(226, 232, 240, 0.12);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: none;
+            border-color: rgba(226, 232, 240, 0.5);
+        }
+        .footer-col h4 {
+            margin: 0 0 14px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: rgba(226, 232, 240, 0.9);
+        }
+        .footer-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+        .footer-links a {
+            color: rgba(203, 213, 225, 0.9);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all .2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+        .footer-meta {
+            display: grid;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: rgba(203, 213, 225, 0.9);
+        }
+        .footer-meta a {
+            color: rgba(203, 213, 225, 0.9);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+        .footer-meta a:hover {
+            color: var(--legal-accent);
+        }
+        /* Estilos específicos para o link do Instagram */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all .2s ease;
+        }
+        .social-link:hover {
+            background: rgba(79, 70, 229, 0.08);
+        }
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .footer-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            background: rgba(15, 23, 42, 0.35);
+            color: rgba(226, 232, 240, 0.9);
+            font-size: 12px;
+            line-height: 1;
+            white-space: nowrap;
+        }
+        .footer-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
         }
         .footer-bottom {
-          flex-direction: column;
-          align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding-top: 16px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(148, 163, 184, 0.9);
         }
         .footer-mini-links {
-          justify-content: flex-start;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        .footer-pro {
-          padding: 50px 0 20px;
+        .footer-mini-links a {
+            color: rgba(148, 163, 184, 0.95);
+            text-decoration: none;
+            transition: color .2s ease;
         }
-        .footer-brand-title {
-          font-size: 22px;
+        .footer-mini-links a:hover {
+            color: var(--legal-accent);
         }
-      }
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: 1.6fr 1fr 1fr;
+            }
+            .footer-col--contact {
+                grid-column: 1 / -1;
+            }
+        }
+        @media (max-width: 768px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .footer-mini-links {
+                justify-content: flex-start;
+            }
+            .footer-pro {
+                padding: 50px 0 20px;
+            }
+            .footer-brand-title {
+                font-size: 22px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <main class="legal-shell">
-      <div class="legal-topbar">
-        <a class="legal-back" href="index.html">Voltar ao inicio</a>
-        <span class="legal-updated"
-          >Última atualiza??o: 26 de fevereiro de 2026</span
-        >
-      </div>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
+        <div class="logo-text-main">COBRA IT</div>
+        <div class="logo-text-tagline">Software Factory</div>
+      </a>
 
-      <section class="legal-hero">
-        <p class="legal-kicker">Cobrait ? Legal</p>
-        <h1>Pol?tica de Cookies</h1>
-        <p>
-          Aqui explicamos que cookies usamos, para que servem e como os podes
-          gerir no teu browser.
-        </p>
-      </section>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+      <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
 
-      <section class="legal-grid">
-        <aside class="legal-nav" aria-label="Índice da página">
-          <p class="legal-nav-title">Índice</p>
-          <ul>
-            <li><a href="#s1">1. O que são cookies</a></li>
-            <li><a href="#s2">2. Tipos de cookies</a></li>
-            <li><a href="#s3">3. Finalidades</a></li>
-            <li><a href="#s4">4. Como gerir cookies</a></li>
-            <li><a href="#s5">5. Cookies de terceiros</a></li>
-            <li><a href="#s6">6. Atualizações</a></li>
-            <li><a href="#s7">7. Contacto</a></li>
-          </ul>
-        </aside>
-
-        <article class="legal-content">
-          <section id="s1" class="legal-card">
-            <h2>1. O que são cookies</h2>
-            <p>
-              Cookies são pequenos ficheiros de texto armazenados no teu
-              dispositivo para reconhecer prefer?ncias, melhorar desempenho e
-              analisar utilização do website.
-            </p>
-          </section>
-          <section id="s2" class="legal-card">
-            <h2>2. Tipos de cookies</h2>
-            <ul>
-              <li>
-                <strong>Essenciais:</strong> necessérios para funcionalidades
-                base e segurança.
-              </li>
-              <li>
-                <strong>Anal?ticos:</strong> ajudam-nos a compreender tr?fego,
-                navegação e uso de páginas.
-              </li>
-              <li>
-                <strong>Funcionais:</strong> memorizam prefer?ncias para
-                melhorar a experiência.
-              </li>
-            </ul>
-          </section>
-          <section id="s3" class="legal-card">
-            <h2>3. Finalidades</h2>
-            <p>
-              Usamos cookies para garantir funcionamento técnico, medir
-              desempenho e melhorar o conteúdo apresentado aos visitantes.
-            </p>
-          </section>
-          <section id="s4" class="legal-card">
-            <h2>4. Como gerir cookies</h2>
-            <p>
-              Podes configurar o teu browser para aceitar, recusar ou remover
-              cookies. A desativa??o de cookies essenciais pode afetar o
-              funcionamento de algumas partes do website.
-            </p>
-          </section>
-          <section id="s5" class="legal-card">
-            <h2>5. Cookies de terceiros</h2>
-            <p>
-              Algumas ferramentas externas podem instalar cookies pr?prios para
-              analytics ou medi??o. Recomendamos consultar também as pol?ticas
-              desses fornecedores.
-            </p>
-          </section>
-          <section id="s6" class="legal-card">
-            <h2>6. Atualizações</h2>
-            <p>
-              Esta Pol?tica de Cookies pode ser revista para refletir altera??es
-              técnicas, legais ou operacionais.
-            </p>
-          </section>
-          <section id="s7" class="legal-card">
-            <h2>7. Contacto</h2>
-            <p>
-              Para dúvidas sobre cookies, escreve para
-              <a class="legal-mail" href="mailto:cobrait@geral.pt"
-                >cobrait@geral.pt</a
-              >.
-            </p>
-          </section>
-        </article>
-      </section>
-    </main>
-
-    <footer class="footer-pro" role="contentinfo">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
-            <h3 class="footer-brand-title">Cobrait</h3>
-            <p class="footer-brand-subtitle">Software Factory</p>
-            <p
-              class="footer-tagline"
-              data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lan?amento."
-              data-en="We build digital products focused on speed, quality and growth ? from scope to launch."
-              data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento."
-              data-fr="Nous cr?ons des produits num?riques ax?s sur la vitesse, la qualit? et la croissance ? du champ d'application au lancement."
-              data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualit?t und Wachstum ausgerichtet sind ? vom Umfang bis zum Start."
-              data-ru="?? ??????? ???????? ????????, ??????????????? ?? ????????, ???????? ? ???? ? ?? ??????????? ?????? ?? ???????."
-              data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering."
-              data-ja="??????????????????????????????????????????????"
-              data-zh="????????,???????????? ???????"
-            >
-              Criamos produtos digitais com foco em velocidade, qualidade e
-              crescimento - do scope ao lan?amento.
-            </p>
-            <div class="footer-cta-row">
-              <a
-                class="btn btn--primary btn--footer"
-                href="book-a-call.html"
-                data-pt="Agendar uma chamada"
-                data-en="Book a call"
-                data-es="Reservar una llamada"
-                data-fr="Programmez un appel"
-                data-de="Einen Anruf buchen"
-                data-ru="Книга вызов"
-                data-nl="Een gesprek boeken"
-                data-ja="電話予約"
-                data-zh="预定电话"
-              >
-                Agendar uma chamada
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+                    <li><a href="index.html" data-pt="Home" data-en="Home" data-es="Inicio">Home</a></li>
+          <li class="dropdown">
+            <a href="index.html#what-we-do">
+              <span data-pt="Serviços" data-en="Services" data-es="Servicios">Serviços</span>
+              <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-content">
+              <a href="servicos/product-scope.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope">Product Scope</h4>
+                  <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                     data-en="15-day process to align the product with your business goals."
+                     data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio.">
+                    15-day process to align the product with your business goals.
+                  </p>
+                </div>
               </a>
-              <a
-                class="btn btn--outline btn--footer"
-                href="#what-we-do"
-                data-pt="Ver serviços"
-                data-en="See services"
-                data-es="Ver servicios"
-                data-fr="Voir les services"
-                data-de="Services anzeigen"
-                data-ru="?????????? ??????"
-                data-nl="Services zien"
-                data-ja="???????"
-                data-zh="????"
-              >
-                Ver serviços
+              <a href="servicos/mvp-builder.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder">MVP Builder</h4>
+                  <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                     data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                     data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad.">
+                    Go to market quickly with a high-quality Minimum Viable Product.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/ux-ui.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI">UX / UI</h4>
+                  <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                     data-en="Design an easy-to-use engaging and functional product."
+                     data-es="Diseña un producto fácil de usar, atractivo y funcional.">
+                    Design an easy-to-use engaging and functional product.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/custom-software.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Desenvolvimento de Software à Medida"
+                      data-en="Custom Software Development"
+                      data-es="Desarrollo de Software a Medida">Custom Software Development</h4>
+                  <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                     data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                     data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida.">
+                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                  </p>
+                </div>
+              </a>
+              <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <div class="dropdown-item-content">
+                  <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados">Dedicated Teams</h4>
+                  <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                     data-en="Build your product with a dedicated team of developers."
+                     data-es="Construye tu producto con un equipo dedicado de developers.">
+                    Build your product with a dedicated team of developers.
+                  </p>
+                </div>
               </a>
             </div>
-            <div class="footer-badges" aria-label="Highlights">
-              <span class="footer-badge"
-                ><span class="footer-badge-dot"></span
-                ><span
-                  data-pt="Lean + Agile"
-                  data-en="Lean + Agile"
-                  data-es="Lean + Agile"
-                  data-fr="Lean + Agile"
-                  data-de="Lean + Agile"
-                  data-ru="Lean + Agile"
-                  data-nl="Lean + Agile"
-                  data-ja="Lean + Agile"
-                  data-zh="Lean + Agile"
-                  >Lean + Agile</span
-                ></span
-              >
-              <span class="footer-badge"
-                ><span class="footer-badge-dot"></span
-                ><span
-                  data-pt="Entrega rápida"
-                  data-en="Fast delivery"
-                  data-es="Entrega rápida"
-                  data-fr="Livraison rapide"
-                  data-de="Schnelle Lieferung"
-                  data-ru="??????? ????????"
-                  data-nl="Snelle levering"
-                  data-ja="?????"
-                  data-zh="????"
-                  >Entrega rápida</span
-                ></span
-              >
-              <span class="footer-badge"
-                ><span class="footer-badge-dot"></span
-                ><span
-                  data-pt="Qualidade"
-                  data-en="Quality"
-                  data-es="Calidad"
-                  data-fr="Qualité"
-                  data-de="Qualität"
-                  data-ru="Качество"
-                  data-nl="Kwaliteit"
-                  data-ja="品質"
-                  data-zh="质量"
-                  >Qualidade</span
-                ></span
-              >
-            </div>
-          </div>
-          <div class="footer-col">
-            <h4
-              data-pt="Serviços"
-              data-en="Services"
-              data-es="Servicios"
-              data-fr="Services"
-              data-de="Dienstleistungen"
-              data-ru="??????"
-              data-nl="Diensten"
-              data-ja="????"
-              data-zh="??"
-            >
-              Serviços
-            </h4>
-            <ul class="footer-links">
-              <li><a href="servicos/product-scope.html">Product Scope</a></li>
-              <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
-              <li><a href="servicos/ux-ui.html">UX / UI</a></li>
-              <li>
-                <a
-                  href="servicos/custom-software.html"
-                  data-pt="Software à Medida"
-                  data-en="Custom Software"
-                  data-es="Software a Medida"
-                  data-fr="Logiciel personnalis?"
-                  data-de="Benutzerdefinierte Software"
-                  data-ru="???????? ??"
-                  data-nl="Aangepaste software"
-                  data-ja="??????????"
-                  data-zh="????"
-                  >Software à Medida</a
-                >
-              </li>
-              <li>
-                <a
-                  href="servicos/dedicated-teams.html"
-                  data-pt="Equipas Dedicadas"
-                  data-en="Dedicated Teams"
-                  data-es="Equipos Dedicados"
-                  data-fr="Équipes dédiées"
-                  data-de="Dedizierte Teams"
-                  data-ru="Выделенные команды"
-                  data-nl="Speciale teams"
-                  data-ja="専任チーム"
-                  data-zh="专业团队"
-                  >Equipas Dedicadas</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <h4
-              data-pt="Empresa"
-              data-en="Company"
-              data-es="Empresa"
-              data-fr="Entreprise"
-              data-de="Unternehmen"
-              data-ru="Компания"
-              data-nl="Bedrijf"
-              data-ja="会社"
-              data-zh="公司"
-            >
-              Empresa
-            </h4>
-            <ul class="footer-links">
-              <li>
-                <a
-                  href="about-us.html"
-                  data-pt="Sobre nós"
-                  data-en="About us"
-                  data-es="Sobre nosotros"
-                  data-fr="? propos de nous"
-                  data-de="?ber uns"
-                  data-ru="? ???"
-                  data-nl="Over ons"
-                  data-ja="???????"
-                  data-zh="????"
-                  >Sobre nós</a
-                >
-              </li>
+          </li>
+          <li><a href="pricing.html" data-pt="Preços" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros">About Us</span></a></li>
+          <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech">Tech</a></li>
+        </ul>
+      </nav>
 
-              <li>
-                <a
-                  href="careers.html"
-                  data-pt="Carreiras"
-                  data-en="Careers"
-                  data-es="Carreras"
-                  data-fr="Carrières"
-                  data-de="Karrieren"
-                  data-ru="Карьера"
-                  data-nl="Carrière"
-                  data-ja="キャリア"
-                  data-zh="职业"
-                  >Carreiras</a
-                >
-              </li>
-              <li>
-                <a
-                  href="tech.html"
-                  data-pt="Tech"
-                  data-en="Tech"
-                  data-es="Tech"
-                  data-fr="Tech"
-                  data-de="Tech"
-                  data-ru="Tech"
-                  data-nl="Tech"
-                  data-ja="Tech"
-                  data-zh="Tech"
-                  >Tech</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="footer-col footer-col--contact">
-            <h4
-              data-pt="Contacto"
-              data-en="Contact"
-              data-es="Contacto"
-              data-fr="Contact"
-              data-de="Kontakt"
-              data-ru="????????"
-              data-nl="Contact"
-              data-ja="???"
-              data-zh="????"
-            >
-              Contacto
-            </h4>
-            <div class="footer-meta">
-              <div>
-                <span
-                  data-pt="Email:"
-                  data-en="Email:"
-                  data-es="Email:"
-                  data-fr="E-mail :"
-                  data-de="E-Mail:"
-                  data-ru="Email:"
-                  data-nl="E-mail:"
-                  data-ja="メール:"
-                  data-zh="电子邮件:"
-                  >Email:</span
-                >
-                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
-              </div>
-              <div>
-                <span
-                  data-pt="Resposta:"
-                  data-en="Response:"
-                  data-es="Respuesta:"
-                  data-fr="R?ponse:"
-                  data-de="Antwort:"
-                  data-ru="?????:"
-                  data-nl="Antwoord:"
-                  data-ja="??:"
-                  data-zh="??:"
-                  >Resposta:</span
-                >
-                <span
-                  data-pt="normalmente em 24-48h"
-                  data-en="usually within 24-48h"
-                  data-es="normalmente en 24-48h"
-                  data-fr="g?n?ralement dans les 24-48 heures"
-                  data-de="normalerweise innerhalb von 24-48 Stunden"
-                  data-ru="?????? ? ??????? 24-48 ?????"
-                  data-nl="meestal binnen 24-48 uur"
-                  data-ja="??24-48????"
-                  data-zh="???24-48???"
-                  >normalmente em 24-48h</span
-                >
-              </div>
-              <div>
-                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
-                <a
-                  href="https://instagram.com/cobra_it"
-                  target="_blank"
-                  class="social-link"
-                >
-                  <svg
-                    class="social-icon"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                    />
-                  </svg>
-                  <span>@cobra_it</span>
-                </a>
-              </div>
-              <div>
-                <span
-                  data-pt="Preferes rápido?"
-                  data-en="Want it fast?"
-                  data-es="¿Lo quieres rápido?"
-                  data-fr="Vous le voulez vite?"
-                  data-de="Willst du es schnell?"
-                  data-ru="?????? ???????"
-                  data-nl="Wil je het snel?"
-                  data-ja="?????????"
-                  data-zh="?????"
-                  >Preferes rápido?</span
-                >
-                <a
-                  href="book-a-call.html"
-                  data-pt="Marca uma call."
-                  data-en="Book a call."
-                  data-es="Reserva una llamada."
-                  data-fr="Réservez un appel."
-                  data-de="Buchen Sie einen Anruf."
-                  data-ru="Запланировать звонок."
-                  data-nl="Boek een gesprek."
-                  data-ja="通話を予約する。"
-                  data-zh="预约通话。"
-                  >Marca uma call.</a
-                >
-              </div>
-            </div>
+      <div class="header-right">
+        <div class="language-dropdown">
+          <button class="language-dropdown-btn" aria-label="Select language">
+            <span class="lang-flag" id="currentFlag">🇵🇹</span>
+            <span class="lang-code" id="currentLang">PT</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="language-dropdown-content">
+            <button class="language-option active" data-lang="pt"><span class="lang-flag">🇵🇹</span><span class="lang-name">Português</span></button>
+            <button class="language-option" data-lang="en"><span class="lang-flag">🇬🇧</span><span class="lang-name">English</span></button>
+            <button class="language-option" data-lang="es"><span class="lang-flag">🇪🇸</span><span class="lang-name">Español</span></button>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div>© <span id="year"></span> Cobrait - Software Factory</div>
-          <div class="footer-mini-links">
-            <a
-              href="privacidade.html"
-              data-pt="Privacidade"
-              data-en="Privacy"
-              data-es="Privacidad"
-              data-fr="Confidentialit?"
-              data-de="Datenschutz"
-              data-ru="??????????????????"
-              data-nl="Privacy"
-              data-ja="??????"
-              data-zh="??"
-              >Privacidade</a
-            >
-            <a
-              href="termos.html"
-              data-pt="Termos"
-              data-en="Terms"
-              data-es="Términos"
-              data-fr="Conditions"
-              data-de="Bedingungen"
-              data-ru="???????"
-              data-nl="Voorwaarden"
-              data-ja="????"
-              data-zh="??"
-              >Termos</a
-            >
-            <a
-              href="cookies.html"
-              data-pt="Cookies"
-              data-en="Cookies"
-              data-es="Cookies"
-              data-fr="Cookies"
-              data-de="Cookies"
-              data-ru="Cookies"
-              data-nl="Cookies"
-              data-ja="Cookies"
-              data-zh="Cookies"
-              >Cookies</a
-            >
-            <a
-              href="#what-we-do"
-              data-pt="Serviços"
-              data-en="Services"
-              data-es="Servicios"
-              data-fr="Services"
-              data-de="Dienstleistungen"
-              data-ru="??????"
-              data-nl="Services"
-              data-ja="????"
-              data-zh="??"
-              >Serviços</a
-            >
-            <a
-              href="https://www.livroreclamacoes.pt"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-pt="Livro de Reclamações"
-              data-en="Complaints Book"
-              data-es="Libro de Reclamaciones"
-              data-fr="Livre de r?clamations"
-              data-de="Beschwerdebuch"
-              data-ru="????? ?????"
-              data-nl="Klachtenboek"
-              data-ja="?????"
-              data-zh="???"
-              >Livro de Reclamações</a
-            >
-          </div>
+
+        <div class="header-cta">
+          <a class="btn btn--primary" href="book-a-call.html" data-pt="AGENDAR UMA CHAMADA" data-en="BOOK A CALL" data-es="RESERVAR UNA LLAMADA">BOOK A CALL</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </header>
+  <main class="legal-shell">
+    <div class="legal-topbar">
+      <a class="legal-back" href="index.html">Voltar ao início</a>
+      <span class="legal-updated">Última atualização: 26 de fevereiro de 2026</span>
+    </div>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+    <section class="legal-hero">
+      <p class="legal-kicker">Cobrait • Legal</p>
+      <h1>Política de Cookies</h1>
+      <p>Aqui explicamos que cookies usamos, para que servem e como os podes gerir no teu browser.</p>
+    </section>
+
+    <section class="legal-grid">
+      <aside class="legal-nav" aria-label="Índice da página">
+        <p class="legal-nav-title">Índice</p>
+        <ul>
+          <li><a href="#s1">1. O que são cookies</a></li>
+<li><a href="#s2">2. Tipos de cookies</a></li>
+<li><a href="#s3">3. Finalidades</a></li>
+<li><a href="#s4">4. Como gerir cookies</a></li>
+<li><a href="#s5">5. Cookies de terceiros</a></li>
+<li><a href="#s6">6. Atualizações</a></li>
+<li><a href="#s7">7. Contacto</a></li>
+        </ul>
+      </aside>
+
+      <article class="legal-content">
+        <section id="s1" class="legal-card">
+  <h2>1. O que são cookies</h2>
+  <p>Cookies são pequenos ficheiros de texto armazenados no teu dispositivo para reconhecer preferências, melhorar desempenho e analisar utilização do website.</p>
+</section>
+<section id="s2" class="legal-card">
+  <h2>2. Tipos de cookies</h2>
+  <ul>
+    <li><strong>Essenciais:</strong> necessários para funcionalidades base e segurança.</li>
+    <li><strong>Analíticos:</strong> ajudam-nos a compreender tráfego, navegação e uso de páginas.</li>
+    <li><strong>Funcionais:</strong> memorizam preferências para melhorar a experiência.</li>
+  </ul>
+</section>
+<section id="s3" class="legal-card">
+  <h2>3. Finalidades</h2>
+  <p>Usamos cookies para garantir funcionamento técnico, medir desempenho e melhorar o conteúdo apresentado aos visitantes.</p>
+</section>
+<section id="s4" class="legal-card">
+  <h2>4. Como gerir cookies</h2>
+  <p>Podes configurar o teu browser para aceitar, recusar ou remover cookies. A desativação de cookies essenciais pode afetar o funcionamento de algumas partes do website.</p>
+</section>
+<section id="s5" class="legal-card">
+  <h2>5. Cookies de terceiros</h2>
+  <p>Algumas ferramentas externas podem instalar cookies próprios para analytics ou medição. Recomendamos consultar também as políticas desses fornecedores.</p>
+</section>
+<section id="s6" class="legal-card">
+  <h2>6. Atualizações</h2>
+  <p>Esta Política de Cookies pode ser revista para refletir alterações técnicas, legais ou operacionais.</p>
+</section>
+<section id="s7" class="legal-card">
+  <h2>7. Contacto</h2>
+  <p>Para dúvidas sobre cookies, escreve para <a class="legal-mail" href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>.</p>
+</section>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer-pro" role="contentinfo">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
+                        <h3 class="footer-brand-title">Cobrait</h3>
+                        <p class="footer-brand-subtitle">Software Factory</p>
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth ? from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento." data-fr="Nous cr?ons des produits num?riques ax?s sur la vitesse, la qualit? et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualit?t und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="?? ??????? ???????? ????????, ??????????????? ?? ????????, ???????? ? ???? ? ?? ??????????? ?????? ?? ???????." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering." data-ja="??????????????????????????????????????????????" data-zh="????????,???????????? ???????">
+                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento — do scope ao lançamento.
+                        </p>
+                        <div class="footer-cta-row">
+                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="Книга вызов" data-nl="Een gesprek boeken" data-ja="電話予約" data-zh="预定电话">
+                                Agendar uma chamada
+                            </a>
+                            <a class="btn btn--outline btn--footer" href="index.html#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="?????????? ??????" data-nl="Services zien" data-ja="???????" data-zh="????">
+                                Ver serviços
+                            </a>
+                        </div>
+                        <div class="footer-badges" aria-label="Highlights">
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="??????? ????????" data-nl="Snelle levering" data-ja="?????" data-zh="????">Entrega rápida</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="Qualité" data-de="Qualität" data-ru="Качество" data-nl="Kwaliteit" data-ja="品質" data-zh="质量">Qualidade</span></span>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Diensten" data-ja="????" data-zh="??">Serviços</h4>
+                        <ul class="footer-links">
+                            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+                            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+                            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+                            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalis?" data-de="Benutzerdefinierte Software" data-ru="???????? ??" data-nl="Aangepaste software" data-ja="??????????" data-zh="????">Software à Medida</a></li>
+                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="Équipes dédiées" data-de="Dedizierte Teams" data-ru="Выделенные команды" data-nl="Speciale teams" data-ja="専任チーム" data-zh="专业团队">Equipas Dedicadas</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="Компания" data-nl="Bedrijf" data-ja="会社" data-zh="公司">Empresa</h4>
+                        <ul class="footer-links">
+                            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="? propos de nous" data-de="?ber uns" data-ru="? ???" data-nl="Over ons" data-ja="???????" data-zh="????">Sobre nós</a></li>
+                            
+                            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col footer-col--contact">
+                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="????????" data-nl="Contact" data-ja="???" data-zh="????">Contacto</h4>
+                        <div class="footer-meta">
+                            <div>
+                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="メール:" data-zh="电子邮件:">Email:</span>
+                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+                            </div>
+                            <div>
+                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="R?ponse:" data-de="Antwort:" data-ru="?????:" data-nl="Antwoord:" data-ja="??:" data-zh="??:">Resposta:</span>
+                                <span data-pt="normalmente em 24-48h" data-en="usually within 24-48h" data-es="normalmente en 24-48h" data-fr="g?n?ralement dans les 24-48 heures" data-de="normalerweise innerhalb von 24-48 Stunden" data-ru="?????? ? ??????? 24-48 ?????" data-nl="meestal binnen 24-48 uur" data-ja="??24-48????" data-zh="???24-48???">normalmente em 24-48h</span>
+                            </div>
+                            <div>
+                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
+                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
+                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                    <span>@cobra_it</span>
+                                </a>
+                            </div>
+                            <div>
+                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="?????? ???????" data-nl="Wil je het snel?" data-ja="?????????" data-zh="?????">Preferes rápido?</span>
+                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="Réservez un appel." data-de="Buchen Sie einen Anruf." data-ru="Запланировать звонок." data-nl="Boek een gesprek." data-ja="通話を予約する。" data-zh="预约通话。">Marca uma call.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div>
+                        © <span id="year"></span> Cobrait — Software Factory
+                    </div>
+                    <div class="footer-mini-links">
+                        <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialit?" data-de="Datenschutz" data-ru="??????????????????" data-nl="Privacy" data-ja="??????" data-zh="??">Privacidade</a>
+                        <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="???????" data-nl="Voorwaarden" data-ja="????" data-zh="??">Termos</a>
+                        <a href="cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
+                        <a href="index.html#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="??????" data-nl="Services" data-ja="????" data-zh="??">Serviços</a>
+                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de r?clamations" data-de="Beschwerdebuch" data-ru="????? ?????" data-nl="Klachtenboek" data-ja="?????" data-zh="???">Livro de Reclamações</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="./cms-client.js"></script>
+  <script src="./cms-inline-editor.js"></script>
+</body>
 </html>
+
+

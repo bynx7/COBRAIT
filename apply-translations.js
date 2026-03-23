@@ -19,6 +19,7 @@ if (!window.__cobraitTranslationBooted) {
   (async function () {
     const EXTRA_LANGS = ["fr", "de", "ru", "nl", "ja", "zh"];
     const ALLOWED_DROPDOWN_LANGS = ["pt", "en", "es"];
+    const MOBILE_HEADER_MAX_WIDTH = 960;
     const LANGUAGE_META = {
       pt: { code: "PT", name: "Português", flag: "PT" },
       en: { code: "EN", name: "English", flag: "EN" },
@@ -243,6 +244,176 @@ if (!window.__cobraitTranslationBooted) {
       setTimeout(() => syncLanguageDropdownUI(preferred), 0);
     }
 
+    function ensureMobileHeaderBehavior() {
+      const header = document.querySelector(".site-header");
+      const navToggle = document.querySelector(".nav-toggle");
+      const siteNav = document.querySelector(".site-nav");
+      const headerCtaLink = document.querySelector(".header-cta a, .header-cta .btn");
+      const languageDropdown = document.querySelector(".language-dropdown");
+      const languageButton = languageDropdown ? languageDropdown.querySelector(".language-dropdown-btn") : null;
+
+      function isMobileViewport() {
+        return window.innerWidth <= MOBILE_HEADER_MAX_WIDTH;
+      }
+
+      function syncHeaderMeasurements() {
+        if (!header) return;
+        const headerHeight = Math.ceil(header.getBoundingClientRect().height || 72);
+        document.documentElement.style.setProperty("--cobrait-mobile-header-h", headerHeight + "px");
+      }
+
+      function ensureMobileNavCta() {
+        if (!siteNav || !headerCtaLink) return;
+        const list = siteNav.querySelector(":scope > ul");
+        if (!list) return;
+        let mobileCta = list.querySelector(".mobile-nav-cta");
+        if (!mobileCta) {
+          mobileCta = document.createElement("li");
+          mobileCta.className = "mobile-nav-cta";
+          const clone = headerCtaLink.cloneNode(true);
+          clone.classList.add("mobile-nav-cta-link");
+          mobileCta.appendChild(clone);
+          list.appendChild(mobileCta);
+        }
+      }
+
+      ensureMobileNavCta();
+      const navLinks = document.querySelectorAll(".site-nav a");
+      const dropdownToggles = document.querySelectorAll(".site-nav .dropdown > a");
+
+      function setDropdownOpen(dropdown, shouldOpen) {
+        if (!dropdown) return;
+        dropdown.classList.toggle("is-open", shouldOpen);
+        const toggle = dropdown.querySelector(":scope > a");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+        }
+      }
+
+      function closeNavDropdowns(exceptDropdown) {
+        document.querySelectorAll(".site-nav .dropdown.is-open").forEach((dropdown) => {
+          if (exceptDropdown && dropdown === exceptDropdown) return;
+          setDropdownOpen(dropdown, false);
+        });
+      }
+
+      function syncNavState() {
+        const navOpen = !!(navToggle && navToggle.checked && isMobileViewport());
+        document.body.classList.toggle("cobrait-nav-open", navOpen);
+        if (!navOpen && siteNav) {
+          siteNav.scrollTop = 0;
+          closeNavDropdowns();
+        }
+      }
+
+      function closeNav() {
+        if (!navToggle) return;
+        navToggle.checked = false;
+        syncNavState();
+      }
+
+      function closeLanguageDropdown() {
+        if (languageDropdown) {
+          languageDropdown.classList.remove("is-open");
+        }
+        if (languageButton) {
+          languageButton.setAttribute("aria-expanded", "false");
+        }
+      }
+
+      function toggleLanguageDropdown(forceOpen) {
+        if (!languageDropdown || !languageButton || !isMobileViewport()) return;
+        const nextState = typeof forceOpen === "boolean" ? forceOpen : !languageDropdown.classList.contains("is-open");
+        languageDropdown.classList.toggle("is-open", nextState);
+        languageButton.setAttribute("aria-expanded", nextState ? "true" : "false");
+      }
+
+      if (navToggle && !navToggle.dataset.cobraitBound) {
+        navToggle.dataset.cobraitBound = "true";
+        navToggle.addEventListener("change", () => {
+          if (navToggle.checked) closeLanguageDropdown();
+          syncNavState();
+        });
+      }
+
+      navLinks.forEach((link) => {
+        if (link.dataset.cobraitBound) return;
+        link.dataset.cobraitBound = "true";
+        link.addEventListener("click", () => {
+          const isDropdownToggle = !!(link.parentElement && link.parentElement.classList.contains("dropdown"));
+          if (isDropdownToggle) return;
+          if (navToggle && isMobileViewport()) {
+            closeNav();
+          }
+        });
+      });
+
+      dropdownToggles.forEach((toggle) => {
+        if (toggle.dataset.cobraitDropdownBound) return;
+        toggle.dataset.cobraitDropdownBound = "true";
+        toggle.setAttribute("aria-haspopup", "true");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.addEventListener("click", (event) => {
+          if (!isMobileViewport()) return;
+          event.preventDefault();
+          event.stopPropagation();
+          const dropdown = toggle.closest(".dropdown");
+          const shouldOpen = !(dropdown && dropdown.classList.contains("is-open"));
+          closeLanguageDropdown();
+          closeNavDropdowns(dropdown);
+          setDropdownOpen(dropdown, shouldOpen);
+        });
+      });
+
+      if (languageButton && !languageButton.dataset.cobraitBound) {
+        languageButton.dataset.cobraitBound = "true";
+        languageButton.setAttribute("aria-expanded", "false");
+        languageButton.addEventListener("click", (event) => {
+          if (!isMobileViewport()) return;
+          event.preventDefault();
+          event.stopPropagation();
+          if (navToggle) navToggle.checked = false;
+          syncNavState();
+          toggleLanguageDropdown();
+        });
+      }
+
+      if (!document.body.dataset.cobraitHeaderBound) {
+        document.body.dataset.cobraitHeaderBound = "true";
+        document.addEventListener("click", (event) => {
+          if (languageDropdown && !languageDropdown.contains(event.target)) {
+            closeLanguageDropdown();
+          }
+          if (navToggle && navToggle.checked && isMobileViewport() && header && !header.contains(event.target)) {
+            closeNav();
+          }
+          if (siteNav && !siteNav.contains(event.target)) {
+            closeNavDropdowns();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          closeLanguageDropdown();
+          closeNavDropdowns();
+          closeNav();
+        });
+
+        window.addEventListener("resize", () => {
+          syncHeaderMeasurements();
+          if (!isMobileViewport()) {
+            if (navToggle) navToggle.checked = false;
+            closeLanguageDropdown();
+            closeNavDropdowns();
+          }
+          syncNavState();
+        });
+      }
+
+      syncHeaderMeasurements();
+      syncNavState();
+    }
+
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", boot);
     } else {
@@ -290,5 +461,38 @@ if (!window.__cobraitTranslationBooted) {
     window.addEventListener("cobrait-set-language", (ev) => {
       syncLanguageDropdownUI(ev && ev.detail ? ev.detail : null);
     });
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", ensureMobileHeaderBehavior);
+    } else {
+      ensureMobileHeaderBehavior();
+    }
+  })();
+}
+
+if (!window.__cobraitChatWidgetInjected && document.documentElement.dataset.noSiteChat !== "true") {
+  window.__cobraitChatWidgetInjected = true;
+
+  (function loadCobraitChatWidget() {
+    var script = document.createElement("script");
+    var source = "/site-chat-widget.js";
+
+    if (window.location.protocol === "file:") {
+      var currentScript = Array.from(document.scripts).find(function (item) {
+        return /apply-translations\.js(?:\?|$)/.test(item.src || "");
+      });
+
+      if (currentScript && currentScript.src) {
+        source = currentScript.src.replace(/apply-translations\.js(?:\?.*)?$/, "site-chat-widget.js");
+      } else {
+        source = "./site-chat-widget.js";
+      }
+    } else {
+      source = window.location.origin + "/site-chat-widget.js";
+    }
+
+    script.src = source;
+    script.defer = true;
+    document.head.appendChild(script);
   })();
 }
