@@ -298,7 +298,7 @@ function getServiceLabel(lang, serviceKey) {
 
 function looksLikeProjectBrief(text) {
   const hasProjectWords = includesAny(text, [
-    /\b(app|aplicac|plataform|platform|portal|dashboard|website|site|saas|software|sistema|system|mvp|produto|product|ferramenta|tool|integrac|automac|ux|ui|design)\b/
+    /\b(app|aplicac|plataform|platform|portal|dashboard|website|site|saas|software|sistema|system|mvp|produto|producto|product|experiencia|experience|ferramenta|tool|integrac|automac|ux|ui|design)\b/
   ]);
   const hasIntentWords = includesAny(text, [
     /\b(quero|preciso|tenho|estou a|need|want|building|trying to|quiero|necesito|estoy)\b/
@@ -308,6 +308,7 @@ function looksLikeProjectBrief(text) {
 }
 
 function detectServiceMatch(text, page) {
+  const signals = detectProjectSignals(text);
   const scores = {
     productScope: 0,
     mvpBuilder: 0,
@@ -327,11 +328,20 @@ function detectServiceMatch(text, page) {
   if (includesAny(text, [/\b(nao sei|not sure|no estoy seguro)\b/, /\b(definir|clarificar|clarify|define)\b/])) {
     scores.productScope += 2;
   }
+  if (includesAny(text, [/\brequisitos?\b/, /\brequirements?\b/, /\broadmap\b/])) {
+    scores.productScope += 2;
+  }
+  if (signals.idea) {
+    scores.productScope += 1;
+  }
   if (includesAny(text, [/\b(valida|launch|lanc|startup|mvp|v1)\b/])) {
     scores.mvpBuilder += 2;
   }
   if (includesAny(text, [/\b(ux|ui|redesign|interface|usabil|figma)\b/])) {
     scores.uxUi += 2;
+  }
+  if (signals.existing && includesAny(text, [/\b(produto|producto|product|experiencia|experience)\b/])) {
+    scores.uxUi += 1;
   }
   if (includesAny(text, [/\b(erp|crm|portal|dashboard|saas|sistema|system|integrac|automac|backend|frontend|mobile)\b/])) {
     scores.customSoftware += 2;
@@ -341,7 +351,7 @@ function detectServiceMatch(text, page) {
   }
 
   const pageServiceKey = getPageServiceKey(page);
-  if (pageServiceKey && scores[pageServiceKey] > 0) {
+  if (pageServiceKey && (scores[pageServiceKey] > 0 || looksLikeProjectBrief(text))) {
     scores[pageServiceKey] += 1;
   }
 

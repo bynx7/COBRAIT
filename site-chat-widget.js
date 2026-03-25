@@ -21,7 +21,7 @@
       launcher: "Falar com a Cobrait AI",
       title: "Cobrait AI",
       subtitle: "Resposta r\u00e1pida sobre servi\u00e7os, pricing e pr\u00f3ximos passos.",
-      intro: "Ol\u00e1. Sou o assistente da Cobrait. Posso ajudar-te a perceber o melhor servi\u00e7o para o teu projeto, explicar pricing ou estruturar os pr\u00f3ximos passos.",
+      intro: "Ol\u00e1. Sou o assistente da Cobrait. Posso ajudar-te a perceber o melhor servi\u00e7o para o teu projeto, enquadrar pre\u00e7o e prazo, ou estruturar os pr\u00f3ximos passos.",
       placeholder: "Escreve a tua mensagem...",
       send: "Enviar",
       bookCall: "Agendar chamada",
@@ -31,9 +31,9 @@
       privacy: "Evita partilhar dados sens\u00edveis no chat.",
       error: "N\u00e3o consegui responder agora. Se quiseres, tenta novamente ou agenda uma chamada com a equipa.",
       quickActions: [
-        "Que servi\u00e7o preciso?",
-        "Como funcionam os pre\u00e7os?",
-        "Quanto tempo costuma demorar?",
+        "Tenho uma ideia e preciso de dire\u00e7\u00e3o",
+        "Quero lan\u00e7ar um MVP",
+        "Preciso de perceber pre\u00e7o e prazo",
         "Quero falar com a equipa"
       ]
     },
@@ -41,7 +41,7 @@
       launcher: "Chat with Cobrait AI",
       title: "Cobrait AI",
       subtitle: "Fast help with services, pricing and next steps.",
-      intro: "Hello. I'm Cobrait's assistant. I can help you understand the best service for your project, explain pricing, or suggest the next step.",
+      intro: "Hello. I'm Cobrait's assistant. I can help you choose the right service for your project, frame pricing and timeline, or suggest the next step.",
       placeholder: "Write your message...",
       send: "Send",
       bookCall: "Book a call",
@@ -51,9 +51,9 @@
       privacy: "Avoid sharing sensitive data in the chat.",
       error: "I couldn't reply right now. Please try again or book a call with the team.",
       quickActions: [
-        "Which service fits my project?",
-        "How does pricing work?",
-        "How long can a project take?",
+        "I have an idea and need direction",
+        "I want to launch an MVP",
+        "I need help with pricing and timeline",
         "I want to talk to the team"
       ]
     },
@@ -61,7 +61,7 @@
       launcher: "Hablar con Cobrait AI",
       title: "Cobrait AI",
       subtitle: "Ayuda r\u00e1pida sobre servicios, precios y siguientes pasos.",
-      intro: "Hola. Soy el asistente de Cobrait. Puedo ayudarte a entender qu\u00e9 servicio encaja mejor con tu proyecto, explicar precios o sugerir el siguiente paso.",
+      intro: "Hola. Soy el asistente de Cobrait. Puedo ayudarte a entender qu\u00e9 servicio encaja mejor con tu proyecto, orientar precio y plazo, o sugerir el siguiente paso.",
       placeholder: "Escribe tu mensaje...",
       send: "Enviar",
       bookCall: "Reservar llamada",
@@ -71,11 +71,101 @@
       privacy: "Evita compartir datos sensibles en el chat.",
       error: "No pude responder ahora mismo. Si quieres, vuelve a intentarlo o reserva una llamada con el equipo.",
       quickActions: [
-        "Qu\u00e9 servicio necesito?",
-        "C\u00f3mo funcionan los precios?",
-        "Cu\u00e1nto tiempo puede tardar?",
+        "Tengo una idea y necesito direcci\u00f3n",
+        "Quiero lanzar un MVP",
+        "Necesito entender precio y plazo",
         "Quiero hablar con el equipo"
       ]
+    }
+  };
+
+  var PAGE_CONTEXT_COPY = {
+    pt: {
+      pricing: {
+        intro: "Posso ajudar-te a perceber o que influencia pre\u00e7o e prazo, e qual o melhor ponto de partida para o teu projeto.",
+        quickActions: [
+          "O que influencia o pre\u00e7o?",
+          "Preciso de perceber or\u00e7amento e prazo",
+          "Que servi\u00e7o faz mais sentido?",
+          "Quero falar com a equipa"
+        ]
+      },
+      bookCall: {
+        intro: "Se quiseres, posso ajudar-te a estruturar o pedido antes da chamada para ficares mais preparado.",
+        quickActions: [
+          "Ajuda-me a preparar o pedido",
+          "Que servi\u00e7o faz mais sentido?",
+          "O que devo dizer na chamada?",
+          "Quero avan\u00e7ar"
+        ]
+      },
+      service: {
+        intro: "Se quiseres, posso dizer-te se este servi\u00e7o faz sentido para o teu caso e qual seria o pr\u00f3ximo passo.",
+        quickActions: [
+          "Este servi\u00e7o faz sentido para mim?",
+          "Em que fase costuma entrar?",
+          "Quanto tempo pode demorar?",
+          "Quero falar com a equipa"
+        ]
+      }
+    },
+    en: {
+      pricing: {
+        intro: "I can help you understand what affects pricing and timeline, and which starting point makes the most sense for your project.",
+        quickActions: [
+          "What affects pricing?",
+          "I need budget and timeline help",
+          "Which service fits best?",
+          "I want to talk to the team"
+        ]
+      },
+      bookCall: {
+        intro: "If you want, I can help you frame the request before the call so you feel more prepared.",
+        quickActions: [
+          "Help me prepare the request",
+          "Which service fits best?",
+          "What should I bring to the call?",
+          "I want to move forward"
+        ]
+      },
+      service: {
+        intro: "If you want, I can tell you whether this service fits your case and what the next step would look like.",
+        quickActions: [
+          "Does this service fit my case?",
+          "When does it usually make sense?",
+          "How long can it take?",
+          "I want to talk to the team"
+        ]
+      }
+    },
+    es: {
+      pricing: {
+        intro: "Puedo ayudarte a entender qu\u00e9 influye en el precio y en el plazo, y cu\u00e1l es el mejor punto de partida para tu proyecto.",
+        quickActions: [
+          "Qu\u00e9 influye en el precio?",
+          "Necesito entender presupuesto y plazo",
+          "Qu\u00e9 servicio encaja mejor?",
+          "Quiero hablar con el equipo"
+        ]
+      },
+      bookCall: {
+        intro: "Si quieres, puedo ayudarte a preparar la solicitud antes de la llamada para que llegues con m\u00e1s claridad.",
+        quickActions: [
+          "Ay\u00fadame a preparar la solicitud",
+          "Qu\u00e9 servicio encaja mejor?",
+          "Qu\u00e9 debo llevar a la llamada?",
+          "Quiero avanzar"
+        ]
+      },
+      service: {
+        intro: "Si quieres, puedo decirte si este servicio encaja con tu caso y cu\u00e1l ser\u00eda el siguiente paso.",
+        quickActions: [
+          "Este servicio encaja con mi caso?",
+          "En qu\u00e9 fase suele entrar?",
+          "Cu\u00e1nto tiempo puede tardar?",
+          "Quiero hablar con el equipo"
+        ]
+      }
     }
   };
 
@@ -88,6 +178,39 @@
 
   function getCopy() {
     return COPY[state.lang] || COPY.pt;
+  }
+
+  function getPageContextKey() {
+    var path = String(window.location.pathname || "").toLowerCase();
+    if (path.indexOf("pricing.html") !== -1) return "pricing";
+    if (path.indexOf("book-a-call.html") !== -1) return "bookCall";
+    if (
+      path.indexOf("product-scope") !== -1 ||
+      path.indexOf("mvp-builder") !== -1 ||
+      path.indexOf("ux-ui") !== -1 ||
+      path.indexOf("custom-software") !== -1 ||
+      path.indexOf("dedicated-teams") !== -1
+    ) {
+      return "service";
+    }
+    return "default";
+  }
+
+  function getContextCopy() {
+    var langCopy = PAGE_CONTEXT_COPY[state.lang] || PAGE_CONTEXT_COPY.pt || {};
+    return langCopy[getPageContextKey()] || null;
+  }
+
+  function getIntroMessage(copy) {
+    var contextCopy = getContextCopy();
+    return contextCopy && contextCopy.intro ? contextCopy.intro : copy.intro;
+  }
+
+  function getQuickActions(copy) {
+    var contextCopy = getContextCopy();
+    return contextCopy && Array.isArray(contextCopy.quickActions) && contextCopy.quickActions.length
+      ? contextCopy.quickActions
+      : copy.quickActions;
   }
 
   function getStoredLanguage() {
@@ -176,7 +299,7 @@
 
   function ensureIntroMessage() {
     if (state.messages.length > 0) return;
-    state.messages.push(createMessage("assistant", getCopy().intro, "intro"));
+    state.messages.push(createMessage("assistant", getIntroMessage(getCopy()), "intro"));
     saveState();
   }
 
@@ -298,6 +421,7 @@
 
   function renderQuickActions() {
     var copy = getCopy();
+    var quickActions = getQuickActions(copy);
     ui.quickLabel.textContent = copy.quickLabel;
     ui.quickPrivacy.textContent = copy.privacy;
     ui.quickChips.innerHTML = "";
@@ -309,7 +433,7 @@
     ui.quick.hidden = hasUserMessages;
     if (hasUserMessages) return;
 
-    copy.quickActions.forEach(function (label) {
+    quickActions.forEach(function (label) {
       var button = document.createElement("button");
       button.className = "cobrait-chat-chip";
       button.type = "button";
@@ -502,7 +626,7 @@
 
       state.lang = nextLang;
       if (hadOnlyIntro) {
-        state.messages = [createMessage("assistant", getCopy().intro, "intro")];
+        state.messages = [createMessage("assistant", getIntroMessage(getCopy()), "intro")];
         saveState();
       }
       renderFrame();
