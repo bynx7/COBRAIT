@@ -20,7 +20,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Cobrait ? Agendar uma Chamada</title>
+    <title>Cobrait | Agendar uma Chamada</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1187,6 +1187,261 @@
     </style>
     <link rel="stylesheet" href="global-enhancements.css" />
     <style>
+      .footer-pro {
+        background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+        color: #cbd5e1;
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0 24px;
+      }
+
+      .footer-pro::before {
+        content: "";
+        position: absolute;
+        inset: -200px -200px auto auto;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+
+      .footer-pro::after {
+        content: "";
+        position: absolute;
+        inset: auto auto -240px -240px;
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+        filter: blur(12px);
+        pointer-events: none;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 24px;
+        position: relative;
+        z-index: 1;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      }
+
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .footer-brand-title {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1;
+        color: rgba(226, 232, 240, 0.95);
+      }
+
+      .footer-brand-subtitle {
+        margin: 4px 0 0;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.8);
+      }
+
+      .footer-tagline {
+        margin: 8px 0 0;
+        max-width: 420px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(226, 232, 240, 0.85);
+      }
+
+      .footer-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .btn--footer {
+        padding: 10px 18px !important;
+        font-size: 14px !important;
+        border-radius: 10px !important;
+      }
+
+      .footer-col h4 {
+        margin: 0 0 14px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: rgba(226, 232, 240, 0.9);
+      }
+
+      .footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .footer-links li {
+        margin: 0;
+      }
+
+      .footer-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        color: #ffffff;
+        transform: translateX(3px);
+      }
+
+      .footer-meta {
+        display: grid;
+        gap: 10px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: rgba(203, 213, 225, 0.9);
+      }
+
+      .footer-meta a {
+        color: rgba(203, 213, 225, 0.9);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-meta a:hover {
+        color: #ffffff;
+      }
+
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .social-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .social-icon {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      .footer-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .footer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        background: rgba(15, 23, 42, 0.35);
+        color: rgba(226, 232, 240, 0.9);
+        font-size: 12px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .footer-badge-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding-top: 16px;
+        position: relative;
+        z-index: 1;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        color: rgba(148, 163, 184, 0.9);
+      }
+
+      .footer-mini-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .footer-mini-links a {
+        color: rgba(148, 163, 184, 0.95);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .footer-mini-links a:hover {
+        color: #ffffff;
+      }
+
+      @media (max-width: 1024px) {
+        .footer-top {
+          grid-template-columns: 1.6fr 1fr 1fr;
+        }
+
+        .footer-col--contact {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .footer-top {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-mini-links {
+          justify-content: flex-start;
+        }
+
+        .footer-pro {
+          padding: 50px 0 20px;
+        }
+
+        .footer-brand-title {
+          font-size: 22px;
+        }
+      }
+    </style>
+    <style>
       .book-hero {
         min-height: auto !important;
       }
@@ -1742,11 +1997,6 @@
               </li>
             </ul>
 
-            <div class="contact-video" aria-label="Video">
-              <button class="video-play" type="button" aria-label="Play video">
-                <span class="triangle" aria-hidden="true"></span>
-              </button>
-            </div>
           </div>
 
           <div class="contact-right">
@@ -1793,6 +2043,9 @@
                   <input
                     type="text"
                     name="Nome"
+                    data-pt="O teu nome"
+                    data-en="Your name"
+                    data-es="Tu nombre"
                     placeholder="O teu nome"
                     required
                   />
@@ -1805,6 +2058,9 @@
                   <input
                     type="email"
                     name="Email"
+                    data-pt="o.teu@email.com"
+                    data-en="your@email.com"
+                    data-es="tu@email.com"
                     placeholder="o.teu@email.com"
                     required
                   />
@@ -1812,26 +2068,54 @@
 
                 <label class="field">
                   <span
-                    data-pt="Or?amento"
+                    data-pt="Orcamento"
                     data-en="Budget Size"
                     data-es="Presupuesto"
-                    >Or?amento</span
+                    >Orcamento</span
                   >
-                  <select name="Or?amento" required>
+                  <select name="budget" required>
                     <option
                       value=""
                       selected
                       disabled
                       data-pt="Selecionar..."
-                      data-en="Select?"
-                      data-es="Seleccionar"
+                      data-en="Select..."
+                      data-es="Seleccionar..."
                     >
                       Selecionar...
                     </option>
-                    <option>?1k??5k</option>
-                    <option>?5k??15k</option>
-                    <option>?15k??50k</option>
-                    <option>?50k+</option>
+                    <option
+                      value="1k-5k EUR"
+                      data-pt="1k-5k EUR"
+                      data-en="1k-5k EUR"
+                      data-es="1k-5k EUR"
+                    >
+                      1k-5k EUR
+                    </option>
+                    <option
+                      value="5k-15k EUR"
+                      data-pt="5k-15k EUR"
+                      data-en="5k-15k EUR"
+                      data-es="5k-15k EUR"
+                    >
+                      5k-15k EUR
+                    </option>
+                    <option
+                      value="15k-50k EUR"
+                      data-pt="15k-50k EUR"
+                      data-en="15k-50k EUR"
+                      data-es="15k-50k EUR"
+                    >
+                      15k-50k EUR
+                    </option>
+                    <option
+                      value="50k+ EUR"
+                      data-pt="50k+ EUR"
+                      data-en="50k+ EUR"
+                      data-es="50k+ EUR"
+                    >
+                      50k+ EUR
+                    </option>
                   </select>
                 </label>
 
@@ -1864,7 +2148,7 @@
                   <input
                     type="text"
                     name="referral"
-                    data-pt="Google, indica??o, LinkedIn?"
+                    data-pt="Google, indicação, LinkedIn?"
                     data-en="Google, referral, LinkedIn?"
                     data-es="Google, referencia, LinkedIn?"
                     placeholder="Google, indica??o, LinkedIn?"
@@ -1875,7 +2159,7 @@
                   <input type="checkbox" name="nda" />
                   <span
                     data-pt="Este projeto requer NDA"
-                    data-en="This Project requires an NDA"
+                    data-en="This project requires an NDA"
                     data-es="Este proyecto requiere NDA"
                   >
                     Este projeto requer NDA

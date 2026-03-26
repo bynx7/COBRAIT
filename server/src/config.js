@@ -1,11 +1,35 @@
-require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
+const dotenv = require("dotenv");
 
-function required(name) {
-  const value = process.env[name];
+loadEnvFiles([
+  path.resolve(__dirname, "../.env"),
+  path.resolve(__dirname, "../../.env")
+]);
+
+function loadEnvFiles(paths) {
+  paths.forEach((envPath) => {
+    if (fs.existsSync(envPath)) {
+      dotenv.config({ path: envPath, override: false });
+    }
+  });
+}
+
+function requiredValue(value, name) {
   if (!value || !String(value).trim()) {
     throw new Error("Missing required environment variable: " + name);
   }
   return String(value).trim();
+}
+
+function firstNonEmpty(names, fallback = "") {
+  for (const name of names) {
+    const value = process.env[name];
+    if (value !== undefined && String(value).trim()) {
+      return String(value).trim();
+    }
+  }
+  return fallback;
 }
 
 function parseBoolean(value, fallback) {
@@ -25,14 +49,43 @@ function parseList(value) {
     .filter(Boolean);
 }
 
+function buildDatabaseUrl() {
+  const directUrl = firstNonEmpty(["DATABASE_URL"]);
+  if (directUrl) {
+    return directUrl;
+  }
+
+  const databaseName = firstNonEmpty(["POSTGRES_DB"]);
+  const username = firstNonEmpty(["POSTGRES_USER"]);
+  const password = firstNonEmpty(["POSTGRES_PASSWORD"]);
+
+  if (!databaseName || !username || !password) {
+    return "";
+  }
+
+  const host = firstNonEmpty(["POSTGRES_HOST"], "localhost");
+  const port = firstNonEmpty(["POSTGRES_PORT"], "5432");
+
+  return "postgres://" +
+    encodeURIComponent(username) +
+    ":" +
+    encodeURIComponent(password) +
+    "@" +
+    host +
+    ":" +
+    port +
+    "/" +
+    encodeURIComponent(databaseName);
+}
+
 const sessionMaxAgeHours = parsePositiveInt(process.env.SESSION_MAX_AGE_HOURS, 12);
 
 module.exports = {
   env: process.env.NODE_ENV || "development",
-  port: parsePositiveInt(process.env.PORT, 4000),
-  databaseUrl: required("DATABASE_URL"),
+  port: parsePositiveInt(firstNonEmpty(["PORT", "API_PORT"]), 4000),
+  databaseUrl: requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)"),
   databaseSsl: parseBoolean(process.env.DATABASE_SSL, false),
-  jwtSecret: required("JWT_SECRET"),
+  jwtSecret: requiredValue(firstNonEmpty(["JWT_SECRET"]), "JWT_SECRET"),
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || sessionMaxAgeHours + "h",
   sessionCookieName: process.env.SESSION_COOKIE_NAME || "cobrait_admin_session",
   sessionCookieSecure: parseBoolean(process.env.SESSION_COOKIE_SECURE, false),

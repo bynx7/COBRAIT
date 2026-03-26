@@ -54,12 +54,10 @@
 
     if (window.location.protocol === "file:") return "http://localhost:4000/api";
 
-    var staticPorts = { "3000": true, "5500": true, "8080": true, "8092": true };
-    if (staticPorts[window.location.port]) {
-      var apiHost = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
-        ? "localhost"
-        : window.location.hostname;
-      return "http://" + apiHost + ":4000/api";
+    var hostname = String(window.location.hostname || "").toLowerCase();
+    var isLocalHost = hostname === "127.0.0.1" || hostname === "localhost";
+    if (isLocalHost && window.location.port !== "4000") {
+      return window.location.protocol + "//" + hostname + ":4000/api";
     }
 
     return sanitizeApiBase(window.location.origin + "/api");

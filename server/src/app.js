@@ -12,10 +12,26 @@ const usersRoutes = require("./routes/users.routes");
 const app = express();
 const allowedOrigins = new Set(config.corsOrigins);
 
+function isLoopbackOrigin(origin) {
+  if (!origin) return false;
+
+  try {
+    const parsed = new URL(origin);
+    return parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
+  } catch (_error) {
+    return false;
+  }
+}
+
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.size === 0 || allowedOrigins.has(origin)) {
+      if (
+        !origin ||
+        allowedOrigins.size === 0 ||
+        allowedOrigins.has(origin) ||
+        isLoopbackOrigin(origin)
+      ) {
         callback(null, true);
         return;
       }

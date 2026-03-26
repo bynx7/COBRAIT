@@ -853,26 +853,369 @@
 
     .wire-top{
       display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .wire-dots{
+      display:flex;
       gap: 8px;
       align-items:center;
-      margin-bottom: 14px;
     }
     .dot{ width:10px; height:10px; border-radius:999px; background: rgba(15,23,42,.14); }
     .dot:nth-child(1){ background: rgba(236,27,103,.55); }
     .dot:nth-child(2){ background: rgba(6,182,212,.55); }
     .dot:nth-child(3){ background: rgba(96,165,250,.55); }
+    .wire-toolbar{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .wire-toolbar__pill{
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(15,23,42,.08), rgba(15,23,42,.14));
+      display:block;
+    }
+    .wire-toolbar__pill--sm{ width: 56px; }
+    .wire-toolbar__pill--md{ width: 92px; }
+    .wire-toolbar__pill--lg{ width: 128px; }
 
     .wire-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
     }
     .wire-box{
       border-radius: 14px;
       border: 1px solid rgba(226,232,240,.95);
-      background: rgba(255,255,255,.75);
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,252,.92));
       padding: 14px;
-      min-height: 92px;
+      min-height: 110px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 34px rgba(148,163,184,.12);
+    }
+    .wire-box::before{
+      content:"";
+      position:absolute;
+      inset:auto 18px 0 18px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148,163,184,.24), transparent);
+    }
+    .wire-box--feature{
+      grid-column: 1 / -1;
+      padding: 18px;
+      border-radius: 18px;
+      background:
+        radial-gradient(220px 160px at 100% 0%, rgba(96,165,250,.14), transparent 70%),
+        radial-gradient(220px 160px at 0% 100%, rgba(236,72,153,.10), transparent 72%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.96));
+    }
+    .wire-box__header{
+      display:flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .wire-tab{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 56px;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.09);
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .wire-tab--active{
+      min-width: 82px;
+      background: linear-gradient(90deg, rgba(79,70,229,.42), rgba(6,182,212,.42));
+      color: #312e81;
+    }
+    .wire-box__feature{
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .wire-copy,
+    .wire-preview{
+      border-radius: 16px;
+      border: 1px solid rgba(226,232,240,.92);
+      background: rgba(255,255,255,.82);
+      padding: 14px;
+    }
+    .wire-copy__cluster{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .wire-kicker{
+      display:block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+    .wire-heading{
+      margin: 0 0 8px;
+      color: #0b1220;
+      font-size: clamp(18px, 1.9vw, 24px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      font-weight: 900;
+    }
+    .wire-copy__text{
+      margin: 0;
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.55;
+      max-width: 30ch;
+    }
+    .wire-chip{
+      min-width: 64px;
+      height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.06);
+      border: 1px solid rgba(226,232,240,.95);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .wire-chip--accent{
+      min-width: 92px;
+      background: linear-gradient(90deg, rgba(79,70,229,.12), rgba(6,182,212,.12));
+      border-color: rgba(96,165,250,.18);
+      color: #312e81;
+    }
+    .wire-preview{
+      display:grid;
+      align-content: start;
+      gap: 14px;
+      background:
+        linear-gradient(180deg, rgba(248,250,252,.95), rgba(255,255,255,.88));
+    }
+    .wire-preview__orb{
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.22)),
+        linear-gradient(135deg, rgba(79,70,229,.78), rgba(6,182,212,.72));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.65),
+        0 16px 30px rgba(79,70,229,.18);
+    }
+    .wire-preview__stack{
+      display:grid;
+      gap: 8px;
+    }
+    .wire-preview__metric{
+      display:grid;
+      gap: 2px;
+    }
+    .wire-preview__value{
+      color: #0b1220;
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+    .wire-preview__label{
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .wire-preview__item{
+      color: #475569;
+      font-size: 11px;
+      line-height: 1.45;
+      padding: 7px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid rgba(226,232,240,.92);
+    }
+    .wire-box__meta{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .wire-pill,
+    .wire-kpi{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 0 10px;
+      min-height: 24px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.07);
+      border: 1px solid rgba(226,232,240,.95);
+      color: #475569;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .wire-pill{ min-width: 82px; }
+    .wire-kpi{ min-width: 48px; }
+    .wire-box--insight::after,
+    .wire-box--system::after{
+      content:"";
+      position:absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(6,182,212,.85), rgba(96,165,250,.72));
+    }
+    .wire-box--system::after{
+      background: linear-gradient(90deg, rgba(236,72,153,.82), rgba(79,70,229,.72));
+    }
+    .wire-swatch-row{
+      display:flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .wire-swatch{
+      width: 24px;
+      height: 24px;
+      border-radius: 9px;
+      display:block;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .wire-swatch--violet{ background: linear-gradient(135deg, rgba(79,70,229,.92), rgba(129,140,248,.92)); }
+    .wire-swatch--cyan{ background: linear-gradient(135deg, rgba(6,182,212,.92), rgba(103,232,249,.9)); }
+    .wire-swatch--pink{ background: linear-gradient(135deg, rgba(236,72,153,.9), rgba(244,114,182,.92)); }
+    .wire-box__title{
+      margin: 0 0 10px;
+      color: #0b1220;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .wire-list{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .wire-list li{
+      position: relative;
+      padding-left: 14px;
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .wire-list li::before{
+      content:"";
+      position: absolute;
+      left: 0;
+      top: .55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #06b6d4, #60a5fa);
+    }
+    .wire-caption{
+      display:block;
+      margin-bottom: 8px;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .wire-token-list{
+      display:grid;
+      gap: 8px;
+    }
+    .wire-token{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .wire-token__name{
+      font-weight: 700;
+      color: #334155;
+    }
+    .wire-token__value{
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.06);
+      border: 1px solid rgba(226,232,240,.92);
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .wire-subline{
+      margin: 10px 0 0;
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .wire-strip{
+      grid-column: 1 / -1;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .wire-strip__item{
+      min-height: 78px;
+      border-radius: 16px;
+      border: 1px solid rgba(226,232,240,.95);
+      background: rgba(255,255,255,.86);
+      padding: 14px;
+      display:grid;
+      gap: 6px;
+      box-shadow: 0 16px 34px rgba(148,163,184,.1);
+    }
+    .wire-strip__top{
+      width: max-content;
+      min-height: 22px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.12);
+      display:inline-flex;
+      align-items:center;
+      color: #334155;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .wire-strip__label{
+      color: #0b1220;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .wire-strip__desc{
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.45;
     }
     .wire-line{
       height: 10px;
@@ -893,18 +1236,177 @@
       z-index: 1;
     }
     .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
       font-size: 12px;
       font-weight: 800;
       color: #0b1220;
-      background: rgba(15,23,42,.06);
-      border: 1px solid rgba(15,23,42,.08);
-      padding: 8px 10px;
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(148,163,184,.22);
+      box-shadow: 0 8px 20px rgba(148,163,184,.14);
+      padding: 9px 12px;
       border-radius: 999px;
     }
+    .badge::before{
+      content:"";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      box-shadow: 0 0 0 5px rgba(79,70,229,.08);
+      flex: 0 0 auto;
+    }
+    .hero-badges .badge:nth-child(2)::before{
+      background: linear-gradient(135deg, #06b6d4, #60a5fa);
+    }
+    .hero-badges .badge:nth-child(3)::before{
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    }
+    .hero-badges .badge:nth-child(4)::before{
+      background: linear-gradient(135deg, #ec4899, #7c3aed);
+    }
 
+    .ux-preview{
+      position: relative;
+      z-index: 1;
+      border-radius: 22px;
+      border: 1px solid rgba(226,232,240,.92);
+      background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(248,250,252,.86));
+      padding: 16px;
+      box-shadow: 0 18px 44px rgba(148,163,184,.14);
+    }
+    .ux-preview__top{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .ux-preview__toolbar{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .ux-preview__toolbar span{
+      display:block;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(15,23,42,.08), rgba(15,23,42,.13));
+    }
+    .ux-preview__toolbar span:nth-child(1){ width: 54px; }
+    .ux-preview__toolbar span:nth-child(2){ width: 84px; }
+    .ux-preview__toolbar span:nth-child(3){ width: 116px; }
+    .ux-preview__body{ display:block; }
+    .ux-preview__table{
+      border-radius: 18px;
+      border: 1px solid rgba(226,232,240,.92);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 14px 30px rgba(148,163,184,.1);
+    }
+    .ux-preview__table{
+      overflow: hidden;
+    }
+    .ux-preview__row{
+      display:grid;
+      grid-template-columns: 108px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 15px;
+      align-items:start;
+    }
+    .ux-preview__row + .ux-preview__row{
+      border-top: 1px solid rgba(226,232,240,.88);
+    }
+    .ux-preview__phase{
+      display:inline-flex;
+      align-items:center;
+      width: max-content;
+      min-height: 28px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(15,23,42,.06);
+      color: #0b1220;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .ux-preview__phase--accent{
+      background: linear-gradient(90deg, rgba(79,70,229,.14), rgba(6,182,212,.14));
+      color: #312e81;
+    }
+    .ux-preview__content{
+      min-width: 0;
+      display:grid;
+      gap: 6px;
+    }
+    .ux-preview__value{
+      color: #0b1220;
+      font-size: 16px;
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .ux-preview__meta{
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.45;
+    }
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .hero-visual{ min-height: unset; }
+      .wire-box__feature{ grid-template-columns: 1fr; }
+      .wire-preview__orb{ width: 64px; height: 64px; }
+    }
+
+    @media (max-width: 640px){
+      .wire-top{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .wire-toolbar{
+        width: 100%;
+      }
+      .wire-toolbar__pill--lg{
+        width: 100%;
+        max-width: 148px;
+      }
+      .wire-grid,
+      .wire-strip{
+        grid-template-columns: 1fr;
+      }
+      .wire-box--feature,
+      .wire-strip{
+        grid-column: auto;
+      }
+      .hero-badges{
+        gap: 8px;
+      }
+      .wire-heading{
+        font-size: 18px;
+      }
+      .ux-preview{
+        padding: 14px;
+      }
+      .ux-preview__top{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .ux-preview__toolbar span:nth-child(3){
+        width: 92px;
+      }
+      .ux-preview__row{
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px 13px;
+      }
+      .ux-preview__content{
+        gap: 5px;
+      }
+      .ux-preview__value{
+        font-size: 16px;
+      }
+      .ux-preview__meta{
+        font-size: 12px;
+      }
     }
 
     /* =========================================================
@@ -1499,40 +2001,47 @@
 
                 <div class="hero-visual" aria-hidden="true">
           <div class="visual-card">
-            <div class="wire">
-              <div class="wire-top">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <div class="ux-preview">
+              <div class="ux-preview__top">
+                <div class="wire-dots">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <div class="ux-preview__toolbar">
+                  <span></span><span></span><span></span>
+                </div>
               </div>
 
-              <div class="wire-grid">
-                <div class="wire-box">
-                  <div class="wire-line lg"></div>
-                  <div class="wire-line md"></div>
-                  <div class="wire-line sm"></div>
-                </div>
-                <div class="wire-box">
-                  <div class="wire-line md"></div>
-                  <div class="wire-line sm"></div>
-                  <div class="wire-line lg"></div>
-                </div>
-                <div class="wire-box">
-                  <div class="wire-line sm"></div>
-                  <div class="wire-line md"></div>
-                  <div class="wire-line lg"></div>
-                </div>
-                <div class="wire-box">
-                  <div class="wire-line lg"></div>
-                  <div class="wire-line sm"></div>
-                  <div class="wire-line md"></div>
+              <div class="ux-preview__body">
+                <div class="ux-preview__table">
+                  <div class="ux-preview__row">
+                    <span class="ux-preview__phase ux-preview__phase--accent" data-pt="Pesquisa" data-en="Research" data-es="Investigacion">Pesquisa</span>
+                    <div class="ux-preview__content">
+                      <div class="ux-preview__value" data-pt="Perceber onde complica" data-en="See where things get confusing" data-es="Ver donde se complica">Perceber onde complica</div>
+                      <div class="ux-preview__meta" data-pt="Os pontos em que as pessoas param ou desistem." data-en="The points where people pause or leave." data-es="Los puntos en los que las personas paran o se van.">Os pontos em que as pessoas param ou desistem.</div>
+                    </div>
+                  </div>
+                  <div class="ux-preview__row">
+                    <span class="ux-preview__phase" data-pt="Wireframes" data-en="Wireframes" data-es="Wireframes">Wireframes</span>
+                    <div class="ux-preview__content">
+                      <div class="ux-preview__value" data-pt="Organizar ecras e passos" data-en="Organize screens and steps" data-es="Organizar pantallas y pasos">Organizar ecras e passos</div>
+                      <div class="ux-preview__meta" data-pt="Primeiro acertamos o caminho, depois o detalhe visual." data-en="We fix the path first, then the visual detail." data-es="Primero ajustamos el recorrido, despues el detalle visual.">Primeiro acertamos o caminho, depois o detalhe visual.</div>
+                    </div>
+                  </div>
+                  <div class="ux-preview__row">
+                    <span class="ux-preview__phase" data-pt="Sistema visual" data-en="Visual system" data-es="Sistema visual">Sistema visual</span>
+                    <div class="ux-preview__content">
+                      <div class="ux-preview__value" data-pt="Dar coerencia ao produto" data-en="Bring consistency to the product" data-es="Dar coherencia al producto">Dar coerencia ao produto</div>
+                      <div class="ux-preview__meta" data-pt="Mesma linguagem visual em todo o produto." data-en="One visual language across the product." data-es="Un mismo lenguaje visual en todo el producto.">Mesma linguagem visual em todo o produto.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="hero-badges">
-              <span class="badge" data-pt="Pesquisa & Insights" data-en="Research & Insights" data-es="Investigación & Insights">Pesquisa & Insights</span>
+              <span class="badge" data-pt="Pesquisa" data-en="Research" data-es="Investigacion">Pesquisa</span>
               <span class="badge" data-pt="Wireframes" data-en="Wireframes" data-es="Wireframes">Wireframes</span>
-              <span class="badge" data-pt="UI System" data-en="UI System" data-es="Sistema UI">UI System</span>
-              <span class="badge" data-pt="Design QA" data-en="Design QA" data-es="QA de Diseño">Design QA</span>
+              <span class="badge" data-pt="Sistema visual" data-en="Visual system" data-es="Sistema visual">Sistema visual</span>
             </div>
           </div>
         </div>

@@ -457,18 +457,37 @@
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
     }
+    const STATIC_PORTS = new Set(["3000", "5500", "8080", "8092"]);
+
     function sanitizeApiBase(value) { return String(value || "").trim().replace(/\/+$/, ""); }
+    function isLocalHost(hostname) { return ["localhost", "127.0.0.1"].includes(String(hostname || "").toLowerCase()); }
+    function getApiHostForCurrentPage() {
+      return isLocalHost(window.location.hostname) ? "localhost" : window.location.hostname;
+    }
+    function isStaticPort(port) {
+      return STATIC_PORTS.has(String(port || ""));
+    }
+    function isLikelyStaticApiBase(value) {
+      try {
+        const url = new URL(sanitizeApiBase(value));
+        return isStaticPort(url.port);
+      } catch (_error) {
+        return false;
+      }
+    }
+    function preferredApiBase() {
+      return sanitizeApiBase("http://" + getApiHostForCurrentPage() + ":4000/api");
+    }
     function defaultApiBase() {
       const saved = localStorage.getItem("cobrait_admin_api_base");
-      if (saved) return sanitizeApiBase(saved);
-      const staticPorts = new Set(["3000", "5500", "8080", "8092"]);
-      const isStaticHost = staticPorts.has(window.location.port);
+      if (saved) {
+        const normalizedSaved = sanitizeApiBase(saved);
+        if (!isLikelyStaticApiBase(normalizedSaved)) return normalizedSaved;
+      }
+      const isStaticHost = isStaticPort(window.location.port);
       if (window.location.protocol === "file:") return DEFAULT_LOCAL_API;
       if (isStaticHost) {
-        const apiHost = ["localhost", "127.0.0.1"].includes(window.location.hostname)
-          ? "localhost"
-          : window.location.hostname;
-        return sanitizeApiBase("http://" + apiHost + ":4000/api");
+        return preferredApiBase();
       }
       return sanitizeApiBase(window.location.origin + "/api");
     }
@@ -551,6 +570,37 @@
       state.apiBase = sanitizeApiBase(apiBaseInput.value || defaultApiBase());
       apiBaseInput.value = state.apiBase;
       localStorage.setItem("cobrait_admin_api_base", state.apiBase);
+    }
+
+    async function probeApiBase(apiBase) {
+      const response = await fetch(apiBase + "/health", { method: "GET", cache: "no-store" });
+      if (!response.ok) {
+        throw new Error("Healthcheck falhou.");
+      }
+      return apiBase;
+    }
+
+    async function resolveWorkingApiBase() {
+      const candidates = [];
+      const seen = new Set();
+
+      [sanitizeApiBase(apiBaseInput.value), state.apiBase, preferredApiBase(), DEFAULT_LOCAL_API, defaultApiBase()].forEach((candidate) => {
+        if (!candidate || seen.has(candidate)) return;
+        seen.add(candidate);
+        candidates.push(candidate);
+      });
+
+      for (const candidate of candidates) {
+        try {
+          await probeApiBase(candidate);
+          state.apiBase = candidate;
+          apiBaseInput.value = candidate;
+          localStorage.setItem("cobrait_admin_api_base", candidate);
+          return candidate;
+        } catch (_error) {}
+      }
+
+      return state.apiBase;
     }
 
     async function apiFetch(path, options) {
@@ -1109,7 +1159,17 @@
       loginBtn.disabled = true;
       loginBtn.textContent = "A entrar...";
       try {
-        const data = await apiFetch("/auth/login", { method: "POST", body: { email: loginEmail.value.trim(), password: loginPass.value } });
+        let data;
+        try {
+          data = await apiFetch("/auth/login", { method: "POST", body: { email: loginEmail.value.trim(), password: loginPass.value } });
+        } catch (error) {
+          if (error && error.status === 405) {
+            await resolveWorkingApiBase();
+            data = await apiFetch("/auth/login", { method: "POST", body: { email: loginEmail.value.trim(), password: loginPass.value } });
+          } else {
+            throw error;
+          }
+        }
         openAdmin(data.user);
       } catch (error) {
         loginError.textContent = error && error.status ? error.message : ("Nao foi possivel ligar a API em " + state.apiBase + ".");
@@ -1120,6 +1180,7 @@
     }
 
     async function restoreSession() {
+      await resolveWorkingApiBase();
       apiBaseInput.value = state.apiBase;
       renderPages();
       try {
