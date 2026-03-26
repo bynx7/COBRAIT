@@ -20,6 +20,18 @@ if (!window.__cobraitTranslationBooted) {
     const EXTRA_LANGS = ["fr", "de", "ru", "nl", "ja", "zh"];
     const ALLOWED_DROPDOWN_LANGS = ["pt", "en", "es"];
     const MOBILE_HEADER_MAX_WIDTH = 960;
+    const scriptBaseUrl = (() => {
+      if (document.currentScript && document.currentScript.src) {
+        return new URL(".", document.currentScript.src);
+      }
+
+      const fallbackBase = window.location.pathname.includes("/servicos/")
+        ? "../assets/js/"
+        : "assets/js/";
+
+      return new URL(fallbackBase, window.location.href);
+    })();
+    const translationsUrl = new URL("../data/translations.json", scriptBaseUrl);
     const LANGUAGE_META = {
       pt: { code: "PT", name: "Português", flag: "PT" },
       en: { code: "EN", name: "English", flag: "EN" },
@@ -209,17 +221,9 @@ if (!window.__cobraitTranslationBooted) {
     };
 
     try {
-      // Tentar carregar translations.json no root ou no parent para paginas em /servicos
-      let response;
-      try {
-        response = await fetch("./translations.json");
-        if (!response.ok)
-          throw new Error("translations.json not found at root");
-      } catch (_e) {
-        response = await fetch("../translations.json");
-        if (!response.ok)
-          throw new Error("translations.json not found at parent");
-      }
+      const response = await fetch(translationsUrl.href);
+      if (!response.ok)
+        throw new Error("translations.json not found at assets/data");
       window.cobraitTranslations = await response.json();
     } catch (error) {
       console.warn(
@@ -470,29 +474,3 @@ if (!window.__cobraitTranslationBooted) {
   })();
 }
 
-if (!window.__cobraitChatWidgetInjected && document.documentElement.dataset.noSiteChat !== "true") {
-  window.__cobraitChatWidgetInjected = true;
-
-  (function loadCobraitChatWidget() {
-    var script = document.createElement("script");
-    var source = "/site-chat-widget.js";
-
-    if (window.location.protocol === "file:") {
-      var currentScript = Array.from(document.scripts).find(function (item) {
-        return /apply-translations\.js(?:\?|$)/.test(item.src || "");
-      });
-
-      if (currentScript && currentScript.src) {
-        source = currentScript.src.replace(/apply-translations\.js(?:\?.*)?$/, "site-chat-widget.js");
-      } else {
-        source = "./site-chat-widget.js";
-      }
-    } else {
-      source = window.location.origin + "/site-chat-widget.js";
-    }
-
-    script.src = source;
-    script.defer = true;
-    document.head.appendChild(script);
-  })();
-}

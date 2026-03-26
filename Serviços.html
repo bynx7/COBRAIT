@@ -26,13 +26,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 
-  <meta name="description" content="Serviços Cobrait — Desenvolvimento de software, MVPs, IA, UX/UI e equipas dedicadas.">
+  <meta name="description" content="Serviços Cobrait — Desenvolvimento de software, MVPs, UX/UI e equipas dedicadas.">
 
   <!-- CSS global -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   <!-- CSS desta página -->
-  <link rel="stylesheet" href="serviços.css">
-  <script src="./apply-translations.js"></script>
+  <link rel="stylesheet" href="assets/css/servicos.css">
+  <script src="assets/js/apply-translations.js"></script>
   
   <style>
     /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
@@ -565,7 +565,7 @@
       transform: translateX(0);
     }
   </style>
-  <link rel="stylesheet" href="global-enhancements.css">
+  <link rel="stylesheet" href="assets/css/global-enhancements.css">
 </head>
 
 <body>
@@ -573,9 +573,8 @@
   <header class="site-header">
         <div class="container header-inner">
             <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
-            <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
-                <div class="logo-text-main">COBRA IT</div>
-                <div class="logo-text-tagline">Software Factory</div>
+            <a class="brand logo-text-brand" href="index.html" aria-label="Cobrait Software Factory">
+                <img class="brand-logo-image" src="assets/images/cobrait-header-logo-tight.png" alt="Cobrait Software Factory" />
             </a>
 
             <input id="nav-toggle" class="nav-toggle" type="checkbox" />
@@ -776,23 +775,6 @@
               <p>Um processo estruturado para alinhar visão, objetivos, requisitos e roadmap com clareza.</p>
               <span style="font-size: 0.9rem; color: #667eea; font-weight: 600; display: inline-block; margin-top: 10px;">
                 Saiba mais sobre Product Scope →
-              </span>
-            </article>
-          </a>
-
-          <!-- AI Development -->
-          <a href="servicos/ai-development.html" class="service-card-link">
-            <article class="service-card">
-              <div class="service-icon service-icon--purple" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2 4 8l8 14 8-14-8-6Z" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M4 8h16" stroke="currentColor" stroke-width="1.8"/>
-                </svg>
-              </div>
-              <h3>Desenvolvimento & Capacitação em IA</h3>
-              <p>Aplicamos ML e IA Generativa para automatizar processos e criar vantagens competitivas reais.</p>
-              <span style="font-size: 0.9rem; color: #667eea; font-weight: 600; display: inline-block; margin-top: 10px;">
-                Saiba mais sobre IA →
               </span>
             </article>
           </a>
@@ -1134,9 +1116,10 @@
       });
     });
   </script>
-  <script src="./cms-client.js"></script>
-  <script src="./cms-inline-editor.js"></script>
+  <script src="assets/js/cms-client.js"></script>
+  <script src="assets/js/cms-inline-editor.js"></script>
 </body>
 </html>
+
 
 

@@ -26,9 +26,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <meta name="description" content="Pricing — Cobrait Software Factory.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="./apply-translations.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+  <script src="assets/js/apply-translations.js"></script>
 
   <style>
     /* =========================
@@ -1118,7 +1118,7 @@
                 font-size: 22px;
             }
         }</style>
-  <link rel="stylesheet" href="global-enhancements.css">
+  <link rel="stylesheet" href="assets/css/global-enhancements.css">
 </head>
 
 <body>
@@ -1128,9 +1128,8 @@
   <header class="site-header">
         <div class="container header-inner">
             <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
-            <a class="brand logo-text-brand" href="index.html" aria-label="Cobra IT">
-                <div class="logo-text-main">COBRA IT</div>
-                <div class="logo-text-tagline">Software Factory</div>
+            <a class="brand logo-text-brand" href="index.html" aria-label="Cobrait Software Factory">
+                <img class="brand-logo-image" src="assets/images/cobrait-header-logo-tight.png" alt="Cobrait Software Factory" />
             </a>
 
             <input id="nav-toggle" class="nav-toggle" type="checkbox" />
@@ -1331,8 +1330,6 @@
           <option data-pt="API" data-en="API" data-es="API">API</option>
           <option data-pt="Dashboard de Analytics / BI" data-en="Analytics / BI Dashboard" data-es="Dashboard de Analytics / BI">Analytics / BI Dashboard</option>
           <option data-pt="Comunidade / Rede Social" data-en="Community / Social Network" data-es="Comunidad / Red Social">Community / Social Network</option>
-          <option data-pt="Aplicação de Inteligência Artificial" data-en="Artificial Intelligence Application" data-es="Aplicación de Inteligencia Artificial">Artificial Intelligence Application</option>
-          <option data-pt="AI no edge" data-en="AI on the edge" data-es="AI en el edge">AI on the edge</option>
           <option data-pt="App de Música e Entretenimento" data-en="Music & Entertainment App" data-es="App de Música y Entretenimiento">Music & Entertainment App</option>
           <option data-pt="Software Regtech" data-en="Regtech Software" data-es="Software Regtech">Regtech Software</option>
           <option data-pt="Projeto de Integração de Sistemas" data-en="System Integration Project" data-es="Proyecto de Integración de Sistemas">System Integration Project</option>
@@ -1359,7 +1356,7 @@
           </div>
 
           <div class="pricing-examples__visual" aria-hidden="true">
-            <img src="images/pricing-laptop.png" alt="" onerror="this.style.display='none'">
+            <img src="assets/images/pricing-laptop.png" alt="" onerror="this.style.display='none'">
           </div>
         </div>
 
@@ -1505,53 +1502,6 @@
             </p>
           </article>
 
-          <!-- EXEMPLO 4: Proptech Cloud -->
-          <article class="pricing-card" data-type="Artificial Intelligence Application">
-            <div class="pricing-card__top">
-              <h3 data-pt="Proptech Cloud" data-en="Proptech Cloud" data-es="Proptech Cloud">Proptech Cloud</h3>
-            </div>
-            
-            <!-- DETALHES: COMPLEXITY, SIZE, SPEED -->
-            <div class="pricing-details">
-              <div class="detail-row">
-                <span class="detail-label">COMPLEXITY</span>
-                <span class="detail-value high">High</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">PROJECT SIZE</span>
-                <span class="detail-value">Big</span>
-              </div>
-              <div class="detail-row">
-                <span class="detail-label">SPEED</span>
-                <span class="detail-value">&lt; 2 Months</span>
-              </div>
-            </div>
-            
-            <!-- FAIXA DE PREÇO -->
-            <div class="price-range">
-              <div class="price-range-label">Project Range</div>
-              <div class="price-amounts">
-                <div class="price-from">
-                  <div class="price-title">FROM</div>
-                  <div class="price-value">$200k</div>
-                </div>
-                <div class="price-divider">—</div>
-                <div class="price-to">
-                  <div class="price-title">TO</div>
-                  <div class="price-value">$500k</div>
-                </div>
-              </div>
-              <div class="price-note">This estimate considers Product, UX/UI and Software Development.</div>
-            </div>
-            
-            <!-- DESCRIÇÃO -->
-            <p class="pricing-card__desc" data-pt="Ferramenta de IA que analisa pontos de dados relacionados com uma área geográfica e calcula o valor de imóveis."
-               data-en="AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets."
-               data-es="Herramienta de IA que analiza puntos de datos relacionados con un área geográfica y calcula el valor de activos inmobiliarios.">
-              AI tool that analyses data-points related to a geographic area and outputs the value of real estate assets.
-            </p>
-          </article>
-
           <!-- EXEMPLO 5: Legaltech -->
           <article class="pricing-card" data-type="Regtech Software">
             <div class="pricing-card__top">
@@ -1592,10 +1542,10 @@
             </div>
             
             <!-- DESCRIÇÃO -->
-            <p class="pricing-card__desc" data-pt="Um MVP para uma ferramenta complexa de IA que analisa regras públicas e aconselha equipas sobre perfis de clientes."
-               data-en="An MVP for a complex AI tool that analyses public rules and advises teams on client profiles."
-               data-es="Un MVP para una herramienta compleja de IA que analiza reglas públicas y asesora a equipos sobre perfiles de clientes.">
-              An MVP for a complex AI tool that analyses public rules and advises teams on client profiles.
+            <p class="pricing-card__desc" data-pt="Um MVP para uma ferramenta complexa que analisa regras públicas e apoia equipas na definição de perfis de clientes."
+               data-en="An MVP for a complex tool that analyses public rules and helps teams define client profiles."
+               data-es="Un MVP para una herramienta compleja que analiza reglas públicas y ayuda a los equipos a definir perfiles de clientes.">
+              An MVP for a complex tool that analyses public rules and helps teams define client profiles.
             </p>
           </article>
 
@@ -1723,7 +1673,7 @@
           </div>
 
           <div class="seed-illus" aria-hidden="true">
-            <img src="images/seed-explained.png" alt="" onerror="this.style.display='none'">
+            <img src="assets/images/seed-explained.png" alt="" onerror="this.style.display='none'">
           </div>
         </div>
       </div>
@@ -1744,7 +1694,7 @@
           </div>
 
           <div class="seed-illus" aria-hidden="true">
-            <img src="images/seed-modules.png" alt="" onerror="this.style.display='none'">
+            <img src="assets/images/seed-modules.png" alt="" onerror="this.style.display='none'">
           </div>
         </div>
       </div>
@@ -1808,29 +1758,6 @@
                  data-en="We apply lean frameworks to your vision to create a personalized and innovative software solution."
                  data-es="Aplicamos frameworks lean a tu visión para crear una solución de software personalizada e innovadora.">
                 We apply lean frameworks to your vision to create a personalized and innovative software solution.
-              </p>
-              <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
-                    data-pt="Saiba mais →"
-                    data-en="Learn more →"
-                    data-es="Saber más →">Saiba mais →</span>
-            </article>
-          </a>
-
-          <!-- AI DEVELOPMENT - COM LINK -->
-          <a href="servicos/ai-development.html" class="service-card-link">
-            <article class="service-card">
-              <div class="service-card__icon service-card__icon--yellow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 class="service-card__title" data-pt="Desenvolvimento e Capacitação com IA" data-en="AI Development & Enablement" data-es="Desarrollo y Capacitación con IA">
-                AI Development & Enablement
-              </h3>
-              <p class="service-card__desc" data-pt="Aplicamos Machine Learning e IA Generativa estrategicamente para garantir que o teu negócio está preparado para o futuro."
-                 data-en="We strategically apply Machine Learning and Generative AI to ensure your business is future-ready."
-                 data-es="Aplicamos estratégicamente Machine Learning e IA Generativa para garantizar que tu negocio esté preparado para el futuro.">
-                We strategically apply Machine Learning and Generative AI to ensure your business is future-ready.
               </p>
               <span class="service-card-cta" style="display:inline-block;margin-top:15px;color:#4f46e5;font-weight:600;font-size:.9rem;"
                     data-pt="Saiba mais →"
@@ -1925,7 +1852,7 @@
       <div class="container">
         <div class="cta-grid">
           <div class="cta-visual" aria-hidden="true">
-            <img src="images/pricing-person.png" alt="" onerror="this.style.display='none'">
+            <img src="assets/images/pricing-person.png" alt="" onerror="this.style.display='none'">
           </div>
 
           <div>
@@ -2251,10 +2178,11 @@
       });
     });
   </script>
-  <script src="./apply-translations.js"></script>
-  <script src="./cms-client.js"></script>
-  <script src="./cms-inline-editor.js"></script>
+  <script src="assets/js/apply-translations.js"></script>
+  <script src="assets/js/cms-client.js"></script>
+  <script src="assets/js/cms-inline-editor.js"></script>
 </body>
 </html>
+
 
 

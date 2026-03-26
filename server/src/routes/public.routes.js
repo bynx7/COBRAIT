@@ -1,7 +1,6 @@
 const express = require("express");
 const { createAuditLog } = require("../services/users.service");
 const { getSiteContentEntry } = require("../services/content.service");
-const { createChatReply } = require("../services/chat.service");
 const { createCallBooking, createContactRequest } = require("../services/ops.service");
 
 const router = express.Router();
@@ -48,15 +47,6 @@ router.post("/call-bookings", async (request, response, next) => {
     });
 
     response.status(201).json({ callBooking });
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post("/chat", async (request, response, next) => {
-  try {
-    const chatReply = await createChatReply(request.body || {});
-    response.json(chatReply);
   } catch (error) {
     next(error);
   }
