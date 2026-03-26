@@ -863,6 +863,44 @@ main section {
     border-radius: 18px !important;
   }
 
+  .hero--pro .hero-card {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.52)) !important;
+    box-shadow: 0 18px 44px rgba(2, 6, 23, 0.32) !important;
+    backdrop-filter: blur(14px) saturate(120%) !important;
+  }
+
+  .hero--pro .hero-card__kicker {
+    color: rgba(255, 255, 255, 0.68) !important;
+  }
+
+  .hero--pro .hero-card__title {
+    color: rgba(255, 255, 255, 0.98) !important;
+  }
+
+  .hero--pro .hero-card__desc {
+    color: rgba(226, 232, 240, 0.84) !important;
+  }
+
+  .hero--pro .hero-chip {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .hero--pro .hero-card__cta.btn--outline {
+    border-color: rgba(129, 140, 248, 0.56) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #c7d2fe !important;
+  }
+
+  .hero--pro .hero-card__cta.btn--outline:hover {
+    background: rgba(99, 102, 241, 0.16) !important;
+    color: #e0e7ff !important;
+    border-color: rgba(165, 180, 252, 0.72) !important;
+  }
+
   .footer-brand-title,
   .footer-col h4 {
     color: var(--text-main) !important;
