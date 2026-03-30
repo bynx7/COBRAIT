@@ -917,6 +917,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
       gap: 12px;
+      align-items: start;
     }
 
     .hero-mockup__panel {
@@ -925,6 +926,9 @@
       background: rgba(255, 255, 255, .86);
       padding: 14px;
       min-width: 0;
+      display: grid;
+      gap: 12px;
+      align-content: start;
     }
 
     .hero-mockup__eyebrow {
@@ -940,20 +944,37 @@
       margin-bottom: 12px;
     }
 
-    .hero-mockup__line {
-      height: 10px;
+    .hero-mockup__table {
+      display: grid;
+      gap: 8px;
+    }
+
+    .hero-mockup__table-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 68px;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(226, 232, 240, .92);
+      background: rgba(248, 250, 252, .98);
+    }
+
+    .hero-mockup__cell {
+      display: block;
+      height: 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, .08);
-      margin-bottom: 10px;
+      background: rgba(15, 23, 42, .10);
+      align-self: center;
     }
 
-    .hero-mockup__line:last-child {
-      margin-bottom: 0;
+    .hero-mockup__cell--tag {
+      background: rgba(79, 70, 229, .14);
     }
 
-    .hero-mockup__line--lg { width: 100%; }
-    .hero-mockup__line--md { width: 78%; }
-    .hero-mockup__line--sm { width: 58%; }
+    .hero-mockup__cell--lg { width: 100%; }
+    .hero-mockup__cell--md { width: 78%; }
+    .hero-mockup__cell--sm { width: 62%; }
+    .hero-mockup__cell--xs { width: 48%; }
 
     .hero-mockup__stats {
       display: grid;
@@ -1356,7 +1377,7 @@ footer.footer-pro .footer-brand-title {
 
             <nav class="site-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="../index.html" data-pt="Home" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="../index.html" data-pt="Início" data-en="Home" data-es="Inicio">Início</a></li>
                     <li class="dropdown">
                         <a href="../index.html#what-we-do">
                             <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услуги" data-nl="Diensten" data-ja="サービス" data-zh="服务">Serviços</span>
@@ -1596,9 +1617,24 @@ footer.footer-pro .footer-brand-title {
                 <div class="hero-mockup__board">
                   <div class="hero-mockup__panel">
                     <span class="hero-mockup__eyebrow" data-pt="Núcleo do MVP" data-en="MVP core" data-es="Núcleo del MVP">MVP core</span>
-                    <div class="hero-mockup__line hero-mockup__line--lg"></div>
-                    <div class="hero-mockup__line hero-mockup__line--md"></div>
-                    <div class="hero-mockup__line hero-mockup__line--sm"></div>
+                    <div class="hero-mockup__table" aria-hidden="true">
+                      <div class="hero-mockup__table-row">
+                        <span class="hero-mockup__cell hero-mockup__cell--lg"></span>
+                        <span class="hero-mockup__cell hero-mockup__cell--tag"></span>
+                      </div>
+                      <div class="hero-mockup__table-row">
+                        <span class="hero-mockup__cell hero-mockup__cell--md"></span>
+                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--sm"></span>
+                      </div>
+                      <div class="hero-mockup__table-row">
+                        <span class="hero-mockup__cell hero-mockup__cell--lg"></span>
+                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--md"></span>
+                      </div>
+                      <div class="hero-mockup__table-row">
+                        <span class="hero-mockup__cell hero-mockup__cell--sm"></span>
+                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--xs"></span>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="hero-mockup__stats">
