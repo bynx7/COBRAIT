@@ -1,4 +1,5 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const dotenv = require("dotenv");
 
@@ -49,6 +50,35 @@ function parseList(value) {
     .filter(Boolean);
 }
 
+function getLocalIpv4Addresses() {
+  const interfaces = os.networkInterfaces();
+  const ips = new Set();
+
+  Object.values(interfaces).forEach((entries) => {
+    (entries || []).forEach((entry) => {
+      if (!entry || entry.family !== "IPv4" || entry.internal) return;
+      if (String(entry.address || "").startsWith("169.254.")) return;
+      ips.add(entry.address);
+    });
+  });
+
+  return Array.from(ips);
+}
+
+function buildCorsOrigins(value) {
+  const origins = new Set(parseList(value));
+  const staticPorts = ["3000", "5500", "8080", "8092"];
+  const lanHosts = ["localhost", "127.0.0.1", ...getLocalIpv4Addresses()];
+
+  lanHosts.forEach((host) => {
+    staticPorts.forEach((port) => {
+      origins.add("http://" + host + ":" + port);
+    });
+  });
+
+  return Array.from(origins);
+}
+
 function buildDatabaseUrl() {
   const directUrl = firstNonEmpty(["DATABASE_URL"]);
   if (directUrl) {
@@ -82,6 +112,7 @@ const sessionMaxAgeHours = parsePositiveInt(process.env.SESSION_MAX_AGE_HOURS, 1
 
 module.exports = {
   env: process.env.NODE_ENV || "development",
+  host: firstNonEmpty(["API_HOST", "HOST"], "127.0.0.1"),
   port: parsePositiveInt(firstNonEmpty(["PORT", "API_PORT"]), 4000),
   databaseUrl: requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)"),
   databaseSsl: parseBoolean(process.env.DATABASE_SSL, false),
@@ -90,7 +121,7 @@ module.exports = {
   sessionCookieName: process.env.SESSION_COOKIE_NAME || "cobrait_admin_session",
   sessionCookieSecure: parseBoolean(process.env.SESSION_COOKIE_SECURE, false),
   sessionMaxAgeHours,
-  corsOrigins: parseList(process.env.CORS_ORIGINS || "http://localhost:5500,http://127.0.0.1:5500"),
+  corsOrigins: buildCorsOrigins(process.env.CORS_ORIGINS || "http://localhost:5500,http://127.0.0.1:5500"),
   bootstrapAdminEmail: String(process.env.ADMIN_EMAIL || "").trim().toLowerCase(),
   bootstrapAdminPassword: String(process.env.ADMIN_PASSWORD || ""),
   bootstrapAdminName: String(process.env.ADMIN_NAME || "COBRAIT Admin").trim(),

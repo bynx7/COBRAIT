@@ -25,6 +25,19 @@
     return String(value || "").trim().replace(/\/+$/, "");
   }
 
+  function isLocalHost(hostname) {
+    var normalized = String(hostname || "").toLowerCase();
+    return normalized === "127.0.0.1" || normalized === "localhost";
+  }
+
+  function isStaticPort(port) {
+    return ["3000", "5500", "8080", "8092"].indexOf(String(port || "")) !== -1;
+  }
+
+  function getApiHostForCurrentPage() {
+    return isLocalHost(window.location.hostname) ? "localhost" : window.location.hostname;
+  }
+
   function stripAccents(value) {
     var text = String(value || "");
     if (typeof text.normalize === "function") {
@@ -55,9 +68,12 @@
     if (window.location.protocol === "file:") return "http://localhost:4000/api";
 
     var hostname = String(window.location.hostname || "").toLowerCase();
-    var isLocalHost = hostname === "127.0.0.1" || hostname === "localhost";
-    if (isLocalHost && window.location.port !== "4000") {
+    if (isLocalHost(hostname) && window.location.port !== "4000") {
       return window.location.protocol + "//" + hostname + ":4000/api";
+    }
+
+    if (isStaticPort(window.location.port)) {
+      return sanitizeApiBase(window.location.protocol + "//" + getApiHostForCurrentPage() + ":4000/api");
     }
 
     return sanitizeApiBase(window.location.origin + "/api");
@@ -138,7 +154,20 @@
     }
   }
 
+  function hasCoreTranslations(element) {
+    if (!element || !element.hasAttribute) return false;
+
+    var count = 0;
+    ["data-pt", "data-en", "data-es"].forEach(function (attr) {
+      if (element.hasAttribute(attr)) count += 1;
+    });
+
+    return count >= 2;
+  }
+
   function syncTranslationAttributes(element, value) {
+    if (hasCoreTranslations(element)) return;
+
     TRANSLATABLE_ATTRS.forEach(function (attr) {
       if (element.hasAttribute(attr)) {
         element.setAttribute(attr, value);
@@ -148,6 +177,11 @@
 
   function setElementValue(element, value) {
     var text = String(value == null ? "" : value);
+
+    if (hasCoreTranslations(element)) {
+      return;
+    }
+
     syncTranslationAttributes(element, text);
 
     if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {

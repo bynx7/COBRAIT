@@ -37,6 +37,106 @@ if (!window.__cobraitTranslationBooted) {
       en: { code: "EN", name: "English", flag: "EN" },
       es: { code: "ES", name: "Español", flag: "ES" },
     };
+    const MOJIBAKE_RE = /(Ã.|Â.|â[\u0080-\u00bf]|ï¿½|�)/;
+
+    function looksBroken(text) {
+      return MOJIBAKE_RE.test(String(text || ""));
+    }
+
+    function repairMojibake(text) {
+      const value = String(text || "");
+      if (!looksBroken(value) || typeof TextDecoder === "undefined") return value;
+
+      try {
+        const bytes = Uint8Array.from(
+          Array.from(value, (char) => char.charCodeAt(0) & 0xff),
+        );
+        const decoded = new TextDecoder("utf-8").decode(bytes);
+        return looksBroken(decoded) ? value : decoded;
+      } catch (_error) {
+        return value;
+      }
+    }
+
+    function normalizeDropdownArrows(root) {
+      const scope = root || document;
+      scope.querySelectorAll(".dropdown-arrow").forEach((arrow) => {
+        if (String(arrow.textContent || "").trim() === "?") {
+          arrow.innerHTML = "&#9662;";
+        }
+      });
+    }
+
+    function repairBrokenText(root) {
+      const scope = root || document;
+      const attributeNames = [
+        "data-pt",
+        "data-en",
+        "data-es",
+        "aria-label",
+        "title",
+        "placeholder",
+      ];
+
+      scope
+        .querySelectorAll("[data-pt], [data-en], [data-es], [aria-label], [title], [placeholder]")
+        .forEach((el) => {
+          attributeNames.forEach((attr) => {
+            if (!el.hasAttribute(attr)) return;
+            const current = el.getAttribute(attr);
+            const repaired = repairMojibake(current);
+            if (repaired !== current) {
+              el.setAttribute(attr, repaired);
+            }
+          });
+        });
+
+      const walker = document.createTreeWalker(
+        scope === document ? document.body : scope,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode(node) {
+            const parent = node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (["SCRIPT", "STYLE", "NOSCRIPT"].includes(parent.tagName)) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            return looksBroken(node.nodeValue || "")
+              ? NodeFilter.FILTER_ACCEPT
+              : NodeFilter.FILTER_REJECT;
+          },
+        },
+      );
+
+      let currentNode = walker.nextNode();
+      while (currentNode) {
+        currentNode.nodeValue = repairMojibake(currentNode.nodeValue || "");
+        currentNode = walker.nextNode();
+      }
+
+      normalizeDropdownArrows(scope);
+    }
+
+    function normalizeSharedCopy(root) {
+      const scope = root || document;
+      const footerTagline = scope.querySelector(".footer-tagline");
+      if (footerTagline) {
+        footerTagline.setAttribute(
+          "data-pt",
+          "Criamos produtos digitais com foco em velocidade, qualidade e crescimento, do scope ao lancamento.",
+        );
+        footerTagline.setAttribute(
+          "data-en",
+          "We build digital products focused on speed, quality and growth, from scope to launch.",
+        );
+        if (footerTagline.hasAttribute("data-es")) {
+          footerTagline.setAttribute(
+            "data-es",
+            "Creamos productos digitales enfocados en velocidad, calidad y crecimiento, del alcance al lanzamiento.",
+          );
+        }
+      }
+    }
 
     function ensureLanguageDropdownStyle() {
       if (document.getElementById("cobrait-lang-fix-style")) return;
@@ -136,6 +236,7 @@ if (!window.__cobraitTranslationBooted) {
       const activeMeta = LANGUAGE_META[normalized] || LANGUAGE_META.en;
       if (currentFlag) currentFlag.textContent = activeMeta.flag;
       if (currentLang) currentLang.textContent = activeMeta.code;
+      normalizeDropdownArrows(document);
     }
 
     function normalizeLang(lang) {
@@ -233,6 +334,8 @@ if (!window.__cobraitTranslationBooted) {
     }
 
     function boot() {
+      repairBrokenText(document);
+      normalizeSharedCopy(document);
       loadTranslationsIntoAttributes();
       const preferred = normalizeLang(
         localStorage.getItem("preferredLanguage") ||
@@ -244,8 +347,15 @@ if (!window.__cobraitTranslationBooted) {
       } catch (_e) {}
       applyLanguageToDom(preferred);
       syncLanguageDropdownUI(preferred);
+      repairBrokenText(document);
+      normalizeSharedCopy(document);
       // Segundo passe para ganhar a scripts locais que correm no mesmo DOMContentLoaded.
-      setTimeout(() => syncLanguageDropdownUI(preferred), 0);
+      setTimeout(() => {
+        normalizeSharedCopy(document);
+        applyLanguageToDom(preferred);
+        syncLanguageDropdownUI(preferred);
+        repairBrokenText(document);
+      }, 0);
     }
 
     function ensureMobileHeaderBehavior() {
@@ -437,8 +547,10 @@ if (!window.__cobraitTranslationBooted) {
         loadTranslationsIntoAttributes();
         // Reaplica no fim do ciclo para cobrir paginas sem handler robusto.
         setTimeout(() => {
+          normalizeSharedCopy(document);
           applyLanguageToDom(lang);
           syncLanguageDropdownUI(lang);
+          repairBrokenText(document);
           window.dispatchEvent(
             new CustomEvent("cobrait-set-language", { detail: lang }),
           );
@@ -454,8 +566,10 @@ if (!window.__cobraitTranslationBooted) {
         localStorage.setItem("preferredLanguage", normalized);
       } catch (_e) {}
       loadTranslationsIntoAttributes();
+      normalizeSharedCopy(document);
       applyLanguageToDom(normalized);
       syncLanguageDropdownUI(normalized);
+      repairBrokenText(document);
       window.dispatchEvent(
         new CustomEvent("cobrait-set-language", { detail: normalized }),
       );
@@ -463,7 +577,16 @@ if (!window.__cobraitTranslationBooted) {
 
     // Garante sync também quando scripts locais disparam este evento.
     window.addEventListener("cobrait-set-language", (ev) => {
-      syncLanguageDropdownUI(ev && ev.detail ? ev.detail : null);
+      const normalized = normalizeLang(ev && ev.detail ? ev.detail : null);
+      syncLanguageDropdownUI(normalized);
+      repairBrokenText(document);
+      normalizeSharedCopy(document);
+      setTimeout(() => {
+        normalizeSharedCopy(document);
+        applyLanguageToDom(normalized);
+        syncLanguageDropdownUI(normalized);
+        repairBrokenText(document);
+      }, 0);
     });
 
     if (document.readyState === "loading") {

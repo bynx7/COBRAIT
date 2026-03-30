@@ -9,8 +9,16 @@ async function start() {
   await ensureContentStorage();
   await ensureBootstrapAdmin();
 
-  app.listen(config.port, () => {
-    console.log("COBRAIT admin API running on http://localhost:" + config.port);
+  app.listen(config.port, config.host, () => {
+    console.log(
+      "COBRAIT admin API running on " +
+      config.host +
+      ":" +
+      config.port +
+      " (health: http://localhost:" +
+      config.port +
+      "/api/health)"
+    );
   });
 }
 

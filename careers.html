@@ -48,6 +48,58 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico" />
+    <script>
+      (function () {
+        function fixCareersCopy() {
+          var workLink = document.querySelector('a[href="index.html#work"]');
+          if (workLink) {
+            workLink.setAttribute("data-pt", "Trabalho");
+            workLink.setAttribute("data-en", "Work");
+            workLink.setAttribute("data-es", "Trabajo");
+          }
+
+          var heroBadge = document.querySelector(".hero-badge span:nth-child(2)");
+          if (heroBadge) {
+            heroBadge.setAttribute("data-pt", "Estamos a recrutar talento de topo");
+            heroBadge.setAttribute("data-en", "We're Hiring Top Talent");
+            heroBadge.setAttribute("data-es", "Estamos contratando talento");
+          }
+
+          var heroTitle = document.querySelector(".hero-title");
+          if (heroTitle) {
+            heroTitle.setAttribute("data-pt", "Constr\u00f3i o Futuro<br>da Tecnologia");
+            heroTitle.setAttribute("data-en", "Shape the Future<br>of Technology");
+            heroTitle.setAttribute("data-es", "Da forma al Futuro<br>de la Tecnolog\u00eda");
+            heroTitle.setAttribute("data-html", "");
+          }
+
+          var heroSubtitle = document.querySelector(".hero-subtitle");
+          if (heroSubtitle) {
+            heroSubtitle.setAttribute(
+              "data-pt",
+              "Junta-te a uma equipa de inova\u00e7\u00e3o a construir solu\u00e7\u00f5es de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente din\u00e2mico."
+            );
+            heroSubtitle.setAttribute(
+              "data-en",
+              "Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment."
+            );
+            heroSubtitle.setAttribute(
+              "data-es",
+              "\u00danete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnolog\u00edas modernas, resuelve retos complejos y crece profesionalmente en un entorno din\u00e1mico."
+            );
+          }
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", function () { setTimeout(fixCareersCopy, 0); });
+        } else {
+          fixCareersCopy();
+        }
+
+        window.addEventListener("cobrait-set-language", fixCareersCopy);
+        window.addEventListener("load", fixCareersCopy);
+      })();
+    </script>
     <script src="assets/js/apply-translations.js"></script>
 
     <!-- ? STYLE DA NAVBAR IGUAL AO BOOK-A-CALL E INDEX -->
@@ -858,7 +910,7 @@
         letter-spacing: 2px;
       }
 
-      /* ====== SEÇÃO DE VALORES ====== */
+      /* ====== SE?ÒO DE VALORES ====== */
       .values-section {
         padding: 8rem 0;
         background: transparent;
@@ -1006,7 +1058,7 @@
         line-height: 1.7;
       }
 
-      /* ====== SEÇÃO DE BENEFÍCIOS ====== */
+      /* ====== SE?ÒO DE BENEFÍCIOS ====== */
       .benefits-section {
         padding: 8rem 0;
         position: relative;
@@ -1193,7 +1245,7 @@
         line-height: 1.6;
       }
 
-      /* ====== SEÇÃO DE VAGAS ====== */
+      /* ====== SE?ÒO DE VAGAS ====== */
       .jobs-section {
         padding: 8rem 0;
         background: transparent;
@@ -1605,7 +1657,7 @@
         }
       }
 
-      /* ====== ANIMAÇÕES ====== */
+      /* ====== ANIMA?�"ES ====== */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -2359,7 +2411,7 @@
                   data-zh="??"
                   >Serviços</span
                 >
-                <span class="dropdown-arrow">▼</span>
+                            <span class="dropdown-arrow">&#9662;</span>
               </a>
 
               <div class="dropdown-content">
@@ -2568,21 +2620,6 @@
             </li>
 
             <li>
-              <a
-                href="pricing.html"
-                data-pt="Preços"
-                data-en="Pricing"
-                data-es="Precios"
-                data-fr="Tarification"
-                data-de="Preisgestaltung"
-                data-ru="????"
-                data-nl="Prijzen"
-                data-ja="??"
-                data-zh="??"
-                >Pricing</a
-              >
-            </li>
-            <li>
               <a href="about-us.html"
                 ><span
                   data-pt="Sobre nós"
@@ -2635,22 +2672,22 @@
           <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
           <div class="language-dropdown">
             <button class="language-dropdown-btn" aria-label="Select language">
-              <span class="lang-flag" id="currentFlag">🇵🇹</span>
+              <span class="lang-flag" id="currentFlag">�x!��x!�</span>
               <span class="lang-code" id="currentLang">PT</span>
-              <span class="dropdown-arrow">▼</span>
+                        <span class="dropdown-arrow">&#9662;</span>
             </button>
 
             <div class="language-dropdown-content">
               <button class="language-option active" data-lang="pt">
-                <span class="lang-flag">🇵🇹</span>
+                <span class="lang-flag">�x!��x!�</span>
                 <span class="lang-name">Português</span>
               </button>
               <button class="language-option" data-lang="en">
-                <span class="lang-flag">🇬🇧</span>
+                <span class="lang-flag">�x!��x!�</span>
                 <span class="lang-name">English</span>
               </button>
               <button class="language-option" data-lang="es">
-                <span class="lang-flag">🇪🇸</span>
+                <span class="lang-flag">�x!��x!�</span>
                 <span class="lang-name">Español</span>
               </button>
             </div>
@@ -2682,7 +2719,7 @@
     <section class="careers-hero">
       <div class="container hero-content">
         <div class="hero-badge animate-on-scroll">
-          <span>•</span>
+          <span>⬢</span>
           <span
             data-pt="Estamos a recrutar talento de topo"
             data-en="We're Hiring Top Talent"
@@ -2719,7 +2756,7 @@
           data-delay="200"
           data-pt="Junta-te a uma equipa de inovação a construir soluções de software de ponta. Trabalha com tecnologias modernas, resolve desafios complexos e cresce profissionalmente num ambiente dinâmico."
           data-en="Join an elite team of innovators building cutting-edge software solutions. Work with modern technologies, solve complex challenges, and grow professionally in a dynamic environment."
-          data-es="Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico."
+          data-es="�anete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico."
           data-fr="Rejoignez une ?quipe d'innovateurs construisant des solutions logicielles de pointe. Travaillez avec des technologies modernes, relevez des d?fis complexes et ?voluez professionnellement dans un environnement dynamique."
           data-de="Schlie?en Sie sich einem Elite-Team von Innovatoren an, die hochmoderne Softwarel?sungen entwickeln. Arbeiten Sie mit modernen Technologien, l?sen Sie komplexe Herausforderungen und wachsen Sie beruflich in einem dynamischen Umfeld."
           data-ru="??????????????? ? ??????? ??????? ?????????, ????????? ????????? ??????????? ???????. ????????? ? ???????????? ????????????, ??????? ??????? ?????? ? ??????????????? ??????? ? ?????????? ?????."
@@ -2748,7 +2785,7 @@
             data-zh="????"
           >
             View Open Positions
-            <span>•</span>
+            <span>⬢</span>
           </a>
           <a
             class="btn btn--light animate-on-scroll"
@@ -3061,7 +3098,7 @@
           <div class="benefit-item animate-on-scroll">
             <div class="benefit-header">
               <div class="benefit-icon-wrapper">
-                <span>•</span>
+                <span>⬢</span>
               </div>
               <h3
                 class="benefit-title"
@@ -3137,7 +3174,7 @@
           <div class="benefit-item animate-on-scroll" data-delay="100">
             <div class="benefit-header">
               <div class="benefit-icon-wrapper">
-                <span>•</span>
+                <span>⬢</span>
               </div>
               <h3
                 class="benefit-title"
@@ -3213,7 +3250,7 @@
           <div class="benefit-item animate-on-scroll" data-delay="200">
             <div class="benefit-header">
               <div class="benefit-icon-wrapper">
-                <span>•</span>
+                <span>⬢</span>
               </div>
               <h3
                 class="benefit-title"
@@ -3263,10 +3300,10 @@
                 data-es="Proyectos de integración entre sistemas"
                 data-fr="Projets d''intégration entre systèmes"
                 data-de="Integrationsprojekte zwischen Systemen"
-                data-ru="Проекты интеграции между системами"
+                data-ru="�xѬоек?�9 ин?егѬа� ии междђ сис?емами"
                 data-nl="Integratieprojecten tussen systemen"
-                data-ja="システム間統合プロジェクト"
-                data-zh="跨系统集成项目"
+                data-ja="?�?�� 㒠�統���㒭?�?�?���"
+                data-zh="跨系�x�: �Ɛ项�:�"
               >
                 Cross-system integration projects
               </li>
@@ -3483,7 +3520,7 @@
             class="section-title animate-on-scroll"
             data-pt="Junta-te à nossa equipa"
             data-en="Join Our Growing Team"
-            data-es="Únete a nuestro equipo"
+            data-es="�anete a nuestro equipo"
             data-fr="Rejoignez notre ?quipe en pleine croissance"
             data-de="Treten Sie unserem wachsenden Team bei"
             data-ru="??????????????? ? ????? ???????? ???????"
@@ -3591,7 +3628,7 @@
               </h3>
               <div class="job-meta">
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Remoto - Portugal"
                     data-en="Remote - Portugal"
@@ -3606,7 +3643,7 @@
                   ></span
                 >
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Tempo integral"
                     data-en="Full-time"
@@ -3621,7 +3658,7 @@
                   ></span
                 >
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Nível Sénior"
                     data-en="Senior Level"
@@ -3692,7 +3729,7 @@
               </h3>
               <div class="job-meta">
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Híbrido - Porto"
                     data-en="Hybrid - Porto"
@@ -3707,7 +3744,7 @@
                   ></span
                 >
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Tempo integral"
                     data-en="Full-time"
@@ -3722,7 +3759,7 @@
                   ></span
                 >
                 <span
-                  >•
+                  >⬢
                   <span
                     data-pt="Pleno a Sénior"
                     data-en="Mid to Senior"
@@ -3896,7 +3933,7 @@
         <div class="contact-grid">
           <div class="contact-card animate-on-scroll">
             <div class="contact-icon">
-              <span>•</span>
+              <span>⬢</span>
             </div>
             <h3
               class="contact-title"
@@ -3934,7 +3971,7 @@
 
           <div class="contact-card animate-on-scroll" data-delay="100">
             <div class="contact-icon">
-              <span>•</span>
+              <span>⬢</span>
             </div>
             <h3
               class="contact-title"
@@ -3958,7 +3995,7 @@
 
           <div class="contact-card animate-on-scroll" data-delay="200">
             <div class="contact-icon">
-              <span>•</span>
+              <span>⬢</span>
             </div>
             <h3
               class="contact-title"
@@ -4032,7 +4069,7 @@
               class="footer-tagline"
               data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lançamento."
               data-en="We build digital products focused on speed, quality and growth ? from scope to launch."
-              data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento — del alcance al lanzamiento."
+              data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento ? del alcance al lanzamiento."
               data-fr="Nous cr?ons des produits num?riques ax?s sur la vitesse, la qualit? et la croissance ? du champ d'application au lancement."
               data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualit?t und Wachstum ausgerichtet sind ? vom Umfang bis zum Start."
               data-ru="?? ??????? ???????? ????????, ??????????????? ?? ????????, ???????? ? ???? ? ?? ??????????? ?????? ?? ???????."
@@ -4533,15 +4570,15 @@
 
         // Mapeamento de bandeiras para cada língua
         const flagMap = {
-          pt: "🇵🇹",
-          en: "🇬🇧",
-          es: "🇪🇸",
-          fr: "🇫🇷",
-          de: "🇩🇪",
-          ru: "🇷🇺",
-          nl: "🇳🇱",
-          ja: "🇯🇵",
-          zh: "🇨🇳",
+          pt: "�x!��x!�",
+          en: "�x!��x!�",
+          es: "�x!��x!�",
+          fr: "�x!��x!�",
+          de: "�x!��x!�",
+          ru: "�x!��x!�",
+          nl: "�x!��x!�",
+          ja: "�x!��x!�",
+          zh: "�x!��x!�",
         };
 
         // Mapeamento de códigos curtos
@@ -4605,7 +4642,7 @@
           if (flagMap[lang]) {
             currentFlag.textContent = flagMap[lang];
           } else {
-            currentFlag.textContent = "🇬🇧";
+            currentFlag.textContent = "�x!��x!�";
           }
 
           if (codeMap[lang]) {
@@ -4848,7 +4885,7 @@
             heroBadge: "? Estamos contratando talento",
             heroTitle: "Da forma al Futuro<br>de la Tecnología",
             heroSubtitle:
-              "Únete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico.",
+              "�anete a un equipo de innovadores construyendo soluciones de software de vanguardia. Trabaja con tecnologías modernas, resuelve retos complejos y crece profesionalmente en un entorno dinámico.",
             viewPositions: "Ver vacantes",
             hiringProcess: "Nuestro proceso",
             stat1Label: "Proyectos exitosos",
@@ -4891,7 +4928,7 @@
             step4Desc:
               "Conoce al equipo, alineamos detalles y recibes una oferta competitiva.",
             openingsSubtitle: "VACANTES ACTUALES",
-            openingsTitle: "Únete a nuestro equipo",
+            openingsTitle: "�anete a nuestro equipo",
             openingsDesc:
               "Explora oportunidades para aportar tus habilidades y crecer con nosotros.",
             filterAll: "Todas",
@@ -4937,7 +4974,7 @@
           if (active) active.classList.add("active");
 
           if (currentLang) currentLang.textContent = lang.toUpperCase();
-          if (currentFlag) currentFlag.textContent = flags[lang] || "🇬🇧";
+          if (currentFlag) currentFlag.textContent = flags[lang] || "�x!��x!�";
 
           // Nav items with data-pt/data-en/data-es (already present)
           document.querySelectorAll("[data-pt]").forEach((el) => {
@@ -5227,4 +5264,5 @@
     <script src="assets/js/apply-translations.js"></script>
   </body>
 </html>
+
 

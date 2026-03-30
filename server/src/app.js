@@ -11,36 +11,58 @@ const usersRoutes = require("./routes/users.routes");
 
 const app = express();
 const allowedOrigins = new Set(config.corsOrigins);
+const STATIC_SITE_PORTS = new Set(["3000", "5500", "8080", "8092"]);
+const corsOptions = {
+  origin(origin, callback) {
+    if (
+      !origin ||
+      allowedOrigins.size === 0 ||
+      allowedOrigins.has(origin) ||
+      isTrustedLocalOrigin(origin)
+    ) {
+      callback(null, true);
+      return;
+    }
 
-function isLoopbackOrigin(origin) {
+    callback(null, false);
+  },
+  credentials: true
+};
+
+function isLoopbackHostname(hostname) {
+  return hostname === "localhost" || hostname === "127.0.0.1";
+}
+
+function isPrivateIpv4(hostname) {
+  const value = String(hostname || "");
+  if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(value)) return true;
+  if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(value)) return true;
+
+  const match = value.match(/^172\.(\d{1,3})\.\d{1,3}\.\d{1,3}$/);
+  if (!match) return false;
+
+  const secondOctet = Number.parseInt(match[1], 10);
+  return Number.isFinite(secondOctet) && secondOctet >= 16 && secondOctet <= 31;
+}
+
+function isTrustedLocalOrigin(origin) {
   if (!origin) return false;
 
   try {
     const parsed = new URL(origin);
-    return parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
+    const port = parsed.port || (parsed.protocol === "https:" ? "443" : "80");
+
+    return (
+      STATIC_SITE_PORTS.has(String(port)) &&
+      (isLoopbackHostname(parsed.hostname) || isPrivateIpv4(parsed.hostname))
+    );
   } catch (_error) {
     return false;
   }
 }
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (
-        !origin ||
-        allowedOrigins.size === 0 ||
-        allowedOrigins.has(origin) ||
-        isLoopbackOrigin(origin)
-      ) {
-        callback(null, true);
-        return;
-      }
-
-      callback(null, false);
-    },
-    credentials: true
-  })
-);
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
