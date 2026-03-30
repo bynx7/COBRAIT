@@ -2703,6 +2703,17 @@ footer.footer-pro .footer-brand-title {
         }
       };
 
+      function getLocalizedSelectOptionText(option, lang) {
+        if (!option) return '';
+
+        const normalizedLang = normalizeLang(lang);
+        return (
+          option.getAttribute(`data-${normalizedLang}`) ||
+          option.getAttribute('data-en') ||
+          option.textContent
+        );
+      }
+
 
       // Event listener para o select
       select.addEventListener('change', function() {
@@ -2712,7 +2723,10 @@ footer.footer-pro .footer-brand-title {
           const data = projectData[selectedValue];
           
           // Atualizar o título
-          budgetProjectTitle.textContent = data.title;
+          budgetProjectTitle.textContent = getLocalizedSelectOptionText(
+            this.options[this.selectedIndex],
+            localStorage.getItem('preferredLanguage') || document.documentElement.lang || 'pt'
+          );
           
           // Atualizar os detalhes
           budgetComplexity.textContent = data.complexity;
@@ -2765,7 +2779,7 @@ footer.footer-pro .footer-brand-title {
           if (selectedValue && projectData[selectedValue]) {
             const option = select.querySelector(`option[value="${selectedValue}"]`);
             if (option) {
-              const translatedTitle = option.getAttribute(`data-${lang}`) || option.textContent;
+              const translatedTitle = getLocalizedSelectOptionText(option, lang);
               budgetProjectTitle.textContent = translatedTitle;
             }
           }
