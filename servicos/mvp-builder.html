@@ -1151,6 +1151,8 @@
       position: relative;
       isolation: isolate;
       --timeline-progress: 0%;
+      --timeline-line-start: 39px;
+      --timeline-line-end: 39px;
       padding-left: 44px;
       display: flex;
       flex-direction: column;
@@ -1162,8 +1164,8 @@
   content: "";
   position: absolute;
   left: 19px;
-  top: 0;
-  bottom: 0;
+  top: var(--timeline-line-start);
+  bottom: var(--timeline-line-end);
   width: 4px;
   background: rgba(148, 163, 184, .40);
   z-index: 0;
@@ -1174,7 +1176,7 @@
   position: absolute;
   z-index: 1;
   left: 19px;
-  top: 0;
+  top: var(--timeline-line-start);
   width: 4px;
   height: 0;
   background: linear-gradient(180deg, rgba(99,102,241,.92), rgba(79,70,229,.98));
@@ -1214,6 +1216,19 @@
 
     .step-card {
       padding: 26px 28px;
+    }
+
+    .step::before {
+      content: "";
+      left: -35px;
+      top: 27px;
+      width: 24px;
+      height: 24px;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 255, 255, 0.96);
+      background: linear-gradient(180deg, #f72575 0%, #e11d68 100%);
+      box-shadow: 0 6px 16px rgba(225, 29, 104, 0.14);
+      font-size: 0;
     }
 
     .step-title {
@@ -2241,8 +2256,12 @@ footer.footer-pro .footer-brand-title {
 
           const vh = window.innerHeight || document.documentElement.clientHeight;
           const markerY = vh * 0.70;
-          const filledPx = Math.max(0, Math.min(markerY - rect.top, rect.height));
-          const progressPct = rect.height > 0 ? (filledPx / rect.height) * 100 : 0;
+          const styles = window.getComputedStyle(timeline);
+          const startOffset = parseFloat(styles.getPropertyValue('--timeline-line-start')) || 0;
+          const endOffset = parseFloat(styles.getPropertyValue('--timeline-line-end')) || 0;
+          const usableHeight = Math.max(0, rect.height - startOffset - endOffset);
+          const filledPx = Math.max(0, Math.min(markerY - (rect.top + startOffset), usableHeight));
+          const progressPct = usableHeight > 0 ? (filledPx / usableHeight) * 100 : 0;
 
           timeline.style.setProperty('--timeline-progress', progressPct.toFixed(2) + '%');
           if (progressLine) progressLine.style.height = filledPx + 'px';
