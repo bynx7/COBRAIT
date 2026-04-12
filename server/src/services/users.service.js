@@ -1,5 +1,7 @@
 const config = require("../config");
 const { query } = require("../db");
+const { createId, nowIso, queueWrite, readData } = require("../storage/file-store");
+const { hashPassword, verifyPassword } = require("../storage/passwords");
 const { HttpError } = require("../utils/errors");
 
 const PUBLIC_COLUMNS = `
@@ -71,6 +73,22 @@ function toPublicUser(row) {
 }
 
 async function createAuditLog(actorUserId, action, targetType, targetId, details) {
+  if (config.storageMode === "file") {
+    await queueWrite((data) => {
+      data.auditLogs.push({
+        id: createId(),
+        actorUserId: actorUserId || null,
+        action,
+        targetType,
+        targetId: targetId || null,
+        details: details || {},
+        createdAt: nowIso()
+      });
+      return data;
+    });
+    return;
+  }
+
   await query(
     `
       INSERT INTO admin_audit_logs (actor_user_id, action, target_type, target_id, details)
@@ -81,6 +99,18 @@ async function createAuditLog(actorUserId, action, targetType, targetId, details
 }
 
 async function listUsers() {
+  if (config.storageMode === "file") {
+    return readData().users
+      .slice()
+      .sort((left, right) => {
+        const order = { admin: 0, editor: 1, viewer: 2 };
+        const roleDiff = (order[left.role] ?? 9) - (order[right.role] ?? 9);
+        if (roleDiff !== 0) return roleDiff;
+        return String(right.created_at || "").localeCompare(String(left.created_at || ""));
+      })
+      .map(toPublicUser);
+  }
+
   const result = await query(
     `
       SELECT ${PUBLIC_COLUMNS}
@@ -99,6 +129,11 @@ async function listUsers() {
 }
 
 async function getUserById(id) {
+  if (config.storageMode === "file") {
+    const user = readData().users.find((entry) => entry.id === id);
+    return toPublicUser(user || null);
+  }
+
   const result = await query(
     `
       SELECT ${PUBLIC_COLUMNS}
@@ -115,6 +150,18 @@ async function getUserById(id) {
 async function getUserWithPasswordCheck(email, password) {
   const normalizedEmail = validateEmail(normalizeEmail(email));
   const normalizedPassword = validatePassword(password);
+
+  if (config.storageMode === "file") {
+    const user = readData().users.find((entry) => entry.email === normalizedEmail);
+    if (!user) {
+      return null;
+    }
+
+    return {
+      user: toPublicUser(user),
+      passwordMatches: verifyPassword(normalizedPassword, user.password_hash)
+    };
+  }
 
   const result = await query(
     `
@@ -139,6 +186,18 @@ async function getUserWithPasswordCheck(email, password) {
 }
 
 async function updateLastLogin(userId) {
+  if (config.storageMode === "file") {
+    await queueWrite((data) => {
+      const user = data.users.find((entry) => entry.id === userId);
+      if (user) {
+        user.last_login_at = nowIso();
+        user.updated_at = nowIso();
+      }
+      return data;
+    });
+    return;
+  }
+
   await query(
     `
       UPDATE admin_users
@@ -155,6 +214,32 @@ async function createUser(payload) {
   const role = validateRole(normalizeRole(payload.role || "viewer"));
   const password = validatePassword(payload.password);
   const isActive = typeof payload.isActive === "boolean" ? payload.isActive : true;
+
+  if (config.storageMode === "file") {
+    const createdAt = nowIso();
+    const nextUser = {
+      id: createId(),
+      email,
+      full_name: fullName,
+      role,
+      is_active: isActive,
+      password_hash: hashPassword(password),
+      last_login_at: null,
+      created_at: createdAt,
+      updated_at: createdAt
+    };
+
+    await queueWrite((data) => {
+      if (data.users.some((entry) => entry.email === email)) {
+        throw new HttpError(409, "Ja existe um utilizador com esse email.");
+      }
+
+      data.users.push(nextUser);
+      return data;
+    });
+
+    return toPublicUser(nextUser);
+  }
 
   try {
     const result = await query(
@@ -176,6 +261,10 @@ async function createUser(payload) {
 }
 
 async function countOtherActiveAdmins(excludedUserId) {
+  if (config.storageMode === "file") {
+    return readData().users.filter((user) => user.role === "admin" && user.is_active && user.id !== excludedUserId).length;
+  }
+
   const result = await query(
     `
       SELECT COUNT(*)::int AS total
@@ -191,6 +280,67 @@ async function countOtherActiveAdmins(excludedUserId) {
 }
 
 async function updateUser(userId, payload) {
+  if (config.storageMode === "file") {
+    const current = readData().users.find((entry) => entry.id === userId);
+
+    if (!current) {
+      throw new HttpError(404, "Utilizador nao encontrado.");
+    }
+
+    const nextRole = payload.role !== undefined ? validateRole(normalizeRole(payload.role)) : current.role;
+    const nextIsActive =
+      payload.isActive !== undefined
+        ? (typeof payload.isActive === "boolean" ? payload.isActive : (() => { throw new HttpError(400, "isActive deve ser boolean."); })())
+        : current.is_active;
+
+    if (current.role === "admin" && current.is_active && (!nextIsActive || nextRole !== "admin")) {
+      const otherAdmins = await countOtherActiveAdmins(userId);
+      if (otherAdmins === 0) {
+        throw new HttpError(400, "Nao podes remover ou desativar o ultimo administrador ativo.");
+      }
+    }
+
+    let updatedUser = null;
+
+    await queueWrite((data) => {
+      const duplicateEmail =
+        payload.email !== undefined
+          ? validateEmail(normalizeEmail(payload.email))
+          : null;
+
+      if (duplicateEmail && data.users.some((entry) => entry.email === duplicateEmail && entry.id !== userId)) {
+        throw new HttpError(409, "Ja existe um utilizador com esse email.");
+      }
+
+      const user = data.users.find((entry) => entry.id === userId);
+      if (!user) {
+        throw new HttpError(404, "Utilizador nao encontrado.");
+      }
+
+      if (payload.email !== undefined) user.email = duplicateEmail;
+      if (payload.fullName !== undefined) user.full_name = validateName(normalizeName(payload.fullName));
+      if (payload.role !== undefined) user.role = nextRole;
+      if (payload.isActive !== undefined) user.is_active = nextIsActive;
+      if (payload.password !== undefined) user.password_hash = hashPassword(validatePassword(payload.password));
+
+      if (
+        payload.email === undefined &&
+        payload.fullName === undefined &&
+        payload.role === undefined &&
+        payload.isActive === undefined &&
+        payload.password === undefined
+      ) {
+        throw new HttpError(400, "Sem alteracoes para guardar.");
+      }
+
+      user.updated_at = nowIso();
+      updatedUser = { ...user };
+      return data;
+    });
+
+    return toPublicUser(updatedUser);
+  }
+
   const currentResult = await query(
     `
       SELECT ${PUBLIC_COLUMNS}
@@ -277,6 +427,36 @@ async function updateUser(userId, payload) {
 async function ensureBootstrapAdmin() {
   if (!config.bootstrapAdminEmail || !config.bootstrapAdminPassword) {
     console.warn("Bootstrap admin skipped. Define ADMIN_EMAIL e ADMIN_PASSWORD em server/.env.");
+    return;
+  }
+
+  if (config.storageMode === "file") {
+    const activeAdmins = readData().users.filter((user) => user.role === "admin" && user.is_active);
+    if (activeAdmins.length > 0) {
+      return;
+    }
+
+    const createdAt = nowIso();
+    await queueWrite((data) => {
+      if (data.users.some((user) => user.role === "admin" && user.is_active)) {
+        return data;
+      }
+
+      data.users.push({
+        id: createId(),
+        email: config.bootstrapAdminEmail,
+        full_name: config.bootstrapAdminName,
+        role: "admin",
+        is_active: true,
+        password_hash: hashPassword(config.bootstrapAdminPassword),
+        last_login_at: null,
+        created_at: createdAt,
+        updated_at: createdAt
+      });
+      return data;
+    });
+
+    console.log("Bootstrap admin criado:", config.bootstrapAdminEmail);
     return;
   }
 

@@ -109,12 +109,22 @@ function buildDatabaseUrl() {
 }
 
 const sessionMaxAgeHours = parsePositiveInt(process.env.SESSION_MAX_AGE_HOURS, 12);
+const storageMode = firstNonEmpty(["STORAGE_MODE"], "postgres").toLowerCase();
 
 module.exports = {
   env: process.env.NODE_ENV || "development",
+  storageMode,
+  storageFilePath: path.resolve(
+    __dirname,
+    "..",
+    firstNonEmpty(["STORAGE_FILE"], "data/local-storage.json")
+  ),
   host: firstNonEmpty(["API_HOST", "HOST"], "127.0.0.1"),
   port: parsePositiveInt(firstNonEmpty(["PORT", "API_PORT"]), 4000),
-  databaseUrl: requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)"),
+  databaseUrl:
+    storageMode === "file"
+      ? ""
+      : requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)"),
   databaseSsl: parseBoolean(process.env.DATABASE_SSL, false),
   jwtSecret: requiredValue(firstNonEmpty(["JWT_SECRET"]), "JWT_SECRET"),
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || sessionMaxAgeHours + "h",

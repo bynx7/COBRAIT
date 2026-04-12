@@ -1,4 +1,6 @@
+const config = require("../config");
 const { query } = require("../db");
+const { nowIso, queueWrite, readData } = require("../storage/file-store");
 const { HttpError } = require("../utils/errors");
 
 const PAGE_KEY_REGEX = /^[a-z0-9][a-z0-9._-]{0,63}$/;
@@ -53,6 +55,10 @@ function mapContentEntry(row) {
 }
 
 async function ensureContentStorage() {
+  if (config.storageMode === "file") {
+    return;
+  }
+
   if (!ensureStoragePromise) {
     ensureStoragePromise = (async () => {
       await query(`
@@ -79,6 +85,14 @@ async function ensureContentStorage() {
 }
 
 async function listSiteContentEntries() {
+  if (config.storageMode === "file") {
+    return readData()
+      .siteContentEntries
+      .slice()
+      .sort((left, right) => String(left.page_key || "").localeCompare(String(right.page_key || "")))
+      .map(mapContentEntry);
+  }
+
   await ensureContentStorage();
   const result = await query(`
     SELECT page_key, content, updated_by, created_at, updated_at
@@ -90,6 +104,12 @@ async function listSiteContentEntries() {
 }
 
 async function getSiteContentEntry(pageKeyInput) {
+  if (config.storageMode === "file") {
+    const pageKey = validatePageKey(pageKeyInput);
+    const entry = readData().siteContentEntries.find((item) => item.page_key === pageKey);
+    return mapContentEntry(entry || null);
+  }
+
   await ensureContentStorage();
   const pageKey = validatePageKey(pageKeyInput);
   const result = await query(
@@ -106,6 +126,37 @@ async function getSiteContentEntry(pageKeyInput) {
 }
 
 async function upsertSiteContentEntry(pageKeyInput, contentInput, updatedBy) {
+  if (config.storageMode === "file") {
+    const pageKey = validatePageKey(pageKeyInput);
+    const content = validateContentObject(contentInput);
+    const actorId = updatedBy || null;
+    let updated = null;
+
+    await queueWrite((data) => {
+      const existing = data.siteContentEntries.find((item) => item.page_key === pageKey);
+
+      if (existing) {
+        existing.content = content;
+        existing.updated_by = actorId;
+        existing.updated_at = nowIso();
+        updated = { ...existing };
+        return data;
+      }
+
+      updated = {
+        page_key: pageKey,
+        content,
+        updated_by: actorId,
+        created_at: nowIso(),
+        updated_at: nowIso()
+      };
+      data.siteContentEntries.push(updated);
+      return data;
+    });
+
+    return mapContentEntry(updated);
+  }
+
   await ensureContentStorage();
   const pageKey = validatePageKey(pageKeyInput);
   const content = validateContentObject(contentInput);

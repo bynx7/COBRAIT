@@ -1,4 +1,6 @@
+const config = require("../config");
 const { query } = require("../db");
+const { createId, nowIso, queueWrite, readData, sortByCreatedAtDesc } = require("../storage/file-store");
 const { HttpError } = require("../utils/errors");
 
 const CONTACT_COLUMNS = `
@@ -170,6 +172,33 @@ function mapBooking(row) {
 }
 
 async function createContactRequest(payload) {
+  if (config.storageMode === "file") {
+    const createdAt = nowIso();
+    const nextContact = {
+      id: createId(),
+      full_name: validateName(payload.fullName),
+      email: validateEmail(normalizeEmail(payload.email)),
+      phone: normalizeNullableText(payload.phone),
+      company: normalizeNullableText(payload.company),
+      subject: normalizeNullableText(payload.subject),
+      message: validateMessage(payload.message, "A mensagem"),
+      source_page: normalizeNullableText(payload.sourcePage),
+      source_campaign: normalizeNullableText(payload.sourceCampaign),
+      status: "new",
+      assigned_to: null,
+      internal_notes: null,
+      created_at: createdAt,
+      updated_at: createdAt
+    };
+
+    await queueWrite((data) => {
+      data.contactRequests.push(nextContact);
+      return data;
+    });
+
+    return mapContact(nextContact);
+  }
+
   const result = await query(
     `
       INSERT INTO contact_requests (
@@ -201,6 +230,10 @@ async function createContactRequest(payload) {
 }
 
 async function listContactRequests() {
+  if (config.storageMode === "file") {
+    return sortByCreatedAtDesc(readData().contactRequests).map(mapContact);
+  }
+
   const result = await query(
     `
       SELECT ${CONTACT_COLUMNS}
@@ -213,6 +246,66 @@ async function listContactRequests() {
 }
 
 async function updateContactRequest(id, payload) {
+  if (config.storageMode === "file") {
+    let updated = null;
+
+    await queueWrite((data) => {
+      const entry = data.contactRequests.find((item) => item.id === id);
+      if (!entry) {
+        throw new HttpError(404, "Pedido de contacto nao encontrado.");
+      }
+
+      let hasChanges = false;
+
+      if (payload.fullName !== undefined) {
+        entry.full_name = validateName(payload.fullName);
+        hasChanges = true;
+      }
+      if (payload.email !== undefined) {
+        entry.email = validateEmail(normalizeEmail(payload.email));
+        hasChanges = true;
+      }
+      if (payload.phone !== undefined) {
+        entry.phone = normalizeNullableText(payload.phone);
+        hasChanges = true;
+      }
+      if (payload.company !== undefined) {
+        entry.company = normalizeNullableText(payload.company);
+        hasChanges = true;
+      }
+      if (payload.subject !== undefined) {
+        entry.subject = normalizeNullableText(payload.subject);
+        hasChanges = true;
+      }
+      if (payload.message !== undefined) {
+        entry.message = validateMessage(payload.message, "A mensagem");
+        hasChanges = true;
+      }
+      if (payload.status !== undefined) {
+        entry.status = validateContactStatus(payload.status);
+        hasChanges = true;
+      }
+      if (payload.assignedTo !== undefined) {
+        entry.assigned_to = validateUuidOrNull(payload.assignedTo, "assignedTo");
+        hasChanges = true;
+      }
+      if (payload.internalNotes !== undefined) {
+        entry.internal_notes = normalizeNullableText(payload.internalNotes);
+        hasChanges = true;
+      }
+
+      if (!hasChanges) {
+        throw new HttpError(400, "Sem alteracoes para guardar.");
+      }
+
+      entry.updated_at = nowIso();
+      updated = { ...entry };
+      return data;
+    });
+
+    return mapContact(updated);
+  }
+
   const updates = [];
   const values = [];
 
@@ -285,6 +378,39 @@ async function updateContactRequest(id, payload) {
 }
 
 async function createCallBooking(payload) {
+  if (config.storageMode === "file") {
+    const createdAt = nowIso();
+    const nextBooking = {
+      id: createId(),
+      full_name: validateName(payload.fullName),
+      email: validateEmail(normalizeEmail(payload.email)),
+      phone: normalizeNullableText(payload.phone),
+      company: normalizeNullableText(payload.company),
+      project_summary: validateMessage(payload.projectSummary || payload.message, "O resumo do projeto"),
+      preferred_date: validateDate(payload.preferredDate),
+      preferred_time: normalizeNullableText(payload.preferredTime),
+      timezone: normalizeNullableText(payload.timezone),
+      budget_range: normalizeNullableText(payload.budgetRange),
+      service_interest: normalizeNullableText(payload.serviceInterest),
+      source_page: normalizeNullableText(payload.sourcePage),
+      source_campaign: normalizeNullableText(payload.sourceCampaign),
+      status: "new",
+      assigned_to: null,
+      meeting_url: null,
+      meeting_at: null,
+      internal_notes: null,
+      created_at: createdAt,
+      updated_at: createdAt
+    };
+
+    await queueWrite((data) => {
+      data.callBookings.push(nextBooking);
+      return data;
+    });
+
+    return mapBooking(nextBooking);
+  }
+
   const result = await query(
     `
       INSERT INTO call_bookings (
@@ -324,6 +450,10 @@ async function createCallBooking(payload) {
 }
 
 async function listCallBookings() {
+  if (config.storageMode === "file") {
+    return sortByCreatedAtDesc(readData().callBookings).map(mapBooking);
+  }
+
   const result = await query(
     `
       SELECT ${BOOKING_COLUMNS}
@@ -336,6 +466,98 @@ async function listCallBookings() {
 }
 
 async function updateCallBooking(id, payload) {
+  if (config.storageMode === "file") {
+    let updated = null;
+
+    await queueWrite((data) => {
+      const entry = data.callBookings.find((item) => item.id === id);
+      if (!entry) {
+        throw new HttpError(404, "Pedido de agendamento nao encontrado.");
+      }
+
+      let hasChanges = false;
+
+      if (payload.fullName !== undefined) {
+        entry.full_name = validateName(payload.fullName);
+        hasChanges = true;
+      }
+      if (payload.email !== undefined) {
+        entry.email = validateEmail(normalizeEmail(payload.email));
+        hasChanges = true;
+      }
+      if (payload.phone !== undefined) {
+        entry.phone = normalizeNullableText(payload.phone);
+        hasChanges = true;
+      }
+      if (payload.company !== undefined) {
+        entry.company = normalizeNullableText(payload.company);
+        hasChanges = true;
+      }
+      if (payload.projectSummary !== undefined) {
+        entry.project_summary = validateMessage(payload.projectSummary, "O resumo do projeto");
+        hasChanges = true;
+      }
+      if (payload.preferredDate !== undefined) {
+        entry.preferred_date = validateDate(payload.preferredDate);
+        hasChanges = true;
+      }
+      if (payload.preferredTime !== undefined) {
+        entry.preferred_time = normalizeNullableText(payload.preferredTime);
+        hasChanges = true;
+      }
+      if (payload.timezone !== undefined) {
+        entry.timezone = normalizeNullableText(payload.timezone);
+        hasChanges = true;
+      }
+      if (payload.budgetRange !== undefined) {
+        entry.budget_range = normalizeNullableText(payload.budgetRange);
+        hasChanges = true;
+      }
+      if (payload.serviceInterest !== undefined) {
+        entry.service_interest = normalizeNullableText(payload.serviceInterest);
+        hasChanges = true;
+      }
+      if (payload.sourcePage !== undefined) {
+        entry.source_page = normalizeNullableText(payload.sourcePage);
+        hasChanges = true;
+      }
+      if (payload.sourceCampaign !== undefined) {
+        entry.source_campaign = normalizeNullableText(payload.sourceCampaign);
+        hasChanges = true;
+      }
+      if (payload.status !== undefined) {
+        entry.status = validateBookingStatus(payload.status);
+        hasChanges = true;
+      }
+      if (payload.assignedTo !== undefined) {
+        entry.assigned_to = validateUuidOrNull(payload.assignedTo, "assignedTo");
+        hasChanges = true;
+      }
+      if (payload.meetingUrl !== undefined) {
+        entry.meeting_url = normalizeNullableText(payload.meetingUrl);
+        hasChanges = true;
+      }
+      if (payload.meetingAt !== undefined) {
+        entry.meeting_at = validateDateTime(payload.meetingAt);
+        hasChanges = true;
+      }
+      if (payload.internalNotes !== undefined) {
+        entry.internal_notes = normalizeNullableText(payload.internalNotes);
+        hasChanges = true;
+      }
+
+      if (!hasChanges) {
+        throw new HttpError(400, "Sem alteracoes para guardar.");
+      }
+
+      entry.updated_at = nowIso();
+      updated = { ...entry };
+      return data;
+    });
+
+    return mapBooking(updated);
+  }
+
   const updates = [];
   const values = [];
 

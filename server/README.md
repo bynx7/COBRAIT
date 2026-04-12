@@ -14,7 +14,21 @@ Backend minimo para autenticacao do painel admin e gestao de utilizadores em Pos
 
 ## Arranque rapido
 
-1. Se quiseres correr tudo com Docker, usa na raiz do projeto:
+1. Se quiseres correr tudo sem Docker, usa na raiz do projeto:
+
+```powershell
+.\start-dev.cmd
+```
+
+Isto arranca:
+
+- API em `http://localhost:4000/api/health`
+- site estatico em `http://localhost:5500/`
+- admin em `http://localhost:5500/admin.html`
+
+Por defeito, o projeto usa `STORAGE_MODE=file` e guarda os dados locais em `server/data/local-storage.json`.
+
+2. Se quiseres correr tudo com Docker, usa na raiz do projeto:
 
 ```powershell
 docker compose up --build
@@ -22,15 +36,15 @@ docker compose up --build
 
 Depois abre `http://localhost:5500/admin.html`.
 
-2. Se preferires correr so a base de dados com Docker, sobe o Postgres:
+3. Se preferires correr so a base de dados com Docker, sobe o Postgres:
 
 ```powershell
 docker compose up -d postgres
 ```
 
-3. Copia `server/.env.example` para `server/.env` e ajusta os valores.
+4. Ajusta o `.env` da raiz se precisares de mudar portas, credenciais do admin ou ativar Postgres.
 
-4. Se estiveres a usar uma base criada manualmente no pgAdmin, executa tambem:
+5. Se estiveres a usar uma base criada manualmente no pgAdmin, executa tambem:
 
 ```text
 server/sql/001_init.sql
@@ -38,26 +52,31 @@ server/sql/002_site_operations.sql
 server/sql/003_call_booking_sources.sql
 ```
 
-5. Instala dependencias:
+6. Instala dependencias:
 
 ```powershell
 cd server
 npm install
 ```
 
-6. Inicia a API:
+7. Inicia a API:
 
 ```powershell
 npm start
 ```
 
-7. Serve os HTML do projeto noutra consola:
+8. Serve os HTML do projeto noutra consola:
 
 ```powershell
 .\serve-local.ps1 -Port 5500
 ```
 
-8. Abre `http://localhost:5500/admin.html`.
+9. Abre `http://localhost:5500/admin.html`.
+
+## Modos de storage
+
+- `STORAGE_MODE=file`: nao precisa de Docker nem PostgreSQL. Guarda tudo em `server/data/local-storage.json`.
+- `STORAGE_MODE=postgres`: usa PostgreSQL com `DATABASE_URL` ou `POSTGRES_*`.
 
 Por defeito, o `admin.html` tenta usar `http://localhost:4000/api` quando e aberto localmente.
 

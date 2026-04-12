@@ -5,7 +5,9 @@ const { ensureContentStorage } = require("./services/content.service");
 const { ensureBootstrapAdmin } = require("./services/users.service");
 
 async function start() {
-  await query("SELECT 1");
+  if (config.storageMode === "postgres") {
+    await query("SELECT 1");
+  }
   await ensureContentStorage();
   await ensureBootstrapAdmin();
 
@@ -15,6 +17,9 @@ async function start() {
       config.host +
       ":" +
       config.port +
+      " [" +
+      config.storageMode +
+      "]" +
       " (health: http://localhost:" +
       config.port +
       "/api/health)"
