@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "dced19f7-ac39-46ef-bac7-7450fc9c21cd",
+      "email": "admin@cobrait.pt",
+      "full_name": "COBRAIT Admin",
+      "role": "admin",
+      "is_active": true,
+      "password_hash": "scrypt$eb716c3f08bffdb8ef6f62e75003e071$cf267e51ebad6998f04ae1f5804ccb06ce55fa7305bc9cef2f43c5830922a443c36082890c48cacd738973fef3c36cce7a7ce5823ac96f5d53711ba61999bde9",
+      "last_login_at": null,
+      "created_at": "2026-04-13T14:22:29.520Z",
+      "updated_at": "2026-04-13T14:22:29.520Z"
+    }
+  ],
+  "auditLogs": [],
+  "contactRequests": [],
+  "callBookings": [],
+  "siteContentEntries": []
+}
