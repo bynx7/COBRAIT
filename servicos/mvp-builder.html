@@ -20,7 +20,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Builder - Cobra IT ? Software Factory</title>
+  <title>MVP Builder - Cobra IT | Software Factory</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -870,14 +870,14 @@
       width: 100%;
       max-width: 420px;
       display: grid;
-      gap: 14px;
-      padding: 18px;
-      border-radius: 20px;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 24px;
       border: 1px solid rgba(226, 232, 240, .92);
       background:
-        radial-gradient(320px 180px at 16% 12%, rgba(79, 70, 229, .12), transparent 70%),
-        linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(248, 250, 252, .96));
-      box-shadow: 0 14px 30px rgba(15, 23, 42, .08);
+        radial-gradient(340px 220px at 16% 8%, rgba(79, 70, 229, .12), transparent 72%),
+        linear-gradient(180deg, rgba(255, 255, 255, .99), rgba(248, 250, 252, .97));
+      box-shadow: 0 20px 40px rgba(15, 23, 42, .08);
     }
 
     .hero-mockup__top {
@@ -915,20 +915,36 @@
 
     .hero-mockup__board {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-      gap: 12px;
+      grid-template-columns: minmax(0, 1.45fr) minmax(148px, .85fr);
+      gap: 14px;
       align-items: start;
     }
 
     .hero-mockup__panel {
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid rgba(226, 232, 240, .95);
-      background: rgba(255, 255, 255, .86);
+      background: rgba(255, 255, 255, .94);
       padding: 14px;
       min-width: 0;
       display: grid;
-      gap: 12px;
+      gap: 14px;
       align-content: start;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7);
+    }
+
+    .hero-mockup__panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero-mockup__panel-note {
+      display: block;
+      width: 74px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, .24);
     }
 
     .hero-mockup__eyebrow {
@@ -941,34 +957,155 @@
       font-weight: 800;
       letter-spacing: .05em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin: 0;
     }
 
     .hero-mockup__table {
       display: grid;
-      gap: 8px;
+      gap: 10px;
+      position: relative;
+    }
+
+    .hero-mockup__table::before {
+      content: "";
+      display: block;
+      height: 7px;
+      margin: 0 10px;
+      border-radius: 999px;
+      background:
+        linear-gradient(rgba(148, 163, 184, .22), rgba(148, 163, 184, .22)) left center / 56% 100% no-repeat,
+        linear-gradient(rgba(148, 163, 184, .22), rgba(148, 163, 184, .22)) right center / 26% 100% no-repeat;
+    }
+
+    .hero-mockup__table-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 54px 72px;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .hero-mockup__heading {
+      display: block;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, .22);
+      align-self: center;
+    }
+
+    .hero-mockup__heading--lg { width: 100%; }
+    .hero-mockup__heading--sm { width: 70%; }
+    .hero-mockup__heading--xs { width: 58%; }
+
+    .hero-mockup__row-copy {
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .hero-mockup__line {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(15, 23, 42, .14), rgba(148, 163, 184, .16));
+    }
+
+    .hero-mockup__line--lg { width: 100%; }
+    .hero-mockup__line--md { width: 78%; }
+    .hero-mockup__line--sm { width: 58%; }
+    .hero-mockup__line--xs { width: 42%; }
+
+    .hero-mockup__status {
+      display: block;
+      width: 54px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .hero-mockup__status--ready {
+      background: rgba(79, 70, 229, .14);
+      border-color: rgba(79, 70, 229, .18);
+    }
+
+    .hero-mockup__status--build {
+      background: rgba(14, 165, 233, .14);
+      border-color: rgba(14, 165, 233, .18);
+    }
+
+    .hero-mockup__status--review {
+      background: rgba(148, 163, 184, .16);
+      border-color: rgba(148, 163, 184, .2);
+    }
+
+    .hero-mockup__status--qa {
+      background: rgba(16, 185, 129, .14);
+      border-color: rgba(16, 185, 129, .18);
+    }
+
+    .hero-mockup__progress {
+      display: block;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(226, 232, 240, .92);
+      overflow: hidden;
+    }
+
+    .hero-mockup__progress-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+    }
+
+    .hero-mockup__progress-fill--90 { width: 90%; }
+    .hero-mockup__progress-fill--78 { width: 78%; }
+    .hero-mockup__progress-fill--64 { width: 64%; }
+    .hero-mockup__progress-fill--48 { width: 48%; }
+
+    .hero-mockup__table-row--muted .hero-mockup__progress-fill {
+      background: linear-gradient(90deg, rgba(100, 116, 139, .72), rgba(148, 163, 184, .9));
     }
 
     .hero-mockup__table-row {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 68px;
-      gap: 8px;
-      padding: 9px 10px;
-      border-radius: 12px;
+      grid-template-columns: minmax(0, 1fr) 78px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-radius: 14px;
       border: 1px solid rgba(226, 232, 240, .92);
-      background: rgba(248, 250, 252, .98);
+      background: #ffffff;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, .04);
     }
 
     .hero-mockup__cell {
       display: block;
       height: 8px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, .10);
+      background: linear-gradient(90deg, rgba(15, 23, 42, .14), rgba(148, 163, 184, .16));
       align-self: center;
     }
 
     .hero-mockup__cell--tag {
-      background: rgba(79, 70, 229, .14);
+      height: 24px;
+      justify-self: end;
+      border: 1px solid rgba(79, 70, 229, .14);
+      background: rgba(79, 70, 229, .10);
+    }
+
+    .hero-mockup__table-row:nth-child(3) .hero-mockup__cell--tag {
+      border-color: rgba(14, 165, 233, .18);
+      background: rgba(14, 165, 233, .12);
+    }
+
+    .hero-mockup__table-row:nth-child(4) .hero-mockup__cell--tag {
+      border-color: rgba(148, 163, 184, .2);
+      background: rgba(148, 163, 184, .12);
+    }
+
+    .hero-mockup__table-row:nth-child(5) .hero-mockup__cell--tag {
+      border-color: rgba(16, 185, 129, .18);
+      background: rgba(16, 185, 129, .12);
     }
 
     .hero-mockup__cell--lg { width: 100%; }
@@ -978,20 +1115,62 @@
 
     .hero-mockup__stats {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
     .hero-mockup__stat {
-      border-radius: 14px;
+      display: grid;
+      gap: 10px;
+      min-height: 128px;
+      border-radius: 16px;
       border: 1px solid rgba(226, 232, 240, .95);
-      background: #ffffff;
-      padding: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(248, 250, 252, .98));
+      padding: 56px 14px 14px;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, .05);
+      position: relative;
+    }
+
+    .hero-mockup__stat::before {
+      content: "01";
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(79, 70, 229, .10);
+      color: #4f46e5;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .hero-mockup__stat:nth-child(2)::before {
+      content: "02";
+    }
+
+    .hero-mockup__stat-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: rgba(79, 70, 229, .10);
+      color: #4f46e5;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
     }
 
     .hero-mockup__stat strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.35;
       font-weight: 800;
       color: #0f172a;
     }
@@ -999,7 +1178,7 @@
     .hero-mockup__stat span {
       display: block;
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.55;
       color: #64748b;
     }
 
@@ -1007,18 +1186,32 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      margin-top: 2px;
       position: relative;
       z-index: 1;
     }
     .badge {
       font-size: 12px;
       font-weight: 700;
-      color: #0b1220;
-      background: rgba(15, 23, 42, .06);
-      border: 1px solid rgba(15, 23, 42, .08);
-      padding: 8px 10px;
+      color: #334155;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid rgba(226, 232, 240, .95);
+      padding: 10px 14px 10px 28px;
       border-radius: 999px;
+      position: relative;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .04);
+    }
+
+    .badge::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
     }
 
     @media (max-width: 980px) {
@@ -1040,13 +1233,28 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-mockup__table-head,
+      .hero-mockup__table-row {
+        grid-template-columns: minmax(0, 1fr) 68px;
+      }
+
+      .hero-mockup__stat {
+        min-height: 0;
+      }
+
       .hero-badges {
         gap: 8px;
       }
 
       .badge {
         font-size: 11px;
-        padding: 8px 10px;
+        padding: 8px 10px 8px 24px;
+      }
+
+      .badge::before {
+        left: 10px;
+        width: 7px;
+        height: 7px;
       }
     }
 
@@ -1726,8 +1934,8 @@ footer.footer-pro .footer-brand-title {
             </div>
             <h3 data-pt="Menos risco" data-en="Less risk" data-es="Menos riesgo">Menos risco</h3>
             <p data-pt="Evitas construir um produto enorme antes de saber se o mercado quer. Testamos as hipóteses com o mínimo necessário - e só depois escalamos."
-               data-en="You avoid building a huge product before knowing if the market wants it. We test hypotheses with the minimum necessary ? and only then scale."
-               data-es="Evitas construir un producto enorme antes de saber si el mercado lo quiere. Probamos las hipótesis con lo mínimo necesario ? y solo después escalamos.">
+               data-en="You avoid building a huge product before knowing if the market wants it. We test hypotheses with the minimum necessary and only then scale."
+               data-es="Evitas construir un producto enorme antes de saber si el mercado lo quiere. Probamos las hipótesis con lo mínimo necesario y solo después escalamos.">
               Evitas construir um produto enorme antes de saber se o mercado quer.
               Testamos as hipóteses com o mínimo necessário - e só depois escalamos.
             </p>
@@ -1774,8 +1982,8 @@ footer.footer-pro .footer-brand-title {
             </div>
             <h3 data-pt="Foco no negócio" data-en="Focus on business" data-es="Enfoque en el negocio">Foco no negócio</h3>
             <p data-pt="Uma equipa experiente acelera decisões e execução. Tu ficas focado(a) no negócio - nós tratamos de produto, design e engenharia."
-               data-en="An experienced team speeds up decisions and execution. You stay focused on business ? we handle product, design and engineering."
-               data-es="Un equipo experimentado acelera decisiones y ejecución. Tú te enfocas en el negocio ? nosotros nos encargamos de producto, diseño e ingeniería.">
+               data-en="An experienced team speeds up decisions and execution. You stay focused on business while we handle product, design and engineering."
+               data-es="Un equipo experimentado acelera decisiones y ejecución. Tú te enfocas en el negocio mientras nosotros nos encargamos de producto, diseño e ingeniería.">
               Uma equipa experiente acelera decisões e execução.
               Tu ficas focado(a) no negócio - nós tratamos de produto, design e engenharia.
             </p>
@@ -1879,8 +2087,8 @@ footer.footer-pro .footer-brand-title {
               <h3 class="step-title" data-pt="Desenvolvimento" data-en="Development" data-es="Desarrollo">Desenvolvimento</h3>
               <p class="step-desc"
                  data-pt="Implementamos o MVP com boas práticas e entregas progressivas. Vais testando módulos enquanto desenvolvemos - com updates regulares e transparência."
-                 data-en="We implement the MVP with best practices and progressive deliveries. You test modules as we develop ? with regular updates and transparency."
-                 data-es="Implementamos el MVP con buenas prácticas y entregas progresivas. Vas probando módulos mientras desarrollamos ? con actualizaciones regulares y transparencia.">
+                 data-en="We implement the MVP with best practices and progressive deliveries. You test modules as we develop, with regular updates and transparency."
+                 data-es="Implementamos el MVP con buenas prácticas y entregas progresivas. Vas probando módulos mientras desarrollamos, con actualizaciones regulares y transparencia.">
                 Implementamos o MVP com boas práticas e entregas progressivas.
                 Vais testando módulos enquanto desenvolvemos - com updates regulares e transparência.
               </p>
@@ -1936,9 +2144,9 @@ footer.footer-pro .footer-brand-title {
               Pronto para construir o teu MVP?
             </h2>
             <p data-pt="Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução - sem sacrificar qualidade nem base técnica."
-               data-en="Let's transform your idea into a real product, focusing on essentials and execution speed ? without sacrificing quality or technical foundation."
-               data-es="Transformemos tu idea en un producto real, enfocándonos en lo esencial y velocidad de ejecución ? sin sacrificar calidad ni base técnica.">
-              Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução ?
+               data-en="Let's transform your idea into a real product, focusing on essentials and execution speed without sacrificing quality or technical foundation."
+               data-es="Transformemos tu idea en un producto real, enfocándonos en lo esencial y velocidad de ejecución sin sacrificar calidad ni base técnica.">
+              Vamos transformar a tua ideia num produto real, com foco no essencial e velocidade de execução -
               sem sacrificar qualidade nem base técnica.
             </p>
             <a class="btn btn--primary" href="../book-a-call.html"
@@ -1962,7 +2170,7 @@ footer.footer-pro .footer-brand-title {
                         <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
                         <h3 class="footer-brand-title">Cobrait</h3>
                         <p class="footer-brand-subtitle">Software Factory</p>
-                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth ? from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento ? del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="�S�9 создаем � и�Ѭов�9е пѬодђк?�9, оѬиен?иѬованн�9е на скоѬос?�R, ка?ес?во и Ѭос? ? о? опѬеделения об�`ема до запђска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering." data-ja="���&は?�?㒼?㬁-�質㬁�Ɛ�"�に?�?�?置��x??�?�㒫製-�?�S�Ɛ�ま�"??�?�㒼��9?0㒭㒼㒳㒁まで?" data-zh="��们��:建�"��产-��R-注�}�x度㬁质?��R�~�"�? �}�R��:��ư�帒?">
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth - from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento - del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="�S�9 создаем � и�Ѭов�9е пѬодђк?�9, оѬиен?иѬованн�9е на скоѬос?�R, ка?ес?во и Ѭос? ? о? опѬеделения об�`ема до запђска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei - van scope tot lancering." data-ja="���&は?�?㒼?㬁-�質㬁�Ɛ�"�に?�?�?置��x??�?�㒫製-�?�S�Ɛ�ま�"??�?�㒼��9?0㒭㒼㒳㒁まで?" data-zh="��们��:建�"��产-��R-注�}�x度㬁质?��R�~�"�? �}�R��:��ư�帒?">
                             Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lançamento.
                         </p>
                         <div class="footer-cta-row">
