@@ -108,12 +108,49 @@ function buildDatabaseUrl() {
     encodeURIComponent(databaseName);
 }
 
+function buildMysqlUrl() {
+  const directUrl = firstNonEmpty(["MYSQL_URL", "DATABASE_URL"]);
+  if (directUrl) {
+    return directUrl;
+  }
+
+  const databaseName = firstNonEmpty(["MYSQL_DATABASE", "MYSQL_DB"]);
+  const username = firstNonEmpty(["MYSQL_USER"]);
+  const password = firstNonEmpty(["MYSQL_PASSWORD"]);
+
+  if (!databaseName || !username) {
+    return "";
+  }
+
+  const host = firstNonEmpty(["MYSQL_HOST"], "localhost");
+  const port = firstNonEmpty(["MYSQL_PORT"], "3306");
+
+  return "mysql://" +
+    encodeURIComponent(username) +
+    ":" +
+    encodeURIComponent(password) +
+    "@" +
+    host +
+    ":" +
+    port +
+    "/" +
+    encodeURIComponent(databaseName);
+}
+
 const sessionMaxAgeHours = parsePositiveInt(process.env.SESSION_MAX_AGE_HOURS, 12);
-const storageMode = firstNonEmpty(["STORAGE_MODE"], "postgres").toLowerCase();
+const storageMode = firstNonEmpty(["STORAGE_MODE"], "file").toLowerCase();
+const databaseClient = storageMode === "mysql" ? "mysql" : storageMode === "postgres" ? "postgres" : "file";
+const databaseUrl =
+  storageMode === "file"
+    ? ""
+    : databaseClient === "mysql"
+      ? requiredValue(buildMysqlUrl(), "MYSQL_URL (or MYSQL_DATABASE/MYSQL_USER/MYSQL_PASSWORD)")
+      : requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)");
 
 module.exports = {
   env: process.env.NODE_ENV || "development",
   storageMode,
+  databaseClient,
   storageFilePath: path.resolve(
     __dirname,
     "..",
@@ -121,10 +158,7 @@ module.exports = {
   ),
   host: firstNonEmpty(["API_HOST", "HOST"], "127.0.0.1"),
   port: parsePositiveInt(firstNonEmpty(["PORT", "API_PORT"]), 4000),
-  databaseUrl:
-    storageMode === "file"
-      ? ""
-      : requiredValue(buildDatabaseUrl(), "DATABASE_URL (or POSTGRES_DB/POSTGRES_USER/POSTGRES_PASSWORD)"),
+  databaseUrl,
   databaseSsl: parseBoolean(process.env.DATABASE_SSL, false),
   jwtSecret: requiredValue(firstNonEmpty(["JWT_SECRET"]), "JWT_SECRET"),
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || sessionMaxAgeHours + "h",

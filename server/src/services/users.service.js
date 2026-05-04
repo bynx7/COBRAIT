@@ -16,6 +16,7 @@ const PUBLIC_COLUMNS = `
 `;
 
 const VALID_ROLES = new Set(["admin", "editor", "viewer"]);
+const SQL_UNIQUE_CODES = new Set(["23505", "ER_DUP_ENTRY"]);
 
 function normalizeEmail(value) {
   return String(value || "").trim().toLowerCase();
@@ -72,6 +73,24 @@ function toPublicUser(row) {
   };
 }
 
+async function fetchSqlUserById(id) {
+  const result = await query(
+    `
+      SELECT ${PUBLIC_COLUMNS}
+      FROM admin_users
+      WHERE id = $1
+      LIMIT 1
+    `,
+    [id]
+  );
+
+  return result.rows[0] || null;
+}
+
+function isUniqueConstraintError(error) {
+  return !!(error && (SQL_UNIQUE_CODES.has(error.code) || error.errno === 1062));
+}
+
 async function createAuditLog(actorUserId, action, targetType, targetId, details) {
   if (config.storageMode === "file") {
     await queueWrite((data) => {
@@ -89,10 +108,21 @@ async function createAuditLog(actorUserId, action, targetType, targetId, details
     return;
   }
 
+  if (config.databaseClient === "mysql") {
+    await query(
+      `
+        INSERT INTO admin_audit_logs (id, actor_user_id, action, target_type, target_id, details)
+        VALUES ($1, $2, $3, $4, $5, $6)
+      `,
+      [createId(), actorUserId || null, action, targetType, targetId || null, JSON.stringify(details || {})]
+    );
+    return;
+  }
+
   await query(
     `
       INSERT INTO admin_audit_logs (actor_user_id, action, target_type, target_id, details)
-      VALUES ($1, $2, $3, $4, $5::jsonb)
+      VALUES ($1, $2, $3, $4, ${config.databaseClient === "mysql" ? "$5" : "$5::jsonb"})
     `,
     [actorUserId || null, action, targetType, targetId || null, JSON.stringify(details || {})]
   );
@@ -167,12 +197,12 @@ async function getUserWithPasswordCheck(email, password) {
     `
       SELECT
         ${PUBLIC_COLUMNS},
-        password_hash = crypt($2, password_hash) AS password_matches
+        password_hash
       FROM admin_users
       WHERE lower(email) = lower($1)
       LIMIT 1
     `,
-    [normalizedEmail, normalizedPassword]
+    [normalizedEmail]
   );
 
   if (!result.rows[0]) {
@@ -181,7 +211,7 @@ async function getUserWithPasswordCheck(email, password) {
 
   return {
     user: toPublicUser(result.rows[0]),
-    passwordMatches: result.rows[0].password_matches
+    passwordMatches: verifyPassword(normalizedPassword, result.rows[0].password_hash)
   };
 }
 
@@ -241,19 +271,44 @@ async function createUser(payload) {
     return toPublicUser(nextUser);
   }
 
+  const nextUser = {
+    id: createId(),
+    email,
+    full_name: fullName,
+    role,
+    is_active: isActive,
+    password_hash: hashPassword(password),
+    last_login_at: null
+  };
+
   try {
-    const result = await query(
+    await query(
       `
-        INSERT INTO admin_users (email, full_name, role, password_hash, is_active)
-        VALUES ($1, $2, $3, crypt($4, gen_salt('bf')), $5)
-        RETURNING ${PUBLIC_COLUMNS}
+        INSERT INTO admin_users (
+          id,
+          email,
+          full_name,
+          role,
+          password_hash,
+          is_active,
+          last_login_at
+        )
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
       `,
-      [email, fullName, role, password, isActive]
+      [
+        nextUser.id,
+        nextUser.email,
+        nextUser.full_name,
+        nextUser.role,
+        nextUser.password_hash,
+        nextUser.is_active,
+        nextUser.last_login_at
+      ]
     );
 
-    return toPublicUser(result.rows[0]);
+    return toPublicUser(await fetchSqlUserById(nextUser.id));
   } catch (error) {
-    if (error && error.code === "23505") {
+    if (isUniqueConstraintError(error)) {
       throw new HttpError(409, "Ja existe um utilizador com esse email.");
     }
     throw error;
@@ -267,7 +322,7 @@ async function countOtherActiveAdmins(excludedUserId) {
 
   const result = await query(
     `
-      SELECT COUNT(*)::int AS total
+      SELECT COUNT(*) AS total
       FROM admin_users
       WHERE role = 'admin'
         AND is_active = true
@@ -276,7 +331,7 @@ async function countOtherActiveAdmins(excludedUserId) {
     [excludedUserId]
   );
 
-  return result.rows[0] ? result.rows[0].total : 0;
+  return result.rows[0] ? Number(result.rows[0].total) || 0 : 0;
 }
 
 async function updateUser(userId, payload) {
@@ -394,8 +449,8 @@ async function updateUser(userId, payload) {
 
   if (payload.password !== undefined) {
     const password = validatePassword(payload.password);
-    values.push(password);
-    updates.push(`password_hash = crypt($${values.length}, gen_salt('bf'))`);
+    values.push(hashPassword(password));
+    updates.push(`password_hash = $${values.length}`);
   }
 
   if (updates.length === 0) {
@@ -405,19 +460,18 @@ async function updateUser(userId, payload) {
   values.push(userId);
 
   try {
-    const result = await query(
+    await query(
       `
         UPDATE admin_users
-        SET ${updates.join(", ")}
+        SET ${updates.join(", ")}, updated_at = CURRENT_TIMESTAMP
         WHERE id = $${values.length}
-        RETURNING ${PUBLIC_COLUMNS}
       `,
       values
     );
 
-    return toPublicUser(result.rows[0]);
+    return toPublicUser(await fetchSqlUserById(userId));
   } catch (error) {
-    if (error && error.code === "23505") {
+    if (isUniqueConstraintError(error)) {
       throw new HttpError(409, "Ja existe um utilizador com esse email.");
     }
     throw error;
@@ -462,42 +516,48 @@ async function ensureBootstrapAdmin() {
 
   const activeAdmins = await query(
     `
-      SELECT COUNT(*)::int AS total
+      SELECT COUNT(*) AS total
       FROM admin_users
       WHERE role = 'admin'
         AND is_active = true
     `
   );
 
-  if (activeAdmins.rows[0] && activeAdmins.rows[0].total > 0) {
+  if (activeAdmins.rows[0] && Number(activeAdmins.rows[0].total) > 0) {
     return;
   }
 
-  const result = await query(
-    `
-      INSERT INTO admin_users (email, full_name, role, password_hash, is_active)
-      VALUES ($1, $2, 'admin', crypt($3, gen_salt('bf')), true)
-      ON CONFLICT DO NOTHING
-      RETURNING id, email
-    `,
-    [config.bootstrapAdminEmail, config.bootstrapAdminName, config.bootstrapAdminPassword]
-  );
+  const adminId = createId();
 
-  if (result.rowCount > 0) {
-    console.log("Bootstrap admin criado:", result.rows[0].email);
-    return;
+  try {
+    const result = await query(
+      `
+        INSERT INTO admin_users (id, email, full_name, role, password_hash, is_active, last_login_at)
+        VALUES ($1, $2, $3, 'admin', $4, true, NULL)
+      `,
+      [adminId, config.bootstrapAdminEmail, config.bootstrapAdminName, hashPassword(config.bootstrapAdminPassword)]
+    );
+
+    if (result.rowCount > 0 || result.insertId !== null) {
+      console.log("Bootstrap admin criado:", config.bootstrapAdminEmail);
+      return;
+    }
+  } catch (error) {
+    if (!isUniqueConstraintError(error)) {
+      throw error;
+    }
   }
 
   const adminCountAfter = await query(
     `
-      SELECT COUNT(*)::int AS total
+      SELECT COUNT(*) AS total
       FROM admin_users
       WHERE role = 'admin'
         AND is_active = true
     `
   );
 
-  if (!adminCountAfter.rows[0] || adminCountAfter.rows[0].total === 0) {
+  if (!adminCountAfter.rows[0] || Number(adminCountAfter.rows[0].total) === 0) {
     console.warn("Nenhum admin ativo encontrado. Verifica ADMIN_EMAIL e a tabela admin_users.");
   }
 }

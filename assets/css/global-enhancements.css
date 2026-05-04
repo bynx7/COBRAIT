@@ -1400,3 +1400,372 @@ main section {
     scroll-behavior: auto !important;
   }
 }
+
+/* Homepage mobile polish */
+@media (max-width: 960px) {
+  .site-header {
+    padding: 10px 0 !important;
+  }
+
+  .site-header .header-inner {
+    gap: 10px !important;
+  }
+
+  .site-header .brand-logo-image {
+    height: clamp(34px, 8vw, 46px) !important;
+  }
+
+  .site-header .logo-text-tagline {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  .site-header .language-dropdown-btn {
+    min-height: 40px !important;
+    padding: 7px 10px !important;
+    border-radius: 14px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .site-header .nav-toggle-btn {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+  }
+
+  .site-header .site-nav {
+    top: calc(var(--cobrait-mobile-header-h, 66px) + 8px) !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: auto !important;
+    height: auto !important;
+    max-height: min(calc(100dvh - var(--cobrait-mobile-header-h, 66px) - 20px), 620px) !important;
+    padding: 14px !important;
+    border-radius: 22px !important;
+  }
+
+  .site-header .site-nav > ul {
+    min-height: auto !important;
+    gap: 10px !important;
+  }
+
+  .site-header .site-nav > ul > li > a {
+    min-height: 48px !important;
+    padding: 0 16px !important;
+    border-radius: 14px !important;
+    font-size: 0.96rem !important;
+  }
+
+  .site-header .site-nav .dropdown.is-open > .dropdown-content {
+    gap: 8px !important;
+    margin: 8px 0 0 !important;
+  }
+
+  .site-header .site-nav .dropdown-item {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .site-header .site-nav .mobile-nav-cta {
+    margin-top: 14px !important;
+    padding-top: 0 !important;
+  }
+
+  .site-header .site-nav .mobile-nav-cta-link {
+    min-height: 52px !important;
+    border-radius: 16px !important;
+    font-size: 0.98rem !important;
+  }
+
+  .hero-inner {
+    padding-top: 106px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .hero-copy {
+    max-width: 100% !important;
+  }
+
+  .eyebrow {
+    margin-bottom: 10px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .hero-title {
+    max-width: none !important;
+    font-size: clamp(1.95rem, 8.9vw, 2.85rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.045em !important;
+    margin-bottom: 14px !important;
+    text-wrap: balance;
+  }
+
+  .hero-sub {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .hero-bullets {
+    gap: 10px !important;
+    margin: 0 0 24px !important;
+  }
+
+  .hero-bullets li {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-actions {
+    gap: 10px !important;
+  }
+
+  .hero-actions .btn,
+  .about-hero-actions .btn,
+  .tech-hero-actions .btn,
+  .csd-hero-actions .btn {
+    min-height: 54px !important;
+  }
+
+  .hero-side {
+    margin-top: 8px !important;
+  }
+
+  .hero-card,
+  .hero-hq {
+    border-radius: 20px !important;
+    padding: 18px !important;
+  }
+
+  .hero-card__title,
+  .hq-title {
+    font-size: 1.3rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-card__desc,
+  .hq-body,
+  .k {
+    font-size: 0.94rem !important;
+    line-height: 1.56 !important;
+  }
+
+  .social-media,
+  .what-we-do,
+  .book-contact,
+  .cob-services,
+  .talk-about-project,
+  .cta-section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .what-we-do__intro,
+  .contact-left,
+  .book-contact-grid > *,
+  .social-copy,
+  .social-visual {
+    max-width: 100% !important;
+  }
+
+  .what-we-do__title,
+  .contact-title,
+  .section-title {
+    font-size: clamp(1.95rem, 8vw, 2.5rem) !important;
+    line-height: 1.08 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .what-we-do__description,
+  .form-sub,
+  .contact-bullets li {
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .what-we-do__grid,
+  .cob-services__grid,
+  .social-inner {
+    gap: 18px !important;
+  }
+
+  .service-card,
+  .cob-card,
+  .why-card,
+  .form-card {
+    border-radius: 20px !important;
+    padding: 22px !important;
+  }
+
+  .service-card__title {
+    font-size: 1.7rem !important;
+    line-height: 1.14 !important;
+  }
+
+  .service-card__icon {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .service-card::after {
+    top: 22px !important;
+    right: 22px !important;
+  }
+
+  .cta-section .container[style*="grid-template-columns"] {
+    gap: 24px !important;
+  }
+
+  .cta-section h2[style] {
+    font-size: clamp(2rem, 8vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+  }
+
+  .cta-section .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .cta-section [style*="backdrop-filter"] {
+    padding: 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .book-contact-grid {
+    gap: 28px !important;
+  }
+
+  .contact-bullets {
+    gap: 14px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .form-head {
+    margin-bottom: 14px !important;
+  }
+
+  .form-title {
+    font-size: 1.95rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .book-form {
+    gap: 12px !important;
+  }
+
+  .book-form .field {
+    gap: 5px !important;
+  }
+
+  .book-form .field span {
+    font-size: 0.95rem !important;
+  }
+
+  .book-form .field input,
+  .book-form .field select,
+  .book-form .field textarea {
+    min-height: 54px !important;
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    font-size: 1rem !important;
+  }
+
+  .book-form .field textarea {
+    min-height: 170px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding: 8px 0 !important;
+  }
+
+  .site-header .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    gap: 8px !important;
+  }
+
+  .site-header .brand,
+  .site-header .logo-text-brand {
+    max-width: calc(100vw - 138px) !important;
+  }
+
+  .site-header .brand-logo-image {
+    height: 30px !important;
+  }
+
+  .site-header .language-dropdown-btn {
+    max-width: 88px !important;
+    min-height: 38px !important;
+    padding: 6px 8px !important;
+    gap: 4px !important;
+    border-radius: 12px !important;
+  }
+
+  .site-header .nav-toggle-btn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 12px !important;
+  }
+
+  .site-header .site-nav {
+    top: calc(var(--cobrait-mobile-header-h, 62px) + 6px) !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: auto !important;
+    height: auto !important;
+    max-height: min(calc(100dvh - var(--cobrait-mobile-header-h, 62px) - 16px), 560px) !important;
+    padding: 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .hero-inner {
+    padding-top: 96px !important;
+    padding-bottom: 34px !important;
+  }
+
+  .hero-title {
+    max-width: none !important;
+    font-size: clamp(1.88rem, 8.6vw, 2.4rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem !important;
+    margin-bottom: 18px !important;
+  }
+
+  .hero-bullets li {
+    font-size: 0.95rem !important;
+  }
+
+  .what-we-do__title,
+  .contact-title,
+  .form-title,
+  .section-title {
+    font-size: clamp(1.75rem, 7.8vw, 2.15rem) !important;
+  }
+
+  .service-card__title {
+    font-size: 1.35rem !important;
+  }
+
+  .service-card,
+  .cob-card,
+  .form-card,
+  .hero-card,
+  .hero-hq {
+    padding: 18px !important;
+  }
+
+  .book-contact-grid {
+    gap: 24px !important;
+  }
+
+  .contact-bullets li {
+    font-size: 0.94rem !important;
+  }
+}

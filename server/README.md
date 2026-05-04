@@ -1,6 +1,6 @@
 # COBRAIT Admin API
 
-Backend minimo para autenticacao do painel admin e gestao de utilizadores em Postgres.
+Backend minimo para autenticacao do painel admin e gestao de utilizadores em ficheiro, PostgreSQL ou MySQL.
 
 ## O que faz
 
@@ -42,14 +42,27 @@ Depois abre `http://localhost:5500/admin.html`.
 docker compose up -d postgres
 ```
 
-4. Ajusta o `.env` da raiz se precisares de mudar portas, credenciais do admin ou ativar Postgres.
+4. Ajusta o `.env` da raiz se precisares de mudar portas, credenciais do admin ou ativar PostgreSQL/MySQL.
 
-5. Se estiveres a usar uma base criada manualmente no pgAdmin, executa tambem:
+5. Se estiveres a usar PostgreSQL criado manualmente no pgAdmin, executa:
 
 ```text
 server/sql/001_init.sql
 server/sql/002_site_operations.sql
 server/sql/003_call_booking_sources.sql
+```
+
+Se estiveres a usar MySQL, executa:
+
+```text
+server/sql/mysql/001_init.sql
+```
+
+Ou usa os scripts:
+
+```powershell
+npm run mysql:setup
+npm run mysql:migrate-file
 ```
 
 6. Instala dependencias:
@@ -75,8 +88,9 @@ npm start
 
 ## Modos de storage
 
-- `STORAGE_MODE=file`: nao precisa de Docker nem PostgreSQL. Guarda tudo em `server/data/local-storage.json`.
+- `STORAGE_MODE=file`: nao precisa de base de dados. Guarda tudo em `server/data/local-storage.json`.
 - `STORAGE_MODE=postgres`: usa PostgreSQL com `DATABASE_URL` ou `POSTGRES_*`.
+- `STORAGE_MODE=mysql`: usa MySQL com `MYSQL_URL` ou `MYSQL_HOST` + `MYSQL_PORT` + `MYSQL_DATABASE` + `MYSQL_USER` + `MYSQL_PASSWORD`.
 
 Por defeito, o `admin.html` tenta usar `http://localhost:4000/api` quando e aberto localmente.
 

@@ -171,6 +171,34 @@ function mapBooking(row) {
   };
 }
 
+async function fetchContactById(id) {
+  const result = await query(
+    `
+      SELECT ${CONTACT_COLUMNS}
+      FROM contact_requests
+      WHERE id = $1
+      LIMIT 1
+    `,
+    [id]
+  );
+
+  return result.rows[0] || null;
+}
+
+async function fetchBookingById(id) {
+  const result = await query(
+    `
+      SELECT ${BOOKING_COLUMNS}
+      FROM call_bookings
+      WHERE id = $1
+      LIMIT 1
+    `,
+    [id]
+  );
+
+  return result.rows[0] || null;
+}
+
 async function createContactRequest(payload) {
   if (config.storageMode === "file") {
     const createdAt = nowIso();
@@ -199,9 +227,12 @@ async function createContactRequest(payload) {
     return mapContact(nextContact);
   }
 
-  const result = await query(
+  const nextContactId = createId();
+
+  await query(
     `
       INSERT INTO contact_requests (
+        id,
         full_name,
         email,
         phone,
@@ -211,10 +242,10 @@ async function createContactRequest(payload) {
         source_page,
         source_campaign
       )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-      RETURNING ${CONTACT_COLUMNS}
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     `,
     [
+      nextContactId,
       validateName(payload.fullName),
       validateEmail(normalizeEmail(payload.email)),
       normalizeNullableText(payload.phone),
@@ -226,7 +257,7 @@ async function createContactRequest(payload) {
     ]
   );
 
-  return mapContact(result.rows[0]);
+  return mapContact(await fetchContactById(nextContactId));
 }
 
 async function listContactRequests() {
@@ -360,21 +391,21 @@ async function updateContactRequest(id, payload) {
 
   values.push(id);
 
-  const result = await query(
+  await query(
     `
       UPDATE contact_requests
-      SET ${updates.join(", ")}
+      SET ${updates.join(", ")}, updated_at = CURRENT_TIMESTAMP
       WHERE id = $${values.length}
-      RETURNING ${CONTACT_COLUMNS}
     `,
     values
   );
 
-  if (!result.rows[0]) {
+  const updated = await fetchContactById(id);
+  if (!updated) {
     throw new HttpError(404, "Pedido de contacto nao encontrado.");
   }
 
-  return mapContact(result.rows[0]);
+  return mapContact(updated);
 }
 
 async function createCallBooking(payload) {
@@ -411,9 +442,12 @@ async function createCallBooking(payload) {
     return mapBooking(nextBooking);
   }
 
-  const result = await query(
+  const nextBookingId = createId();
+
+  await query(
     `
       INSERT INTO call_bookings (
+        id,
         full_name,
         email,
         phone,
@@ -427,10 +461,10 @@ async function createCallBooking(payload) {
         source_page,
         source_campaign
       )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-      RETURNING ${BOOKING_COLUMNS}
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
     `,
     [
+      nextBookingId,
       validateName(payload.fullName),
       validateEmail(normalizeEmail(payload.email)),
       normalizeNullableText(payload.phone),
@@ -446,7 +480,7 @@ async function createCallBooking(payload) {
     ]
   );
 
-  return mapBooking(result.rows[0]);
+  return mapBooking(await fetchBookingById(nextBookingId));
 }
 
 async function listCallBookings() {
@@ -652,21 +686,21 @@ async function updateCallBooking(id, payload) {
 
   values.push(id);
 
-  const result = await query(
+  await query(
     `
       UPDATE call_bookings
-      SET ${updates.join(", ")}
+      SET ${updates.join(", ")}, updated_at = CURRENT_TIMESTAMP
       WHERE id = $${values.length}
-      RETURNING ${BOOKING_COLUMNS}
     `,
     values
   );
 
-  if (!result.rows[0]) {
+  const updated = await fetchBookingById(id);
+  if (!updated) {
     throw new HttpError(404, "Pedido de agendamento nao encontrado.");
   }
 
-  return mapBooking(result.rows[0]);
+  return mapBooking(updated);
 }
 
 module.exports = {

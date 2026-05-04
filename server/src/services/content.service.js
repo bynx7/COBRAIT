@@ -45,9 +45,17 @@ function validateContentObject(value) {
 
 function mapContentEntry(row) {
   if (!row) return null;
+  let content = row.content || {};
+  if (typeof content === "string") {
+    try {
+      content = JSON.parse(content);
+    } catch {
+      content = {};
+    }
+  }
   return {
     pageKey: row.page_key,
-    content: row.content || {},
+    content,
     updatedBy: row.updated_by,
     createdAt: row.created_at,
     updatedAt: row.updated_at
@@ -61,20 +69,40 @@ async function ensureContentStorage() {
 
   if (!ensureStoragePromise) {
     ensureStoragePromise = (async () => {
-      await query(`
-        CREATE TABLE IF NOT EXISTS site_content_entries (
-          page_key TEXT PRIMARY KEY,
-          content JSONB NOT NULL DEFAULT '{}'::jsonb,
-          updated_by UUID REFERENCES admin_users(id) ON DELETE SET NULL,
-          created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-          updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
-        )
-      `);
+      if (config.databaseClient === "mysql") {
+        await query(`
+          CREATE TABLE IF NOT EXISTS site_content_entries (
+            page_key VARCHAR(64) PRIMARY KEY,
+            content JSON NOT NULL,
+            updated_by VARCHAR(36) NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            CONSTRAINT fk_site_content_entries_updated_by
+              FOREIGN KEY (updated_by) REFERENCES admin_users(id)
+              ON DELETE SET NULL
+          )
+        `);
 
-      await query(`
-        CREATE INDEX IF NOT EXISTS site_content_entries_updated_at_idx
-        ON site_content_entries (updated_at DESC)
-      `);
+        await query(`
+          CREATE INDEX site_content_entries_updated_at_idx
+          ON site_content_entries (updated_at)
+        `).catch(() => {});
+      } else {
+        await query(`
+          CREATE TABLE IF NOT EXISTS site_content_entries (
+            page_key TEXT PRIMARY KEY,
+            content JSONB NOT NULL DEFAULT '{}'::jsonb,
+            updated_by UUID REFERENCES admin_users(id) ON DELETE SET NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+          )
+        `);
+
+        await query(`
+          CREATE INDEX IF NOT EXISTS site_content_entries_updated_at_idx
+          ON site_content_entries (updated_at DESC)
+        `);
+      }
     })().catch((error) => {
       ensureStoragePromise = null;
       throw error;
@@ -162,21 +190,34 @@ async function upsertSiteContentEntry(pageKeyInput, contentInput, updatedBy) {
   const content = validateContentObject(contentInput);
   const actorId = updatedBy || null;
 
-  const result = await query(
-    `
-      INSERT INTO site_content_entries (page_key, content, updated_by)
-      VALUES ($1, $2::jsonb, $3)
-      ON CONFLICT (page_key)
-      DO UPDATE SET
-        content = EXCLUDED.content,
-        updated_by = EXCLUDED.updated_by,
-        updated_at = now()
-      RETURNING page_key, content, updated_by, created_at, updated_at
-    `,
-    [pageKey, JSON.stringify(content), actorId]
-  );
+  if (config.databaseClient === "mysql") {
+    await query(
+      `
+        INSERT INTO site_content_entries (page_key, content, updated_by)
+        VALUES ($1, $2, $3)
+        ON DUPLICATE KEY UPDATE
+          content = VALUES(content),
+          updated_by = VALUES(updated_by),
+          updated_at = CURRENT_TIMESTAMP
+      `,
+      [pageKey, JSON.stringify(content), actorId]
+    );
+  } else {
+    await query(
+      `
+        INSERT INTO site_content_entries (page_key, content, updated_by)
+        VALUES ($1, $2::jsonb, $3)
+        ON CONFLICT (page_key)
+        DO UPDATE SET
+          content = EXCLUDED.content,
+          updated_by = EXCLUDED.updated_by,
+          updated_at = now()
+      `,
+      [pageKey, JSON.stringify(content), actorId]
+    );
+  }
 
-  return mapContentEntry(result.rows[0]);
+  return getSiteContentEntry(pageKey);
 }
 
 module.exports = {
