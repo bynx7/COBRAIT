@@ -1,6 +1,7 @@
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 const config = require("./config");
 const { errorHandler, notFound } = require("./middleware/error-handler");
 const authRoutes = require("./routes/auth.routes");
@@ -11,6 +12,19 @@ const usersRoutes = require("./routes/users.routes");
 
 const app = express();
 const allowedOrigins = new Set(config.corsOrigins);
+const siteRoot = path.resolve(__dirname, "../..");
+const staticPageFiles = new Set([
+  "about-us.html",
+  "admin.html",
+  "book-a-call.html",
+  "careers.html",
+  "cookies.html",
+  "index.html",
+  "privacidade.html",
+  "servicos.html",
+  "tech.html",
+  "termos.html"
+]);
 const STATIC_SITE_PORTS = new Set(["3000", "5500", "8080", "8092"]);
 const corsOptions = {
   origin(origin, callback) {
@@ -79,6 +93,23 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api", contentRoutes);
 app.use("/api", opsRoutes);
+
+app.use("/assets", express.static(path.join(siteRoot, "assets"), { index: false }));
+app.use("/servicos", express.static(path.join(siteRoot, "servicos"), { index: false }));
+
+app.get("/", (request, response) => {
+  response.sendFile(path.join(siteRoot, "index.html"));
+});
+
+app.get("/:page", (request, response, next) => {
+  const page = request.params.page;
+  if (!staticPageFiles.has(page)) {
+    next();
+    return;
+  }
+
+  response.sendFile(path.join(siteRoot, page));
+});
 
 app.use(notFound);
 app.use(errorHandler);

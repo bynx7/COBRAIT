@@ -156,7 +156,7 @@ module.exports = {
     "..",
     firstNonEmpty(["STORAGE_FILE"], "data/local-storage.json")
   ),
-  host: firstNonEmpty(["API_HOST", "HOST"], "127.0.0.1"),
+  host: firstNonEmpty(["API_HOST", "HOST"], "0.0.0.0"),
   port: parsePositiveInt(firstNonEmpty(["PORT", "API_PORT"]), 4000),
   databaseUrl,
   databaseSsl: parseBoolean(process.env.DATABASE_SSL, false),

@@ -1,14 +1,1188 @@
+﻿<!--
+  COBRAIT_PAGE_DOC
+  Objetivo: Define a estrutura e o conteudo desta pagina do site COBRAIT.
+  Estrutura principal:
+  1) Cabecalho/navegacao com selecao de idioma.
+  2) Seccoes de conteudo da pagina (hero, blocos informativos e CTAs).
+  3) Rodape com links institucionais e contactos.
+  Dependencias comuns:
+  - styles.css e/ou CSS local da pagina para layout e componentes visuais.
+  - apply-translations.js e atributos data-* para internacionalizacao.
+  Interatividade:
+  - Scripts no final do ficheiro controlam dropdowns, idioma e componentes dinamicos.
+  Manutencao:
+  - Preservar IDs/classes usados por JavaScript e traducoes antes de refatorar markup.
+  - Ao adicionar novos textos visiveis, incluir atributos data-pt/data-en (e restantes idiomas usados).
+-->
+<!-- sync: github-desktop-update -->
 <!doctype html>
 <html lang="pt-PT">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0; url=Servi%C3%A7os.html" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Serviços | Cobrait</title>
-  <link rel="canonical" href="Servi%C3%A7os.html" />
-  <script>
-    window.location.replace("Servi%C3%A7os.html");
-  </script>
+  <title>Servi&ccedil;os | Cobrait</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Servi&ccedil;os Cobrait - desenvolvimento de software, MVPs, UX/UI e equipas dedicadas.">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- CSS desta página -->
+  <link rel="stylesheet" href="assets/css/servicos.css">
+  <script src="assets/js/apply-translations.js"></script>
+  
+  <style>
+    /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
+    .logo-text-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .logo-text-main {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .logo-text-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #6b7280;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Estilos do Header */
+    .site-header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 99999;
+      padding: 16px 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .nav-toggle { display: none; }
+
+    .nav-toggle-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .nav-toggle-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #4f46e5;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+    }
+
+    .site-nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a:hover { color: #4f46e5; }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover::after { width: 100%; }
+
+    /* Active page indicator */
+    .site-nav a.active {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+
+    .site-nav a.active::after {
+      width: 100%;
+    }
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 280px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999999;
+      margin-top: 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      margin-bottom: 8px;
+    }
+
+    .dropdown-item:last-child { margin-bottom: 0; }
+
+    .dropdown-item:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .dropdown-item svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-item-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      margin: 0 0 4px 0;
+    }
+
+    .dropdown-item-content p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .dropdown-arrow { font-size: 12px; transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+
+    /* DROPDOWN DE LÍNGUAS NO HEADER */
+    .language-dropdown {
+      position: relative;
+    }
+
+    .language-dropdown-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .language-dropdown-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-dropdown-btn .lang-flag {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .language-dropdown-btn .lang-code {
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .language-dropdown-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: white;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999999;
+      margin-top: 8px;
+    }
+
+    .language-dropdown:hover .language-dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #334155;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+
+    .language-option:hover {
+      background: #f8fafc;
+      transform: translateX(4px);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+    }
+
+    .language-option.active:hover {
+      background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    }
+
+    .language-option .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .language-option .lang-name {
+      flex: 1;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .header-cta .btn { padding: 10px 24px; font-size: 14px; font-weight: 600; white-space: nowrap; }
+
+    @media (min-width: 769px) {
+      .site-header .site-nav {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+
+      .site-header .site-nav::before { display: none !important; }
+
+      .site-header .site-nav > ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 32px !important;
+        width: auto !important;
+        min-height: 0 !important;
+      }
+
+      .site-header .site-nav ul,
+      .site-header .site-nav li,
+      .site-header .dropdown,
+      .site-header .language-dropdown,
+      .site-header .header-right {
+        width: auto !important;
+      }
+
+      .site-header .site-nav > ul > li > a,
+      .site-header .site-nav a {
+        min-height: auto !important;
+        padding: 8px 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        justify-content: flex-start !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+      }
+
+      .site-header .site-nav .dropdown:not(.is-open) > .dropdown-content {
+        display: block !important;
+        max-height: none !important;
+        overflow: visible !important;
+        margin-top: 16px !important;
+        padding: 16px !important;
+      }
+
+      .site-header .site-nav .dropdown-content {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: auto !important;
+        min-width: 360px !important;
+        max-width: 360px !important;
+        background: white !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 12px !important;
+        border-left: 0 !important;
+        padding: 16px !important;
+        display: block !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(10px) !important;
+        margin-top: 16px !important;
+        overflow: visible !important;
+      }
+
+      .site-header .site-nav .dropdown:hover > .dropdown-content,
+      .site-header .site-nav .dropdown.is-open > .dropdown-content,
+      .site-header .site-nav .dropdown:focus-within > .dropdown-content {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+      }
+
+      .site-header .site-nav .dropdown-item {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        padding: 12px !important;
+        margin-bottom: 8px !important;
+        border: 0 !important;
+        border-radius: 8px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .site-header .site-nav .dropdown-item:hover {
+        background: #f8fafc !important;
+        transform: translateX(4px) !important;
+      }
+
+      .site-header .site-nav .dropdown-item svg {
+        width: 20px !important;
+        height: 20px !important;
+        margin: 2px 12px 0 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+      }
+
+      .site-header .site-nav .dropdown-item-content h4 {
+        font-size: 14px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .site-header .site-nav .dropdown-item-content p {
+        display: -webkit-box !important;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .header-inner { gap: 20px; }
+      .site-nav ul { gap: 20px; }
+      .header-right { gap: 16px; }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .nav-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background:
+          linear-gradient(#4f46e5 0 0) center calc(50% - 8px) / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center / 20px 2px no-repeat,
+          linear-gradient(#4f46e5 0 0) center calc(50% + 8px) / 20px 2px no-repeat,
+          #fff;
+        font-size: 0;
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+
+      .nav-toggle-btn span { display: none; }
+
+      .site-nav {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .site-nav ul { flex-direction: column; gap: 16px; }
+
+      .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 8px 0 0 20px;
+        border-left: 2px solid #e2e8f0;
+      }
+
+      .dropdown-item {
+        border-radius: 4px;
+        padding: 8px 12px;
+        margin-bottom: 4px;
+      }
+    }
+
+    /* Adicionar estilos para os links clicáveis */
+    .service-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card-link:hover .service-card {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-color: #667eea;
+    }
+    
+    .service-card {
+      position: relative;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .service-card::after {
+      content: "\2192";
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: #667eea;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    .service-card-link:hover .service-card::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .service-card p {
+      margin-bottom: 18px;
+    }
+
+    .service-card-cta {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #667eea;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-card-cta::after {
+      content: "\2192";
+      transition: transform 0.3s ease;
+    }
+
+    .service-card-link:hover .service-card-cta::after {
+      transform: translateX(4px);
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/global-enhancements.css">
 </head>
-<body></body>
+
+<body>
+  <!-- HEADER COM NOVA ESTRUTURA E DROPDOWN DE LÍNGUAS -->
+  <header class="site-header">
+        <div class="container header-inner">
+            <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
+            <a class="brand logo-text-brand" href="index.html" aria-label="Cobrait Software Factory">
+                <img class="brand-logo-image" src="assets/images/cobrait-header-logo-tight.png" alt="Cobrait Software Factory" />
+            </a>
+
+            <input id="nav-toggle" class="nav-toggle" type="checkbox" />
+            <label class="nav-toggle-btn" for="nav-toggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </label>
+
+            <nav class="site-nav" aria-label="Main navigation">
+                <ul>
+                    <li class="dropdown">
+                        <a href="index.html#what-we-do">
+                            <span data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услђги" data-nl="Diensten" data-ja="?�㒼-?�" data-zh="�S��`�">Serviços</span>
+                            <span class="dropdown-arrow">&#9662;</span>
+                        </a>
+
+                        <div class="dropdown-content">
+                            <a href="servicos/product-scope.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div class="dropdown-item-content">
+                                    <h4 data-pt="Product Scope" data-en="Product Scope" data-es="Product Scope" data-fr="Portée du produit" data-de="Produktumfang" data-ru="�~блас?�R пѬименения пѬодђк?а" data-nl="Productomvang" data-ja="製-�?�?�㒼�" data-zh="产-��R��:�">Product Scope</h4>
+                                    <p data-pt="Processo de 15 dias para alinhar o produto com os objetivos do teu negócio."
+                                       data-en="15-day process to align the product with your business goals."
+                                       data-es="Proceso de 15 días para alinear el producto con los objetivos de tu negocio."
+                                       data-fr="Processus de 15 jours pour aligner le produit sur vos objectifs commerciaux."
+                                       data-de="15-Tage-Prozess zur Abstimmung des Produkts mit Ihren Geschäftszielen."
+                                       data-ru="15-дневн�9й пѬо� есс согласования пѬодђк?а с � елями ва��его бизнеса."
+                                       data-nl="15-daags proces om het product af te stemmen op uw zakelijke doelstellingen."
+                                       data-ja="製-�?-?�㒍?��:��"に��?��:?9�x?�の15���の�㒭?�?�?"
+                                       data-zh="15天�a流�9�R� 产-��}?��a�a�`��:�?保�R�丬?�?">
+                                    15-day process to align the product with your business goals.
+                                    </p>
+                                </div>
+                            </a>
+
+                            <a href="servicos/mvp-builder.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                <div class="dropdown-item-content">
+                                    <h4 data-pt="MVP Builder" data-en="MVP Builder" data-es="MVP Builder" data-fr="Constructeur MVP" data-de="MVP-Builder" data-ru="�xос?Ѭои?ел�R MVP" data-nl="MVP Builder" data-ja="MVP -㒫㒬㒼" data-zh="MVP �~建�&">MVP Builder</h4>
+                                    <p data-pt="Entra no mercado rapidamente com um Produto Mínimo Viável de alta qualidade."
+                                       data-en="Go to market quickly with a high-quality Minimum Viable Product."
+                                       data-es="Lanza al mercado rápidamente con un Producto Mínimo Viable de alta calidad."
+                                       data-fr="Lancez-vous rapidement sur le marché avec un Produit Minimum Viable de haute qualité."
+                                       data-de="Gehen Sie schnell mit einem hochwertigen Minimum Viable Product auf den Markt."
+                                       data-ru="��9с?Ѭо в�9йди?е на Ѭ�9нок с в�9сокока?ес?венн�9м минимал�Rн�9м жизнеспособн�9м пѬодђк?ом."
+                                       data-nl="Ga snel naar de markt met een hoogwaardig Minimum Viable Product."
+                                       data-ja="��-�質の�S�小�"��x�R可蒽製-�で素��く?場�`"�&��"?9?"
+                                       data-zh="使?���质?��a�S�小可�R产-�快�x�`??">
+                                    Go to market quickly with a high-quality Minimum Viable Product.
+                                    </p>
+                                </div>
+                            </a>
+
+                            <a href="servicos/ux-ui.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <div class="dropdown-item-content">
+                                    <h4 data-pt="UX / UI" data-en="UX / UI" data-es="UX / UI" data-fr="UX / UI" data-de="UX / UI" data-ru="UX / UI" data-nl="UX / UI" data-ja="UX / UI" data-zh="UX / UI">UX / UI</h4>
+                                    <p data-pt="Design de um produto fácil de usar, envolvente e funcional."
+                                       data-en="Design an easy-to-use engaging and functional product."
+                                       data-es="Diseña un producto fácil de usar, atractivo y funcional."
+                                       data-fr="Concevoir un produit facile à utiliser, attrayant et fonctionnel."
+                                       data-de="Gestalten Sie ein benutzerfreundliches, ansprechendes und funktionales Produkt."
+                                       data-ru="РазѬабо?ай?е пѬос?ой в испол�Rзовании, пѬивлека?ел�Rн�9й и �ђнк� ионал�Rн�9й пѬодђк?."
+                                       data-nl="Ontwerp een gebruiksvriendelijk, aantrekkelijk en functioneel product."
+                                       data-ja="使�?�"く㬁�&�`:�aで�x蒽�aな製-�?設���"?9?"
+                                       data-zh="设计丬个�-�}使?�㬁�"人�&��S?�`x蒽强大�a产-�?">
+                                    Design an easy-to-use engaging and functional product.
+                                    </p>
+                                </div>
+                            </a>
+                          
+
+                            <a href="servicos/custom-software.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                </svg>
+                                <div class="dropdown-item-content">
+                                    <h4 data-pt="Desenvolvimento de Software à Medida"
+                                        data-en="Custom Software Development"
+                                        data-es="Desarrollo de Software a Medida"
+                                        data-fr="Développement de logiciels personnalisés"
+                                        data-de="Benutzerdefinierte Softwareentwicklung"
+                                        data-ru="РазѬабо?ка пол�Rзова?ел�Rского пѬогѬаммного обеспе?ения"
+                                        data-nl="Aangepaste softwareontwikkeling"
+                                        data-ja="?�?�?�㒠?��"��?�?�?��9�"�"
+                                        data-zh="�a�ƶ软件弬�">
+                                    Custom Software Development
+                                    </h4>
+                                    <p data-pt="Frameworks lean aplicados à tua visão para criar uma solução inovadora de software à medida."
+                                       data-en="Lean frameworks applied to your vision to create an innovative custom software solution."
+                                       data-es="Frameworks lean aplicados a tu visión para crear una solución innovadora de software a medida."
+                                       data-fr="Nous appliquons les frameworks lean à votre vision pour créer une solution logicielle personnalisée et innovante."
+                                       data-de="Wir wenden lean-Frameworks auf Ihre Vision an, um eine personalisierte und innovative Softwarelösung zu schaffen."
+                                       data-ru="�S�9 пѬименяем lean-�ѬеймвоѬки к ва��емђ видени�}, ??об�9 созда?�R пеѬсонализиѬованное и иннова� ионное пѬогѬаммное Ѭе��ение."
+                                       data-nl="Wij passen lean frameworks toe op uw visie om een gepersonaliseerde en innovatieve softwareoplossing te creëren."
+                                       data-ja="㒪㒼㒳�"㒬㒼㒠㒯㒼?�??な�xの-?�㒧㒳に適?��て㬁�㒼?��`㒩?�?��"?R�x革?�aな?��"��?�?�?�?�㒪㒥㒼?�㒧㒳?�S�Ɛ�ま�"?"
+                                       data-zh="��们� 精�:`� �~�??��ư?��a���"�中�R以��:建个欧�R�R��:?�a软件解� �?��?">
+                                    Lean frameworks applied to your vision to create an innovative custom software solution.
+                                    </p>
+                                </div>
+                            </a>
+
+                            <a href="servicos/dedicated-teams.html" class="dropdown-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <div class="dropdown-item-content">
+                                    <h4 data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="?quipes dédiées" data-de="Dedizierte Teams" data-ru="��9деленн�9е команд�9" data-nl="Speciale teams" data-ja="?任㒁㒼㒠" data-zh="-�a�:���x">
+                                    Dedicated Teams
+                                    </h4>
+                                    <p data-pt="Constrói o teu produto com uma equipa dedicada de developers."
+                                       data-en="Build your product with a dedicated team of developers."
+                                       data-es="Construye tu producto con un equipo dedicado de developers."
+                                       data-fr="Construisez votre produit avec une équipe de développeurs dédiée."
+                                       data-de="Bauen Sie Ihr Produkt mit einem dedizierten Entwickler-Team auf."
+                                       data-ru="Создай?е свой пѬодђк? с помо?�R�} в�9деленной команд�9 ѬазѬабо??иков."
+                                       data-nl="Bouw uw product met een speciaal team van ontwikkelaars."
+                                       data-ja="?任の�9�"��&㒁㒼㒠で?な�xの製-�?�9?�"?9?"
+                                       data-zh="�}-�a弬��&�:���x丬起�~建?��a产-�?">
+                                    Build your product with a dedicated team of developers.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li><a href="about-us.html"><span data-pt="Sobre nós" data-en="About Us" data-es="Sobre nosotros" data-fr="ì Propos" data-de="�Sber uns" data-ru="�~ нас" data-nl="Over ons" data-ja="私�xちにつ�て" data-zh="�&��}��们">About Us</span></a></li>
+                    <li><a href="tech.html" data-pt="Tecnologia" data-en="Tech" data-es="Tech" data-fr="Technologie" data-de="Technologie" data-ru="Те�&нология" data-nl="Technologie" data-ja="� ?��}㒭?�㒼" data-zh="�`��S�">Tech</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
+                <div class="language-dropdown">
+                    <button class="language-dropdown-btn" aria-label="Select language">
+                        <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+                        <span class="lang-code" id="currentLang">PT</span>
+                        <span class="dropdown-arrow">&#9662;</span>
+                    </button>
+                    
+                    <div class="language-dropdown-content">
+                        <button class="language-option active" data-lang="pt">
+                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-name">Português</span>
+                        </button>
+                        <button class="language-option" data-lang="en">
+                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-name">English</span>
+                        </button>
+                        <button class="language-option" data-lang="es">
+                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-name">Español</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="header-cta">
+                    <a class="btn btn--primary" href="book-a-call.html"
+                       data-pt="AGENDAR UMA CHAMADA"
+                       data-en="BOOK A CALL"
+                       data-es="RESERVAR UNA LLAMADA"
+                       data-fr="R?SERVER UN APPEL"
+                       data-de="EINEN TERMIN BUCHEN"
+                       data-ru="НА�НАЧ��ТЬ �СТР�"ЧУ"
+                       data-nl="RESERVEER EEN GESPREK"
+                       data-ja="�a話?���"
+                       data-zh="�订�a话">
+                    BOOK A CALL
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  <main class="servicos-page">
+    <!-- SERVICES -->
+    <section class="services" id="servicos">
+      <div class="container">
+        <h1 class="section-title"
+            data-pt="Os nossos serviços, num relance"
+            data-en="Our services, at a glance"
+            data-es="Nuestros servicios, de un vistazo">Os nossos serviços, num relance</h1>
+
+        <div class="services-grid">
+          <!-- Product Scope -->
+          <a href="servicos/product-scope.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-icon service-icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2 3 9l9 13 9-13-9-7Z" stroke="currentColor" stroke-width="1.8" />
+                  <path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h3 data-pt="Definição do Produto"
+                  data-en="Product Definition"
+                  data-es="Definición del Producto">Definição do Produto</h3>
+              <p data-pt="Um processo estruturado para alinhar visão, objetivos, requisitos e roadmap com clareza."
+                 data-en="A structured process to align vision, goals, requirements and roadmap with clarity."
+                 data-es="Un proceso estructurado para alinear visión, objetivos, requisitos y roadmap con claridad.">Um processo estruturado para alinhar visão, objetivos, requisitos e roadmap com clareza.</p>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais sobre Product Scope"
+                    data-en="Learn more about Product Scope"
+                    data-es="Descubre más sobre Product Scope">
+                Saiba mais sobre Product Scope
+              </span>
+            </article>
+          </a>
+
+          <!-- MVP Builder -->
+          <a href="servicos/mvp-builder.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-icon service-icon--yellow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 4 19h16L12 3Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M4 19h16" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h3 data-pt="Construção de MVP"
+                  data-en="MVP Build"
+                  data-es="Construcción de MVP">Construção de MVP</h3>
+              <p data-pt="Lançamento rápido com qualidade: validação de mercado, iteração e evolução contínua."
+                 data-en="Fast launch with quality: market validation, iteration and continuous evolution."
+                 data-es="Lanzamiento rápido con calidad: validación de mercado, iteración y evolución continua.">Lançamento rápido com qualidade: validação de mercado, iteração e evolução contínua.</p>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais sobre MVP Builder"
+                    data-en="Learn more about MVP Builder"
+                    data-es="Descubre más sobre MVP Builder">
+                Saiba mais sobre MVP Builder
+              </span>
+            </article>
+          </a>
+
+          <!-- Custom Software -->
+          <a href="servicos/custom-software.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-icon service-icon--teal" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2 5 8l7 14 7-14-7-6Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M5 8h14" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h3 data-pt="Desenvolvimento de Software à Medida"
+                  data-en="Custom Software Development"
+                  data-es="Desarrollo de Software a Medida">Desenvolvimento de Software à Medida</h3>
+              <p data-pt="Plataformas, apps e integrações robustas e escaláveis, com foco em performance e segurança."
+                 data-en="Robust, scalable platforms, apps and integrations focused on performance and security."
+                 data-es="Plataformas, apps e integraciones robustas y escalables, con foco en rendimiento y seguridad.">Plataformas, apps e integrações robustas e escaláveis, com foco em performance e segurança.</p>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais sobre Software à Medida"
+                    data-en="Learn more about Custom Software"
+                    data-es="Descubre más sobre Software a Medida">
+                Saiba mais sobre Software à Medida
+              </span>
+            </article>
+          </a>
+
+          <!-- UX/UI Design -->
+          <a href="servicos/ux-ui.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-icon service-icon--pink" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 4.5 7.5V16.5L12 21l7.5-4.5V7.5L12 3Z" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h3 data-pt="Design UX/UI"
+                  data-en="UX/UI Design"
+                  data-es="Diseño UX/UI">Design UX/UI</h3>
+              <p data-pt="Experiências intuitivas e consistentes: research, flows, UI kit e protótipos prontos a testar."
+                 data-en="Intuitive, consistent experiences: research, flows, UI kit and prototypes ready to test."
+                 data-es="Experiencias intuitivas y consistentes: research, flows, UI kit y prototipos listos para probar.">Experiências intuitivas e consistentes: research, flows, UI kit e protótipos prontos a testar.</p>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais sobre UX/UI Design"
+                    data-en="Learn more about UX/UI Design"
+                    data-es="Descubre más sobre UX/UI Design">
+                Saiba mais sobre UX/UI Design
+              </span>
+            </article>
+          </a>
+
+          <!-- Dedicated Teams -->
+          <a href="servicos/dedicated-teams.html" class="service-card-link">
+            <article class="service-card">
+              <div class="service-icon service-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </div>
+              <h3 data-pt="Equipas Dedicadas"
+                  data-en="Dedicated Teams"
+                  data-es="Equipos Dedicados">Equipas Dedicadas</h3>
+              <p data-pt="Uma equipa dedicada (dev, QA, design) integrada no teu ritmo, com gestão e reporting."
+                 data-en="A dedicated team (dev, QA, design) integrated into your pace, with management and reporting."
+                 data-es="Un equipo dedicado (dev, QA, diseño) integrado en tu ritmo, con gestión y reporting.">Uma equipa dedicada (dev, QA, design) integrada no teu ritmo, com gestão e reporting.</p>
+              <span class="service-card-cta"
+                    data-pt="Saiba mais sobre Equipas Dedicadas"
+                    data-en="Learn more about Dedicated Teams"
+                    data-es="Descubre más sobre Equipos Dedicados">
+                Saiba mais sobre Equipas Dedicadas
+              </span>
+            </article>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="footer-pro" role="contentinfo">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <!-- LOGO REMOVIDA - substituída por texto COBRAIT -->
+                        <h3 class="footer-brand-title">Cobrait</h3>
+                        <p class="footer-brand-subtitle">Software Factory</p>
+                        <p class="footer-tagline" data-pt="Criamos produtos digitais com foco em velocidade, qualidade e crescimento ? do scope ao lançamento." data-en="We build digital products focused on speed, quality and growth ? from scope to launch." data-es="Creamos productos digitales enfocados en velocidad, calidad y crecimiento ? del alcance al lanzamiento." data-fr="Nous créons des produits numériques axés sur la vitesse, la qualité et la croissance ? du champ d'application au lancement." data-de="Wir erstellen digitale Produkte, die auf Geschwindigkeit, Qualität und Wachstum ausgerichtet sind ? vom Umfang bis zum Start." data-ru="�S�9 создаем � и�Ѭов�9е пѬодђк?�9, оѬиен?иѬованн�9е на скоѬос?�R, ка?ес?во и Ѭос? ? о? опѬеделения об�`ема до запђска." data-nl="Wij bouwen digitale producten gericht op snelheid, kwaliteit en groei ? van scope tot lancering." data-ja="���&は?�?㒼?㬁-�質㬁�Ɛ�"�に?�?�?置��x??�?�㒫製-�?�S�Ɛ�ま�"??�?�㒼��9?0㒭㒼㒳㒁まで?" data-zh="��们��:建�"��产-��R-注�}�x度㬁质?��R�~�"�? �}�R��:��ư�帒?">
+                            Criamos produtos digitais com foco em velocidade, qualidade e crescimento ? do scope ao lançamento.
+                        </p>
+                        <div class="footer-cta-row">
+                            <a class="btn btn--primary btn--footer" href="book-a-call.html" data-pt="Agendar uma chamada" data-en="Book a call" data-es="Reservar una llamada" data-fr="Programmez un appel" data-de="Einen Anruf buchen" data-ru="�aнига в�9зов" data-nl="Een gesprek boeken" data-ja="�:�話���" data-zh="��a?�话">
+                                Agendar uma chamada
+                            </a>
+                            <a class="btn btn--outline btn--footer" href="#what-we-do" data-pt="Ver serviços" data-en="See services" data-es="Ver servicios" data-fr="Voir les services" data-de="Services anzeigen" data-ru="�xосмо?Ѭе?�R ђслђги" data-nl="Services zien" data-ja="?�㒼-?�?表示" data-zh="�x��S9�S��`�">
+                                Ver serviços
+                            </a>
+                        </div>
+                        <div class="footer-badges" aria-label="Highlights">
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Lean + Agile" data-en="Lean + Agile" data-es="Lean + Agile" data-fr="Lean + Agile" data-de="Lean + Agile" data-ru="Lean + Agile" data-nl="Lean + Agile" data-ja="Lean + Agile" data-zh="Lean + Agile">Lean + Agile</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Entrega rápida" data-en="Fast delivery" data-es="Entrega rápida" data-fr="Livraison rapide" data-de="Schnelle Lieferung" data-ru="��9с?Ѭая дос?авка" data-nl="Snelle levering" data-ja="�&�xな�&�鬁" data-zh="快�x交��">Entrega rápida</span></span>
+                            <span class="footer-badge"><span class="footer-badge-dot"></span><span data-pt="Qualidade" data-en="Quality" data-es="Calidad" data-fr="Qualité" data-de="Qualität" data-ru="�aа?ес?во" data-nl="Kwaliteit" data-ja="-�質" data-zh="质?�">Qualidade</span></span>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услђги" data-nl="Diensten" data-ja="?�㒼-?�" data-zh="�S��`�">Serviços</h4>
+                        <ul class="footer-links">
+                            <li><a href="servicos/product-scope.html">Product Scope</a></li>
+                            <li><a href="servicos/mvp-builder.html">MVP Builder</a></li>
+                            <li><a href="servicos/ux-ui.html">UX / UI</a></li>
+                            <li><a href="servicos/custom-software.html" data-pt="Software à Medida" data-en="Custom Software" data-es="Software a Medida" data-fr="Logiciel personnalisé" data-de="Benutzerdefinierte Software" data-ru="�аказное �x�~" data-nl="Aangepaste software" data-ja="?�?�?�㒠?��"��?�?�?�" data-zh="�a�ƶ软件">Software à Medida</a></li>
+                            <li><a href="servicos/dedicated-teams.html" data-pt="Equipas Dedicadas" data-en="Dedicated Teams" data-es="Equipos Dedicados" data-fr="?quipes dédiées" data-de="Dedizierte Teams" data-ru="��9деленн�9е команд�9" data-nl="Speciale teams" data-ja="?任㒁㒼㒠" data-zh="-�a�:���x">Equipas Dedicadas</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 data-pt="Empresa" data-en="Company" data-es="Empresa" data-fr="Entreprise" data-de="Unternehmen" data-ru="�aомпания" data-nl="Bedrijf" data-ja="�a社" data-zh="�&�司">Empresa</h4>
+                        <ul class="footer-links">
+                            <li><a href="about-us.html" data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros" data-fr="ì propos de nous" data-de="�Sber uns" data-ru="�~ нас" data-nl="Over ons" data-ja="私�xちにつ�て" data-zh="�&��}��们">Sobre nós</a></li>
+                            
+                            <li><a href="tech.html" data-pt="Tech" data-en="Tech" data-es="Tech" data-fr="Tech" data-de="Tech" data-ru="Tech" data-nl="Tech" data-ja="Tech" data-zh="Tech">Tech</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col footer-col--contact">
+                        <h4 data-pt="Contacto" data-en="Contact" data-es="Contacto" data-fr="Contact" data-de="Kontakt" data-ru="�aон?ак?�9" data-nl="Contact" data-ja="�`�"����?��:" data-zh="?系?式">Contacto</h4>
+                        <div class="footer-meta">
+                            <div>
+                                <span data-pt="Email:" data-en="Email:" data-es="Email:" data-fr="E-mail :" data-de="E-Mail:" data-ru="Email:" data-nl="E-mail:" data-ja="㒡㒼㒫:" data-zh="?�子?�件:">Email:</span>
+                                <a href="mailto:cobrait@geral.pt">cobrait@geral.pt</a>
+                            </div>
+                            <div>
+                                <span data-pt="Resposta:" data-en="Response:" data-es="Respuesta:" data-fr="Réponse:" data-de="Antwort:" data-ru="�~?ве?:" data-nl="Antwoord:" data-ja="?信:" data-zh="�:~复:">Resposta:</span>
+                                <span data-pt="normalmente em 24-48h" data-en="usually within 24-48h" data-es="normalmente en 24-48h" data-fr="généralement dans les 24-48 heures" data-de="normalerweise innerhalb von 24-48 Stunden" data-ru="об�9?но в ?е?ение 24-48 ?асов" data-nl="meestal binnen 24-48 uur" data-ja="�a常24�S48�"�以� &" data-zh="�a常�S�24-48小��� &">normalmente em 24-48h</span>
+                            </div>
+                            <div>
+                                <!-- LINK DO INSTAGRAM ADICIONADO AQUI -->
+                                <a href="https://instagram.com/cobra_it" target="_blank" class="social-link">
+                                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                    <span>@cobra_it</span>
+                                </a>
+                            </div>
+                            <div>
+                                <span data-pt="Preferes rápido?" data-en="Want it fast?" data-es="¿Lo quieres rápido?" data-fr="Vous le voulez vite?" data-de="Willst du es schnell?" data-ru="Хо?и?е б�9с?Ѭо?" data-nl="Wil je het snel?" data-ja="��く�`張?`で�"�9?" data-zh="撳要快�x�x">Preferes rápido?</span>
+                                <a href="book-a-call.html" data-pt="Marca uma call." data-en="Book a call." data-es="Reserva una llamada." data-fr="Réservez un appel." data-de="Buchen Sie einen Anruf." data-ru="�апланиѬова?�R звонок." data-nl="Boek een gesprek." data-ja="�a話?����"?9?" data-zh="�约�a话?">Marca uma call.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div>
+                        © <span id="year"></span> Cobrait ? Software Factory
+                    </div>
+                    <div class="footer-mini-links">
+                        <a href="privacidade.html" data-pt="Privacidade" data-en="Privacy" data-es="Privacidad" data-fr="Confidentialité" data-de="Datenschutz" data-ru="�aон�иден� иал�Rнос?�R" data-nl="Privacy" data-ja="�㒩?�㒐?�㒼" data-zh="�a�私">Privacidade</a>
+                        <a href="termos.html" data-pt="Termos" data-en="Terms" data-es="Términos" data-fr="Conditions" data-de="Bedingungen" data-ru="Условия" data-nl="Voorwaarden" data-ja="�Ʃ?�規�" data-zh="条款">Termos</a>
+                        <a href="cookies.html" data-pt="Cookies" data-en="Cookies" data-es="Cookies" data-fr="Cookies" data-de="Cookies" data-ru="Cookies" data-nl="Cookies" data-ja="Cookies" data-zh="Cookies">Cookies</a>
+                        <a href="#what-we-do" data-pt="Serviços" data-en="Services" data-es="Servicios" data-fr="Services" data-de="Dienstleistungen" data-ru="Услђги" data-nl="Services" data-ja="?�㒼-?�" data-zh="�S��`�">Serviços</a>
+                        <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" data-pt="Livro de Reclamações" data-en="Complaints Book" data-es="Libro de Reclamaciones" data-fr="Livre de réclamations" data-de="Beschwerdebuch" data-ru="�aнига жалоб" data-nl="Klachtenboek" data-ja="�9��&���帳" data-zh="�`"?簿">Livro de Reclamações</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function() {
+      // ====== DETECTAR PÁGINA ATUAL E MARCAR COMO ACTIVE ======
+      function setActivePage() {
+        const currentUrl = window.location.pathname.toLowerCase();
+        const navLinks = document.querySelectorAll('.site-nav a');
+        
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href').toLowerCase();
+          
+          // Remover hash para comparação
+          const hrefWithoutHash = href.split('#')[0];
+          
+          // Verificar se é a página atual
+          if (currentUrl.includes(hrefWithoutHash.replace('./', '').replace('../', ''))) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      setActivePage();
+      
+      const serviceCards = document.querySelectorAll('.service-card');
+      serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+      });
+
+      // ====== Normalização de idioma (evita pt-PT quebrar) ======
+      function normalizeLang(l) {
+        if (!l) return 'pt';
+        l = String(l).toLowerCase();
+        if (l === 'pt-pt' || l === 'pt_pt' || l === 'pt') return 'pt';
+        if (l.startsWith('en')) return 'en';
+        if (l.startsWith('es')) return 'es';
+        if (l.startsWith('fr')) return 'fr';
+        if (l.startsWith('de')) return 'de';
+        if (l.startsWith('ru')) return 'ru';
+        if (l.startsWith('nl')) return 'nl';
+        if (l.startsWith('ja')) return 'ja';
+        if (l.startsWith('zh')) return 'zh';
+        // Fallback para inglês para outras línguas
+        return 'en';
+      }
+
+      // Fechar dropdown ao clicar fora (mobile)
+      document.addEventListener('click', function(event) {
+        const dropdowns = document.querySelectorAll('.dropdown, .language-dropdown');
+        dropdowns.forEach(dropdown => {
+          if (!dropdown.contains(event.target)) {
+            const content = dropdown.querySelector('.dropdown-content, .language-dropdown-content');
+            if (content) content.style.display = 'none';
+          }
+        });
+      });
+
+      // ====== LANGUAGE SWITCHING CODE ======
+      const currentFlag = document.getElementById('currentFlag');
+      const currentLang = document.getElementById('currentLang');
+      const languageOptions = document.querySelectorAll('.language-option');
+      
+      const flagMap = {
+        'pt': '�x!��x!�',
+        'en': '�x!��x!�',
+        'es': '�x!��x!�',
+        'fr': '�x!��x!�',
+        'de': '�x!��x!�',
+        'ru': '�x!��x!�',
+        'nl': '�x!��x!�',
+        'ja': '�x!��x!�',
+        'zh': '�x!��x!�'
+      };
+      
+      const codeMap = {
+        'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH'
+      };
+      
+      // Carregar idioma salvo ou usar o padrão
+      const savedLanguage = localStorage.getItem('preferredLanguage') || 'pt';
+      applyLanguage(normalizeLang(savedLanguage));
+      setActiveLanguage(normalizeLang(savedLanguage));
+      
+      languageOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = normalizeLang(this.getAttribute('data-lang'));
+          applyLanguage(lang);
+          setActiveLanguage(lang);
+          localStorage.setItem('preferredLanguage', lang);
+        });
+      });
+      
+      function setActiveLanguage(lang) {
+        // Atualizar o botão do dropdown
+        if (flagMap[lang]) {
+          currentFlag.textContent = flagMap[lang];
+        } else {
+          currentFlag.textContent = '�x!��x!�'; // Fallback para bandeira UK
+        }
+        
+        if (codeMap[lang]) {
+          currentLang.textContent = codeMap[lang];
+        } else {
+          currentLang.textContent = 'EN'; // Fallback para EN
+        }
+        
+        // Atualizar as opções ativas
+        languageOptions.forEach(option => {
+          option.classList.remove('active');
+          if (normalizeLang(option.getAttribute('data-lang')) === lang) {
+            option.classList.add('active');
+          }
+        });
+      }
+      
+      function applyLanguage(lang) {
+        lang = normalizeLang(lang);
+        document.documentElement.lang = (lang === 'pt') ? 'pt-PT' : lang;
+        updateTextContent(lang);
+        updateAriaLabels(lang);
+      }
+      
+      function updateTextContent(lang) {
+        const elements = document.querySelectorAll('[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]');
+        elements.forEach(el => {
+          let text = el.getAttribute(`data-${lang}`);
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (text === null && lang !== 'en') {
+            text = el.getAttribute('data-en');
+          }
+          if (text === null) return;
+          
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = text;
+          } else if (el.hasAttribute('data-html')) {
+            el.innerHTML = text;
+          } else {
+            el.textContent = text;
+          }
+        });
+      }
+      
+      function updateAriaLabels(lang) {
+        const ariaEls = document.querySelectorAll('[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]');
+        ariaEls.forEach(el => {
+          let val = el.getAttribute(`data-${lang}`);
+          // Se não houver tradução para esta língua, usar inglês como fallback
+          if (val === null && lang !== 'en') {
+            val = el.getAttribute('data-en');
+          }
+          if (val) el.setAttribute('aria-label', val);
+        });
+      }
+
+      // ====== FALLBACK SCRIPT: Copiar data-en para idiomas em falta ======
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const languages = ['fr', 'de', 'ru', 'nl', 'ja', 'zh'];
+        languages.forEach(lang => {
+          if (!el.hasAttribute(`data-${lang}`)) {
+            el.setAttribute(`data-${lang}`, el.getAttribute('data-en'));
+          }
+        });
+      });
+    });
+  </script>
+  <script src="assets/js/static-content.js"></script>
+</body>
 </html>
+
+
+
+
+

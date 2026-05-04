@@ -2,6 +2,8 @@
 
 Este site ficou preparado para edicoes simples em modo estatico.
 
+Para publicar ou reiniciar a aplicacao Node no cPanel, ver `CPANEL-DEPLOY.md`.
+
 O ficheiro principal para alterar textos e contactos e:
 
 - `assets/data/site-content.json`

@@ -1,0 +1,25 @@
+{
+  "name": "cobrait-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "COBRAIT website and admin API for cPanel Node.js App",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "check": "node --check app.js && node --check server/src/server.js && node --check server/src/app.js && node --check server/src/routes/auth.routes.js && node --check server/src/routes/users.routes.js",
+    "mysql:setup": "node server/scripts/setup-mysql.js",
+    "mysql:migrate-file": "node server/scripts/migrate-file-storage-to-mysql.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.2",
+    "pg": "^8.13.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
