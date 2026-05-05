@@ -5,3 +5,4 @@ server/.env
 server/data/*.json
 server/server/data/*.json
 .codex-logs/
+.local-tools/
