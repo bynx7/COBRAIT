@@ -223,7 +223,7 @@ a:hover {
   font-family: Poppins, Inter, system-ui, Arial, sans-serif;
   font-weight: 800;
   line-height: 0.98;
-  letter-spacing: -1px;
+  letter-spacing: 0;
   font-size: clamp(40px, 6.8vw, 82px);
 }
 
@@ -410,7 +410,7 @@ h2 {
   font-family: Poppins, Inter, system-ui, Arial, sans-serif;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: #0f172a;
 }
 
@@ -486,7 +486,7 @@ h2 {
   display: block;
   font-weight: 900;
   color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-size: 18px;
   line-height: 1.15;
   margin-bottom: 4px;
@@ -588,7 +588,7 @@ h2 {
   font-family: Poppins, Inter, system-ui, Arial, sans-serif;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: #0f172a;
 }
 
@@ -663,7 +663,7 @@ h2 {
   display: block;
   font-weight: 900;
   color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-size: 18px;
   line-height: 1.15;
   margin-bottom: 4px;
@@ -1282,7 +1282,7 @@ html {
 
   .hero-title {
     font-size: clamp(2.1rem, 11vw, 3rem);
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
 
   .hero-sub {

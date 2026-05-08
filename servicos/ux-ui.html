@@ -20,7 +20,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UX / UI - COBRA IT</title>
+  <title>UX/UI | Cobrait</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
 
   <!-- Fonts (igual ao site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -49,7 +52,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
       line-height: 1;
       margin: 0;
     }
@@ -732,7 +735,7 @@
       font-family: Poppins, Inter, system-ui, Arial, sans-serif;
       font-size: clamp(44px, 5vw, 72px);
       line-height: 1.02;
-      letter-spacing: -0.035em;
+      letter-spacing: 0;
       margin: 0 0 14px;
       color:#0b1220;
     }
@@ -971,7 +974,7 @@
       color: #0b1220;
       font-size: clamp(18px, 1.9vw, 24px);
       line-height: 1.05;
-      letter-spacing: -.03em;
+      letter-spacing: 0;
       font-weight: 900;
     }
     .wire-copy__text{
@@ -1032,7 +1035,7 @@
       font-size: 26px;
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -.04em;
+      letter-spacing: 0;
     }
     .wire-preview__label{
       color: #64748b;
@@ -1108,7 +1111,7 @@
       font-size: 15px;
       line-height: 1.2;
       font-weight: 800;
-      letter-spacing: -.02em;
+      letter-spacing: 0;
     }
     .wire-list{
       list-style: none;
@@ -1329,7 +1332,7 @@
       font-size: 16px;
       line-height: 1.18;
       font-weight: 800;
-      letter-spacing: -.02em;
+      letter-spacing: 0;
     }
     .ux-preview__meta{
       color: #64748b;
@@ -1405,7 +1408,7 @@
     .section-title{
       font-family: Poppins, Inter, system-ui, Arial, sans-serif;
       font-weight: 900;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       font-size: clamp(34px, 3.2vw, 50px);
       text-align: center;
       margin: 0 0 44px;
@@ -1431,7 +1434,7 @@
       font-family: Poppins, Inter, system-ui, Arial, sans-serif;
       font-weight: 900;
       font-size: 30px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       margin: 0 0 10px;
       color: #0b1220;
     }
@@ -1472,7 +1475,7 @@
     .benefit h3{
       margin: 0;
       font-size: 22px;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
       color: #0b1220;
       font-weight: 900;
     }
@@ -1595,7 +1598,7 @@
       font-weight: 900;
       font-size: 28px;
       margin: 0 0 10px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       color: #0b1220;
     }
 
@@ -1627,7 +1630,7 @@
       font-weight: 900;
       font-size: clamp(28px, 2.6vw, 40px);
       margin: 0 0 10px;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
       color: #0b1220;
     }
     .final-cta p{
@@ -1908,22 +1911,22 @@
                 <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+                        <span class="lang-flag" id="currentFlag">PT</span>
                         <span class="lang-code" id="currentLang">PT</span>
                         <span class="dropdown-arrow">&#9662;</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">PT</span>
                             <span class="lang-name">Português</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">EN</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">ES</span>
                             <span class="lang-name">Español</span>
                         </button>
                     </div>
@@ -2330,8 +2333,16 @@
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
 
-      const flagMap = { 'pt': '�x!��x!�', 'en': '�x!��x!�', 'es': '�x!��x!�', 'fr': '�x!��x!�', 'de': '�x!��x!�', 'ru': '�x!��x!�', 'nl': '�x!��x!�', 'ja': '�x!��x!�', 'zh': '�x!��x!�' };
-      const codeMap = { 'pt': 'PT', 'en': 'EN', 'es': 'ES', 'fr': 'FR', 'de': 'DE', 'ru': 'RU', 'nl': 'NL', 'ja': 'JA', 'zh': 'ZH' };
+      const flagMap = { pt: 'PT', en: 'EN', es: 'ES', fr: 'FR', de: 'DE', ru: 'RU', nl: 'NL', ja: 'JA', zh: 'ZH' };
+      const codeMap = { 'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH' };
 
       function normalizeLang(l) {
         if (!l) return 'pt';

@@ -20,17 +20,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cobra IT - Custom Software Development</title>
+  <title>Software à Medida | Cobrait</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <meta name="description" content="Desenvolvimento de Software à Medida - Cobra IT. UX/UI, tecnologia certa e desenvolvimento robusto." />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
 
   <link rel="stylesheet" href="../assets/css/styles.css">
 
-  <!-- �S& HEADER + FOOTER : IGUAL AO BOOK-A-CALL.HTML  -->
+  <!-- Header e footer -->
   <style>
     /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
     .logo-text-brand {
@@ -48,7 +51,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
       line-height: 1;
       margin: 0;
     }
@@ -663,7 +666,7 @@
             }
         }
     </style>
-  <!-- �S& ESTILOS ESPECÍFICOS DO CUSTOM SOFTWARE -->
+  <!-- Estilos específicos do Custom Software -->
   <style>
     /* ======= CSS DA PÁGINA ======= */
     .csd-hero{
@@ -747,7 +750,7 @@
       font-weight:800;
       font-size:clamp(2.45rem, 4.2vw, 3.95rem);
       line-height:1.04;
-      letter-spacing:-.04em;
+      letter-spacing: 0;
       color:#0f172a;
       margin:0 0 16px;
       max-width:12ch;
@@ -1495,7 +1498,7 @@
 </head>
 
 <body>
-  <!-- �S& HEADER IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- Header -->
   <header class="site-header">
         <div class="container header-inner">
             <!-- LOGO SUBSTITUÍDA POR TEXTO "COBRA IT" -->
@@ -1642,22 +1645,22 @@
                 <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+                        <span class="lang-flag" id="currentFlag">PT</span>
                         <span class="lang-code" id="currentLang">PT</span>
                         <span class="dropdown-arrow">&#9662;</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">PT</span>
                             <span class="lang-name">Português</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">EN</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">ES</span>
                             <span class="lang-name">Español</span>
                         </button>
                     </div>
@@ -2264,7 +2267,7 @@
     </section>
   </main>
 
-  <!-- �S& FOOTER IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- Footer -->
   <footer class="footer-pro" role="contentinfo">
             <div class="container">
                 <div class="footer-top">
@@ -2349,7 +2352,7 @@
             </div>
         </footer>
 
-  <!-- �S& SCRIPT DE LÍNGUAS IGUAL AO BOOK-A-CALL.HTML -->
+  <!-- Script de idiomas -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -2407,17 +2410,7 @@
       const currentFlag = document.getElementById('currentFlag');
       const currentLang = document.getElementById('currentLang');
       
-      const flagMap = {
-        'pt': '�x!��x!�',
-        'en': '�x!��x!�',
-        'es': '�x!��x!�',
-        'fr': '�x!��x!�',
-        'de': '�x!��x!�',
-        'ru': '�x!��x!�',
-        'nl': '�x!��x!�',
-        'ja': '�x!��x!�',
-        'zh': '�x!��x!�'
-      };
+      const flagMap = { pt: 'PT', en: 'EN', es: 'ES', fr: 'FR', de: 'DE', ru: 'RU', nl: 'NL', ja: 'JA', zh: 'ZH' };
       
       const codeMap = {
         'pt': 'PT',
@@ -2448,7 +2441,7 @@
         if (flagMap[lang]) {
           currentFlag.textContent = flagMap[lang];
         } else {
-          currentFlag.textContent = '�x!��x!�';
+          currentFlag.textContent = 'PT';
         }
         
         if (codeMap[lang]) {

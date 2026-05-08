@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>COBRA IT - About Us</title>
+  <title>Cobrait | Sobre nós</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,11 @@
   <meta name="description" content="Sobre a COBRA IT - equipa, abordagem e valores." />
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+  <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
   <script src="assets/js/apply-translations.js"></script>
 
-  <!-- ? STYLE DA NAVBAR IGUAL AO BOOK-A-CALL -->
+  <!-- Estilos da navbar -->
   <style>
     /* NOVO ESTILO PARA LOGO DE TEXTO "COBRA IT" */
     .logo-text-brand {
@@ -33,7 +35,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
       line-height: 1;
       margin: 0;
     }
@@ -1436,22 +1438,22 @@
                 <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+                        <span class="lang-flag" id="currentFlag">PT</span>
                         <span class="lang-code" id="currentLang">PT</span>
                         <span class="dropdown-arrow">&#9662;</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">PT</span>
                             <span class="lang-name">Português</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">EN</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">ES</span>
                             <span class="lang-name">Español</span>
                         </button>
                     </div>
@@ -2039,17 +2041,7 @@
       const currentLang = document.getElementById('currentLang');
       
       // Mapeamento de bandeiras para cada língua
-      const flagMap = {
-        'pt': '�x!��x!�',
-        'en': '�x!��x!�',
-        'es': '�x!��x!�',
-        'fr': '�x!��x!�',
-        'de': '�x!��x!�',
-        'ru': '�x!��x!�',
-        'nl': '�x!��x!�',
-        'ja': '�x!��x!�',
-        'zh': '�x!��x!�'
-      };
+      const flagMap = { pt: 'PT', en: 'EN', es: 'ES', fr: 'FR', de: 'DE', ru: 'RU', nl: 'NL', ja: 'JA', zh: 'ZH' };
       
       // Mapeamento de códigos curtos
       const codeMap = {
@@ -2100,7 +2092,7 @@
         if (flagMap[lang]) {
           currentFlag.textContent = flagMap[lang];
         } else {
-          currentFlag.textContent = '�x!��x!�';
+          currentFlag.textContent = 'PT';
         }
         
         if (codeMap[lang]) {

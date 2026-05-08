@@ -54,7 +54,7 @@
   font-weight: 800;
   font-size: clamp(32px, 4vw, 54px);
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: #0f172a;
   text-align: center;
   margin: 0 0 28px;
@@ -105,7 +105,7 @@
   font-size: 22px;
   line-height: 1.2;
   color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .servicos-page .service-card p {
@@ -184,7 +184,7 @@
   margin: 0 0 6px;
   font-size: 18px;
   color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .servicos-page .why-card p {
@@ -287,7 +287,7 @@
     sans-serif;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: #0f172a;
 }
 
@@ -361,7 +361,7 @@
   display: block;
   font-weight: 800;
   color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   font-size: 18px;
   line-height: 1.15;
   margin-bottom: 4px;

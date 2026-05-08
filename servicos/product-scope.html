@@ -20,7 +20,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Scope - COBRAIT</title>
+  <title>Product Scope | Cobrait</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="../assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
 
   <!-- Fonts (igual ao site) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +54,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
       line-height: 1;
       margin: 0;
     }
@@ -487,7 +490,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: clamp(2rem, 3.2vw, 3rem);
       margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
+      letter-spacing: 0;
     }
 
     .service-hero .subtitle {
@@ -546,7 +549,7 @@
       margin-bottom: 0.9rem;
       border-left: 4px solid #4f46e5;
       padding-left: 14px;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
     }
 
     .service-section h3 {
@@ -649,7 +652,7 @@
       color: #0f172a;
       margin-bottom: 0.75rem;
       font-family: 'Poppins', sans-serif;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
     }
 
     .cta-section p { color: #475569; margin-bottom: 1.2rem; }
@@ -966,7 +969,7 @@ footer.footer-pro .btn.btn--outline:hover {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .scope-highlight p {
@@ -1350,22 +1353,22 @@ footer.footer-pro .btn.btn--outline:hover {
                 <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
                 <div class="language-dropdown">
                     <button class="language-dropdown-btn" aria-label="Select language">
-                        <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+                        <span class="lang-flag" id="currentFlag">PT</span>
                         <span class="lang-code" id="currentLang">PT</span>
                         <span class="dropdown-arrow">?</span>
                     </button>
                     
                     <div class="language-dropdown-content">
                         <button class="language-option active" data-lang="pt">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">PT</span>
                             <span class="lang-name">Português</span>
                         </button>
                         <button class="language-option" data-lang="en">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">EN</span>
                             <span class="lang-name">English</span>
                         </button>
                         <button class="language-option" data-lang="es">
-                            <span class="lang-flag">�x!��x!�</span>
+                            <span class="lang-flag">ES</span>
                             <span class="lang-name">Español</span>
                         </button>
                     </div>
@@ -2091,10 +2094,18 @@ footer.footer-pro .btn.btn--outline:hover {
       const currentLang = document.getElementById('currentLang');
 
       // Mapeamento de bandeiras para cada língua
-      const flagMap = { 'pt': '�x!��x!�', 'en': '�x!��x!�', 'es': '�x!��x!�', 'fr': '�x!��x!�', 'de': '�x!��x!�', 'ru': '�x!��x!�', 'nl': '�x!��x!�', 'ja': '�x!��x!�', 'zh': '�x!��x!�' };
+      const flagMap = { pt: 'PT', en: 'EN', es: 'ES', fr: 'FR', de: 'DE', ru: 'RU', nl: 'NL', ja: 'JA', zh: 'ZH' };
 
       // Mapeamento de códigos curtos
-      const codeMap = { 'pt': 'PT', 'en': 'EN', 'es': 'ES', 'fr': 'FR', 'de': 'DE', 'ru': 'RU', 'nl': 'NL', 'ja': 'JA', 'zh': 'ZH' };
+      const codeMap = { 'pt': 'PT',
+        'en': 'EN',
+        'es': 'ES',
+        'fr': 'FR',
+        'de': 'DE',
+        'ru': 'RU',
+        'nl': 'NL',
+        'ja': 'JA',
+        'zh': 'ZH' };
 
       // Carregar língua salva ou usar portugu?s por padr?o
       const savedLanguage = normalizeLang(localStorage.getItem('preferredLanguage'));

@@ -369,7 +369,7 @@ main section {
   .site-header .logo-text-main {
     font-size: clamp(1.5rem, 7.2vw, 1.9rem) !important;
     line-height: 0.92 !important;
-    letter-spacing: -0.04em !important;
+    letter-spacing: 0 !important;
   }
 
   .site-header .logo-text-tagline {
@@ -603,7 +603,7 @@ main section {
     box-shadow: 0 10px 22px rgba(15, 23, 42, 0.05) !important;
     font-weight: 700 !important;
     font-size: 1rem !important;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   .site-header .site-nav > ul > li > a::after,
@@ -968,14 +968,14 @@ main section {
   h1 {
     font-size: clamp(2.25rem, 7.2vw, 3.4rem) !important;
     line-height: 1.06 !important;
-    letter-spacing: -0.035em !important;
+    letter-spacing: 0 !important;
   }
 
   h2,
   .pricing-h2 {
     font-size: clamp(1.72rem, 5.8vw, 2.35rem) !important;
     line-height: 1.14 !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: 0 !important;
   }
 
   h3 {
@@ -1288,7 +1288,7 @@ main section {
     overflow-wrap: anywhere;
     font-size: clamp(1.82rem, 8.4vw, 2.45rem) !important;
     line-height: 1.08 !important;
-    letter-spacing: -0.035em !important;
+    letter-spacing: 0 !important;
   }
 
   h2,
@@ -1496,7 +1496,7 @@ main section {
     max-width: none !important;
     font-size: clamp(1.95rem, 8.9vw, 2.85rem) !important;
     line-height: 1.02 !important;
-    letter-spacing: -0.045em !important;
+    letter-spacing: 0 !important;
     margin-bottom: 14px !important;
     text-wrap: balance;
   }

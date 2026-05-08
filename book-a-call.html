@@ -33,6 +33,9 @@
       name="description"
       content="Agenda uma chamada com a Cobrait. Vamos falar sobre o teu projeto."
     />
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicon/site.webmanifest">
 
     <!-- Identidade geral -->
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -40,7 +43,7 @@
     <link rel="stylesheet" href="assets/css/book-a-call.css" />
     <script src="assets/js/apply-translations.js"></script>
 
-    <!-- ? OVERRIDES - BOT�"ES EXATAMENTE IGUAIS AO INDEX -->
+    <!-- Ajustes visuais dos botões -->
     <style>
       /* ===== BOT?O PRIMARY - EXATAMENTE IGUAL AO INDEX ===== */
       .btn--primary,
@@ -155,7 +158,7 @@
         font-family: Poppins, Inter, system-ui, Arial, sans-serif;
         font-weight: 800;
         font-size: 16px;
-        letter-spacing: -0.2px;
+        letter-spacing: 0;
         color: #0b1220;
       }
       .form-success p {
@@ -190,7 +193,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.5px;
+      letter-spacing: 0;
       line-height: 1;
       margin: 0;
     }
@@ -524,7 +527,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        letter-spacing: -0.5px;
+        letter-spacing: 0;
         line-height: 1;
         margin: 0;
       }
@@ -1779,22 +1782,22 @@
           <!-- DROPDOWN DE LÍNGUAS - TODAS AS 9 LÍNGUAS -->
           <div class="language-dropdown">
             <button class="language-dropdown-btn" aria-label="Select language">
-              <span class="lang-flag" id="currentFlag">�x!��x!�</span>
+              <span class="lang-flag" id="currentFlag">PT</span>
               <span class="lang-code" id="currentLang">PT</span>
                         <span class="dropdown-arrow">&#9662;</span>
             </button>
 
             <div class="language-dropdown-content">
               <button class="language-option active" data-lang="pt">
-                <span class="lang-flag">�x!��x!�</span>
+                <span class="lang-flag">PT</span>
                 <span class="lang-name">Português</span>
               </button>
               <button class="language-option" data-lang="en">
-                <span class="lang-flag">�x!��x!�</span>
+                <span class="lang-flag">EN</span>
                 <span class="lang-name">English</span>
               </button>
               <button class="language-option" data-lang="es">
-                <span class="lang-flag">�x!��x!�</span>
+                <span class="lang-flag">ES</span>
                 <span class="lang-name">Español</span>
               </button>
             </div>
@@ -2051,10 +2054,10 @@
 
                 <label class="field">
                   <span
-                    data-pt="Orcamento"
+                    data-pt="Orçamento"
                     data-en="Budget Size"
                     data-es="Presupuesto"
-                    >Orcamento</span
+                    >Orçamento</span
                   >
                   <select name="budget" required>
                     <option
@@ -2691,17 +2694,7 @@
         const currentLang = document.getElementById("currentLang");
 
         // Mapeamento de bandeiras para cada língua
-        const flagMap = {
-          pt: "�x!��x!�",
-          en: "�x!��x!�",
-          es: "�x!��x!�",
-          fr: "�x!��x!�",
-          de: "�x!��x!�",
-          ru: "�x!��x!�",
-          nl: "�x!��x!�",
-          ja: "�x!��x!�",
-          zh: "�x!��x!�",
-        };
+        const flagMap = { pt: 'PT', en: 'EN', es: 'ES', fr: 'FR', de: 'DE', ru: 'RU', nl: 'NL', ja: 'JA', zh: 'ZH' };
 
         // Mapeamento de c?digos curtos
         const codeMap = {
@@ -2754,7 +2747,7 @@
           if (flagMap[lang]) {
             currentFlag.textContent = flagMap[lang];
           } else {
-            currentFlag.textContent = "�x!��x!�";
+            currentFlag.textContent = 'PT';
           }
 
           if (codeMap[lang]) {
@@ -2845,4 +2838,3 @@
   <script src="assets/js/cms-inline-editor.js"></script>
   </body>
 </html>
-

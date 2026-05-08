@@ -10,7 +10,7 @@
  * - Garantir fallback para idioma EN quando tradução específica não existir.
  */
 // sync: github-desktop-update
-// Cobrait Translation Loader - garante idiomas do dropdown em todas as paginas
+// Cobrait Translation Loader - garante idiomas do dropdown em todas as páginas
 
 if (!window.__cobraitTranslationBooted) {
   window.__cobraitTranslationBooted = true;
@@ -123,7 +123,7 @@ if (!window.__cobraitTranslationBooted) {
       if (footerTagline) {
         footerTagline.setAttribute(
           "data-pt",
-          "Criamos produtos digitais com foco em velocidade, qualidade e crescimento, do scope ao lancamento.",
+          "Criamos produtos digitais com foco em velocidade, qualidade e crescimento, do scope ao lançamento.",
         );
         footerTagline.setAttribute(
           "data-en",

@@ -8,6 +8,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>COBRAIT Admin</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicon/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -42,7 +45,7 @@
         radial-gradient(840px 350px at 96% 0%, rgba(15, 182, 166, 0.14), transparent 66%),
         linear-gradient(180deg, #f7fbff 0%, var(--bg) 100%);
     }
-    h1, h2, h3 { margin: 0; font-family: "Sora", "Manrope", sans-serif; letter-spacing: -0.02em; }
+    h1, h2, h3 { margin: 0; font-family: "Sora", "Manrope", sans-serif; letter-spacing: 0; }
     a { color: inherit; }
     button, input, select { font: inherit; }
 
@@ -259,7 +262,7 @@
         <div class="auth-mark">C</div>
         <div>
           <h2>COBRAIT Admin Access</h2>
-          <p class="muted">Autenticacao real via API e base de dados Postgres.</p>
+          <p class="muted">Autenticação real via API e armazenamento configurado no servidor.</p>
         </div>
       </div>
       <h1>Entrar no painel</h1>
@@ -272,7 +275,7 @@
       <input id="adminPass" class="input" type="password" placeholder="Introduz a password" autocomplete="current-password" />
       <button id="loginBtn" class="btn btn-primary" type="button">Entrar</button>
       <div id="loginError" class="err"></div>
-      <p class="hint">Se ainda nao existir nenhum admin, define <code>ADMIN_EMAIL</code> e <code>ADMIN_PASSWORD</code> em <code>server/.env</code> e arranca a API.</p>
+      <p class="hint">Se ainda não existir nenhum admin, define <code>ADMIN_EMAIL</code> e <code>ADMIN_PASSWORD</code> nas variáveis de ambiente da app Node e reinicia a API.</p>
     </section>
 
     <section id="adminSection" class="hidden">
@@ -280,7 +283,7 @@
         <div>
           <div class="muted" style="font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#2371dd;">Control Center</div>
           <h1 style="font-size:clamp(21px,2.5vw,27px);margin-bottom:2px;">COBRAIT Admin</h1>
-          <div id="sessionInfo" class="muted">Sessao ativa</div>
+          <div id="sessionInfo" class="muted">Sessão ativa</div>
         </div>
         <div class="topbar-actions">
           <div id="sessionRole" class="pill pill--info">viewer</div>
@@ -290,8 +293,8 @@
       </header>
 
       <section class="kpis">
-        <article class="kpi card"><b id="kpiTotal">0</b><div class="kpi-label">Paginas mapeadas</div></article>
-        <article class="kpi card"><b id="kpiServicos">0</b><div class="kpi-label">Paginas de servicos</div></article>
+        <article class="kpi card"><b id="kpiTotal">0</b><div class="kpi-label">Páginas mapeadas</div></article>
+        <article class="kpi card"><b id="kpiServicos">0</b><div class="kpi-label">Páginas de serviços</div></article>
         <article class="kpi card"><b id="kpiChecks">0</b><div class="kpi-label">Checks title OK</div></article>
         <article class="kpi card"><b id="kpiUsers">-</b><div class="kpi-label">Utilizadores ativos</div></article>
         <article class="kpi card"><b id="kpiBookings">-</b><div class="kpi-label">Chamadas novas</div></article>
@@ -302,8 +305,8 @@
         <section class="panel card">
           <div class="panel-head">
             <div>
-              <h2 style="font-size:21px;margin-bottom:4px;">Todas as paginas</h2>
-              <p class="muted">Acesso direto a cada pagina do projeto.</p>
+              <h2 style="font-size:21px;margin-bottom:4px;">Todas as páginas</h2>
+              <p class="muted">Acesso direto a cada página do projeto.</p>
             </div>
             <div class="panel-actions">
               <input id="pagesFilter" class="search" type="search" placeholder="Filtrar por nome, path ou grupo" />
@@ -315,8 +318,8 @@
         <section class="panel card">
           <div class="panel-head">
             <div>
-              <h2 style="font-size:21px;margin-bottom:4px;">Estado rapido</h2>
-              <p class="muted">Verifica se cada pagina responde e tem a tag title.</p>
+              <h2 style="font-size:21px;margin-bottom:4px;">Estado rápido</h2>
+              <p class="muted">Verifica se cada página responde e tem a tag title.</p>
             </div>
             <div class="panel-actions">
               <button id="rerunChecksBtn" class="btn btn-soft" type="button">Revalidar</button>
@@ -331,7 +334,7 @@
           <div class="panel-head">
             <div>
               <h2 style="font-size:21px;margin-bottom:4px;">Utilizadores</h2>
-              <p id="usersMeta" class="muted">Contas gravadas em Postgres para o painel admin.</p>
+              <p id="usersMeta" class="muted">Contas gravadas no armazenamento configurado para o painel admin.</p>
             </div>
             <div class="panel-actions">
               <button id="refreshUsersBtn" class="btn btn-soft" type="button">Atualizar</button>
@@ -380,15 +383,15 @@
               </div>
               <div class="span-2">
                 <label class="field-label" for="userPassword">Password</label>
-                <input id="userPassword" class="input" type="password" placeholder="Minimo 8 caracteres" autocomplete="new-password" />
-                <div id="userPasswordHint" class="form-note">Obrigatoria ao criar um novo utilizador.</div>
+                <input id="userPassword" class="input" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" />
+                <div id="userPasswordHint" class="form-note">Obrigatória ao criar um novo utilizador.</div>
               </div>
             </div>
             <div class="panel-actions">
               <button id="saveUserBtn" class="btn btn-primary" type="submit">Criar utilizador</button>
             </div>
           </form>
-          <div class="panel-footer">Cada utilizador criado aqui e inserido na tabela <code>admin_users</code> do PostgreSQL. A API protege a sessao com cookie HTTP-only e pode ser estendida para listar tambem <code>contact_requests</code> e <code>call_bookings</code>.</div>
+          <div class="panel-footer">Cada utilizador criado aqui é guardado em <code>admin_users</code>. A API protege a sessão com cookie HTTP-only e lista também <code>contact_requests</code> e <code>call_bookings</code>.</div>
         </section>
       </section>
 
@@ -397,7 +400,7 @@
           <div class="panel-head">
             <div>
               <h2 style="font-size:21px;margin-bottom:4px;">Agendar chamadas</h2>
-              <p id="bookingsMeta" class="muted">Pedidos recebidos pelo formulario do site.</p>
+              <p id="bookingsMeta" class="muted">Pedidos recebidos pelo formulário do site.</p>
             </div>
             <div class="panel-actions">
               <input id="bookingsFilter" class="search search--compact" type="search" placeholder="Filtrar por nome, email ou estado" />
@@ -433,7 +436,7 @@
       { path: "book-a-call.html", label: "Book a Call", group: "core" },
       { path: "careers.html", label: "Careers", group: "core" },
       { path: "tech.html", label: "Tech", group: "core" },
-      { path: "servicos.html", label: "Servicos", group: "core" },
+      { path: "servicos.html", label: "Serviços", group: "core" },
       { path: "privacidade.html", label: "Privacidade", group: "legal" },
       { path: "termos.html", label: "Termos", group: "legal" },
       { path: "cookies.html", label: "Cookies", group: "legal" },
@@ -659,9 +662,9 @@
     }
 
     function checkLabel(ok, hasTitle) {
-      if (ok && hasTitle) return "Disponivel | Titulo validado";
-      if (ok && !hasTitle) return "Disponivel | Falta titulo";
-      return "Pagina indisponivel";
+      if (ok && hasTitle) return "Disponível | Título validado";
+      if (ok && !hasTitle) return "Disponível | Falta título";
+      return "Página indisponível";
     }
 
     async function runChecks() {
@@ -705,7 +708,7 @@
       if (!state.users.length) {
         usersMeta.textContent = "0 utilizadores registados.";
         kpiUsers.textContent = "0";
-        renderEmptyUsers("Ainda nao existem utilizadores.");
+        renderEmptyUsers("Ainda não existem utilizadores.");
         return;
       }
       const activeUsers = state.users.filter((user) => user.isActive).length;
@@ -719,8 +722,8 @@
         item.innerHTML =
           '<div class="item-main"><div class="item-title">' + escapeHtml(user.fullName) +
           '<span class="badge" data-role="' + escapeHtml(user.role) + '">' + escapeHtml(user.role) + '</span><span class="' + (user.isActive ? "pill pill--ok" : "pill pill--bad") + '">' + (user.isActive ? "ativo" : "inativo") + '</span>' +
-          (current ? '<span class="pill pill--info">sessao atual</span>' : "") +
-          '</div><div class="item-meta">' + escapeHtml(user.email) + '</div><div class="item-meta">Ultimo login: ' + escapeHtml(formatDate(user.lastLoginAt)) + " | Criado: " + escapeHtml(formatDate(user.createdAt)) +
+          (current ? '<span class="pill pill--info">sessão atual</span>' : "") +
+          '</div><div class="item-meta">' + escapeHtml(user.email) + '</div><div class="item-meta">Último login: ' + escapeHtml(formatDate(user.lastLoginAt)) + " | Criado: " + escapeHtml(formatDate(user.createdAt)) +
           '</div></div><div class="item-actions"><button class="btn btn-soft" type="button" data-action="edit" data-id="' + escapeHtml(user.id) + '">Editar</button><button class="btn btn-soft" type="button" data-action="toggle" data-id="' + escapeHtml(user.id) + '">' + (user.isActive ? "Desativar" : "Ativar") + "</button></div>";
         usersList.appendChild(item);
       });
@@ -794,7 +797,7 @@
 
       if (!state.callBookings.length) {
         bookingsMeta.textContent = "0 pedidos de agendamento recebidos.";
-        renderEmptyList(bookingsList, "Ainda nao existem pedidos de chamada.");
+        renderEmptyList(bookingsList, "Ainda não existem pedidos de chamada.");
         updateOpsKpis();
         return;
       }
@@ -802,13 +805,13 @@
       bookingsMeta.textContent =
         (currentBookings.length === state.callBookings.length
           ? state.callBookings.length + " pedidos guardados no backoffice."
-          : currentBookings.length + " de " + state.callBookings.length + " pedidos visiveis.") +
+          : currentBookings.length + " de " + state.callBookings.length + " pedidos visíveis.") +
         " " +
         state.callBookings.filter((booking) => booking.status === "new").length +
         " novos no total.";
 
       if (!currentBookings.length) {
-        renderEmptyList(bookingsList, bookingsQuery ? "Sem resultados para o filtro aplicado." : "Ainda nao existem pedidos de chamada.");
+        renderEmptyList(bookingsList, bookingsQuery ? "Sem resultados para o filtro aplicado." : "Ainda não existem pedidos de chamada.");
         updateOpsKpis();
         return;
       }
@@ -820,11 +823,11 @@
           booking.email,
           booking.phone ? "Telefone: " + booking.phone : "",
           booking.company ? "Empresa: " + booking.company : "",
-          booking.budgetRange ? "Orcamento: " + booking.budgetRange : "",
+          booking.budgetRange ? "Orçamento: " + booking.budgetRange : "",
           booking.preferredDate ? "Data: " + booking.preferredDate : "",
           booking.serviceInterest ? "Interesse: " + booking.serviceInterest : "",
           booking.sourceCampaign ? "Origem: " + booking.sourceCampaign : "",
-          booking.sourcePage ? "Pagina: " + booking.sourcePage : ""
+          booking.sourcePage ? "Página: " + booking.sourcePage : ""
         ]);
         item.innerHTML =
           '<div class="item-main"><div class="item-title">' + escapeHtml(booking.fullName) +
@@ -847,7 +850,7 @@
 
       if (!state.contactRequests.length) {
         contactsMeta.textContent = "0 pedidos de contacto recebidos.";
-        renderEmptyList(contactsList, "Ainda nao existem pedidos de contacto.");
+        renderEmptyList(contactsList, "Ainda não existem pedidos de contacto.");
         updateOpsKpis();
         return;
       }
@@ -855,13 +858,13 @@
       contactsMeta.textContent =
         (currentContacts.length === state.contactRequests.length
           ? state.contactRequests.length + " leads guardadas no backoffice."
-          : currentContacts.length + " de " + state.contactRequests.length + " leads visiveis.") +
+          : currentContacts.length + " de " + state.contactRequests.length + " leads visíveis.") +
         " " +
         state.contactRequests.filter((contact) => contact.status === "new").length +
         " novas no total.";
 
       if (!currentContacts.length) {
-        renderEmptyList(contactsList, contactsQuery ? "Sem resultados para o filtro aplicado." : "Ainda nao existem pedidos de contacto.");
+        renderEmptyList(contactsList, contactsQuery ? "Sem resultados para o filtro aplicado." : "Ainda não existem pedidos de contacto.");
         updateOpsKpis();
         return;
       }
@@ -875,7 +878,7 @@
           contact.company ? "Empresa: " + contact.company : "",
           contact.subject ? "Assunto: " + contact.subject : "",
           contact.sourceCampaign ? "Origem: " + contact.sourceCampaign : "",
-          contact.sourcePage ? "Pagina: " + contact.sourcePage : ""
+          contact.sourcePage ? "Página: " + contact.sourcePage : ""
         ]);
         item.innerHTML =
           '<div class="item-main"><div class="item-title">' + escapeHtml(contact.fullName) +
@@ -899,8 +902,8 @@
       userRole.value = "viewer";
       userActive.value = "true";
       userPassword.value = "";
-      userPassword.placeholder = "Minimo 8 caracteres";
-      userPasswordHint.textContent = "Obrigatoria ao criar um novo utilizador.";
+      userPassword.placeholder = "Mínimo 8 caracteres";
+      userPasswordHint.textContent = "Obrigatória ao criar um novo utilizador.";
       saveUserBtn.textContent = "Criar utilizador";
       showNotice(userFormStatus, "", "info");
     }
@@ -914,8 +917,8 @@
       userActive.value = String(Boolean(user.isActive));
       userPassword.value = "";
       userPassword.placeholder = "Deixa vazio para manter a password atual";
-      userPasswordHint.textContent = "Opcional ao editar. So preenche se quiseres trocar a password.";
-      saveUserBtn.textContent = "Guardar alteracoes";
+      userPasswordHint.textContent = "Opcional ao editar. Só preenche se quiseres trocar a password.";
+      saveUserBtn.textContent = "Guardar alterações";
       showNotice(userFormStatus, "", "info");
       userFullName.focus();
     }
@@ -931,18 +934,18 @@
       resetUserFormBtn.disabled = !canManageUsers;
       if (!canManageUsers) {
         showNotice(usersNotice, "A tua conta pode entrar no painel, mas so admins podem gerir utilizadores.", "info");
-        usersMeta.textContent = "Sem permissao para listar utilizadores.";
+        usersMeta.textContent = "Sem permissão para listar utilizadores.";
         kpiUsers.textContent = "-";
         kpiBookings.textContent = "-";
         kpiContacts.textContent = "-";
-        renderEmptyUsers("Gestao de utilizadores reservada a admins.");
-        bookingsMeta.textContent = "Sem permissao para listar pedidos de chamada.";
-        contactsMeta.textContent = "Sem permissao para listar pedidos de contacto.";
+        renderEmptyUsers("Gestão de utilizadores reservada a admins.");
+        bookingsMeta.textContent = "Sem permissão para listar pedidos de chamada.";
+        contactsMeta.textContent = "Sem permissão para listar pedidos de contacto.";
         renderEmptyList(bookingsList, "Pipeline de agendamentos reservada a admins.");
         renderEmptyList(contactsList, "Pipeline de contactos reservada a admins.");
-        showNotice(bookingsNotice, "So admins podem gerir pedidos de chamada.", "info");
-        showNotice(contactsNotice, "So admins podem gerir pedidos de contacto.", "info");
-        showNotice(userFormStatus, "Sem permissao para criar ou editar utilizadores.", "bad");
+        showNotice(bookingsNotice, "Só admins podem gerir pedidos de chamada.", "info");
+        showNotice(contactsNotice, "Só admins podem gerir pedidos de contacto.", "info");
+        showNotice(userFormStatus, "Sem permissão para criar ou editar utilizadores.", "bad");
         return false;
       }
       showNotice(usersNotice, "", "info");
@@ -991,10 +994,10 @@
         renderUsers();
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(usersNotice, error.message || "Nao foi possivel carregar os utilizadores.", "bad");
+        showNotice(usersNotice, error.message || "Não foi possível carregar os utilizadores.", "bad");
         renderEmptyUsers("Falha ao contactar a API.");
       } finally {
         refreshUsersBtn.disabled = false;
@@ -1012,10 +1015,10 @@
         renderCallBookings();
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(bookingsNotice, error.message || "Nao foi possivel carregar os agendamentos.", "bad");
+        showNotice(bookingsNotice, error.message || "Não foi possível carregar os agendamentos.", "bad");
         renderEmptyList(bookingsList, "Falha ao contactar a API.");
       } finally {
         refreshBookingsBtn.disabled = false;
@@ -1033,10 +1036,10 @@
         renderContactRequests();
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(contactsNotice, error.message || "Nao foi possivel carregar os contactos.", "bad");
+        showNotice(contactsNotice, error.message || "Não foi possível carregar os contactos.", "bad");
         renderEmptyList(contactsList, "Falha ao contactar a API.");
       } finally {
         refreshContactsBtn.disabled = false;
@@ -1057,10 +1060,10 @@
         showNotice(bookingsNotice, "Estado do pedido de chamada atualizado.", "ok");
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(bookingsNotice, error.message || "Nao foi possivel atualizar o agendamento.", "bad");
+        showNotice(bookingsNotice, error.message || "Não foi possível atualizar o agendamento.", "bad");
       } finally {
         button.disabled = false;
       }
@@ -1079,10 +1082,10 @@
         showNotice(contactsNotice, "Estado do pedido de contacto atualizado.", "ok");
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(contactsNotice, error.message || "Nao foi possivel atualizar o contacto.", "bad");
+        showNotice(contactsNotice, error.message || "Não foi possível atualizar o contacto.", "bad");
       } finally {
         button.disabled = false;
       }
@@ -1118,13 +1121,13 @@
         showNotice(userFormStatus, editingId ? "Utilizador atualizado com sucesso." : "Utilizador criado com sucesso.", "ok");
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(userFormStatus, error.message || "Nao foi possivel guardar o utilizador.", "bad");
+        showNotice(userFormStatus, error.message || "Não foi possível guardar o utilizador.", "bad");
       } finally {
         saveUserBtn.disabled = false;
-        saveUserBtn.textContent = editingUserId.value ? "Guardar alteracoes" : "Criar utilizador";
+        saveUserBtn.textContent = editingUserId.value ? "Guardar alterações" : "Criar utilizador";
       }
     }
 
@@ -1140,10 +1143,10 @@
         showNotice(usersNotice, "Estado do utilizador atualizado.", "ok");
       } catch (error) {
         if (error && error.status === 401) {
-          showLogin("Sessao expirada. Inicia sessao novamente.");
+          showLogin("Sessão expirada. Inicia sessão novamente.");
           return;
         }
-        showNotice(usersNotice, error.message || "Nao foi possivel atualizar o estado.", "bad");
+        showNotice(usersNotice, error.message || "Não foi possível atualizar o estado.", "bad");
       } finally {
         button.disabled = false;
       }
@@ -1168,7 +1171,7 @@
         }
         openAdmin(data.user);
       } catch (error) {
-        loginError.textContent = error && error.status ? error.message : ("Nao foi possivel ligar a API em " + state.apiBase + ".");
+        loginError.textContent = error && error.status ? error.message : ("Não foi possível ligar a API em " + state.apiBase + ".");
       } finally {
         loginBtn.disabled = false;
         loginBtn.textContent = "Entrar";
