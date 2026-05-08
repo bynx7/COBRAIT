@@ -175,10 +175,29 @@
     });
   }
 
+  function setTranslatedElementValue(element, value) {
+    var langAttr = "data-" + currentLang();
+    if (!element.hasAttribute(langAttr)) {
+      langAttr = element.hasAttribute("data-pt") ? "data-pt" : "";
+    }
+
+    if (langAttr) {
+      element.setAttribute(langAttr, value);
+    }
+
+    if (element.hasAttribute("data-html")) {
+      element.innerHTML = value;
+      return;
+    }
+
+    element.textContent = value;
+  }
+
   function setElementValue(element, value) {
     var text = String(value == null ? "" : value);
 
     if (hasCoreTranslations(element)) {
+      setTranslatedElementValue(element, text);
       return;
     }
 
