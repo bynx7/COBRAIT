@@ -220,6 +220,25 @@
       transform: translateX(4px);
     }
 
+    .dropdown-item.is-current {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current:hover {
+      background: #f1f5f9;
+      transform: none;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content h4 {
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content p,
+    .dropdown-item.is-current svg {
+      color: #64748b;
+    }
+
     .dropdown-item svg {
       width: 20px;
       height: 20px;
@@ -1705,7 +1724,7 @@
 
           <div class="step">
             <div class="step-card">
-              <span class="step-meta" data-pt="PASSO TR�`S" data-en="STEP THREE" data-es="PASO TRES" data-fr="?TAPE TROIS" data-de="SCHRITT DREI" data-ru="??? ??????" data-nl="STAP DRIE" data-ja="????3" data-zh="???">PASSO TR�`S</span>
+              <span class="step-meta" data-pt="PASSO TRES" data-en="STEP THREE" data-es="PASO TRES" data-fr="?TAPE TROIS" data-de="SCHRITT DREI" data-ru="??? ??????" data-nl="STAP DRIE" data-ja="????3" data-zh="???">PASSO TRES</span>
               <h3 data-pt="Onboarding" data-en="Onboarding" data-es="Onboarding" data-fr="Onboarding" data-de="Onboarding" data-ru="?????????" data-nl="Onboarding" data-ja="????????" data-zh="????">Onboarding</h3>
               <p data-pt="Integramos a equipa ao teu processo (Agile/Lean), ferramentas e padrões. Garantimos velocidade sem perder qualidade."
                  data-en="We integrate the team into your process (Agile/Lean), tools, and standards. Fast ramp-up without losing quality."
@@ -2069,12 +2088,24 @@
       });
     })();
   </script>
+  <script>
+    (function() {
+      const currentPath = window.location.pathname.replace(/\/+$/, '');
+      document.querySelectorAll('.dropdown-content .dropdown-item').forEach((item) => {
+        const href = item.getAttribute('href');
+        if (!href) return;
+        const itemPath = new URL(href, window.location.href).pathname.replace(/\/+$/, '');
+        if (itemPath === currentPath) item.classList.add('is-current');
+      });
+    })();
+  </script>
   <script src="../assets/js/apply-translations.js"></script>
   <script src="../assets/js/static-content.js"></script>
   <script src="../assets/js/cms-client.js"></script>
   <script src="../assets/js/cms-inline-editor.js"></script>
 </body>
 </html>
+
 
 
 

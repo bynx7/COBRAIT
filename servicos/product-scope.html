@@ -195,6 +195,25 @@
       transform: translateX(4px);
     }
 
+    .dropdown-item.is-current {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current:hover {
+      background: #f1f5f9;
+      transform: none;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content h4 {
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content p,
+    .dropdown-item.is-current svg {
+      color: #64748b;
+    }
+
     .dropdown-item svg {
       width: 20px;
       height: 20px;
@@ -1025,12 +1044,12 @@ footer.footer-pro .btn.btn--outline:hover {
 }
 
 .timeline-item {
-  padding: 20px 22px 20px 62px;
+  padding: 22px 24px 22px 74px;
   border-radius: 16px;
 }
 
 .timeline-item::before {
-  left: 22px;
+  left: 26px;
   top: 22px;
   width: 28px;
   height: 28px;
@@ -1179,11 +1198,11 @@ footer.footer-pro .btn.btn--outline:hover {
   }
 
   .timeline-item {
-    padding: 18px 16px 18px 54px;
+    padding: 18px 18px 18px 62px;
   }
 
   .timeline-item::before {
-    left: 16px;
+    left: 18px;
     top: 20px;
   }
 
@@ -2195,6 +2214,17 @@ footer.footer-pro .btn.btn--outline:hover {
           if (!en) return;
           langs.forEach(l => { if (!el.hasAttribute('data-' + l)) el.setAttribute('data-' + l, en); });
         });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      const currentPath = window.location.pathname.replace(/\/+$/, '');
+      document.querySelectorAll('.dropdown-content .dropdown-item').forEach((item) => {
+        const href = item.getAttribute('href');
+        if (!href) return;
+        const itemPath = new URL(href, window.location.href).pathname.replace(/\/+$/, '');
+        if (itemPath === currentPath) item.classList.add('is-current');
       });
     })();
   </script>

@@ -191,6 +191,25 @@
       transform: translateX(4px);
     }
 
+    .dropdown-item.is-current {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current:hover {
+      background: #f1f5f9;
+      transform: none;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content h4 {
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content p,
+    .dropdown-item.is-current svg {
+      color: #64748b;
+    }
+
     .dropdown-item svg {
       width: 20px;
       height: 20px;
@@ -861,15 +880,6 @@
       min-height: 0;
     }
 
-    .hero-image {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      display: block;
-      border-radius: 18px;
-      background: #fff;
-    }
-
     .hero-mockup {
       width: 100%;
       max-width: none;
@@ -972,104 +982,53 @@
       position: relative;
     }
 
-    .hero-mockup__table::before {
-      content: "";
+    .hero-mockup__row-text {
       display: block;
-      height: 6px;
-      margin: 0 8px;
-      border-radius: 999px;
-      background:
-        linear-gradient(rgba(148, 163, 184, .22), rgba(148, 163, 184, .22)) left center / 56% 100% no-repeat,
-        linear-gradient(rgba(148, 163, 184, .22), rgba(148, 163, 184, .22)) right center / 26% 100% no-repeat;
+      font-size: 11px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: #334155;
     }
-
-    .hero-mockup__table-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 54px 72px;
-      gap: 10px;
-      padding: 0 10px;
-    }
-
-    .hero-mockup__heading {
-      display: block;
-      height: 7px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, .22);
-      align-self: center;
-    }
-
-    .hero-mockup__heading--lg { width: 100%; }
-    .hero-mockup__heading--sm { width: 70%; }
-    .hero-mockup__heading--xs { width: 58%; }
-
-    .hero-mockup__row-copy {
-      display: grid;
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .hero-mockup__line {
-      display: block;
-      height: 8px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(15, 23, 42, .14), rgba(148, 163, 184, .16));
-    }
-
-    .hero-mockup__line--lg { width: 100%; }
-    .hero-mockup__line--md { width: 78%; }
-    .hero-mockup__line--sm { width: 58%; }
-    .hero-mockup__line--xs { width: 42%; }
 
     .hero-mockup__status {
-      display: block;
-      width: 54px;
-      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      min-height: 24px;
+      padding: 0 10px;
       border-radius: 999px;
       border: 1px solid transparent;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: #334155;
+      justify-self: end;
     }
 
     .hero-mockup__status--ready {
       background: rgba(79, 70, 229, .14);
       border-color: rgba(79, 70, 229, .18);
+      color: #4338ca;
     }
 
     .hero-mockup__status--build {
       background: rgba(14, 165, 233, .14);
       border-color: rgba(14, 165, 233, .18);
+      color: #0369a1;
     }
 
     .hero-mockup__status--review {
       background: rgba(148, 163, 184, .16);
       border-color: rgba(148, 163, 184, .2);
+      color: #475569;
     }
 
     .hero-mockup__status--qa {
       background: rgba(16, 185, 129, .14);
       border-color: rgba(16, 185, 129, .18);
-    }
-
-    .hero-mockup__progress {
-      display: block;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(226, 232, 240, .92);
-      overflow: hidden;
-    }
-
-    .hero-mockup__progress-fill {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
-    }
-
-    .hero-mockup__progress-fill--90 { width: 90%; }
-    .hero-mockup__progress-fill--78 { width: 78%; }
-    .hero-mockup__progress-fill--64 { width: 64%; }
-    .hero-mockup__progress-fill--48 { width: 48%; }
-
-    .hero-mockup__table-row--muted .hero-mockup__progress-fill {
-      background: linear-gradient(90deg, rgba(100, 116, 139, .72), rgba(148, 163, 184, .9));
+      color: #047857;
     }
 
     .hero-mockup__table-row {
@@ -1083,41 +1042,6 @@
       background: #ffffff;
       box-shadow: 0 10px 22px rgba(15, 23, 42, .04);
     }
-
-    .hero-mockup__cell {
-      display: block;
-      height: 7px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(15, 23, 42, .14), rgba(148, 163, 184, .16));
-      align-self: center;
-    }
-
-    .hero-mockup__cell--tag {
-      height: 20px;
-      justify-self: end;
-      border: 1px solid rgba(79, 70, 229, .14);
-      background: rgba(79, 70, 229, .10);
-    }
-
-    .hero-mockup__table-row:nth-child(3) .hero-mockup__cell--tag {
-      border-color: rgba(14, 165, 233, .18);
-      background: rgba(14, 165, 233, .12);
-    }
-
-    .hero-mockup__table-row:nth-child(4) .hero-mockup__cell--tag {
-      border-color: rgba(148, 163, 184, .2);
-      background: rgba(148, 163, 184, .12);
-    }
-
-    .hero-mockup__table-row:nth-child(5) .hero-mockup__cell--tag {
-      border-color: rgba(16, 185, 129, .18);
-      background: rgba(16, 185, 129, .12);
-    }
-
-    .hero-mockup__cell--lg { width: 100%; }
-    .hero-mockup__cell--md { width: 78%; }
-    .hero-mockup__cell--sm { width: 62%; }
-    .hero-mockup__cell--xs { width: 48%; }
 
     .hero-mockup__stats {
       display: grid;
@@ -1184,7 +1108,10 @@
     }
 
     .hero-mockup__stat span {
-      display: none;
+      display: block;
+      font-size: 10px;
+      line-height: 1.35;
+      color: #64748b;
     }
 
     @media (max-width: 1180px) {
@@ -1202,6 +1129,7 @@
       z-index: 1;
       width: 100%;
     }
+
     .badge {
       font-size: 10px;
       font-weight: 700;
@@ -1252,7 +1180,6 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-mockup__table-head,
       .hero-mockup__table-row {
         grid-template-columns: minmax(0, 1fr) 68px;
       }
@@ -1845,8 +1772,7 @@ footer.footer-pro .footer-brand-title {
                 <div class="hero-visual" aria-hidden="true">
           <div class="hero-card">
             <div class="hero-card-inner">
-              <img class="hero-image" src="../assets/images/mvp-hero.png" alt="" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
-              <div class="hero-mockup" hidden>
+              <div class="hero-mockup">
                 <div class="hero-mockup__top">
                   <div class="hero-mockup__dots" aria-hidden="true">
                     <span></span>
@@ -1859,22 +1785,54 @@ footer.footer-pro .footer-brand-title {
                 <div class="hero-mockup__board">
                   <div class="hero-mockup__panel">
                     <span class="hero-mockup__eyebrow" data-pt="Núcleo do MVP" data-en="MVP core" data-es="Núcleo del MVP">MVP core</span>
-                    <div class="hero-mockup__table" aria-hidden="true">
+                    <div class="hero-mockup__table">
                       <div class="hero-mockup__table-row">
-                        <span class="hero-mockup__cell hero-mockup__cell--lg"></span>
-                        <span class="hero-mockup__cell hero-mockup__cell--tag"></span>
+                        <span class="hero-mockup__row-text"
+                              data-pt="Login, onboarding e setup inicial"
+                              data-en="Login, onboarding and initial setup"
+                              data-es="Login, onboarding y configuración inicial">
+                          Login, onboarding e setup inicial
+                        </span>
+                        <span class="hero-mockup__status hero-mockup__status--ready"
+                              data-pt="Ready"
+                              data-en="Ready"
+                              data-es="Listo">Ready</span>
                       </div>
                       <div class="hero-mockup__table-row">
-                        <span class="hero-mockup__cell hero-mockup__cell--md"></span>
-                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--sm"></span>
+                        <span class="hero-mockup__row-text"
+                              data-pt="Core flow com validação do produto"
+                              data-en="Core flow with product validation"
+                              data-es="Flujo core con validación del producto">
+                          Core flow com validação do produto
+                        </span>
+                        <span class="hero-mockup__status hero-mockup__status--build"
+                              data-pt="Build"
+                              data-en="Build"
+                              data-es="Build">Build</span>
                       </div>
                       <div class="hero-mockup__table-row">
-                        <span class="hero-mockup__cell hero-mockup__cell--lg"></span>
-                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--md"></span>
+                        <span class="hero-mockup__row-text"
+                              data-pt="Dashboard, métricas e feedback loop"
+                              data-en="Dashboard, metrics and feedback loop"
+                              data-es="Dashboard, métricas y feedback loop">
+                          Dashboard, métricas e feedback loop
+                        </span>
+                        <span class="hero-mockup__status hero-mockup__status--review"
+                              data-pt="Review"
+                              data-en="Review"
+                              data-es="Review">Review</span>
                       </div>
                       <div class="hero-mockup__table-row">
-                        <span class="hero-mockup__cell hero-mockup__cell--sm"></span>
-                        <span class="hero-mockup__cell hero-mockup__cell--tag hero-mockup__cell--xs"></span>
+                        <span class="hero-mockup__row-text"
+                              data-pt="QA final e preparação para lançamento"
+                              data-en="Final QA and launch preparation"
+                              data-es="QA final y preparación para lanzamiento">
+                          QA final e preparação para lançamento
+                        </span>
+                        <span class="hero-mockup__status hero-mockup__status--qa"
+                              data-pt="QA"
+                              data-en="QA"
+                              data-es="QA">QA</span>
                       </div>
                     </div>
                   </div>
@@ -2510,6 +2468,17 @@ footer.footer-pro .footer-brand-title {
       } else {
         initMvpTimelineProgress();
       }
+    })();
+  </script>
+  <script>
+    (function() {
+      const currentPath = window.location.pathname.replace(/\/+$/, '');
+      document.querySelectorAll('.dropdown-content .dropdown-item').forEach((item) => {
+        const href = item.getAttribute('href');
+        if (!href) return;
+        const itemPath = new URL(href, window.location.href).pathname.replace(/\/+$/, '');
+        if (itemPath === currentPath) item.classList.add('is-current');
+      });
     })();
   </script>
   <script src="../assets/js/apply-translations.js"></script>

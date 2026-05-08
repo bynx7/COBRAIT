@@ -1392,6 +1392,129 @@ main section {
   }
 }
 
+/* Cross-page mobile hardening */
+@media (max-width: 820px) {
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .two-col,
+  .legal-grid,
+  .wire-strip,
+  .hero-mockup__stats,
+  .csd-side-grid,
+  .csd-side-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-grid > *,
+  .about-hero-grid > *,
+  .book-contact-grid > *,
+  .social-inner > *,
+  .split > *,
+  .two-col > *,
+  .contact-grid > *,
+  .legal-grid > *,
+  .csd-hero-grid > *,
+  .hero-side,
+  .hero-visual,
+  .social-visual,
+  .book-hero-visual,
+  .about-hero-visual,
+  .tech-visual,
+  .csd-side {
+    min-width: 0 !important;
+  }
+
+  .hero-actions,
+  .about-hero-actions,
+  .tech-hero-actions,
+  .csd-hero-actions,
+  .what-we-do__cta {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .hero-actions .btn,
+  .about-hero-actions .btn,
+  .tech-hero-actions .btn,
+  .csd-hero-actions .btn,
+  .what-we-do__cta .btn {
+    width: 100% !important;
+    max-width: none !important;
+    justify-content: center !important;
+  }
+
+  .hero-badges {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .footer-badges,
+  .csd-side-metrics,
+  .hero-trust,
+  .hero-trust-row {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .badge,
+  .hero-chip,
+  .csd-pill,
+  .footer-badge,
+  .hero-trust-pill {
+    min-width: 0 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    line-height: 1.35 !important;
+  }
+
+  .dropdown-item-content,
+  .service-card__desc,
+  .what-desc,
+  .faq-item p,
+  .legal-prose,
+  .book-lead {
+    min-width: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-badges {
+    grid-template-columns: 1fr !important;
+  }
+
+  .badge,
+  .footer-badge,
+  .csd-pill,
+  .hero-trust-pill {
+    width: 100% !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

@@ -192,6 +192,25 @@
       transform: translateX(4px);
     }
 
+    .dropdown-item.is-current {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current:hover {
+      background: #f1f5f9;
+      transform: none;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content h4 {
+      color: #1e293b;
+    }
+
+    .dropdown-item.is-current .dropdown-item-content p,
+    .dropdown-item.is-current svg {
+      color: #64748b;
+    }
+
     .dropdown-item svg {
       width: 20px;
       height: 20px;
@@ -722,27 +741,22 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      margin:0 0 18px;
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.8);
-      border:1px solid rgba(148,163,184,.2);
-      box-shadow:0 12px 28px rgba(15,23,42,.08);
+      margin:0 0 14px;
       font-family:'Inter',sans-serif;
       font-size:12px;
-      font-weight:800;
+      font-weight:700;
       letter-spacing:.14em;
       text-transform:uppercase;
-      color:#334155;
+      color:#64748b;
     }
 
     .csd-kicker::before{
       content:"";
-      width:8px;
-      height:8px;
+      width:10px;
+      height:10px;
       border-radius:999px;
-      background:linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
-      box-shadow:0 0 0 5px rgba(79,70,229,.12);
+      background:linear-gradient(135deg, #4f46e5, #7c3aed);
+      box-shadow:0 0 0 6px rgba(79, 70, 229, .12);
     }
 
     .csd-hero h1{
@@ -779,8 +793,8 @@
       border:1px solid rgba(148,163,184,.18);
       background:linear-gradient(160deg, #0f172a 0%, #111c33 48%, #0b1220 100%);
       box-shadow:0 32px 80px rgba(2,6,23,.28);
-      padding:28px;
-      min-height:420px;
+      padding:24px;
+      min-height:372px;
     }
 
     .csd-side::before{
@@ -834,23 +848,23 @@
     }
 
     .csd-side p{
-      margin:0 0 22px;
+      margin:0 0 18px;
       color:rgba(226,232,240,.78);
       font-family:'Inter',sans-serif;
-      line-height:1.7;
+      line-height:1.6;
       font-size:14px;
-      max-width:44ch;
+      max-width:40ch;
     }
 
     .csd-side-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap:16px;
+      gap:14px;
       align-items:stretch;
     }
 
     .csd-side-board{
-      padding:16px;
+      padding:14px;
       border-radius:22px;
       border:1px solid rgba(148,163,184,.16);
       background:rgba(255,255,255,.06);
@@ -885,12 +899,12 @@
 
     .csd-flow{
       display:grid;
-      gap:12px;
+      gap:10px;
     }
 
     .csd-flow-step{
       position:relative;
-      padding:14px 16px 14px 48px;
+      padding:12px 14px 12px 44px;
       border-radius:16px;
       background:rgba(15,23,42,.72);
       border:1px solid rgba(148,163,184,.16);
@@ -900,7 +914,7 @@
       content:attr(data-step);
       position:absolute;
       left:16px;
-      top:14px;
+      top:12px;
       color:#38bdf8;
       font-family:'Inter',sans-serif;
       font-size:11px;
@@ -913,24 +927,24 @@
       color:#fff;
       font-family:'Inter',sans-serif;
       font-size:14px;
-      margin-bottom:4px;
+      margin-bottom:3px;
     }
 
     .csd-flow-step span{
       display:block;
       color:#94a3b8;
       font-family:'Inter',sans-serif;
-      font-size:12px;
-      line-height:1.6;
+      font-size:11px;
+      line-height:1.45;
     }
 
     .csd-side-stack{
       display:grid;
-      gap:12px;
+      gap:10px;
     }
 
     .csd-mini-card{
-      padding:16px;
+      padding:14px;
       border-radius:18px;
       background:rgba(248,250,252,.94);
       border:1px solid rgba(255,255,255,.75);
@@ -950,7 +964,7 @@
       letter-spacing:.12em;
       text-transform:uppercase;
       color:#64748b;
-      margin-bottom:8px;
+      margin-bottom:6px;
     }
 
     .csd-mini-card--dark .csd-mini-eyebrow{
@@ -962,7 +976,7 @@
       font-family:'Inter',sans-serif;
       font-size:15px;
       color:#0f172a;
-      margin-bottom:4px;
+      margin-bottom:3px;
     }
 
     .csd-mini-card--dark strong{
@@ -972,8 +986,8 @@
     .csd-mini-card span{
       display:block;
       font-family:'Inter',sans-serif;
-      font-size:13px;
-      line-height:1.6;
+      font-size:12px;
+      line-height:1.45;
       color:#475569;
     }
 
@@ -985,7 +999,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:18px;
+      margin-top:14px;
     }
 
     .csd-pill{
@@ -1690,16 +1704,16 @@
       <div class="container csd-hero-grid">
         <div class="csd-hero-copy">
           <p class="csd-kicker"
-             data-pt="SERVICOS"
-             data-en="SERVICES"
-             data-es="SERVICIOS"
-             data-fr="SERVICES"
-             data-de="DIENSTLEISTUNGEN"
-             data-ru="SERVICES"
-             data-nl="DIENSTEN"
-             data-ja="SERVICES"
-             data-zh="SERVICES">
-            SERVICOS
+             data-pt="Serviço"
+             data-en="Service"
+             data-es="Servicio"
+             data-fr="Service"
+             data-de="Service"
+             data-ru="Услуга"
+             data-nl="Service"
+             data-ja="サービス"
+             data-zh="服务">
+            Serviço
           </p>
           <h1 data-pt="Desenvolvimento de Software à Medida"
               data-en="Custom Software Development"
@@ -1773,7 +1787,7 @@
             O que é software à medida?
           </h3>
 
-          <p data-pt="É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto - com foco em negócio, UX e escalabilidade."
+          <p data-pt="É uma solução feita para as necessidades do teu produto, com foco em negócio, UX e escalabilidade."
              data-en="It's a solution designed, built, and launched for your product's specific needs ? focusing on business, UX, and scalability."
              data-es="Es una solución diseñada, construida y lanzada para las necesidades específicas de tu producto ? con enfoque en negócio, UX y escalabilidad."
              data-fr="C'est une solution conçue, construite et lancée pour les besoins spécifiques de votre produit ? en mettant l'accent sur le business, l'UX et l'évolutivité."
@@ -1782,7 +1796,7 @@
              data-nl="Het is een oplossing die is ontworpen, gebouwd en gelanceerd voor de specifieke behoeften van uw product ? met focus op business, UX en schaalbaarheid."
              data-ja="�`客��の製-�の?��aの�9㒼?�に��?��:て設��㬁�9?㬁㒪㒪㒼?��"?R�x?�㒪㒥㒼?�㒧㒳で�" ? -?�㒍?�㬁UX㬁?�?�㒼㒩-㒪� ?�に��?�?-てて�ま�"?"
              data-zh="宒�ܯ��对?�产-��a?��a�S�?�R设计㬁�~建�R�帒�a解� �?�� ? -注�}�a�`�㬁?��Ʒ-�R�R可?��"欧?">
-            É uma solução desenhada, construída e lançada para as necessidades específicas do teu produto - com foco em negócio, UX e escalabilidade.
+            É uma solução feita para as necessidades do teu produto, com foco em negócio, UX e escalabilidade.
           </p>
 
           <div class="csd-side-grid" aria-hidden="true">
@@ -1807,10 +1821,10 @@
                   <strong data-pt="Descoberta"
                           data-en="Discovery"
                           data-es="Descubrimiento">Descoberta</strong>
-                  <span data-pt="Objetivos, fluxos, restrições e prioridades do produto."
+                  <span data-pt="Objetivos, fluxos e prioridades do produto."
                         data-en="Goals, workflows, constraints and product priorities."
                         data-es="Objetivos, flujos, restricciones y prioridades del producto.">
-                    Objetivos, fluxos, restrições e prioridades do produto.
+                    Objetivos, fluxos e prioridades do produto.
                   </span>
                 </div>
 
@@ -1818,10 +1832,10 @@
                   <strong data-pt="Desenvolvimento"
                           data-en="Build"
                           data-es="Construcción">Desenvolvimento</strong>
-                  <span data-pt="Interfaces, APIs, automações e um fluxo de release limpo."
+                  <span data-pt="Interfaces, APIs e releases limpos."
                         data-en="Interfaces, APIs, automations and clean release flow."
                         data-es="Interfaces, APIs, automatizaciones y un flujo de release limpio.">
-                    Interfaces, APIs, automações e um fluxo de release limpo.
+                    Interfaces, APIs e releases limpos.
                   </span>
                 </div>
 
@@ -1829,10 +1843,10 @@
                   <strong data-pt="Operação"
                           data-en="Operate"
                           data-es="Operación">Operação</strong>
-                  <span data-pt="QA, handoff, monitorização e espaço para a próxima iteração."
+                  <span data-pt="QA, handoff e monitorização."
                         data-en="QA, handoff, monitoring and room for the next iteration."
                         data-es="QA, handoff, monitorización y espacio para la siguiente iteración.">
-                    QA, handoff, monitorização e espaço para a próxima iteração.
+                    QA, handoff e monitorização.
                   </span>
                 </div>
               </div>
@@ -1847,10 +1861,10 @@
                 <strong data-pt="API + Camada de dados"
                         data-en="API + Data layer"
                         data-es="API + Capa de datos">API + Camada de dados</strong>
-                <span data-pt="Papéis, serviços e integrações prontos para evoluir com o produto."
+                <span data-pt="Serviços e integrações prontos para evoluir."
                       data-en="Roles, services and integrations ready to evolve with the product."
                       data-es="Roles, servicios e integraciones listas para evolucionar con el producto.">
-                  Papéis, serviços e integrações prontos para evoluir com o produto.
+                  Serviços e integrações prontos para evoluir.
                 </span>
               </div>
 
@@ -1862,10 +1876,10 @@
                 <strong data-pt="Pronto para lançamento"
                         data-en="Release-ready"
                         data-es="Listo para lanzamiento">Pronto para lançamento</strong>
-                <span data-pt="Checkpoints de QA, preparação do lançamento e planeamento de suporte desde o dia um."
+                <span data-pt="QA e preparação de lançamento desde o dia um."
                       data-en="QA checkpoints, launch prep and support planning from day one."
                       data-es="Checkpoints de QA, preparación del lanzamiento y planificación de soporte desde el día uno.">
-                  Checkpoints de QA, preparação do lançamento e planeamento de suporte desde o dia um.
+                  QA e preparação de lançamento desde o dia um.
                 </span>
               </div>
             </div>
@@ -1880,10 +1894,6 @@
                   data-pt="Pronto para integrações"
                   data-en="Integration-ready"
                   data-es="Listo para integraciones">Pronto para integrações</span>
-            <span class="csd-pill"
-                  data-pt="Construído para escalar"
-                  data-en="Built to scale"
-                  data-es="Construido para escalar">Construído para escalar</span>
           </div>
         </aside>
       </div>
@@ -2578,6 +2588,17 @@
           if (!en) return;
           langs.forEach(l => { if (!el.hasAttribute('data-' + l)) el.setAttribute('data-' + l, en); });
         });
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      const currentPath = window.location.pathname.replace(/\/+$/, '');
+      document.querySelectorAll('.dropdown-content .dropdown-item').forEach((item) => {
+        const href = item.getAttribute('href');
+        if (!href) return;
+        const itemPath = new URL(href, window.location.href).pathname.replace(/\/+$/, '');
+        if (itemPath === currentPath) item.classList.add('is-current');
       });
     })();
   </script>
