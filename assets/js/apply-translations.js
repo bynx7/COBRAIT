@@ -534,7 +534,7 @@ if (!window.__cobraitTranslationBooted) {
       boot();
     }
 
-    // Captura cliques no dropdown para garantir que os data-xx estao prontos antes dos scripts locais.
+    // Captura cliques no dropdown para garantir que os data-xx estão prontos antes dos scripts locais.
     document.addEventListener(
       "click",
       (event) => {
@@ -545,7 +545,7 @@ if (!window.__cobraitTranslationBooted) {
           localStorage.setItem("preferredLanguage", lang);
         } catch (_e) {}
         loadTranslationsIntoAttributes();
-        // Reaplica no fim do ciclo para cobrir paginas sem handler robusto.
+        // Reaplica no fim do ciclo para cobrir páginas sem handler robusto.
         setTimeout(() => {
           normalizeSharedCopy(document);
           applyLanguageToDom(lang);
@@ -559,7 +559,7 @@ if (!window.__cobraitTranslationBooted) {
       true,
     );
 
-    // Expor helper global caso alguma pagina queira forcar idioma manualmente.
+    // Expor helper global caso alguma página queira forçar idioma manualmente.
     window.cobraitApplyLanguage = function (lang) {
       const normalized = normalizeLang(lang);
       try {

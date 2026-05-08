@@ -1,6 +1,6 @@
 <!--
   COBRAIT_PAGE_DOC
-  Objetivo: Painel admin com autenticacao real via API e utilizadores em Postgres.
+  Objetivo: Painel admin com autenticação real via API e utilizadores em Postgres.
 -->
 <!doctype html>
 <html lang="pt-PT">
@@ -933,7 +933,7 @@
       contactsFilter.disabled = !canManageUsers;
       resetUserFormBtn.disabled = !canManageUsers;
       if (!canManageUsers) {
-        showNotice(usersNotice, "A tua conta pode entrar no painel, mas so admins podem gerir utilizadores.", "info");
+        showNotice(usersNotice, "A tua conta pode entrar no painel, mas só admins podem gerir utilizadores.", "info");
         usersMeta.textContent = "Sem permissão para listar utilizadores.";
         kpiUsers.textContent = "-";
         kpiBookings.textContent = "-";
