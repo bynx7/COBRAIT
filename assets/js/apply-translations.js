@@ -17,7 +17,7 @@ if (!window.__cobraitTranslationBooted) {
   window.cobraitTranslations = window.cobraitTranslations || null;
 
   (async function () {
-    const EXTRA_LANGS = ["fr", "de", "ru", "nl", "ja", "zh"];
+    const EXTRA_LANGS = [];
     const ALLOWED_DROPDOWN_LANGS = ["pt", "en", "es"];
     const MOBILE_HEADER_MAX_WIDTH = 960;
     const scriptBaseUrl = (() => {
@@ -253,7 +253,7 @@ if (!window.__cobraitTranslationBooted) {
         normalized === "pt" ? "pt-PT" : normalized;
 
       const elements = document.querySelectorAll(
-        "[data-pt], [data-en], [data-es], [data-fr], [data-de], [data-ru], [data-nl], [data-ja], [data-zh]",
+        "[data-pt], [data-en], [data-es]",
       );
 
       elements.forEach((el) => {
@@ -285,7 +285,7 @@ if (!window.__cobraitTranslationBooted) {
       });
 
       const ariaEls = document.querySelectorAll(
-        "[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es], [aria-label][data-fr], [aria-label][data-de], [aria-label][data-ru], [aria-label][data-nl], [aria-label][data-ja], [aria-label][data-zh]",
+        "[aria-label][data-pt], [aria-label][data-en], [aria-label][data-es]",
       );
       ariaEls.forEach((el) => {
         let val = el.getAttribute("data-" + normalized);
