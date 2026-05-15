@@ -1771,21 +1771,6 @@
             </li>
             <li>
               <a
-                href="careers.html"
-                data-pt="Carreiras"
-                data-en="Careers"
-                data-es="Carreras"
-                data-fr="Carri?res"
-                data-de="Karrieren"
-                data-ru="???????"
-                data-nl="Carri?re"
-                data-ja="????"
-                data-zh="??"
-                >Careers</a
-              >
-            </li>
-            <li>
-              <a
                 href="tech.html"
                 data-pt="Tecnologia"
                 data-en="Tech"
@@ -2033,19 +2018,11 @@
               <form
                 class="book-form"
                 id="contactForm"
-                action="https://formsubmit.co/ajax/geral@cobrait.pt"
+                action="#"
                 method="POST"
                 autocomplete="on"
+                data-api-endpoint="/call-bookings"
               >
-                <!-- Configura??es do FormSubmit -->
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="Novo pedido ? Book a Call"
-                />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-
                 <label class="field">
                   <span data-pt="Nome" data-en="Name" data-es="Nombre"
                     >Nome</span
@@ -2415,21 +2392,6 @@
 
                 <li>
                   <a
-                    href="careers.html"
-                    data-pt="Carreiras"
-                    data-en="Careers"
-                    data-es="Carreras"
-                    data-fr="Carri?res"
-                    data-de="Karrieren"
-                    data-ru="???????"
-                    data-nl="Carri?re"
-                    data-ja="????"
-                    data-zh="??"
-                    >Carreiras</a
-                  >
-                </li>
-                <li>
-                  <a
                     href="tech.html"
                     data-pt="Tech"
                     data-en="Tech"
@@ -2639,6 +2601,21 @@
 
         if (!form) return;
 
+        function resolveApiBase() {
+          const saved = localStorage.getItem("cobrait_admin_api_base");
+          if (saved) return String(saved).trim().replace(/\/+$/, "");
+
+          const localStatic =
+            ["localhost", "127.0.0.1"].includes(window.location.hostname) &&
+            ["5500", "8080", "3000"].includes(window.location.port);
+
+          if (window.location.protocol === "file:" || localStatic) {
+            return "http://localhost:4000/api";
+          }
+
+          return String(window.location.origin + "/api").replace(/\/+$/, "");
+        }
+
         form.addEventListener("submit", async function (e) {
           e.preventDefault();
 
@@ -2652,13 +2629,23 @@
 
           try {
             const formData = new FormData(form);
+            const ndaNote = formData.get("nda") ? "\n\nNDA requerido: sim" : "";
+            const body = {
+              fullName: String(formData.get("Nome") || "").trim(),
+              email: String(formData.get("Email") || "").trim(),
+              budgetRange: String(formData.get("budget") || "").trim(),
+              projectSummary: String(formData.get("description") || "").trim() + ndaNote,
+              sourceCampaign: String(formData.get("referral") || "").trim(),
+              sourcePage: "book-a-call.html"
+            };
 
-            const res = await fetch(form.action, {
+            const res = await fetch(resolveApiBase() + form.dataset.apiEndpoint, {
               method: "POST",
-              body: formData,
               headers: {
                 Accept: "application/json",
+                "Content-Type": "application/json",
               },
+              body: JSON.stringify(body),
             });
 
             if (!res.ok) throw new Error("Network response was not ok");

@@ -2,6 +2,7 @@ const express = require("express");
 const { createAuditLog } = require("../services/users.service");
 const { getSiteContentEntry } = require("../services/content.service");
 const { createCallBooking, createContactRequest } = require("../services/ops.service");
+const { notifyCallBookingCreated, notifyContactRequestCreated } = require("../services/notifications.service");
 
 const router = express.Router();
 
@@ -31,6 +32,10 @@ router.post("/contact-requests", async (request, response, next) => {
       sourcePage: contactRequest.sourcePage
     });
 
+    notifyContactRequestCreated(contactRequest).catch((error) => {
+      console.error("Failed to send contact request notification.", error);
+    });
+
     response.status(201).json({ contactRequest });
   } catch (error) {
     next(error);
@@ -44,6 +49,10 @@ router.post("/call-bookings", async (request, response, next) => {
     await createAuditLog(null, "call_bookings.create", "call_booking", callBooking.id, {
       email: callBooking.email,
       serviceInterest: callBooking.serviceInterest
+    });
+
+    notifyCallBookingCreated(callBooking).catch((error) => {
+      console.error("Failed to send call booking notification.", error);
     });
 
     response.status(201).json({ callBooking });

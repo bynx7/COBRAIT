@@ -169,6 +169,13 @@ module.exports = {
   bootstrapAdminEmail: String(process.env.ADMIN_EMAIL || "").trim().toLowerCase(),
   bootstrapAdminPassword: String(process.env.ADMIN_PASSWORD || ""),
   bootstrapAdminName: String(process.env.ADMIN_NAME || "COBRAIT Admin").trim(),
+  notificationEmailTo: firstNonEmpty(["NOTIFICATION_EMAIL_TO"], "geral@cobrait.pt"),
+  notificationEmailFrom: firstNonEmpty(["NOTIFICATION_EMAIL_FROM", "SMTP_FROM"], "COBRAIT Website <geral@cobrait.pt>"),
+  smtpHost: firstNonEmpty(["SMTP_HOST"]),
+  smtpPort: parsePositiveInt(firstNonEmpty(["SMTP_PORT"]), 587),
+  smtpSecure: parseBoolean(process.env.SMTP_SECURE, false),
+  smtpUser: firstNonEmpty(["SMTP_USER"]),
+  smtpPassword: firstNonEmpty(["SMTP_PASSWORD"]),
   openaiApiKey: String(process.env.OPENAI_API_KEY || "").trim(),
   openaiChatModel: String(process.env.OPENAI_CHAT_MODEL || "gpt-5.4-mini").trim()
 };

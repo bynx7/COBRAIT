@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node app.js",
-    "check": "node --check app.js && node --check server/src/server.js && node --check server/src/app.js && node --check server/src/routes/auth.routes.js && node --check server/src/routes/users.routes.js",
+    "check": "node --check app.js && node --check server/src/server.js && node --check server/src/app.js && node --check server/src/routes/auth.routes.js && node --check server/src/routes/users.routes.js && node --check server/src/routes/public.routes.js && node --check server/src/services/notifications.service.js",
     "mysql:setup": "node server/scripts/setup-mysql.js",
     "mysql:migrate-file": "node server/scripts/migrate-file-storage-to-mysql.js"
   },
@@ -17,6 +17,7 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.2",
+    "nodemailer": "^8.0.7",
     "pg": "^8.13.3"
   },
   "engines": {

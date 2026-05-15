@@ -17,7 +17,6 @@ const staticPageFiles = new Set([
   "about-us.html",
   "admin.html",
   "book-a-call.html",
-  "careers.html",
   "cookies.html",
   "index.html",
   "privacidade.html",
