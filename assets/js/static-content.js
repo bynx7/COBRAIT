@@ -81,9 +81,15 @@
   }
 
   function contentUrl() {
+    var url;
     var script = getCurrentScript();
-    if (!script || !script.src) return "assets/data/site-content.json";
-    return new URL("../data/site-content.json", script.src).href;
+    if (!script || !script.src) {
+      url = new URL("assets/data/site-content.json", window.location.href);
+    } else {
+      url = new URL("../data/site-content.json", script.src);
+    }
+    url.searchParams.set("v", "2026-05-18-1");
+    return url.href;
   }
 
   function getValue(source, path) {

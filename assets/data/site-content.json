@@ -21,32 +21,32 @@
           "es": "Producto, Diseno y"
         },
         "titleLine2": {
-          "pt": "Desenvolvimento a Medida",
+          "pt": "Desenvolvimento à Medida",
           "en": "Custom Development",
           "es": "Desarrollo a Medida"
         },
         "subtitle": {
-          "pt": "Da ideia ao lancamento: criamos software robusto, escalavel e pronto para crescer com o teu negocio.",
+          "pt": "Da ideia ao lançamento: criamos software robusto, escalável e pronto para crescer com o teu negócio.",
           "en": "From idea to launch: we create robust, scalable software ready to grow with your business.",
           "es": "De la idea al lanzamiento: creamos software robusto, escalable y listo para crecer con tu negocio."
         },
         "bullet1": {
-          "pt": "Planeamento e definicao do produto",
+          "pt": "Planeamento e definição do produto",
           "en": "Product planning and definition",
           "es": "Planificacion y definicion del producto"
         },
         "bullet2": {
-          "pt": "UX/UI com foco em conversao e experiencia",
+          "pt": "UX/UI com foco em conversão e experiência",
           "en": "UX/UI focused on conversion and experience",
           "es": "UX/UI enfocado en conversion y experiencia"
         },
         "bullet3": {
-          "pt": "Desenvolvimento web/mobile + integracoes",
+          "pt": "Desenvolvimento web/mobile + integrações",
           "en": "Web/mobile development + integrations",
           "es": "Desarrollo web/mobile + integraciones"
         },
         "bullet4": {
-          "pt": "Integracoes e automacao de processos",
+          "pt": "Integrações e automação de processos",
           "en": "Integrations and process automation",
           "es": "Integraciones y automatizacion de procesos"
         }
@@ -138,14 +138,14 @@
     "bookCall": {
       "hero": {
         "title": {
-          "pt": "Marca uma call e comecamos a definir o teu projeto",
+          "pt": "Marca uma call e começamos a definir o teu projeto",
           "en": "Book a call and we will start shaping your project",
           "es": "Reserva una llamada y empezamos a definir tu proyecto"
         }
       },
       "contact": {
         "title": {
-          "pt": "Fala connosco e<br>faz o teu projeto avancar!",
+          "pt": "Fala connosco e<br>faz o teu projeto avançar!",
           "en": "Talk to us and<br>get your project moving!",
           "es": "Habla con nosotros y<br>haz avanzar tu proyecto!"
         }
