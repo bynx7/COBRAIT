@@ -76,8 +76,8 @@ function validateName(value) {
 
 function validateMessage(value, fieldName) {
   const text = normalizeText(value);
-  if (text.length < 5) {
-    throw new HttpError(400, fieldName + " deve ter pelo menos 5 caracteres.");
+  if (text.length < 3) {
+    throw new HttpError(400, fieldName + " deve ter pelo menos 3 caracteres.");
   }
   return text;
 }

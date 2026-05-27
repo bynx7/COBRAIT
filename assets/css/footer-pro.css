@@ -1,0 +1,324 @@
+/* Shared footer styles loaded last on pages that use .footer-pro. */
+.footer-pro {
+  background: linear-gradient(180deg, #0b1220 0%, #070b14 100%) !important;
+  color: #cbd5e1 !important;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 24px !important;
+}
+
+.footer-pro,
+.footer-pro * {
+  box-sizing: border-box;
+}
+
+.footer-pro::before {
+  content: "";
+  position: absolute;
+  inset: -200px -200px auto auto;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle at 30% 30%, rgba(124, 58, 237, 0.35), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.footer-pro::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -240px -240px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 60% 60%, rgba(79, 70, 229, 0.35), transparent 60%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.footer-pro > .container {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-inline: auto !important;
+  padding-inline: 20px !important;
+}
+
+.footer-pro .footer-top {
+  display: grid !important;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr !important;
+  gap: 24px !important;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 20px !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+
+.footer-pro .footer-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.footer-pro .footer-col {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.footer-pro .footer-brand-title {
+  margin: 0 !important;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  color: rgba(226, 232, 240, 0.95) !important;
+}
+
+.footer-pro .footer-brand-subtitle {
+  margin: 4px 0 0 !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  color: rgba(203, 213, 225, 0.8) !important;
+}
+
+.footer-pro .footer-tagline {
+  margin: 8px 0 0 !important;
+  max-width: 420px !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: rgba(226, 232, 240, 0.85) !important;
+}
+
+.footer-pro .footer-cta-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-top: 16px !important;
+}
+
+.footer-pro .btn.btn--footer {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 18px !important;
+  border-radius: 12px !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.4px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+.footer-pro .btn.btn--primary.btn--footer {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+  color: #ffffff !important;
+  border: 2px solid transparent !important;
+  box-shadow: none !important;
+}
+
+.footer-pro .btn.btn--outline.btn--footer {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 2px solid rgba(226, 232, 240, 0.35) !important;
+  color: rgba(226, 232, 240, 0.92) !important;
+  box-shadow: none !important;
+}
+
+.footer-pro .btn.btn--footer:hover {
+  transform: translateY(-2px) !important;
+}
+
+.footer-pro .btn.btn--outline.btn--footer:hover {
+  background: rgba(226, 232, 240, 0.12) !important;
+  border-color: rgba(226, 232, 240, 0.5) !important;
+  color: #ffffff !important;
+}
+
+.footer-pro .footer-col h4 {
+  margin: 0 0 14px !important;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  color: rgba(226, 232, 240, 0.9) !important;
+}
+
+.footer-pro .footer-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.footer-pro .footer-links li {
+  margin: 0 !important;
+}
+
+.footer-pro .footer-links a,
+.footer-pro .footer-meta,
+.footer-pro .footer-meta a {
+  font-family: "Inter", sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: rgba(203, 213, 225, 0.9) !important;
+}
+
+.footer-pro .footer-links a,
+.footer-pro .footer-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.footer-pro .footer-links a:hover {
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+}
+
+.footer-pro .footer-meta {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.footer-pro .footer-meta a:hover {
+  color: #ffffff !important;
+}
+
+.footer-pro .social-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+}
+
+.footer-pro .social-link:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.footer-pro .social-icon {
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+}
+
+.footer-pro .footer-badges {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 16px !important;
+}
+
+.footer-pro .footer-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+  background: rgba(15, 23, 42, 0.35) !important;
+  color: rgba(226, 232, 240, 0.9) !important;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
+  justify-content: flex-start !important;
+}
+
+.footer-pro .footer-badge-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18) !important;
+}
+
+.footer-pro .footer-bottom {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 16px 0 0 !important;
+  position: relative;
+  z-index: 1;
+  font-family: "Inter", sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: rgba(148, 163, 184, 0.9) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.footer-pro .footer-mini-links {
+  display: flex !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+}
+
+.footer-pro .footer-mini-links a {
+  color: rgba(148, 163, 184, 0.95) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-pro .footer-mini-links a:hover {
+  color: #ffffff !important;
+}
+
+@media (max-width: 1024px) {
+  .footer-pro .footer-top {
+    grid-template-columns: 1.6fr 1fr 1fr !important;
+  }
+
+  .footer-pro .footer-col--contact {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-pro {
+    padding: 50px 0 20px !important;
+  }
+
+  .footer-pro .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .footer-pro .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .footer-pro .footer-mini-links {
+    justify-content: flex-start !important;
+  }
+
+  .footer-pro .footer-brand-title,
+  footer.footer-pro .footer-brand-title {
+    font-size: 22px !important;
+  }
+}

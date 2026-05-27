@@ -3,6 +3,7 @@ const { createAuditLog } = require("../services/users.service");
 const { getSiteContentEntry } = require("../services/content.service");
 const { createCallBooking, createContactRequest } = require("../services/ops.service");
 const { notifyCallBookingCreated, notifyContactRequestCreated } = require("../services/notifications.service");
+const { HttpError } = require("../utils/errors");
 
 const router = express.Router();
 
@@ -32,9 +33,12 @@ router.post("/contact-requests", async (request, response, next) => {
       sourcePage: contactRequest.sourcePage
     });
 
-    notifyContactRequestCreated(contactRequest).catch((error) => {
+    try {
+      await notifyContactRequestCreated(contactRequest);
+    } catch (error) {
       console.error("Failed to send contact request notification.", error);
-    });
+      throw new HttpError(502, "Pedido registado, mas nao foi possivel enviar a notificacao por email.");
+    }
 
     response.status(201).json({ contactRequest });
   } catch (error) {
@@ -51,9 +55,12 @@ router.post("/call-bookings", async (request, response, next) => {
       serviceInterest: callBooking.serviceInterest
     });
 
-    notifyCallBookingCreated(callBooking).catch((error) => {
+    try {
+      await notifyCallBookingCreated(callBooking);
+    } catch (error) {
       console.error("Failed to send call booking notification.", error);
-    });
+      throw new HttpError(502, "Pedido registado, mas nao foi possivel enviar a notificacao por email.");
+    }
 
     response.status(201).json({ callBooking });
   } catch (error) {

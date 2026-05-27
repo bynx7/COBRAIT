@@ -37,7 +37,7 @@ if (!window.__cobraitTranslationBooted) {
       en: { code: "EN", name: "English", flag: "EN" },
       es: { code: "ES", name: "Español", flag: "ES" },
     };
-    const MOJIBAKE_RE = /(Ã.|Â.|â[\u0080-\u00bf]|ï¿½|�)/;
+    const MOJIBAKE_RE = /(\u00c3.|\u00c2.|\u00e2[\u0080-\u00bf]|\u00ef\u00bf\u00bd|\uFFFD)/;
 
     function looksBroken(text) {
       return MOJIBAKE_RE.test(String(text || ""));
@@ -123,16 +123,16 @@ if (!window.__cobraitTranslationBooted) {
       if (footerTagline) {
         footerTagline.setAttribute(
           "data-pt",
-          "Criamos produtos digitais com foco em velocidade, qualidade e crescimento, do scope ao lançamento.",
+          "Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do âmbito ao lançamento.",
         );
         footerTagline.setAttribute(
           "data-en",
-          "We build digital products focused on speed, quality and growth, from scope to launch.",
+          "We build digital products focused on speed, quality and growth - from scope to launch.",
         );
         if (footerTagline.hasAttribute("data-es")) {
           footerTagline.setAttribute(
             "data-es",
-            "Creamos productos digitales enfocados en velocidad, calidad y crecimiento, del alcance al lanzamiento.",
+            "Creamos productos digitales centrados en velocidad, calidad y crecimiento - del alcance al lanzamiento.",
           );
         }
       }

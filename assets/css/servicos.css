@@ -41,7 +41,7 @@
   margin-inline: auto;
 }
 
-/* T?tulos */
+/* Títulos */
 .servicos-page .section-title {
   font-family:
     "Poppins",
@@ -422,7 +422,7 @@
 }
 
 /* ============================================
-   ESTILOS ESSENCIAIS PARA OS CARDS CLIC?VEIS
+   ESTILOS ESSENCIAIS PARA OS CARDS CLICÁVEIS
    ============================================ */
 
 /* CONTAINER - ESSENCIAL PARA O LAYOUT */
@@ -479,7 +479,7 @@
   margin-bottom: 60px;
 }
 
-/* CARDS DE SERVI?O - VERS?O SIMPLIFICADA E FUNCIONAL */
+   /* CARDS DE SERVIÇO - VERSÃO SIMPLIFICADA E FUNCIONAL */
 .service-card {
   background: white;
   border-radius: 16px;
@@ -714,6 +714,44 @@
 }
 
 /* Footer synced with index */
+.footer-pro {
+  background: linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+  color: #cbd5e1;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 24px;
+}
+
+.footer-pro::before {
+  content: "";
+  position: absolute;
+  inset: -200px -200px auto auto;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(124, 58, 237, 0.35),
+    transparent 60%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.footer-pro::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -240px -240px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle at 60% 60%,
+    rgba(79, 70, 229, 0.35),
+    transparent 60%
+  );
+  filter: blur(12px);
+  pointer-events: none;
+}
+
 .footer-top {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
@@ -760,13 +798,19 @@
   margin-top: 16px;
 }
 .btn--footer {
-  padding: 10px 18px;
-  font-size: 14px;
-  border-radius: 10px;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+}
+.footer-pro .btn--primary.btn--footer {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border: 2px solid transparent !important;
+  box-shadow: none !important;
 }
 .btn--footer.btn--outline {
-  border-color: rgba(226, 232, 240, 0.35);
-  color: rgba(226, 232, 240, 0.92);
+  border-color: rgba(226, 232, 240, 0.35) !important;
+  color: rgba(226, 232, 240, 0.92) !important;
 }
 .btn--footer.btn--outline:hover {
   background: rgba(226, 232, 240, 0.12);

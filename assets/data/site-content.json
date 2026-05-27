@@ -7,9 +7,9 @@
     "instagramUrl": "https://instagram.com/cobra_it",
     "instagramHandle": "@cobra_it",
     "footerTagline": {
-      "pt": "Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do scope ao lancamento.",
-      "en": "We build digital products focused on speed, quality and growth, from scope to launch.",
-      "es": "Creamos productos digitales enfocados en velocidad, calidad y crecimiento, del alcance al lanzamiento."
+      "pt": "Criamos produtos digitais com foco em velocidade, qualidade e crescimento - do âmbito ao lançamento.",
+      "en": "We build digital products focused on speed, quality and growth - from scope to launch.",
+      "es": "Creamos productos digitales centrados en velocidad, calidad y crecimiento - del alcance al lanzamiento."
     }
   },
   "pages": {
@@ -18,7 +18,7 @@
         "titleLine1": {
           "pt": "Produto, Design e",
           "en": "Product, Design and",
-          "es": "Producto, Diseno y"
+          "es": "Producto, Diseño y"
         },
         "titleLine2": {
           "pt": "Desenvolvimento à Medida",
@@ -33,12 +33,12 @@
         "bullet1": {
           "pt": "Planeamento e definição do produto",
           "en": "Product planning and definition",
-          "es": "Planificacion y definicion del producto"
+          "es": "Planificación y definición del producto"
         },
         "bullet2": {
           "pt": "UX/UI com foco em conversão e experiência",
           "en": "UX/UI focused on conversion and experience",
-          "es": "UX/UI enfocado en conversion y experiencia"
+          "es": "UX/UI enfocado en conversión y experiencia"
         },
         "bullet3": {
           "pt": "Desenvolvimento web/mobile + integrações",
@@ -48,7 +48,7 @@
         "bullet4": {
           "pt": "Integrações e automação de processos",
           "en": "Integrations and process automation",
-          "es": "Integraciones y automatizacion de procesos"
+          "es": "Integraciones y automatización de procesos"
         }
       },
       "discovery": {
@@ -60,19 +60,19 @@
         "description": {
           "pt": "Em 10-15 dias alinhamos objetivos, requisitos, roadmap e um plano de entrega realista.",
           "en": "In 10-15 days we align objectives, requirements, roadmap and a realistic delivery plan.",
-          "es": "En 10-15 dias alineamos objetivos, requisitos, roadmap y un plan de entrega realista."
+          "es": "En 10-15 días alineamos objetivos, requisitos, hoja de ruta y un plan de entrega realista."
         }
       },
       "social": {
         "title": {
-          "pt": "Comunidades e conteudo que criam ligacao",
+          "pt": "Comunidades e conteúdo que criam ligação",
           "en": "Communities and content that create connection",
-          "es": "Comunidades y contenido que crean conexion"
+          "es": "Comunidades y contenido que crean conexión"
         },
         "description": {
-          "pt": "Construimos experiencias sociais envolventes - feeds, perfis, gamificacao, pontos, desafios, leaderboards e integracoes - para aumentar retencao e criar uma comunidade a volta do teu produto.",
+          "pt": "Construímos experiências sociais envolventes - feeds, perfis, gamificação, pontos, desafios, rankings e integrações - para aumentar a retenção e criar uma comunidade à volta do teu produto.",
           "en": "We build engaging social experiences - feeds, profiles, gamification, points, challenges, leaderboards and integrations - to increase retention and create a community around your product.",
-          "es": "Construimos experiencias sociales atractivas - feeds, perfiles, gamificacion, puntos, desafios, rankings e integraciones - para aumentar la retencion y crear una comunidad alrededor de tu producto."
+          "es": "Construimos experiencias sociales atractivas - feeds, perfiles, gamificación, puntos, desafíos, rankings e integraciones - para aumentar la retención y crear una comunidad alrededor de tu producto."
         }
       },
       "cta": {
@@ -86,80 +86,80 @@
     "about": {
       "hero": {
         "title": {
-          "pt": "Construimos produtos digitais com clareza, foco e execucao",
+          "pt": "Construímos produtos digitais com clareza, foco e execução",
           "en": "We build digital products with clarity, focus and execution",
-          "es": "Construimos productos digitales con claridad, foco y ejecucion"
+          "es": "Construimos productos digitales con claridad, foco y ejecución"
         },
         "subtitle": {
-          "pt": "Somos uma empresa de software focada em transformar ideias em produtos digitais solidos. Trabalhamos contigo para definir prioridades, desenhar bem e construir com qualidade.",
+          "pt": "Somos uma empresa de software focada em transformar ideias em produtos digitais sólidos. Trabalhamos contigo para definir prioridades, desenhar bem e construir com qualidade.",
           "en": "We are a software company focused on turning ideas into solid digital products. We work with you to define priorities, design well and build with quality.",
-          "es": "Somos una empresa de software enfocada en transformar ideas en productos digitales solidos. Trabajamos contigo para definir prioridades, disenar bien y construir con calidad."
+          "es": "Somos una empresa de software enfocada en transformar ideas en productos digitales sólidos. Trabajamos contigo para definir prioridades, diseñar bien y construir con calidad."
         }
       },
       "cta": {
         "title": {
           "pt": "Vamos construir o teu produto?",
           "en": "Ready to build your product?",
-          "es": "Listo para construir tu producto?"
+          "es": "¿Listo para construir tu producto?"
         },
         "description": {
-          "pt": "Marca uma chamada e diz-nos o que precisas. Ajudamos-te a definir o caminho mais rapido e seguro.",
+          "pt": "Marca uma chamada e diz-nos o que precisas. Ajudamos-te a definir o caminho mais rápido e seguro.",
           "en": "Book a call and tell us what you need. We will help define the fastest and safest path.",
-          "es": "Reserva una llamada y cuentanos lo que necesitas. Te ayudamos a definir el camino mas rapido y seguro."
+          "es": "Reserva una llamada y cuéntanos lo que necesitas. Te ayudamos a definir el camino más rápido y seguro."
         }
       }
     },
     "tech": {
       "hero": {
         "title": {
-          "pt": "A tecnologia por tras das nossas solucoes de ultima geracao",
+          "pt": "A tecnologia por trás das nossas soluções de última geração",
           "en": "The tech behind our cutting-edge solutions",
-          "es": "La tecnologia detras de nuestras soluciones de vanguardia"
+          "es": "La tecnología detrás de nuestras soluciones de vanguardia"
         },
         "subtitle": {
-          "pt": "Onde frameworks Lean e inovacao de produto se juntam com excelencia tecnica para construir software rapido, robusto e escalavel.",
+          "pt": "Onde frameworks Lean e inovação de produto se juntam com excelência técnica para construir software rápido, robusto e escalável.",
           "en": "Where Lean frameworks and product innovation meet technical excellence to build fast, robust and scalable software.",
-          "es": "Donde los frameworks Lean y la innovacion de producto se unen con excelencia tecnica para crear software rapido, robusto y escalable."
+          "es": "Donde los frameworks Lean y la innovación de producto se unen con excelencia técnica para crear software rápido, robusto y escalable."
         }
       },
       "toolkit": {
         "title": {
-          "pt": "O nosso toolkit tech num instante",
+          "pt": "As nossas ferramentas tecnológicas num instante",
           "en": "Our tech toolkit at a glance",
-          "es": "Nuestro toolkit tech de un vistazo"
+          "es": "Nuestras herramientas tecnológicas de un vistazo"
         },
         "description": {
-          "pt": "Analisamos a fundo as necessidades do teu projeto para escolher as melhores ferramentas e frameworks. A maioria dos projetos encaixa num stack semelhante ao abaixo.",
+          "pt": "Analisamos a fundo as necessidades do teu projeto para escolher as melhores ferramentas e frameworks. A maioria dos projetos encaixa numa stack semelhante à abaixo.",
           "en": "We dive deep into your project's needs to select the best tools and frameworks. Most of our projects fit a stack similar to the one below.",
-          "es": "Analizamos a fondo las necesidades de tu proyecto para elegir las mejores herramientas y frameworks. La mayoria encaja en un stack similar al siguiente."
+          "es": "Analizamos a fondo las necesidades de tu proyecto para elegir las mejores herramientas y tecnologías. La mayoría encaja en un conjunto tecnológico similar al siguiente."
         }
       }
     },
     "bookCall": {
       "hero": {
         "title": {
-          "pt": "Marca uma call e começamos a definir o teu projeto",
-          "en": "Book a call and we will start shaping your project",
+          "pt": "Marca uma chamada e começamos a definir o teu projeto",
+          "en": "Book a call and we’ll start shaping your project",
           "es": "Reserva una llamada y empezamos a definir tu proyecto"
         }
       },
       "contact": {
         "title": {
-          "pt": "Fala connosco e<br>faz o teu projeto avançar!",
-          "en": "Talk to us and<br>get your project moving!",
-          "es": "Habla con nosotros y<br>haz avanzar tu proyecto!"
+          "pt": "Vamos falar sobre o teu projeto.<br>Sem complicar.",
+          "en": "Let’s talk about your project.<br>Without overcomplicating it.",
+          "es": "Hablemos de tu proyecto.<br>Sin complicarlo."
         }
       },
       "form": {
         "title": {
-          "pt": "Conta-nos sobre o teu projeto",
-          "en": "Tell us about your project",
-          "es": "Cuentanos sobre tu proyecto"
+          "pt": "Conta-nos o essencial",
+          "en": "Tell us the essentials",
+          "es": "Cuéntanos lo esencial"
         },
         "subtitle": {
-          "pt": "Preenche o formulario e respondemos normalmente em 24-48h.",
-          "en": "Fill out the form and we usually reply within 24-48h.",
-          "es": "Rellena el formulario y respondemos normalmente en 24-48h."
+          "pt": "",
+          "en": "",
+          "es": ""
         }
       }
     }
