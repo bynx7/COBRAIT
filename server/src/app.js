@@ -19,6 +19,7 @@ const staticPageFiles = new Set([
   "book-a-call.html",
   "cookies.html",
   "index.html",
+  "process.html",
   "privacidade.html",
   "servicos.html",
   "tech.html",
@@ -79,6 +80,20 @@ app.options("*", cors(corsOptions));
 
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
+
+app.use((request, response, next) => {
+  const pathName = request.path || "";
+  if (
+    pathName === "/" ||
+    pathName.endsWith(".html") ||
+    pathName.includes("/assets/js/")
+  ) {
+    response.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    response.set("Pragma", "no-cache");
+    response.set("Expires", "0");
+  }
+  next();
+});
 
 app.get("/api/health", async (request, response) => {
   response.json({
