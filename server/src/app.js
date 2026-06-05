@@ -25,6 +25,36 @@ const staticPageFiles = new Set([
   "tech.html",
   "termos.html"
 ]);
+const pageMap = new Map([
+  ["/", "index.html"],
+  ["/index.html", "index.html"],
+  ["/about-us.html", "about-us.html"],
+  ["/sobre-nos", "about-us.html"],
+  ["/tech.html", "tech.html"],
+  ["/tecnologia", "tech.html"],
+  ["/book-a-call.html", "book-a-call.html"],
+  ["/agendar-chamada", "book-a-call.html"],
+  ["/privacidade.html", "privacidade.html"],
+  ["/privacidade", "privacidade.html"],
+  ["/termos.html", "termos.html"],
+  ["/termos", "termos.html"],
+  ["/cookies.html", "cookies.html"],
+  ["/cookies", "cookies.html"],
+  ["/process.html", "process.html"],
+  ["/process", "process.html"],
+  ["/servicos.html", "servicos.html"],
+  ["/servicos", "servicos.html"],
+  ["/servicos/product-scope.html", "servicos/product-scope.html"],
+  ["/servicos/product-scope", "servicos/product-scope.html"],
+  ["/servicos/mvp-builder.html", "servicos/mvp-builder.html"],
+  ["/servicos/mvp-builder", "servicos/mvp-builder.html"],
+  ["/servicos/ux-ui.html", "servicos/ux-ui.html"],
+  ["/servicos/ux-ui", "servicos/ux-ui.html"],
+  ["/servicos/custom-software.html", "servicos/custom-software.html"],
+  ["/servicos/custom-software", "servicos/custom-software.html"],
+  ["/servicos/dedicated-teams.html", "servicos/dedicated-teams.html"],
+  ["/servicos/dedicated-teams", "servicos/dedicated-teams.html"]
+]);
 const STATIC_SITE_PORTS = new Set(["3000", "5500", "8080", "8092"]);
 const corsOptions = {
   origin(origin, callback) {
@@ -75,6 +105,66 @@ function isTrustedLocalOrigin(origin) {
   }
 }
 
+function isMobileRequest(request) {
+  const userAgent = String(request.get("user-agent") || "");
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
+
+function buildMobilePreviewShell() {
+  return `<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07091a">
+    <title>Cobrait</title>
+    <style>
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: #07091a;
+      }
+    </style>
+    <script>
+      (function () {
+        function leaveMobilePreview() {
+          if (window.innerWidth <= 768) return;
+          var url = new URL(window.location.href);
+          if (!url.searchParams.has("__mobile")) return;
+          url.searchParams.delete("__mobile");
+          window.location.replace(url.href);
+        }
+
+        leaveMobilePreview();
+        window.addEventListener("resize", leaveMobilePreview);
+        window.addEventListener("orientationchange", leaveMobilePreview);
+      })();
+    </script>
+  </head>
+  <body>
+    <script src="/assets/js/mobile-preview.js"></script>
+  </body>
+</html>`;
+}
+
+function sendPage(request, response, next) {
+  const pathName = request.path || "/";
+  const selectedFile = pageMap.get(pathName);
+
+  if (!selectedFile) {
+    next();
+    return;
+  }
+
+  if (request.query.__mobile === "1" || isMobileRequest(request)) {
+    response.type("html").send(buildMobilePreviewShell());
+    return;
+  }
+
+  response.sendFile(path.join(siteRoot, selectedFile));
+}
+
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 
@@ -109,11 +199,36 @@ app.use("/api", contentRoutes);
 app.use("/api", opsRoutes);
 
 app.use("/assets", express.static(path.join(siteRoot, "assets"), { index: false }));
-app.use("/servicos", express.static(path.join(siteRoot, "servicos"), { index: false }));
-
-app.get("/", (request, response) => {
-  response.sendFile(path.join(siteRoot, "index.html"));
+app.get(["/favicon-16x16.png", "/favicon-32x32.png", "/apple-touch-icon.png"], (request, response) => {
+  const fileName = request.path.slice(1);
+  response.sendFile(path.join(siteRoot, "assets", "images", "favicon", fileName));
 });
+
+app.get("/", sendPage);
+app.get([
+  "/sobre-nos",
+  "/tecnologia",
+  "/agendar-chamada",
+  "/privacidade",
+  "/termos",
+  "/cookies",
+  "/process",
+  "/process.html",
+  "/servicos",
+  "/servicos.html",
+  "/servicos/product-scope",
+  "/servicos/product-scope.html",
+  "/servicos/mvp-builder",
+  "/servicos/mvp-builder.html",
+  "/servicos/ux-ui",
+  "/servicos/ux-ui.html",
+  "/servicos/custom-software",
+  "/servicos/custom-software.html",
+  "/servicos/dedicated-teams",
+  "/servicos/dedicated-teams.html"
+], sendPage);
+
+app.use("/servicos", express.static(path.join(siteRoot, "servicos"), { index: false }));
 
 app.get("/:page", (request, response, next) => {
   const page = request.params.page;
@@ -122,7 +237,7 @@ app.get("/:page", (request, response, next) => {
     return;
   }
 
-  response.sendFile(path.join(siteRoot, page));
+  sendPage(request, response, next);
 });
 
 app.use(notFound);

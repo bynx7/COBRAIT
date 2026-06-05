@@ -1,19 +1,24 @@
 /* Local layer for fixes that should sit above the site export. */
 .max-w-\[1480px\] {
-  max-width: 1180px !important;
+  max-width: 1480px !important;
 }
 
 .max-w-\[1560px\] {
-  max-width: 1220px !important;
+  max-width: 1560px !important;
 }
 
 .max-w-7xl {
-  max-width: 1180px !important;
+  max-width: 80rem !important;
 }
 
 .max-w-\[1440px\] {
-  max-width: 1220px !important;
+  max-width: 1440px !important;
 }
+
+.cobrait-wide-page .max-w-\[1440px\] {
+  max-width: 1560px !important;
+}
+
 
 [data-form-status] {
   min-height: 1.25rem;
@@ -25,12 +30,6 @@
 
 [data-form-status][data-state="error"] {
   color: #fca5a5;
-}
-
-@media (min-width: 769px) {
-  body {
-    zoom: 0.65;
-  }
 }
 
 .nebula-lang-shell {
