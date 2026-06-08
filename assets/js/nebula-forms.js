@@ -120,6 +120,12 @@
     };
   }
 
+  function isExternalForm(form) {
+    var action = String(form.getAttribute("action") || "").trim();
+    if (form.dataset && form.dataset.externalForm) return true;
+    return /^https?:\/\//i.test(action) && !action.includes(window.location.host);
+  }
+
   async function submitForm(form) {
     var isBooking = form.dataset.nebulaForm === "booking";
     var endpoint = apiBase() + (isBooking ? "/call-bookings" : "/contact-requests");
@@ -157,6 +163,7 @@
   document.addEventListener("submit", function (event) {
     var form = event.target;
     if (!form || !form.matches || !form.matches("form")) return;
+    if (isExternalForm(form)) return;
 
     event.preventDefault();
     submitForm(form);
