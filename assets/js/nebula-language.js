@@ -68,6 +68,9 @@
     { pt: "Built in Portugal", en: "Built in Portugal", es: "Hecho en Portugal" }
   ];
   var phraseMap = {};
+  var activeLanguage = "pt";
+  var languageObserver = null;
+  var languageRefreshTimer = 0;
   var templateTranslationsPromise = null;
   var PROJECT_TRANSLATIONS = [
     { pt: "Começar rápido", en: "Start fast", es: "Empezar rápido" },
@@ -1683,6 +1686,118 @@
       es: "En 10-15 d\u00edas alineamos objetivos, definimos el roadmap y validamos tu idea t\u00e9cnicamente."
     }
   ];
+  var BLOCK_TRANSLATIONS = [
+    {
+      pt: "Cobrait \u00b7 Sobre n\u00f3s",
+      en: "Cobrait \u00b7 About us",
+      es: "Cobrait \u00b7 Sobre nosotros"
+    },
+    {
+      pt: "Constru\u00edmos produtos com clareza, foco e execu\u00e7\u00e3o.",
+      en: "We build products with clarity, focus and execution.",
+      es: "Construimos productos con claridad, foco y ejecuci\u00f3n.",
+      html: {
+        pt: "Constru\u00edmos produtos<br class=\"hidden md:block\"> com clareza, foco<br class=\"hidden md:block\"> e <em class=\"italic gradient-text font-normal\">execu\u00e7\u00e3o</em>.",
+        en: "We build products<br class=\"hidden md:block\"> with clarity, focus<br class=\"hidden md:block\"> and <em class=\"italic gradient-text font-normal\">execution</em>.",
+        es: "Construimos productos<br class=\"hidden md:block\"> con claridad, foco<br class=\"hidden md:block\"> y <em class=\"italic gradient-text font-normal\">ejecuci\u00f3n</em>."
+      }
+    },
+    {
+      pt: "Software factory portuguesa. Trabalhamos contigo para definir prioridades, desenhar bem e construir com qualidade \u2014 sem complica\u00e7\u00f5es.",
+      en: "Portuguese software factory. We work with you to define priorities, design well and build with quality, without complications.",
+      es: "Software factory portuguesa. Trabajamos contigo para definir prioridades, dise\u00f1ar bien y construir con calidad, sin complicaciones."
+    },
+    { pt: "Abordagem", en: "Approach", es: "Enfoque" },
+    { pt: "Foco", en: "Focus", es: "Foco" },
+    { pt: "Engenharia", en: "Engineering", es: "Ingenier\u00eda" },
+    { pt: "Clean & escal\u00e1vel", en: "Clean & scalable", es: "Limpio y escalable" },
+    { pt: "Manifesto", en: "Manifesto", es: "Manifiesto" },
+    {
+      pt: "Ol\u00e1, somos a Cobra IT.",
+      en: "Hi, we are Cobra IT.",
+      es: "Hola, somos Cobra IT.",
+      html: {
+        pt: "Ol\u00e1, somos a<br><em class=\"italic text-primary/90\">Cobra IT</em>.",
+        en: "Hi, we are<br><em class=\"italic text-primary/90\">Cobra IT</em>.",
+        es: "Hola, somos<br><em class=\"italic text-primary/90\">Cobra IT</em>."
+      }
+    },
+    {
+      pt: "Pensamos como product owners \u2014 n\u00e3o apenas como executantes. Cada decis\u00e3o \u00e9 tomada com o teu neg\u00f3cio em mente, e cada linha de c\u00f3digo pesa contra o que mais importa: o produto chegar a quem precisa dele.",
+      en: "We think like product owners, not just executors. Every decision is made with your business in mind, and every line of code is weighed against what matters most: getting the product to the people who need it.",
+      es: "Pensamos como product owners, no solo como ejecutores. Cada decisi\u00f3n se toma pensando en tu negocio, y cada l\u00ednea de c\u00f3digo se mide contra lo que m\u00e1s importa: que el producto llegue a quien lo necesita."
+    },
+    { pt: "Produto + engenharia, sob um \u00fanico parceiro.", en: "Product + engineering under one partner.", es: "Producto + ingenier\u00eda en un \u00fanico socio." },
+    { pt: "Caminho mais curto entre ideia e tra\u00e7\u00e3o.", en: "The shortest path between idea and traction.", es: "El camino m\u00e1s corto entre idea y tracci\u00f3n." },
+    { pt: "Discovery \u00b7 Build \u00b7 Iterate.", en: "Discovery \u00b7 Build \u00b7 Iterate.", es: "Discovery \u00b7 Build \u00b7 Iterate." },
+    { pt: "Discovery \u2014 clareza primeiro", en: "Discovery, clarity first", es: "Discovery, claridad primero" },
+    { pt: "Build \u2014 entrega cont\u00ednua", en: "Build, continuous delivery", es: "Build, entrega continua" },
+    { pt: "Iterate \u2014 melhorar com dados", en: "Iterate, improve with data", es: "Iterate, mejorar con datos" },
+    { pt: "O que nos move todos os dias.", en: "What drives us every day.", es: "Lo que nos mueve cada d\u00eda." },
+    { pt: "Produto real \u2014 pronto a crescer.", en: "Real product, ready to grow.", es: "Producto real, listo para crecer." },
+    { pt: "Velocidade + qualidade.", en: "Speed + quality.", es: "Velocidad + calidad." },
+    { pt: "Pronto para come\u00e7ar?", en: "Ready to start?", es: "\u00bfListo para empezar?" },
+    { pt: "Conta-nos o que queres construir e respondemos em 24-48h com um plano claro.", en: "Tell us what you want to build and we reply within 24-48h with a clear plan.", es: "Cu\u00e9ntanos qu\u00e9 quieres construir y respondemos en 24-48h con un plan claro." },
+    { pt: "Ver tecnologia \u2192", en: "See technology \u2192", es: "Ver tecnolog\u00eda \u2192" },
+    {
+      pt: "Cobrait \u00b7 Tecnologia",
+      en: "Cobrait \u00b7 Technology",
+      es: "Cobrait \u00b7 Tecnolog\u00eda"
+    },
+    {
+      pt: "A tecnologia por tr\u00e1s das nossas solu\u00e7\u00f5es de \u00faltima gera\u00e7\u00e3o.",
+      en: "The technology behind our next-generation solutions.",
+      es: "La tecnolog\u00eda detr\u00e1s de nuestras soluciones de \u00faltima generaci\u00f3n.",
+      html: {
+        pt: "A tecnologia por tr\u00e1s das nossas solu\u00e7\u00f5es de <em class=\"italic gradient-text font-normal\">\u00faltima gera\u00e7\u00e3o</em>.",
+        en: "The technology behind our <em class=\"italic gradient-text font-normal\">next-generation</em> solutions.",
+        es: "La tecnolog\u00eda detr\u00e1s de nuestras soluciones de <em class=\"italic gradient-text font-normal\">\u00faltima generaci\u00f3n</em>."
+      }
+    },
+    {
+      pt: "Onde frameworks Lean e inova\u00e7\u00e3o de produto se juntam com excel\u00eancia t\u00e9cnica para construir software r\u00e1pido, robusto e escal\u00e1vel.",
+      en: "Where Lean frameworks and product innovation meet technical excellence to build fast, robust and scalable software.",
+      es: "Donde los frameworks Lean y la innovaci\u00f3n de producto se unen con excelencia t\u00e9cnica para construir software r\u00e1pido, robusto y escalable."
+    },
+    { pt: "Moderna", en: "Modern", es: "Moderna" },
+    { pt: "Otimizada", en: "Optimized", es: "Optimizada" },
+    { pt: "Arquitetura", en: "Architecture", es: "Arquitectura" },
+    { pt: "Seguran\u00e7a", en: "Security", es: "Seguridad" },
+    { pt: "By design", en: "By design", es: "By design" },
+    { pt: "O nosso toolkit", en: "Our toolkit", es: "Nuestro toolkit" },
+    { pt: "Toolkit tech num instante.", en: "Tech toolkit at a glance.", es: "Toolkit tech de un vistazo." },
+    {
+      pt: "Analisamos a fundo as necessidades do teu projeto para escolher as melhores ferramentas e frameworks. A maioria encaixa num stack semelhante ao abaixo.",
+      en: "We deeply analyze your project's needs to choose the best tools and frameworks. Most projects fit into a stack similar to the one below.",
+      es: "Analizamos a fondo las necesidades de tu proyecto para elegir las mejores herramientas y frameworks. La mayor\u00eda encaja en un stack similar al de abajo."
+    },
+    { pt: "Back-end & Bases de Dados", en: "Back-end & Databases", es: "Back-end y Bases de Datos" },
+    { pt: "Infraestrutura", en: "Infrastructure", es: "Infraestructura" },
+    { pt: "Interfaces modernas, r\u00e1pidas e consistentes em qualquer device.", en: "Modern, fast and consistent interfaces on any device.", es: "Interfaces modernas, r\u00e1pidas y consistentes en cualquier dispositivo." },
+    { pt: "APIs robustas, escal\u00e1veis e bem testadas, com persist\u00eancia de confian\u00e7a.", en: "Robust, scalable and well-tested APIs with reliable persistence.", es: "APIs robustas, escalables y bien probadas, con persistencia confiable." },
+    { pt: "Cloud, orquestra\u00e7\u00e3o e mensageria \u2014 bases s\u00f3lidas para escalar.", en: "Cloud, orchestration and messaging, solid foundations for scaling.", es: "Cloud, orquestaci\u00f3n y mensajer\u00eda, bases s\u00f3lidas para escalar." },
+    { pt: "Onde somos fortes", en: "Where we are strong", es: "Donde somos fuertes" },
+    { pt: "\u00c1reas onde entregamos mais.", en: "Areas where we deliver most.", es: "\u00c1reas donde entregamos m\u00e1s." },
+    { pt: "Aplica\u00e7\u00f5es Full-Stack", en: "Full-stack applications", es: "Aplicaciones full-stack" },
+    { pt: "Integra\u00e7\u00f5es e Automa\u00e7\u00e3o", en: "Integrations and automation", es: "Integraciones y automatizaci\u00f3n" },
+    { pt: "Produtos orientados a dados", en: "Data-driven products", es: "Productos orientados a datos" },
+    { pt: "Experi\u00eancias mobile r\u00e1pidas e consistentes, com performance e UX/UI orientadas a reten\u00e7\u00e3o e convers\u00e3o.", en: "Fast and consistent mobile experiences, with performance and UX/UI focused on retention and conversion.", es: "Experiencias mobile r\u00e1pidas y consistentes, con performance y UX/UI orientadas a retenci\u00f3n y conversi\u00f3n." },
+    { pt: "Desenvolvimento \u00e0 medida.", en: "Custom development.", es: "Desarrollo a medida." },
+    {
+      pt: "Abordagem hol\u00edstica e centrada no utilizador: alinhamos objetivos, prioridades e UX antes de acelerar. Depois, as equipas de UX/UI e desenvolvimento constroem com qualidade, documenta\u00e7\u00e3o e previsibilidade \u2014 Lean e \u00e1gil para maximizar valor.",
+      en: "A holistic, user-centered approach: we align goals, priorities and UX before accelerating. Then UX/UI and development teams build with quality, documentation and predictability, Lean and agile to maximize value.",
+      es: "Un enfoque hol\u00edstico y centrado en el usuario: alineamos objetivos, prioridades y UX antes de acelerar. Despu\u00e9s, los equipos de UX/UI y desarrollo construyen con calidad, documentaci\u00f3n y previsibilidad, Lean y \u00e1gil para maximizar valor."
+    },
+    { pt: "Discovery & Valida\u00e7\u00e3o", en: "Discovery & validation", es: "Discovery y validaci\u00f3n" },
+    { pt: "Design & Prototipagem", en: "Design & prototyping", es: "Dise\u00f1o y prototipado" },
+    { pt: "Desenvolvimento \u00c1gil", en: "Agile development", es: "Desarrollo \u00e1gil" },
+    { pt: "QA & Testes Cont\u00ednuos", en: "QA & continuous testing", es: "QA y pruebas continuas" },
+    { pt: "DevOps & Entrega", en: "DevOps & delivery", es: "DevOps y entrega" },
+    { pt: "Suporte & Evolu\u00e7\u00e3o", en: "Support & evolution", es: "Soporte y evoluci\u00f3n" },
+    { pt: "Tens a stack certa para o teu produto?", en: "Do you have the right stack for your product?", es: "\u00bfTienes el stack adecuado para tu producto?" },
+    { pt: "Conversa com a nossa equipa t\u00e9cnica e validamos a melhor abordagem para o teu caso.", en: "Talk to our technical team and we will validate the best approach for your case.", es: "Habla con nuestro equipo t\u00e9cnico y validamos el mejor enfoque para tu caso." },
+    { pt: "Saber mais sobre n\u00f3s \u2192", en: "Learn more about us \u2192", es: "Saber m\u00e1s sobre nosotros \u2192" }
+  ];
 
   function normalizeLang(value) {
     var lang = String(value || "").toLowerCase().slice(0, 2);
@@ -1693,6 +1808,7 @@
     var normalized = String(value || "")
       .replace(/\u00a0/g, " ")
       .replace(/\s+/g, " ")
+      .replace(/\s+([.,;:!?])/g, "$1")
       .trim()
       .toLowerCase()
       .replace(/[’‘]/g, "'")
@@ -1717,6 +1833,7 @@
   CLOSING_TRANSLATIONS.forEach(registerPhrase);
   VALUE_TRANSLATIONS.forEach(registerPhrase);
   MEGA_MENU_TRANSLATIONS.forEach(registerPhrase);
+  BLOCK_TRANSLATIONS.forEach(registerPhrase);
 
   [
     "Cobrait", "Cobra IT", "Product Scope", "MVP Builder", "UX / UI", "UX/UI", "Software", "Porto HQ",
@@ -1807,6 +1924,25 @@
             });
           }
         });
+
+        var titleStart = source.indexOf("const TITLES =");
+        var titleEnd = source.indexOf("const LANGUAGE_LABELS =", titleStart);
+        if (titleStart >= 0 && titleEnd > titleStart) {
+          var titleText = source
+            .slice(titleStart, titleEnd)
+            .replace(/^const TITLES\s*=\s*/, "")
+            .replace(/;\s*$/, "");
+          var titles = Function("\"use strict\";return (" + titleText + ");")();
+          if (titles && titles.pt) {
+            Object.keys(titles.pt).forEach(function (routeKey) {
+              registerPhrase({
+                pt: titles.pt[routeKey],
+                en: titles.en && titles.en[routeKey],
+                es: titles.es && titles.es[routeKey]
+              });
+            });
+          }
+        }
       })
       .catch(function () {
         // The static phrase list still keeps the selector usable if the preview bundle is unavailable.
@@ -1827,6 +1963,14 @@
   function getStoredLang() {
     try {
       return localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function getUrlLang() {
+    try {
+      return new URLSearchParams(window.location.search).get("lang");
     } catch (error) {
       return null;
     }
@@ -1897,19 +2041,55 @@
     }
   }
 
-  function applyFallbackPhrases(lang) {
+  function getPhraseSet(value) {
+    return phraseMap[normalizePhrase(value)];
+  }
+
+  function translateBlockElement(element, lang) {
+    if (!element || !element.textContent) return;
+    var set = getPhraseSet(element.textContent);
+    if (!set || !set[lang]) return;
+
+    var originalKey = "nebulaOriginalBlock";
+    if (element.dataset && !element.dataset[originalKey]) {
+      element.dataset[originalKey] = element.innerHTML;
+    }
+
+    if (set.html && set.html[lang]) {
+      element.innerHTML = set.html[lang];
+      return;
+    }
+
+    element.textContent = set[lang];
+  }
+
+  function applyBlockTranslations(lang, root) {
+    var scanRoot = root || document.body;
+    if (!scanRoot || !scanRoot.querySelectorAll) return;
+    var nodes = scanRoot.querySelectorAll("h1, h2, h3, p, span, strong, em, li, button, a");
+
+    Array.prototype.forEach.call(nodes, function (element) {
+      if (element.closest && element.closest("script, style, noscript, svg, template")) return;
+      if (element.querySelector && element.querySelector("svg, img, input, select, textarea")) return;
+      translateBlockElement(element, lang);
+    });
+  }
+
+  function applyFallbackPhrases(lang, root) {
     var normalized = normalizeLang(lang);
-    if (!document.body) return;
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    var scanRoot = root || document.body;
+    if (!scanRoot) return;
+
+    applyBlockTranslations(normalized, scanRoot);
+
+    var walker = document.createTreeWalker(scanRoot, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         var parent = node.parentElement;
-        if (!parent || ["SCRIPT", "STYLE", "NOSCRIPT", "SVG"].indexOf(parent.tagName) >= 0) {
+        if (!parent || ["SCRIPT", "STYLE", "NOSCRIPT", "SVG", "TEMPLATE"].indexOf(parent.tagName) >= 0) {
           return NodeFilter.FILTER_REJECT;
         }
-        var text = normalizePhrase(node.nodeValue);
-        return phraseMap[text] && phraseMap[text][normalized]
-          ? NodeFilter.FILTER_ACCEPT
-          : NodeFilter.FILTER_REJECT;
+        var set = getPhraseSet(node.nodeValue);
+        return set && set[normalized] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
     var node = walker.nextNode();
@@ -1917,22 +2097,28 @@
       var original = node.nodeValue || "";
       var leading = (original.match(/^\s*/) || [""])[0];
       var trailing = (original.match(/\s*$/) || [""])[0];
-      var set = phraseMap[normalizePhrase(original)];
+      var set = getPhraseSet(original);
       if (set && set[normalized]) node.nodeValue = leading + set[normalized] + trailing;
       node = walker.nextNode();
     }
 
-    applyFallbackAttributes(normalized);
+    applyFallbackAttributes(normalized, scanRoot);
+    applyDocumentMeta(normalized);
   }
 
   function translateString(value, lang) {
-    var set = phraseMap[normalizePhrase(value)];
+    var set = getPhraseSet(value);
     return set && set[lang] ? set[lang] : null;
   }
 
-  function applyFallbackAttributes(lang) {
-    var attributes = ["aria-label", "title", "placeholder", "value"];
-    var nodes = document.querySelectorAll("input, textarea, button, a, [aria-label], [title], [placeholder]");
+  function queryWithin(root, selector) {
+    if (!root || !root.querySelectorAll) return [];
+    return root.querySelectorAll(selector);
+  }
+
+  function applyFallbackAttributes(lang, root) {
+    var attributes = ["aria-label", "title", "placeholder", "value", "alt"];
+    var nodes = queryWithin(root || document, "input, textarea, button, a, img, [aria-label], [title], [placeholder], [alt]");
 
     Array.prototype.forEach.call(nodes, function (element) {
       attributes.forEach(function (attribute) {
@@ -1950,6 +2136,64 @@
         if (translated) element.setAttribute(attribute, translated);
       });
     });
+  }
+
+  function applyDocumentMeta(lang) {
+    var title = document.querySelector("title");
+    if (title) {
+      if (!title.getAttribute("data-nebula-original")) {
+        title.setAttribute("data-nebula-original", title.textContent || "");
+      }
+      var titleSource = title.getAttribute("data-nebula-original") || title.textContent || "";
+      var translatedTitle = translateString(titleSource, lang) || translateString(title.textContent || "", lang);
+      if (translatedTitle) {
+        title.textContent = translatedTitle;
+        document.title = translatedTitle;
+      }
+    }
+
+    var metas = document.querySelectorAll("meta[content][name], meta[content][property]");
+    Array.prototype.forEach.call(metas, function (meta) {
+      var key = (meta.getAttribute("name") || meta.getAttribute("property") || "").toLowerCase();
+      if (["description", "og:title", "og:description", "twitter:title", "twitter:description"].indexOf(key) < 0) return;
+      if (!meta.getAttribute("data-nebula-original")) {
+        meta.setAttribute("data-nebula-original", meta.getAttribute("content") || "");
+      }
+      var source = meta.getAttribute("data-nebula-original") || meta.getAttribute("content") || "";
+      var translated = translateString(source, lang) || translateString(meta.getAttribute("content") || "", lang);
+      if (translated) meta.setAttribute("content", translated);
+    });
+  }
+
+  function stopLanguageObserver() {
+    if (languageObserver) languageObserver.disconnect();
+  }
+
+  function startLanguageObserver() {
+    if (!window.MutationObserver || !document.body || !isDesktopViewport()) return;
+    if (!languageObserver) {
+      languageObserver = new MutationObserver(function () {
+        clearTimeout(languageRefreshTimer);
+        languageRefreshTimer = window.setTimeout(function () {
+          applyLanguageToDocument(activeLanguage);
+        }, 40);
+      });
+    }
+    stopLanguageObserver();
+    languageObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["aria-label", "title", "placeholder", "value", "alt"]
+    });
+  }
+
+  function applyLanguageToDocument(lang, root) {
+    var normalized = normalizeLang(lang);
+    stopLanguageObserver();
+    applyFallbackPhrases(normalized, root || document.body);
+    startLanguageObserver();
   }
 
   function ensureServicesMegaStyles() {
@@ -1992,13 +2236,13 @@
     return [
       '<div class="cobrait-services-mega__panel">',
       '<div class="cobrait-services-mega__services">',
-      '<a class="cobrait-services-mega__item" href="/servicos/product-scope"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Product Scope</span><span class="cobrait-services-mega__desc">Processo de 15 dias para alinhar produto e neg\u00f3cio.</span></span></a>',
-      '<a class="cobrait-services-mega__item" href="/servicos/mvp-builder"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">MVP Builder</span><span class="cobrait-services-mega__desc">Entra no mercado rapidamente com um MVP de qualidade.</span></span></a>',
-      '<a class="cobrait-services-mega__item" href="/servicos/ux-ui"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">UX / UI</span><span class="cobrait-services-mega__desc">Design de produtos f\u00e1ceis de usar, envolventes e funcionais.</span></span></a>',
-      '<a class="cobrait-services-mega__item" href="/servicos/custom-software"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Software \u00e0 Medida</span><span class="cobrait-services-mega__desc">Frameworks lean aplicados \u00e0 tua vis\u00e3o de produto.</span></span></a>',
-      '<a class="cobrait-services-mega__item" href="/servicos/dedicated-teams"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Equipas Dedicadas</span><span class="cobrait-services-mega__desc">Constr\u00f3i o teu produto com uma equipa dedicada de devs.</span></span></a>',
+      '<a class="cobrait-services-mega__item" href="/servicos/product-scope.html"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Product Scope</span><span class="cobrait-services-mega__desc">Processo de 15 dias para alinhar produto e neg\u00f3cio.</span></span></a>',
+      '<a class="cobrait-services-mega__item" href="/servicos/mvp-builder.html"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">MVP Builder</span><span class="cobrait-services-mega__desc">Entra no mercado rapidamente com um MVP de qualidade.</span></span></a>',
+      '<a class="cobrait-services-mega__item" href="/servicos/ux-ui.html"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">UX / UI</span><span class="cobrait-services-mega__desc">Design de produtos f\u00e1ceis de usar, envolventes e funcionais.</span></span></a>',
+      '<a class="cobrait-services-mega__item" href="/servicos/custom-software.html"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Software \u00e0 Medida</span><span class="cobrait-services-mega__desc">Frameworks lean aplicados \u00e0 tua vis\u00e3o de produto.</span></span></a>',
+      '<a class="cobrait-services-mega__item" href="/servicos/dedicated-teams.html"><span class="cobrait-services-mega__dot"></span><span><span class="cobrait-services-mega__title">Equipas Dedicadas</span><span class="cobrait-services-mega__desc">Constr\u00f3i o teu produto com uma equipa dedicada de devs.</span></span></a>',
       '</div>',
-      '<a class="cobrait-services-mega__feature" href="/servicos/product-scope">',
+      '<a class="cobrait-services-mega__feature" href="/servicos/product-scope.html">',
       '<span class="cobrait-services-mega__eyebrow"><span class="cobrait-services-mega__spark" aria-hidden="true">✣</span><span>Come\u00e7ar r\u00e1pido</span></span>',
       '<span class="cobrait-services-mega__heading">Sprint de <em>Descoberta</em></span>',
       '<span class="cobrait-services-mega__copy">Em 10-15 dias alinhamos objetivos, definimos o roadmap e validamos a tua ideia tecnicamente.</span>',
@@ -2062,11 +2306,12 @@
       }
     });
 
-    applyFallbackPhrases(normalizeLang(lang || getStoredLang() || "pt"));
+    applyLanguageToDocument(normalizeLang(lang || getStoredLang() || "pt"));
   }
 
   function setLanguage(lang, shouldDispatch) {
     var normalized = normalizeLang(lang);
+    activeLanguage = normalized;
     document.documentElement.setAttribute("lang", normalized);
     document.documentElement.setAttribute("data-nebula-lang", normalized);
     storeLang(normalized);
@@ -2079,7 +2324,7 @@
     });
 
     if (shouldDispatch !== false) dispatchLanguage(normalized);
-    applyFallbackPhrases(normalized);
+    applyLanguageToDocument(normalized);
     enhanceServicesMega(normalized);
   }
 
@@ -2092,6 +2337,8 @@
 
     closeAll(null);
     closeServicesMegas(null);
+    stopLanguageObserver();
+    activeLanguage = "pt";
     document.documentElement.setAttribute("lang", "pt");
     document.documentElement.removeAttribute("data-nebula-lang");
   }
@@ -2148,7 +2395,7 @@
   }
 
   function init() {
-    var lang = normalizeLang(getStoredLang() || "pt");
+    var lang = normalizeLang(getUrlLang() || getStoredLang() || document.documentElement.lang || "pt");
 
     if (!isDesktopViewport()) {
       resetMobileButtons();
@@ -2180,7 +2427,7 @@
 
     setLanguage(lang, false);
     loadTemplateTranslations().then(function () {
-      setLanguage(normalizeLang(getStoredLang() || lang), false);
+      setLanguage(normalizeLang(getUrlLang() || getStoredLang() || lang), false);
     });
   }
 
@@ -2209,9 +2456,27 @@
   window.addEventListener("cobrait-set-language", function (event) {
     var lang = normalizeLang(event && event.detail);
     loadTemplateTranslations().then(function () {
-      applyFallbackPhrases(lang);
+      applyLanguageToDocument(lang);
     });
   });
+
+  window.CobraitLanguage = {
+    get: function () {
+      return activeLanguage;
+    },
+    set: function (lang) {
+      setLanguage(lang, true);
+      return activeLanguage;
+    },
+    refresh: function () {
+      applyLanguageToDocument(activeLanguage);
+      enhanceServicesMega(activeLanguage);
+      return activeLanguage;
+    },
+    options: LANGS.map(function (lang) {
+      return { code: lang.code, label: lang.label, name: lang.name };
+    })
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

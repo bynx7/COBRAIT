@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node app.js",
     "check": "node --check app.js && node --check server/src/server.js && node --check server/src/app.js && node --check server/src/routes/auth.routes.js && node --check server/src/routes/users.routes.js && node --check server/src/routes/public.routes.js && node --check server/src/services/notifications.service.js",
+    "language:check": "node scripts/check-language-switch.js",
     "mysql:setup": "node server/scripts/setup-mysql.js",
     "mysql:migrate-file": "node server/scripts/migrate-file-storage-to-mysql.js"
   },
