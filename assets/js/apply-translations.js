@@ -83,6 +83,34 @@ if (!window.__cobraitTranslationBooted) {
       { pt: "Esta Política de Cookies pode ser revista para refletir alterações técnicas, legais ou operacionais.", en: "This Cookie Policy may be revised to reflect technical, legal, or operational changes.", es: "Esta Política de Cookies puede revisarse para reflejar cambios técnicos, legales u operativos." },
       { pt: "Para dúvidas sobre cookies, escreve para <a class=\"legal-mail\" href=\"mailto:cobrait@geral.pt\">cobrait@geral.pt</a>.", en: "For questions about cookies, email <a class=\"legal-mail\" href=\"mailto:cobrait@geral.pt\">cobrait@geral.pt</a>.", es: "Para dudas sobre cookies, escribe a <a class=\"legal-mail\" href=\"mailto:cobrait@geral.pt\">cobrait@geral.pt</a>." },
     ];
+    const SITE_TRANSLATIONS = [
+      { pt: "Início", en: "Home", es: "Inicio" },
+      { pt: "Serviços", en: "Services", es: "Servicios" },
+      { pt: "Sobre nós", en: "About us", es: "Sobre nosotros" },
+      { pt: "Tecnologia", en: "Technology", es: "Tecnología" },
+      { pt: "Agendar chamada", en: "Book a call", es: "Agendar llamada" },
+      { pt: "Agendar uma chamada", en: "Book a call", es: "Agendar una llamada" },
+      { pt: "Saber mais", en: "Learn more", es: "Saber más" },
+      { pt: "Saber mais ->", en: "Learn more ->", es: "Saber más ->" },
+      { pt: "Saber mais →", en: "Learn more →", es: "Saber más →" },
+      { pt: "Definição do Âmbito", en: "Scope Definition", es: "Definición del Alcance" },
+      { pt: "Software à Medida", en: "Custom Software", es: "Software a Medida" },
+      { pt: "Equipas Dedicadas", en: "Dedicated Teams", es: "Equipos Dedicados" },
+      { pt: "Nome", en: "Name", es: "Nombre" },
+      { pt: "Email", en: "Email", es: "Email" },
+      { pt: "Orçamento", en: "Budget", es: "Presupuesto" },
+      { pt: "Descrição", en: "Description", es: "Descripción" },
+      { pt: "Conta-nos sobre o teu projeto", en: "Tell us about your project", es: "Cuéntanos sobre tu proyecto" },
+      { pt: "Conta-nos sobre o teu projeto.", en: "Tell us about your project.", es: "Cuéntanos sobre tu proyecto." },
+      { pt: "Preenche o formulário e respondemos em 24–48h.", en: "Fill out the form and we reply within 24–48h.", es: "Rellena el formulario y respondemos en 24–48h." },
+      { pt: "Selecionar…", en: "Select…", es: "Seleccionar…" },
+      { pt: "Como soubeste de nós?", en: "How did you hear about us?", es: "¿Cómo nos conociste?" },
+      { pt: "Este projeto requer NDA", en: "This project requires an NDA", es: "Este proyecto requiere NDA" },
+      { pt: "Enviar pedido", en: "Send request", es: "Enviar solicitud" },
+      { pt: "Ao enviar, aceitas ser contactado pela Cobrait sobre este pedido.", en: "By sending, you agree to be contacted by Cobrait about this request.", es: "Al enviar, aceptas que Cobrait te contacte sobre esta solicitud." },
+      { pt: "Frameworks lean aplicados à tua visão para criar soluções personalizadas e inovadoras.", en: "Lean frameworks applied to your vision to create tailored, innovative solutions.", es: "Frameworks lean aplicados a tu visión para crear soluciones personalizadas e innovadoras." },
+      { pt: "Constrói o teu produto com uma equipa dedicada de programadores seniores.", en: "Build your product with a dedicated team of senior developers.", es: "Construye tu producto con un equipo dedicado de desarrolladores senior." },
+    ];
     const PAGE_META_TRANSLATIONS = {
       "": { pt: ["Cobrait | Software Factory", "Desenvolvimento de software à medida, MVPs, UX/UI e equipas dedicadas para transformar ideias em produtos digitais escaláveis."], en: ["Cobrait | Software Factory", "Custom software development, MVPs, UX/UI and dedicated teams to turn ideas into scalable digital products."], es: ["Cobrait | Software Factory", "Desarrollo de software a medida, MVPs, UX/UI y equipos dedicados para transformar ideas en productos digitales escalables."] },
       "index.html": { pt: ["Cobrait | Software Factory", "Desenvolvimento de software à medida, MVPs, UX/UI e equipas dedicadas para transformar ideias em produtos digitais escaláveis."], en: ["Cobrait | Software Factory", "Custom software development, MVPs, UX/UI and dedicated teams to turn ideas into scalable digital products."], es: ["Cobrait | Software Factory", "Desarrollo de software a medida, MVPs, UX/UI y equipos dedicados para transformar ideas en productos digitales escalables."] },
@@ -101,6 +129,16 @@ if (!window.__cobraitTranslationBooted) {
       "dedicated-teams.html": { pt: ["Equipas Dedicadas | Cobrait", "Equipas dedicadas para acelerar produto, design e desenvolvimento com a Cobrait."], en: ["Dedicated Teams | Cobrait", "Dedicated teams to accelerate product, design and development with Cobrait."], es: ["Equipos Dedicados | Cobrait", "Equipos dedicados para acelerar producto, diseño y desarrollo con Cobrait."] },
     };
     const translationDictionary = new Map();
+    const SHARED_TRANSLATION_ARRAYS = [
+      "PHRASE_TRANSLATIONS",
+      "PROJECT_TRANSLATIONS",
+      "ADDITIONAL_TRANSLATIONS",
+      "FINAL_TRANSLATIONS",
+      "CLOSING_TRANSLATIONS",
+      "VALUE_TRANSLATIONS",
+      "MEGA_MENU_TRANSLATIONS",
+      "BLOCK_TRANSLATIONS",
+    ];
 
     function looksBroken(text) {
       return MOJIBAKE_RE.test(String(text || ""));
@@ -136,6 +174,67 @@ if (!window.__cobraitTranslationBooted) {
         if (!value) return;
         translationDictionary.set(translationKey(value), set);
       });
+    }
+
+    function extractArrayAssignment(source, name) {
+      const marker = "var " + name + " =";
+      const start = String(source || "").indexOf(marker);
+      if (start < 0) return "";
+
+      const arrayStart = source.indexOf("[", start + marker.length);
+      if (arrayStart < 0) return "";
+
+      let depth = 0;
+      let quote = "";
+      let escaped = false;
+      for (let i = arrayStart; i < source.length; i += 1) {
+        const char = source[i];
+        if (escaped) {
+          escaped = false;
+          continue;
+        }
+        if (quote) {
+          if (char === "\\") escaped = true;
+          else if (char === quote) quote = "";
+          continue;
+        }
+        if (char === "\"" || char === "'" || char === "`") {
+          quote = char;
+          continue;
+        }
+        if (char === "[") depth += 1;
+        if (char === "]") {
+          depth -= 1;
+          if (depth === 0) return source.slice(arrayStart, i + 1);
+        }
+      }
+
+      return "";
+    }
+
+    async function loadSharedLanguageDictionary() {
+      if (!window.fetch) return;
+      const sharedUrl = new URL("nebula-language.js", scriptBaseUrl);
+
+      try {
+        const response = await fetch(sharedUrl.href, { cache: "no-store" });
+        if (!response.ok) throw new Error("nebula-language.js unavailable");
+        const source = await response.text();
+
+        SHARED_TRANSLATION_ARRAYS.forEach((name) => {
+          const arraySource = extractArrayAssignment(source, name);
+          if (!arraySource) return;
+
+          try {
+            const sets = Function("\"use strict\";return (" + arraySource + ");")();
+            if (Array.isArray(sets)) sets.forEach(registerTranslationSet);
+          } catch (_error) {
+            console.warn("Cobrait translations: failed to parse " + name);
+          }
+        });
+      } catch (error) {
+        console.warn("Cobrait translations: shared dictionary unavailable.", error);
+      }
     }
 
     function findTranslation(value, lang) {
@@ -191,6 +290,7 @@ if (!window.__cobraitTranslationBooted) {
     }
 
     CORE_TRANSLATIONS.forEach(registerTranslationSet);
+    SITE_TRANSLATIONS.forEach(registerTranslationSet);
 
     function normalizeDropdownArrows(root) {
       const scope = root || document;
@@ -430,6 +530,37 @@ if (!window.__cobraitTranslationBooted) {
       }
     }
 
+    function applyDictionaryToLooseAttributes(lang) {
+      const normalized = normalizeLang(lang);
+      const attributes = ["placeholder", "aria-label", "title", "alt", "value"];
+      const selector = [
+        "[placeholder]",
+        "[aria-label]",
+        "[title]",
+        "[alt]",
+        "input[type='button']",
+        "input[type='submit']",
+        "input[type='reset']",
+        "button[value]",
+      ].join(",");
+
+      document.querySelectorAll(selector).forEach((el) => {
+        attributes.forEach((attribute) => {
+          if (!el.hasAttribute(attribute)) return;
+          if (
+            attribute === "value" &&
+            !/^(button|submit|reset)$/i.test(el.getAttribute("type") || "")
+          ) {
+            return;
+          }
+
+          const current = el.getAttribute(attribute);
+          const translated = findTranslation(current, normalized);
+          if (translated) el.setAttribute(attribute, translated);
+        });
+      });
+    }
+
     function applyLanguageToDom(lang) {
       const normalized = normalizeLang(lang);
       document.documentElement.lang =
@@ -480,6 +611,7 @@ if (!window.__cobraitTranslationBooted) {
         if (val) el.setAttribute("aria-label", val);
       });
 
+      applyDictionaryToLooseAttributes(normalized);
       applyDictionaryToLooseText(normalized);
       applyPageMeta(normalized);
     }
@@ -510,17 +642,22 @@ if (!window.__cobraitTranslationBooted) {
       loadTranslationsIntoAttributes();
     };
 
-    try {
-      const response = await fetch(translationsUrl.href);
-      if (!response.ok)
-        throw new Error("translations.json not found at assets/data");
-      window.cobraitTranslations = await response.json();
-    } catch (error) {
-      console.warn(
-        "Cobrait translations: fallback only (using EN for missing extra languages).",
-        error,
-      );
-    }
+    await Promise.all([
+      (async () => {
+        try {
+          const response = await fetch(translationsUrl.href);
+          if (!response.ok)
+            throw new Error("translations.json not found at assets/data");
+          window.cobraitTranslations = await response.json();
+        } catch (error) {
+          console.warn(
+            "Cobrait translations: fallback only (using EN for missing extra languages).",
+            error,
+          );
+        }
+      })(),
+      loadSharedLanguageDictionary(),
+    ]);
 
     function boot() {
       repairBrokenText(document);

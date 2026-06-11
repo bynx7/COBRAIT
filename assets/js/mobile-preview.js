@@ -171,6 +171,41 @@
     { pt: "Privacidade", en: "Privacy", es: "Privacidad" },
     { pt: "Termos", en: "Terms", es: "Términos" },
     { pt: "Cookies", en: "Cookies", es: "Cookies" },
+    { pt: "Plano de entrega", en: "Delivery plan", es: "Plan de entrega" },
+    { pt: "Experiência clara e interface premium aumentam confiança, reduzem abandono e ajudam o utilizador a chegar mais rápido ao 'Aha moment'.", en: "A clear experience and premium interface increase trust, reduce drop-off and help users reach the Aha moment faster.", es: "Una experiencia clara y una interfaz premium aumentan la confianza, reducen el abandono y ayudan al usuario a llegar antes al Aha moment." },
+    { pt: "Alinhamos visão, objetivos e prioridades. Definimos o core do MVP e o plano de entrega.", en: "We align vision, goals and priorities. We define the MVP core and delivery plan.", es: "Alineamos visión, objetivos y prioridades. Definimos el core del MVP y el plan de entrega." },
+    { pt: "Node.js, APIs e integrações — entrega ponta a ponta.", en: "Node.js, APIs and integrations, end-to-end delivery.", es: "Node.js, APIs e integraciones, entrega de punta a punta." },
+    { pt: "Da ideia à entrega", en: "From idea to delivery", es: "De la idea a la entrega" },
+    { pt: "Build (entrega contínua)", en: "Build (continuous delivery)", es: "Build (entrega continua)" },
+    { pt: "Tecnologia que escala", en: "Technology that scales", es: "Tecnología que escala" },
+    { pt: "O melhor do ecossistema moderno.", en: "The best of the modern ecosystem.", es: "Lo mejor del ecosistema moderno." },
+    { pt: "O nosso toolkit tech num instante", en: "Our tech toolkit at a glance", es: "Nuestro toolkit tech de un vistazo" },
+    { pt: "03 — Engenharia de excelência", en: "03 — Engineering excellence", es: "03 — Ingeniería de excelencia" },
+    { pt: "Interfaces, APIs e releases limpos — com entregas progressivas e validação contínua.", en: "Clean interfaces, APIs and releases, with progressive deliveries and continuous validation.", es: "Interfaces, APIs y releases limpios, con entregas progresivas y validación continua." },
+    { pt: "Implementação com boas práticas e entregas progressivas. Testas módulos enquanto desenvolvemos.", en: "Implementation with best practices and progressive deliveries. You test modules while we develop.", es: "Implementación con buenas prácticas y entregas progresivas. Pruebas módulos mientras desarrollamos." },
+    { pt: "Quality checks e release flow — qualidade garantida em cada entrega.", en: "Quality checks and release flow, quality guaranteed in every delivery.", es: "Quality checks y release flow, calidad garantizada en cada entrega." },
+    { pt: "Sprints iterativas, entregas semanais, zero fricção.", en: "Iterative sprints, weekly deliveries, zero friction.", es: "Sprints iterativas, entregas semanales, cero fricción." },
+    { pt: "03 — O que entregamos", en: "03 — What we deliver", es: "03 — Qué entregamos" },
+    { pt: "Modelo certo para entregar", en: "The right model to deliver", es: "El modelo adecuado para entregar" },
+    { pt: "Tens a stack certa", en: "Do you have the right stack", es: "¿Tienes el stack adecuado" },
+    { pt: "A tecnologia por trás", en: "The technology behind", es: "La tecnología detrás" },
+    { pt: "das nossas soluções", en: "our solutions", es: "de nuestras soluciones" },
+    { pt: "de última geração", en: "next-generation", es: "de última generación" },
+    { pt: "Pronto para", en: "Ready to", es: "¿Listo para" },
+    { pt: "começar", en: "start", es: "empezar" },
+    { pt: "para o teu", en: "for your", es: "para tu" },
+    { pt: "produto", en: "product", es: "producto" },
+    { pt: "Marca uma call", en: "Book a call", es: "Agenda una llamada" },
+    { pt: "definimos", en: "we define", es: "definimos" },
+    { pt: "teu projeto.", en: "your project.", es: "tu proyecto." },
+    { pt: "Próximos passos", en: "Next steps", es: "Próximos pasos" },
+    { pt: "O teu nome", en: "Your name", es: "Tu nombre" },
+    { pt: "Conta-nos o problema, contexto, prazo desejado e qualquer referência relevante.", en: "Tell us the problem, context, desired timeline and any relevant reference.", es: "Cuéntanos el problema, contexto, plazo deseado y cualquier referencia relevante." },
+    { pt: "LinkedIn, recomendação, Google…", en: "LinkedIn, referral, Google…", es: "LinkedIn, recomendación, Google…" },
+    { pt: "Disponibilizamos um NDA padrão antes da primeira chamada.", en: "We provide a standard NDA before the first call.", es: "Proporcionamos un NDA estándar antes de la primera llamada." },
+    { pt: "5 campos · 2 min", en: "5 fields · 2 min", es: "5 campos · 2 min" },
+    { pt: "Identidade", en: "Identity", es: "Identidad" },
+    { pt: "Confidencialidade", en: "Confidentiality", es: "Confidencialidad" },
     { pt: "Built in Portugal", en: "Built in Portugal", es: "Hecho en Portugal" }
   ];
   const mobileTranslationDictionary = new Map();
@@ -179,6 +214,8 @@
   let hiddenNodes = [];
   let originalTitle = document.title;
   let originalScrollStyles = null;
+  let guardStyle = null;
+  let guardWasDisabled = false;
   const normalizeLanguage = (lang) => String(lang || "").slice(0, 2).toLowerCase();
   const translationKey = (text) => {
     let key = String(text || "")
@@ -3301,6 +3338,11 @@
         bodyTouchAction: document.body.style.touchAction
       };
     }
+    if (!guardStyle) {
+      guardStyle = document.getElementById("mobile-preview-guard");
+      guardWasDisabled = guardStyle ? guardStyle.disabled : false;
+    }
+    if (guardStyle) guardStyle.disabled = true;
     document.documentElement.style.overflow = "";
     document.documentElement.style.overflowY = "auto";
     document.body.style.overflow = "";
@@ -3324,6 +3366,11 @@
       document.body.style.overflow = originalScrollStyles.bodyOverflow;
       document.body.style.overflowY = originalScrollStyles.bodyOverflowY;
       document.body.style.touchAction = originalScrollStyles.bodyTouchAction;
+    }
+    if (guardStyle) {
+      guardStyle.disabled = guardWasDisabled;
+      guardStyle = null;
+      guardWasDisabled = false;
     }
     document.title = originalTitle;
   };
