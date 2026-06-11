@@ -1,5 +1,20 @@
 (function () {
-  var FORM_ACTION = "https://formsubmit.co/ajax/geral@cobrait.pt";
+  function apiBase() {
+    var saved = "";
+    try {
+      saved = localStorage.getItem("cobrait_admin_api_base") || "";
+    } catch (_error) {}
+
+    if (saved) return saved.replace(/\/+$/, "");
+    if (window.location.protocol === "file:") return "http://localhost:4000/api";
+
+    var hostname = String(window.location.hostname || "").toLowerCase();
+    if ((hostname === "localhost" || hostname === "127.0.0.1") && window.location.port !== "4000") {
+      return window.location.protocol + "//" + hostname + ":4000/api";
+    }
+
+    return window.location.origin.replace(/\/+$/, "") + "/api";
+  }
 
   function onReady(callback) {
     if (document.readyState === "loading") {
@@ -10,16 +25,10 @@
     callback();
   }
 
-  function ensureHidden(form, name, value) {
-    var input = form.querySelector('input[type="hidden"][name="' + name + '"]');
-    if (!input) {
-      input = document.createElement("input");
-      input.type = "hidden";
-      input.name = name;
-      form.insertBefore(input, form.firstChild);
-    }
-
-    input.value = value;
+  function fieldValue(control) {
+    if (!control) return "";
+    if (control.type === "checkbox") return control.checked ? "Sim" : "";
+    return String(control.value || "").trim();
   }
 
   function setFieldNames(form) {
@@ -29,18 +38,44 @@
     var checkbox = form.querySelector('input[type="checkbox"]');
     var budgetOptions = form.querySelectorAll('input[type="radio"][name="budget"]');
 
-    if (textInputs[0]) textInputs[0].name = "Nome";
-    if (emailInput) emailInput.name = "Email";
+    if (textInputs[0]) textInputs[0].name = "fullName";
+    if (emailInput) emailInput.name = "email";
     if (textarea) {
-      textarea.name = "description";
+      textarea.name = "projectSummary";
       textarea.required = true;
     }
-    if (textInputs[1]) textInputs[1].name = "referral";
+    if (textInputs[1]) textInputs[1].name = "sourceCampaign";
     if (checkbox) {
       checkbox.name = "nda";
       checkbox.value = "Sim";
     }
+    Array.prototype.forEach.call(budgetOptions, function (option) {
+      option.name = "budgetRange";
+    });
     if (budgetOptions[0]) budgetOptions[0].required = true;
+  }
+
+  function bookingPayload(form) {
+    var fullName = form.querySelector('[name="fullName"]');
+    var email = form.querySelector('[name="email"]');
+    var projectSummary = form.querySelector('[name="projectSummary"]');
+    var budget = form.querySelector('[name="budgetRange"]:checked');
+    var sourceCampaign = form.querySelector('[name="sourceCampaign"]');
+    var nda = form.querySelector('[name="nda"]');
+
+    return {
+      fullName: fieldValue(fullName),
+      email: fieldValue(email),
+      projectSummary: [
+        fieldValue(projectSummary),
+        fieldValue(nda) ? "NDA requerido: Sim" : ""
+      ].filter(Boolean).join("\n"),
+      budgetRange: fieldValue(budget),
+      sourceCampaign: fieldValue(sourceCampaign),
+      serviceInterest: "Book a call",
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+      sourcePage: window.location.pathname || "/book-a-call.html"
+    };
   }
 
   function successBoxFor(form) {
@@ -67,18 +102,14 @@
 
   function configureForm(form) {
     form.id = form.id || "contactForm";
-    form.action = FORM_ACTION;
+    form.action = apiBase() + "/call-bookings";
     form.method = "POST";
     form.autocomplete = "on";
-    form.dataset.externalForm = "formsubmit";
 
-    ensureHidden(form, "_template", "table");
-    ensureHidden(form, "_captcha", "false");
-    ensureHidden(form, "_subject", "Novo pedido - Book a Call");
     setFieldNames(form);
   }
 
-  function submitWithFormSubmit(form, successBox) {
+  function submitWithApi(form, successBox) {
     var button = form.querySelector('button[type="submit"]');
     var originalHtml = button ? button.innerHTML : "";
 
@@ -96,14 +127,21 @@
       try {
         var response = await fetch(form.action, {
           method: "POST",
-          body: new FormData(form),
           headers: {
-            Accept: "application/json"
-          }
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(bookingPayload(form))
+        });
+        var data = await response.json().catch(function () {
+          return {};
         });
 
-        if (!response.ok) throw new Error("Network response was not ok");
+        if (!response.ok) {
+          throw new Error(data.message || "Nao foi possivel enviar agora.");
+        }
 
+        form.reset();
         form.style.display = "none";
         if (successBox) {
           successBox.style.display = "block";
@@ -127,6 +165,6 @@
     if (!form) return;
 
     configureForm(form);
-    submitWithFormSubmit(form, successBoxFor(form));
+    submitWithApi(form, successBoxFor(form));
   });
 })();

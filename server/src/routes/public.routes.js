@@ -3,9 +3,18 @@ const { createAuditLog } = require("../services/users.service");
 const { getSiteContentEntry } = require("../services/content.service");
 const { createCallBooking, createContactRequest } = require("../services/ops.service");
 const { notifyCallBookingCreated, notifyContactRequestCreated } = require("../services/notifications.service");
-const { HttpError } = require("../utils/errors");
 
 const router = express.Router();
+
+async function trySendNotification(sender, failureMessage) {
+  try {
+    await sender();
+    return true;
+  } catch (error) {
+    console.error(failureMessage, error);
+    return false;
+  }
+}
 
 router.get("/site-content/:pageKey([a-z0-9._-]+)", async (request, response, next) => {
   try {
@@ -33,14 +42,12 @@ router.post("/contact-requests", async (request, response, next) => {
       sourcePage: contactRequest.sourcePage
     });
 
-    try {
-      await notifyContactRequestCreated(contactRequest);
-    } catch (error) {
-      console.error("Failed to send contact request notification.", error);
-      throw new HttpError(502, "Pedido registado, mas nao foi possivel enviar a notificacao por email.");
-    }
+    const notificationDelivered = await trySendNotification(
+      () => notifyContactRequestCreated(contactRequest),
+      "Failed to send contact request notification."
+    );
 
-    response.status(201).json({ contactRequest });
+    response.status(201).json({ contactRequest, notificationDelivered });
   } catch (error) {
     next(error);
   }
@@ -55,14 +62,12 @@ router.post("/call-bookings", async (request, response, next) => {
       serviceInterest: callBooking.serviceInterest
     });
 
-    try {
-      await notifyCallBookingCreated(callBooking);
-    } catch (error) {
-      console.error("Failed to send call booking notification.", error);
-      throw new HttpError(502, "Pedido registado, mas nao foi possivel enviar a notificacao por email.");
-    }
+    const notificationDelivered = await trySendNotification(
+      () => notifyCallBookingCreated(callBooking),
+      "Failed to send call booking notification."
+    );
 
-    response.status(201).json({ callBooking });
+    response.status(201).json({ callBooking, notificationDelivered });
   } catch (error) {
     next(error);
   }
