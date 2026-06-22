@@ -458,6 +458,18 @@
     .cms-lang-grid { display: grid; gap: 10px; }
     .cms-lang-grid label { display: grid; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
     .cms-lang-grid textarea { min-height: 92px; line-height: 1.55; }
+    .builder-panel { grid-column: 1 / -1; }
+    .builder-grid { display: grid; grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.8fr); gap: 18px; }
+    .builder-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .builder-blocks { display: grid; gap: 12px; margin-top: 16px; }
+    .builder-block { padding: 14px; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); background: rgba(255,255,255,.025); }
+    .builder-block-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .builder-block-title { color: var(--ink); font-size: 13px; font-weight: 900; }
+    .builder-block-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .builder-fieldset { display: grid; gap: 10px; }
+    .builder-fieldset textarea { min-height: 78px; resize: vertical; }
+    .builder-full { grid-column: 1 / -1; }
+    .builder-help { color: var(--muted); font-size: 12px; line-height: 1.5; }
     .empty-state {
       display: grid;
       place-items: center;
@@ -476,6 +488,7 @@
       .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .overview-grid, .layout, .users-layout, .requests-grid { grid-template-columns: 1fr; }
       .cms-layout { grid-template-columns: 1fr; }
+      .builder-grid, .builder-form-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
       .admin-shell { display: block; padding: 14px; }
@@ -619,6 +632,63 @@
           <div id="cmsMeta" class="cms-meta"></div>
           <div id="cmsFields" class="cms-fields"></div>
           <div class="panel-footer">As alterações são guardadas na API e aplicadas ao site sem mexer no HTML. Para produção usa <code>STORAGE_MODE=mysql</code>.</div>
+        </section>
+
+        <section class="panel card builder-panel">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Page Builder</h2>
+              <p class="muted">Cria páginas novas com secções reutilizáveis, sem mexer no código.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="builderNewBtn" class="btn btn-soft" type="button">Nova página</button>
+              <a id="builderPreviewLink" class="btn btn-soft" href="#" target="_blank" rel="noopener noreferrer">Abrir</a>
+              <button id="builderSaveBtn" class="btn btn-primary" type="button">Guardar página</button>
+            </div>
+          </div>
+          <div id="builderNotice" class="notice notice--info hidden"></div>
+          <div class="builder-grid">
+            <section>
+              <div class="panel-head" style="padding:0;margin-bottom:10px;">
+                <div>
+                  <h3 style="font-size:15px;">Páginas criadas</h3>
+                  <p class="muted">URLs geradas pelo CMS.</p>
+                </div>
+              </div>
+              <ul id="builderPagesList" class="list cms-page-list"></ul>
+            </section>
+            <section>
+              <div class="builder-form-grid">
+                <label class="field-label" for="builderSlug">URL / slug
+                  <input id="builderSlug" class="input" type="text" placeholder="ex: landing-campanha" autocomplete="off" />
+                </label>
+                <label class="field-label" for="builderStatus">Estado
+                  <select id="builderStatus" class="input">
+                    <option value="draft">rascunho</option>
+                    <option value="published">publicada</option>
+                  </select>
+                </label>
+                <label class="field-label" for="builderTitle">Título
+                  <input id="builderTitle" class="input" type="text" placeholder="Título da página" autocomplete="off" />
+                </label>
+                <label class="field-label" for="builderDescription">Meta description
+                  <input id="builderDescription" class="input" type="text" placeholder="Resumo para SEO e partilhas" autocomplete="off" />
+                </label>
+              </div>
+              <div class="panel-actions" style="margin-top:12px;">
+                <select id="builderBlockType" class="compact-select">
+                  <option value="hero">Hero</option>
+                  <option value="text">Texto</option>
+                  <option value="cards">Cards</option>
+                  <option value="faq">FAQ</option>
+                  <option value="cta">CTA</option>
+                </select>
+                <button id="builderAddBlockBtn" class="btn btn-soft" type="button">Adicionar secção</button>
+              </div>
+              <p class="builder-help">Cards e FAQ usam uma linha por item no formato <code>Título | Texto</code>. Listas usam uma linha por item.</p>
+              <div id="builderBlocks" class="builder-blocks"></div>
+            </section>
+          </div>
         </section>
       </section>
 
@@ -902,7 +972,10 @@
       cmsPage: null,
       cmsFields: [],
       cmsContent: {},
-      cmsDirty: false
+      cmsDirty: false,
+      builderPages: [],
+      builderPage: null,
+      builderDirty: false
     };
 
     const loginSection = qs("loginSection");
@@ -962,6 +1035,18 @@
     const cmsFieldMode = qs("cmsFieldMode");
     const cmsMeta = qs("cmsMeta");
     const cmsFields = qs("cmsFields");
+    const builderPagesList = qs("builderPagesList");
+    const builderNewBtn = qs("builderNewBtn");
+    const builderPreviewLink = qs("builderPreviewLink");
+    const builderSaveBtn = qs("builderSaveBtn");
+    const builderNotice = qs("builderNotice");
+    const builderSlug = qs("builderSlug");
+    const builderTitle = qs("builderTitle");
+    const builderDescription = qs("builderDescription");
+    const builderStatus = qs("builderStatus");
+    const builderBlockType = qs("builderBlockType");
+    const builderAddBlockBtn = qs("builderAddBlockBtn");
+    const builderBlocks = qs("builderBlocks");
 
     function createView(id, eyebrow, titleHtml) {
       const section = document.createElement("section");
@@ -1455,6 +1540,252 @@
       }
     }
 
+    function uniqueBuilderId() {
+      return "block-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7);
+    }
+
+    function defaultBuilderBlock(type) {
+      const normalizedType = ["hero", "text", "cards", "faq", "cta"].includes(type) ? type : "text";
+      const common = {
+        id: uniqueBuilderId(),
+        type: normalizedType,
+        kicker: "",
+        title: "",
+        text: "",
+        buttonLabel: "",
+        buttonHref: "",
+        items: []
+      };
+      if (normalizedType === "hero") {
+        return {
+          ...common,
+          kicker: "COBRAIT",
+          title: "Título da página",
+          text: "Escreve aqui o texto principal da página.",
+          buttonLabel: "Agendar chamada",
+          buttonHref: "/book-a-call.html",
+          items: ["Ponto forte do serviço", "Benefício claro para o cliente"]
+        };
+      }
+      if (normalizedType === "cards") {
+        return {
+          ...common,
+          title: "Serviços incluídos",
+          text: "Organiza a proposta em blocos fáceis de ler.",
+          items: [
+            { title: "Descoberta", text: "Alinhamos objetivos, requisitos e prioridades." },
+            { title: "Execução", text: "Desenhamos e desenvolvemos com ciclos curtos." }
+          ]
+        };
+      }
+      if (normalizedType === "faq") {
+        return {
+          ...common,
+          title: "Perguntas frequentes",
+          items: [
+            { title: "Quanto tempo demora?", text: "Depende do âmbito, mas começamos com um plano claro." },
+            { title: "Podemos alterar conteúdos?", text: "Sim, através deste painel." }
+          ]
+        };
+      }
+      if (normalizedType === "cta") {
+        return {
+          ...common,
+          kicker: "Próximo passo",
+          title: "Vamos falar sobre o teu projeto?",
+          text: "Marca uma chamada e avaliamos o melhor caminho.",
+          buttonLabel: "Agendar chamada",
+          buttonHref: "/book-a-call.html"
+        };
+      }
+      return {
+        ...common,
+        title: "Nova secção",
+        text: "Escreve aqui o conteúdo desta secção."
+      };
+    }
+
+    function defaultBuilderPage() {
+      return {
+        slug: "nova-pagina",
+        title: "Nova página",
+        description: "",
+        status: "draft",
+        blocks: [defaultBuilderBlock("hero")]
+      };
+    }
+
+    function builderItemsToText(block) {
+      const items = Array.isArray(block.items) ? block.items : [];
+      if (block.type === "cards" || block.type === "faq") {
+        return items.map((item) => {
+          if (typeof item === "string") return item;
+          return [item.title || "", item.text || ""].filter(Boolean).join(" | ");
+        }).join("\n");
+      }
+      return items.map((item) => typeof item === "string" ? item : [item.title, item.text].filter(Boolean).join(" ")).join("\n");
+    }
+
+    function parseBuilderItems(type, value) {
+      return String(value || "")
+        .split(/\n+/)
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => {
+          if (type !== "cards" && type !== "faq") return line;
+          const parts = line.split("|").map((part) => part.trim());
+          return { title: parts.shift() || "", text: parts.join(" | ") || "" };
+        })
+        .filter((item) => typeof item === "string" ? item : (item.title || item.text));
+    }
+
+    function renderBuilderPages() {
+      builderPagesList.innerHTML = "";
+      const pagesList = Array.isArray(state.builderPages) ? state.builderPages : [];
+      if (!pagesList.length) {
+        renderEmptyList(builderPagesList, "Ainda não há páginas criadas no Page Builder.");
+        return;
+      }
+      pagesList.forEach((page) => {
+        const item = document.createElement("li");
+        const button = document.createElement("button");
+        button.className = "cms-page-button" + (state.builderPage && state.builderPage.slug === page.slug ? " is-active" : "");
+        button.type = "button";
+        button.dataset.builderSlug = page.slug;
+        button.innerHTML =
+          "<b>" + escapeHtml(page.title || page.slug) + "</b><span>/" + escapeHtml(page.slug) + " · " + escapeHtml(page.status || "draft") + "</span>";
+        item.appendChild(button);
+        builderPagesList.appendChild(item);
+      });
+    }
+
+    function renderBuilderBlocksEmpty(message) {
+      builderBlocks.innerHTML = "";
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+      empty.innerHTML = '<div class="muted">' + escapeHtml(message) + "</div>";
+      builderBlocks.appendChild(empty);
+    }
+
+    function renderBuilderForm() {
+      const page = state.builderPage || defaultBuilderPage();
+      state.builderPage = page;
+      builderSlug.value = page.slug || "";
+      builderTitle.value = page.title || "";
+      builderDescription.value = page.description || "";
+      builderStatus.value = page.status === "published" ? "published" : "draft";
+      builderPreviewLink.href = page.slug ? "/" + page.slug : "#";
+      builderBlocks.innerHTML = "";
+      const blocks = Array.isArray(page.blocks) ? page.blocks : [];
+      if (!blocks.length) {
+        renderBuilderBlocksEmpty("Adiciona pelo menos uma secção.");
+      }
+      blocks.forEach((block, index) => {
+        const card = document.createElement("section");
+        card.className = "builder-block";
+        card.dataset.builderIndex = String(index);
+        card.dataset.builderType = block.type || "text";
+        card.innerHTML =
+          '<div class="builder-block-head"><div class="builder-block-title">' +
+          escapeHtml((index + 1) + ". " + (block.type || "text").toUpperCase()) +
+          '</div><div class="builder-block-actions">' +
+          '<button class="btn btn-soft" type="button" data-builder-action="up">Subir</button>' +
+          '<button class="btn btn-soft" type="button" data-builder-action="down">Descer</button>' +
+          '<button class="btn btn-ghost" type="button" data-builder-action="remove">Remover</button>' +
+          '</div></div>' +
+          '<div class="builder-form-grid">' +
+          '<label class="field-label">Kicker<input class="input" data-builder-field="kicker" type="text" value="' + escapeHtml(block.kicker || "") + '"></label>' +
+          '<label class="field-label">Título<input class="input" data-builder-field="title" type="text" value="' + escapeHtml(block.title || "") + '"></label>' +
+          '<label class="field-label builder-full">Texto<textarea class="input" data-builder-field="text">' + escapeHtml(block.text || "") + '</textarea></label>' +
+          '<label class="field-label">Texto do botão<input class="input" data-builder-field="buttonLabel" type="text" value="' + escapeHtml(block.buttonLabel || "") + '"></label>' +
+          '<label class="field-label">Link do botão<input class="input" data-builder-field="buttonHref" type="text" value="' + escapeHtml(block.buttonHref || "") + '"></label>' +
+          '<label class="field-label builder-full">Itens<textarea class="input" data-builder-field="items">' + escapeHtml(builderItemsToText(block)) + '</textarea></label>' +
+          '</div>';
+        builderBlocks.appendChild(card);
+      });
+      renderBuilderPages();
+    }
+
+    function collectBuilderPage() {
+      const blocks = Array.prototype.slice.call(builderBlocks.querySelectorAll(".builder-block")).map((card) => {
+        const type = card.dataset.builderType || "text";
+        const fieldValue = (field) => {
+          const input = card.querySelector('[data-builder-field="' + field + '"]');
+          return input ? input.value.trim() : "";
+        };
+        return {
+          id: (state.builderPage && state.builderPage.blocks && state.builderPage.blocks[Number(card.dataset.builderIndex)] && state.builderPage.blocks[Number(card.dataset.builderIndex)].id) || uniqueBuilderId(),
+          type,
+          kicker: fieldValue("kicker"),
+          title: fieldValue("title"),
+          text: fieldValue("text"),
+          buttonLabel: fieldValue("buttonLabel"),
+          buttonHref: fieldValue("buttonHref"),
+          items: parseBuilderItems(type, fieldValue("items"))
+        };
+      });
+      return {
+        slug: slugifySegment(builderSlug.value),
+        title: builderTitle.value.trim(),
+        description: builderDescription.value.trim(),
+        status: builderStatus.value === "published" ? "published" : "draft",
+        blocks
+      };
+    }
+
+    async function loadBuilderPages() {
+      const data = await apiFetch("/site-pages");
+      state.builderPages = Array.isArray(data && data.pages) ? data.pages : [];
+      renderBuilderPages();
+      if (!state.builderPage) {
+        state.builderPage = state.builderPages[0] ? JSON.parse(JSON.stringify(state.builderPages[0])) : defaultBuilderPage();
+        renderBuilderForm();
+      }
+    }
+
+    async function saveBuilderPage() {
+      if (!applyCmsPermissions()) return;
+      builderSaveBtn.disabled = true;
+      builderSaveBtn.textContent = "A guardar...";
+      showNotice(builderNotice, "", "info");
+      try {
+        const page = collectBuilderPage();
+        if (!page.slug) throw new Error("Define um slug válido para a URL.");
+        if (!page.title) throw new Error("Define um título para a página.");
+        if (!page.blocks.length) throw new Error("Adiciona pelo menos uma secção.");
+        const data = await apiFetch("/site-pages/" + encodeURIComponent(page.slug), {
+          method: "PUT",
+          body: page
+        });
+        state.builderPage = data && data.page ? JSON.parse(JSON.stringify(data.page)) : page;
+        state.builderDirty = false;
+        await loadBuilderPages();
+        renderBuilderForm();
+        showNotice(builderNotice, "Página guardada. Se estiver publicada, já responde em /" + state.builderPage.slug + ".", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessão expirada. Inicia sessão novamente.");
+          return;
+        }
+        showNotice(builderNotice, error.message || "Não foi possível guardar a página.", "bad");
+      } finally {
+        builderSaveBtn.disabled = false;
+        builderSaveBtn.textContent = "Guardar página";
+      }
+    }
+
+    async function bootBuilder() {
+      if (!applyCmsPermissions()) return;
+      try {
+        await loadBuilderPages();
+      } catch (error) {
+        showNotice(builderNotice, error.message || "Não foi possível carregar páginas criadas.", "bad");
+        renderEmptyList(builderPagesList, "Falha ao carregar páginas criadas.");
+        state.builderPage = defaultBuilderPage();
+        renderBuilderForm();
+      }
+    }
+
     function checkClass(ok, hasTitle) {
       if (ok && hasTitle) return "pill pill--ok";
       if (ok && !hasTitle) return "pill pill--warn";
@@ -1757,15 +2088,30 @@
 
     function applyCmsPermissions() {
       const canEditContent = !!(state.currentUser && ["admin", "editor"].includes(state.currentUser.role));
-      cmsSaveBtn.disabled = !canEditContent;
-      cmsReloadBtn.disabled = !canEditContent;
-      cmsFieldFilter.disabled = !canEditContent;
-      cmsFieldMode.disabled = !canEditContent;
+      [
+        cmsSaveBtn,
+        cmsReloadBtn,
+        cmsFieldFilter,
+        cmsFieldMode,
+        builderNewBtn,
+        builderSaveBtn,
+        builderSlug,
+        builderTitle,
+        builderDescription,
+        builderStatus,
+        builderBlockType,
+        builderAddBlockBtn
+      ].forEach((control) => {
+        if (control) control.disabled = !canEditContent;
+      });
       if (!canEditContent) {
         showNotice(cmsNotice, "A tua conta pode entrar no painel, mas não tem permissão para editar conteúdo.", "info");
+        showNotice(builderNotice, "A tua conta pode entrar no painel, mas não tem permissão para criar páginas.", "info");
         renderEmptyList(cmsFields, "Edição de conteúdo reservada a admins e editors.");
+        renderEmptyList(builderPagesList, "Page Builder reservado a admins e editors.");
         return false;
       }
+      showNotice(builderNotice, "", "info");
       return true;
     }
 
@@ -1815,6 +2161,7 @@
       renderPages();
       applyCmsPermissions();
       bootCms();
+      bootBuilder();
       resetUserForm();
       applyUserPermissions();
       runChecks();
@@ -2051,6 +2398,62 @@
       if (state.cmsPage) loadCmsPage(state.cmsPage);
     });
     cmsSaveBtn.addEventListener("click", saveCmsPage);
+    builderPagesList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-builder-slug]");
+      if (!button) return;
+      const page = state.builderPages.find((entry) => entry.slug === button.dataset.builderSlug);
+      if (!page) return;
+      state.builderPage = JSON.parse(JSON.stringify(page));
+      state.builderDirty = false;
+      showNotice(builderNotice, "", "info");
+      renderBuilderForm();
+    });
+    builderNewBtn.addEventListener("click", () => {
+      state.builderPage = defaultBuilderPage();
+      state.builderDirty = false;
+      showNotice(builderNotice, "Nova página em rascunho. Guarda para criar a URL.", "info");
+      renderBuilderForm();
+    });
+    builderAddBlockBtn.addEventListener("click", () => {
+      const page = collectBuilderPage();
+      page.blocks.push(defaultBuilderBlock(builderBlockType.value));
+      state.builderPage = page;
+      state.builderDirty = true;
+      renderBuilderForm();
+    });
+    builderBlocks.addEventListener("input", () => {
+      state.builderDirty = true;
+    });
+    [builderSlug, builderTitle, builderDescription, builderStatus].forEach((input) => {
+      input.addEventListener("input", () => {
+        state.builderDirty = true;
+        if (input === builderSlug) {
+          builderPreviewLink.href = builderSlug.value ? "/" + slugifySegment(builderSlug.value) : "#";
+        }
+      });
+    });
+    builderBlocks.addEventListener("click", (event) => {
+      const actionButton = event.target.closest("button[data-builder-action]");
+      if (!actionButton) return;
+      const card = actionButton.closest(".builder-block");
+      if (!card) return;
+      const action = actionButton.dataset.builderAction;
+      const page = collectBuilderPage();
+      const index = Number(card.dataset.builderIndex);
+      if (action === "remove") {
+        page.blocks.splice(index, 1);
+      } else if (action === "up" && index > 0) {
+        const [block] = page.blocks.splice(index, 1);
+        page.blocks.splice(index - 1, 0, block);
+      } else if (action === "down" && index < page.blocks.length - 1) {
+        const [block] = page.blocks.splice(index, 1);
+        page.blocks.splice(index + 1, 0, block);
+      }
+      state.builderPage = page;
+      state.builderDirty = true;
+      renderBuilderForm();
+    });
+    builderSaveBtn.addEventListener("click", saveBuilderPage);
     resetUserFormBtn.addEventListener("click", resetUserForm);
     userForm.addEventListener("submit", submitUserForm);
     loginBtn.addEventListener("click", login);
@@ -2077,6 +2480,9 @@
       state.cmsFields = [];
       state.cmsContent = {};
       state.cmsDirty = false;
+      state.builderPages = [];
+      state.builderPage = null;
+      state.builderDirty = false;
       bookingsFilter.value = "";
       contactsFilter.value = "";
       cmsFieldFilter.value = "";
@@ -2084,6 +2490,8 @@
       bookingsList.innerHTML = "";
       contactsList.innerHTML = "";
       cmsFields.innerHTML = "";
+      builderPagesList.innerHTML = "";
+      builderBlocks.innerHTML = "";
       showLogin("");
     });
     usersList.addEventListener("click", (event) => {

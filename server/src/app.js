@@ -9,6 +9,8 @@ const contentRoutes = require("./routes/content.routes");
 const opsRoutes = require("./routes/ops.routes");
 const publicRoutes = require("./routes/public.routes");
 const usersRoutes = require("./routes/users.routes");
+const { getBuilderPage } = require("./services/page-builder.service");
+const { renderBuilderPage } = require("./services/page-builder.renderer");
 
 const app = express();
 const allowedOrigins = new Set(config.corsOrigins);
@@ -167,6 +169,22 @@ function sendPage(request, response, next) {
   response.sendFile(path.join(siteRoot, selectedFile));
 }
 
+async function sendBuilderPage(request, response, next) {
+  try {
+    const slug = String(request.params.slug || "").toLowerCase();
+    const page = await getBuilderPage(slug);
+
+    if (!page || page.status !== "published") {
+      next();
+      return;
+    }
+
+    response.type("html").send(renderBuilderPage(page));
+  } catch (error) {
+    next(error);
+  }
+}
+
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 
@@ -243,6 +261,8 @@ app.get("/:page", (request, response, next) => {
 
   sendPage(request, response, next);
 });
+
+app.get("/:slug([a-z0-9-]+)", sendBuilderPage);
 
 app.use(notFound);
 app.use(errorHandler);
