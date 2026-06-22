@@ -48,6 +48,27 @@ Obrigatorias:
 
 O cPanel injeta normalmente o `PORT`. Se existir campo para variaveis, nao precisas de fixar o `PORT` manualmente.
 
+### Emails de pedidos de contacto
+
+Os pedidos de contacto e de chamada sao sempre guardados no painel admin. Para tambem receber email, configura SMTP no `Setup Node.js App`:
+
+- `NOTIFICATION_EMAIL_TO=geral@cobrait.pt`
+- `NOTIFICATION_EMAIL_FROM=COBRAIT Website <geral@cobrait.pt>`
+- `SMTP_HOST=mail.cobrait.pt`
+- `SMTP_PORT=587`
+- `SMTP_SECURE=false`
+- `SMTP_USER=geral@cobrait.pt`
+- `SMTP_PASSWORD=password-da-caixa-de-email`
+
+Depois de guardar estas variaveis, faz `Restart` na aplicacao Node.js.
+
+Notas:
+
+- Se usares porta `465`, normalmente `SMTP_SECURE=true`.
+- Se usares porta `587`, normalmente `SMTP_SECURE=false`.
+- O `SMTP_USER` deve ser uma caixa de email real criada no cPanel, por exemplo em `Email Accounts`.
+- Sem SMTP configurado, a app tenta enviar por FormSubmit, mas esse metodo pode exigir confirmacao e nao deve ser usado como envio principal em producao.
+
 ## Base de dados MySQL
 
 Cria a base de dados e o utilizador em `MySQL Databases` no cPanel. Depois importa:
