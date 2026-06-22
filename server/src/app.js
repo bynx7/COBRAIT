@@ -28,6 +28,8 @@ const staticPageFiles = new Set([
 const pageMap = new Map([
   ["/", "index.html"],
   ["/index.html", "index.html"],
+  ["/admin.html", "admin.html"],
+  ["/admin", "admin.html"],
   ["/about-us.html", "about-us.html"],
   ["/sobre-nos", "about-us.html"],
   ["/tech.html", "tech.html"],
@@ -207,6 +209,8 @@ app.get(["/favicon-16x16.png", "/favicon-32x32.png", "/apple-touch-icon.png"], (
 app.get("/", sendPage);
 app.get([
   "/sobre-nos",
+  "/admin",
+  "/admin.html",
   "/tecnologia",
   "/agendar-chamada",
   "/privacidade",
