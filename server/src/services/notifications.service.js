@@ -8,6 +8,45 @@ function isEmailEnabled() {
   return Boolean(config.smtpHost && config.smtpUser && config.smtpPassword && config.notificationEmailTo);
 }
 
+function getNotificationConfigSummary() {
+  const warnings = [];
+
+  if (!isEmailEnabled()) {
+    warnings.push("SMTP incompleto. A app vai tentar FormSubmit em vez de SMTP.");
+  }
+  if (config.smtpPort === 465 && !config.smtpSecure) {
+    warnings.push("Porta 465 normalmente requer SMTP_SECURE=true.");
+  }
+  if (config.smtpPort === 587 && config.smtpSecure) {
+    warnings.push("Porta 587 normalmente usa SMTP_SECURE=false.");
+  }
+  if (config.notificationEmailFrom && !String(config.notificationEmailFrom).includes("@")) {
+    warnings.push("NOTIFICATION_EMAIL_FROM deve incluir um email, por exemplo: COBRAIT Website <geral@cobrait.pt>.");
+  }
+
+  return {
+    smtpEnabled: isEmailEnabled(),
+    smtpHost: config.smtpHost || "",
+    smtpPort: config.smtpPort,
+    smtpSecure: config.smtpSecure,
+    smtpUser: config.smtpUser || "",
+    smtpPasswordConfigured: Boolean(config.smtpPassword),
+    notificationEmailFrom: config.notificationEmailFrom || "",
+    notificationEmailTo: config.notificationEmailTo || "",
+    warnings
+  };
+}
+
+function describeNotificationError(error) {
+  return {
+    message: error && error.message ? error.message : "Erro desconhecido ao enviar email.",
+    code: error && error.code ? error.code : "",
+    command: error && error.command ? error.command : "",
+    responseCode: error && error.responseCode ? error.responseCode : "",
+    response: error && error.response ? String(error.response).slice(0, 500) : ""
+  };
+}
+
 function getTransporter() {
   if (!transporter) {
     transporter = nodemailer.createTransport({
@@ -121,7 +160,7 @@ async function sendNotification(subject, rows, replyTo) {
 
   const title = subject;
 
-  await getTransporter().sendMail({
+  return getTransporter().sendMail({
     from: config.notificationEmailFrom,
     to: config.notificationEmailTo,
     replyTo: replyTo || undefined,
@@ -129,6 +168,26 @@ async function sendNotification(subject, rows, replyTo) {
     text: detailsText(title, rows),
     html: detailsHtml(title, rows)
   });
+}
+
+async function sendTestNotification(requestedBy) {
+  const configSummary = getNotificationConfigSummary();
+  const info = await sendNotification(
+    "Teste de email - COBRAIT",
+    [
+      { label: "Estado", value: "Teste manual disparado pelo painel admin." },
+      { label: "Pedido por", value: requestedBy || "admin" },
+      { label: "Destino", value: config.notificationEmailTo },
+      { label: "Data", value: new Date().toISOString() }
+    ]
+  );
+
+  return {
+    config: configSummary,
+    messageId: info && info.messageId ? info.messageId : "",
+    accepted: info && Array.isArray(info.accepted) ? info.accepted : [],
+    rejected: info && Array.isArray(info.rejected) ? info.rejected : []
+  };
 }
 
 async function notifyCallBookingCreated(booking) {
@@ -174,6 +233,9 @@ async function notifyContactRequestCreated(contactRequest) {
 }
 
 module.exports = {
+  describeNotificationError,
+  getNotificationConfigSummary,
   notifyCallBookingCreated,
-  notifyContactRequestCreated
+  notifyContactRequestCreated,
+  sendTestNotification
 };

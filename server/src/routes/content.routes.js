@@ -9,6 +9,11 @@ const {
   listBuilderPages,
   upsertBuilderPage
 } = require("../services/page-builder.service");
+const {
+  describeNotificationError,
+  getNotificationConfigSummary,
+  sendTestNotification
+} = require("../services/notifications.service");
 
 const router = express.Router();
 
@@ -64,6 +69,25 @@ router.put("/site-pages/:slug([a-z0-9-]+)", async (request, response, next) => {
     response.json({ page });
   } catch (error) {
     next(error);
+  }
+});
+
+router.post("/notification-test", async (request, response) => {
+  try {
+    const result = await sendTestNotification(request.user && request.user.email);
+
+    response.json({
+      ok: true,
+      message: "Email de teste enviado.",
+      result
+    });
+  } catch (error) {
+    response.status(502).json({
+      ok: false,
+      message: "Falha ao enviar email de teste.",
+      config: getNotificationConfigSummary(),
+      error: describeNotificationError(error)
+    });
   }
 });
 

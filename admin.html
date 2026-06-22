@@ -132,6 +132,7 @@
       font-weight: 700;
       margin-bottom: 12px;
       background: rgba(255, 255, 255, 0.045);
+      white-space: pre-line;
     }
     .notice--info { border-color: rgba(125, 145, 255, 0.25); color: #bfc7ff; }
     .notice--ok { border-color: rgba(3, 208, 179, 0.3); color: #61ead4; }
@@ -782,6 +783,7 @@
             </div>
             <div class="panel-actions">
               <input id="contactsFilter" class="search search--compact" type="search" placeholder="Filtrar por nome, email ou estado" />
+              <button id="testEmailBtn" class="btn btn-soft" type="button">Testar email</button>
               <button id="refreshContactsBtn" class="btn btn-soft" type="button">Atualizar</button>
             </div>
           </div>
@@ -1011,6 +1013,7 @@
     const contactsNotice = qs("contactsNotice");
     const contactsList = qs("contactsList");
     const contactsFilter = qs("contactsFilter");
+    const testEmailBtn = qs("testEmailBtn");
     const refreshContactsBtn = qs("refreshContactsBtn");
     const userForm = qs("userForm");
     const userFormStatus = qs("userFormStatus");
@@ -1249,6 +1252,7 @@
       if (!response.ok) {
         const error = new Error((payload && payload.message) || ("Pedido falhou: " + response.status));
         error.status = response.status;
+        error.payload = payload;
         throw error;
       }
       return payload;
@@ -2060,6 +2064,7 @@
       refreshUsersBtn.disabled = !canManageUsers;
       refreshBookingsBtn.disabled = !canManageUsers;
       refreshContactsBtn.disabled = !canManageUsers;
+      testEmailBtn.disabled = !canManageUsers;
       bookingsFilter.disabled = !canManageUsers;
       contactsFilter.disabled = !canManageUsers;
       resetUserFormBtn.disabled = !canManageUsers;
@@ -2233,6 +2238,51 @@
       }
     }
 
+    function formatNotificationDiagnostic(payload) {
+      if (!payload) return "Sem detalhes técnicos devolvidos pela API.";
+      const configSummary = payload.config || (payload.result && payload.result.config) || {};
+      const error = payload.error || {};
+      const warnings = Array.isArray(configSummary.warnings) ? configSummary.warnings : [];
+      const parts = [
+        payload.message || "",
+        error.message ? "Erro: " + error.message : "",
+        error.code ? "Código: " + error.code : "",
+        error.responseCode ? "SMTP response: " + error.responseCode : "",
+        error.response ? "Resposta: " + error.response : "",
+        "SMTP: " + [
+          configSummary.smtpHost || "-",
+          configSummary.smtpPort || "-",
+          "secure=" + String(configSummary.smtpSecure),
+          "user=" + (configSummary.smtpUser || "-"),
+          "from=" + (configSummary.notificationEmailFrom || "-"),
+          "to=" + (configSummary.notificationEmailTo || "-")
+        ].join(" | "),
+        warnings.length ? "Avisos: " + warnings.join(" ") : ""
+      ];
+      return parts.filter(Boolean).join("\n");
+    }
+
+    async function testNotificationEmail() {
+      if (!applyUserPermissions()) return;
+      testEmailBtn.disabled = true;
+      testEmailBtn.textContent = "A testar...";
+      showNotice(contactsNotice, "A enviar email de teste...", "info");
+      try {
+        const data = await apiFetch("/notification-test", { method: "POST" });
+        const accepted = data && data.result && Array.isArray(data.result.accepted) ? data.result.accepted.join(", ") : "";
+        showNotice(contactsNotice, "Email de teste enviado" + (accepted ? " para " + accepted : "") + ". Verifica a caixa de entrada e spam.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessão expirada. Inicia sessão novamente.");
+          return;
+        }
+        showNotice(contactsNotice, formatNotificationDiagnostic(error && error.payload), "bad");
+      } finally {
+        testEmailBtn.disabled = false;
+        testEmailBtn.textContent = "Testar email";
+      }
+    }
+
     async function saveBookingStatus(bookingId, button) {
       const select = bookingsList.querySelector('select[data-kind="booking-status"][data-id="' + bookingId + '"]');
       if (!select) return;
@@ -2384,6 +2434,7 @@
     refreshUsersBtn.addEventListener("click", loadUsers);
     refreshBookingsBtn.addEventListener("click", loadCallBookings);
     refreshContactsBtn.addEventListener("click", loadContactRequests);
+    testEmailBtn.addEventListener("click", testNotificationEmail);
     bookingsFilter.addEventListener("input", renderCallBookings);
     contactsFilter.addEventListener("input", renderContactRequests);
     cmsPagesList.addEventListener("click", (event) => {
