@@ -4,7 +4,7 @@ const { nowIso, queueWrite, readData } = require("../storage/file-store");
 const { HttpError } = require("../utils/errors");
 
 const PAGE_KEY_REGEX = /^[a-z0-9][a-z0-9._-]{0,63}$/;
-const FIELD_KEY_REGEX = /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,255}$/;
+const FIELD_KEY_REGEX = /^[a-zA-Z0-9][a-zA-Z0-9._-]{0,1023}$/;
 let ensureStoragePromise = null;
 
 function normalizeText(value) {

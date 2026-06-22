@@ -55,6 +55,12 @@
   function readElementValue(element) {
     if (!element) return "";
 
+    if (hasCoreTranslations(element)) {
+      var langAttr = "data-" + cms.currentLang();
+      if (element.hasAttribute(langAttr)) return element.getAttribute(langAttr) || "";
+      if (element.hasAttribute("data-pt")) return element.getAttribute("data-pt") || "";
+    }
+
     if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
       return element.hasAttribute("placeholder") ? element.getAttribute("placeholder") || "" : element.value || "";
     }
@@ -76,6 +82,15 @@
     }
 
     return true;
+  }
+
+  function hasCoreTranslations(element) {
+    if (!element || !element.hasAttribute) return false;
+    var count = 0;
+    ["data-pt", "data-en", "data-es"].forEach(function (attr) {
+      if (element.hasAttribute(attr)) count += 1;
+    });
+    return count >= 2;
   }
 
   function isEditableTarget(element) {
@@ -137,10 +152,18 @@
     return "body > " + parts.join(" > ");
   }
 
-  function fieldKeyForElement(element) {
+  function baseFieldKeyForElement(element) {
     var mappedKey = element.getAttribute("data-cms-key");
     if (mappedKey) return mappedKey;
     return cms.encodeDomSelectorKey(buildSelectorForElement(element));
+  }
+
+  function fieldKeyForElement(element) {
+    var baseKey = baseFieldKeyForElement(element);
+    if (hasCoreTranslations(element)) {
+      return "i18n." + cms.currentLang() + "." + baseKey;
+    }
+    return baseKey;
   }
 
   function fieldLabelForElement(element) {
@@ -317,6 +340,13 @@
   }
 
   function updateFieldOnPage(key, value) {
+    if (key.indexOf("i18n.") === 0) {
+      var parts = key.split(".");
+      var innerKey = parts.slice(2).join(".");
+      updateFieldOnPage(innerKey, value);
+      return;
+    }
+
     if (key.indexOf("dom.") === 0) {
       var selector = cms.decodeDomSelectorKey(key);
       var node = null;

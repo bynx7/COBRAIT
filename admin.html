@@ -413,6 +413,51 @@
     .form-note, .panel-footer { color: var(--muted); font-size: 12px; line-height: 1.5; }
     .panel-footer { margin-top: 14px; }
     textarea.input { min-height: 124px; resize: vertical; }
+    .cms-layout { display: grid; grid-template-columns: minmax(230px, 0.74fr) minmax(0, 1.6fr); gap: 20px; }
+    .cms-page-list { max-height: 620px; }
+    .cms-page-button {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+    }
+    .cms-page-button:hover, .cms-page-button.is-active { color: var(--ink); }
+    .cms-page-button b { display: block; font-size: 13px; }
+    .cms-page-button span { display: block; margin-top: 3px; color: var(--muted-2); font: 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .cms-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; margin-bottom: 14px; }
+    .cms-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+    .cms-fields { display: grid; gap: 14px; max-height: 680px; overflow: auto; padding-right: 4px; }
+    .cms-field {
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.025);
+    }
+    .cms-field-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cms-field-title { min-width: 0; color: var(--ink); font-size: 13px; font-weight: 900; }
+    .cms-field-title span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted-2);
+      font: 11px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cms-lang-grid { display: grid; gap: 10px; }
+    .cms-lang-grid label { display: grid; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+    .cms-lang-grid textarea { min-height: 92px; line-height: 1.55; }
     .empty-state {
       display: grid;
       place-items: center;
@@ -430,6 +475,7 @@
       .admin-shell { grid-template-columns: 200px minmax(0, 1fr); gap: 20px; padding: 22px; }
       .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .overview-grid, .layout, .users-layout, .requests-grid { grid-template-columns: 1fr; }
+      .cms-layout { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
       .admin-shell { display: block; padding: 14px; }
@@ -536,6 +582,43 @@
             </div>
           </div>
           <ul id="checksList" class="list"></ul>
+        </section>
+      </section>
+
+      <section class="layout cms-layout">
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 style="font-size:21px;margin-bottom:4px;">Páginas editáveis</h2>
+              <p class="muted">Escolhe a página que queres alterar.</p>
+            </div>
+          </div>
+          <ul id="cmsPagesList" class="list cms-page-list"></ul>
+        </section>
+
+        <section class="panel card">
+          <div class="panel-head">
+            <div>
+              <h2 id="cmsEditorTitle" style="font-size:21px;margin-bottom:4px;">CMS de conteúdo</h2>
+              <p id="cmsEditorMeta" class="muted">Seleciona uma página para carregar campos editáveis.</p>
+            </div>
+            <div class="panel-actions">
+              <a id="cmsPreviewLink" class="btn btn-soft" href="index.html" target="_blank" rel="noopener noreferrer">Abrir página</a>
+              <button id="cmsReloadBtn" class="btn btn-soft" type="button">Recarregar</button>
+              <button id="cmsSaveBtn" class="btn btn-primary" type="button">Guardar</button>
+            </div>
+          </div>
+          <div id="cmsNotice" class="notice notice--info hidden"></div>
+          <div class="cms-toolbar">
+            <input id="cmsFieldFilter" class="search" type="search" placeholder="Filtrar campos por texto ou secção" />
+            <select id="cmsFieldMode" class="compact-select">
+              <option value="main">Principais</option>
+              <option value="all">Todos</option>
+            </select>
+          </div>
+          <div id="cmsMeta" class="cms-meta"></div>
+          <div id="cmsFields" class="cms-fields"></div>
+          <div class="panel-footer">As alterações são guardadas na API e aplicadas ao site sem mexer no HTML. Para produção usa <code>STORAGE_MODE=mysql</code>.</div>
         </section>
       </section>
 
@@ -655,6 +738,33 @@
       { path: "servicos/custom-software.html", label: "Custom Software", group: "servicos" },
       { path: "servicos/dedicated-teams.html", label: "Dedicated Teams", group: "servicos" }
     ];
+    const CMS_LANGS = [
+      { code: "pt", label: "Português" },
+      { code: "en", label: "English" },
+      { code: "es", label: "Español" }
+    ];
+    const CMS_EDITABLE_SELECTOR = [
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "p",
+      "li",
+      "a",
+      "button",
+      "label",
+      "span",
+      "strong",
+      "em",
+      "small",
+      "dt",
+      "dd",
+      "blockquote",
+      "figcaption"
+    ].join(",");
+    const CMS_MAIN_TAGS = new Set(["H1", "H2", "H3", "P", "A", "BUTTON"]);
 
     function qs(id) { return document.getElementById(id); }
     function escapeHtml(value) {
@@ -664,6 +774,69 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+    }
+    function stripAccents(value) {
+      const text = String(value || "");
+      if (typeof text.normalize === "function") {
+        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      }
+      return text;
+    }
+    function slugifySegment(value) {
+      return stripAccents(value)
+        .toLowerCase()
+        .replace(/\.html?$/i, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+    function pageKeyForPath(path) {
+      const normalized = String(path || "").replace(/^\/+|\/+$/g, "");
+      if (!normalized || /^index\.html?$/i.test(normalized)) return "home";
+      return normalized
+        .split("/")
+        .map(slugifySegment)
+        .filter((segment) => segment && segment !== "index")
+        .join(".") || "home";
+    }
+    function encodeDomSelectorKey(selector) {
+      const utf8Selector = encodeURIComponent(String(selector || "")).replace(/%([0-9A-F]{2})/g, (_match, hex) =>
+        String.fromCharCode(parseInt(hex, 16))
+      );
+      return "dom." + btoa(utf8Selector).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+    }
+    function cssEscape(value) {
+      if (window.CSS && typeof window.CSS.escape === "function") return window.CSS.escape(value);
+      return String(value).replace(/[^a-zA-Z0-9_-]/g, (char) => "\\" + char);
+    }
+    function hasCoreTranslations(element) {
+      if (!element || !element.hasAttribute) return false;
+      return CMS_LANGS.filter((lang) => element.hasAttribute("data-" + lang.code)).length >= 2;
+    }
+    function hasOnlySimpleChildren(element) {
+      if (!element || !element.children.length) return true;
+      for (let index = 0; index < element.children.length; index += 1) {
+        if (element.children[index].tagName !== "BR") return false;
+      }
+      return true;
+    }
+    function selectorPart(element) {
+      if (element.id) return "#" + cssEscape(element.id);
+      let index = 1;
+      let sibling = element;
+      while ((sibling = sibling.previousElementSibling)) {
+        if (sibling.tagName === element.tagName) index += 1;
+      }
+      return element.tagName.toLowerCase() + ":nth-of-type(" + index + ")";
+    }
+    function buildSelectorForElement(element) {
+      const parts = [];
+      let current = element;
+      while (current && current.nodeType === 1 && current !== current.ownerDocument.body) {
+        parts.unshift(selectorPart(current));
+        if (current.id) return parts.join(" > ");
+        current = current.parentElement;
+      }
+      return "body > " + parts.join(" > ");
     }
     const STATIC_PORTS = new Set(["3000", "5500", "8080", "8092"]);
 
@@ -724,7 +897,12 @@
       users: [],
       callBookings: [],
       contactRequests: [],
-      checksRunning: false
+      checksRunning: false,
+      siteContentEntries: [],
+      cmsPage: null,
+      cmsFields: [],
+      cmsContent: {},
+      cmsDirty: false
     };
 
     const loginSection = qs("loginSection");
@@ -773,6 +951,17 @@
     const userPassword = qs("userPassword");
     const userPasswordHint = qs("userPasswordHint");
     const saveUserBtn = qs("saveUserBtn");
+    const cmsPagesList = qs("cmsPagesList");
+    const cmsEditorTitle = qs("cmsEditorTitle");
+    const cmsEditorMeta = qs("cmsEditorMeta");
+    const cmsPreviewLink = qs("cmsPreviewLink");
+    const cmsReloadBtn = qs("cmsReloadBtn");
+    const cmsSaveBtn = qs("cmsSaveBtn");
+    const cmsNotice = qs("cmsNotice");
+    const cmsFieldFilter = qs("cmsFieldFilter");
+    const cmsFieldMode = qs("cmsFieldMode");
+    const cmsMeta = qs("cmsMeta");
+    const cmsFields = qs("cmsFields");
 
     function createView(id, eyebrow, titleHtml) {
       const section = document.createElement("section");
@@ -799,8 +988,9 @@
       const layouts = Array.from(adminSection.querySelectorAll(":scope > .layout"));
       const pagesPanel = layouts[0] ? layouts[0].children[0] : null;
       const checksPanel = layouts[0] ? layouts[0].children[1] : null;
-      const usersLayout = layouts[1] || null;
-      const requestsLayout = layouts[2] || null;
+      const cmsLayout = layouts[1] || null;
+      const usersLayout = layouts[2] || null;
+      const requestsLayout = layouts[3] || null;
 
       if (kpis) {
         kpis.querySelectorAll(".kpi").forEach((card) => {
@@ -817,6 +1007,7 @@
         '<nav class="admin-nav">' +
         '<button class="nav-link is-active" type="button" data-admin-view="overview"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"></rect><rect x="14" y="4" width="6" height="6" rx="1.5"></rect><rect x="4" y="14" width="6" height="6" rx="1.5"></rect><rect x="14" y="14" width="6" height="6" rx="1.5"></rect></svg><span>Overview</span></button>' +
         '<button class="nav-link" type="button" data-admin-view="pages"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg><span>Páginas</span></button>' +
+        '<button class="nav-link" type="button" data-admin-view="cms"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h10"></path><path d="M4 19h7"></path><path d="M17 14l3 3-5 5h-3v-3z"></path></svg><span>CMS</span></button>' +
         '<button class="nav-link" type="button" data-admin-view="users"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M16 19a4 4 0 0 0-8 0"></path><circle cx="12" cy="8" r="3.5"></circle><path d="M20 18a3 3 0 0 0-3-3"></path><path d="M17 5a3 3 0 0 1 0 6"></path></svg><span>Utilizadores</span></button>' +
         '<button class="nav-link" type="button" data-admin-view="requests"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v2.3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.5 2 2 0 0 1 4.1 1.3h2.3a2 2 0 0 1 2 1.7l.4 2.4a2 2 0 0 1-.6 1.8L7.2 8.2a15 15 0 0 0 6.6 6.6l1.1-1.1a2 2 0 0 1 1.8-.5l2.4.5a2 2 0 0 1 1.6 2z"></path></svg><span>Pedidos</span></button>' +
         '</nav><div class="sidebar-user"><div class="session-mini"><div class="avatar">CA</div><div><b id="sidebarSessionName">COBRAIT Admin</b><span id="sidebarSessionEmail">admin@cobrait.pt</span></div></div></div>';
@@ -877,6 +1068,12 @@
         pagesView.appendChild(pagesPanel);
       }
 
+      const cmsView = createView("cms", "CMS", "Conteúdo <em>editável</em>");
+      if (cmsLayout) {
+        cmsLayout.className = "cms-layout";
+        cmsView.appendChild(cmsLayout);
+      }
+
       const usersView = createView("users", "Utilizadores", "Acessos <em>admin</em>");
       if (usersLayout) {
         usersLayout.className = "users-layout";
@@ -893,6 +1090,7 @@
 
       main.appendChild(overviewView);
       main.appendChild(pagesView);
+      main.appendChild(cmsView);
       main.appendChild(usersView);
       main.appendChild(requestsView);
       adminSection.textContent = "";
@@ -1001,6 +1199,246 @@
         empty.className = "empty-state";
         empty.innerHTML = '<div class="muted">Sem resultados para este filtro.</div>';
         pagesList.appendChild(empty);
+      }
+    }
+
+    function renderCmsPages() {
+      cmsPagesList.innerHTML = "";
+      pages.forEach((page) => {
+        const pageKey = pageKeyForPath(page.path);
+        const item = document.createElement("li");
+        const button = document.createElement("button");
+        button.className = "cms-page-button" + (state.cmsPage && state.cmsPage.path === page.path ? " is-active" : "");
+        button.type = "button";
+        button.dataset.cmsPath = page.path;
+        button.innerHTML =
+          "<b>" + escapeHtml(page.label) + "</b><span>" + escapeHtml(pageKey) + " · " + escapeHtml(page.path) + "</span>";
+        item.appendChild(button);
+        cmsPagesList.appendChild(item);
+      });
+    }
+
+    function isCmsEditableTarget(element) {
+      if (!element || element.nodeType !== 1) return false;
+      if (!element.matches(CMS_EDITABLE_SELECTOR)) return false;
+      if (element.closest("script, style, noscript, svg, .language-dropdown")) return false;
+      const text = readCmsElementValue(element, "pt");
+      if (!text || text.length > 900) return false;
+      if (element.hasAttribute("data-cms-key")) return true;
+      return hasOnlySimpleChildren(element);
+    }
+
+    function readCmsElementValue(element, lang) {
+      if (!element) return "";
+      if (hasCoreTranslations(element)) {
+        const attr = "data-" + lang;
+        return String(element.getAttribute(attr) || element.getAttribute("data-pt") || element.textContent || "").trim();
+      }
+      if (element.hasAttribute("data-html")) return element.innerHTML.trim();
+      return element.textContent.trim();
+    }
+
+    function fieldBaseKey(element) {
+      const mappedKey = element.getAttribute("data-cms-key");
+      if (mappedKey) return mappedKey;
+      return encodeDomSelectorKey(buildSelectorForElement(element));
+    }
+
+    function fieldTitle(element) {
+      const tag = element.tagName.toLowerCase();
+      const preview = readCmsElementValue(element, "pt").replace(/\s+/g, " ").trim();
+      return tag + (preview ? " · " + (preview.length > 74 ? preview.slice(0, 71) + "..." : preview) : "");
+    }
+
+    function contentKeyForField(field, lang) {
+      return field.translated ? "i18n." + lang + "." + field.baseKey : field.baseKey;
+    }
+
+    function fieldStoredValue(field, lang) {
+      const key = contentKeyForField(field, lang);
+      if (Object.prototype.hasOwnProperty.call(state.cmsContent, key)) {
+        return String(state.cmsContent[key] == null ? "" : state.cmsContent[key]);
+      }
+      return field.values[lang] || "";
+    }
+
+    function extractCmsFields(html) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const seen = new Set();
+      return Array.prototype.slice.call(doc.querySelectorAll(CMS_EDITABLE_SELECTOR))
+        .filter(isCmsEditableTarget)
+        .map((element) => {
+          const baseKey = fieldBaseKey(element);
+          if (seen.has(baseKey)) return null;
+          seen.add(baseKey);
+          const translated = hasCoreTranslations(element);
+          return {
+            baseKey,
+            selector: buildSelectorForElement(element),
+            tag: element.tagName,
+            translated,
+            title: fieldTitle(element),
+            values: {
+              pt: readCmsElementValue(element, "pt"),
+              en: translated ? readCmsElementValue(element, "en") : "",
+              es: translated ? readCmsElementValue(element, "es") : ""
+            }
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function filteredCmsFields() {
+      const query = String(cmsFieldFilter.value || "").trim().toLowerCase();
+      const mode = cmsFieldMode.value;
+      return state.cmsFields.filter((field) => {
+        if (mode === "main" && !CMS_MAIN_TAGS.has(field.tag)) return false;
+        if (!query) return true;
+        return (
+          field.title.toLowerCase().includes(query) ||
+          field.selector.toLowerCase().includes(query) ||
+          CMS_LANGS.some((lang) => fieldStoredValue(field, lang.code).toLowerCase().includes(query))
+        );
+      });
+    }
+
+    function renderCmsMeta() {
+      if (!state.cmsPage) {
+        cmsMeta.innerHTML = "";
+        return;
+      }
+      const savedFields = Object.keys(state.cmsContent || {}).length;
+      cmsMeta.innerHTML =
+        '<span class="meta-chip">pageKey: ' + escapeHtml(pageKeyForPath(state.cmsPage.path)) + '</span>' +
+        '<span class="meta-chip">' + state.cmsFields.length + ' campos detetados</span>' +
+        '<span class="meta-chip">' + savedFields + ' valores guardados</span>';
+    }
+
+    function renderCmsFields() {
+      cmsFields.innerHTML = "";
+      renderCmsPages();
+      renderCmsMeta();
+      if (!state.cmsPage) {
+        renderEmptyList(cmsFields, "Seleciona uma página para começar.");
+        return;
+      }
+      const fields = filteredCmsFields();
+      if (!fields.length) {
+        renderEmptyList(cmsFields, "Sem campos para este filtro.");
+        return;
+      }
+      fields.forEach((field, index) => {
+        const card = document.createElement("section");
+        card.className = "cms-field";
+        card.innerHTML =
+          '<div class="cms-field-head"><div class="cms-field-title">' +
+          escapeHtml(field.title) +
+          '<span>' +
+          escapeHtml(field.selector) +
+          '</span></div><span class="badge" data-group="' +
+          (field.translated ? "core" : "tools") +
+          '">' +
+          (field.translated ? "PT/EN/ES" : "texto") +
+          "</span></div>";
+        const langGrid = document.createElement("div");
+        langGrid.className = "cms-lang-grid";
+        const langs = field.translated ? CMS_LANGS : [{ code: "text", label: "Texto" }];
+        langs.forEach((lang) => {
+          const textarea = document.createElement("textarea");
+          textarea.className = "input";
+          textarea.dataset.cmsFieldIndex = String(index);
+          textarea.dataset.cmsKey = lang.code === "text" ? field.baseKey : contentKeyForField(field, lang.code);
+          textarea.value = lang.code === "text" ? fieldStoredValue(field, "pt") : fieldStoredValue(field, lang.code);
+          textarea.addEventListener("input", () => {
+            state.cmsDirty = true;
+            state.cmsContent[textarea.dataset.cmsKey] = textarea.value;
+          });
+          const label = document.createElement("label");
+          label.textContent = lang.label;
+          label.appendChild(textarea);
+          langGrid.appendChild(label);
+        });
+        card.appendChild(langGrid);
+        cmsFields.appendChild(card);
+      });
+    }
+
+    async function loadSiteContentEntries() {
+      const data = await apiFetch("/site-content");
+      state.siteContentEntries = Array.isArray(data && data.contentEntries) ? data.contentEntries : [];
+    }
+
+    function contentForPageKey(pageKey) {
+      const entry = state.siteContentEntries.find((item) => item.pageKey === pageKey);
+      return entry && entry.content ? { ...entry.content } : {};
+    }
+
+    async function loadCmsPage(page) {
+      state.cmsPage = page;
+      state.cmsDirty = false;
+      cmsEditorTitle.textContent = page.label;
+      cmsEditorMeta.textContent = "A carregar campos de " + page.path + "...";
+      cmsPreviewLink.href = page.path;
+      cmsReloadBtn.disabled = true;
+      cmsSaveBtn.disabled = true;
+      showNotice(cmsNotice, "", "info");
+      renderCmsPages();
+      renderEmptyList(cmsFields, "A carregar conteúdo...");
+      try {
+        await loadSiteContentEntries();
+        const response = await fetch(page.path, { cache: "no-store" });
+        if (!response.ok) throw new Error("Não foi possível abrir o HTML da página.");
+        const html = await response.text();
+        state.cmsContent = contentForPageKey(pageKeyForPath(page.path));
+        state.cmsFields = extractCmsFields(html);
+        cmsEditorMeta.textContent = "Edita textos, CTAs e secções principais. Guarda para publicar.";
+        renderCmsFields();
+      } catch (error) {
+        state.cmsFields = [];
+        state.cmsContent = {};
+        showNotice(cmsNotice, error.message || "Não foi possível carregar a página.", "bad");
+        renderEmptyList(cmsFields, "Falha ao carregar campos.");
+      } finally {
+        cmsReloadBtn.disabled = false;
+        cmsSaveBtn.disabled = false;
+      }
+    }
+
+    async function saveCmsPage() {
+      if (!state.cmsPage) return;
+      cmsSaveBtn.disabled = true;
+      cmsSaveBtn.textContent = "A guardar...";
+      showNotice(cmsNotice, "", "info");
+      try {
+        const pageKey = pageKeyForPath(state.cmsPage.path);
+        const data = await apiFetch("/site-content/" + encodeURIComponent(pageKey), {
+          method: "PUT",
+          body: { content: state.cmsContent }
+        });
+        const saved = data && data.contentEntry ? data.contentEntry : null;
+        state.cmsContent = saved && saved.content ? { ...saved.content } : state.cmsContent;
+        state.cmsDirty = false;
+        await loadSiteContentEntries();
+        renderCmsFields();
+        showNotice(cmsNotice, "Conteúdo guardado. Abre a página ou faz refresh para confirmar.", "ok");
+      } catch (error) {
+        if (error && error.status === 401) {
+          showLogin("Sessão expirada. Inicia sessão novamente.");
+          return;
+        }
+        showNotice(cmsNotice, error.message || "Não foi possível guardar o conteúdo.", "bad");
+      } finally {
+        cmsSaveBtn.disabled = false;
+        cmsSaveBtn.textContent = "Guardar";
+      }
+    }
+
+    async function bootCms() {
+      if (!applyCmsPermissions()) return;
+      renderCmsPages();
+      if (!state.cmsPage && pages.length) {
+        await loadCmsPage(pages[0]);
       }
     }
 
@@ -1304,6 +1742,20 @@
       return true;
     }
 
+    function applyCmsPermissions() {
+      const canEditContent = !!(state.currentUser && ["admin", "editor"].includes(state.currentUser.role));
+      cmsSaveBtn.disabled = !canEditContent;
+      cmsReloadBtn.disabled = !canEditContent;
+      cmsFieldFilter.disabled = !canEditContent;
+      cmsFieldMode.disabled = !canEditContent;
+      if (!canEditContent) {
+        showNotice(cmsNotice, "A tua conta pode entrar no painel, mas não tem permissão para editar conteúdo.", "info");
+        renderEmptyList(cmsFields, "Edição de conteúdo reservada a admins e editors.");
+        return false;
+      }
+      return true;
+    }
+
     function updateSessionUi() {
       if (!state.currentUser) return;
       const user = state.currentUser;
@@ -1348,6 +1800,8 @@
       updateSessionUi();
       setAdminView("overview", true);
       renderPages();
+      applyCmsPermissions();
+      bootCms();
       resetUserForm();
       applyUserPermissions();
       runChecks();
@@ -1572,6 +2026,18 @@
     refreshContactsBtn.addEventListener("click", loadContactRequests);
     bookingsFilter.addEventListener("input", renderCallBookings);
     contactsFilter.addEventListener("input", renderContactRequests);
+    cmsPagesList.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-cms-path]");
+      if (!button) return;
+      const page = pages.find((entry) => entry.path === button.dataset.cmsPath);
+      if (page) loadCmsPage(page);
+    });
+    cmsFieldFilter.addEventListener("input", renderCmsFields);
+    cmsFieldMode.addEventListener("change", renderCmsFields);
+    cmsReloadBtn.addEventListener("click", () => {
+      if (state.cmsPage) loadCmsPage(state.cmsPage);
+    });
+    cmsSaveBtn.addEventListener("click", saveCmsPage);
     resetUserFormBtn.addEventListener("click", resetUserForm);
     userForm.addEventListener("submit", submitUserForm);
     loginBtn.addEventListener("click", login);
@@ -1593,11 +2059,18 @@
       state.users = [];
       state.callBookings = [];
       state.contactRequests = [];
+      state.siteContentEntries = [];
+      state.cmsPage = null;
+      state.cmsFields = [];
+      state.cmsContent = {};
+      state.cmsDirty = false;
       bookingsFilter.value = "";
       contactsFilter.value = "";
+      cmsFieldFilter.value = "";
       usersList.innerHTML = "";
       bookingsList.innerHTML = "";
       contactsList.innerHTML = "";
+      cmsFields.innerHTML = "";
       showLogin("");
     });
     usersList.addEventListener("click", (event) => {

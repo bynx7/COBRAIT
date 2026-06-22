@@ -193,6 +193,26 @@
     element.textContent = value;
   }
 
+  function setTranslatedElementValueForLang(element, value, lang) {
+    var normalized = normalizeLang(lang);
+    var langAttr = "data-" + normalized;
+
+    if (element.hasAttribute(langAttr)) {
+      element.setAttribute(langAttr, value);
+    }
+
+    if (currentLang() !== normalized) {
+      return;
+    }
+
+    if (element.hasAttribute("data-html")) {
+      element.innerHTML = value;
+      return;
+    }
+
+    element.textContent = value;
+  }
+
   function setElementValue(element, value) {
     var text = String(value == null ? "" : value);
 
@@ -225,21 +245,34 @@
     element.textContent = text;
   }
 
+  function nodesForContentKey(key) {
+    if (key.indexOf("dom.") === 0) {
+      var selector = decodeDomSelectorKey(key);
+      var node = selector ? safeQuerySelector(selector) : null;
+      return node ? [node] : [];
+    }
+
+    var selector = '[data-cms-key="' + escapeAttributeValue(key) + '"]';
+    return Array.prototype.slice.call(document.querySelectorAll(selector));
+  }
+
   function applyContent(content) {
     state.content = content || {};
 
     Object.keys(state.content).forEach(function (key) {
       var value = String(state.content[key] == null ? "" : state.content[key]);
 
-      if (key.indexOf("dom.") === 0) {
-        var selector = decodeDomSelectorKey(key);
-        var node = selector ? safeQuerySelector(selector) : null;
-        if (node) setElementValue(node, value);
+      if (key.indexOf("i18n.") === 0) {
+        var parts = key.split(".");
+        var lang = parts[1] || "pt";
+        var innerKey = parts.slice(2).join(".");
+        nodesForContentKey(innerKey).forEach(function (node) {
+          setTranslatedElementValueForLang(node, value, lang);
+        });
         return;
       }
 
-      var selector = '[data-cms-key="' + escapeAttributeValue(key) + '"]';
-      document.querySelectorAll(selector).forEach(function (node) {
+      nodesForContentKey(key).forEach(function (node) {
         setElementValue(node, value);
       });
     });
