@@ -1,4 +1,23 @@
 /* Local layer for fixes that should sit above the site export. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.full-bleed-band {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.reveal,
+.mask-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
 .max-w-\[1480px\] {
   max-width: 1480px !important;
 }
