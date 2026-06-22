@@ -6,14 +6,14 @@ const { notifyCallBookingCreated, notifyContactRequestCreated } = require("../se
 
 const router = express.Router();
 
-async function trySendNotification(sender, failureMessage) {
-  try {
-    await sender();
-    return true;
-  } catch (error) {
-    console.error(failureMessage, error);
-    return false;
-  }
+function queueNotification(sender, failureMessage) {
+  setImmediate(async () => {
+    try {
+      await sender();
+    } catch (error) {
+      console.error(failureMessage, error);
+    }
+  });
 }
 
 router.get("/site-content/:pageKey([a-z0-9._-]+)", async (request, response, next) => {
@@ -42,12 +42,12 @@ router.post("/contact-requests", async (request, response, next) => {
       sourcePage: contactRequest.sourcePage
     });
 
-    const notificationDelivered = await trySendNotification(
+    queueNotification(
       () => notifyContactRequestCreated(contactRequest),
       "Failed to send contact request notification."
     );
 
-    response.status(201).json({ contactRequest, notificationDelivered });
+    response.status(201).json({ contactRequest, notificationQueued: true });
   } catch (error) {
     next(error);
   }
@@ -62,12 +62,12 @@ router.post("/call-bookings", async (request, response, next) => {
       serviceInterest: callBooking.serviceInterest
     });
 
-    const notificationDelivered = await trySendNotification(
+    queueNotification(
       () => notifyCallBookingCreated(callBooking),
       "Failed to send call booking notification."
     );
 
-    response.status(201).json({ callBooking, notificationDelivered });
+    response.status(201).json({ callBooking, notificationQueued: true });
   } catch (error) {
     next(error);
   }

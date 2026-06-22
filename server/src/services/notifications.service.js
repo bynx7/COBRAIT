@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const config = require("../config");
 
 let transporter;
+const NOTIFICATION_TIMEOUT_MS = 10000;
 
 function isEmailEnabled() {
   return Boolean(config.smtpHost && config.smtpUser && config.smtpPassword && config.notificationEmailTo);
@@ -13,6 +14,9 @@ function getTransporter() {
       host: config.smtpHost,
       port: config.smtpPort,
       secure: config.smtpSecure,
+      connectionTimeout: NOTIFICATION_TIMEOUT_MS,
+      greetingTimeout: NOTIFICATION_TIMEOUT_MS,
+      socketTimeout: NOTIFICATION_TIMEOUT_MS,
       auth: {
         user: config.smtpUser,
         pass: config.smtpPassword
@@ -83,18 +87,26 @@ function detailsHtml(title, rows) {
 async function sendViaFormSubmit(subject, rows) {
   const endpoint = "https://formsubmit.co/ajax/" + encodeURIComponent(config.notificationEmailTo);
   const body = formatRowsForFormSubmit(rows);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), NOTIFICATION_TIMEOUT_MS);
   body.append("_subject", subject);
   body.append("_captcha", "false");
   body.append("_template", "table");
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body
-  });
+  let response;
+  try {
+    response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body,
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!response.ok) {
     throw new Error("FormSubmit notification failed with status " + response.status);
