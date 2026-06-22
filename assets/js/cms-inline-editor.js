@@ -374,14 +374,20 @@
     ui.status.textContent = "";
 
     try {
-      state.content[state.activeFieldKey] = ui.textarea.value;
+      if (ui.textarea.value.trim()) {
+        state.content[state.activeFieldKey] = ui.textarea.value;
+      } else {
+        delete state.content[state.activeFieldKey];
+      }
       var data = await apiRequest("/site-content/" + encodeURIComponent(state.pageKey), {
         method: "PUT",
         body: { content: state.content }
       });
 
       state.content = data && data.contentEntry && data.contentEntry.content ? data.contentEntry.content : state.content;
-      updateFieldOnPage(state.activeFieldKey, ui.textarea.value);
+      if (ui.textarea.value.trim()) {
+        updateFieldOnPage(state.activeFieldKey, ui.textarea.value);
+      }
       cms.applyContent(state.content);
       refreshEditableNodes();
       ui.status.textContent = "Alteração guardada.";

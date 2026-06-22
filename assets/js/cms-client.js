@@ -245,6 +245,10 @@
     element.textContent = text;
   }
 
+  function hasVisibleCmsValue(value) {
+    return String(value == null ? "" : value).trim().length > 0;
+  }
+
   function nodesForContentKey(key) {
     if (key.indexOf("dom.") === 0) {
       var selector = decodeDomSelectorKey(key);
@@ -260,6 +264,7 @@
     state.content = content || {};
 
     Object.keys(state.content).forEach(function (key) {
+      if (!hasVisibleCmsValue(state.content[key])) return;
       var value = String(state.content[key] == null ? "" : state.content[key]);
 
       if (key.indexOf("i18n.") === 0) {

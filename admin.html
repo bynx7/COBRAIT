@@ -1262,6 +1262,14 @@
       return field.values[lang] || "";
     }
 
+    function cleanedCmsContent(content) {
+      return Object.entries(content || {}).reduce((cleaned, [key, value]) => {
+        const text = String(value == null ? "" : value);
+        if (text.trim()) cleaned[key] = text;
+        return cleaned;
+      }, {});
+    }
+
     function extractCmsFields(html) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
@@ -1352,7 +1360,11 @@
           textarea.value = lang.code === "text" ? fieldStoredValue(field, "pt") : fieldStoredValue(field, lang.code);
           textarea.addEventListener("input", () => {
             state.cmsDirty = true;
-            state.cmsContent[textarea.dataset.cmsKey] = textarea.value;
+            if (textarea.value.trim()) {
+              state.cmsContent[textarea.dataset.cmsKey] = textarea.value;
+            } else {
+              delete state.cmsContent[textarea.dataset.cmsKey];
+            }
           });
           const label = document.createElement("label");
           label.textContent = lang.label;
@@ -1412,12 +1424,13 @@
       showNotice(cmsNotice, "", "info");
       try {
         const pageKey = pageKeyForPath(state.cmsPage.path);
+        const content = cleanedCmsContent(state.cmsContent);
         const data = await apiFetch("/site-content/" + encodeURIComponent(pageKey), {
           method: "PUT",
-          body: { content: state.cmsContent }
+          body: { content }
         });
         const saved = data && data.contentEntry ? data.contentEntry : null;
-        state.cmsContent = saved && saved.content ? { ...saved.content } : state.cmsContent;
+        state.cmsContent = saved && saved.content ? { ...saved.content } : content;
         state.cmsDirty = false;
         await loadSiteContentEntries();
         renderCmsFields();
